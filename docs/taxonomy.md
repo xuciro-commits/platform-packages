@@ -10,5 +10,6 @@
 | `stage` | `stable`、`preview`、`test` | 测试与示例包写 `test`，市场默认不列出 |
 | `source` | 来源应用：生态、应用、版本、许可，与关系 | `{ecosystem: frappe, app: crm, version: v1.x, license: AGPL-3.0, relation: redesign}` |
 
-- `relation` 只有两种：`redesign`（读懂业务后按平台语义重新设计，不含来源的定义与代码）与 `derived`（由来源定义转换而来，沿用来源许可，不进本仓库）。
+- `relation` 只有两种：`redesign`（读懂业务后按平台语义重新设计，不含来源的定义、代码与文案，以 Apache-2.0 发布）与
+  `derived`（由来源定义转换而来；只收 MIT、Apache 等宽松许可的来源，保留其版权声明）。规则见 [来源应用](sources.md)。
 - 能力与行业的取值由本表维护；要加新值，在同一个 PR 里改这张表。
