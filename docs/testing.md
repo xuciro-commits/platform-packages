@@ -1,6 +1,7 @@
 # 测试
 
-每个 PR 的 CI（`.github/workflows/check.yml`）跑：
+每个 PR 的 CI（`.github/workflows/check.yml`）跑，也可以在 Actions 里手动触发；推送 main 不跑。
+它下载 `platform.lock` 里那个平台发行版的 `pkg-linux-amd64` 并核对 `SHA256SUMS`，不编译平台：
 
 1. 布局：每个包有 `README.md`、`LICENSE`、`CHANGELOG.md`，版本有对应的一节，不低于已发布版本。
 2. 下载每个包最新的 Release，核对 `SHA256SUMS`。
