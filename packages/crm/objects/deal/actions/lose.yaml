@@ -1,0 +1,16 @@
+title: Mark lost
+description: Close this deal as lost and record why.
+from: [open]
+inputs:
+  - {name: reason, title: Lost reason, type: reference, ref: crm.lostreason, required: true}
+  - {name: competitor, title: Lost to, type: reference, ref: crm.competitor}
+  - {name: notes, title: What we learned, type: longtext}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'lost'"
+        lostreason: input.reason
+        competitor: input.competitor
+        outcomenotes: input.notes
+        closedate: today()

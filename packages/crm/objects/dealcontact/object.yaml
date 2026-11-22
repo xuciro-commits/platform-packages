@@ -1,51 +1,19 @@
 name: dealcontact
 namespace: crm
-type: crm.dealcontact
 title: Deal contact
 plural: Deal contacts
+icon: user-circle
 display: contact
-fields:
-- name: deal
-  title: Deal
-  type: reference
-  ref: crm.deal
-  inverse: stakeholders
-  required: true
-- name: contact
-  title: Contact
-  type: reference
-  ref: crm.contact
-  inverse: deals
-  required: true
-  search: true
-- name: role
-  title: Role
-  type: choice
-  required: true
-  choices: decisionmaker:Decision maker,champion:Champion,influencer:Influencer,user:User,blocker:Blocker
-- name: notes
-  title: Notes
-  type: longtext
-view:
-  columns:
-  - contact
-  - deal
-  - role
-  filters: []
-  group: none
-  lanes: ''
-  layout: table
-  search: ''
-  sort: []
-  version: 1
-access:
-- role: salesrep
-  read: team
-  create: true
-  edit: true
-- role: salesmanager
-  read: all
-  create: true
-  edit: true
-  archive: true
 naming: DC-{n:6}
+
+fields:
+  - {name: deal, title: Deal, type: reference, ref: crm.deal, inverse: stakeholders, required: true}
+  - {name: contact, title: Contact, type: reference, ref: crm.contact, inverse: deals, required: true, search: true}
+  - {name: role, title: Role, type: choice, required: true, choices: "decisionmaker:Decision maker,champion:Champion,influencer:Influencer,user:User,blocker:Blocker"}
+  - {name: notes, title: Notes, type: longtext}
+
+access:
+  - {role: salesrep, read: team, create: true, edit: true}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [contact, deal, role], sort: [], group: none, lanes: "", filters: [], search: ""}

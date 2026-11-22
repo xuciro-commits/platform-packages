@@ -1,61 +1,28 @@
 name: product
 namespace: crm
-type: crm.product
 title: Product
 plural: Products
+icon: cube
 display: title
+
 fields:
-- name: title
-  title: Product
-  type: text
-  required: true
-  search: true
-  group: Product
-- name: code
-  title: Code
-  type: text
-  search: true
-  group: Product
-- name: category
-  title: Category
-  type: choice
-  choices: product:Product,service:Service,subscription:Subscription
-  group: Product
-- name: price
-  title: Standard price
-  type: money
-  default: setting:currency
-  group: Product
-- name: description
-  title: Description
-  type: longtext
-  group: Product
-- name: active
-  title: Active
-  type: boolean
-  default: 'true'
-  aside: true
-view:
-  columns:
-  - title
-  - code
-  - category
-  - price
-  - active
-  filters: []
-  group: none
-  lanes: ''
-  layout: table
-  search: ''
-  sort:
-  - direction: ascending
-    sortKey: title
-  version: 1
+  - {name: title, title: Product, type: text, required: true, search: true, group: Product}
+  - {name: code, title: Code, type: text, search: true, group: Product}
+  - {name: category, title: Category, type: choice, group: Product, choices: "product:Product,service:Service,subscription:Subscription"}
+  - {name: price, title: Standard price, type: money, default: "setting:currency", group: Product}
+  - {name: description, title: Description, type: longtext, group: Product}
+  - {name: active, title: Active, type: boolean, default: "true", aside: true}
+
 access:
-- role: salesrep
-  read: all
-- role: salesmanager
-  read: all
-  create: true
-  edit: true
-  archive: true
+  - {role: salesrep, read: all}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [title, code, category, price, active]
+  sort: [{sortKey: title, direction: ascending}]
+  lanes: category
+  group: none
+  filters: []
+  search: ""

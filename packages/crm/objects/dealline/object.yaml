@@ -1,109 +1,21 @@
 name: dealline
 namespace: crm
-type: crm.dealline
 title: Deal product
 plural: Deal products
+icon: cube
 display: product
-fields:
-- name: deal
-  title: Deal
-  type: reference
-  ref: crm.deal
-  inverse: lines
-  required: true
-- name: product
-  title: Product
-  type: reference
-  ref: crm.product
-  required: true
-  search: true
-- name: quantity
-  title: Quantity
-  type: integer
-  default: '1'
-- name: price
-  title: Unit price
-  type: money
-  from:
-    op: path
-    kind: money
-    args:
-    - op: ''
-      kind: reference
-      ref: product
-    path:
-    - price
-- name: discount
-  title: Discount %
-  type: integer
-- name: amount
-  title: Amount
-  type: money
-  formulaExpr:
-    op: '-'
-    kind: money
-    args:
-    - op: '*'
-      kind: money
-      args:
-      - op: ''
-        kind: integer
-        ref: quantity
-      - op: ''
-        kind: money
-        ref: price
-    - op: /
-      kind: money
-      args:
-      - op: '*'
-        kind: money
-        args:
-        - op: '*'
-          kind: money
-          args:
-          - op: ''
-            kind: integer
-            ref: quantity
-          - op: ''
-            kind: money
-            ref: price
-        - op: coalesce
-          kind: integer
-          args:
-          - op: ''
-            kind: integer
-            ref: discount
-          - op: ''
-            kind: integer
-            lit:
-              value: 0
-      - op: ''
-        kind: integer
-        lit:
-          value: 100
-view:
-  columns:
-  - product
-  - deal
-  - quantity
-  - price
-  - discount
-  - amount
-  filters: []
-  group: none
-  lanes: ''
-  layout: table
-  search: ''
-  sort: []
-  version: 1
-access:
-- role: salesrep
-  read: team
-  create: true
-  edit: true
-- role: salesmanager
-  read: all
-  create: true
-  edit: true
-  archive: true
 naming: DL-{n:6}
+
+fields:
+  - {name: deal, title: Deal, type: reference, ref: crm.deal, inverse: lines, required: true}
+  - {name: product, title: Product, type: reference, ref: crm.product, required: true, search: true}
+  - {name: quantity, title: Quantity, type: integer, default: "1"}
+  - {name: price, title: Unit price, type: money, from: product.price}
+  - {name: discount, title: Discount %, type: integer}
+  - {name: amount, title: Amount, type: money, formula: "quantity * price - quantity * price * coalesce(discount, 0) / 100"}
+
+access:
+  - {role: salesrep, read: team, create: true, edit: true}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [product, deal, quantity, price, discount, amount], sort: [], group: none, lanes: "", filters: [], search: ""}

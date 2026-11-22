@@ -1,0 +1,11 @@
+title: Complete
+description: Mark this activity done and write what happened.
+from: [open]
+inputs:
+  - {name: outcome, title: Outcome, type: longtext}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'done'"
+        outcome: input.outcome

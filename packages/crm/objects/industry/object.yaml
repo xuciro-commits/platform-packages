@@ -1,67 +1,34 @@
 name: industry
 namespace: crm
-type: crm.industry
 title: Industry
 plural: Industries
+icon: building-storefront
 display: title
+
 fields:
-- name: title
-  title: Industry
-  type: text
-  required: true
-  search: true
-view:
-  columns:
-  - title
-  filters: []
-  group: none
-  lanes: ''
-  layout: table
-  search: ''
-  sort:
-  - direction: ascending
-    sortKey: title
-  version: 1
+  - {name: title, title: Industry, type: text, required: true, search: true}
+
 access:
-- role: salesrep
-  read: all
-- role: salesmanager
-  read: all
-  create: true
-  edit: true
-  archive: true
+  - {role: salesrep, read: all}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
 records:
-- id: software
-  title: Software
-- id: manufacturing
-  title: Manufacturing
-- id: retail
-  title: Retail
-- id: wholesale
-  title: Wholesale and distribution
-- id: finance
-  title: Financial services
-- id: healthcare
-  title: Healthcare
-- id: education
-  title: Education
-- id: construction
-  title: Construction
-- id: realestate
-  title: Real estate
-- id: energy
-  title: Energy and utilities
-- id: logistics
-  title: Transport and logistics
-- id: hospitality
-  title: Hospitality
-- id: media
-  title: Media
-- id: professional
-  title: Professional services
-- id: public
-  title: Public sector
-- id: nonprofit
-  title: Nonprofit
-- id: other
-  title: Other
+  - {id: software, title: "Software"}
+  - {id: manufacturing, title: "Manufacturing"}
+  - {id: retail, title: "Retail"}
+  - {id: wholesale, title: "Wholesale and distribution"}
+  - {id: finance, title: "Financial services"}
+  - {id: healthcare, title: "Healthcare"}
+  - {id: education, title: "Education"}
+  - {id: construction, title: "Construction"}
+  - {id: realestate, title: "Real estate"}
+  - {id: energy, title: "Energy and utilities"}
+  - {id: logistics, title: "Transport and logistics"}
+  - {id: hospitality, title: "Hospitality"}
+  - {id: media, title: "Media"}
+  - {id: professional, title: "Professional services"}
+  - {id: public, title: "Public sector"}
+  - {id: nonprofit, title: "Nonprofit"}
+  - {id: other, title: "Other"}

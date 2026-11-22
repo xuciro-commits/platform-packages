@@ -1,0 +1,7 @@
+title: Cancel
+description: This activity is no longer needed.
+from: [open]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'canceled'"}

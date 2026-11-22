@@ -1,9 +1,5 @@
 name: build.crmnextstep
-subject:
-  app: build
-  kind: object
-  name: crm.deal
-actions: null
+subject: {app: build, kind: object, name: crm.deal}
 definition:
   name: crmnextstep
   title: Remind when a next step is overdue
@@ -11,19 +7,9 @@ definition:
   object: crm.deal
   when: open
   steps:
-  - name: due
-    kind: wait
-    waitUntil:
-      source: subject
-      path:
-      - nextstepdue
-    next: tell
-  - name: tell
-    kind: notify
-    notify:
-      title: Next step overdue
-      body: The next step on this deal is due. Do it, or set a new one.
-      field: owner
-    next: done
-  - name: done
-    kind: end
+    - {name: due, kind: wait, waitUntil: {source: subject, path: [nextstepdue]}, next: tell}
+    - name: tell
+      kind: notify
+      notify: {title: Next step overdue, body: "The next step on this deal is due. Do it, or set a new one.", field: owner}
+      next: done
+    - {name: done, kind: end}
