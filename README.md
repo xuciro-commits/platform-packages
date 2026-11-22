@@ -18,7 +18,7 @@
 - [概念](docs/concepts.md) · [源格式](docs/format.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
 - [发版](docs/release.md) · [自建包库](docs/own-library.md) · [评审清单](docs/review-checklist.md) · [分类与标签](docs/taxonomy.md)
 
-新包从 [`templates/app`](templates/app) 开始。每个 PR 都由 CI 校验：源能打成平台接受的制品，锁文件没有过期，版本号没变时与已发布版本等价，两次构建字节相同。
+新包从 [`templates/app`](templates/app) 开始。每个 PR 都由 CI 用 `platform.lock` 里那个平台发行版的 `pkg` 校验：源能打成平台接受的制品，锁文件没有过期，版本号没变时与已发布版本等价，两次构建字节相同。
 
 ## 仓库
 
@@ -27,7 +27,7 @@ packages/<id>/    一个包一个目录：package.yaml、资源 YAML、README、
 templates/app/    新应用包的起点
 docs/             开发文档
 scripts/          CI 用的检查
-platform.lock     CI 用来构建 pkg 的平台提交
+platform.lock     本仓库对齐的平台发行版；CI 与本地都下载这个版本的 pkg
 ```
 
 ## 许可

@@ -2,8 +2,7 @@ name: check
 
 on:
   pull_request:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,33 +14,22 @@ concurrency:
 jobs:
   packages:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Read the pinned platform commit
-        id: platform
-        run: echo "sha=$(tr -d '[:space:]' < platform.lock)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/checkout@v4
-        with:
-          repository: xuciro-commits/platform
-          ref: ${{ steps.platform.outputs.sha }}
-          path: .platform
-          sparse-checkout: |
-            capabilities/server
-            contract
-
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: .platform/capabilities/server/go.mod
-          cache-dependency-path: .platform/capabilities/server/go.sum
-
-      - name: Build pkg from the pinned platform
-        working-directory: .platform/capabilities/server
-        run: go build -o "$RUNNER_TEMP/pkg" ./cmd/pkg
+      - name: Download pkg from the pinned platform release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          release=$(tr -d '[:space:]' < platform.lock)
+          cd "$RUNNER_TEMP"
+          gh release download "$release" --repo xuciro-commits/platform --pattern pkg-linux-amd64 --pattern SHA256SUMS
+          grep '  pkg-linux-amd64$' SHA256SUMS | sha256sum -c -
+          install -m 0755 pkg-linux-amd64 "$RUNNER_TEMP/pkg"
 
       - name: Layout, CHANGELOG and version order
         run: node scripts/packages.mjs layout
@@ -57,6 +45,4 @@ jobs:
           "$RUNNER_TEMP/pkg" check templates/app
 
       - name: Builds are reproducible
-        env:
-          PKG: ${{ runner.temp }}/pkg
-        run: node scripts/packages.mjs reproducible
+        run: node scripts/packages.mjs reproducible --pkg="$RUNNER_TEMP/pkg"

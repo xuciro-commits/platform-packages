@@ -1,16 +1,23 @@
 # 十分钟做出第一个包
 
-需要：Go（版本见平台的 `capabilities/server/go.mod`）、Node 22 以上、pnpm，以及一份平台源码。
+需要：[gh](https://cli.github.com/)（下载 Release）与 Node 22 以上（跑本仓库的检查脚本）。不需要 Go，也不需要平台源码。
 
-## 1. 取得 pkg
+## 1. 取得 pkg 与平台
 
 `pkg` 是平台的打包工具，校验与依赖计算用的就是宿主自己的代码，所以本地报的错和装进租户时一样。
+它和单体宿主一起随 [平台的 Release](https://github.com/xuciro-commits/platform/releases) 发布，不用拉源码编译。
+用 `platform.lock` 里写的版本：
 
 ```bash
-git clone https://github.com/xuciro-commits/platform.git
-cd platform/capabilities/server
-go build -o ~/bin/pkg ./cmd/pkg
+version=$(cat platform.lock)
+os=$(uname -s | tr A-Z a-z); arch=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+gh release download "$version" --repo xuciro-commits/platform --pattern "pkg-$os-$arch" --pattern "platform-$os-$arch" --pattern SHA256SUMS
+grep -E "  (pkg|platform)-$os-$arch$" SHA256SUMS | shasum -a 256 -c -
+chmod +x "pkg-$os-$arch" "platform-$os-$arch"
+mv "pkg-$os-$arch" ~/bin/pkg
 ```
+
+Windows 用 `pkg-windows-amd64.exe` 与 `platform-windows-amd64.exe`。
 
 ## 2. 从模板开始
 
@@ -40,9 +47,10 @@ pkg check packages/acme    # 与 CI 跑的是同一个检查
 
 ```bash
 pkg build -o /tmp/acme.json packages/acme
+./platform-$os-$arch -addr 127.0.0.1:8495 -admin admin
 ```
 
-在平台仓库里 `make frontend-host`，再 `pnpm --dir frontend dev`，打开 http://localhost:8496，用 `admin-1 · blank` 登录。
+单体宿主内嵌了工作台。打开 http://127.0.0.1:8495，以 `admin` 登录。
 交付 → 市场 →「⋯ → 从地址或文件安装」，选 `/tmp/acme.json`：审阅页列出来源、摘要、应用与角色，确认后安装。
 应用栏出现你的应用，打开列表就能新建记录。
 
