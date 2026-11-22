@@ -30,7 +30,9 @@ jobs:
           repository: xuciro-commits/platform
           ref: ${{ steps.platform.outputs.sha }}
           path: .platform
-          sparse-checkout: capabilities/server
+          sparse-checkout: |
+            capabilities/server
+            contract
 
       - uses: actions/setup-go@v5
         with:
