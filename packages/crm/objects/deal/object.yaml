@@ -1,0 +1,384 @@
+name: deal
+namespace: crm
+type: crm.deal
+title: Deal
+plural: Deals
+display: title
+fields:
+- name: title
+  title: Deal
+  type: text
+  required: true
+  search: true
+  group: Deal
+- name: account
+  title: Account
+  type: reference
+  ref: crm.account
+  inverse: deals
+  required: true
+  search: true
+  group: Deal
+- name: contact
+  title: Primary contact
+  type: reference
+  ref: crm.contact
+  group: Deal
+- name: amount
+  title: Amount
+  type: money
+  default: setting:currency
+  required: true
+  group: Deal
+- name: expectedclose
+  title: Expected close
+  type: date
+  required: true
+  group: Deal
+- name: source
+  title: Source
+  type: reference
+  ref: crm.source
+  group: Deal
+- name: competitor
+  title: Main competitor
+  type: reference
+  ref: crm.competitor
+  group: Deal
+- name: lead
+  title: Source lead
+  type: reference
+  ref: crm.lead
+  readOnly: true
+  group: Deal
+- name: nextstep
+  title: Next step
+  type: text
+  required: true
+  group: Next step
+  help: The single next thing that moves this deal forward.
+- name: nextstepdue
+  title: Next step due
+  type: date
+  required: true
+  group: Next step
+- name: probability
+  title: Probability %
+  type: integer
+  from:
+    op: path
+    kind: integer
+    args:
+    - op: ''
+      kind: reference
+      ref: stage
+    path:
+    - probability
+  group: Forecast
+- name: forecast
+  title: Forecast category
+  type: choice
+  choices: pipeline:Pipeline,bestcase:Best case,commit:Commit
+  from:
+    op: path
+    kind: choice
+    args:
+    - op: ''
+      kind: reference
+      ref: stage
+    path:
+    - forecast
+  group: Forecast
+- name: weighted
+  title: Weighted amount
+  type: money
+  formulaExpr:
+    op: /
+    kind: money
+    args:
+    - op: '*'
+      kind: money
+      args:
+      - op: ''
+        kind: money
+        ref: amount
+      - op: coalesce
+        kind: integer
+        args:
+        - op: ''
+          kind: integer
+          ref: probability
+        - op: ''
+          kind: integer
+          lit:
+            value: 0
+    - op: ''
+      kind: integer
+      lit:
+        value: 100
+  group: Forecast
+- name: productstotal
+  title: Products total
+  type: money
+  formulaExpr:
+    op: sum
+    kind: money
+    agg:
+      source: lines
+      field:
+      - amount
+  group: Forecast
+- name: closedate
+  title: Close date
+  type: date
+  readOnly: true
+  when: state=won,lost
+  group: Outcome
+- name: lostreason
+  title: Lost reason
+  type: reference
+  ref: crm.lostreason
+  readOnly: true
+  when: state=lost
+  group: Outcome
+- name: outcomenotes
+  title: Outcome notes
+  type: longtext
+  readOnly: true
+  when: state=won,lost
+  group: Outcome
+- name: stage
+  title: Stage
+  type: reference
+  ref: crm.stage
+  default: qualification
+  aside: true
+- name: owner
+  title: Deal owner
+  type: member
+  default: member
+  aside: true
+view:
+  columns:
+  - title
+  - account
+  - stage
+  - amount
+  - weighted
+  - expectedclose
+  - nextstep
+  - nextstepdue
+  - owner
+  filters: []
+  group: none
+  lanes: stage
+  layout: board
+  search: ''
+  sort:
+  - direction: ascending
+    sortKey: expectedclose
+  version: 1
+  dates: expectedclose
+  inbox:
+    member: owner
+    due: nextstepdue
+    open:
+      state:
+      - open
+access:
+- role: salesrep
+  read: team
+  create: true
+  edit: true
+- role: salesmanager
+  read: all
+  create: true
+  edit: true
+  archive: true
+naming: DEAL-{year}-{n:5}
+scope:
+  owner: owner
+reads:
+  collections:
+    lines:
+      app: build
+      object: crm.dealline
+      policy: complete
+      query: ''
+      set: lines
+      version: 0
+sets:
+- direction: inverse
+  from: lines
+  limit: 200
+  name: lines
+  object: crm.dealline
+  order:
+  - expr:
+      op: ''
+      kind: text
+      ref: id
+states:
+- name: open
+  title: Open
+  tone: info
+  description: In the pipeline.
+- name: won
+  title: Won
+  tone: success
+  description: Closed as won.
+- name: lost
+  title: Lost
+  tone: danger
+  description: Closed as lost.
+actions:
+- name: win
+  title: Mark won
+  from:
+  - open
+  description: Close this deal as won and make its account a customer.
+  inputs:
+  - name: closedate
+    title: Close date
+    type: date
+    help: Defaults to today.
+  - name: notes
+    title: Why we won
+    type: longtext
+  transaction:
+    subject: crm.deal
+    steps:
+    - name: subject
+      kind: update
+      target:
+        type: crm.deal
+        id: $subject
+      changes:
+      - field: state
+        expr:
+          op: ''
+          kind: choice
+          lit:
+            value: won
+      - field: closedate
+        expr:
+          op: coalesce
+          kind: date
+          args:
+          - op: ''
+            kind: date
+            ref: input.closedate
+          - op: $today
+            kind: date
+            args: []
+      - field: outcomenotes
+        expr:
+          op: ''
+          kind: text
+          ref: input.notes
+    - name: account
+      kind: update
+      target:
+        type: crm.account
+        id: $subject
+        via: account
+      changes:
+      - field: relationship
+        expr:
+          op: ''
+          kind: choice
+          lit:
+            value: customer
+- name: lose
+  title: Mark lost
+  from:
+  - open
+  description: Close this deal as lost and record why.
+  inputs:
+  - name: reason
+    title: Lost reason
+    type: reference
+    ref: crm.lostreason
+    required: true
+  - name: competitor
+    title: Lost to
+    type: reference
+    ref: crm.competitor
+  - name: notes
+    title: What we learned
+    type: longtext
+  transaction:
+    subject: crm.deal
+    steps:
+    - name: subject
+      kind: update
+      target:
+        type: crm.deal
+        id: $subject
+      changes:
+      - field: state
+        expr:
+          op: ''
+          kind: choice
+          lit:
+            value: lost
+      - field: lostreason
+        expr:
+          op: ''
+          kind: reference
+          ref: input.reason
+      - field: competitor
+        expr:
+          op: ''
+          kind: reference
+          ref: input.competitor
+      - field: outcomenotes
+        expr:
+          op: ''
+          kind: text
+          ref: input.notes
+      - field: closedate
+        expr:
+          op: $today
+          kind: date
+          args: []
+- name: reopen
+  title: Reopen
+  from:
+  - won
+  - lost
+  description: Put this deal back into the pipeline with a new next step.
+  inputs:
+  - name: nextstep
+    title: Next step
+    type: text
+    required: true
+  - name: nextstepdue
+    title: Next step due
+    type: date
+    required: true
+  transaction:
+    subject: crm.deal
+    steps:
+    - name: subject
+      kind: update
+      target:
+        type: crm.deal
+        id: $subject
+      changes:
+      - field: state
+        expr:
+          op: ''
+          kind: choice
+          lit:
+            value: open
+      - field: nextstep
+        expr:
+          op: ''
+          kind: text
+          ref: input.nextstep
+      - field: nextstepdue
+        expr:
+          op: ''
+          kind: date
+          ref: input.nextstepdue

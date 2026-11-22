@@ -1,0 +1,91 @@
+actionTriggers:
+- actions:
+  - app: build
+    kind: action
+    name: crm.account.create
+  - app: build
+    kind: action
+    name: crm.account.edit
+  binding: page
+  id: page
+- binding: list
+  id: list
+  owner: binding:list
+- binding: detail
+  id: detail
+  owner: binding:detail
+dataBindings:
+- fields: &id001
+  - name: name
+  - name: website
+  - name: phone
+  - name: industry
+  - name: territory
+  - name: employees
+  - name: revenue
+  - name: address
+  - name: description
+  - name: pipeline
+  - name: wonrevenue
+  - name: relationship
+  - name: owner
+  id: list
+  kind: record
+  model:
+    fields: *id001
+    type: crm.account
+  object: &id002
+    app: build
+    kind: object
+    name: crm.account
+  owner: binding:list
+  ports:
+    selectionMode: write
+    widget: table
+    parentable: 'true'
+- fields: *id001
+  id: detail
+  kind: record
+  model:
+    fields: *id001
+    type: crm.account
+  object: *id002
+  owner: binding:detail
+  ports:
+    selectionMode: read
+    widget: detail
+format: 4
+inputSchema: {}
+name: crm.account
+object: *id002
+scopeVisibility:
+  owners:
+    detail: binding:detail
+    list: binding:list
+  root: page
+  scopes:
+  - id: page
+    kind: page
+  - binding: list
+    id: binding:list
+    kind: page
+    parent: page
+  - binding: detail
+    id: binding:detail
+    kind: page
+    parent: page
+title: Accounts
+widgetSpec:
+  body:
+    document: null
+    layout: list-detail
+    sections:
+    - binding: list
+      id: list
+      triggers:
+      - list
+    - binding: detail
+      id: detail
+      triggers:
+      - detail
+  format: platform.page.web.v1

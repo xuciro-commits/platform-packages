@@ -1,0 +1,48 @@
+name: build.crmleadassign
+subject:
+  app: build
+  kind: object
+  name: crm.lead
+actions:
+- app: build
+  kind: action
+  name: crm.lead.edit
+definition:
+  name: crmleadassign
+  title: Assign new leads evenly
+  kind: automation
+  object: crm.lead
+  trigger:
+    op: and
+    kind: boolean
+    args:
+    - op: empty
+      kind: boolean
+      args:
+      - op: ''
+        kind: json
+        ref: subject.owner
+    - op: '='
+      kind: boolean
+      args:
+      - op: ''
+        kind: json
+        ref: subject.stage
+      - op: ''
+        kind: json
+        lit:
+          value: new
+  steps:
+  - name: assign
+    kind: action
+    act: edit
+    balance:
+      owner:
+        app: crm
+        role: salesrep
+        open:
+          stage:
+          - new
+          - attempting
+          - connected
+          - nurturing

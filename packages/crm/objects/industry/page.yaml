@@ -1,0 +1,79 @@
+actionTriggers:
+- actions:
+  - app: build
+    kind: action
+    name: crm.industry.create
+  - app: build
+    kind: action
+    name: crm.industry.edit
+  binding: page
+  id: page
+- binding: list
+  id: list
+  owner: binding:list
+- binding: detail
+  id: detail
+  owner: binding:detail
+dataBindings:
+- fields: &id001
+  - name: title
+  id: list
+  kind: record
+  model:
+    fields: *id001
+    type: crm.industry
+  object: &id002
+    app: build
+    kind: object
+    name: crm.industry
+  owner: binding:list
+  ports:
+    selectionMode: write
+    widget: table
+    parentable: 'true'
+- fields: *id001
+  id: detail
+  kind: record
+  model:
+    fields: *id001
+    type: crm.industry
+  object: *id002
+  owner: binding:detail
+  ports:
+    selectionMode: read
+    widget: detail
+format: 4
+inputSchema: {}
+name: crm.industry
+object: *id002
+scopeVisibility:
+  owners:
+    detail: binding:detail
+    list: binding:list
+  root: page
+  scopes:
+  - id: page
+    kind: page
+  - binding: list
+    id: binding:list
+    kind: page
+    parent: page
+  - binding: detail
+    id: binding:detail
+    kind: page
+    parent: page
+title: Industries
+widgetSpec:
+  body:
+    document: null
+    layout: list-detail
+    sections:
+    - binding: list
+      id: list
+      triggers:
+      - list
+    - binding: detail
+      id: detail
+      triggers:
+      - detail
+  format: platform.page.web.v1

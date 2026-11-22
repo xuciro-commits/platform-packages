@@ -12,10 +12,15 @@
 官方包来自开放应用：读懂它的业务内容与产品设计，按平台的对象、动作、状态与角色重新设计，不逐一复刻。
 每个版本都是 [Releases](https://github.com/xuciro-commits/platform-packages/releases) 里一个不可变的制品，tag 为 `<id>/v<version>`，附 `SHA256SUMS`。
 
+| 包 | 是什么 | 阶段 |
+|---|---|---|
+| [crm](packages/crm) | 线索、商机、客户与联系人；以“下一步”驱动的管道、首次响应时限、赢丢单分析与销售仪表盘 | 预览 |
+
 ## 开发
 
 - [十分钟做出第一个包](docs/getting-started.md)
 - [概念](docs/concepts.md) · [源格式](docs/format.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
+- [开放应用接入：黄金路线](docs/intake.md)
 - [发版](docs/release.md) · [自建包库](docs/own-library.md) · [评审清单](docs/review-checklist.md) · [分类与标签](docs/taxonomy.md) · [来源应用与接入顺序](docs/sources.md)
 
 新包从 [`templates/app`](templates/app) 开始。每个 PR 都由 CI 用 `platform.lock` 里那个平台发行版的 `pkg` 校验：源能打成平台接受的制品，锁文件没有过期，版本号没变时与已发布版本等价，两次构建字节相同。

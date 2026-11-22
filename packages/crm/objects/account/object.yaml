@@ -1,0 +1,184 @@
+name: account
+namespace: crm
+type: crm.account
+title: Account
+plural: Accounts
+display: name
+fields:
+- name: name
+  title: Account
+  type: text
+  required: true
+  search: true
+  group: Account
+- name: website
+  title: Website
+  type: text
+  search: true
+  group: Account
+- name: phone
+  title: Phone
+  type: text
+  group: Account
+- name: industry
+  title: Industry
+  type: reference
+  ref: crm.industry
+  group: Account
+- name: territory
+  title: Territory
+  type: reference
+  ref: crm.territory
+  group: Account
+- name: employees
+  title: Employees
+  type: choice
+  choices: 1-10:1-10,11-50:11-50,51-200:51-200,201-500:201-500,501-1000:501-1000,1000+:1000+
+  group: Account
+- name: revenue
+  title: Annual revenue
+  type: money
+  default: setting:currency
+  group: Account
+- name: address
+  title: Address
+  type: longtext
+  group: Account
+- name: description
+  title: About
+  type: longtext
+  group: Account
+- name: pipeline
+  title: Open pipeline
+  type: money
+  formulaExpr:
+    op: sum
+    kind: money
+    agg:
+      source: deals
+    in:
+      op: if
+      kind: money
+      args:
+      - op: '='
+        kind: boolean
+        args:
+        - op: ''
+          kind: choice
+          ref: item.state
+        - op: ''
+          kind: choice
+          lit:
+            value: open
+      - op: ''
+        kind: money
+        ref: item.amount
+      - op: '*'
+        kind: money
+        args:
+        - op: ''
+          kind: money
+          ref: item.amount
+        - op: ''
+          kind: integer
+          lit:
+            value: 0
+  group: Business
+- name: wonrevenue
+  title: Won revenue
+  type: money
+  formulaExpr:
+    op: sum
+    kind: money
+    agg:
+      source: deals
+    in:
+      op: if
+      kind: money
+      args:
+      - op: '='
+        kind: boolean
+        args:
+        - op: ''
+          kind: choice
+          ref: item.state
+        - op: ''
+          kind: choice
+          lit:
+            value: won
+      - op: ''
+        kind: money
+        ref: item.amount
+      - op: '*'
+        kind: money
+        args:
+        - op: ''
+          kind: money
+          ref: item.amount
+        - op: ''
+          kind: integer
+          lit:
+            value: 0
+  group: Business
+- name: relationship
+  title: Relationship
+  type: choice
+  choices: prospect:Prospect,customer:Customer,partner:Partner,former:Former customer
+  default: prospect
+  aside: true
+- name: owner
+  title: Account owner
+  type: member
+  default: member
+  aside: true
+view:
+  columns:
+  - name
+  - relationship
+  - industry
+  - territory
+  - pipeline
+  - wonrevenue
+  - owner
+  filters: []
+  group: none
+  lanes: ''
+  layout: table
+  search: ''
+  sort:
+  - direction: ascending
+    sortKey: name
+  version: 1
+access:
+- role: salesrep
+  read: all
+  create: true
+  edit: true
+- role: salesmanager
+  read: all
+  create: true
+  edit: true
+  archive: true
+naming: ACC-{n:5}
+scope:
+  owner: owner
+reads:
+  collections:
+    deals:
+      app: build
+      object: crm.deal
+      policy: complete
+      query: ''
+      set: deals
+      version: 0
+sets:
+- direction: inverse
+  from: deals
+  limit: 500
+  name: deals
+  object: crm.deal
+  order:
+  - expr:
+      op: ''
+      kind: text
+      ref: id

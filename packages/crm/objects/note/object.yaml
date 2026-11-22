@@ -1,0 +1,69 @@
+name: note
+namespace: crm
+type: crm.note
+title: Note
+plural: Notes
+display: title
+fields:
+- name: title
+  title: Title
+  type: text
+  required: true
+  search: true
+- name: lead
+  title: Lead
+  type: reference
+  ref: crm.lead
+  oneOf: Related to
+  inverse: notes
+- name: deal
+  title: Deal
+  type: reference
+  ref: crm.deal
+  oneOf: Related to
+  inverse: notes
+- name: account
+  title: Account
+  type: reference
+  ref: crm.account
+  oneOf: Related to
+  inverse: notes
+- name: contact
+  title: Contact
+  type: reference
+  ref: crm.contact
+  oneOf: Related to
+  inverse: notes
+- name: content
+  title: Content
+  type: longtext
+- name: pinned
+  title: Pinned
+  type: boolean
+  aside: true
+view:
+  columns:
+  - title
+  - pinned
+  - deal
+  - lead
+  - account
+  - contact
+  filters: []
+  group: none
+  lanes: ''
+  layout: table
+  search: ''
+  sort: []
+  version: 1
+access:
+- role: salesrep
+  read: team
+  create: true
+  edit: true
+- role: salesmanager
+  read: all
+  create: true
+  edit: true
+  archive: true
+naming: NOTE-{n:5}

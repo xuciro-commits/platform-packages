@@ -1,0 +1,7 @@
+name: crmaccountmatch
+object: crm.account
+title: Match accounts by name
+keys:
+- fields:
+  - name
+  normalize: folded

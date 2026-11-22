@@ -1,0 +1,85 @@
+name: contact
+namespace: crm
+type: crm.contact
+title: Contact
+plural: Contacts
+display: fullname
+fields:
+- name: fullname
+  title: Full name
+  type: text
+  required: true
+  search: true
+  group: Contact
+- name: account
+  title: Account
+  type: reference
+  ref: crm.account
+  inverse: contacts
+  search: true
+  group: Contact
+- name: jobtitle
+  title: Job title
+  type: text
+  group: Contact
+- name: email
+  title: Email
+  type: text
+  search: true
+  group: Contact
+- name: mobile
+  title: Mobile
+  type: text
+  search: true
+  group: Contact
+- name: phone
+  title: Phone
+  type: text
+  group: Contact
+- name: linkedin
+  title: LinkedIn
+  type: text
+  group: Contact
+- name: notes
+  title: Background
+  type: longtext
+  group: Contact
+- name: owner
+  title: Contact owner
+  type: member
+  default: member
+  aside: true
+- name: donotcontact
+  title: Do not contact
+  type: boolean
+  aside: true
+view:
+  columns:
+  - fullname
+  - account
+  - jobtitle
+  - email
+  - mobile
+  - owner
+  filters: []
+  group: none
+  lanes: ''
+  layout: table
+  search: ''
+  sort:
+  - direction: ascending
+    sortKey: fullname
+  version: 1
+access:
+- role: salesrep
+  read: all
+  create: true
+  edit: true
+- role: salesmanager
+  read: all
+  create: true
+  edit: true
+  archive: true
+naming: CON-{n:5}
+scope:
+  owner: owner

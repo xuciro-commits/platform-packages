@@ -1,0 +1,187 @@
+name: activity
+namespace: crm
+type: crm.activity
+title: Activity
+plural: Activities
+display: subject
+fields:
+- name: subject
+  title: Subject
+  type: text
+  required: true
+  search: true
+- name: kind
+  title: Type
+  type: choice
+  default: call
+  choices: call:Call,meeting:Meeting,email:Email,demo:Demo,todo:To-do
+- name: lead
+  title: Lead
+  type: reference
+  ref: crm.lead
+  oneOf: Related to
+  inverse: activities
+- name: deal
+  title: Deal
+  type: reference
+  ref: crm.deal
+  oneOf: Related to
+  inverse: activities
+- name: account
+  title: Account
+  type: reference
+  ref: crm.account
+  oneOf: Related to
+  inverse: activities
+- name: contact
+  title: Contact
+  type: reference
+  ref: crm.contact
+  oneOf: Related to
+  inverse: activities
+- name: due
+  title: Due
+  type: date
+  default: today
+- name: details
+  title: Details
+  type: longtext
+- name: outcome
+  title: Outcome
+  type: longtext
+  readOnly: true
+  when: state=done
+- name: priority
+  title: Priority
+  type: choice
+  default: normal
+  choices: low:Low,normal:Normal,high:High
+  aside: true
+- name: assignee
+  title: Assigned to
+  type: member
+  default: member
+  aside: true
+view:
+  columns:
+  - subject
+  - kind
+  - due
+  - priority
+  - assignee
+  - deal
+  - lead
+  - account
+  filters: []
+  group: none
+  lanes: kind
+  layout: table
+  search: ''
+  sort:
+  - direction: ascending
+    sortKey: due
+  version: 1
+  dates: due
+  inbox:
+    member: assignee
+    due: due
+    open:
+      state:
+      - open
+access:
+- role: salesrep
+  read: team
+  create: true
+  edit: true
+- role: salesmanager
+  read: all
+  create: true
+  edit: true
+  archive: true
+naming: ACT-{year}-{n:5}
+scope:
+  owner: assignee
+states:
+- name: open
+  title: To do
+  tone: info
+  description: Still to be done.
+- name: done
+  title: Done
+  tone: success
+  description: Done, with its outcome.
+- name: canceled
+  title: Canceled
+  tone: neutral
+  description: No longer needed.
+actions:
+- name: complete
+  title: Complete
+  from:
+  - open
+  description: Mark this activity done and write what happened.
+  inputs:
+  - name: outcome
+    title: Outcome
+    type: longtext
+  transaction:
+    subject: crm.activity
+    steps:
+    - name: subject
+      kind: update
+      target:
+        type: crm.activity
+        id: $subject
+      changes:
+      - field: state
+        expr:
+          op: ''
+          kind: choice
+          lit:
+            value: done
+      - field: outcome
+        expr:
+          op: ''
+          kind: text
+          ref: input.outcome
+- name: cancel
+  title: Cancel
+  from:
+  - open
+  description: This activity is no longer needed.
+  transaction:
+    subject: crm.activity
+    steps:
+    - name: subject
+      kind: update
+      target:
+        type: crm.activity
+        id: $subject
+      changes:
+      - field: state
+        expr:
+          op: ''
+          kind: choice
+          lit:
+            value: canceled
+- name: reopen
+  title: Reopen
+  from:
+  - done
+  - canceled
+  description: Put this activity back on the list.
+  transaction:
+    subject: crm.activity
+    steps:
+    - name: subject
+      kind: update
+      target:
+        type: crm.activity
+        id: $subject
+      changes:
+      - field: state
+        expr:
+          op: ''
+          kind: choice
+          lit:
+            value: open
