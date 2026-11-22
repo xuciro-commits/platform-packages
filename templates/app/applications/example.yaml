@@ -1,0 +1,13 @@
+icon: cube
+name: example
+title: Example
+pages:
+  - example.item
+groups:
+  - title: Workspace
+    pages:
+      - example.item
+resources:
+  - app: build
+    kind: object
+    name: example.item

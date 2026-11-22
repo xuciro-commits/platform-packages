@@ -1,0 +1,10 @@
+id: example
+version: 0.1.0
+title: Example
+namespace: example
+description: A starting point for a new application package. Rename example, then add objects, actions and pages.
+roots:
+  - app: build
+    kind: app
+    name: example
+artifact: example.json

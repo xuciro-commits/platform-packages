@@ -1,0 +1,30 @@
+{
+  "format": 2,
+  "package": "example",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:f444889e819ce8265f7b38e4d02a4f5822ddf4f9ec9f6954fb8e03b6ebbcf19a",
+  "assets": {
+    "app/example": {
+      "digest": "sha256:1f128788bbfa5dfee200597fb40e7f984731daa6e47929533c266280a9978962",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/example.item": {
+      "digest": "sha256:3f491f529993cb2a05fd9aeeee032c256868c7664714259e56405099146d9cfc",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.cf465a2e8cff8bd1d48e672f058b9e943b75b18434e6f8d23e1e4bd8cf4f4464",
+          "family": 1
+        }
+      ]
+    },
+    "page/example.item": {
+      "digest": "sha256:1ef95ca73ddd570b4b69f4ab9ed62a11fb124d5ff647a15f43e2f9fe40be23bc",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

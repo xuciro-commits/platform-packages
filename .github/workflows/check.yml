@@ -1,0 +1,60 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read the pinned platform commit
+        id: platform
+        run: echo "sha=$(tr -d '[:space:]' < platform.lock)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          repository: xuciro-commits/platform
+          ref: ${{ steps.platform.outputs.sha }}
+          path: .platform
+          sparse-checkout: capabilities/server
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: .platform/capabilities/server/go.mod
+          cache-dependency-path: .platform/capabilities/server/go.sum
+
+      - name: Build pkg from the pinned platform
+        working-directory: .platform/capabilities/server
+        run: go build -o "$RUNNER_TEMP/pkg" ./cmd/pkg
+
+      - name: Layout, CHANGELOG and version order
+        run: node scripts/packages.mjs layout
+
+      - name: Download the latest release of every package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/packages.mjs download
+
+      - name: Validate, check the lock and compare with the released version
+        run: |
+          if compgen -G "packages/*/package.yaml" > /dev/null; then "$RUNNER_TEMP/pkg" check -packages packages; fi
+          "$RUNNER_TEMP/pkg" check templates/app
+
+      - name: Builds are reproducible
+        env:
+          PKG: ${{ runner.temp }}/pkg
+        run: node scripts/packages.mjs reproducible
