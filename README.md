@@ -20,16 +20,8 @@
 ## 开发
 
 - [十分钟做出第一个包](docs/getting-started.md)
-<<<<<<< HEAD
-- [概念](docs/concepts.md) · [源格式](docs/format.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
-- [开放应用接入：黄金路线](docs/intake.md)；按步骤做的版本是 Skill [`open-app-intake`](.claude/skills/open-app-intake/SKILL.md)
-||||||| parent of 9d7c5df (功能: helpdesk 0.1.0——售后与客户支持官方包与三类包设计规范)
-- [概念](docs/concepts.md) · [源格式](docs/format.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
-- [开放应用接入：黄金路线](docs/intake.md)
-=======
 - [概念](docs/concepts.md) · [源格式](docs/format.md) · [各类包规范](docs/package-types.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
-- [开放应用接入：黄金路线](docs/intake.md)
->>>>>>> 9d7c5df (功能: helpdesk 0.1.0——售后与客户支持官方包与三类包设计规范)
+- [开放应用接入：黄金路线](docs/intake.md)；按步骤做的版本是 Skill [`open-app-intake`](.claude/skills/open-app-intake/SKILL.md)
 - [发版](docs/release.md) · [自建包库](docs/own-library.md) · [评审清单](docs/review-checklist.md) · [分类与标签](docs/taxonomy.md) · [来源应用与接入顺序](docs/sources.md)
 
 新包从 [`templates/app`](templates/app) 开始。每个 PR 都由 CI 用 `platform.lock` 里那个平台发行版的 `pkg` 校验：源能打成平台接受的制品，锁文件没有过期，
