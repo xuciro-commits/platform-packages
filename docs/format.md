@@ -17,6 +17,7 @@ packages/crm/
 ├── integrations/matching/    匹配规则等集成
 ├── locales/<语言>.yaml       译文：英文原文 → 译文，如 locales/zh-CN.yaml
 ├── setup.yaml  docs/guide.md 可选：安装后的初始化与使用说明
+├── try.yaml                  可选：pkg try 与 pkg check 跑的主线脚本，不进制品
 └── pages/ queries/ functions/ agents/ tests/ …  其余资源按目录放
 ```
 
@@ -156,6 +157,28 @@ dashboard: […]                           # 有仪表盘时菜单第一项是�
 
 - 不写依赖、能力、动作输入模式与模式版本：`pkg` 用宿主的同一实现算出，写进制品。源里出现 `schemaVersions` 会被拒。
 - 不在已知位置的 `.yaml` 会被拒，避免写错目录的文件被悄悄忽略；`actions/` 里没被对象列出的动作文件也会被拒。
+
+## try.yaml
+
+`pkg try <包目录>` 把包装进内存租户，按这个脚本提交动作、打印记录；`pkg check` 也跑它。键写错会被拒。
+
+```yaml
+roles: {crm: salesmanager}          # 给试跑成员的角色，平台与构建的管理角色总是有
+at: 2026-11-23T09:00:00Z            # 可选：固定时间，时限与默认日期因此可重复
+steps:
+  - do: crm.lead.create             # 动作的 schema
+    on: crm.lead/L1                 # 目标：<类型>/<id>
+    with: {fullname: Zhou Ning, budget: {amount: 300000, currency: CNY}}
+    show: [stage, owner]            # 不写就打印整条记录
+  - do: crm.lead.convert
+    on: crm.lead/L1
+    with: {expectedclose: "2026-12-31", nextstep: Send the proposal, nextstepdue: "2026-11-25"}
+  - read: crm.deal/{crm.lead/L1.deal}   # {<类型>/<id>.<字段>} 取已有记录的值
+    expect: {stage: qualification}      # 按子集比对，不符就失败
+  - do: crm.lead.convert
+    on: crm.lead/L1
+    refused: true                   # 这一步必须被拒
+```
 
 ## package.lock.json
 
