@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdtempSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
 const root = resolve(new URL("..", import.meta.url).pathname);
 const packagesDir = join(root, "packages");
+const catalogFile = join(root, "catalog.json");
+const catalogTitle = "Platform packages";
+const releaseURL = "https://github.com/xuciro-commits/platform-packages/releases/download/{id}/v{version}/";
 
 function manifest(dir) {
   const fields = {};
@@ -40,6 +43,23 @@ function compareVersions(a, b) {
     return typeof x[i] === "number" && typeof y[i] === "number" ? x[i] - y[i] : String(x[i]).localeCompare(String(y[i]));
   }
   return 0;
+}
+
+function sha256(file) {
+  return createHash("sha256").update(readFileSync(file)).digest("hex");
+}
+
+function writeCatalog(list, out) {
+  run(pkg, ["catalog", "-o", out, "-title", catalogTitle, "-url", releaseURL, ...list.map((p) => p.dir)]);
+}
+
+function changelogSection(p) {
+  const text = readFileSync(join(p.dir, "CHANGELOG.md"), "utf8");
+  const start = text.search(new RegExp(`^## ${p.version.replaceAll(".", "\\.")}(\\s|$)`, "m"));
+  if (start < 0) return "";
+  const rest = text.slice(start).split("\n").slice(1);
+  const end = rest.findIndex((line) => line.startsWith("## "));
+  return (end < 0 ? rest : rest.slice(0, end)).join("\n").trim();
 }
 
 function latestTag(id) {
@@ -77,10 +97,46 @@ const commands = {
       if (sums.split("\n").includes("SHA256SUMS")) {
         const listed = run("gh", ["release", "download", tag, "--pattern", "SHA256SUMS", "--output", "-"], { cwd: root });
         const want = listed.split("\n").find((line) => line.endsWith(`  ${p.artifact}`))?.split(" ")[0];
-        const got = createHash("sha256").update(readFileSync(join(packagesDir, p.artifact))).digest("hex");
+        const got = sha256(join(packagesDir, p.artifact));
         if (want !== got) problems.push(`${tag}: ${p.artifact} does not match SHA256SUMS`);
       }
       console.log(`${p.id}: downloaded ${tag}`);
+    }
+  },
+  catalog(list) {
+    if (!flags.check) {
+      writeCatalog(list, catalogFile);
+      console.log(`catalog.json: ${list.length} packages`);
+      return;
+    }
+    const fresh = join(mkdtempSync(join(tmpdir(), "catalog-")), "catalog.json");
+    writeCatalog(list, fresh);
+    if (!existsSync(catalogFile) || readFileSync(fresh, "utf8") !== readFileSync(catalogFile, "utf8")) {
+      problems.push("catalog.json is out of date; run node scripts/packages.mjs catalog and commit it");
+    } else console.log(`catalog.json: up to date (${list.length} packages)`);
+  },
+  release(list) {
+    const out = resolve(flags.out || "dist");
+    const listed = JSON.parse(readFileSync(catalogFile, "utf8")).packages;
+    for (const p of list) {
+      const tag = `${p.id}/v${p.version}`;
+      if (run("git", ["tag", "--list", tag], { cwd: root }).trim()) continue;
+      const entry = listed.find((item) => item.id === p.id && item.version === p.version);
+      if (!entry) {
+        problems.push(`${tag}: catalog.json has no entry for this version`);
+        continue;
+      }
+      const dir = join(out, p.name);
+      mkdirSync(dir, { recursive: true });
+      run(pkg, ["build", "-o", join(dir, p.artifact), p.dir]);
+      const sum = sha256(join(dir, p.artifact));
+      if (`sha256:${sum}` !== entry.sha256) {
+        problems.push(`${tag}: the built artifact is sha256:${sum}, catalog.json lists ${entry.sha256}`);
+        continue;
+      }
+      writeFileSync(join(dir, "SHA256SUMS"), `${sum}  ${p.artifact}\n`);
+      writeFileSync(join(dir, "NOTES.md"), `${changelogSection(p)}\n\nsha256:${sum}\n`);
+      console.log(`${tag}\t${p.name}`);
     }
   },
   reproducible(list) {
@@ -89,7 +145,7 @@ const commands = {
       const digests = ["a", "b"].map((n) => {
         const out = join(scratch, `${p.name}.${n}.json`);
         run(pkg, ["build", "-o", out, p.dir]);
-        return createHash("sha256").update(readFileSync(out)).digest("hex");
+        return sha256(out);
       });
       if (digests[0] !== digests[1]) problems.push(`${p.name}: two builds of the same source differ`);
       else console.log(`${p.name}: reproducible sha256:${digests[0]}`);
@@ -98,10 +154,14 @@ const commands = {
 };
 
 const [command, ...rest] = process.argv.slice(2);
-const only = rest.filter((arg) => !arg.startsWith("--pkg="));
-const pkg = rest.find((arg) => arg.startsWith("--pkg="))?.slice(6) || process.env.PKG || "pkg";
+const only = rest.filter((arg) => !arg.startsWith("--"));
+const flags = Object.fromEntries(rest.filter((arg) => arg.startsWith("--")).map((arg) => {
+  const [key, value] = arg.slice(2).split("=");
+  return [key, value ?? true];
+}));
+const pkg = flags.pkg || process.env.PKG || "pkg";
 if (!commands[command]) {
-  console.error("usage: node scripts/packages.mjs layout|download|reproducible [--pkg=path] [package ...]");
+  console.error("usage: node scripts/packages.mjs layout|download|catalog [--check]|release [--out=dist]|reproducible [--pkg=path] [package ...]");
   process.exit(2);
 }
 commands[command](packages(only));

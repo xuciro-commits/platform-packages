@@ -44,5 +44,11 @@ jobs:
           if compgen -G "packages/*/package.yaml" > /dev/null; then "$RUNNER_TEMP/pkg" check -packages packages; fi
           "$RUNNER_TEMP/pkg" check templates/app
 
+      - name: Review the upgrade from the released version and the version bump
+        run: if compgen -G "packages/*/package.yaml" > /dev/null; then "$RUNNER_TEMP/pkg" diff -packages packages; fi
+
+      - name: catalog.json matches the sources
+        run: node scripts/packages.mjs catalog --check --pkg="$RUNNER_TEMP/pkg"
+
       - name: Builds are reproducible
         run: node scripts/packages.mjs reproducible --pkg="$RUNNER_TEMP/pkg"

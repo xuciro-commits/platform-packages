@@ -1,3 +1,5 @@
 packages/*.json
+dist/
+pending.txt
 .platform/
 .DS_Store

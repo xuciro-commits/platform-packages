@@ -56,4 +56,5 @@ pkg build -o /tmp/acme.json packages/acme
 
 ## 5. 提 PR
 
-写 `README.md` 与 `CHANGELOG.md`（`## 0.1.0` 一节），复制仓库根的 `LICENSE`，提 PR。CI 会再跑一遍 `pkg check`。
+写 `README.md` 与 `CHANGELOG.md`（`## 0.1.0` 一节），复制仓库根的 `LICENSE`，跑 `node scripts/packages.mjs catalog` 更新目录，提 PR。
+CI 会再跑一遍 `pkg check`、`pkg diff` 与目录检查；合入后由工作流发版（[发版](release.md)）。
