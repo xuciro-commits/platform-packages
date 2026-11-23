@@ -1,0 +1,7 @@
+keys:
+  - fields:
+      - name
+    normalize: folded
+name: partyorganizationmatch
+object: party.organization
+title: Match organizations by name

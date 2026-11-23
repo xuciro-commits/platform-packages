@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "package": "uom",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:a082b9140f7b81ff6e7eda019accc09207ece4c6030c130d069281e3499832f1",
+  "assets": {
+    "app/uom": {
+      "digest": "sha256:a431d1e0f01ee7f843ad4259e6f421bbfe23d49186fe8f7cae76d7c4c9654df7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/uom.dimension": {
+      "digest": "sha256:67a5f83d3b1268d40ccc6aedd9d930e16123f473f77a8a44c06f85ab015dd3f7",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.a0a5e02037fdb6f506cc3324be5d0a90e0fe7b1b9862976f0b787b8de951dbb3",
+          "family": 1
+        }
+      ]
+    },
+    "object/uom.unit": {
+      "digest": "sha256:127600e78d6de32671ed6f144649fb5f3df5b84167ce3c3dbf082c020cdba34d",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.c76ce93c7d719e83dd752b0c049a9d8b43514f40b04c4de07f8dee5b91d23737",
+          "family": 1
+        }
+      ]
+    },
+    "page/uom.dimension": {
+      "digest": "sha256:46616c49af7ad52f274dc998db2f5ec8fcf62541976c5bdb78806854af403259",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/uom.unit": {
+      "digest": "sha256:6fa1c6555c069b8522a2f935cd1658f94f626c95060917f22e938894eaa2b9ff",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

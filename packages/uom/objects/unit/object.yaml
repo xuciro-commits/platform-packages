@@ -1,0 +1,58 @@
+name: unit
+namespace: uom
+title: Unit
+plural: Units
+icon: tag
+display: title
+description: A unit of measure and how many base units of its dimension one of it holds.
+
+fields:
+  - {name: title, title: Unit, type: text, required: true, search: true}
+  - {name: symbol, title: Symbol, type: text, required: true, search: true}
+  - {name: dimension, title: Dimension, type: reference, ref: uom.dimension, inverse: units, required: true}
+  - {name: factor, title: Base units in one, type: decimal, required: true, help: "How many base units of the dimension one of this unit holds: a kilogram holds 1000 grams. Convert a quantity by multiplying with this factor and dividing by the other unit's."}
+  - {name: base, title: Base unit, type: boolean, formula: factor = 1}
+  - {name: rounding, title: Rounding step, type: decimal, help: The smallest step a quantity in this unit is rounded to. Leave empty for no rounding.}
+
+constraints:
+  - name: symbolidentity
+    kind: unique
+    fields: [symbol]
+    message: Another unit already has this symbol.
+    translations:
+      zh-CN: 已有计量单位使用这个符号。
+
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, symbol, dimension, factor, base], sort: [{sortKey: title, direction: ascending}], group: dimension, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: pcs, title: Piece, symbol: "pcs", dimension: count, factor: 1}
+  - {id: pair, title: Pair, symbol: "pr", dimension: count, factor: 2}
+  - {id: dozen, title: Dozen, symbol: "dz", dimension: count, factor: 12}
+  - {id: mg, title: Milligram, symbol: "mg", dimension: mass, factor: 0.001}
+  - {id: g, title: Gram, symbol: "g", dimension: mass, factor: 1}
+  - {id: kg, title: Kilogram, symbol: "kg", dimension: mass, factor: 1000}
+  - {id: t, title: Tonne, symbol: "t", dimension: mass, factor: 1000000}
+  - {id: lb, title: Pound, symbol: "lb", dimension: mass, factor: 453.59237}
+  - {id: jin, title: Jin, symbol: "jin", dimension: mass, factor: 500}
+  - {id: mm, title: Millimetre, symbol: "mm", dimension: length, factor: 1}
+  - {id: cm, title: Centimetre, symbol: "cm", dimension: length, factor: 10}
+  - {id: m, title: Metre, symbol: "m", dimension: length, factor: 1000}
+  - {id: km, title: Kilometre, symbol: "km", dimension: length, factor: 1000000}
+  - {id: in, title: Inch, symbol: "in", dimension: length, factor: 25.4}
+  - {id: ft, title: Foot, symbol: "ft", dimension: length, factor: 304.8}
+  - {id: cm2, title: Square centimetre, symbol: "cm²", dimension: area, factor: 1}
+  - {id: m2, title: Square metre, symbol: "m²", dimension: area, factor: 10000}
+  - {id: ha, title: Hectare, symbol: "ha", dimension: area, factor: 100000000}
+  - {id: mu, title: Mu, symbol: "mu", dimension: area, factor: 6666666.6667}
+  - {id: km2, title: Square kilometre, symbol: "km²", dimension: area, factor: 10000000000}
+  - {id: ml, title: Millilitre, symbol: "ml", dimension: volume, factor: 1}
+  - {id: l, title: Litre, symbol: "l", dimension: volume, factor: 1000}
+  - {id: m3, title: Cubic metre, symbol: "m³", dimension: volume, factor: 1000000}
+  - {id: s, title: Second, symbol: "s", dimension: time, factor: 1}
+  - {id: min, title: Minute, symbol: "min", dimension: time, factor: 60}
+  - {id: h, title: Hour, symbol: "h", dimension: time, factor: 3600}
+  - {id: d, title: Day, symbol: "d", dimension: time, factor: 86400}

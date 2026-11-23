@@ -1,0 +1,72 @@
+{
+  "format": 2,
+  "package": "party",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:f45bae3bd7c3cfb012b672f1e4fbe73d6c220f90f4e240c8b889434e95602e47",
+  "assets": {
+    "app/party": {
+      "digest": "sha256:687db73a2a51fdec7f039b880003204af35bd4a8deabd43e35f316de26c91461",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "matching/partycontactmatch": {
+      "digest": "sha256:730051ed89b6178749d6167d29a931c7cbb48838b4e16730fdaa687d4ad10574",
+      "contractVersion": 1,
+      "sourceVersion": "1.matching-1"
+    },
+    "matching/partyorganizationmatch": {
+      "digest": "sha256:0accedb3e25419ca997e73f1ac04fcb668d8ff4649803e2414773b66c16dc092",
+      "contractVersion": 1,
+      "sourceVersion": "1.matching-1"
+    },
+    "object/party.contact": {
+      "digest": "sha256:fb57b01aeac1add064574198055e3699b971081aea699dee541a4daebd918da1",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.a164434c70bd40f607ef4794f2f9f853beece60d5f235306a4801d019549d46d",
+          "family": 1
+        }
+      ]
+    },
+    "object/party.industry": {
+      "digest": "sha256:f8b6ae1960afeb3aa41ab71dac927c274b7b7e1d53dcffbf4467510a6244d3f1",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.763db72a3571f2750b8b877dfe6d6fdd4d931c42b5a0f90cb155fe980318bd64",
+          "family": 1
+        }
+      ]
+    },
+    "object/party.organization": {
+      "digest": "sha256:ade4b892b46f85cc678b6e45d20da110f3cf6fc0a64a129590ce64424c902796",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.d0e82876cc3315caa920d1863ba603dd050860af6a73a5dcc6f61e4e36685b60",
+          "family": 1
+        }
+      ]
+    },
+    "page/party.contact": {
+      "digest": "sha256:f2cde494d4e5fb78d5501529c3443fb11faa66a003cb671d21402a522bcf771d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/party.industry": {
+      "digest": "sha256:61669b8d4ee22453bab6de16b0ad1d6f1b979a31e4f27ab82c9496c157387101",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/party.organization": {
+      "digest": "sha256:9cc273eadd97426ce3c9934d2cd0e3d499ee5a9e7068affc048624f37c8a6110",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

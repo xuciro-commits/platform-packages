@@ -1,0 +1,20 @@
+roles: {party: steward}
+at: 2026-11-23T09:00:00Z
+members:
+  clerk: {roles: {build: user}}
+steps:
+  - do: party.organization.create
+    on: party.organization/O1
+    as: clerk
+    with: {name: Acme Robotics, taxid: 91310000MA1FL0001X, industry: manufacturing}
+    show: [name, taxid, industry, contactcount]
+    expect: {contactcount: 0}
+  - {do: party.contact.create, on: party.contact/C1, as: clerk, with: {fullname: Chen Jing, organization: O1, jobtitle: Buyer, email: chen.jing@acme.example}, show: [fullname, organization, donotcontact]}
+  - {read: party.organization/O1, as: clerk, show: [contactcount], expect: {contactcount: 1}}
+  - {do: party.organization.create, on: party.organization/O2, as: clerk, with: {name: Acme Robotics Ltd, taxid: 91310000MA1FL0001X}, refused: true}
+  - {do: party.organization.create, on: party.organization/O3, as: clerk, with: {name: Acme Shanghai, parent: O1}, show: [parent]}
+  - {do: party.organization.create, on: party.organization/O4, as: clerk, with: {name: Acme Beijing, parent: O1}, show: [parent]}
+  - {do: party.organization.archive, on: party.organization/O4, as: clerk, refused: true}
+  - {do: party.organization.archive, on: party.organization/O4}
+  - {do: party.industry.create, on: party.industry/robotics, as: clerk, with: {title: Robotics}, refused: true}
+  - {do: party.industry.create, on: party.industry/robotics, with: {title: Robotics}}

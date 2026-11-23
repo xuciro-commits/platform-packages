@@ -1,0 +1,6 @@
+name: uom
+title: Units of measure
+icon: scale
+pages: [uom.unit, uom.dimension]
+groups:
+  - {title: Settings, layout: settings, roles: [steward], pages: [uom.unit, uom.dimension]}

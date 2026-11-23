@@ -1,0 +1,25 @@
+name: dimension
+namespace: uom
+title: Dimension
+plural: Dimensions
+icon: scale
+display: title
+description: What a unit measures. Only units of one dimension convert into each other.
+
+fields:
+  - {name: title, title: Dimension, type: text, required: true, search: true}
+  - {name: description, title: Description, type: longtext}
+
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, description], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: count, title: Count, description: "Pieces, sets and other things you count."}
+  - {id: mass, title: Mass, description: "Weight."}
+  - {id: length, title: Length, description: "Distance and size."}
+  - {id: area, title: Area, description: "Surface."}
+  - {id: volume, title: Volume, description: "Capacity."}
+  - {id: time, title: Time, description: "Duration."}

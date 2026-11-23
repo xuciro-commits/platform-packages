@@ -1,0 +1,37 @@
+name: organization
+namespace: party
+title: Organization
+plural: Organizations
+icon: building-office
+display: name
+naming: ORG-{n:5}
+description: A company, institution or agency outside your own organization. Applications attach their own fields to it, such as a CRM account or a supplier record.
+sets: {contacts: {object: party.contact, limit: 500}}
+
+fields:
+  - {name: name, title: Name, type: text, required: true, search: true, group: Organization}
+  - {name: legalname, title: Legal name, type: text, search: true, group: Organization}
+  - {name: taxid, title: Tax ID, type: text, search: true, group: Organization, help: The unified social credit code or VAT number. Two organizations cannot share one.}
+  - {name: industry, title: Industry, type: reference, ref: party.industry, group: Organization}
+  - {name: size, title: Size, type: choice, group: Organization, choices: "1-10:1-10,11-50:11-50,51-200:51-200,201-500:201-500,501-1000:501-1000,1000+:1000+"}
+  - {name: parent, title: Parent organization, type: reference, ref: party.organization, inverse: subsidiaries, group: Organization}
+  - {name: website, title: Website, type: text, search: true, group: Reach}
+  - {name: email, title: General email, type: text, search: true, group: Reach}
+  - {name: phone, title: Main phone, type: text, search: true, group: Reach}
+  - {name: address, title: Address, type: longtext, group: Reach}
+  - {name: description, title: About, type: longtext, group: Organization}
+  - {name: contactcount, title: Contacts, type: integer, aside: true, formula: count(contacts)}
+
+constraints:
+  - name: taxidentity
+    kind: unique
+    fields: [taxid]
+    message: Another organization already has this tax ID.
+    translations:
+      zh-CN: 已有往来单位使用这个税号。
+
+access:
+  - {role: user, read: all, create: true, edit: true}
+  - {role: steward, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [name, industry, phone, website, contactcount], sort: [{sortKey: name, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

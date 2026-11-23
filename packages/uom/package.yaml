@@ -1,0 +1,21 @@
+id: uom
+version: 0.1.0
+title: Units of measure
+namespace: uom
+description: The units every application counts, weighs and measures in, with exact conversion factors, shared once by stock, purchasing, production and time keeping.
+listing:
+  industries:
+  - general
+  capabilities:
+  - master-data
+  keywords:
+  - unit
+  - measure
+  - conversion
+  - master-data
+  stage: preview
+roots:
+- app: build
+  kind: app
+  name: uom
+artifact: uom.json

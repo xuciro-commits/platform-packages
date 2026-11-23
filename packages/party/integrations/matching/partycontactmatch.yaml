@@ -1,0 +1,7 @@
+keys:
+  - fields:
+      - email
+    normalize: folded
+name: partycontactmatch
+object: party.contact
+title: Match contacts by email
