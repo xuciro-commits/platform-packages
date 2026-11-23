@@ -1,0 +1,26 @@
+name: leavetype
+namespace: hr
+title: Leave type
+plural: Leave types
+icon: tag
+display: title
+
+fields:
+  - {name: title, title: Leave type, type: text, required: true, search: true}
+  - {name: paid, title: Paid, type: boolean, default: "true"}
+  - {name: maxdays, title: Most days at a time, type: integer, help: Leave empty for no limit.}
+  - {name: description, title: Description, type: longtext}
+
+access:
+  - {role: staff, read: all}
+  - {role: manager, read: all}
+  - {role: finance, read: all}
+  - {role: hradmin, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, paid, maxdays], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: annual, title: Annual leave, paid: true}
+  - {id: sick, title: Sick leave, paid: true}
+  - {id: personal, title: Personal leave, paid: false}
+  - {id: parental, title: Parental leave, paid: true}

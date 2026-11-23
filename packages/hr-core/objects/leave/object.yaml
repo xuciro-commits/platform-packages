@@ -1,0 +1,46 @@
+name: leave
+namespace: hr
+title: Leave request
+plural: Leave requests
+icon: calendar-days
+display: leavetype
+naming: LV-{year}-{n:5}
+scope: {owner: applicant}
+
+fields:
+  - {name: allocation, title: Allowance, type: reference, ref: hr.allocation, inverse: leaves, required: true, group: Leave, help: The allowance this leave is taken from.}
+  - {name: employee, title: Employee, type: reference, ref: hr.employee, from: allocation.employee, group: Leave}
+  - {name: leavetype, title: Leave type, type: reference, ref: hr.leavetype, from: allocation.leavetype, group: Leave}
+  - {name: fromdate, title: From, type: date, required: true, group: Leave}
+  - {name: todate, title: To, type: date, required: true, group: Leave}
+  - {name: halfday, title: Half a day, type: boolean, default: "false", group: Leave, help: The first day is half a day.}
+  - {name: days, title: Days, type: decimal, formula: "diff_days(todate, fromdate) + 1 - if(coalesce(halfday, false), 0.5, 0)", group: Leave}
+  - {name: reason, title: Reason, type: longtext, group: Leave}
+  - {name: applicant, title: Applicant, type: member, default: member, aside: true}
+
+constraints:
+  - {name: dates, kind: expression, fields: [fromdate, todate], expr: "todate >= fromdate", message: The leave must end on or after the day it starts.}
+
+states:
+  - {name: draft, title: Draft, tone: neutral, description: Being written.}
+  - {name: pending, title: Waiting for approval, tone: warning, description: With the manager.}
+  - {name: approved, title: Approved, tone: success, description: Counts against the allowance.}
+  - {name: rejected, title: Rejected, tone: danger, description: Can be revised and submitted again.}
+  - {name: canceled, title: Canceled, tone: neutral, description: Given back to the allowance.}
+actions: [submit, revise, cancel]
+
+access:
+  - {role: staff, read: own, create: true, edit: true}
+  - {role: manager, read: team}
+  - {role: hradmin, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: calendar
+  dates: fromdate
+  columns: [employee, leavetype, fromdate, todate, days, applicant]
+  sort: [{sortKey: fromdate, direction: descending}]
+  lanes: leavetype
+  group: none
+  filters: []
+  search: ""

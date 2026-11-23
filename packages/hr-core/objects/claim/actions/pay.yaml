@@ -1,0 +1,12 @@
+title: Mark paid
+description: Record that the approved amount was paid to the employee.
+from: [approved]
+roles: [finance]
+inputs:
+  - {name: paiddate, title: Paid on, type: date, help: Defaults to today.}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'paid'"
+        paiddate: coalesce(input.paiddate, today())

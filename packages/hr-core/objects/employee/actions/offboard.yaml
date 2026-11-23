@@ -1,0 +1,14 @@
+title: Mark as left
+description: Record the last working day and why this employee left.
+from: [active]
+roles: [hradmin]
+inputs:
+  - {name: leftdate, title: Last working day, type: date, required: true}
+  - {name: reason, title: Reason for leaving, type: longtext}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'left'"
+        leftdate: input.leftdate
+        leftreason: input.reason

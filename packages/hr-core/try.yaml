@@ -1,0 +1,54 @@
+at: 2026-11-23T09:00:00Z
+org:
+  units:
+    - {id: SALES, name: Sales, kind: department}
+    - {id: TEAMA, name: Sales team A, kind: team}
+    - {id: OPS, name: Operations, kind: department}
+  parents: {TEAMA: SALES}
+members:
+  zhou: {roles: {build: user, hr: staff}, units: {TEAMA: member}}
+  sun: {roles: {build: user, hr: staff}, units: {OPS: member}}
+  li: {roles: {build: user, hr: manager}, units: {TEAMA: manager}}
+  zhao: {roles: {build: user, hr: manager}, units: {OPS: manager}}
+  wang: {roles: {build: user, hr: hradmin}}
+  qian: {roles: {build: user, hr: finance}}
+steps:
+  - {do: hr.employee.create, on: hr.employee/E1, as: wang, with: {fullname: Zhou Ning, account: zhou, joined: "2024-03-01"}, show: [fullname, account, state]}
+  - {do: hr.employee.create, on: hr.employee/E2, as: wang, with: {fullname: Sun Yue, account: sun}, show: [fullname]}
+  - do: hr.allocation.create
+    on: hr.allocation/A1
+    as: wang
+    with: {employee: E1, leavetype: annual, validfrom: "2026-01-01", validto: "2026-12-31", days: 10}
+    show: [owner, days, used, pending, available]
+    expect: {owner: zhou, available: 10}
+  - do: hr.leave.create
+    on: hr.leave/L1
+    as: zhou
+    with: {allocation: A1, fromdate: "2026-11-24", todate: "2026-11-25", reason: Family matters}
+    show: [employee, leavetype, days, state]
+    expect: {employee: E1, leavetype: annual, days: 2, state: draft}
+  - {do: hr.leave.submit, on: hr.leave/L1, as: zhou, show: [state], expect: {state: pending}}
+  - {read: hr.allocation/A1, show: [used, pending, available], expect: {pending: 2, available: 8}}
+  - {approve: hr.leave/L1, as: zhao, refused: true}
+  - {approve: hr.leave/L1, as: li, show: [state], expect: {state: approved}}
+  - {read: hr.allocation/A1, show: [used, pending, available], expect: {used: 2, pending: 0, available: 8}}
+  - {do: hr.leave.create, on: hr.leave/L2, as: zhou, with: {allocation: A1, fromdate: "2026-12-01", todate: "2026-12-09"}, show: [days], expect: {days: 9}}
+  - {do: hr.leave.submit, on: hr.leave/L2, as: zhou, refused: true}
+  - {do: hr.leave.create, on: hr.leave/L3, as: zhou, with: {allocation: A1, fromdate: "2026-12-14", todate: "2026-12-14", halfday: true}, show: [days], expect: {days: 0.5}}
+  - {do: hr.leave.submit, on: hr.leave/L3, as: zhou}
+  - {reject: hr.leave/L3, as: li, with: {note: Busy week}, show: [state], expect: {state: rejected}}
+  - {do: hr.leave.revise, on: hr.leave/L3, as: zhou, show: [state], expect: {state: draft}}
+  - {read: hr.leave/L1, as: sun, refused: true}
+  - {read: hr.leave/L1, as: zhao, refused: true}
+  - {read: hr.leave/L1, as: li, show: [state]}
+  - {do: hr.claim.create, on: hr.claim/C1, as: zhou, with: {purpose: Client visit in Hangzhou, employee: E1}}
+  - {do: hr.claim.submit, on: hr.claim/C1, as: zhou, refused: true}
+  - {do: hr.claimline.create, on: hr.claimline/X1, as: zhou, with: {claim: C1, expensetype: travel, amount: {amount: 120000, currency: CNY}}, show: [amount, approved]}
+  - {do: hr.claimline.create, on: hr.claimline/X2, as: zhou, with: {claim: C1, expensetype: meals, amount: {amount: 30000, currency: CNY}}}
+  - {read: hr.claim/C1, show: [claimed, approved], expect: {claimed: {amount: 150000, currency: CNY}}}
+  - {do: hr.claim.submit, on: hr.claim/C1, as: zhou, show: [state], expect: {state: pending}}
+  - {do: hr.claimline.edit, on: hr.claimline/X2, as: li, with: {approved: {amount: 20000, currency: CNY}}}
+  - {approve: hr.claim/C1, as: li, show: [state, claimed, approved], expect: {state: approved, approved: {amount: 140000, currency: CNY}}}
+  - {do: hr.claim.pay, on: hr.claim/C1, as: li, refused: true}
+  - {do: hr.claim.pay, on: hr.claim/C1, as: qian, show: [state, paiddate], expect: {state: paid, paiddate: "2026-11-23"}}
+  - {do: hr.employee.offboard, on: hr.employee/E2, as: wang, with: {leftdate: "2026-11-30", reason: Moved abroad}, show: [state, leftdate], expect: {state: left}}

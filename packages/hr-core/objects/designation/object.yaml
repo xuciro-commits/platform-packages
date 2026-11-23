@@ -1,0 +1,17 @@
+name: designation
+namespace: hr
+title: Designation
+plural: Designations
+icon: briefcase
+display: title
+
+fields:
+  - {name: title, title: Designation, type: text, required: true, search: true}
+
+access:
+  - {role: staff, read: all}
+  - {role: manager, read: all}
+  - {role: finance, read: all}
+  - {role: hradmin, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

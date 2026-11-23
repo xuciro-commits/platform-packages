@@ -1,0 +1,38 @@
+name: allocation
+namespace: hr
+title: Leave allowance
+plural: Leave allowances
+icon: calendar
+display: leavetype
+naming: ALW-{year}-{n:5}
+scope: {owner: owner}
+sets: {leaves: hr.leave}
+
+fields:
+  - {name: employee, title: Employee, type: reference, ref: hr.employee, inverse: allocations, required: true, search: true, group: Allowance}
+  - {name: leavetype, title: Leave type, type: reference, ref: hr.leavetype, required: true, group: Allowance}
+  - {name: validfrom, title: Valid from, type: date, required: true, group: Allowance}
+  - {name: validto, title: Valid to, type: date, required: true, group: Allowance}
+  - {name: days, title: Days, type: decimal, required: true, group: Allowance}
+  - {name: used, title: Used, type: decimal, formula: "sum(leaves, if(item.state = 'approved', item.days, item.days * 0))", group: Balance}
+  - {name: pending, title: Waiting for approval, type: decimal, formula: "sum(leaves, if(item.state = 'pending', item.days, item.days * 0))", group: Balance}
+  - {name: available, title: Available, type: decimal, formula: "days - used - pending", group: Balance}
+  - {name: owner, title: Employee account, type: member, from: employee.account, aside: true}
+
+constraints:
+  - {name: period, kind: expression, fields: [validfrom, validto], expr: "validto >= validfrom", message: The allowance must end on or after the day it starts.}
+
+access:
+  - {role: staff, read: own}
+  - {role: manager, read: team}
+  - {role: hradmin, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [employee, leavetype, validfrom, validto, days, used, pending, available]
+  sort: [{sortKey: validfrom, direction: descending}]
+  lanes: ""
+  group: employee
+  filters: []
+  search: ""

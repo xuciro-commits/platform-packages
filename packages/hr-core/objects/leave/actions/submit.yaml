@@ -1,0 +1,15 @@
+title: Submit for approval
+description: Send this request to your manager. The days are held against the allowance until it is decided.
+from: [draft]
+approval:
+  pending: pending
+  rejected: rejected
+  levels:
+    - {title: Manager, manager: true, role: hradmin}
+transaction:
+  guard: days <= allocation.available
+  message: Not enough days left in this allowance.
+  steps:
+    - target: $subject
+      set:
+        state: "'approved'"

@@ -1,0 +1,12 @@
+title: Rehire
+description: Bring this employee back as active.
+from: [left]
+roles: [hradmin]
+inputs:
+  - {name: joined, title: Date of joining, type: date, required: true}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'active'"
+        joined: input.joined

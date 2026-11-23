@@ -1,0 +1,153 @@
+{
+  "format": 2,
+  "package": "hr-core",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:3c171e40593fe431c130207fab6bb32cfde6bfb3d1f36ea87b67d7209ad1a9cc",
+  "assets": {
+    "app/hr": {
+      "digest": "sha256:33efa9aeab43966422d169c1ed9d674f84984d433b843e1e4057ed52ae0fafc1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/hr.allocation": {
+      "digest": "sha256:4f0118bc9425b60546b6119e17fc367f4a64f99ac38ab145edfd33e1947c8fe3",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.ee51f4b6423a705073935f0f2417d34c71e9e654f13ccd280a98eae5ab6d43db",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.claim": {
+      "digest": "sha256:b4639e8551e6961cb1da3a9a98ba477431464cd5d49626ef2c636230746dce51",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.d1aa097c5520e020eef14176b34bc2442e7e89285c8afa3708d93c54df37b44a",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.claimline": {
+      "digest": "sha256:ec9b6a9c5d956d40f2bc3ec83590367e499599e8a4eafcfea669a83731d0c7ae",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.d8b4f2ff994712f543c02d3b73bc990d4d9da76568d402b2b441702921a6d937",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.designation": {
+      "digest": "sha256:79aea025e20206b2b2d17e88b130683d283a1d5c4a18fc791486ef872c9697a4",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.ac051b9b7af348dfcfdb67708e5538950a8d078f98716fbcdfbce59aa51fee0f",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.employee": {
+      "digest": "sha256:66a1e9cfcddf107dd789465ea49ec13cff2ead6889f7a43e091bb69a5f2d993d",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.f3c4212325692151263f5b8563dfc4994f138cc49ce6eb8e4602416d1c08628d",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.employmenttype": {
+      "digest": "sha256:869c9df33253821d3412b041b39770c0f794379abe33ccbc953bac9638ec7cd2",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.bd81fe63f4323fb14353365cb9222804e6dd24a4e53e46cfa52b49def5902059",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.expensetype": {
+      "digest": "sha256:e00adf84632e333d1bcc6385b8a45ebf77295eb57a8506c34ea4b6cd9692edbd",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.0f0c844ad4aabc46eb41448d296cae22a11d7d0e97dc4dae86d7f671b3630b1f",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.leave": {
+      "digest": "sha256:cc60aa8e8a187632489951bf41b195ca5c0e88cda8b03451ff8154303a471764",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.0237ca14cb492f332fdd60cb8385abc5ec835de2db478409df480190fb8e547d",
+          "family": 1
+        }
+      ]
+    },
+    "object/hr.leavetype": {
+      "digest": "sha256:fd55969f79398904a8cc19fe35c2ae52258f7eec3ec626a2d17e4b2e25036dda",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.1a3313f2612086ec26a2d22ac45fe60b7577dd148f5441b6de15cb2514dbc42b",
+          "family": 1
+        }
+      ]
+    },
+    "page/hr.allocation": {
+      "digest": "sha256:c1f4969a569c8a3237ab279904a2700fcc2af915970ee7c68309d8bf9cd97527",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/hr.claim": {
+      "digest": "sha256:43583d40c1d742b439e13f88a110590cae54973d153bf4e167a4d6f0d9170c5b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/hr.designation": {
+      "digest": "sha256:08112b134645ce151daa8db2b89745d1ae1f3cbbe8f35bf05c92a19aaeddf905",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/hr.employee": {
+      "digest": "sha256:3dad0d8378a730c8545b4bf2494901d6f711980d5ada1338ce2ab6a426ee4378",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/hr.employmenttype": {
+      "digest": "sha256:025f06e67b32ec37cc12b85e66fd0a744c45d463f00004799e4838d22d8eda58",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/hr.expensetype": {
+      "digest": "sha256:9cb606b5f45a448d5892118a0b5c6b3161d7e36e8af84c0f17d93fba7c821bae",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/hr.leave": {
+      "digest": "sha256:171f0917114b7d364a45a79358598bdc1d6ed3ce80b4cb148805d5a7ca4bcdea",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/hr.leavetype": {
+      "digest": "sha256:bfc7a21b94d5d38d76704d97387acef98e00afdc34cd502868ad9d3013a450a6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

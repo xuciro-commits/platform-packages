@@ -68,6 +68,37 @@
           "relation": "redesign"
         }
       }
+    },
+    {
+      "id": "hr-core",
+      "version": "0.1.0",
+      "title": "HR",
+      "description": "Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager, and claims paid by finance.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/hr-core/v0.1.0/hr-core.json",
+      "sha256": "sha256:3c171e40593fe431c130207fab6bb32cfde6bfb3d1f36ea87b67d7209ad1a9cc",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "capabilities": [
+          "hr"
+        ],
+        "keywords": [
+          "employee",
+          "leave",
+          "allowance",
+          "expense",
+          "approval"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "hrms",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      }
     }
   ]
 }
