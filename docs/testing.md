@@ -6,12 +6,17 @@
 1. 布局：每个包有 `README.md`、`LICENSE`、`CHANGELOG.md`，版本有对应的一节，不低于已发布版本。
 2. 下载每个包最新的 Release，核对 `SHA256SUMS`。
 3. `pkg check`：打成制品并经平台校验；锁文件没有过期；版本号没变时与已发布版本等价。
-4. 同一份源构建两次，制品字节相同。
+4. `pkg diff`：与已发布版本比较资源与字段；平台会拒的升级、内容变了而版本号升得不够，都不通过。
+5. `catalog.json` 与源一致（`node scripts/packages.mjs catalog --check`）。
+6. 同一份源构建两次，制品字节相同。
 
 本地跑同样的检查：
 
 ```bash
+node scripts/packages.mjs download
 pkg check packages/<id>
+pkg diff packages/<id>
+node scripts/packages.mjs catalog --check --pkg=$(command -v pkg)
 node scripts/packages.mjs reproducible --pkg=$(command -v pkg) <id>
 node scripts/packages.mjs layout <id>
 ```

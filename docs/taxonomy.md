@@ -22,4 +22,4 @@ listing:
 
 - `relation`：`redesign`（读懂业务后按平台语义重新设计，不含来源的定义、代码与文案，以 Apache-2.0 发布）；
   `derived`（由来源定义转换而来，只收 MIT、Apache 等宽松许可的来源，保留其版权声明）；`original`（没有来源）。规则见 [来源应用](sources.md)。
-- 生成目录：`pkg catalog -o catalog.json -title "Platform packages" -url <制品地址前缀> <包目录>...`。
+- 生成目录：`node scripts/packages.mjs catalog`（调用 `pkg catalog`，地址模板见 [发版](release.md)）。

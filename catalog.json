@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "title": "Platform packages",
+  "packages": [
+    {
+      "id": "crm",
+      "version": "0.2.0",
+      "title": "CRM",
+      "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.2.0/crm.json",
+      "sha256": "sha256:0a946c72f8e4ee2f7737f86a9bc718094075772843759ef5967f4ad6e4990f87",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "capabilities": [
+          "sales"
+        ],
+        "keywords": [
+          "lead",
+          "deal",
+          "pipeline",
+          "forecast",
+          "account",
+          "contact",
+          "activity"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "crm",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        }
+      }
+    }
+  ]
+}
