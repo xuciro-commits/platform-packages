@@ -16,3 +16,5 @@ Customer support and after-sales ticketing for Platform.
 - `supervisor`: Full visibility across all queues, archives records, publishes knowledge articles, and manages all settings dictionaries.
 
 See [DESIGN.md](DESIGN.md) for the full design rationale and trade-offs.
+
+市场展示封面：[`assets/cover.avif`](assets/cover.avif)，仅为静态库资源，不包含在运行时制品中。
