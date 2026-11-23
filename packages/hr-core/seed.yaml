@@ -2,6 +2,26 @@
 # Clear everything here with the "Clear demo data" action in the app sidebar.
 # All people, emails, and amounts below are fictional.
 records:
+  - type: enterprise.element
+    id: demo-person-lin
+    values:
+      stereotype: ActualPerson
+      name: Lin Haoran
+  - type: enterprise.element
+    id: demo-person-chen
+    values:
+      stereotype: ActualPerson
+      name: Chen Siyuan
+  - type: enterprise.element
+    id: demo-person-wu
+    values:
+      stereotype: ActualPerson
+      name: Wu Jiaqi
+  - type: enterprise.element
+    id: demo-person-he
+    values:
+      stereotype: ActualPerson
+      name: He Mingze
   - type: hr.designation
     id: demo-desig-em
     values:
@@ -22,7 +42,7 @@ records:
   - type: hr.employee
     id: demo-emp-lin
     values:
-      fullname: Lin Haoran
+      base: demo-person-lin
       designation: demo-desig-em
       employmenttype: fulltime
       joined: "2023-04-10"
@@ -32,7 +52,7 @@ records:
   - type: hr.employee
     id: demo-emp-chen
     values:
-      fullname: Chen Siyuan
+      base: demo-person-chen
       designation: demo-desig-se
       employmenttype: fulltime
       reportsto: demo-emp-lin
@@ -43,7 +63,7 @@ records:
   - type: hr.employee
     id: demo-emp-wu
     values:
-      fullname: Wu Jiaqi
+      base: demo-person-wu
       designation: demo-desig-pm
       employmenttype: fulltime
       reportsto: demo-emp-lin
@@ -54,7 +74,7 @@ records:
   - type: hr.employee
     id: demo-emp-he
     values:
-      fullname: He Mingze
+      base: demo-person-he
       designation: demo-desig-ops
       employmenttype: contract
       joined: "2025-03-17"

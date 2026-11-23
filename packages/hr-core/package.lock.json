@@ -1,23 +1,27 @@
 {
   "format": 2,
   "package": "hr-core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "requires": [],
-  "artifact": "sha256:acdda5b708f602df0f54b60ea035e4884f20f02a83bc3578c92edb4abe4c1f53",
+  "artifact": "sha256:52823c6c9439b23615d8d0261ee946024ca93b2b49faec4e029d4b08c0c242d6",
   "assets": {
     "app/hr": {
-      "digest": "sha256:33efa9aeab43966422d169c1ed9d674f84984d433b843e1e4057ed52ae0fafc1",
+      "digest": "sha256:6ac8b3b73116852c848892fc89a5874e4e941a26e6c2c36f6445753169505ada",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
     "object/hr.allocation": {
-      "digest": "sha256:4f0118bc9425b60546b6119e17fc367f4a64f99ac38ab145edfd33e1947c8fe3",
+      "digest": "sha256:136a0edfc5f09c7618109e22d76df2631591da52c7c556b970920c913c45786c",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.ee51f4b6423a705073935f0f2417d34c71e9e654f13ccd280a98eae5ab6d43db",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.a216d2cf3296bc04bb66c6a289720b5f7589e66382ac3647a38a4a5116cbe160",
+          "family": 2
         }
       ]
     },
@@ -55,13 +59,17 @@
       ]
     },
     "object/hr.employee": {
-      "digest": "sha256:66a1e9cfcddf107dd789465ea49ec13cff2ead6889f7a43e091bb69a5f2d993d",
+      "digest": "sha256:268326d9eef87b5076acee266b9dc6a6660c8cfaf961db5caedca65330c49bb0",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.f3c4212325692151263f5b8563dfc4994f138cc49ce6eb8e4602416d1c08628d",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.59b027f942869186b20b4787f8d63fd3cf756dd8504ba56994bf12564c6d8741",
+          "family": 2
         }
       ]
     },
@@ -125,7 +133,7 @@
       "sourceVersion": "1"
     },
     "page/hr.employee": {
-      "digest": "sha256:3dad0d8378a730c8545b4bf2494901d6f711980d5ada1338ce2ab6a426ee4378",
+      "digest": "sha256:1b3124bc11d3725dec1f3dbc00ecdddc81ef224e446053edd25b32942a6b8aa3",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
