@@ -1,0 +1,51 @@
+roles:
+  crm: salesmanager
+at: 2026-11-23T09:00:00Z
+steps:
+  - do: crm.lead.create
+    on: crm.lead/L1
+    with: {fullname: Zhou Ning, company: Xihe Precision, email: zhou@xihe.example, source: website, authority: decisionmaker, budget: {amount: 300000, currency: CNY}}
+    show: [stage, owner, budget]
+  - do: crm.lead.edit
+    on: crm.lead/L1
+    with: {stage: connected}
+    show: [stage, sla]
+    expect: {sla: met}
+  - do: crm.lead.create
+    on: crm.lead/L3
+    with: {fullname: Web Visitor, source: website}
+    show: [owner, sla]
+  - do: crm.lead.convert
+    on: crm.lead/L1
+    with: {expectedclose: "2026-12-31", nextstep: Send the proposal, nextstepdue: "2026-11-25"}
+    show: [stage, state, deal]
+    expect: {state: converted}
+  - read: crm.deal/{crm.lead/L1.deal}
+    show: [stage, account, amount]
+  - do: crm.product.create
+    on: crm.product/P1
+    with: {title: Platform licence, price: {amount: 120000, currency: CNY}}
+    show: [price]
+  - do: crm.dealline.create
+    on: crm.dealline/DL1
+    with: {deal: "{crm.lead/L1.deal}", product: P1, quantity: 3, discount: 10}
+    show: [amount]
+    expect: {amount: {amount: 324000, currency: CNY}}
+  - do: crm.deal.win
+    on: crm.deal/{crm.lead/L1.deal}
+    with: {notes: Best fit}
+    show: [stage, state]
+    expect: {state: won}
+  - do: crm.lead.create
+    on: crm.lead/L2
+    with: {fullname: Spam Bot}
+    show: [stage, state]
+  - do: crm.lead.disqualify
+    on: crm.lead/L2
+    with: {reason: spam}
+    show: [stage, state]
+    expect: {state: disqualified}
+  - do: crm.lead.convert
+    on: crm.lead/L2
+    with: {expectedclose: "2026-12-31"}
+    refused: true

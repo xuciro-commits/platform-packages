@@ -49,14 +49,15 @@ description: 把一个开放应用（Frappe、Odoo/OCA、Zammad、EspoCRM……�
 - 产出：`package.yaml`（`listing` 写全，`source.relation: redesign`，`stage: preview`）、README、`CHANGELOG.md` 的 `## <version>`、LICENSE。
 - 检查：`pkg lock packages/<id>` 与 `pkg check packages/<id>` 通过；有 `locales/` 时一条没译都不过。
 
-## 4. 探针跑主线
+## 4. pkg try 跑主线
 
-- 做：在平台仓库用内存租户探针（`.build/crm-gen/zz_official_crm_probe_test.go` 的写法：带 `work` 与 `automation` 两个应用，
-  安装 → 按主线提交动作 → 每步后 `Work` 几轮 → 被拒时 `Simulate` 取字段级问题 → 打印记录）。跑时拷进 `capabilities/server/host/`，跑完移走。
-  `pkg try` 落地后改用它。
-- 产出：主线每一步的记录状态；每个派生值（概率、加权、合计、汇总、时限）手算对一遍。
-- 检查：主线走到终态，流程（分配、时限、提醒）都触发了，拒绝信息说得清楚。
-- 易错：一轮浏览器一分钟以上，宿主启动二十多秒；没过探针别上浏览器。
+- 做：在包根目录写 `try.yaml`（不进制品），按 DESIGN.md 的主线排步骤；在平台仓库的 `capabilities/server` 里
+  `go run ./cmd/pkg try <包目录>`。它把包装进内存租户，flow、参考记录与编号随之生效，每步之后一直跑到没有待办的工作。
+- 写法（格式见 [源格式](../../../docs/format.md) 的 try.yaml 一节）：`roles` 给角色；每步 `do` + `on: <类型>/<id>` + `with`，
+  或只 `read`；`show` 选要打印的字段，`expect` 按子集比对，`refused: true` 要求被拒；`{<类型>/<id>.<字段>}` 引用已有记录的值。
+- 产出：主线每一步的记录状态；每个派生值（概率、加权、合计、汇总、时限）手算对一遍，对上的写进 `expect`。
+- 检查：主线走到终态，流程（分配、时限、提醒）都触发了，拒绝信息说得清楚；`pkg check` 也会跑这个脚本，CI 一起守住。
+- 易错：被拒时它会列出字段级问题，先看那几行；一轮浏览器一分钟以上，没过 `pkg try` 别上浏览器。
 
 ## 5. 浏览器里走一遍
 
@@ -82,7 +83,7 @@ description: 把一个开放应用（Frappe、Odoo/OCA、Zammad、EspoCRM……�
 - intake.md：新坑进第 6 节，新套路进第 2 节；本 Skill：哪一步缺说明就补哪一步。
 - sources.md：这个能力标成已接入；平台 roadmap：新发现的缺口各记一项。
 
-## 坑（截至平台 v0.2.4）
+## 坑（截至平台 v0.2.5）
 
 | 现象 | 原因 | 怎样做 |
 |---|---|---|
