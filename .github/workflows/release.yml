@@ -26,23 +26,27 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Packages are released only with a released platform pkg
+        id: lock
+        run: |
+          pin=$(tr -d '[:space:]' < platform.lock)
+          if [[ $pin =~ ^v[0-9] ]]; then echo "release=1" >> "$GITHUB_OUTPUT"
+          else echo "::notice::platform.lock pins platform commit $pin; nothing is released until it pins a platform release"; fi
+
       - name: Download pkg from the pinned platform release
+        if: steps.lock.outputs.release == '1'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          release=$(tr -d '[:space:]' < platform.lock)
-          cd "$RUNNER_TEMP"
-          gh release download "$release" --repo xuciro-commits/platform --pattern pkg-linux-amd64 --pattern SHA256SUMS
-          grep '  pkg-linux-amd64$' SHA256SUMS | sha256sum -c -
-          install -m 0755 pkg-linux-amd64 "$RUNNER_TEMP/pkg"
+        run: scripts/install-pkg.sh "$RUNNER_TEMP/pkg"
 
       - name: Download the latest release of every package
+        if: steps.lock.outputs.release == '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: node scripts/packages.mjs download
 
       - name: Build every version that has no tag yet
+        if: steps.lock.outputs.release == '1'
         run: |
           set -euo pipefail
           node scripts/packages.mjs catalog --check --pkg="$RUNNER_TEMP/pkg"
@@ -50,13 +54,13 @@ jobs:
           if [ -s pending.txt ]; then echo "PENDING=1" >> "$GITHUB_ENV"; fi
 
       - name: Attest build provenance
-        if: env.PENDING == '1'
+        if: steps.lock.outputs.release == '1' && env.PENDING == '1'
         uses: actions/attest-build-provenance@v2
         with:
           subject-path: dist/*/*.json
 
       - name: Tag and publish
-        if: env.PENDING == '1'
+        if: steps.lock.outputs.release == '1' && env.PENDING == '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

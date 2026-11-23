@@ -19,6 +19,9 @@ mv "pkg-$os-$arch" ~/bin/pkg
 
 Windows 用 `pkg-windows-amd64.exe` 与 `platform-windows-amd64.exe`。
 
+`platform.lock` 写的是平台提交号（40 位）而不是 `v…` 时，那个能力还没发版：检出 [平台仓库](https://github.com/xuciro-commits/platform) 的那个提交，
+在 `capabilities/server` 里 `go build -o ~/bin/pkg ./cmd/pkg`。
+
 ## 2. 从模板开始
 
 ```bash

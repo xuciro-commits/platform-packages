@@ -20,16 +20,32 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download pkg from the pinned platform release
+      - name: Read platform.lock
+        id: lock
+        run: |
+          pin=$(tr -d '[:space:]' < platform.lock)
+          echo "pin=$pin" >> "$GITHUB_OUTPUT"
+          if [[ $pin =~ ^[0-9a-f]{40}$ ]]; then echo "commit=1" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Check out the pinned platform commit
+        if: steps.lock.outputs.commit == '1'
+        uses: actions/checkout@v4
+        with:
+          repository: xuciro-commits/platform
+          ref: ${{ steps.lock.outputs.pin }}
+          path: .platform
+
+      - name: Set up Go for the pinned platform commit
+        if: steps.lock.outputs.commit == '1'
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: .platform/capabilities/server/go.mod
+          cache-dependency-path: .platform/capabilities/server/go.sum
+
+      - name: Get pkg from the pinned platform release or commit
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          release=$(tr -d '[:space:]' < platform.lock)
-          cd "$RUNNER_TEMP"
-          gh release download "$release" --repo xuciro-commits/platform --pattern pkg-linux-amd64 --pattern SHA256SUMS
-          grep '  pkg-linux-amd64$' SHA256SUMS | sha256sum -c -
-          install -m 0755 pkg-linux-amd64 "$RUNNER_TEMP/pkg"
+        run: scripts/install-pkg.sh "$RUNNER_TEMP/pkg"
 
       - name: Layout, CHANGELOG and version order
         run: node scripts/packages.mjs layout
