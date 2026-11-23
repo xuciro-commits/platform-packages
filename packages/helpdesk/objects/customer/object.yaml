@@ -3,16 +3,17 @@ namespace: helpdesk
 title: Customer
 plural: Customers
 icon: building-office-2
-display: name
+display: title
 naming: CUST-{year}-{n:5}
+extends: party.organization
+description: The support side of a business partner organization. The organization itself, with its name, contacts and addresses, is kept once in Business partners.
 sets:
   tickets: {object: helpdesk.ticket, limit: 500}
-  contacts: {object: helpdesk.requester, limit: 200}
 
 fields:
-  - {name: name, title: Customer name, type: text, required: true, search: true, group: Customer}
+  - {name: base, title: Organization, type: reference, ref: party.organization, required: true, search: true, group: Customer}
+  - {name: title, title: Customer name, type: text, from: base.name, search: true, group: Customer}
   - {name: tier, title: Service tier, type: choice, default: standard, aside: true, choices: "standard:Standard,premium:Premium,enterprise:Enterprise"}
-  - {name: domain, title: Domain, type: text, search: true, group: Customer}
   - {name: owner, title: Account manager, type: member, default: member, aside: true}
   - {name: notes, title: Support notes, type: longtext, group: Customer}
   - {name: opentickets, title: Open tickets, type: integer, group: Summary, formula: "sum(tickets, if(item.state = 'open', 1, 0))"}
@@ -25,8 +26,8 @@ access:
 view:
   version: 1
   layout: table
-  columns: [name, tier, opentickets, totaltickets, owner, domain]
-  sort: [{sortKey: name, direction: ascending}]
+  columns: [title, tier, opentickets, totaltickets, owner]
+  sort: [{sortKey: title, direction: ascending}]
   lanes: tier
   group: none
   filters: []

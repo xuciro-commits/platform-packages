@@ -1,5 +1,5 @@
 id: helpdesk
-version: 0.1.1
+version: 0.2.0
 title: Helpdesk
 namespace: helpdesk
 description: Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.
@@ -29,3 +29,5 @@ roots:
   kind: app
   name: helpdesk
 artifact: helpdesk.json
+requires:
+- party@^0.1.0
