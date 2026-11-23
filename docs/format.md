@@ -130,9 +130,12 @@ icon: user-group
 pages: [crm.lead, crm.deal, …]          # 应用里的全部页面
 groups:                                  # 菜单分组；按工作的顺序分，不要一个“全部”
   - {title: Selling, pages: [crm.lead, crm.deal]}
-  - {title: Settings, roles: [salesmanager], pages: [crm.stage, crm.source]}
+  - {title: Settings, layout: settings, roles: [salesmanager], pages: [crm.stage, crm.source]}
 dashboard: […]                           # 有仪表盘时菜单第一项是它
 ```
+
+`layout: settings` 的分组在菜单里只占一项，打开是一页：每个对象一张可折叠的表，单元格就地改；
+对象按 `position` 排序时每行可上移下移，有新建与归档时每张表可添加、每行可归档。字典与配置都放这样的分组里，不要一个字典一个菜单项。
 
 对象的标准页面不用写：`pages` 里列了对象、又没有同名的 `page.yaml`，`pkg` 就生成列表加详情页。
 
