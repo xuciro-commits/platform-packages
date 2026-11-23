@@ -20,19 +20,11 @@
 ## 开发
 
 - [十分钟做出第一个包](docs/getting-started.md)
-<<<<<<< HEAD
-- [概念](docs/concepts.md) · [源格式](docs/format.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
-- [开放应用接入：黄金路线](docs/intake.md)；按步骤做的版本是 Skill [`open-app-intake`](.claude/skills/open-app-intake/SKILL.md)
-||||||| parent of 9d7c5df (功能: helpdesk 0.1.0——售后与客户支持官方包与三类包设计规范)
-- [概念](docs/concepts.md) · [源格式](docs/format.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
-- [开放应用接入：黄金路线](docs/intake.md)
-=======
 - [概念](docs/concepts.md) · [源格式](docs/format.md) · [各类包规范](docs/package-types.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
-- [开放应用接入：黄金路线](docs/intake.md)
->>>>>>> 9d7c5df (功能: helpdesk 0.1.0——售后与客户支持官方包与三类包设计规范)
+- [开放应用接入：黄金路线](docs/intake.md)；按步骤做的版本是 Skill [`open-app-intake`](.claude/skills/open-app-intake/SKILL.md)
 - [发版](docs/release.md) · [自建包库](docs/own-library.md) · [评审清单](docs/review-checklist.md) · [分类与标签](docs/taxonomy.md) · [来源应用与接入顺序](docs/sources.md)
 
-新包从 [`templates/app`](templates/app) 开始。每个 PR 都由 CI 用 `platform.lock` 里那个平台发行版的 `pkg` 校验：源能打成平台接受的制品，锁文件没有过期，
+新包从 [`templates/app`](templates/app) 开始。每个 PR 都由 CI 用 `platform.lock` 钉住的那个平台的 `pkg` 校验：源能打成平台接受的制品，锁文件没有过期，
 升级不会被平台拒、版本号升够了，`catalog.json` 与源一致，两次构建字节相同。合入后由工作流打 tag 发版。
 
 在平台市场的“管理库”里加本仓库地址，市场就列出这里的包（`catalog.json`）。
@@ -46,7 +38,7 @@ docs/             开发文档
 scripts/          检查、目录与发版脚本；frappe-read.mjs 读 Frappe 应用的定义
 catalog.json      市场目录，由 scripts/packages.mjs catalog 生成
 .claude/skills/   接入开放应用的 Skill
-platform.lock     本仓库对齐的平台发行版；CI 与本地都下载这个版本的 pkg
+platform.lock     本仓库对齐的平台：发行版（如 v0.2.6）或平台的完整提交号；见 docs/release.md
 ```
 
 ## 许可

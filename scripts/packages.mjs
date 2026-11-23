@@ -49,8 +49,29 @@ function sha256(file) {
   return createHash("sha256").update(readFileSync(file)).digest("hex");
 }
 
+function pinsRelease() {
+  return /^v\d/.test(readFileSync(join(root, "platform.lock"), "utf8").trim());
+}
+
+function released(entry) {
+  return run("git", ["tag", "--list", `${entry.id}/v${entry.version}`], { cwd: root }).trim() !== "";
+}
+
 function writeCatalog(list, out) {
+  const previous = existsSync(catalogFile) ? JSON.parse(readFileSync(catalogFile, "utf8")).packages : [];
   run(pkg, ["catalog", "-o", out, "-title", catalogTitle, "-url", releaseURL, ...list.map((p) => p.dir)]);
+  if (pinsRelease()) return;
+  const doc = JSON.parse(readFileSync(out, "utf8"));
+  doc.packages = doc.packages.flatMap((entry) => {
+    if (released(entry)) return [entry];
+    const kept = previous.find((item) => item.id === entry.id && released(item));
+    return kept ? [kept] : [];
+  });
+  writeFileSync(out, JSON.stringify(doc, null, 2) + "\n");
+}
+
+function sameJSON(a, b) {
+  return JSON.stringify(JSON.parse(a)) === JSON.stringify(JSON.parse(b));
 }
 
 function changelogSection(p) {
@@ -111,7 +132,7 @@ const commands = {
     }
     const fresh = join(mkdtempSync(join(tmpdir(), "catalog-")), "catalog.json");
     writeCatalog(list, fresh);
-    if (!existsSync(catalogFile) || readFileSync(fresh, "utf8") !== readFileSync(catalogFile, "utf8")) {
+    if (!existsSync(catalogFile) || !sameJSON(readFileSync(fresh, "utf8"), readFileSync(catalogFile, "utf8"))) {
       problems.push("catalog.json is out of date; run node scripts/packages.mjs catalog and commit it");
     } else console.log(`catalog.json: up to date (${list.length} packages)`);
   },
