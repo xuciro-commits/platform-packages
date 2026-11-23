@@ -16,7 +16,7 @@ records:
       industry: manufacturing
       territory: apac
       employees: 201-500
-      revenue: {amount: 4800000000, currency: CNY}
+      revenue: {amount: 4800000000}
       relationship: customer
       description: Precision CNC and industrial automation supplier modernizing regional sales operations.
   - type: crm.account
@@ -28,7 +28,7 @@ records:
       industry: logistics
       territory: emea
       employees: 501-1000
-      revenue: {amount: 12000000000, currency: CNY}
+      revenue: {amount: 12000000000}
       relationship: prospect
       description: Multi-hub freight operator evaluating a unified pipeline across three regional branches.
   - type: crm.account
@@ -40,7 +40,7 @@ records:
       industry: software
       territory: americas
       employees: 51-200
-      revenue: {amount: 1800000000, currency: CNY}
+      revenue: {amount: 1800000000}
       relationship: partner
       description: Independent software vendor co-selling vertical workflow solutions.
   - type: crm.contact
@@ -85,7 +85,7 @@ records:
       title: Enterprise Workspace Subscription
       code: ENT-ANNUAL
       category: subscription
-      price: {amount: 18000000, currency: CNY}
+      price: {amount: 18000000}
       description: Annual platform workspace subscription for up to 100 active seats.
       active: true
   - type: crm.product
@@ -94,7 +94,7 @@ records:
       title: Implementation & Data Migration
       code: SVC-ONBOARD
       category: service
-      price: {amount: 6500000, currency: CNY}
+      price: {amount: 6500000}
       description: Fixed-scope onboarding, role setup, and historical pipeline migration.
       active: true
   - type: crm.product
@@ -103,7 +103,7 @@ records:
       title: Premium Support Add-on
       code: SUP-PREM
       category: subscription
-      price: {amount: 3600000, currency: CNY}
+      price: {amount: 3600000}
       description: Dedicated response SLA and quarterly architecture review.
       active: true
   - type: crm.lead
@@ -119,7 +119,7 @@ records:
       territory: apac
       employees: 51-200
       need: Replace scattered spreadsheets with a shared sales pipeline and weekly forecast.
-      budget: {amount: 22000000, currency: CNY}
+      budget: {amount: 22000000}
       timeframe: quarter
       authority: decisionmaker
   - type: crm.lead
@@ -135,7 +135,7 @@ records:
       territory: americas
       employees: 201-500
       need: Track wholesale partner accounts and quarterly renewal commitments.
-      budget: {amount: 31000000, currency: CNY}
+      budget: {amount: 31000000}
       timeframe: month
       authority: influencer
   - type: crm.lead
@@ -151,7 +151,7 @@ records:
       territory: apac
       employees: 501-1000
       need: Standardize regional deal approvals and multi-stakeholder account tracking.
-      budget: {amount: 45000000, currency: CNY}
+      budget: {amount: 45000000}
       timeframe: half
       authority: decisionmaker
   - type: crm.deal
@@ -160,7 +160,7 @@ records:
       title: Northwind Regional CRM Expansion
       account: demo-account-1
       contact: demo-contact-1
-      amount: {amount: 24500000, currency: CNY}
+      amount: {amount: 24500000}
       expectedclose: "2026-12-20"
       source: customer
       competitor: demo-competitor-1
@@ -173,7 +173,7 @@ records:
       title: Harborline Multi-Branch Pipeline Rollout
       account: demo-account-2
       contact: demo-contact-2
-      amount: {amount: 42000000, currency: CNY}
+      amount: {amount: 42000000}
       expectedclose: "2027-01-15"
       source: outbound
       competitor: demo-competitor-1
@@ -186,7 +186,7 @@ records:
       title: Clearview Partner Enablement Bundle
       account: demo-account-3
       contact: demo-contact-4
-      amount: {amount: 14500000, currency: CNY}
+      amount: {amount: 14500000}
       expectedclose: "2026-12-10"
       source: partner
       stage: commit
@@ -198,7 +198,7 @@ records:
       title: Harborline APAC Field Sales Pilot
       account: demo-account-2
       contact: demo-contact-2
-      amount: {amount: 16000000, currency: CNY}
+      amount: {amount: 16000000}
       expectedclose: "2027-02-10"
       source: referral
       stage: discovery
