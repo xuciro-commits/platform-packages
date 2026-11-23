@@ -9,6 +9,7 @@ groups:
   - {title: Follow-up, pages: [crm.activity, crm.note]}
   - {title: Catalog, pages: [crm.product, crm.competitor]}
   - title: Settings
+    layout: settings
     roles: [salesmanager]
     pages: [crm.stage, crm.source, crm.industry, crm.territory, crm.lostreason, crm.disqualifyreason]
 dashboard:
