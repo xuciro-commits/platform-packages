@@ -18,3 +18,12 @@ steps:
   - {do: party.organization.archive, on: party.organization/O4}
   - {do: party.industry.create, on: party.industry/robotics, as: clerk, with: {title: Robotics}, refused: true}
   - {do: party.industry.create, on: party.industry/robotics, with: {title: Robotics}}
+  - do: party.organization.create
+    on: party.organization/O5
+    as: clerk
+    with: {name: Xinghe Cloud, country: CN, region: "110105", street: 1 Jianguo Road, postcode: "100022"}
+    show: [country, region, street, postcode]
+    expect: {country: CN, region: "110105"}
+  - {do: party.organization.create, on: party.organization/O6, as: clerk, with: {name: Lisbon Tiles, country: PT, region: "110105"}, refused: true}
+  - {do: party.organization.create, on: party.organization/O6, as: clerk, with: {name: Lisbon Tiles, country: PT, street: Rua Augusta 10, postcode: 1100-053 Lisboa}, show: [country, street]}
+  - {do: party.organization.create, on: party.organization/O7, as: clerk, with: {name: Nowhere Ltd, country: CN, region: "999999"}, refused: true}

@@ -18,7 +18,11 @@ fields:
   - {name: website, title: Website, type: text, search: true, group: Reach}
   - {name: email, title: General email, type: text, search: true, group: Reach}
   - {name: phone, title: Main phone, type: text, search: true, group: Reach}
-  - {name: address, title: Address, type: longtext, group: Reach}
+  - {name: country, title: Country or region, type: reference, ref: geo.country, group: Address}
+  - {name: region, title: Region, type: reference, ref: geo.division, when: country=CN, search: true, group: Address, help: "The county, prefecture or province; pick the lowest one you know."}
+  - {name: street, title: Street address, type: text, search: true, group: Address}
+  - {name: postcode, title: Postal code, type: text, group: Address}
+  - {name: address, title: Other address details, type: longtext, group: Address, help: "Free text for what the fields above do not hold, and for addresses kept before they existed."}
   - {name: description, title: About, type: longtext, group: Organization}
   - {name: contactcount, title: Contacts, type: integer, aside: true, formula: count(contacts)}
 
@@ -34,4 +38,4 @@ access:
   - {role: user, read: all, create: true, edit: true}
   - {role: steward, read: all, create: true, edit: true, archive: true}
 
-view: {version: 1, layout: table, columns: [name, industry, phone, website, contactcount], sort: [{sortKey: name, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+view: {version: 1, layout: table, columns: [name, industry, region, phone, website, contactcount], sort: [{sortKey: name, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

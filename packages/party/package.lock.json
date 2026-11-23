@@ -1,12 +1,14 @@
 {
   "format": 2,
   "package": "party",
-  "version": "0.1.0",
-  "requires": [],
-  "artifact": "sha256:f45bae3bd7c3cfb012b672f1e4fbe73d6c220f90f4e240c8b889434e95602e47",
+  "version": "0.2.0",
+  "requires": [
+    "geo@^0.1.0"
+  ],
+  "artifact": "sha256:40144a3cfee21405a0933b9563b96a9fbe7f1f4a5ffa8710797f1151bb5233f0",
   "assets": {
     "app/party": {
-      "digest": "sha256:687db73a2a51fdec7f039b880003204af35bd4a8deabd43e35f316de26c91461",
+      "digest": "sha256:f1ae2c62903ba42a5a9619d26d989ab9c93a2e61a8d390a4f8f3b6a5abb4f808",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -43,13 +45,17 @@
       ]
     },
     "object/party.organization": {
-      "digest": "sha256:ade4b892b46f85cc678b6e45d20da110f3cf6fc0a64a129590ce64424c902796",
+      "digest": "sha256:137c623c17e221a1451d76f495360eb17d942149bc4efa2cfed221e8b2ba378f",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.d0e82876cc3315caa920d1863ba603dd050860af6a73a5dcc6f61e4e36685b60",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.85bd7395d39437471e087e1993c51384f14c97c3c2c7dcbbf9335db1cb5cce6c",
+          "family": 2
         }
       ]
     },
@@ -64,7 +70,7 @@
       "sourceVersion": "1"
     },
     "page/party.organization": {
-      "digest": "sha256:9cc273eadd97426ce3c9934d2cd0e3d499ee5a9e7068affc048624f37c8a6110",
+      "digest": "sha256:d60988aaa45413d400fe65cada7fe4e5da91e2e2944ff12fa29c3be0cb3c8659",
       "contractVersion": 1,
       "sourceVersion": "1"
     }

@@ -197,3 +197,5 @@ Escalated defects and deep investigation.: 已升级的缺陷排查与深度技�
 Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.: 面向售后与客户支持的工单系统，内置首次响应与解决双时限、均衡派单、结构化升级与解决、客户满意度、常用回复模板与知识库。
 Retire this article from active support use.: 将这篇知识库文章从活跃支持中归档停用。
 Select the specialist queue to receive this ticket.: 选择接收该升级工单的专项队列。
+Organization: 往来单位
+The support side of a business partner organization. The organization itself, with its name, contacts and addresses, is kept once in Business partners.: 往来单位在售后这一侧的信息。单位本身（名称、联系人、地址）只在“往来单位”里存一份。

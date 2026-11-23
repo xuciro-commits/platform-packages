@@ -1,0 +1,270 @@
+name: country
+namespace: geo
+title: Country or region
+plural: Countries and regions
+icon: flag
+display: name
+description: A country or region with its ISO 3166-1 codes. Names come from the Unicode CLDR.
+
+fields:
+  - {name: name, title: Name, type: text, required: true, search: true}
+  - {name: code, title: Code, type: text, required: true, search: true, help: The two-letter ISO 3166-1 code.}
+  - {name: alpha3, title: Three-letter code, type: text, search: true}
+  - {name: numeric, title: Numeric code, type: text}
+
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [name, code, alpha3, numeric], sort: [{sortKey: name, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: AD, code: AD, name: "Andorra", alpha3: AND, numeric: "020"}
+  - {id: AE, code: AE, name: "United Arab Emirates", alpha3: ARE, numeric: "784"}
+  - {id: AF, code: AF, name: "Afghanistan", alpha3: AFG, numeric: "004"}
+  - {id: AG, code: AG, name: "Antigua & Barbuda", alpha3: ATG, numeric: "028"}
+  - {id: AI, code: AI, name: "Anguilla", alpha3: AIA, numeric: "660"}
+  - {id: AL, code: AL, name: "Albania", alpha3: ALB, numeric: "008"}
+  - {id: AM, code: AM, name: "Armenia", alpha3: ARM, numeric: "051"}
+  - {id: AO, code: AO, name: "Angola", alpha3: AGO, numeric: "024"}
+  - {id: AQ, code: AQ, name: "Antarctica", alpha3: ATA, numeric: "010"}
+  - {id: AR, code: AR, name: "Argentina", alpha3: ARG, numeric: "032"}
+  - {id: AS, code: AS, name: "American Samoa", alpha3: ASM, numeric: "016"}
+  - {id: AT, code: AT, name: "Austria", alpha3: AUT, numeric: "040"}
+  - {id: AU, code: AU, name: "Australia", alpha3: AUS, numeric: "036"}
+  - {id: AW, code: AW, name: "Aruba", alpha3: ABW, numeric: "533"}
+  - {id: AX, code: AX, name: "Åland Islands", alpha3: ALA, numeric: "248"}
+  - {id: AZ, code: AZ, name: "Azerbaijan", alpha3: AZE, numeric: "031"}
+  - {id: BA, code: BA, name: "Bosnia & Herzegovina", alpha3: BIH, numeric: "070"}
+  - {id: BB, code: BB, name: "Barbados", alpha3: BRB, numeric: "052"}
+  - {id: BD, code: BD, name: "Bangladesh", alpha3: BGD, numeric: "050"}
+  - {id: BE, code: BE, name: "Belgium", alpha3: BEL, numeric: "056"}
+  - {id: BF, code: BF, name: "Burkina Faso", alpha3: BFA, numeric: "854"}
+  - {id: BG, code: BG, name: "Bulgaria", alpha3: BGR, numeric: "100"}
+  - {id: BH, code: BH, name: "Bahrain", alpha3: BHR, numeric: "048"}
+  - {id: BI, code: BI, name: "Burundi", alpha3: BDI, numeric: "108"}
+  - {id: BJ, code: BJ, name: "Benin", alpha3: BEN, numeric: "204"}
+  - {id: BL, code: BL, name: "St. Barthélemy", alpha3: BLM, numeric: "652"}
+  - {id: BM, code: BM, name: "Bermuda", alpha3: BMU, numeric: "060"}
+  - {id: BN, code: BN, name: "Brunei", alpha3: BRN, numeric: "096"}
+  - {id: BO, code: BO, name: "Bolivia", alpha3: BOL, numeric: "068"}
+  - {id: BQ, code: BQ, name: "Caribbean Netherlands", alpha3: BES, numeric: "535"}
+  - {id: BR, code: BR, name: "Brazil", alpha3: BRA, numeric: "076"}
+  - {id: BS, code: BS, name: "Bahamas", alpha3: BHS, numeric: "044"}
+  - {id: BT, code: BT, name: "Bhutan", alpha3: BTN, numeric: "064"}
+  - {id: BV, code: BV, name: "Bouvet Island", alpha3: BVT, numeric: "074"}
+  - {id: BW, code: BW, name: "Botswana", alpha3: BWA, numeric: "072"}
+  - {id: BY, code: BY, name: "Belarus", alpha3: BLR, numeric: "112"}
+  - {id: BZ, code: BZ, name: "Belize", alpha3: BLZ, numeric: "084"}
+  - {id: CA, code: CA, name: "Canada", alpha3: CAN, numeric: "124"}
+  - {id: CC, code: CC, name: "Cocos (Keeling) Islands", alpha3: CCK, numeric: "166"}
+  - {id: CD, code: CD, name: "Congo - Kinshasa", alpha3: COD, numeric: "180"}
+  - {id: CF, code: CF, name: "Central African Republic", alpha3: CAF, numeric: "140"}
+  - {id: CG, code: CG, name: "Congo - Brazzaville", alpha3: COG, numeric: "178"}
+  - {id: CH, code: CH, name: "Switzerland", alpha3: CHE, numeric: "756"}
+  - {id: CI, code: CI, name: "Côte d’Ivoire", alpha3: CIV, numeric: "384"}
+  - {id: CK, code: CK, name: "Cook Islands", alpha3: COK, numeric: "184"}
+  - {id: CL, code: CL, name: "Chile", alpha3: CHL, numeric: "152"}
+  - {id: CM, code: CM, name: "Cameroon", alpha3: CMR, numeric: "120"}
+  - {id: CN, code: CN, name: "China", alpha3: CHN, numeric: "156"}
+  - {id: CO, code: CO, name: "Colombia", alpha3: COL, numeric: "170"}
+  - {id: CR, code: CR, name: "Costa Rica", alpha3: CRI, numeric: "188"}
+  - {id: CU, code: CU, name: "Cuba", alpha3: CUB, numeric: "192"}
+  - {id: CV, code: CV, name: "Cape Verde", alpha3: CPV, numeric: "132"}
+  - {id: CW, code: CW, name: "Curaçao", alpha3: CUW, numeric: "531"}
+  - {id: CX, code: CX, name: "Christmas Island", alpha3: CXR, numeric: "162"}
+  - {id: CY, code: CY, name: "Cyprus", alpha3: CYP, numeric: "196"}
+  - {id: CZ, code: CZ, name: "Czechia", alpha3: CZE, numeric: "203"}
+  - {id: DE, code: DE, name: "Germany", alpha3: DEU, numeric: "276"}
+  - {id: DJ, code: DJ, name: "Djibouti", alpha3: DJI, numeric: "262"}
+  - {id: DK, code: DK, name: "Denmark", alpha3: DNK, numeric: "208"}
+  - {id: DM, code: DM, name: "Dominica", alpha3: DMA, numeric: "212"}
+  - {id: DO, code: DO, name: "Dominican Republic", alpha3: DOM, numeric: "214"}
+  - {id: DZ, code: DZ, name: "Algeria", alpha3: DZA, numeric: "012"}
+  - {id: EC, code: EC, name: "Ecuador", alpha3: ECU, numeric: "218"}
+  - {id: EE, code: EE, name: "Estonia", alpha3: EST, numeric: "233"}
+  - {id: EG, code: EG, name: "Egypt", alpha3: EGY, numeric: "818"}
+  - {id: EH, code: EH, name: "Western Sahara", alpha3: ESH, numeric: "732"}
+  - {id: ER, code: ER, name: "Eritrea", alpha3: ERI, numeric: "232"}
+  - {id: ES, code: ES, name: "Spain", alpha3: ESP, numeric: "724"}
+  - {id: ET, code: ET, name: "Ethiopia", alpha3: ETH, numeric: "231"}
+  - {id: FI, code: FI, name: "Finland", alpha3: FIN, numeric: "246"}
+  - {id: FJ, code: FJ, name: "Fiji", alpha3: FJI, numeric: "242"}
+  - {id: FK, code: FK, name: "Falkland Islands", alpha3: FLK, numeric: "238"}
+  - {id: FM, code: FM, name: "Micronesia", alpha3: FSM, numeric: "583"}
+  - {id: FO, code: FO, name: "Faroe Islands", alpha3: FRO, numeric: "234"}
+  - {id: FR, code: FR, name: "France", alpha3: FRA, numeric: "250"}
+  - {id: GA, code: GA, name: "Gabon", alpha3: GAB, numeric: "266"}
+  - {id: GB, code: GB, name: "United Kingdom", alpha3: GBR, numeric: "826"}
+  - {id: GD, code: GD, name: "Grenada", alpha3: GRD, numeric: "308"}
+  - {id: GE, code: GE, name: "Georgia", alpha3: GEO, numeric: "268"}
+  - {id: GF, code: GF, name: "French Guiana", alpha3: GUF, numeric: "254"}
+  - {id: GG, code: GG, name: "Guernsey", alpha3: GGY, numeric: "831"}
+  - {id: GH, code: GH, name: "Ghana", alpha3: GHA, numeric: "288"}
+  - {id: GI, code: GI, name: "Gibraltar", alpha3: GIB, numeric: "292"}
+  - {id: GL, code: GL, name: "Greenland", alpha3: GRL, numeric: "304"}
+  - {id: GM, code: GM, name: "Gambia", alpha3: GMB, numeric: "270"}
+  - {id: GN, code: GN, name: "Guinea", alpha3: GIN, numeric: "324"}
+  - {id: GP, code: GP, name: "Guadeloupe", alpha3: GLP, numeric: "312"}
+  - {id: GQ, code: GQ, name: "Equatorial Guinea", alpha3: GNQ, numeric: "226"}
+  - {id: GR, code: GR, name: "Greece", alpha3: GRC, numeric: "300"}
+  - {id: GS, code: GS, name: "South Georgia & South Sandwich Islands", alpha3: SGS, numeric: "239"}
+  - {id: GT, code: GT, name: "Guatemala", alpha3: GTM, numeric: "320"}
+  - {id: GU, code: GU, name: "Guam", alpha3: GUM, numeric: "316"}
+  - {id: GW, code: GW, name: "Guinea-Bissau", alpha3: GNB, numeric: "624"}
+  - {id: GY, code: GY, name: "Guyana", alpha3: GUY, numeric: "328"}
+  - {id: HK, code: HK, name: "Hong Kong SAR, China", alpha3: HKG, numeric: "344"}
+  - {id: HM, code: HM, name: "Heard Island & McDonald Islands", alpha3: HMD, numeric: "334"}
+  - {id: HN, code: HN, name: "Honduras", alpha3: HND, numeric: "340"}
+  - {id: HR, code: HR, name: "Croatia", alpha3: HRV, numeric: "191"}
+  - {id: HT, code: HT, name: "Haiti", alpha3: HTI, numeric: "332"}
+  - {id: HU, code: HU, name: "Hungary", alpha3: HUN, numeric: "348"}
+  - {id: ID, code: ID, name: "Indonesia", alpha3: IDN, numeric: "360"}
+  - {id: IE, code: IE, name: "Ireland", alpha3: IRL, numeric: "372"}
+  - {id: IL, code: IL, name: "Israel", alpha3: ISR, numeric: "376"}
+  - {id: IM, code: IM, name: "Isle of Man", alpha3: IMN, numeric: "833"}
+  - {id: IN, code: IN, name: "India", alpha3: IND, numeric: "356"}
+  - {id: IO, code: IO, name: "British Indian Ocean Territory", alpha3: IOT, numeric: "086"}
+  - {id: IQ, code: IQ, name: "Iraq", alpha3: IRQ, numeric: "368"}
+  - {id: IR, code: IR, name: "Iran", alpha3: IRN, numeric: "364"}
+  - {id: IS, code: IS, name: "Iceland", alpha3: ISL, numeric: "352"}
+  - {id: IT, code: IT, name: "Italy", alpha3: ITA, numeric: "380"}
+  - {id: JE, code: JE, name: "Jersey", alpha3: JEY, numeric: "832"}
+  - {id: JM, code: JM, name: "Jamaica", alpha3: JAM, numeric: "388"}
+  - {id: JO, code: JO, name: "Jordan", alpha3: JOR, numeric: "400"}
+  - {id: JP, code: JP, name: "Japan", alpha3: JPN, numeric: "392"}
+  - {id: KE, code: KE, name: "Kenya", alpha3: KEN, numeric: "404"}
+  - {id: KG, code: KG, name: "Kyrgyzstan", alpha3: KGZ, numeric: "417"}
+  - {id: KH, code: KH, name: "Cambodia", alpha3: KHM, numeric: "116"}
+  - {id: KI, code: KI, name: "Kiribati", alpha3: KIR, numeric: "296"}
+  - {id: KM, code: KM, name: "Comoros", alpha3: COM, numeric: "174"}
+  - {id: KN, code: KN, name: "St. Kitts & Nevis", alpha3: KNA, numeric: "659"}
+  - {id: KP, code: KP, name: "North Korea", alpha3: PRK, numeric: "408"}
+  - {id: KR, code: KR, name: "South Korea", alpha3: KOR, numeric: "410"}
+  - {id: KW, code: KW, name: "Kuwait", alpha3: KWT, numeric: "414"}
+  - {id: KY, code: KY, name: "Cayman Islands", alpha3: CYM, numeric: "136"}
+  - {id: KZ, code: KZ, name: "Kazakhstan", alpha3: KAZ, numeric: "398"}
+  - {id: LA, code: LA, name: "Laos", alpha3: LAO, numeric: "418"}
+  - {id: LB, code: LB, name: "Lebanon", alpha3: LBN, numeric: "422"}
+  - {id: LC, code: LC, name: "St. Lucia", alpha3: LCA, numeric: "662"}
+  - {id: LI, code: LI, name: "Liechtenstein", alpha3: LIE, numeric: "438"}
+  - {id: LK, code: LK, name: "Sri Lanka", alpha3: LKA, numeric: "144"}
+  - {id: LR, code: LR, name: "Liberia", alpha3: LBR, numeric: "430"}
+  - {id: LS, code: LS, name: "Lesotho", alpha3: LSO, numeric: "426"}
+  - {id: LT, code: LT, name: "Lithuania", alpha3: LTU, numeric: "440"}
+  - {id: LU, code: LU, name: "Luxembourg", alpha3: LUX, numeric: "442"}
+  - {id: LV, code: LV, name: "Latvia", alpha3: LVA, numeric: "428"}
+  - {id: LY, code: LY, name: "Libya", alpha3: LBY, numeric: "434"}
+  - {id: MA, code: MA, name: "Morocco", alpha3: MAR, numeric: "504"}
+  - {id: MC, code: MC, name: "Monaco", alpha3: MCO, numeric: "492"}
+  - {id: MD, code: MD, name: "Moldova", alpha3: MDA, numeric: "498"}
+  - {id: ME, code: ME, name: "Montenegro", alpha3: MNE, numeric: "499"}
+  - {id: MF, code: MF, name: "St. Martin", alpha3: MAF, numeric: "663"}
+  - {id: MG, code: MG, name: "Madagascar", alpha3: MDG, numeric: "450"}
+  - {id: MH, code: MH, name: "Marshall Islands", alpha3: MHL, numeric: "584"}
+  - {id: MK, code: MK, name: "North Macedonia", alpha3: MKD, numeric: "807"}
+  - {id: ML, code: ML, name: "Mali", alpha3: MLI, numeric: "466"}
+  - {id: MM, code: MM, name: "Myanmar (Burma)", alpha3: MMR, numeric: "104"}
+  - {id: MN, code: MN, name: "Mongolia", alpha3: MNG, numeric: "496"}
+  - {id: MO, code: MO, name: "Macao SAR, China", alpha3: MAC, numeric: "446"}
+  - {id: MP, code: MP, name: "Northern Mariana Islands", alpha3: MNP, numeric: "580"}
+  - {id: MQ, code: MQ, name: "Martinique", alpha3: MTQ, numeric: "474"}
+  - {id: MR, code: MR, name: "Mauritania", alpha3: MRT, numeric: "478"}
+  - {id: MS, code: MS, name: "Montserrat", alpha3: MSR, numeric: "500"}
+  - {id: MT, code: MT, name: "Malta", alpha3: MLT, numeric: "470"}
+  - {id: MU, code: MU, name: "Mauritius", alpha3: MUS, numeric: "480"}
+  - {id: MV, code: MV, name: "Maldives", alpha3: MDV, numeric: "462"}
+  - {id: MW, code: MW, name: "Malawi", alpha3: MWI, numeric: "454"}
+  - {id: MX, code: MX, name: "Mexico", alpha3: MEX, numeric: "484"}
+  - {id: MY, code: MY, name: "Malaysia", alpha3: MYS, numeric: "458"}
+  - {id: MZ, code: MZ, name: "Mozambique", alpha3: MOZ, numeric: "508"}
+  - {id: NA, code: NA, name: "Namibia", alpha3: NAM, numeric: "516"}
+  - {id: NC, code: NC, name: "New Caledonia", alpha3: NCL, numeric: "540"}
+  - {id: NE, code: NE, name: "Niger", alpha3: NER, numeric: "562"}
+  - {id: NF, code: NF, name: "Norfolk Island", alpha3: NFK, numeric: "574"}
+  - {id: NG, code: NG, name: "Nigeria", alpha3: NGA, numeric: "566"}
+  - {id: NI, code: NI, name: "Nicaragua", alpha3: NIC, numeric: "558"}
+  - {id: NL, code: NL, name: "Netherlands", alpha3: NLD, numeric: "528"}
+  - {id: NO, code: NO, name: "Norway", alpha3: NOR, numeric: "578"}
+  - {id: NP, code: NP, name: "Nepal", alpha3: NPL, numeric: "524"}
+  - {id: NR, code: NR, name: "Nauru", alpha3: NRU, numeric: "520"}
+  - {id: NU, code: NU, name: "Niue", alpha3: NIU, numeric: "570"}
+  - {id: NZ, code: NZ, name: "New Zealand", alpha3: NZL, numeric: "554"}
+  - {id: OM, code: OM, name: "Oman", alpha3: OMN, numeric: "512"}
+  - {id: PA, code: PA, name: "Panama", alpha3: PAN, numeric: "591"}
+  - {id: PE, code: PE, name: "Peru", alpha3: PER, numeric: "604"}
+  - {id: PF, code: PF, name: "French Polynesia", alpha3: PYF, numeric: "258"}
+  - {id: PG, code: PG, name: "Papua New Guinea", alpha3: PNG, numeric: "598"}
+  - {id: PH, code: PH, name: "Philippines", alpha3: PHL, numeric: "608"}
+  - {id: PK, code: PK, name: "Pakistan", alpha3: PAK, numeric: "586"}
+  - {id: PL, code: PL, name: "Poland", alpha3: POL, numeric: "616"}
+  - {id: PM, code: PM, name: "St. Pierre & Miquelon", alpha3: SPM, numeric: "666"}
+  - {id: PN, code: PN, name: "Pitcairn Islands", alpha3: PCN, numeric: "612"}
+  - {id: PR, code: PR, name: "Puerto Rico", alpha3: PRI, numeric: "630"}
+  - {id: PS, code: PS, name: "Palestinian Territories", alpha3: PSE, numeric: "275"}
+  - {id: PT, code: PT, name: "Portugal", alpha3: PRT, numeric: "620"}
+  - {id: PW, code: PW, name: "Palau", alpha3: PLW, numeric: "585"}
+  - {id: PY, code: PY, name: "Paraguay", alpha3: PRY, numeric: "600"}
+  - {id: QA, code: QA, name: "Qatar", alpha3: QAT, numeric: "634"}
+  - {id: RE, code: RE, name: "Réunion", alpha3: REU, numeric: "638"}
+  - {id: RO, code: RO, name: "Romania", alpha3: ROU, numeric: "642"}
+  - {id: RS, code: RS, name: "Serbia", alpha3: SRB, numeric: "688"}
+  - {id: RU, code: RU, name: "Russia", alpha3: RUS, numeric: "643"}
+  - {id: RW, code: RW, name: "Rwanda", alpha3: RWA, numeric: "646"}
+  - {id: SA, code: SA, name: "Saudi Arabia", alpha3: SAU, numeric: "682"}
+  - {id: SB, code: SB, name: "Solomon Islands", alpha3: SLB, numeric: "090"}
+  - {id: SC, code: SC, name: "Seychelles", alpha3: SYC, numeric: "690"}
+  - {id: SD, code: SD, name: "Sudan", alpha3: SDN, numeric: "729"}
+  - {id: SE, code: SE, name: "Sweden", alpha3: SWE, numeric: "752"}
+  - {id: SG, code: SG, name: "Singapore", alpha3: SGP, numeric: "702"}
+  - {id: SH, code: SH, name: "St. Helena, Ascension & Tristan da Cunha", alpha3: SHN, numeric: "654"}
+  - {id: SI, code: SI, name: "Slovenia", alpha3: SVN, numeric: "705"}
+  - {id: SJ, code: SJ, name: "Svalbard & Jan Mayen", alpha3: SJM, numeric: "744"}
+  - {id: SK, code: SK, name: "Slovakia", alpha3: SVK, numeric: "703"}
+  - {id: SL, code: SL, name: "Sierra Leone", alpha3: SLE, numeric: "694"}
+  - {id: SM, code: SM, name: "San Marino", alpha3: SMR, numeric: "674"}
+  - {id: SN, code: SN, name: "Senegal", alpha3: SEN, numeric: "686"}
+  - {id: SO, code: SO, name: "Somalia", alpha3: SOM, numeric: "706"}
+  - {id: SR, code: SR, name: "Suriname", alpha3: SUR, numeric: "740"}
+  - {id: SS, code: SS, name: "South Sudan", alpha3: SSD, numeric: "728"}
+  - {id: ST, code: ST, name: "São Tomé & Príncipe", alpha3: STP, numeric: "678"}
+  - {id: SV, code: SV, name: "El Salvador", alpha3: SLV, numeric: "222"}
+  - {id: SX, code: SX, name: "Sint Maarten", alpha3: SXM, numeric: "534"}
+  - {id: SY, code: SY, name: "Syria", alpha3: SYR, numeric: "760"}
+  - {id: SZ, code: SZ, name: "Eswatini", alpha3: SWZ, numeric: "748"}
+  - {id: TC, code: TC, name: "Turks & Caicos Islands", alpha3: TCA, numeric: "796"}
+  - {id: TD, code: TD, name: "Chad", alpha3: TCD, numeric: "148"}
+  - {id: TF, code: TF, name: "French Southern and Antarctic Lands", alpha3: ATF, numeric: "260"}
+  - {id: TG, code: TG, name: "Togo", alpha3: TGO, numeric: "768"}
+  - {id: TH, code: TH, name: "Thailand", alpha3: THA, numeric: "764"}
+  - {id: TJ, code: TJ, name: "Tajikistan", alpha3: TJK, numeric: "762"}
+  - {id: TK, code: TK, name: "Tokelau", alpha3: TKL, numeric: "772"}
+  - {id: TL, code: TL, name: "Timor-Leste", alpha3: TLS, numeric: "626"}
+  - {id: TM, code: TM, name: "Turkmenistan", alpha3: TKM, numeric: "795"}
+  - {id: TN, code: TN, name: "Tunisia", alpha3: TUN, numeric: "788"}
+  - {id: TO, code: TO, name: "Tonga", alpha3: TON, numeric: "776"}
+  - {id: TR, code: TR, name: "Türkiye", alpha3: TUR, numeric: "792"}
+  - {id: TT, code: TT, name: "Trinidad & Tobago", alpha3: TTO, numeric: "780"}
+  - {id: TV, code: TV, name: "Tuvalu", alpha3: TUV, numeric: "798"}
+  - {id: TW, code: TW, name: "Taiwan, China", alpha3: TWN, numeric: "158"}
+  - {id: TZ, code: TZ, name: "Tanzania", alpha3: TZA, numeric: "834"}
+  - {id: UA, code: UA, name: "Ukraine", alpha3: UKR, numeric: "804"}
+  - {id: UG, code: UG, name: "Uganda", alpha3: UGA, numeric: "800"}
+  - {id: UM, code: UM, name: "U.S. Outlying Islands", alpha3: UMI, numeric: "581"}
+  - {id: US, code: US, name: "United States", alpha3: USA, numeric: "840"}
+  - {id: UY, code: UY, name: "Uruguay", alpha3: URY, numeric: "858"}
+  - {id: UZ, code: UZ, name: "Uzbekistan", alpha3: UZB, numeric: "860"}
+  - {id: VA, code: VA, name: "Vatican City", alpha3: VAT, numeric: "336"}
+  - {id: VC, code: VC, name: "St. Vincent & Grenadines", alpha3: VCT, numeric: "670"}
+  - {id: VE, code: VE, name: "Venezuela", alpha3: VEN, numeric: "862"}
+  - {id: VG, code: VG, name: "British Virgin Islands", alpha3: VGB, numeric: "092"}
+  - {id: VI, code: VI, name: "U.S. Virgin Islands", alpha3: VIR, numeric: "850"}
+  - {id: VN, code: VN, name: "Vietnam", alpha3: VNM, numeric: "704"}
+  - {id: VU, code: VU, name: "Vanuatu", alpha3: VUT, numeric: "548"}
+  - {id: WF, code: WF, name: "Wallis & Futuna", alpha3: WLF, numeric: "876"}
+  - {id: WS, code: WS, name: "Samoa", alpha3: WSM, numeric: "882"}
+  - {id: YE, code: YE, name: "Yemen", alpha3: YEM, numeric: "887"}
+  - {id: YT, code: YT, name: "Mayotte", alpha3: MYT, numeric: "175"}
+  - {id: ZA, code: ZA, name: "South Africa", alpha3: ZAF, numeric: "710"}
+  - {id: ZM, code: ZM, name: "Zambia", alpha3: ZMB, numeric: "894"}
+  - {id: ZW, code: ZW, name: "Zimbabwe", alpha3: ZWE, numeric: "716"}

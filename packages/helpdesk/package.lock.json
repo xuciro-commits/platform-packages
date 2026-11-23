@@ -1,12 +1,14 @@
 {
   "format": 2,
   "package": "helpdesk",
-  "version": "0.1.1",
-  "requires": [],
-  "artifact": "sha256:9129c90621c62f608b8cca81f29d8f1effddabb2e3fd16a9cba839b0f7428cb0",
+  "version": "0.2.0",
+  "requires": [
+    "party@^0.2.0"
+  ],
+  "artifact": "sha256:f58eb3b9359f87391f210bc1130ee6073172e1335c58147c025db04e790bc61e",
   "assets": {
     "app/helpdesk": {
-      "digest": "sha256:67814fea52a0d1368da1e82c52ad33541eba0a9c7c525922a718c61470c12461",
+      "digest": "sha256:dc0923ffb798a15275864b86812161fa043616e51ebbb25fb95d75ac6620348f",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -75,13 +77,17 @@
       ]
     },
     "object/helpdesk.customer": {
-      "digest": "sha256:987a09c595facb46c6471e88c5d370bf0a6a664dfaf81d986310a41e78a695a1",
+      "digest": "sha256:29b2b2e7bce239c536bb89e1b40c4b45e9c40b33b66db082751731f24d3982e0",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.6af488b97d5ad72877af5df2d8855123d88c4c39c7469faaf2463822238b03b4",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.71c3e4e3f1c66a0e04f9b365074f020e9a41752d8d8ea4a7997a8a7ea55e95c8",
+          "family": 2
         }
       ]
     },
@@ -118,17 +124,6 @@
         }
       ]
     },
-    "object/helpdesk.requester": {
-      "digest": "sha256:5c54c8cfe66a2e417f790450fec3429bb8c85412ed86a08d46b17002c6c3867b",
-      "contractVersion": 1,
-      "sourceVersion": "1",
-      "schemaVersions": [
-        {
-          "version": "schema.sha256.56b832858efeb652e83102e8099d5b872fbf934faf166947204a34294d755e22",
-          "family": 1
-        }
-      ]
-    },
     "object/helpdesk.resolution": {
       "digest": "sha256:e13b6b3367cf289e665cc3102b7d7a1b4f1bb9e8fd4ab353c6f36fe79652b32a",
       "contractVersion": 1,
@@ -141,13 +136,17 @@
       ]
     },
     "object/helpdesk.ticket": {
-      "digest": "sha256:846781085189ab79a41973f8c9b29c49a00b47ce70bfac31e757160ec5bc329c",
+      "digest": "sha256:6e399fa57c5e1e95a75cdffe9d203bb7d57d5311f4b81806682a38a4ed041299",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.9ea488b4ad66f7584314328230d5c54fd13ae94aefffd03f3c0e8e4b342d2e6f",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.83a738681459e3234e126ae59c2314f6285ab8c7c7d3eef69bfe062460c4c23b",
+          "family": 2
         }
       ]
     },
@@ -183,7 +182,7 @@
       "sourceVersion": "1"
     },
     "page/helpdesk.customer": {
-      "digest": "sha256:c988acdb0c1ab8e37293a1c2823c4619d888b151fed2d3b8b22f113eee706360",
+      "digest": "sha256:24d649dee2abcb766370aef1f4722d6e67eb0e8157d4ae701d2f4a537f885ba1",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -199,11 +198,6 @@
     },
     "page/helpdesk.reply": {
       "digest": "sha256:20a4e830863edb3d8cc318a824c16a00d90d03b4be525f25a56b6c06cad54c98",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/helpdesk.requester": {
-      "digest": "sha256:d71ea8146f7637a0e366f24850d9043434fbd62ae2597360ac881a69ba2e938e",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

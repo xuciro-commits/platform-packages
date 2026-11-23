@@ -1,0 +1,46 @@
+{
+  "format": 2,
+  "package": "geo",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:2361524205d81f9027476ab2b10b228c2ae0ae5a47244365f81b0d40508bc02e",
+  "assets": {
+    "app/geo": {
+      "digest": "sha256:ede28eacd38259b281e34dfe33f79ebadc185d698b56ef76b5fd32810a6e5c72",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/geo.country": {
+      "digest": "sha256:f4c9c2e92881bd31f8205df7f327302283d7e49f9292f19a2edc0cb8793167a2",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.af8fc39298ce8782484223fb37fb503a3954ad1ea629a370ffcf4cebff57b055",
+          "family": 1
+        }
+      ]
+    },
+    "object/geo.division": {
+      "digest": "sha256:0dd33c3bf80bb82d43ab35fcaf6eb82abaf423cf5219ec969943eb55d8629e58",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.0eb2e14aa4a0928405e2309df22f24f5b87dfb7eea35fc8016009829ca5b1776",
+          "family": 1
+        }
+      ]
+    },
+    "page/geo.country": {
+      "digest": "sha256:60d8e889baf05d3fdabae615a48c75878c4c9f01315f07bfd66ee0e0bbc455e4",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/geo.division": {
+      "digest": "sha256:c72111e32e46c4681c713c915e4f30e68994d3262eb75ad60a72a9f95e05db1d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}
