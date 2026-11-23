@@ -7,7 +7,7 @@ display: name
 naming: CUST-{year}-{n:5}
 sets:
   tickets: {object: helpdesk.ticket, limit: 500}
-  contacts: {object: helpdesk.contact, limit: 200}
+  contacts: {object: helpdesk.requester, limit: 200}
 
 fields:
   - {name: name, title: Customer name, type: text, required: true, search: true, group: Customer}

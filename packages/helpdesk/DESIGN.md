@@ -40,9 +40,9 @@
 | 知识文章 `helpdesk.article` | 可复用的排障指南与常见问题 | 标题、分类、摘要、正文、作者、状态（草稿 / 已发布 / 已归档） |
 | 常用回复 `helpdesk.cannedreply` | 高频问题的标准回复模板 | 标题、分类、正文、启用 |
 | 客户 `helpdesk.customer` | 接受售后服务的客户组织 | 名称、服务等级（标准 / 高级 / 专属）、域名、专属负责人、开放工单数、累计工单数 |
-| 联系人 `helpdesk.contact` | 提交工单的具体联系人 | 姓名、所属客户、邮箱、手机、职务 |
+| 联系人 `helpdesk.requester` | 提交工单的具体联系人 | 姓名、所属客户、邮箱、手机、职务 |
 
-字典（全部收纳在主管专属的 `layout: settings` 设置页，带参考记录）：处理阶段 `helpdesk.stage`、优先级 `helpdesk.priority`、客服队列 `helpdesk.queue`、问题分类 `helpdesk.category`、来源渠道 `helpdesk.channel`、解决根因 `helpdesk.resolution`。
+字典（全部收纳在主管专属的 `layout: settings` 设置页，带参考记录）：处理阶段 `helpdesk.ticketstage`、优先级 `helpdesk.priority`、客服队列 `helpdesk.queue`、问题分类 `helpdesk.category`、来源渠道 `helpdesk.channel`、解决根因 `helpdesk.resolution`。
 
 ## 角色与可见性
 

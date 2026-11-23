@@ -18,7 +18,7 @@ states:
   - {name: draft, title: Draft, tone: neutral, description: Being drafted and not yet published.}
   - {name: published, title: Published, tone: success, description: Approved for support agents and customers.}
   - {name: archived, title: Archived, tone: neutral, description: Retired from active use.}
-actions: [publish, retire, reopen]
+actions: [release, retire, reopen]
 
 access:
   - {role: agent, read: all, create: true, edit: true}

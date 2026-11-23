@@ -1,4 +1,4 @@
-name: stage
+name: ticketstage
 namespace: helpdesk
 title: Ticket stage
 plural: Ticket stages

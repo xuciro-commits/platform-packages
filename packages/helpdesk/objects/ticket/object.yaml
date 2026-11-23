@@ -12,11 +12,11 @@ fields:
   - {name: subject, title: Subject, type: text, required: true, search: true, group: Request}
   - {name: description, title: Description, type: longtext, search: true, group: Request}
   - {name: customer, title: Customer, type: reference, ref: helpdesk.customer, inverse: tickets, group: Customer}
-  - {name: contact, title: Contact, type: reference, ref: helpdesk.contact, group: Customer}
+  - {name: contact, title: Contact, type: reference, ref: helpdesk.requester, group: Customer}
   - {name: channel, title: Channel, type: reference, ref: helpdesk.channel, default: portal, group: Customer}
   - {name: category, title: Category, type: reference, ref: helpdesk.category, group: Classification}
   - {name: queue, title: Queue, type: reference, ref: helpdesk.queue, default: technical, inverse: tickets, aside: true}
-  - {name: stage, title: Stage, type: reference, ref: helpdesk.stage, default: new, aside: true}
+  - {name: stage, title: Stage, type: reference, ref: helpdesk.ticketstage, default: new, aside: true}
   - {name: priority, title: Priority, type: reference, ref: helpdesk.priority, default: medium, aside: true}
   - {name: owner, title: Assigned agent, type: member, aside: true}
   - {name: responseby, title: First response due, type: datetime, default: now+4h, aside: true}

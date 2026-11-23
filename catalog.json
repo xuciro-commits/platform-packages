@@ -34,6 +34,40 @@
           "relation": "redesign"
         }
       }
+    },
+    {
+      "id": "helpdesk",
+      "version": "0.1.0",
+      "title": "Helpdesk",
+      "description": "Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/helpdesk/v0.1.0/helpdesk.json",
+      "sha256": "sha256:12aa92a70ffc618800613ab9b9281b7ac5bceb944853260e97ce5122d92871c8",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "capabilities": [
+          "service",
+          "knowledge"
+        ],
+        "keywords": [
+          "helpdesk",
+          "support",
+          "ticket",
+          "sla",
+          "knowledge-base",
+          "csat",
+          "escalation"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "helpdesk",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        }
+      }
     }
   ]
 }

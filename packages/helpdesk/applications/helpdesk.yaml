@@ -1,16 +1,16 @@
 name: helpdesk
 title: Helpdesk
 icon: lifebuoy
-pages: [helpdesk.ticket, helpdesk.reply, helpdesk.customer, helpdesk.contact, helpdesk.article, helpdesk.cannedreply,
-        helpdesk.stage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
+pages: [helpdesk.ticket, helpdesk.reply, helpdesk.customer, helpdesk.requester, helpdesk.article, helpdesk.cannedreply,
+        helpdesk.ticketstage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
 groups:
   - {title: Support, pages: [helpdesk.ticket, helpdesk.reply]}
-  - {title: Customers, pages: [helpdesk.customer, helpdesk.contact]}
+  - {title: Customers, pages: [helpdesk.customer, helpdesk.requester]}
   - {title: Knowledge, pages: [helpdesk.article, helpdesk.cannedreply]}
   - title: Settings
     layout: settings
     roles: [supervisor]
-    pages: [helpdesk.stage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
+    pages: [helpdesk.ticketstage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
 dashboard:
   - {title: Open tickets, kind: metric, object: helpdesk.ticket, domain: [[state, "=", open]]}
   - {title: Escalated tickets, kind: metric, object: helpdesk.ticket, domain: [[state, "=", open], [stage, "=", escalated]]}
