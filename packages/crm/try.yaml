@@ -52,6 +52,12 @@ steps:
   - read: crm.deal/demo-deal-1
     show: [title, stage]
     expect: {stage: negotiation}
+  - read: crm.deal/demo-deal-5
+    show: [state, closedate]
+    expect: {state: won}
+  - read: crm.deal/demo-deal-6
+    show: [state, lostreason]
+    expect: {state: lost, lostreason: competitor}
   - do: platform.package.clear-demo
     on: platform.package/crm
     with: {id: crm}
