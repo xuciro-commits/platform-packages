@@ -1,0 +1,15 @@
+title: Submit for approval
+description: Send this claim to your manager.
+from: [draft]
+approval:
+  pending: pending
+  rejected: rejected
+  levels:
+    - {title: Manager, manager: true, role: hradmin}
+transaction:
+  guard: items > 0
+  message: Add at least one expense before submitting.
+  steps:
+    - target: $subject
+      set:
+        state: "'approved'"

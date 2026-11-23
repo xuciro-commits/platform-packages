@@ -1,0 +1,8 @@
+title: Revise
+description: Bring a rejected request back to draft to change it.
+from: [rejected]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'draft'"

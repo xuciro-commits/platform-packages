@@ -1,0 +1,24 @@
+name: claimline
+namespace: hr
+title: Expense
+plural: Expenses
+icon: receipt-percent
+display: expensetype
+naming: EXL-{n:6}
+
+fields:
+  - {name: claim, title: Claim, type: reference, ref: hr.claim, inverse: lines, required: true}
+  - {name: spent, title: Date, type: date, default: today}
+  - {name: expensetype, title: Expense type, type: reference, ref: hr.expensetype, required: true, search: true}
+  - {name: amount, title: Amount, type: money, default: "setting:currency", required: true}
+  - {name: approved, title: Approved amount, type: money, from: amount, help: Lower it to approve less than claimed.}
+  - {name: description, title: Description, type: text}
+  - {name: receipt, title: Receipt, type: attachment}
+
+access:
+  - {role: staff, read: all, create: true, edit: true}
+  - {role: manager, read: all, edit: true}
+  - {role: hradmin, read: all, create: true, edit: true, archive: true}
+  - {role: finance, read: all}
+
+view: {version: 1, layout: table, columns: [spent, expensetype, amount, approved, description, claim], sort: [{sortKey: spent, direction: ascending}], group: claim, lanes: "", filters: [], search: ""}

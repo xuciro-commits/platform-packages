@@ -1,0 +1,43 @@
+name: employee
+namespace: hr
+title: Employee
+plural: Employees
+icon: identification
+display: fullname
+naming: EMP-{n:5}
+scope: {owner: account}
+
+fields:
+  - {name: fullname, title: Full name, type: text, required: true, search: true, group: Employee}
+  - {name: account, title: Account, type: member, group: Employee, help: The member this employee signs in as.}
+  - {name: department, title: Department, type: reference, ref: enterprise.element, stereotype: ActualOrganization, group: Employee}
+  - {name: designation, title: Designation, type: reference, ref: hr.designation, group: Employee}
+  - {name: employmenttype, title: Employment type, type: reference, ref: hr.employmenttype, group: Employee}
+  - {name: reportsto, title: Reports to, type: reference, ref: hr.employee, group: Employee}
+  - {name: joined, title: Date of joining, type: date, group: Employee}
+  - {name: email, title: Work email, type: text, search: true, group: Contact}
+  - {name: mobile, title: Mobile, type: text, group: Contact}
+  - {name: emergencycontact, title: Emergency contact, type: text, group: Contact}
+  - {name: leftdate, title: Last working day, type: date, readOnly: true, when: state=left, group: Exit}
+  - {name: leftreason, title: Reason for leaving, type: longtext, readOnly: true, when: state=left, group: Exit}
+
+states:
+  - {name: active, title: Active, tone: success, description: Works here.}
+  - {name: left, title: Left, tone: neutral, description: No longer works here.}
+actions: [offboard, rehire]
+
+access:
+  - {role: staff, read: own}
+  - {role: manager, read: team}
+  - {role: hradmin, read: all, create: true, edit: true, archive: true}
+  - {role: finance, read: all}
+
+view:
+  version: 1
+  layout: table
+  columns: [fullname, department, designation, reportsto, employmenttype, joined, account]
+  sort: [{sortKey: fullname, direction: ascending}]
+  lanes: ""
+  group: department
+  filters: []
+  search: ""

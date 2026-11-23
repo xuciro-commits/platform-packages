@@ -1,0 +1,9 @@
+title: Cancel leave
+description: Cancel approved leave; its days go back to the allowance.
+from: [approved]
+roles: [hradmin]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'canceled'"

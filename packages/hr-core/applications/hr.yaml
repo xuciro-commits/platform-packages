@@ -1,0 +1,19 @@
+name: hr
+title: HR
+icon: users
+pages: [hr.leave, hr.claim, hr.allocation, hr.employee, hr.leavetype, hr.expensetype, hr.designation, hr.employmenttype]
+groups:
+  - {title: Requests, pages: [hr.leave, hr.claim]}
+  - {title: People, pages: [hr.employee, hr.allocation]}
+  - title: Settings
+    layout: settings
+    roles: [hradmin]
+    pages: [hr.leavetype, hr.expensetype, hr.designation, hr.employmenttype]
+dashboard:
+  - {title: Leave waiting for approval, kind: metric, object: hr.leave, domain: [[state, "=", pending]]}
+  - {title: Claims waiting for approval, kind: metric, object: hr.claim, domain: [[state, "=", pending]]}
+  - {title: Approved claims to pay, kind: metric, object: hr.claim, domain: [[state, "=", approved]], measure: "sum:approved"}
+  - {title: Active employees, kind: metric, object: hr.employee, domain: [[state, "=", active]]}
+  - {title: Leave days by type, kind: bar, object: hr.leave, domain: [[state, "=", approved]], group: leavetype, measure: "sum:days"}
+  - {title: Claims by state, kind: share, object: hr.claim, group: state}
+  - {title: Leave taken by month, kind: line, object: hr.leave, domain: [[state, "=", approved]], group: "fromdate:month", measure: "sum:days"}

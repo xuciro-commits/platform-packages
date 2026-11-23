@@ -1,0 +1,42 @@
+name: claim
+namespace: hr
+title: Expense claim
+plural: Expense claims
+icon: banknotes
+display: purpose
+naming: EXP-{year}-{n:5}
+scope: {owner: applicant}
+sets: {lines: hr.claimline}
+
+fields:
+  - {name: purpose, title: Purpose, type: text, required: true, search: true, group: Claim}
+  - {name: employee, title: Employee, type: reference, ref: hr.employee, inverse: claims, required: true, group: Claim}
+  - {name: items, title: Expenses, type: integer, formula: count(lines), group: Totals}
+  - {name: claimed, title: Claimed, type: money, formula: sum(lines.amount), group: Totals}
+  - {name: approved, title: Approved amount, type: money, formula: sum(lines.approved), group: Totals}
+  - {name: paiddate, title: Paid on, type: date, readOnly: true, when: state=paid, group: Payment}
+  - {name: applicant, title: Applicant, type: member, default: member, aside: true}
+
+states:
+  - {name: draft, title: Draft, tone: neutral, description: Being written.}
+  - {name: pending, title: Waiting for approval, tone: warning, description: With the manager.}
+  - {name: approved, title: Approved, tone: info, description: Waiting for payment.}
+  - {name: rejected, title: Rejected, tone: danger, description: Can be revised and submitted again.}
+  - {name: paid, title: Paid, tone: success, description: Paid to the employee.}
+actions: [submit, revise, pay]
+
+access:
+  - {role: staff, read: own, create: true, edit: true}
+  - {role: manager, read: team}
+  - {role: hradmin, read: all, create: true, edit: true, archive: true}
+  - {role: finance, read: all}
+
+view:
+  version: 1
+  layout: board
+  lanes: state
+  columns: [purpose, employee, claimed, approved, applicant, paiddate]
+  sort: [{sortKey: created, direction: descending}]
+  group: none
+  filters: []
+  search: ""

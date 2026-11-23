@@ -1,0 +1,29 @@
+id: hr-core
+version: 0.1.0
+title: HR
+namespace: hr
+description: Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager,
+  and claims paid by finance.
+listing:
+  industries:
+  - general
+  capabilities:
+  - hr
+  keywords:
+  - employee
+  - leave
+  - allowance
+  - expense
+  - approval
+  stage: preview
+  source:
+    ecosystem: frappe
+    app: hrms
+    version: v15.x
+    license: GPL-3.0
+    relation: redesign
+roots:
+- app: build
+  kind: app
+  name: hr
+artifact: hr-core.json
