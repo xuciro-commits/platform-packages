@@ -3,9 +3,9 @@
   "package": "helpdesk",
   "version": "0.2.0",
   "requires": [
-    "party@^0.1.0"
+    "party@^0.2.0"
   ],
-  "artifact": "sha256:d5fb5f4f518a4aa38b2b6439d74a3747f142d7ede40c584ebd49486d1fd3a80a",
+  "artifact": "sha256:f58eb3b9359f87391f210bc1130ee6073172e1335c58147c025db04e790bc61e",
   "assets": {
     "app/helpdesk": {
       "digest": "sha256:dc0923ffb798a15275864b86812161fa043616e51ebbb25fb95d75ac6620348f",

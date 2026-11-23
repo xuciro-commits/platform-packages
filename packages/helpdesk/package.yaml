@@ -30,4 +30,4 @@ roots:
   name: helpdesk
 artifact: helpdesk.json
 requires:
-- party@^0.1.0
+- party@^0.2.0
