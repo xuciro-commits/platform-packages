@@ -1,48 +1,60 @@
 records:
+  - type: party.organization
+    id: demo-hd-org-1
+    values:
+      name: Aurora Cloud Systems
+      website: https://aurora-cloud.example
   - type: helpdesk.customer
     id: demo-customer-1
     values:
-      name: Aurora Cloud Systems
+      base: demo-hd-org-1
       tier: enterprise
-      domain: aurora-cloud.example
       notes: Enterprise SLA customer with SSO and regional failover enabled.
+  - type: party.organization
+    id: demo-hd-org-2
+    values:
+      name: Meridian Retail Group
+      website: https://meridian-retail.example
   - type: helpdesk.customer
     id: demo-customer-2
     values:
-      name: Meridian Retail Group
+      base: demo-hd-org-2
       tier: premium
-      domain: meridian-retail.example
       notes: Uses automated billing exports and weekly inventory syncs.
+  - type: party.organization
+    id: demo-hd-org-3
+    values:
+      name: Cedar Studio Collective
+      website: https://cedar-studio.example
   - type: helpdesk.customer
     id: demo-customer-3
     values:
-      name: Cedar Studio Collective
+      base: demo-hd-org-3
       tier: standard
-      domain: cedar-studio.example
       notes: Recently onboarded team migrating support workflows from shared email.
-  - type: helpdesk.requester
-    id: demo-requester-1
+  - type: party.contact
+    id: demo-hd-contact-1
     values:
       fullname: Chen Wei
-      customer: demo-customer-1
+      organization: demo-hd-org-1
       email: chen.wei@aurora-cloud.example
-      phone: "+1-555-0201"
+      mobile: "+1-555-0201"
       jobtitle: Platform Operations Lead
-  - type: helpdesk.requester
-    id: demo-requester-2
+  - type: party.contact
+    id: demo-hd-contact-2
     values:
       fullname: Hannah Brooks
-      customer: demo-customer-2
+      organization: demo-hd-org-2
       email: hannah.brooks@meridian-retail.example
-      phone: "+1-555-0202"
+      mobile: "+1-555-0202"
       jobtitle: Finance Systems Manager
-  - type: helpdesk.requester
-    id: demo-requester-3
+  - type: party.contact
+    id: demo-hd-contact-3
     values:
       fullname: Omar Hassan
-      customer: demo-customer-3
+      organization: demo-hd-org-3
       email: omar.hassan@cedar-studio.example
-      phone: "+1-555-0203"
+      mobile: "+1-555-0203"
       jobtitle: Workspace Administrator
   - type: helpdesk.article
     id: demo-article-1
@@ -78,7 +90,7 @@ records:
       subject: SSO sign-in fails after quarterly certificate rotation
       description: Several enterprise operators receive an invalid signature error when signing in via SAML after rotating the IdP certificate this morning.
       customer: demo-customer-1
-      contact: demo-requester-1
+      contact: demo-hd-contact-1
       channel: portal
       category: access
       queue: tier2
@@ -91,7 +103,7 @@ records:
       subject: Monthly billing export missing tax breakdown column
       description: Our October invoice export includes total amounts but omits the regional tax column required by our accounting team.
       customer: demo-customer-2
-      contact: demo-requester-2
+      contact: demo-hd-contact-2
       channel: email
       category: billing
       queue: billing
@@ -104,7 +116,7 @@ records:
       subject: How to configure role-based access for external contractors
       description: We want contractors to view only assigned records without seeing internal team settings.
       customer: demo-customer-3
-      contact: demo-requester-3
+      contact: demo-hd-contact-3
       channel: chat
       category: howto
       queue: onboarding
@@ -117,7 +129,7 @@ records:
       subject: Webhook retry notifications delayed by 15 minutes
       description: Failed webhook delivery alerts are arriving in the inbox roughly 15 minutes after the third retry attempt.
       customer: demo-customer-1
-      contact: demo-requester-1
+      contact: demo-hd-contact-1
       channel: portal
       category: bug
       queue: technical
@@ -129,7 +141,7 @@ records:
       subject: Request for custom keyboard shortcut on ticket reply box
       description: Agents would like a quick shortcut to insert canned replies while drafting responses.
       customer: demo-customer-2
-      contact: demo-requester-2
+      contact: demo-hd-contact-2
       channel: portal
       category: feature
       queue: technical

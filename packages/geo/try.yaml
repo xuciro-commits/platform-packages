@@ -1,0 +1,14 @@
+roles: {geo: steward}
+at: 2026-11-23T09:00:00Z
+members:
+  clerk: {roles: {build: user}}
+steps:
+  - {read: geo.country/CN, as: clerk, show: [name, code, alpha3, numeric], expect: {code: CN, alpha3: CHN, numeric: "156"}}
+  - {read: geo.country/TW, as: clerk, show: [name], expect: {name: "Taiwan, China"}}
+  - {read: geo.division/110000, as: clerk, show: [fullname, level], expect: {fullname: 北京市, level: province}}
+  - {read: geo.division/110101, as: clerk, show: [fullname, level, parent], expect: {fullname: 北京市东城区, level: county, parent: "110000"}}
+  - {read: geo.division/130102, as: clerk, show: [fullname, parent], expect: {fullname: 河北省石家庄市长安区, parent: "130100"}}
+  - {read: geo.division/419001, as: clerk, show: [fullname, parent], expect: {fullname: 河南省济源市, parent: "410000"}}
+  - {read: geo.division/820000, as: clerk, show: [fullname, level], expect: {level: province}}
+  - {do: geo.division.create, on: geo.division/999999, as: clerk, with: {name: Test, fullname: Test, code: "999999", level: county}, refused: true}
+  - {do: geo.division.edit, on: geo.division/110101, with: {fullname: 北京市东城区}, show: [fullname]}

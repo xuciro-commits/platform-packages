@@ -1,0 +1,6 @@
+name: geo
+title: Places
+icon: globe-alt
+pages: [geo.country, geo.division]
+groups:
+  - {title: Reference data, pages: [geo.country, geo.division]}

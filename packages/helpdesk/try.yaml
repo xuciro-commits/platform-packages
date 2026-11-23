@@ -2,15 +2,22 @@ roles:
   helpdesk: supervisor
 at: 2026-11-23T09:00:00Z
 steps:
+  - do: party.organization.create
+    on: party.organization/O1
+    with: {name: Xinghe Cloud, website: https://xinghe.example}
   - do: helpdesk.customer.create
     on: helpdesk.customer/C1
-    with: {name: Xinghe Cloud, tier: enterprise, domain: xinghe.example}
-    show: [tier, opentickets, totaltickets]
-    expect: {tier: enterprise, opentickets: 0, totaltickets: 0}
-  - do: helpdesk.requester.create
-    on: helpdesk.requester/R1
-    with: {fullname: Lin Wei, customer: C1, email: lin@xinghe.example, jobtitle: Operations lead}
-    show: [fullname, customer]
+    with: {base: O1, tier: enterprise}
+    show: [title, tier, opentickets, totaltickets]
+    expect: {title: Xinghe Cloud, tier: enterprise, opentickets: 0, totaltickets: 0}
+  - do: helpdesk.customer.create
+    on: helpdesk.customer/C2
+    with: {base: O1}
+    refused: true
+  - do: party.contact.create
+    on: party.contact/P1
+    with: {fullname: Lin Wei, organization: O1, email: lin@xinghe.example, jobtitle: Operations lead}
+    show: [fullname, organization]
   - do: helpdesk.article.create
     on: helpdesk.article/KB1
     with: {title: Reset SSO token, summary: Steps to refresh expired SSO tokens., body: Revoke the expired token in admin settings and re-issue a new secret., category: access}
@@ -22,7 +29,7 @@ steps:
     expect: {state: published}
   - do: helpdesk.ticket.create
     on: helpdesk.ticket/T1
-    with: {subject: SSO login fails after certificate rotation, customer: C1, contact: R1, category: access, priority: high}
+    with: {subject: SSO login fails after certificate rotation, customer: C1, contact: P1, category: access, priority: high}
     show: [stage, owner, responsesla, resolutionsla, targetresponsehours, targetresolvehours]
     expect: {stage: new, responsesla: due, resolutionsla: due, targetresponsehours: 2, targetresolvehours: 8}
   - do: helpdesk.ticket.respond
