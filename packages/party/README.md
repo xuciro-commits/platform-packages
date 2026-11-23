@@ -7,7 +7,7 @@ CRM、服务台、采购在它上面用 `extends` 挂自己的字段（客户关
 
 | 对象 | 是什么 |
 |---|---|
-| `party.organization` 往来单位 | 名称、法定名称、税号（填了就不能重复）、行业、规模、上级单位、联系方式、联系人数 |
+| `party.organization` 往来单位 | 名称、法定名称、税号（填了就不能重复）、行业、规模、上级单位、联系方式、地址（国家和地区、行政区划、街道、邮编）、联系人数 |
 | `party.contact` 联系人 | 姓名、所在单位、职位、部门、邮箱、手机、电话、勿联系 |
 | `party.industry` 行业 | 字典，随包带 20 个常用行业 |
 
@@ -31,4 +31,4 @@ fields:
   - {name: relationship, title: Relationship, type: choice, choices: "prospect:Prospect,customer:Customer"}
 ```
 
-一个往来单位在一个应用里至多一条附属记录，建后不能改挂。设计取舍见 [DESIGN.md](DESIGN.md)。
+一个往来单位在一个应用里至多一条附属记录，建后不能改挂。地址引用基础包 `geo` 的国家和地区与中国行政区划，装 party 时会一起装上 geo。设计取舍见 [DESIGN.md](DESIGN.md)。
