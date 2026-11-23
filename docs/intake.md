@@ -47,27 +47,26 @@
 
 脚本同时是回归：`pkg check` 会跑它，CI 每个 PR 都守住主线。写法见 [源格式](format.md) 的 try.yaml 一节。
 
-## 6. 平台的坑（截至 v0.2.1）
+## 6. 平台的坑（截至 v0.2.6）
 
 | 现象 | 原因 | 怎样绕 |
 |---|---|---|
 | `{...}` 一行里的表达式被截断 | YAML 把逗号当成分隔 | 含逗号的表达式加引号 |
 | 图标显示成通用方块 | 名字不在平台的图标表里 | `pkg check` 会报；要新图标给平台提改动 |
-| 必填字段有 `default` 或 `from`，经接口新建不给就被拒 | 宿主先查必填再补默认 | 有默认或带出的字段不标必填 |
-| 表达式报“reference is undeclared” | 动作参数没有 `money` 类型 | 金额不从参数来，先改字段或取已有字段 |
-| 安装报 flow“定义与编译绑定不同” | 没有动作的 flow 要写 `actions: null` | 生成器里写 `None` |
-| 事务新建报“只在状态为 … 时适用” | 新记录在新建步骤里还没有状态 | 新建会写到的字段不加 `when: state=…` |
 | 新包装不上：“unsupported integration version 1” | v0.2.0 的 pkg 给集成资源写错首个版本 | 用 v0.2.1 的 pkg |
 | 公式报“required operand is missing” | 参与运算的字段为空 | 参与公式的金额设成必填，或用 `coalesce` 给零 |
-| 改了未发布版本的模式，`pkg lock` 拒绝 | 锁要上一版做兼容判断 | 未发布期间删掉 `package.lock.json` 重锁 |
 | 流程输入写 `source: now` | 不支持，安装不报，运行时静默失败 | 不用；只写字面量、主体与步骤 |
+| 动作的 guard 里写 `count(lines)` 报“rule collection lines is undeclared” | 动作条件读不到对象的集合 | 在对象上加公式字段 `items: count(lines)`，guard 写 `items > 0` |
+| 经理用 `read: below` 或 `unit`，安装预检报“无法检查依赖” | 这两级要记录上的单元字段与组织结构名，包里写不出 | 用 `team`；v0.2.6 起 `pkg build` 直接指名报错 |
 | 布尔字段写 `default: true` 报错 `cannot unmarshal bool into string` | `object.yaml` 的 `default` 统一按字符串解析 | 写成 `default: "true"` |
 | 事务动作报 `Transaction wrote ... more than once` | 单次事务中 `$subject` 只能被写入一次 | 合并为单个 `target: $subject` 步骤 |
 | `if()`/`coalesce()` 报 `operand/result types differ` | 引用字段（`reference`）与字面字符串不可混在同一分支 | 同类型比较，或拆成带条件字段与独立动作 |
 | 动作输入 `type: member` 传给 `coalesce(input.owner, owner)` 报类型不匹配 | 动作参数的 `member` 与记录字段 `member` 绑定规则不一致 | 改由记录右栏就地改负责人，或等待平台补齐动作 `member` 参数类型 |
-| 重开动作报 `... applies only when State is ...` | `when: state=...` 字段已有值但表达式无 `null` 清空语法 | 对允许 `reopen` 的终态只读字段省略 `when:`，保留历史供重开后对照 |
 | `pkg check -packages` 同租户多包安装报 `Managed resources are read-only` | 当前平台蓝图草稿 ID 与默认页名按对象裸名 `object.name`（未带 `namespace`）落库，不同包使用相同裸名会碰撞 | 避免与已有官方包共用裸名（如 `crm` 已用 `contact`/`stage`，`helpdesk` 改用 `requester`/`ticketstage`），CI 务必跑 `pkg check -packages` |
 
+
+v0.2.6 已修、不用再绕的：带默认或带出的必填字段可以不给；动作参数可以是 `money`；flow 的 `actions` 不写由 `pkg` 补齐；
+新建步骤按初始状态判断 `when: state=…`，带值转到别的状态不再被拒（值保留、界面隐藏）；未发布版本改模式直接 `pkg lock`。
 ## 7. 验收与发布
 
 1. `pkg check packages/<id>`；探针走完主线，每条派生值手算对一遍。

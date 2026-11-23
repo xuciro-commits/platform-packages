@@ -83,15 +83,14 @@ description: 把一个开放应用（Frappe、Odoo/OCA、Zammad、EspoCRM……�
 - intake.md：新坑进第 6 节，新套路进第 2 节；本 Skill：哪一步缺说明就补哪一步。
 - sources.md：这个能力标成已接入；平台 roadmap：新发现的缺口各记一项。
 
-## 坑（截至平台 v0.2.5）
+## 坑（截至平台 v0.2.6）
 
 | 现象 | 原因 | 怎样做 |
 |---|---|---|
 | `{...}` 一行里的表达式被截断 | YAML 把逗号当分隔 | 含逗号的表达式加引号 |
 | `set` 里写 `$subject.x` 报“has no field $subject” | 表达式按主体解析，`$subject` 被当成字段名 | 写裸名 `responsesla`，新建别的对象时也指主体；`$subject` 只整写：`target: $subject`、`target: $subject.<引用>`、`<引用>: $subject` |
-| 必填字段带 `default`/`from`，经接口新建不给就被拒 | 宿主先查必填再补默认 | 有默认或带出的字段不标必填 |
 | 公式报“required operand is missing” | 参与运算的字段为空 | 参与公式的金额设成必填，或 `coalesce` 给零 |
-| 事务新建报“只在状态为 … 时适用” | 新记录在新建步骤里还没有状态 | 新建会写到的字段不加 `when: state=…` |
-| 改了未发布版本的模式，`pkg lock` 拒绝 | 锁要上一版做兼容判断 | 未发布期间删掉 `package.lock.json` 重锁 |
 | 流程输入写 `source: now` | 不支持，运行时静默失败 | 只写字面量、主体与步骤 |
+| 动作的 guard 里写 `count(lines)` 报 “rule collection lines is undeclared” | 动作条件读不到对象的集合 | 在对象上加公式字段 `items: count(lines)`，guard 写 `items > 0` |
+| 经理用 `read: below` 或 `unit`，安装预检报“无法检查依赖” | 这两级要记录上的单元字段与组织结构名，包里写不出 | 用 `team`（本单元同事的记录）；v0.2.6 起 `pkg build` 直接指名报错 |
 | `pkg diff` 报 the changes need a minor release | 加了资源或字段而只升了补丁（1.0 以后） | 按版本规则升次版本；0.x 下补丁算次版本 |
