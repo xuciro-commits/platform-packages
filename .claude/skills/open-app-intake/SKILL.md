@@ -87,7 +87,7 @@ description: 把一个开放应用（Frappe、Odoo/OCA、Zammad、EspoCRM……�
 | 现象 | 原因 | 怎样做 |
 |---|---|---|
 | `{...}` 一行里的表达式被截断 | YAML 把逗号当分隔 | 含逗号的表达式加引号 |
-| 动作步骤里 `$subject.x` 报“has no field $subject” | 步骤 `set` 的表达式里主体字段直接写字段名 | 写 `responsesla` 而不是 `$subject.responsesla`；`$subject` 只用在 `target` |
+| `set` 里写 `$subject.x` 报“has no field $subject” | 表达式按主体解析，`$subject` 被当成字段名 | 写裸名 `responsesla`，新建别的对象时也指主体；`$subject` 只整写：`target: $subject`、`target: $subject.<引用>`、`<引用>: $subject` |
 | 必填字段带 `default`/`from`，经接口新建不给就被拒 | 宿主先查必填再补默认 | 有默认或带出的字段不标必填 |
 | 公式报“required operand is missing” | 参与运算的字段为空 | 参与公式的金额设成必填，或 `coalesce` 给零 |
 | 事务新建报“只在状态为 … 时适用” | 新记录在新建步骤里还没有状态 | 新建会写到的字段不加 `when: state=…` |
