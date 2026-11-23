@@ -5,11 +5,13 @@ plural: Employees
 icon: identification
 display: fullname
 naming: EMP-{n:5}
-scope: {owner: account}
+extends: enterprise.element
+description: "The HR side of a person in your organization. The person, with their name, sign-in account and units, is kept once in the organization; HR attaches the employment details here."
+scope: {owner: base}
 
 fields:
-  - {name: fullname, title: Full name, type: text, required: true, search: true, group: Employee}
-  - {name: account, title: Account, type: member, group: Employee, help: The member this employee signs in as.}
+  - {name: base, title: Person, type: reference, ref: enterprise.element, stereotype: ActualPerson, required: true, group: Employee}
+  - {name: fullname, title: Full name, type: text, from: base.name, search: true, group: Employee}
   - {name: department, title: Department, type: reference, ref: enterprise.element, stereotype: ActualOrganization, group: Employee}
   - {name: designation, title: Designation, type: reference, ref: hr.designation, group: Employee}
   - {name: employmenttype, title: Employment type, type: reference, ref: hr.employmenttype, group: Employee}
@@ -35,7 +37,7 @@ access:
 view:
   version: 1
   layout: table
-  columns: [fullname, department, designation, reportsto, employmenttype, joined, account]
+  columns: [fullname, department, designation, reportsto, employmenttype, joined]
   sort: [{sortKey: fullname, direction: ascending}]
   lanes: ""
   group: department

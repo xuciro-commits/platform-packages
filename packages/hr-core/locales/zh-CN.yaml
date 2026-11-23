@@ -122,3 +122,5 @@ HR: 人事
 "With the manager.": "在主管那里。"
 "Work email": "工作邮箱"
 "Works here.": "在职。"
+Person: 人员
+"The HR side of a person in your organization. The person, with their name, sign-in account and units, is kept once in the organization; HR attaches the employment details here.": 组织里一个人在人事这一侧的信息。人本身（姓名、登录账号、所属单元）只在组织里存一份，人事在这里挂上任职信息。

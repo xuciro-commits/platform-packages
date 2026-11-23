@@ -1,4 +1,4 @@
-roles: {hr: hradmin}
+roles: {hr: hradmin, enterprise: admin}
 at: 2026-11-23T09:00:00Z
 org:
   units:
@@ -16,14 +16,25 @@ members:
   wang: {roles: {build: user, hr: hradmin}}
   qian: {roles: {build: user, hr: finance}}
 steps:
-  - {do: hr.employee.create, on: hr.employee/E1, as: wang, with: {fullname: Zhou Ning, account: zhou, joined: "2024-03-01"}, show: [fullname, account, state]}
-  - {do: hr.employee.create, on: hr.employee/E2, as: wang, with: {fullname: Sun Yue, account: sun}, show: [fullname]}
+  - {do: enterprise.element.add, on: enterprise.element/P-ZHOU, with: {stereotype: ActualPerson, name: Zhou Ning}}
+  - {do: enterprise.element.add, on: enterprise.element/P-SUN, with: {stereotype: ActualPerson, name: Sun Yue}}
+  - {do: enterprise.relationship.add, on: enterprise.relationship/R-ZHOU, with: {stereotype: SignsInAs, source: "member:zhou", target: P-ZHOU}}
+  - {do: enterprise.relationship.add, on: enterprise.relationship/R-SUN, with: {stereotype: SignsInAs, source: "member:sun", target: P-SUN}}
+  - {do: hr.employee.create, on: hr.employee/E1, as: wang, with: {base: P-ZHOU, joined: "2024-03-01"}, show: [fullname, base, state], expect: {fullname: Zhou Ning, base: P-ZHOU}}
+  - {do: hr.employee.create, on: hr.employee/E2, as: wang, with: {base: P-SUN}, show: [fullname], expect: {fullname: Sun Yue}}
+  - {do: hr.employee.create, on: hr.employee/E3, as: wang, with: {base: P-ZHOU}, refused: true}
+  - {read: hr.employee/E1, as: zhou, show: [fullname]}
+  - {read: hr.employee/E2, as: zhou, refused: true}
   - do: hr.allocation.create
     on: hr.allocation/A1
     as: wang
     with: {employee: E1, leavetype: annual, validfrom: "2026-01-01", validto: "2026-12-31", days: 10}
     show: [owner, days, used, pending, available]
-    expect: {owner: zhou, available: 10}
+    expect: {owner: P-ZHOU, available: 10}
+  - {read: hr.allocation/A1, as: zhou, show: [available]}
+  - {read: hr.allocation/A1, as: li, show: [available]}
+  - {read: hr.allocation/A1, as: zhao, refused: true}
+  - {read: hr.allocation/A1, as: sun, refused: true}
   - do: hr.leave.create
     on: hr.leave/L1
     as: zhou
