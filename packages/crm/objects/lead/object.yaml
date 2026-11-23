@@ -5,7 +5,7 @@ plural: Leads
 icon: user-plus
 display: fullname
 naming: LEAD-{year}-{n:5}
-scope: {owner: owner}
+scope: {owner: owner, assigned: true}
 
 fields:
   - {name: fullname, title: Full name, type: text, required: true, search: true, group: Contact}
