@@ -1,11 +1,11 @@
 name: helpdesk
 title: Helpdesk
 icon: lifebuoy
-pages: [helpdesk.ticket, helpdesk.reply, helpdesk.customer, helpdesk.requester, helpdesk.article, helpdesk.cannedreply,
+pages: [helpdesk.ticket, helpdesk.reply, helpdesk.customer, helpdesk.article, helpdesk.cannedreply,
         helpdesk.ticketstage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
 groups:
   - {title: Support, pages: [helpdesk.ticket, helpdesk.reply]}
-  - {title: Customers, pages: [helpdesk.customer, helpdesk.requester]}
+  - {title: Customers, pages: [helpdesk.customer]}
   - {title: Knowledge, pages: [helpdesk.article, helpdesk.cannedreply]}
   - title: Settings
     layout: settings
