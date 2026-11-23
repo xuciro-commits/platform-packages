@@ -14,7 +14,7 @@ fields:
   - {name: fromdate, title: From, type: date, required: true, group: Leave}
   - {name: todate, title: To, type: date, required: true, group: Leave}
   - {name: halfday, title: Half a day, type: boolean, default: "false", group: Leave, help: The first day is half a day.}
-  - {name: days, title: Days, type: decimal, formula: "diff_days(todate, fromdate) + 1 - if(coalesce(halfday, false), 0.5, 0)", group: Leave}
+  - {name: days, title: Days, type: decimal, formula: "workdays(fromdate, todate) - if(coalesce(halfday, false), 0.5, 0)", group: Leave}
   - {name: reason, title: Reason, type: longtext, group: Leave}
   - {name: applicant, title: Applicant, type: member, default: member, aside: true}
 

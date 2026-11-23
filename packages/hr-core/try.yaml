@@ -2,9 +2,11 @@ at: 2026-11-23T09:00:00Z
 org:
   units:
     - {id: SALES, name: Sales, kind: department}
-    - {id: TEAMA, name: Sales team A, kind: team}
+    - {id: TEAMA, name: Sales team A, kind: team, calendar: office}
     - {id: OPS, name: Operations, kind: department}
   parents: {TEAMA: SALES}
+  calendars:
+    - {id: office, name: Office, workdays: [1, 2, 3, 4, 5], holidays: ["2026-11-26"]}
 members:
   zhou: {roles: {build: user, hr: staff}, units: {TEAMA: member}}
   sun: {roles: {build: user, hr: staff}, units: {OPS: member}}
@@ -24,15 +26,15 @@ steps:
   - do: hr.leave.create
     on: hr.leave/L1
     as: zhou
-    with: {allocation: A1, fromdate: "2026-11-24", todate: "2026-11-25", reason: Family matters}
+    with: {allocation: A1, fromdate: "2026-11-24", todate: "2026-11-27", reason: Family matters}
     show: [employee, leavetype, days, state]
-    expect: {employee: E1, leavetype: annual, days: 2, state: draft}
+    expect: {employee: E1, leavetype: annual, days: 3, state: draft}
   - {do: hr.leave.submit, on: hr.leave/L1, as: zhou, show: [state], expect: {state: pending}}
-  - {read: hr.allocation/A1, show: [used, pending, available], expect: {pending: 2, available: 8}}
+  - {read: hr.allocation/A1, show: [used, pending, available], expect: {pending: 3, available: 7}}
   - {approve: hr.leave/L1, as: zhao, refused: true}
   - {approve: hr.leave/L1, as: li, show: [state], expect: {state: approved}}
-  - {read: hr.allocation/A1, show: [used, pending, available], expect: {used: 2, pending: 0, available: 8}}
-  - {do: hr.leave.create, on: hr.leave/L2, as: zhou, with: {allocation: A1, fromdate: "2026-12-01", todate: "2026-12-09"}, show: [days], expect: {days: 9}}
+  - {read: hr.allocation/A1, show: [used, pending, available], expect: {used: 3, pending: 0, available: 7}}
+  - {do: hr.leave.create, on: hr.leave/L2, as: zhou, with: {allocation: A1, fromdate: "2026-12-01", todate: "2026-12-10"}, show: [days], expect: {days: 8}}
   - {do: hr.leave.submit, on: hr.leave/L2, as: zhou, refused: true}
   - {do: hr.leave.create, on: hr.leave/L3, as: zhou, with: {allocation: A1, fromdate: "2026-12-14", todate: "2026-12-14", halfday: true}, show: [days], expect: {days: 0.5}}
   - {do: hr.leave.submit, on: hr.leave/L3, as: zhou}
