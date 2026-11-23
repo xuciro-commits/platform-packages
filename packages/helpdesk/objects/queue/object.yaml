@@ -1,0 +1,26 @@
+name: queue
+namespace: helpdesk
+title: Support queue
+plural: Support queues
+icon: user-group
+display: title
+sets: {tickets: {object: helpdesk.ticket, limit: 500}}
+
+fields:
+  - {name: title, title: Queue, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer, required: true}
+  - {name: lead, title: Queue lead, type: member}
+  - {name: description, title: Description, type: longtext}
+  - {name: opentickets, title: Open tickets, type: integer, formula: "sum(tickets, if(item.state = 'open', 1, 0))"}
+
+access:
+  - {role: agent, read: all}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position, lead, opentickets, description], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: technical, title: Technical support, position: 1, description: "Product issues, bugs and troubleshooting."}
+  - {id: billing, title: Billing and account, position: 2, description: "Invoices, subscriptions and account access."}
+  - {id: onboarding, title: Onboarding and training, position: 3, description: "Setup guidance, configuration and usage questions."}
+  - {id: tier2, title: Tier 2 engineering, position: 4, description: "Escalated defects and deep investigation."}

@@ -1,0 +1,27 @@
+name: cannedreply
+namespace: helpdesk
+title: Canned reply
+plural: Canned replies
+icon: clipboard-document-list
+display: title
+naming: TPL-{year}-{n:5}
+
+fields:
+  - {name: title, title: Template title, type: text, required: true, search: true, group: Template}
+  - {name: category, title: Category, type: reference, ref: helpdesk.category, aside: true}
+  - {name: body, title: Reply body, type: longtext, required: true, group: Template}
+  - {name: active, title: Active, type: boolean, default: "true", aside: true}
+
+access:
+  - {role: agent, read: all, create: true, edit: true}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [title, category, active]
+  sort: [{sortKey: title, direction: ascending}]
+  lanes: ""
+  group: category
+  filters: []
+  search: ""

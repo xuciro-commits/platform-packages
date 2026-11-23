@@ -1,0 +1,25 @@
+name: category
+namespace: helpdesk
+title: Category
+plural: Categories
+icon: tag
+display: title
+
+fields:
+  - {name: title, title: Category, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer, required: true}
+  - {name: color, title: Color, type: choice, choices: "gray:Gray,blue:Blue,green:Green,red:Red,orange:Orange,purple:Purple,pink:Pink,amber:Amber,cyan:Cyan"}
+
+access:
+  - {role: agent, read: all}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position, color], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: bug, title: Bug report, position: 1, color: red}
+  - {id: howto, title: How-to question, position: 2, color: blue}
+  - {id: access, title: Access and permissions, position: 3, color: purple}
+  - {id: billing, title: Billing inquiry, position: 4, color: amber}
+  - {id: feature, title: Feature request, position: 5, color: green}
+  - {id: incident, title: Service outage, position: 6, color: orange}

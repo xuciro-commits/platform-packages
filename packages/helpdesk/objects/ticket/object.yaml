@@ -1,0 +1,57 @@
+name: ticket
+namespace: helpdesk
+title: Ticket
+plural: Tickets
+icon: ticket
+display: subject
+naming: TKT-{year}-{n:5}
+scope: {owner: owner}
+sets: {replies: {object: helpdesk.reply, limit: 500}}
+
+fields:
+  - {name: subject, title: Subject, type: text, required: true, search: true, group: Request}
+  - {name: description, title: Description, type: longtext, search: true, group: Request}
+  - {name: customer, title: Customer, type: reference, ref: helpdesk.customer, inverse: tickets, group: Customer}
+  - {name: contact, title: Contact, type: reference, ref: helpdesk.contact, group: Customer}
+  - {name: channel, title: Channel, type: reference, ref: helpdesk.channel, default: portal, group: Customer}
+  - {name: category, title: Category, type: reference, ref: helpdesk.category, group: Classification}
+  - {name: queue, title: Queue, type: reference, ref: helpdesk.queue, default: technical, inverse: tickets, aside: true}
+  - {name: stage, title: Stage, type: reference, ref: helpdesk.stage, default: new, aside: true}
+  - {name: priority, title: Priority, type: reference, ref: helpdesk.priority, default: medium, aside: true}
+  - {name: owner, title: Assigned agent, type: member, aside: true}
+  - {name: responseby, title: First response due, type: datetime, default: now+4h, aside: true}
+  - {name: responsesla, title: Response SLA, type: choice, default: due, aside: true, choices: "due:Due,met:Met,missed:Missed"}
+  - {name: resolveby, title: Resolution due, type: datetime, default: now+24h, aside: true}
+  - {name: resolutionsla, title: Resolution SLA, type: choice, default: due, aside: true, choices: "due:Due,met:Met,missed:Missed"}
+  - {name: targetresponsehours, title: Target response (h), type: integer, from: priority.responsehours, group: SLA targets}
+  - {name: targetresolvehours, title: Target resolution (h), type: integer, from: priority.resolvehours, group: SLA targets}
+  - {name: replycount, title: Replies, type: integer, formula: "count(replies)", group: SLA targets}
+  - {name: escalationreason, title: Escalation reason, type: longtext, readOnly: true, group: Escalation}
+  - {name: resolution, title: Resolution reason, type: reference, ref: helpdesk.resolution, readOnly: true, group: Resolution}
+  - {name: resolutionnotes, title: Resolution summary, type: longtext, readOnly: true, group: Resolution}
+  - {name: article, title: Linked article, type: reference, ref: helpdesk.article, readOnly: true, group: Resolution}
+  - {name: resolvedon, title: Resolved on, type: date, readOnly: true, group: Resolution}
+  - {name: csat, title: Satisfaction, type: choice, readOnly: true, group: Feedback, choices: "5:5 - Very satisfied,4:4 - Satisfied,3:3 - Neutral,2:2 - Dissatisfied,1:1 - Very dissatisfied"}
+  - {name: feedback, title: Customer feedback, type: longtext, readOnly: true, group: Feedback}
+  - {name: reopenreason, title: Last reopen reason, type: longtext, readOnly: true, group: Escalation}
+
+states:
+  - {name: open, title: Open, tone: info, description: Active ticket being worked by support.}
+  - {name: resolved, title: Resolved, tone: success, description: Solution provided and awaiting closure or confirmation.}
+  - {name: closed, title: Closed, tone: neutral, description: Confirmed closed with optional customer feedback.}
+actions: [respond, escalate, resolve, close, reopen]
+
+access:
+  - {role: agent, read: team, create: true, edit: true}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: board
+  lanes: stage
+  columns: [subject, customer, priority, queue, owner, responsesla, resolutionsla, resolveby]
+  sort: [{sortKey: resolveby, direction: ascending}]
+  group: none
+  filters: []
+  search: ""
+  inbox: {member: owner, due: resolveby, open: {state: [open]}}

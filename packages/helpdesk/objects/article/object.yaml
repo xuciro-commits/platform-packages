@@ -1,0 +1,35 @@
+name: article
+namespace: helpdesk
+title: Knowledge article
+plural: Knowledge base
+icon: book-open
+display: title
+naming: KB-{year}-{n:5}
+scope: {owner: author}
+
+fields:
+  - {name: title, title: Title, type: text, required: true, search: true, group: Article}
+  - {name: summary, title: Summary, type: text, search: true, group: Article}
+  - {name: body, title: Content, type: longtext, required: true, group: Article}
+  - {name: category, title: Category, type: reference, ref: helpdesk.category, aside: true}
+  - {name: author, title: Author, type: member, default: member, aside: true}
+
+states:
+  - {name: draft, title: Draft, tone: neutral, description: Being drafted and not yet published.}
+  - {name: published, title: Published, tone: success, description: Approved for support agents and customers.}
+  - {name: archived, title: Archived, tone: neutral, description: Retired from active use.}
+actions: [publish, retire, reopen]
+
+access:
+  - {role: agent, read: all, create: true, edit: true}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [title, category, author, summary]
+  sort: [{sortKey: title, direction: ascending}]
+  lanes: ""
+  group: category
+  filters: []
+  search: ""

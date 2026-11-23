@@ -1,0 +1,8 @@
+title: Archive article
+description: Retire this article from active support use.
+from: [draft, published]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'archived'"

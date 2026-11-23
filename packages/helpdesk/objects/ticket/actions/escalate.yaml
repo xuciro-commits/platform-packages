@@ -1,0 +1,13 @@
+title: Escalate ticket
+description: Escalate this ticket to a specialist queue and record why.
+from: [open]
+inputs:
+  - {name: reason, title: Escalation reason, type: longtext, required: true}
+  - {name: queue, title: Target queue, type: reference, ref: helpdesk.queue, required: true, help: Select the specialist queue to receive this ticket.}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        stage: "'escalated'"
+        queue: input.queue
+        escalationreason: input.reason

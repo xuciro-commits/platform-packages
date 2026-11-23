@@ -1,0 +1,226 @@
+{
+  "format": 2,
+  "package": "helpdesk",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:624fa64a7e2d6467f377303280766a18a947b0826fa2a5a46a847b48ad37c429",
+  "assets": {
+    "app/helpdesk": {
+      "digest": "sha256:dd726de29c2d5d09293fd46b59ff5d3131f3f431df09c1e9a0c77a26e38f004b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "flow/build.helpdeskassign": {
+      "digest": "sha256:c12b2949a611f945840e728a3f161a4c043371dc4a751b7154472882dcc8aeff",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "flow/build.helpdeskresolutionsla": {
+      "digest": "sha256:0bed4ba50be6653abe9e72fa1d09110d6f1b8cfd9bae1b27f6b3208624503372",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "flow/build.helpdeskresponded": {
+      "digest": "sha256:53bca0004574e521ad52de48d9fca0096835fe7cf8fc654d1037d619065b7cc8",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "flow/build.helpdeskresponsesla": {
+      "digest": "sha256:934eaa411cd2c4fd34f8ed46561bd6e62acf2500a4a3b5f605244118eddde48d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/helpdesk.article": {
+      "digest": "sha256:29c979a3312bc99d4b4cc9f449f95aee0b60b7d21ff3c1157294e3b201a2e1cb",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.0c3ca35f6d6c35b6d643b5f63d7f826063934672c4a7ae30f26394792c15b2de",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.cannedreply": {
+      "digest": "sha256:6388527a0aa68c10718bbec21c8b74d08928bfe58d2b369f6c3cbf97e4f24807",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.5c96a11620a01ab0f602a29f9c4cee2d207ce4c038486668db680852c1bef161",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.category": {
+      "digest": "sha256:5e52f1f0f40dbd07a4e2e61079e0b15f8f906c33a71d5d786a08888cf821084b",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.6c96d2a0c260ce65950b8650e4a03193c8e21a3f65137ee0b46979bc40636fd7",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.channel": {
+      "digest": "sha256:441f454e84a8c70125e05208f3309bbbe5313c6472d6cc2c57e17f9629bb96c8",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.98886c9007bb97080c851ef57b72bcb27606de5cb3ac45aba0374d6381218b66",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.contact": {
+      "digest": "sha256:a7b5b8c3bd0ff9f2965e25f3fd917b995afa4231199b6a92ac66200c2e97ceaa",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.73057bea8b95fc723e782b78a24b8279b334a22cafcfe3e0d9d32d0a5aa91330",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.customer": {
+      "digest": "sha256:12c8830cf38e8e3ad04deca909ed7276f020b13ac71d1ea195640f60d56b7447",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.736feb36cd39657cc2653c1a33aeb3c7bc4d8717883f5298ad82eeee94798422",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.priority": {
+      "digest": "sha256:57ef5714e63da781840873ea7c084d04e4ad6c51596000ddb64af0cf9aa491d6",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.eb6efe10b309c7bac952d314f5c2a6a6ce5d991132c5dca15d7e8f57332ccb6a",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.queue": {
+      "digest": "sha256:acbead080f4b5c44c3e9140cc6ead1c61899c248eee0d3eccd6195acc326c15a",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.879c143df9b6c80bf67f9264611b981b9e68c19f0c191fd524c1069c1c77bb71",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.reply": {
+      "digest": "sha256:3a2a97e5069365d7b61e362a02bd48b76d042209de97df6527f8607cc5d19e8c",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.fc61c9f55e85a61d68df10cb08a51dd6d0fea0b32897f902e6e05497038b4330",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.resolution": {
+      "digest": "sha256:e13b6b3367cf289e665cc3102b7d7a1b4f1bb9e8fd4ab353c6f36fe79652b32a",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.7a840fd026d196b8c5a476ac3c7b1ac9f927524943530c0d21ea4306add64edf",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.stage": {
+      "digest": "sha256:e3354d8593fe5f1f6cbd4d0880ac50e477a95262db659212e22177541fe717ce",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.c27bd1f9cfb11eb574bc32a06eadd55626b76627e049987322b586f5474e0259",
+          "family": 1
+        }
+      ]
+    },
+    "object/helpdesk.ticket": {
+      "digest": "sha256:8c8dc06242cb987ed81ad2e6bc7d3147d278da243610b4477d48e62578bf3ee6",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.1398496130babd5f63434ce0af5c63d629ac43714ea9013d303986167f9b6fbd",
+          "family": 1
+        }
+      ]
+    },
+    "page/helpdesk.article": {
+      "digest": "sha256:9ca55cd99d98a4f0ae2c90631d4fba643b7c8c98ad1e5e8fe9297440494f6df5",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.cannedreply": {
+      "digest": "sha256:5eaec0e988badd0534550f590dc6fe6ec364b783bdd704ff383a092678383f84",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.category": {
+      "digest": "sha256:b10b5ce47fd1d84c07bff4575d0917d04c010f7e3840b579bc371e261d3dc374",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.channel": {
+      "digest": "sha256:7983a32edda2513ada05b1caf411a175157141078070de2b32ad836374de6164",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.contact": {
+      "digest": "sha256:6221b6cfde8a66e1900f48b41730c5fd875c51366505d6543577264288ddfdbb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.customer": {
+      "digest": "sha256:c988acdb0c1ab8e37293a1c2823c4619d888b151fed2d3b8b22f113eee706360",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.priority": {
+      "digest": "sha256:d78b169fd213450653a6865278845f2ec46c6ff73e7510b9e434c5b11f12c604",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.queue": {
+      "digest": "sha256:68e48c7488ccd27cca19a252f32ad0982aebf43afe657746a1b73648432039df",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.reply": {
+      "digest": "sha256:20a4e830863edb3d8cc318a824c16a00d90d03b4be525f25a56b6c06cad54c98",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.resolution": {
+      "digest": "sha256:fff286719714f4663e4fa535197490fd3ec317110af456eaf8f961d399940873",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.stage": {
+      "digest": "sha256:feca04c7b741a6d0476985e55aa85d000c96c8cf5dde861de8b25c65518116ab",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.ticket": {
+      "digest": "sha256:8dd8bee2804aa1b539d006ec51538b78de2807ac8277d3a5962b0feb8d88b3de",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

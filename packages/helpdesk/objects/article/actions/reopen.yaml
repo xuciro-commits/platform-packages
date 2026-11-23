@@ -1,0 +1,8 @@
+title: Return to draft
+description: Reopen an archived knowledge article as a draft.
+from: [archived]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'draft'"

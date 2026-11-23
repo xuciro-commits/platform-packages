@@ -1,0 +1,29 @@
+name: reply
+namespace: helpdesk
+title: Ticket reply
+plural: Ticket replies
+icon: chat-bubble-left-right
+display: summary
+naming: RPL-{year}-{n:5}
+scope: {owner: author}
+
+fields:
+  - {name: ticket, title: Ticket, type: reference, ref: helpdesk.ticket, required: true, inverse: replies, group: Reply}
+  - {name: summary, title: Summary, type: text, required: true, search: true, group: Reply}
+  - {name: body, title: Message, type: longtext, required: true, group: Reply}
+  - {name: visibility, title: Visibility, type: choice, default: public, aside: true, choices: "public:Public reply,internal:Internal note"}
+  - {name: author, title: Author, type: member, default: member, aside: true}
+
+access:
+  - {role: agent, read: team, create: true, edit: true}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [summary, ticket, visibility, author]
+  sort: [{sortKey: summary, direction: ascending}]
+  lanes: visibility
+  group: none
+  filters: []
+  search: ""

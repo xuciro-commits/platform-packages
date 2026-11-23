@@ -1,0 +1,22 @@
+title: Reply to ticket
+description: Record a public customer reply or an internal note; a public reply marks first response as met.
+from: [open]
+inputs:
+  - {name: summary, title: Reply summary, type: text, required: true}
+  - {name: body, title: Message, type: longtext, required: true}
+  - {name: visibility, title: Visibility, type: choice, choices: "public:Public reply,internal:Internal note", help: Defaults to public reply.}
+  - {name: waiting, title: Wait for customer, type: boolean, help: Move the ticket to Waiting on customer after a public reply.}
+transaction:
+  steps:
+    - name: reply
+      target: helpdesk.reply
+      set:
+        ticket: $subject
+        summary: input.summary
+        body: input.body
+        visibility: "coalesce(input.visibility, 'public')"
+    - target: $subject
+      when: "coalesce(input.visibility, 'public') = 'public'"
+      set:
+        stage: "if(input.waiting = true, 'waiting', 'inprogress')"
+        responsesla: "if(responsesla = 'due', 'met', responsesla)"

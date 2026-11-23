@@ -1,0 +1,8 @@
+title: Publish article
+description: Publish this knowledge base article for support agents and customers.
+from: [draft]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'published'"

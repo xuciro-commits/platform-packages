@@ -1,0 +1,199 @@
+Helpdesk: 售后中心
+Support: 工单支持
+Customers: 客户档案
+Knowledge: 知识与模板
+Settings: 设置
+Ticket: 工单
+Tickets: 工单
+Ticket reply: 工单回复
+Ticket replies: 工单回复
+Knowledge article: 知识文章
+Knowledge base: 知识库
+Canned reply: 常用回复
+Canned replies: 常用回复
+Customer: 客户
+Contact: 联系人
+Contacts: 联系人
+Ticket stage: 处理阶段
+Ticket stages: 处理阶段
+Priority: 优先级
+Priorities: 优先级
+Support queue: 客服队列
+Support queues: 客服队列
+Category: 问题分类
+Categories: 问题分类
+Channel: 来源渠道
+Channels: 来源渠道
+Resolution reason: 解决根因
+Resolution reasons: 解决根因
+Subject: 主题
+Description: 问题描述
+Customer name: 客户名称
+Service tier: 服务等级
+Standard: 标准
+Premium: 高级
+Enterprise: 专属
+Domain: 域名
+Account manager: 专属负责人
+Support notes: 支持备注
+Open tickets: 开放工单数
+Total tickets: 累计工单数
+Summary: 摘要
+Full name: 姓名
+Email: 邮箱
+Phone: 手机
+Job title: 职务
+Template title: 模板标题
+Reply body: 回复正文
+Active: 启用
+Template: 模板
+Title: 标题
+Content: 正文
+Author: 作者
+Article: 文章
+Draft: 草稿
+Published: 已发布
+Archived: 已归档
+Being drafted and not yet published.: 草稿编写中，尚未发布。
+Approved for support agents and customers.: 已发布，可供客服与客户查阅。
+Retired from active use.: 已归档停用。
+Publish article: 发布文章
+Publish this knowledge base article for support agents and customers.: 发布这篇知识库文章，供客服与客户查阅。
+Archive article: 归档文章
+Retire this article from active use.: 将这篇知识库文章归档停用。
+Return to draft: 退回草稿
+Reopen an archived knowledge article as a draft.: 将已归档的知识文章重新打开为草稿。
+Reply: 回复
+Message: 消息内容
+Visibility: 可见性
+Public reply: 对外回复
+Internal note: 内部备注
+Request: 工单内容
+Classification: 分类
+Queue: 队列
+Stage: 阶段
+Assigned agent: 负责客服
+First response due: 首次响应截止
+Response SLA: 首次响应时限
+Resolution due: 解决截止
+Resolution SLA: 解决时限
+Due: 待达标
+Met: 已达标
+Missed: 已超时
+SLA targets: 时限目标
+Target response (h): 目标响应（小时）
+Target resolution (h): 目标解决（小时）
+Replies: 回复数
+Escalation: 升级与重开
+Escalation reason: 升级原因
+Resolution: 解决结论
+Resolution summary: 解决说明
+Linked article: 关联知识文章
+Resolved on: 解决日期
+Feedback: 客户评价
+Satisfaction: 满意度
+Customer satisfaction: 客户满意度
+Customer feedback: 客户反馈
+5 - Very satisfied: 5 - 非常满意
+4 - Satisfied: 4 - 满意
+3 - Neutral: 3 - 一般
+2 - Dissatisfied: 2 - 不满意
+1 - Very dissatisfied: 1 - 非常不满意
+Last reopen reason: 最近重开原因
+Open: 进行中
+Resolved: 已解决
+Closed: 已关闭
+Active ticket being worked by support.: 客服正在处理中的工单。
+Solution provided and awaiting closure or confirmation.: 已提供解决方案，待确认关闭。
+Confirmed closed with optional customer feedback.: 已确认关闭并记录客户反馈。
+Reply to ticket: 回复客户
+Record a public customer reply or an internal note; a public reply marks first response as met.: 记录一条对外回复或内部备注；发送对外回复将自动达标首次响应时限。
+Reply summary: 回复摘要
+Defaults to public reply.: 默认为对外回复。
+Wait for customer: 转为等待客户
+Move the ticket to Waiting on customer after a public reply.: 发送对外回复后将工单移至「等待客户」阶段。
+Escalate ticket: 升级工单
+Escalate this ticket to a specialist queue and record why.: 将工单升级至专项队列并记录原因。
+Target queue: 目标队列
+Defaults to Tier 2 engineering.: 默认转入「二线研发支持」。
+Reassign to: 改派给
+Leave empty to keep the current agent.: 留空则保持当前负责客服。
+Resolve ticket: 解决工单
+Mark this ticket as resolved with a structured root cause and summary.: 填写结构化解决根因与说明，将工单标记为已解决。
+Linked knowledge article: 关联知识文章
+Close ticket: 关闭工单
+Close a resolved ticket and optionally record customer satisfaction.: 关闭已解决工单，并可选记录客户满意度与反馈。
+Reopen ticket: 重新打开
+Reopen a resolved or closed ticket and move it back to In progress.: 重新打开已解决或已关闭的工单，并回到「处理中」阶段。
+Reopen reason: 重开原因
+Position: 顺序
+Color: 颜色
+Gray: 灰
+Blue: 蓝
+Green: 绿
+Red: 红
+Orange: 橙
+Purple: 紫
+Pink: 粉
+Amber: 琥珀
+Cyan: 青
+Response target (h): 响应目标（小时）
+Resolution target (h): 解决目标（小时）
+Queue lead: 队列负责人
+Reason: 原因
+New: 待受理
+In progress: 处理中
+Waiting on customer: 等待客户
+Escalated: 已升级
+Urgent: 紧急
+High: 高
+Medium: 中
+Low: 低
+Technical support: 技术支持
+Billing and account: 账务与账号
+Onboarding and training: 实施与培训
+Tier 2 engineering: 二线研发支持
+Bug report: 产品缺陷
+How-to question: 使用咨询
+Access and permissions: 权限与账号
+Billing inquiry: 账单问题
+Feature request: 功能建议
+Service outage: 服务故障
+Customer portal: 客户门户
+Live chat: 在线客服
+Internal escalation: 内部转单
+Fixed in product: 产品修复
+Explained usage: 使用指导
+Configuration adjusted: 配置调整
+Workaround provided: 临时方案
+Duplicate ticket: 重复工单
+Out of scope: 超出范围
+Escalated tickets: 已升级工单
+Missed response SLA: 响应超时工单
+Resolved tickets: 已解决工单
+Open tickets by stage: 各阶段开放工单
+Open tickets by priority: 各优先级开放工单
+Open tickets by queue: 各队列开放工单
+Open tickets by agent: 各客服在手工单
+Response SLA compliance: 首次响应达标率
+Tickets by channel: 工单来源渠道
+New tickets by month: 每月新增工单
+Assign new tickets evenly: 新工单自动均衡派单
+Record first response: 自动记录首次响应
+Watch first response SLA: 监控首次响应时限
+Watch resolution SLA: 监控解决时限
+First response SLA missed: 首次响应已超时
+This ticket passed its first response deadline without a reply.: 该工单已超过首次响应截止时间仍未回复。
+Resolution SLA missed: 工单解决已超时
+This ticket passed its resolution deadline without being resolved.: 该工单已超过解决截止时间仍未解决。
+Newly logged and waiting for first response.: 新建工单，等待首次响应。
+Actively investigated by an agent.: 客服正在积极排查处理中。
+Awaiting additional information or confirmation from the customer.: 等待客户补充信息或确认结果。
+Escalated to specialist or second-line support.: 已升级至专项或二线研发支持。
+"Product issues, bugs and troubleshooting.": 产品使用问题、故障与排障支持。
+"Invoices, subscriptions and account access.": 发票、订阅与账号访问支持。
+"Setup guidance, configuration and usage questions.": 初始化引导、配置与使用咨询。
+Escalated defects and deep investigation.: 已升级的缺陷排查与深度技术支持。
+Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.: 面向售后与客户支持的工单系统，内置首次响应与解决双时限、均衡派单、结构化升级与解决、客户满意度、常用回复模板与知识库。
+Retire this article from active support use.: 将这篇知识库文章从活跃支持中归档停用。
+Select the specialist queue to receive this ticket.: 选择接收该升级工单的专项队列。

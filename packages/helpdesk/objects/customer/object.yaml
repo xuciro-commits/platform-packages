@@ -1,0 +1,33 @@
+name: customer
+namespace: helpdesk
+title: Customer
+plural: Customers
+icon: building-office-2
+display: name
+naming: CUST-{year}-{n:5}
+sets:
+  tickets: {object: helpdesk.ticket, limit: 500}
+  contacts: {object: helpdesk.contact, limit: 200}
+
+fields:
+  - {name: name, title: Customer name, type: text, required: true, search: true, group: Customer}
+  - {name: tier, title: Service tier, type: choice, default: standard, aside: true, choices: "standard:Standard,premium:Premium,enterprise:Enterprise"}
+  - {name: domain, title: Domain, type: text, search: true, group: Customer}
+  - {name: owner, title: Account manager, type: member, default: member, aside: true}
+  - {name: notes, title: Support notes, type: longtext, group: Customer}
+  - {name: opentickets, title: Open tickets, type: integer, group: Summary, formula: "sum(tickets, if(item.state = 'open', 1, 0))"}
+  - {name: totaltickets, title: Total tickets, type: integer, group: Summary, formula: "count(tickets)"}
+
+access:
+  - {role: agent, read: all, create: true, edit: true}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [name, tier, opentickets, totaltickets, owner, domain]
+  sort: [{sortKey: name, direction: ascending}]
+  lanes: tier
+  group: none
+  filters: []
+  search: ""

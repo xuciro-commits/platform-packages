@@ -1,0 +1,11 @@
+name: build.helpdeskresponded
+subject: {app: build, kind: object, name: helpdesk.ticket}
+actions: [{app: build, kind: action, name: helpdesk.ticket.edit}]
+definition:
+  name: helpdeskresponded
+  title: Record first response
+  kind: automation
+  object: helpdesk.ticket
+  trigger: subject.stage != 'new' and subject.responsesla = 'due'
+  steps:
+    - {name: respond, kind: action, act: edit, inputs: {responsesla: {source: literal, value: met}}}

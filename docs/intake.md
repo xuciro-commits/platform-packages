@@ -62,6 +62,12 @@
 | 改了未发布版本的模式，`pkg lock` 拒绝 | 锁要上一版做兼容判断 | 未发布期间删掉 `package.lock.json` 重锁 |
 | 流程输入写 `source: now` | 不支持，安装不报，运行时静默失败 | 不用；只写字面量、主体与步骤 |
 
+| 布尔字段写 `default: true` 报错 `cannot unmarshal bool into string` | `object.yaml` 的 `default` 统一按字符串解析 | 写成 `default: "true"` |
+| 事务动作报 `Transaction wrote ... more than once` | 单次事务中 `$subject` 只能被写入一次 | 合并为单个 `target: $subject` 步骤 |
+| `if()`/`coalesce()` 报 `operand/result types differ` | 引用字段（`reference`）与字面字符串不可混在同一分支 | 同类型比较，或拆成带条件字段与独立动作 |
+| 动作输入 `type: member` 传给 `coalesce(input.owner, owner)` 报类型不匹配 | 动作参数的 `member` 与记录字段 `member` 绑定规则不一致 | 改由记录右栏就地改负责人，或等待平台补齐动作 `member` 参数类型 |
+| 重开动作报 `... applies only when State is ...` | `when: state=...` 字段已有值但表达式无 `null` 清空语法 | 对允许 `reopen` 的终态只读字段省略 `when:`，保留历史供重开后对照 |
+
 ## 7. 验收与发布
 
 1. `pkg check packages/<id>`；探针走完主线，每条派生值手算对一遍。

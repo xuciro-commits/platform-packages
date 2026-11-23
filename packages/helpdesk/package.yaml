@@ -1,0 +1,31 @@
+id: helpdesk
+version: 0.1.0
+title: Helpdesk
+namespace: helpdesk
+description: Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.
+listing:
+  industries:
+  - general
+  capabilities:
+  - service
+  - knowledge
+  keywords:
+  - helpdesk
+  - support
+  - ticket
+  - sla
+  - knowledge-base
+  - csat
+  - escalation
+  stage: preview
+  source:
+    ecosystem: frappe
+    app: helpdesk
+    version: v1.x
+    license: AGPL-3.0
+    relation: redesign
+roots:
+- app: build
+  kind: app
+  name: helpdesk
+artifact: helpdesk.json

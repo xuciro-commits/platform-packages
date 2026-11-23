@@ -1,0 +1,18 @@
+name: build.helpdeskresolutionsla
+subject: {app: build, kind: object, name: helpdesk.ticket}
+actions: [{app: build, kind: action, name: helpdesk.ticket.edit}]
+definition:
+  name: helpdeskresolutionsla
+  title: Watch resolution SLA
+  kind: flow
+  object: helpdesk.ticket
+  when: open
+  steps:
+    - {name: deadline, kind: wait, waitUntil: {source: subject, path: [resolveby]}, next: pending}
+    - {name: pending, kind: switch, value: {source: subject, path: [resolutionsla]}, cases: {due: missed}, next: done}
+    - {name: missed, kind: action, act: edit, inputs: {resolutionsla: {source: literal, value: missed}}, next: tell}
+    - name: tell
+      kind: notify
+      notify: {title: Resolution SLA missed, body: This ticket passed its resolution deadline without being resolved., field: owner}
+      next: done
+    - {name: done, kind: end}

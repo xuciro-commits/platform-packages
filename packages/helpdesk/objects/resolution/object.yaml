@@ -1,0 +1,24 @@
+name: resolution
+namespace: helpdesk
+title: Resolution reason
+plural: Resolution reasons
+icon: check-circle
+display: title
+
+fields:
+  - {name: title, title: Reason, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer, required: true}
+
+access:
+  - {role: agent, read: all}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: fixed, title: Fixed in product, position: 1}
+  - {id: guidance, title: Explained usage, position: 2}
+  - {id: config, title: Configuration adjusted, position: 3}
+  - {id: workaround, title: Workaround provided, position: 4}
+  - {id: duplicate, title: Duplicate ticket, position: 5}
+  - {id: wontfix, title: Out of scope, position: 6}

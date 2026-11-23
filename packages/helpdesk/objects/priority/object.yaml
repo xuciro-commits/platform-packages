@@ -1,0 +1,25 @@
+name: priority
+namespace: helpdesk
+title: Priority
+plural: Priorities
+icon: fire
+display: title
+
+fields:
+  - {name: title, title: Priority, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer, required: true}
+  - {name: responsehours, title: Response target (h), type: integer, required: true}
+  - {name: resolvehours, title: Resolution target (h), type: integer, required: true}
+  - {name: color, title: Color, type: choice, choices: "gray:Gray,blue:Blue,green:Green,red:Red,orange:Orange,purple:Purple,pink:Pink,amber:Amber,cyan:Cyan"}
+
+access:
+  - {role: agent, read: all}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position, responsehours, resolvehours, color], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: urgent, title: Urgent, position: 1, responsehours: 1, resolvehours: 4, color: red}
+  - {id: high, title: High, position: 2, responsehours: 2, resolvehours: 8, color: orange}
+  - {id: medium, title: Medium, position: 3, responsehours: 4, resolvehours: 24, color: amber}
+  - {id: low, title: Low, position: 4, responsehours: 8, resolvehours: 72, color: gray}

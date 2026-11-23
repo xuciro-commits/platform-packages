@@ -1,0 +1,18 @@
+title: Resolve ticket
+description: Mark this ticket as resolved with a structured root cause and summary.
+from: [open]
+inputs:
+  - {name: resolution, title: Resolution reason, type: reference, ref: helpdesk.resolution, required: true}
+  - {name: notes, title: Resolution summary, type: longtext, required: true}
+  - {name: article, title: Linked knowledge article, type: reference, ref: helpdesk.article}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'resolved'"
+        resolution: input.resolution
+        resolutionnotes: input.notes
+        article: input.article
+        resolvedon: today()
+        responsesla: "if(responsesla = 'due', 'met', responsesla)"
+        resolutionsla: "if(resolutionsla = 'due', 'met', resolutionsla)"

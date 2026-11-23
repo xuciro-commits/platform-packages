@@ -1,0 +1,12 @@
+title: Reopen ticket
+description: Reopen a resolved or closed ticket and move it back to In progress.
+from: [resolved, closed]
+inputs:
+  - {name: reason, title: Reopen reason, type: longtext, required: true}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'open'"
+        stage: "'inprogress'"
+        reopenreason: input.reason

@@ -1,0 +1,24 @@
+name: stage
+namespace: helpdesk
+title: Ticket stage
+plural: Ticket stages
+icon: queue-list
+display: title
+
+fields:
+  - {name: title, title: Stage, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer, required: true}
+  - {name: color, title: Color, type: choice, choices: "gray:Gray,blue:Blue,green:Green,red:Red,orange:Orange,purple:Purple,pink:Pink,amber:Amber,cyan:Cyan"}
+  - {name: description, title: Description, type: longtext}
+
+access:
+  - {role: agent, read: all}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position, color, description], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: new, title: New, position: 1, color: blue, description: Newly logged and waiting for first response.}
+  - {id: inprogress, title: In progress, position: 2, color: cyan, description: Actively investigated by an agent.}
+  - {id: waiting, title: Waiting on customer, position: 3, color: amber, description: Awaiting additional information or confirmation from the customer.}
+  - {id: escalated, title: Escalated, position: 4, color: red, description: Escalated to specialist or second-line support.}

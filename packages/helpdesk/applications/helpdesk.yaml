@@ -1,0 +1,32 @@
+name: helpdesk
+title: Helpdesk
+icon: lifebuoy
+pages: [helpdesk.ticket, helpdesk.reply, helpdesk.customer, helpdesk.contact, helpdesk.article, helpdesk.cannedreply,
+        helpdesk.stage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
+groups:
+  - {title: Support, pages: [helpdesk.ticket, helpdesk.reply]}
+  - {title: Customers, pages: [helpdesk.customer, helpdesk.contact]}
+  - {title: Knowledge, pages: [helpdesk.article, helpdesk.cannedreply]}
+  - title: Settings
+    layout: settings
+    roles: [supervisor]
+    pages: [helpdesk.stage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
+dashboard:
+  - {title: Open tickets, kind: metric, object: helpdesk.ticket, domain: [[state, "=", open]]}
+  - {title: Escalated tickets, kind: metric, object: helpdesk.ticket, domain: [[state, "=", open], [stage, "=", escalated]]}
+  - {title: Missed response SLA, kind: metric, object: helpdesk.ticket, domain: [[responsesla, "=", missed]]}
+  - {title: Resolved tickets, kind: metric, object: helpdesk.ticket, domain: [[state, in, [resolved, closed]]]}
+  - {title: Open tickets by stage, kind: funnel, object: helpdesk.ticket, domain: [[state, "=", open]], group: stage}
+  - {title: Open tickets by priority, kind: bar, object: helpdesk.ticket, domain: [[state, "=", open]], group: priority}
+  - {title: Open tickets by queue, kind: bar, object: helpdesk.ticket, domain: [[state, "=", open]], group: queue}
+  - {title: Open tickets by agent, kind: bar, object: helpdesk.ticket, domain: [[state, "=", open]], group: owner}
+  - {title: Resolution reasons, kind: share, object: helpdesk.ticket, domain: [[state, in, [resolved, closed]]], group: resolution}
+  - {title: Response SLA compliance, kind: share, object: helpdesk.ticket, group: responsesla}
+  - {title: Tickets by channel, kind: share, object: helpdesk.ticket, group: channel}
+  - {title: Customer satisfaction, kind: share, object: helpdesk.ticket, domain: [[state, "=", closed]], group: csat}
+  - {title: New tickets by month, kind: line, object: helpdesk.ticket, group: "created:month"}
+resources:
+  - {app: build, kind: flow, name: build.helpdeskassign}
+  - {app: build, kind: flow, name: build.helpdeskresponded}
+  - {app: build, kind: flow, name: build.helpdeskresponsesla}
+  - {app: build, kind: flow, name: build.helpdeskresolutionsla}

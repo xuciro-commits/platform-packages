@@ -1,0 +1,15 @@
+name: build.helpdeskassign
+subject: {app: build, kind: object, name: helpdesk.ticket}
+actions: [{app: build, kind: action, name: helpdesk.ticket.edit}]
+definition:
+  name: helpdeskassign
+  title: Assign new tickets evenly
+  kind: automation
+  object: helpdesk.ticket
+  trigger: empty(subject.owner) and subject.stage = 'new'
+  steps:
+    - name: assign
+      kind: action
+      act: edit
+      balance:
+        owner: {app: helpdesk, role: agent, open: {state: [open]}}

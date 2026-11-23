@@ -1,0 +1,13 @@
+title: Close ticket
+description: Close a resolved ticket and optionally record customer satisfaction.
+from: [resolved]
+inputs:
+  - {name: csat, title: Customer satisfaction, type: choice, choices: "5:5 - Very satisfied,4:4 - Satisfied,3:3 - Neutral,2:2 - Dissatisfied,1:1 - Very dissatisfied"}
+  - {name: feedback, title: Customer feedback, type: longtext}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'closed'"
+        csat: input.csat
+        feedback: input.feedback

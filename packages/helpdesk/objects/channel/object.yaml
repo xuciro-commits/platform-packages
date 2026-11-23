@@ -1,0 +1,23 @@
+name: channel
+namespace: helpdesk
+title: Channel
+plural: Channels
+icon: inbox
+display: title
+
+fields:
+  - {name: title, title: Channel, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer, required: true}
+
+access:
+  - {role: agent, read: all}
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: portal, title: Customer portal, position: 1}
+  - {id: email, title: Email, position: 2}
+  - {id: phone, title: Phone, position: 3}
+  - {id: chat, title: Live chat, position: 4}
+  - {id: internal, title: Internal escalation, position: 5}
