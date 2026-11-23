@@ -1,0 +1,25 @@
+name: contact
+namespace: party
+title: Contact
+plural: Contacts
+icon: identification
+display: fullname
+naming: CON-{n:5}
+description: A person outside your own organization, usually working for one of your partner organizations. Applications attach their own fields to it.
+
+fields:
+  - {name: fullname, title: Full name, type: text, required: true, search: true, group: Contact}
+  - {name: organization, title: Organization, type: reference, ref: party.organization, inverse: contacts, search: true, group: Contact}
+  - {name: jobtitle, title: Job title, type: text, group: Contact}
+  - {name: department, title: Department, type: text, group: Contact}
+  - {name: email, title: Email, type: text, search: true, group: Reach}
+  - {name: mobile, title: Mobile, type: text, search: true, group: Reach}
+  - {name: phone, title: Phone, type: text, group: Reach}
+  - {name: notes, title: Notes, type: longtext, group: Contact}
+  - {name: donotcontact, title: Do not contact, type: boolean, default: "false", aside: true, help: "Every application leaves this person out of calls, mail and campaigns."}
+
+access:
+  - {role: user, read: all, create: true, edit: true}
+  - {role: steward, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [fullname, organization, jobtitle, email, mobile], sort: [{sortKey: fullname, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

@@ -1,0 +1,22 @@
+id: party
+version: 0.1.0
+title: Business partners
+namespace: party
+description: The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.
+listing:
+  industries:
+  - general
+  capabilities:
+  - master-data
+  keywords:
+  - organization
+  - contact
+  - customer
+  - supplier
+  - master-data
+  stage: preview
+roots:
+- app: build
+  kind: app
+  name: party
+artifact: party.json

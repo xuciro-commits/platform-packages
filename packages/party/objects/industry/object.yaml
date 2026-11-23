@@ -1,0 +1,38 @@
+name: industry
+namespace: party
+title: Industry
+plural: Industries
+icon: building-storefront
+display: title
+description: The line of business an organization is in.
+
+fields:
+  - {name: title, title: Industry, type: text, required: true, search: true}
+
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: agriculture, title: Agriculture}
+  - {id: manufacturing, title: Manufacturing}
+  - {id: construction, title: Construction}
+  - {id: energy, title: Energy and utilities}
+  - {id: retail, title: Retail}
+  - {id: wholesale, title: Wholesale and distribution}
+  - {id: logistics, title: Transport and logistics}
+  - {id: finance, title: Banking and finance}
+  - {id: insurance, title: Insurance}
+  - {id: realestate, title: Real estate}
+  - {id: technology, title: Software and technology}
+  - {id: telecom, title: Telecommunications}
+  - {id: healthcare, title: Healthcare}
+  - {id: education, title: Education}
+  - {id: government, title: Government and public sector}
+  - {id: hospitality, title: Hotels and hospitality}
+  - {id: media, title: Media and entertainment}
+  - {id: services, title: Professional services}
+  - {id: nonprofit, title: Nonprofit}
+  - {id: other, title: Other}

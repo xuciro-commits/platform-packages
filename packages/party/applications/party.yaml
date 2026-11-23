@@ -1,0 +1,7 @@
+name: party
+title: Business partners
+icon: globe-alt
+pages: [party.organization, party.contact, party.industry]
+groups:
+  - {title: Directory, pages: [party.organization, party.contact]}
+  - {title: Settings, layout: settings, roles: [steward], pages: [party.industry]}

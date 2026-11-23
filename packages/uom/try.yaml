@@ -1,0 +1,10 @@
+roles: {uom: steward}
+at: 2026-11-23T09:00:00Z
+members:
+  clerk: {roles: {build: user}}
+steps:
+  - {read: uom.unit/kg, as: clerk, show: [symbol, dimension, factor, base], expect: {dimension: mass, base: false}}
+  - {read: uom.unit/g, as: clerk, show: [base], expect: {base: true}}
+  - {do: uom.unit.create, on: uom.unit/box, as: clerk, with: {title: Box, symbol: box, dimension: count, factor: 24}, refused: true}
+  - {do: uom.unit.create, on: uom.unit/box, with: {title: Box of 24, symbol: box, dimension: count, factor: 24}, show: [factor, base], expect: {base: false}}
+  - {do: uom.unit.create, on: uom.unit/kilo, with: {title: Kilo, symbol: kg, dimension: mass, factor: 1000}, refused: true}
