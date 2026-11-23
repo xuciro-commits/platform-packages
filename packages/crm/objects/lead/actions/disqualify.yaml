@@ -1,0 +1,13 @@
+title: Disqualify
+description: Close this lead as not worth pursuing.
+from: [open]
+inputs:
+  - {name: reason, title: Reason, type: reference, ref: crm.disqualifyreason, required: true}
+  - {name: notes, title: Notes, type: longtext}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'disqualified'"
+        disqualifyreason: input.reason
+        outcomenotes: input.notes

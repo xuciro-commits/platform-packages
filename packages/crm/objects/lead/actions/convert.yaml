@@ -1,0 +1,61 @@
+title: Convert to deal
+description: Create the account, contact and deal from this lead in one step; link existing ones instead when they already exist.
+from: [open]
+open: deal
+inputs:
+  - {name: account, title: Existing account, type: reference, ref: crm.account, help: Leave empty to create a new account from the company name.}
+  - {name: contact, title: Existing contact, type: reference, ref: crm.contact, help: Leave empty to create a new contact from the lead.}
+  - {name: title, title: Deal name, type: text, help: Defaults to the company name.}
+  - {name: expectedclose, title: Expected close, type: date, required: true}
+  - {name: nextstep, title: Next step, type: text, required: true}
+  - {name: nextstepdue, title: Next step due, type: date, required: true}
+transaction:
+  guard: budget != empty
+  message: Fill in the budget before converting; it becomes the deal amount.
+  steps:
+    - name: account
+      target: crm.account
+      when: input.account = empty
+      set:
+        name: coalesce(company, fullname)
+        website: website
+        industry: industry
+        territory: territory
+        employees: employees
+        owner: owner
+    - name: contact
+      target: crm.contact
+      when: input.contact = empty
+      set:
+        fullname: fullname
+        account: coalesce(input.account, step.account)
+        jobtitle: jobtitle
+        email: email
+        mobile: mobile
+        phone: phone
+        linkedin: linkedin
+        owner: owner
+    - name: deal
+      target: crm.deal
+      set:
+        title: coalesce(input.title, company, fullname)
+        account: coalesce(input.account, step.account)
+        contact: coalesce(input.contact, step.contact)
+        lead: $subject
+        source: source
+        amount: budget
+        expectedclose: input.expectedclose
+        nextstep: input.nextstep
+        nextstepdue: input.nextstepdue
+        stage: "'qualification'"
+        owner: owner
+    - name: stakeholder
+      target: crm.dealcontact
+      set:
+        deal: step.deal
+        contact: coalesce(input.contact, step.contact)
+        role: "if(authority = 'decisionmaker', 'decisionmaker', 'champion')"
+    - target: $subject
+      set:
+        state: "'converted'"
+        deal: step.deal

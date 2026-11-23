@@ -1,0 +1,11 @@
+name: build.crmleadresponded
+subject: {app: build, kind: object, name: crm.lead}
+actions: [{app: build, kind: action, name: crm.lead.edit}]
+definition:
+  name: crmleadresponded
+  title: Record the first response
+  kind: automation
+  object: crm.lead
+  trigger: subject.stage != 'new' and subject.sla = 'due'
+  steps:
+    - {name: respond, kind: action, act: edit, inputs: {sla: {source: literal, value: met}}}

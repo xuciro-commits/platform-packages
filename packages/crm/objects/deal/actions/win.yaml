@@ -1,0 +1,17 @@
+title: Mark won
+description: Close this deal as won and make its account a customer.
+from: [open]
+inputs:
+  - {name: closedate, title: Close date, type: date, help: Defaults to today.}
+  - {name: notes, title: Why we won, type: longtext}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'won'"
+        closedate: coalesce(input.closedate, today())
+        outcomenotes: input.notes
+    - name: account
+      target: $subject.account
+      set:
+        relationship: "'customer'"

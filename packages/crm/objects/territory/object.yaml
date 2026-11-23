@@ -1,0 +1,23 @@
+name: territory
+namespace: crm
+title: Territory
+plural: Territories
+icon: map
+display: title
+
+fields:
+  - {name: title, title: Territory, type: text, required: true, search: true}
+  - {name: parent, title: Parent territory, type: reference, ref: crm.territory}
+  - {name: manager, title: Territory manager, type: member}
+
+access:
+  - {role: salesrep, read: all}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, parent, manager], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: global, title: Global}
+  - {id: americas, title: Americas, parent: global}
+  - {id: emea, title: "Europe, Middle East and Africa", parent: global}
+  - {id: apac, title: Asia Pacific, parent: global}

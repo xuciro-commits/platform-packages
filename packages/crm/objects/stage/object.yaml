@@ -1,0 +1,27 @@
+name: stage
+namespace: crm
+title: Deal stage
+plural: Deal stages
+icon: queue-list
+display: title
+
+fields:
+  - {name: title, title: Stage, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer, required: true}
+  - {name: probability, title: Probability %, type: integer, required: true}
+  - {name: forecast, title: Forecast category, type: choice, required: true, choices: "pipeline:Pipeline,bestcase:Best case,commit:Commit"}
+  - {name: color, title: Color, type: choice, choices: "gray:Gray,blue:Blue,green:Green,red:Red,orange:Orange,purple:Purple,pink:Pink,amber:Amber,cyan:Cyan"}
+  - {name: exit, title: Exit criteria, type: longtext}
+
+access:
+  - {role: salesrep, read: all}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position, probability, forecast, color, exit], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: qualification, title: Qualification, position: 1, probability: 10, forecast: pipeline, color: gray, exit: "A real need, a budget range and a person who can decide are known."}
+  - {id: discovery, title: Discovery, position: 2, probability: 25, forecast: pipeline, color: blue, exit: Requirements and success criteria are written down with the customer.}
+  - {id: proposal, title: Proposal, position: 3, probability: 50, forecast: bestcase, color: amber, exit: The customer has the proposal and a date to decide.}
+  - {id: negotiation, title: Negotiation, position: 4, probability: 70, forecast: bestcase, color: orange, exit: "Price and terms are agreed in principle; only paperwork remains."}
+  - {id: commit, title: Commit, position: 5, probability: 90, forecast: commit, color: green, exit: "The decision maker has committed verbally; the contract is being signed."}

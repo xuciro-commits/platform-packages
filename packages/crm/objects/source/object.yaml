@@ -1,0 +1,27 @@
+name: source
+namespace: crm
+title: Lead source
+plural: Lead sources
+icon: megaphone
+display: title
+
+fields:
+  - {name: title, title: Source, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer}
+  - {name: details, title: Details, type: longtext}
+
+access:
+  - {role: salesrep, read: all}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position, details], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: website, title: Website, position: 1}
+  - {id: referral, title: Referral, position: 2}
+  - {id: event, title: Event, position: 3}
+  - {id: outbound, title: Outbound, position: 4}
+  - {id: partner, title: Partner, position: 5}
+  - {id: advertising, title: Advertising, position: 6}
+  - {id: customer, title: Existing customer, position: 7}
+  - {id: other, title: Other, position: 8}

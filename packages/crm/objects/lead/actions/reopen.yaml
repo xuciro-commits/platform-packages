@@ -1,0 +1,8 @@
+title: Reopen
+description: Work this lead again.
+from: [disqualified]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'open'"

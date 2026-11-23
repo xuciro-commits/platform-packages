@@ -1,0 +1,18 @@
+name: build.crmleadsla
+subject: {app: build, kind: object, name: crm.lead}
+actions: [{app: build, kind: action, name: crm.lead.edit}]
+definition:
+  name: crmleadsla
+  title: Watch the first response time
+  kind: flow
+  object: crm.lead
+  when: open
+  steps:
+    - {name: deadline, kind: wait, waitUntil: {source: subject, path: [responseby]}, next: pending}
+    - {name: pending, kind: switch, value: {source: subject, path: [sla]}, cases: {due: missed}, next: done}
+    - {name: missed, kind: action, act: edit, inputs: {sla: {source: literal, value: missed}}, next: tell}
+    - name: tell
+      kind: notify
+      notify: {title: First response missed, body: This lead passed its response time without being contacted., field: owner}
+      next: done
+    - {name: done, kind: end}

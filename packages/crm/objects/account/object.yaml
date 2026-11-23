@@ -1,0 +1,38 @@
+name: account
+namespace: crm
+title: Account
+plural: Accounts
+icon: building-office-2
+display: name
+naming: ACC-{n:5}
+scope: {owner: owner}
+sets: {deals: {object: crm.deal, limit: 500}}
+
+fields:
+  - {name: name, title: Account, type: text, required: true, search: true, group: Account}
+  - {name: website, title: Website, type: text, search: true, group: Account}
+  - {name: phone, title: Phone, type: text, group: Account}
+  - {name: industry, title: Industry, type: reference, ref: crm.industry, group: Account}
+  - {name: territory, title: Territory, type: reference, ref: crm.territory, group: Account}
+  - {name: employees, title: Employees, type: choice, group: Account, choices: "1-10:1-10,11-50:11-50,51-200:51-200,201-500:201-500,501-1000:501-1000,1000+:1000+"}
+  - {name: revenue, title: Annual revenue, type: money, default: "setting:currency", group: Account}
+  - {name: address, title: Address, type: longtext, group: Account}
+  - {name: description, title: About, type: longtext, group: Account}
+  - {name: pipeline, title: Open pipeline, type: money, group: Business, formula: "sum(deals, if(item.state = 'open', item.amount, item.amount * 0))"}
+  - {name: wonrevenue, title: Won revenue, type: money, group: Business, formula: "sum(deals, if(item.state = 'won', item.amount, item.amount * 0))"}
+  - {name: relationship, title: Relationship, type: choice, default: prospect, aside: true, choices: "prospect:Prospect,customer:Customer,partner:Partner,former:Former customer"}
+  - {name: owner, title: Account owner, type: member, default: member, aside: true}
+
+access:
+  - {role: salesrep, read: all, create: true, edit: true}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [name, relationship, industry, territory, pipeline, wonrevenue, owner]
+  sort: [{sortKey: name, direction: ascending}]
+  lanes: relationship
+  group: none
+  filters: []
+  search: ""

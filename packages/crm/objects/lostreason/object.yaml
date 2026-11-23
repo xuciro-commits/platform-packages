@@ -1,0 +1,25 @@
+name: lostreason
+namespace: crm
+title: Lost reason
+plural: Lost reasons
+icon: x-circle
+display: title
+
+fields:
+  - {name: title, title: Reason, type: text, required: true, search: true}
+  - {name: position, title: Position, type: integer}
+
+access:
+  - {role: salesrep, read: all}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, position], sort: [{sortKey: position, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: price, title: Price, position: 1}
+  - {id: competitor, title: Chose a competitor, position: 2}
+  - {id: nobudget, title: No budget, position: 3}
+  - {id: timing, title: Timing, position: 4}
+  - {id: nodecision, title: No decision, position: 5}
+  - {id: fit, title: Product fit, position: 6}
+  - {id: other, title: Other, position: 7}

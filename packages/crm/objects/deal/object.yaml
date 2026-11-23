@@ -1,0 +1,52 @@
+name: deal
+namespace: crm
+title: Deal
+plural: Deals
+icon: briefcase
+display: title
+naming: DEAL-{year}-{n:5}
+scope: {owner: owner}
+sets: {lines: crm.dealline}
+
+fields:
+  - {name: title, title: Deal, type: text, required: true, search: true, group: Deal}
+  - {name: account, title: Account, type: reference, ref: crm.account, inverse: deals, required: true, search: true, group: Deal}
+  - {name: contact, title: Primary contact, type: reference, ref: crm.contact, group: Deal}
+  - {name: amount, title: Amount, type: money, default: "setting:currency", required: true, group: Deal}
+  - {name: expectedclose, title: Expected close, type: date, required: true, group: Deal}
+  - {name: source, title: Source, type: reference, ref: crm.source, group: Deal}
+  - {name: competitor, title: Main competitor, type: reference, ref: crm.competitor, group: Deal}
+  - {name: lead, title: Source lead, type: reference, ref: crm.lead, readOnly: true, group: Deal}
+  - {name: nextstep, title: Next step, type: text, required: true, group: Next step, help: The single next thing that moves this deal forward.}
+  - {name: nextstepdue, title: Next step due, type: date, required: true, group: Next step}
+  - {name: probability, title: Probability %, type: integer, from: stage.probability, group: Forecast}
+  - {name: forecast, title: Forecast category, type: choice, from: stage.forecast, group: Forecast, choices: "pipeline:Pipeline,bestcase:Best case,commit:Commit"}
+  - {name: weighted, title: Weighted amount, type: money, formula: "amount * coalesce(probability, 0) / 100", group: Forecast}
+  - {name: productstotal, title: Products total, type: money, formula: sum(lines.amount), group: Forecast}
+  - {name: closedate, title: Close date, type: date, readOnly: true, when: "state=won,lost", group: Outcome}
+  - {name: lostreason, title: Lost reason, type: reference, ref: crm.lostreason, readOnly: true, when: state=lost, group: Outcome}
+  - {name: outcomenotes, title: Outcome notes, type: longtext, readOnly: true, when: "state=won,lost", group: Outcome}
+  - {name: stage, title: Stage, type: reference, ref: crm.stage, default: qualification, aside: true}
+  - {name: owner, title: Deal owner, type: member, default: member, aside: true}
+
+states:
+  - {name: open, title: Open, tone: info, description: In the pipeline.}
+  - {name: won, title: Won, tone: success, description: Closed as won.}
+  - {name: lost, title: Lost, tone: danger, description: Closed as lost.}
+actions: [win, lose, reopen]
+
+access:
+  - {role: salesrep, read: team, create: true, edit: true}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: board
+  lanes: stage
+  dates: expectedclose
+  columns: [title, account, stage, amount, weighted, expectedclose, nextstep, nextstepdue, owner]
+  sort: [{sortKey: expectedclose, direction: ascending}]
+  group: none
+  filters: []
+  search: ""
+  inbox: {member: owner, due: nextstepdue, open: {state: [open]}}

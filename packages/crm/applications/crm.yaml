@@ -1,0 +1,31 @@
+name: crm
+title: CRM
+icon: user-group
+pages: [crm.lead, crm.deal, crm.account, crm.contact, crm.activity, crm.note, crm.product, crm.competitor,
+        crm.stage, crm.source, crm.industry, crm.territory, crm.lostreason, crm.disqualifyreason]
+groups:
+  - {title: Selling, pages: [crm.lead, crm.deal]}
+  - {title: Customers, pages: [crm.account, crm.contact]}
+  - {title: Follow-up, pages: [crm.activity, crm.note]}
+  - {title: Catalog, pages: [crm.product, crm.competitor]}
+  - title: Settings
+    roles: [salesmanager]
+    pages: [crm.stage, crm.source, crm.industry, crm.territory, crm.lostreason, crm.disqualifyreason]
+dashboard:
+  - {title: Open pipeline, kind: metric, object: crm.deal, domain: [[state, "=", open]], measure: "sum:amount"}
+  - {title: Weighted forecast, kind: metric, object: crm.deal, domain: [[state, "=", open]], measure: "sum:weighted"}
+  - {title: Won revenue, kind: metric, object: crm.deal, domain: [[state, "=", won]], measure: "sum:amount"}
+  - {title: Open leads, kind: metric, object: crm.lead, domain: [[state, "=", open]]}
+  - {title: Pipeline by stage, kind: funnel, object: crm.deal, domain: [[state, "=", open]], group: stage, measure: "sum:amount"}
+  - {title: Pipeline by owner, kind: bar, object: crm.deal, domain: [[state, "=", open]], group: owner, measure: "sum:amount"}
+  - {title: Forecast, kind: bar, object: crm.deal, domain: [[state, "=", open]], group: forecast, measure: "sum:weighted"}
+  - {title: Win rate, kind: share, object: crm.deal, domain: [[state, in, [won, lost]]], group: state}
+  - {title: Lost reasons, kind: share, object: crm.deal, domain: [[state, "=", lost]], group: lostreason}
+  - {title: Leads by source, kind: share, object: crm.lead, group: source}
+  - {title: New leads, kind: line, object: crm.lead, group: "created:month"}
+  - {title: Won by month, kind: line, object: crm.deal, domain: [[state, "=", won]], group: "closedate:month", measure: "sum:amount"}
+resources:
+  - {app: build, kind: flow, name: build.crmleadassign}
+  - {app: build, kind: flow, name: build.crmleadsla}
+  - {app: build, kind: flow, name: build.crmleadresponded}
+  - {app: build, kind: flow, name: build.crmnextstep}

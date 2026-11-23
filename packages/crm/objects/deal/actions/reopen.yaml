@@ -1,0 +1,13 @@
+title: Reopen
+description: Put this deal back into the pipeline with a new next step.
+from: [won, lost]
+inputs:
+  - {name: nextstep, title: Next step, type: text, required: true}
+  - {name: nextstepdue, title: Next step due, type: date, required: true}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'open'"
+        nextstep: input.nextstep
+        nextstepdue: input.nextstepdue

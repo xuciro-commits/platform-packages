@@ -1,0 +1,54 @@
+name: lead
+namespace: crm
+title: Lead
+plural: Leads
+icon: user-plus
+display: fullname
+naming: LEAD-{year}-{n:5}
+scope: {owner: owner}
+
+fields:
+  - {name: fullname, title: Full name, type: text, required: true, search: true, group: Contact}
+  - {name: company, title: Company, type: text, search: true, group: Contact}
+  - {name: jobtitle, title: Job title, type: text, group: Contact}
+  - {name: email, title: Email, type: text, search: true, group: Contact}
+  - {name: mobile, title: Mobile, type: text, search: true, group: Contact}
+  - {name: phone, title: Phone, type: text, group: Contact}
+  - {name: website, title: Website, type: text, group: Contact}
+  - {name: linkedin, title: LinkedIn, type: text, group: Contact}
+  - {name: source, title: Source, type: reference, ref: crm.source, group: Company}
+  - {name: industry, title: Industry, type: reference, ref: crm.industry, group: Company}
+  - {name: territory, title: Territory, type: reference, ref: crm.territory, group: Company}
+  - {name: employees, title: Employees, type: choice, group: Company, choices: "1-10:1-10,11-50:11-50,51-200:51-200,201-500:201-500,501-1000:501-1000,1000+:1000+"}
+  - {name: need, title: Need, type: longtext, group: Qualification, help: "What problem do they want to solve, and why now?"}
+  - {name: budget, title: Budget, type: money, default: "setting:currency", group: Qualification}
+  - {name: timeframe, title: Timeframe, type: choice, group: Qualification, choices: "month:This month,quarter:This quarter,half:Within six months,later:Later,unknown:Unknown"}
+  - {name: authority, title: Decision role, type: choice, group: Qualification, choices: "decisionmaker:Decision maker,influencer:Influencer,user:User,unknown:Unknown"}
+  - {name: deal, title: Deal, type: reference, ref: crm.deal, readOnly: true, group: Outcome, when: state=converted}
+  - {name: disqualifyreason, title: Disqualify reason, type: reference, ref: crm.disqualifyreason, readOnly: true, group: Outcome, when: state=disqualified}
+  - {name: outcomenotes, title: Outcome notes, type: longtext, readOnly: true, group: Outcome, when: "state=converted,disqualified"}
+  - {name: stage, title: Follow-up stage, type: choice, default: new, aside: true, choices: "new:New,attempting:Attempting,connected:Connected,nurturing:Nurturing"}
+  - {name: owner, title: Lead owner, type: member, aside: true}
+  - {name: responseby, title: Respond by, type: datetime, default: now+4h, aside: true}
+  - {name: sla, title: Response time, type: choice, default: due, aside: true, choices: "due:Due,met:Met,missed:Missed"}
+
+states:
+  - {name: open, title: Open, tone: info, description: Being worked.}
+  - {name: converted, title: Converted, tone: success, description: Became a deal.}
+  - {name: disqualified, title: Disqualified, tone: danger, description: Not worth pursuing.}
+actions: [convert, disqualify, reopen]
+
+access:
+  - {role: salesrep, read: team, create: true, edit: true}
+  - {role: salesmanager, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [fullname, company, stage, source, owner, sla, responseby]
+  sort: [{sortKey: responseby, direction: ascending}]
+  lanes: stage
+  group: none
+  filters: []
+  search: ""
+  inbox: {member: owner, due: responseby, open: {stage: [new]}}
