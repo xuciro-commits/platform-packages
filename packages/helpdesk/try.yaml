@@ -1,0 +1,80 @@
+roles:
+  helpdesk: supervisor
+at: 2026-11-23T09:00:00Z
+steps:
+  - do: helpdesk.customer.create
+    on: helpdesk.customer/C1
+    with: {name: Xinghe Cloud, tier: enterprise, domain: xinghe.example}
+    show: [tier, opentickets, totaltickets]
+    expect: {tier: enterprise, opentickets: 0, totaltickets: 0}
+  - do: helpdesk.requester.create
+    on: helpdesk.requester/R1
+    with: {fullname: Lin Wei, customer: C1, email: lin@xinghe.example, jobtitle: Operations lead}
+    show: [fullname, customer]
+  - do: helpdesk.article.create
+    on: helpdesk.article/KB1
+    with: {title: Reset SSO token, summary: Steps to refresh expired SSO tokens., body: Revoke the expired token in admin settings and re-issue a new secret., category: access}
+    show: [state]
+    expect: {state: draft}
+  - do: helpdesk.article.release
+    on: helpdesk.article/KB1
+    show: [state]
+    expect: {state: published}
+  - do: helpdesk.ticket.create
+    on: helpdesk.ticket/T1
+    with: {subject: SSO login fails after certificate rotation, customer: C1, contact: R1, category: access, priority: high}
+    show: [stage, owner, responsesla, resolutionsla, targetresponsehours, targetresolvehours]
+    expect: {stage: new, responsesla: due, resolutionsla: due, targetresponsehours: 2, targetresolvehours: 8}
+  - do: helpdesk.ticket.respond
+    on: helpdesk.ticket/T1
+    with: {summary: Checking identity provider logs, body: Investigating SAML assertion clock skew internally., visibility: internal}
+    show: [stage, responsesla, replycount]
+    expect: {stage: new, responsesla: due, replycount: 1}
+  - do: helpdesk.ticket.respond
+    on: helpdesk.ticket/T1
+    with: {summary: Requested updated metadata XML, body: Please upload the rotated IdP metadata XML so we can verify the thumbprint., visibility: public, waiting: true}
+    show: [stage, responsesla, replycount]
+    expect: {stage: waiting, responsesla: met, replycount: 2}
+  - do: helpdesk.ticket.escalate
+    on: helpdesk.ticket/T1
+    with: {reason: Requires tier-2 certificate chain check, queue: tier2}
+    show: [stage, queue]
+    expect: {stage: escalated, queue: tier2}
+  - do: helpdesk.ticket.resolve
+    on: helpdesk.ticket/T1
+    with: {resolution: config, notes: Refreshed SAML certificate thumbprint and verified login., article: KB1}
+    show: [state, resolution, resolutionsla, article]
+    expect: {state: resolved, resolution: config, resolutionsla: met, article: KB1}
+  - read: helpdesk.customer/C1
+    show: [opentickets, totaltickets]
+    expect: {opentickets: 0, totaltickets: 1}
+  - do: helpdesk.ticket.close
+    on: helpdesk.ticket/T1
+    with: {csat: '5', feedback: Fast escalation and clear guide.}
+    show: [state, csat]
+    expect: {state: closed, csat: '5'}
+  - do: helpdesk.ticket.resolve
+    on: helpdesk.ticket/T1
+    with: {resolution: fixed, notes: Should be refused on closed ticket.}
+    refused: true
+  - do: helpdesk.ticket.reopen
+    on: helpdesk.ticket/T1
+    with: {reason: Secondary region still seeing cached certificate.}
+    show: [state, stage]
+    expect: {state: open, stage: inprogress}
+  - read: helpdesk.customer/C1
+    show: [opentickets, totaltickets]
+    expect: {opentickets: 1, totaltickets: 1}
+  - read: helpdesk.ticket/demo-ticket-1
+    show: [subject, stage, priority]
+    expect: {stage: escalated, priority: urgent}
+  - do: platform.package.clear-demo
+    on: platform.package/helpdesk
+    with: {id: helpdesk}
+  - do: platform.package.clear-demo
+    on: platform.package/helpdesk
+    with: {id: helpdesk}
+    refused: true
+  - read: helpdesk.ticket/demo-ticket-1
+    show: [archived]
+    expect: {archived: true}

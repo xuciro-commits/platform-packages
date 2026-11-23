@@ -16,6 +16,7 @@ packages/crm/
 ├── flows/                    自动化与流程
 ├── integrations/matching/    匹配规则等集成
 ├── locales/<语言>.yaml       译文：英文原文 → 译文，如 locales/zh-CN.yaml
+├── seed.yaml                 可选：安装时自动导入的演示种子数据，支持一键清理
 ├── setup.yaml  docs/guide.md 可选：安装后的初始化与使用说明
 ├── try.yaml                  可选：pkg try 与 pkg check 跑的主线脚本，不进制品
 └── pages/ queries/ functions/ agents/ tests/ …  其余资源按目录放
@@ -157,6 +158,22 @@ dashboard: […]                           # 有仪表盘时菜单第一项是�
 
 - 不写依赖、能力、动作输入模式与模式版本：`pkg` 用宿主的同一实现算出，写进制品。源里出现 `schemaVersions` 会被拒。
 - 不在已知位置的 `.yaml` 会被拒，避免写错目录的文件被悄悄忽略；`actions/` 里没被对象列出的动作文件也会被拒。
+
+## seed.yaml
+
+可选的演示种子数据，随包编进制品（`blueprint.seed`），首次安装时自动导入为可交互的示例业务记录；点击应用侧栏底部的「清理演示数据」后仅归档这些演示记录，保留字典参考数据与用户自建记录，且按钮自动隐藏。
+
+```yaml
+records:
+  - type: crm.account
+    id: demo-account-1
+    values:
+      name: Northwind Precision Manufacturing
+      industry: manufacturing
+```
+
+- 每条记录必须包含包内已定义对象的 `type`、唯一 `id` 与 `values` 对象，总量不超过 200 条。
+- 严禁使用真实人名、公司、邮箱或电话；域名统一使用 `.example`。
 
 ## try.yaml
 

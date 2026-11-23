@@ -1,0 +1,219 @@
+# Sample data installed with the package so HR is ready to explore out of the box.
+# Clear everything here with the "Clear demo data" action in the app sidebar.
+# All people, emails, and amounts below are fictional.
+records:
+  - type: hr.designation
+    id: demo-desig-em
+    values:
+      title: Engineering Manager
+  - type: hr.designation
+    id: demo-desig-se
+    values:
+      title: Senior Software Engineer
+  - type: hr.designation
+    id: demo-desig-pm
+    values:
+      title: Product Manager
+  - type: hr.designation
+    id: demo-desig-ops
+    values:
+      title: Operations Specialist
+
+  - type: hr.employee
+    id: demo-emp-lin
+    values:
+      fullname: Lin Haoran
+      designation: demo-desig-em
+      employmenttype: fulltime
+      joined: "2023-04-10"
+      email: haoran.lin@demo.example
+      mobile: "138-0000-4101"
+      emergencycontact: Lin Mei (138-0000-4191)
+  - type: hr.employee
+    id: demo-emp-chen
+    values:
+      fullname: Chen Siyuan
+      designation: demo-desig-se
+      employmenttype: fulltime
+      reportsto: demo-emp-lin
+      joined: "2024-02-19"
+      email: siyuan.chen@demo.example
+      mobile: "138-0000-4102"
+      emergencycontact: Chen Wei (138-0000-4192)
+  - type: hr.employee
+    id: demo-emp-wu
+    values:
+      fullname: Wu Jiaqi
+      designation: demo-desig-pm
+      employmenttype: fulltime
+      reportsto: demo-emp-lin
+      joined: "2024-07-01"
+      email: jiaqi.wu@demo.example
+      mobile: "138-0000-4103"
+      emergencycontact: Wu Ling (138-0000-4193)
+  - type: hr.employee
+    id: demo-emp-he
+    values:
+      fullname: He Mingze
+      designation: demo-desig-ops
+      employmenttype: contract
+      joined: "2025-03-17"
+      email: mingze.he@demo.example
+      mobile: "138-0000-4104"
+      emergencycontact: He Yan (138-0000-4194)
+
+  - type: hr.allocation
+    id: demo-alw-lin-annual
+    values:
+      employee: demo-emp-lin
+      leavetype: annual
+      validfrom: "2026-01-01"
+      validto: "2026-12-31"
+      days: 15
+  - type: hr.allocation
+    id: demo-alw-chen-annual
+    values:
+      employee: demo-emp-chen
+      leavetype: annual
+      validfrom: "2026-01-01"
+      validto: "2026-12-31"
+      days: 10
+  - type: hr.allocation
+    id: demo-alw-chen-sick
+    values:
+      employee: demo-emp-chen
+      leavetype: sick
+      validfrom: "2026-01-01"
+      validto: "2026-12-31"
+      days: 6
+  - type: hr.allocation
+    id: demo-alw-wu-annual
+    values:
+      employee: demo-emp-wu
+      leavetype: annual
+      validfrom: "2026-01-01"
+      validto: "2026-12-31"
+      days: 10
+  - type: hr.allocation
+    id: demo-alw-he-personal
+    values:
+      employee: demo-emp-he
+      leavetype: personal
+      validfrom: "2026-01-01"
+      validto: "2026-12-31"
+      days: 5
+
+  - type: hr.leave
+    id: demo-lv-01
+    values:
+      allocation: demo-alw-lin-annual
+      fromdate: "2026-08-17"
+      todate: "2026-08-19"
+      reason: Summer family trip
+  - type: hr.leave
+    id: demo-lv-02
+    values:
+      allocation: demo-alw-chen-sick
+      fromdate: "2026-09-14"
+      todate: "2026-09-15"
+      reason: Dental follow-up and rest
+  - type: hr.leave
+    id: demo-lv-03
+    values:
+      allocation: demo-alw-wu-annual
+      fromdate: "2026-10-12"
+      todate: "2026-10-14"
+      reason: Autumn break
+  - type: hr.leave
+    id: demo-lv-04
+    values:
+      allocation: demo-alw-chen-annual
+      fromdate: "2026-11-24"
+      todate: "2026-11-25"
+      reason: Moving apartment
+  - type: hr.leave
+    id: demo-lv-05
+    values:
+      allocation: demo-alw-he-personal
+      fromdate: "2026-12-07"
+      todate: "2026-12-07"
+      halfday: true
+      reason: Bank errand in the morning
+
+  - type: hr.claim
+    id: demo-clm-01
+    values:
+      purpose: Q3 architecture summit in Shenzhen
+      employee: demo-emp-lin
+  - type: hr.claim
+    id: demo-clm-02
+    values:
+      purpose: Customer onboarding trip to Suzhou
+      employee: demo-emp-wu
+  - type: hr.claim
+    id: demo-clm-03
+    values:
+      purpose: Partner workshop in Nanjing
+      employee: demo-emp-chen
+  - type: hr.claim
+    id: demo-clm-04
+    values:
+      purpose: Team office supplies restock
+      employee: demo-emp-he
+
+  - type: hr.claimline
+    id: demo-exl-01
+    values:
+      claim: demo-clm-01
+      spent: "2026-09-10"
+      expensetype: travel
+      amount: {amount: 168000, currency: CNY}
+      description: Round-trip high-speed rail
+  - type: hr.claimline
+    id: demo-exl-02
+    values:
+      claim: demo-clm-01
+      spent: "2026-09-11"
+      expensetype: lodging
+      amount: {amount: 144000, currency: CNY}
+      description: Two nights hotel near venue
+  - type: hr.claimline
+    id: demo-exl-03
+    values:
+      claim: demo-clm-02
+      spent: "2026-10-20"
+      expensetype: travel
+      amount: {amount: 42000, currency: CNY}
+      description: Train tickets to Suzhou
+  - type: hr.claimline
+    id: demo-exl-04
+    values:
+      claim: demo-clm-02
+      spent: "2026-10-21"
+      expensetype: meals
+      amount: {amount: 36000, currency: CNY}
+      description: Working lunch with customer team
+  - type: hr.claimline
+    id: demo-exl-05
+    values:
+      claim: demo-clm-03
+      spent: "2026-11-18"
+      expensetype: lodging
+      amount: {amount: 68000, currency: CNY}
+      description: One night hotel in Nanjing
+  - type: hr.claimline
+    id: demo-exl-06
+    values:
+      claim: demo-clm-03
+      spent: "2026-11-19"
+      expensetype: transport
+      amount: {amount: 18500, currency: CNY}
+      description: Local taxi transfers
+  - type: hr.claimline
+    id: demo-exl-07
+    values:
+      claim: demo-clm-04
+      spent: "2026-11-22"
+      expensetype: office
+      amount: {amount: 24500, currency: CNY}
+      description: Whiteboard markers and notebooks

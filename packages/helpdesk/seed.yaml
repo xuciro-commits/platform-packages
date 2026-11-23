@@ -1,0 +1,158 @@
+records:
+  - type: helpdesk.customer
+    id: demo-customer-1
+    values:
+      name: Aurora Cloud Systems
+      tier: enterprise
+      domain: aurora-cloud.example
+      notes: Enterprise SLA customer with SSO and regional failover enabled.
+  - type: helpdesk.customer
+    id: demo-customer-2
+    values:
+      name: Meridian Retail Group
+      tier: premium
+      domain: meridian-retail.example
+      notes: Uses automated billing exports and weekly inventory syncs.
+  - type: helpdesk.customer
+    id: demo-customer-3
+    values:
+      name: Cedar Studio Collective
+      tier: standard
+      domain: cedar-studio.example
+      notes: Recently onboarded team migrating support workflows from shared email.
+  - type: helpdesk.requester
+    id: demo-requester-1
+    values:
+      fullname: Chen Wei
+      customer: demo-customer-1
+      email: chen.wei@aurora-cloud.example
+      phone: "+1-555-0201"
+      jobtitle: Platform Operations Lead
+  - type: helpdesk.requester
+    id: demo-requester-2
+    values:
+      fullname: Hannah Brooks
+      customer: demo-customer-2
+      email: hannah.brooks@meridian-retail.example
+      phone: "+1-555-0202"
+      jobtitle: Finance Systems Manager
+  - type: helpdesk.requester
+    id: demo-requester-3
+    values:
+      fullname: Omar Hassan
+      customer: demo-customer-3
+      email: omar.hassan@cedar-studio.example
+      phone: "+1-555-0203"
+      jobtitle: Workspace Administrator
+  - type: helpdesk.article
+    id: demo-article-1
+    values:
+      title: Refreshing SAML SSO certificates without downtime
+      summary: Step-by-step guide to rotating identity provider certificates safely.
+      body: Upload the new IdP metadata XML in Admin Settings, verify the secondary certificate thumbprint in a test session, and remove the expiring certificate once all active sessions refresh.
+      category: access
+  - type: helpdesk.article
+    id: demo-article-2
+    values:
+      title: Resolving CSV import date format errors
+      summary: Accepted ISO date formats and troubleshooting tips for bulk imports.
+      body: Ensure all date columns use YYYY-MM-DD format and UTF-8 encoding without BOM. Re-run validation before confirming the import batch.
+      category: howto
+  - type: helpdesk.cannedreply
+    id: demo-canned-1
+    values:
+      title: Initial acknowledgment & diagnostics request
+      category: bug
+      body: Thank you for reaching out. We have logged your request and assigned an engineer to investigate. Could you share the timestamp and any visible error message so we can reproduce it faster?
+      active: true
+  - type: helpdesk.cannedreply
+    id: demo-canned-2
+    values:
+      title: Billing invoice copy sent
+      category: billing
+      body: We have regenerated the requested PDF invoice and confirmed your billing contact details. Please let us know if you need a purchase order reference added.
+      active: true
+  - type: helpdesk.ticket
+    id: demo-ticket-1
+    values:
+      subject: SSO sign-in fails after quarterly certificate rotation
+      description: Several enterprise operators receive an invalid signature error when signing in via SAML after rotating the IdP certificate this morning.
+      customer: demo-customer-1
+      contact: demo-requester-1
+      channel: portal
+      category: access
+      queue: tier2
+      stage: escalated
+      priority: urgent
+      responsesla: met
+  - type: helpdesk.ticket
+    id: demo-ticket-2
+    values:
+      subject: Monthly billing export missing tax breakdown column
+      description: Our October invoice export includes total amounts but omits the regional tax column required by our accounting team.
+      customer: demo-customer-2
+      contact: demo-requester-2
+      channel: email
+      category: billing
+      queue: billing
+      stage: inprogress
+      priority: high
+      responsesla: met
+  - type: helpdesk.ticket
+    id: demo-ticket-3
+    values:
+      subject: How to configure role-based access for external contractors
+      description: We want contractors to view only assigned records without seeing internal team settings.
+      customer: demo-customer-3
+      contact: demo-requester-3
+      channel: chat
+      category: howto
+      queue: onboarding
+      stage: waiting
+      priority: medium
+      responsesla: met
+  - type: helpdesk.ticket
+    id: demo-ticket-4
+    values:
+      subject: Webhook retry notifications delayed by 15 minutes
+      description: Failed webhook delivery alerts are arriving in the inbox roughly 15 minutes after the third retry attempt.
+      customer: demo-customer-1
+      contact: demo-requester-1
+      channel: portal
+      category: bug
+      queue: technical
+      stage: new
+      priority: high
+  - type: helpdesk.ticket
+    id: demo-ticket-5
+    values:
+      subject: Request for custom keyboard shortcut on ticket reply box
+      description: Agents would like a quick shortcut to insert canned replies while drafting responses.
+      customer: demo-customer-2
+      contact: demo-requester-2
+      channel: portal
+      category: feature
+      queue: technical
+      stage: new
+      priority: low
+  - type: helpdesk.reply
+    id: demo-reply-1
+    values:
+      ticket: demo-ticket-1
+      summary: Confirmed thumbprint mismatch on secondary IdP node
+      body: Internal check shows the primary region picked up the new certificate while the secondary IdP node still signs assertions with the previous key. Escalating to Tier 2.
+      visibility: internal
+  - type: helpdesk.reply
+    id: demo-reply-2
+    values:
+      ticket: demo-ticket-2
+      summary: Reproducing invoice export schema with billing team
+      body: Thank you for flagging this. We confirmed the tax breakdown column is missing from the October template and are preparing a corrected export for you today.
+      visibility: public
+  - type: helpdesk.reply
+    id: demo-reply-3
+    values:
+      ticket: demo-ticket-3
+      summary: Shared role scoping steps and waiting for confirmation
+      body: Please grant the contractor role with team scope under Admin -> Members and let us know if the visibility matches your expectations.
+      visibility: public

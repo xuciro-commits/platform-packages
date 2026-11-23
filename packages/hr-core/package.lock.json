@@ -3,7 +3,7 @@
   "package": "hr-core",
   "version": "0.1.0",
   "requires": [],
-  "artifact": "sha256:24f512e155428f44967a31b690ef829034a70469d3bb7243838a882ca9f1bda0",
+  "artifact": "sha256:acdda5b708f602df0f54b60ea035e4884f20f02a83bc3578c92edb4abe4c1f53",
   "assets": {
     "app/hr": {
       "digest": "sha256:33efa9aeab43966422d169c1ed9d674f84984d433b843e1e4057ed52ae0fafc1",

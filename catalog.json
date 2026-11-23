@@ -4,11 +4,11 @@
   "packages": [
     {
       "id": "crm",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "title": "CRM",
       "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
-      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.2.0/crm.json",
-      "sha256": "sha256:0a946c72f8e4ee2f7737f86a9bc718094075772843759ef5967f4ad6e4990f87",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.2.1/crm.json",
+      "sha256": "sha256:c183cdc38b80204c91a7551bcb6a53b0c08d621a6af5e8ab9ac4e018f4b5c5ac",
       "listing": {
         "industries": [
           "general"
@@ -37,11 +37,11 @@
     },
     {
       "id": "helpdesk",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "title": "Helpdesk",
       "description": "Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.",
-      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/helpdesk/v0.1.0/helpdesk.json",
-      "sha256": "sha256:12aa92a70ffc618800613ab9b9281b7ac5bceb944853260e97ce5122d92871c8",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/helpdesk/v0.1.1/helpdesk.json",
+      "sha256": "sha256:9129c90621c62f608b8cca81f29d8f1effddabb2e3fd16a9cba839b0f7428cb0",
       "listing": {
         "industries": [
           "general"
@@ -67,6 +67,84 @@
           "license": "AGPL-3.0",
           "relation": "redesign"
         }
+      }
+    },
+    {
+      "id": "hr-core",
+      "version": "0.1.0",
+      "title": "HR",
+      "description": "Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager, and claims paid by finance.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/hr-core/v0.1.0/hr-core.json",
+      "sha256": "sha256:acdda5b708f602df0f54b60ea035e4884f20f02a83bc3578c92edb4abe4c1f53",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "capabilities": [
+          "hr"
+        ],
+        "keywords": [
+          "employee",
+          "leave",
+          "allowance",
+          "expense",
+          "approval"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "hrms",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      }
+    },
+    {
+      "id": "party",
+      "version": "0.1.0",
+      "title": "Business partners",
+      "description": "The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/party/v0.1.0/party.json",
+      "sha256": "sha256:f45bae3bd7c3cfb012b672f1e4fbe73d6c220f90f4e240c8b889434e95602e47",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "capabilities": [
+          "master-data"
+        ],
+        "keywords": [
+          "organization",
+          "contact",
+          "customer",
+          "supplier",
+          "master-data"
+        ],
+        "stage": "preview"
+      }
+    },
+    {
+      "id": "uom",
+      "version": "0.1.0",
+      "title": "Units of measure",
+      "description": "The units every application counts, weighs and measures in, with exact conversion factors, shared once by stock, purchasing, production and time keeping.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/uom/v0.1.0/uom.json",
+      "sha256": "sha256:a082b9140f7b81ff6e7eda019accc09207ece4c6030c130d069281e3499832f1",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "capabilities": [
+          "master-data"
+        ],
+        "keywords": [
+          "unit",
+          "measure",
+          "conversion",
+          "master-data"
+        ],
+        "stage": "preview"
       }
     }
   ]

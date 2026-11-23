@@ -1,9 +1,9 @@
 {
   "format": 2,
   "package": "crm",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "requires": [],
-  "artifact": "sha256:0a946c72f8e4ee2f7737f86a9bc718094075772843759ef5967f4ad6e4990f87",
+  "artifact": "sha256:c183cdc38b80204c91a7551bcb6a53b0c08d621a6af5e8ab9ac4e018f4b5c5ac",
   "assets": {
     "app/crm": {
       "digest": "sha256:5161dfaf3ed34238134b6ec596c74d9f8eb90e5613c737d640b05e1b655f33c1",

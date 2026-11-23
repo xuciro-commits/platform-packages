@@ -49,3 +49,16 @@ steps:
     on: crm.lead/L2
     with: {expectedclose: "2026-12-31"}
     refused: true
+  - read: crm.deal/demo-deal-1
+    show: [title, stage]
+    expect: {stage: negotiation}
+  - do: platform.package.clear-demo
+    on: platform.package/crm
+    with: {id: crm}
+  - do: platform.package.clear-demo
+    on: platform.package/crm
+    with: {id: crm}
+    refused: true
+  - read: crm.deal/demo-deal-1
+    show: [archived]
+    expect: {archived: true}

@@ -1,3 +1,4 @@
+roles: {hr: hradmin}
 at: 2026-11-23T09:00:00Z
 org:
   units:
@@ -54,3 +55,9 @@ steps:
   - {do: hr.claim.pay, on: hr.claim/C1, as: li, refused: true}
   - {do: hr.claim.pay, on: hr.claim/C1, as: qian, show: [state, paiddate], expect: {state: paid, paiddate: "2026-11-23"}}
   - {do: hr.employee.offboard, on: hr.employee/E2, as: wang, with: {leftdate: "2026-11-30", reason: Moved abroad}, show: [state, leftdate], expect: {state: left}}
+  - {read: hr.claim/demo-clm-02, show: [purpose, state, claimed], expect: {state: draft, claimed: {amount: 78000, currency: CNY}}}
+  - {read: hr.allocation/demo-alw-chen-annual, show: [days, available], expect: {days: 10, available: 10}}
+  - {do: platform.package.clear-demo, on: platform.package/hr-core, with: {id: hr-core}}
+  - {do: platform.package.clear-demo, on: platform.package/hr-core, with: {id: hr-core}, refused: true}
+  - {read: hr.claim/demo-clm-02, expect: {archived: true}}
+  - {read: hr.employee/demo-emp-lin, expect: {archived: true}}
