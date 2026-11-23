@@ -5,7 +5,7 @@
   "requires": [
     "party@^0.1.0"
   ],
-  "artifact": "sha256:d7c6ae664f7a4e34510f425d6924bc4f685e2a73a63f4469ee935f8cb64044b6",
+  "artifact": "sha256:d5fb5f4f518a4aa38b2b6439d74a3747f142d7ede40c584ebd49486d1fd3a80a",
   "assets": {
     "app/helpdesk": {
       "digest": "sha256:dc0923ffb798a15275864b86812161fa043616e51ebbb25fb95d75ac6620348f",
@@ -77,13 +77,17 @@
       ]
     },
     "object/helpdesk.customer": {
-      "digest": "sha256:a0f67f4a6b57f1f3d1ae492006ec7ee10772a2cdc3f80268674f44e9b37a5b34",
+      "digest": "sha256:29b2b2e7bce239c536bb89e1b40c4b45e9c40b33b66db082751731f24d3982e0",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.71c3e4e3f1c66a0e04f9b365074f020e9a41752d8d8ea4a7997a8a7ea55e95c8",
+          "version": "schema.sha256.6af488b97d5ad72877af5df2d8855123d88c4c39c7469faaf2463822238b03b4",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.71c3e4e3f1c66a0e04f9b365074f020e9a41752d8d8ea4a7997a8a7ea55e95c8",
+          "family": 2
         }
       ]
     },
@@ -132,13 +136,17 @@
       ]
     },
     "object/helpdesk.ticket": {
-      "digest": "sha256:b8b9a6d77cf09c83d640e826afb80c488bf538c4b6b84fb850828146bdbc5366",
+      "digest": "sha256:6e399fa57c5e1e95a75cdffe9d203bb7d57d5311f4b81806682a38a4ed041299",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.83a738681459e3234e126ae59c2314f6285ab8c7c7d3eef69bfe062460c4c23b",
+          "version": "schema.sha256.9ea488b4ad66f7584314328230d5c54fd13ae94aefffd03f3c0e8e4b342d2e6f",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.83a738681459e3234e126ae59c2314f6285ab8c7c7d3eef69bfe062460c4c23b",
+          "family": 2
         }
       ]
     },
