@@ -1,5 +1,5 @@
 title: Convert to deal
-description: Create the account, contact and deal from this lead in one step; link existing ones instead when they already exist.
+description: Create the account, contact and deal from this lead in one step; link existing ones instead when they already exist. A new account and contact also create their organization and person in Business partners.
 from: [open]
 open: deal
 inputs:
@@ -13,26 +13,37 @@ transaction:
   guard: budget != empty
   message: Fill in the budget before converting; it becomes the deal amount.
   steps:
-    - name: account
-      target: crm.account
+    - name: organization
+      target: party.organization
       when: input.account = empty
       set:
         name: coalesce(company, fullname)
         website: website
         industry: industry
+        size: employees
+    - name: account
+      target: crm.account
+      when: input.account = empty
+      set:
+        base: step.organization
         territory: territory
-        employees: employees
         owner: owner
-    - name: contact
-      target: crm.contact
+    - name: person
+      target: party.contact
       when: input.contact = empty
       set:
         fullname: fullname
-        account: coalesce(input.account, step.account)
+        organization: step.organization
         jobtitle: jobtitle
         email: email
         mobile: mobile
         phone: phone
+    - name: contact
+      target: crm.contact
+      when: input.contact = empty
+      set:
+        base: step.person
+        account: coalesce(input.account, step.account)
         linkedin: linkedin
         owner: owner
     - name: deal

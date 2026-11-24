@@ -7,78 +7,110 @@ records:
       strengths: Broad partner network and familiar reporting templates.
       weaknesses: Slow customization cycle and high per-seat licensing cost.
       howtowin: Highlight fast object modeling, transparent pricing, and unified workflow automation.
-  - type: crm.account
-    id: demo-account-1
+  - type: party.organization
+    id: demo-crm-org-1
     values:
       name: Northwind Precision Manufacturing
       website: https://northwind-mfg.example
       phone: "+1-555-0141"
       industry: manufacturing
-      territory: apac
-      employees: 201-500
-      revenue: {amount: 4800000000}
-      relationship: customer
+      size: 201-500
       description: Precision CNC and industrial automation supplier modernizing regional sales operations.
   - type: crm.account
-    id: demo-account-2
+    id: demo-account-1
+    values:
+      base: demo-crm-org-1
+      territory: apac
+      revenue: {amount: 4800000000}
+      relationship: customer
+  - type: party.organization
+    id: demo-crm-org-2
     values:
       name: Harborline Logistics Group
       website: https://harborline.example
       phone: "+1-555-0142"
       industry: logistics
-      territory: emea
-      employees: 501-1000
-      revenue: {amount: 12000000000}
-      relationship: prospect
+      size: 501-1000
       description: Multi-hub freight operator evaluating a unified pipeline across three regional branches.
   - type: crm.account
-    id: demo-account-3
+    id: demo-account-2
+    values:
+      base: demo-crm-org-2
+      territory: emea
+      revenue: {amount: 12000000000}
+      relationship: prospect
+  - type: party.organization
+    id: demo-crm-org-3
     values:
       name: Clearview Cloud Labs
       website: https://clearview-labs.example
       phone: "+1-555-0143"
-      industry: software
+      industry: technology
+      size: 51-200
+      description: Independent software vendor co-selling vertical workflow solutions.
+  - type: crm.account
+    id: demo-account-3
+    values:
+      base: demo-crm-org-3
       territory: americas
-      employees: 51-200
       revenue: {amount: 1800000000}
       relationship: partner
-      description: Independent software vendor co-selling vertical workflow solutions.
-  - type: crm.contact
-    id: demo-contact-1
+  - type: party.contact
+    id: demo-crm-person-1
     values:
       fullname: Lin Hao
-      account: demo-account-1
+      organization: demo-crm-org-1
       jobtitle: VP of Sales Operations
       email: lin.hao@northwind-mfg.example
       mobile: "+1-555-0191"
-      notes: Primary executive sponsor for the Q4 commercial rollout.
   - type: crm.contact
-    id: demo-contact-2
+    id: demo-contact-1
+    values:
+      base: demo-crm-person-1
+      account: demo-account-1
+      background: Primary executive sponsor for the Q4 commercial rollout.
+  - type: party.contact
+    id: demo-crm-person-2
     values:
       fullname: Maya Patel
-      account: demo-account-2
+      organization: demo-crm-org-2
       jobtitle: Head of Commercial Systems
       email: maya.patel@harborline.example
       mobile: "+1-555-0192"
-      notes: Leading technical evaluation and security review.
   - type: crm.contact
-    id: demo-contact-3
+    id: demo-contact-2
+    values:
+      base: demo-crm-person-2
+      account: demo-account-2
+      background: Leading technical evaluation and security review.
+  - type: party.contact
+    id: demo-crm-person-3
     values:
       fullname: Daniel Brooks
-      account: demo-account-2
+      organization: demo-crm-org-2
       jobtitle: Finance Director
       email: daniel.brooks@harborline.example
       mobile: "+1-555-0193"
-      notes: Approves multi-year commercial contracts and procurement terms.
   - type: crm.contact
-    id: demo-contact-4
+    id: demo-contact-3
+    values:
+      base: demo-crm-person-3
+      account: demo-account-2
+      background: Approves multi-year commercial contracts and procurement terms.
+  - type: party.contact
+    id: demo-crm-person-4
     values:
       fullname: Sofia Alvarez
-      account: demo-account-3
+      organization: demo-crm-org-3
       jobtitle: Alliances Manager
       email: sofia.alvarez@clearview-labs.example
       mobile: "+1-555-0194"
-      notes: Coordinates joint customer demos and referral deals.
+  - type: crm.contact
+    id: demo-contact-4
+    values:
+      base: demo-crm-person-4
+      account: demo-account-3
+      background: Coordinates joint customer demos and referral deals.
   - type: crm.product
     id: demo-product-1
     values:

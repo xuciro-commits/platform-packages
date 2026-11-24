@@ -1,4 +1,0 @@
-name: crmcontactmatch
-object: crm.contact
-title: Match contacts by email
-keys: [{fields: [email], normalize: folded}]

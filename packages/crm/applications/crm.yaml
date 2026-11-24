@@ -2,7 +2,7 @@ name: crm
 title: CRM
 icon: user-group
 pages: [crm.lead, crm.deal, crm.account, crm.contact, crm.activity, crm.note, crm.product, crm.competitor,
-        crm.stage, crm.source, crm.industry, crm.territory, crm.lostreason, crm.disqualifyreason]
+        crm.stage, crm.source, crm.territory, crm.lostreason, crm.disqualifyreason]
 groups:
   - {title: Selling, pages: [crm.lead, crm.deal]}
   - {title: Customers, pages: [crm.account, crm.contact]}
@@ -11,7 +11,7 @@ groups:
   - title: Settings
     layout: settings
     roles: [salesmanager]
-    pages: [crm.stage, crm.source, crm.industry, crm.territory, crm.lostreason, crm.disqualifyreason]
+    pages: [crm.stage, crm.source, crm.territory, crm.lostreason, crm.disqualifyreason]
 dashboard:
   - {title: Open pipeline, kind: metric, object: crm.deal, domain: [[state, "=", open]], measure: "sum:amount"}
   - {title: Weighted forecast, kind: metric, object: crm.deal, domain: [[state, "=", open]], measure: "sum:weighted"}

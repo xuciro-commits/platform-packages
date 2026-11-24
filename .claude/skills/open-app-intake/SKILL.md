@@ -94,3 +94,5 @@ description: 把一个开放应用（Frappe、Odoo/OCA、Zammad、EspoCRM……�
 | 动作的 guard 里写 `count(lines)` 报 “rule collection lines is undeclared” | 动作条件读不到对象的集合 | 在对象上加公式字段 `items: count(lines)`，guard 写 `items > 0` |
 | 经理用 `read: below` 或 `unit`，安装预检报“无法检查依赖” | 这两级要记录上的单元字段与组织结构名，包里写不出 | 用 `team`（本单元同事的记录）；v0.2.6 起 `pkg build` 直接指名报错 |
 | `pkg diff` 报 the changes need a minor release | 加了资源或字段而只升了补丁（1.0 以后） | 按版本规则升次版本；0.x 下补丁算次版本 |
+| 装附属对象报 extension field fullname conflicts with base | 附属对象的字段与基础对象同名（如 `fullname`、`notes`） | 换名：带出的显示名写 `title`（`from: base.fullname`），备注写 `background` 之类 |
+| 转换步骤写 `input.account.base` 报 is not an input of this action | `set` 读不到引用记录的字段 | 只用输入、主体与前面步骤的结果；需要别的记录的字段时先记进平台路线图 |

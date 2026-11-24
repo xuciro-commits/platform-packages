@@ -1,12 +1,14 @@
 {
   "format": 2,
   "package": "crm",
-  "version": "0.2.2",
-  "requires": [],
-  "artifact": "sha256:4f032fc54d434893f78a068a8b222d2efbbfef33638c0060bac1fc8553f555e7",
+  "version": "0.3.0",
+  "requires": [
+    "party@^0.2.0"
+  ],
+  "artifact": "sha256:a872d5ccae39740b0c1f2ab9d6acc883f87bf8620efb6a519453c488080ab84b",
   "assets": {
     "app/crm": {
-      "digest": "sha256:5161dfaf3ed34238134b6ec596c74d9f8eb90e5613c737d640b05e1b655f33c1",
+      "digest": "sha256:d1da6cba4a40597ce254adb242ee2eb434170fa5c37ecd1b89eec8849f25d6cb",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -30,24 +32,18 @@
       "contractVersion": 1,
       "sourceVersion": "1"
     },
-    "matching/crmaccountmatch": {
-      "digest": "sha256:12d834327949313a99fe6161d7504328dc5474c7fb22799fc7263b4a3997a1d7",
-      "contractVersion": 1,
-      "sourceVersion": "1.matching-1"
-    },
-    "matching/crmcontactmatch": {
-      "digest": "sha256:c4ef44ff4d480f58ad7eca2a7a5613edf6762e0832541ed1b8bc02bcb1c84783",
-      "contractVersion": 1,
-      "sourceVersion": "1.matching-1"
-    },
     "object/crm.account": {
-      "digest": "sha256:5f561b84b1169a53c46cfc65a9369a724481eb4144a131a2d11a23dce7e269bc",
+      "digest": "sha256:178e812b68616c7fa3407670f7cbbf4e58b854da101becdda6c0e3692ce81fc2",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.775648d69a75498ba186a90c519fa430e80f3b9a45453ade2345b6617577946b",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.e65cd6d3e19d36a1eb907d5f96951c21bd81d40a7a9e67d89e550f2828d402a4",
+          "family": 2
         }
       ]
     },
@@ -74,13 +70,17 @@
       ]
     },
     "object/crm.contact": {
-      "digest": "sha256:aa4a88faad4947320dc20453334e9bb514bce2025e0a67d0f54c215e01c74064",
+      "digest": "sha256:2c983f938a753d1e993d131e295f379bd1b0090f604af9f5c27b262bdee378ba",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.729bb51629a3849c30a52cab3ac7341b141a847c57db92eba5b990dbcb6fe1e4",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.3886f4eb13d705a3d9bcc24eaf8b20b76212bc0f611ea3b2d75d58a43f69f3ed",
+          "family": 2
         }
       ]
     },
@@ -128,19 +128,8 @@
         }
       ]
     },
-    "object/crm.industry": {
-      "digest": "sha256:b372146fa887f4cafd0313febacb45151ddd4cc43c10683c9bc8c83ce505fc23",
-      "contractVersion": 1,
-      "sourceVersion": "1",
-      "schemaVersions": [
-        {
-          "version": "schema.sha256.6a9147e5528c282f737672f61311818ecb38f8a7a7bf258bcea0d0dde4b43d50",
-          "family": 1
-        }
-      ]
-    },
     "object/crm.lead": {
-      "digest": "sha256:f517dc374ad7fbd80f2f38c774b2a7dbf517ce71f1caadcaf3a4db8368326937",
+      "digest": "sha256:c7098427ab5a0a2bae708a089830e45556c00a5063942614a47ddc1703f16a2b",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -151,6 +140,10 @@
         {
           "version": "schema.sha256.5866bf402e14a8678e42448793a7a2c66f62177af0a0fd087f0d277cb574d480",
           "family": 2
+        },
+        {
+          "version": "schema.sha256.553ed6e5dfbbc03af5ca49090b32632eeb8bad21a8e3851d8fe8fc8f3d651266",
+          "family": 3
         }
       ]
     },
@@ -221,7 +214,7 @@
       ]
     },
     "page/crm.account": {
-      "digest": "sha256:8558e0a3e6bbd028eede61976e3f608df551c52d9c73f74c978a5f89ccc865c5",
+      "digest": "sha256:508f6d1f16faa04aa15b0d813211526967bd3300157ac62909bf3bb0035066bb",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -236,7 +229,7 @@
       "sourceVersion": "1"
     },
     "page/crm.contact": {
-      "digest": "sha256:a26621d5c37f305693ae5831b1702bb98395217c512c29d6bc00e0d6e965c68d",
+      "digest": "sha256:1bdae269355ef1e5196ceead31f7509b26136db8369f966bc8c84d24a646cf12",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -247,11 +240,6 @@
     },
     "page/crm.disqualifyreason": {
       "digest": "sha256:d6907e8478cc11f66392182b8e9ee1d3e9756ebb51d8fa742d2ba0913326de9d",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/crm.industry": {
-      "digest": "sha256:837b53b181d5957ccd909872f5f93ca8d8c69f82334d334ab0c9d6f8db2a4b33",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

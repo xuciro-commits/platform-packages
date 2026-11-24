@@ -1,5 +1,5 @@
 id: crm
-version: 0.2.2
+version: 0.3.0
 title: CRM
 namespace: crm
 description: Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal,
@@ -7,7 +7,7 @@ description: Leads with response times and qualification, a stage-based pipeline
 listing:
   industries:
   - general
-  capabilities:
+  domains:
   - sales
   keywords:
   - lead
@@ -28,10 +28,6 @@ roots:
 - app: build
   kind: app
   name: crm
-- app: build
-  kind: matching
-  name: crmaccountmatch
-- app: build
-  kind: matching
-  name: crmcontactmatch
 artifact: crm.json
+requires:
+- party@^0.2.0

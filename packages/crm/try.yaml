@@ -21,7 +21,28 @@ steps:
     show: [stage, state, deal]
     expect: {state: converted}
   - read: crm.deal/{crm.lead/L1.deal}
-    show: [stage, account, amount]
+    show: [stage, account, contact, amount]
+  - read: crm.account/ACC-00001
+    show: [title, base, owner]
+    expect: {title: Xihe Precision}
+  - read: crm.contact/CON-00001
+    show: [title, account]
+    expect: {title: Zhou Ning, account: ACC-00001}
+  - do: crm.account.create
+    on: crm.account/A2
+    with: {base: demo-crm-org-1}
+    refused: true
+  - do: crm.lead.create
+    on: crm.lead/L4
+    with: {fullname: Gao Yan, company: Northwind Precision Manufacturing, email: gao@northwind.example, budget: {amount: 90000, currency: CNY}}
+  - do: crm.lead.convert
+    on: crm.lead/L4
+    with: {account: demo-account-1, expectedclose: "2026-12-31", nextstep: Book the demo, nextstepdue: "2026-11-30"}
+    show: [state, deal]
+    expect: {state: converted}
+  - read: crm.deal/{crm.lead/L4.deal}
+    show: [account, contact]
+    expect: {account: demo-account-1}
   - do: crm.product.create
     on: crm.product/P1
     with: {title: Platform licence, price: {amount: 120000, currency: CNY}}

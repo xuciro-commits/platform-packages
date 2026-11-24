@@ -17,7 +17,7 @@ fields:
   - {name: website, title: Website, type: text, group: Contact}
   - {name: linkedin, title: LinkedIn, type: text, group: Contact}
   - {name: source, title: Source, type: reference, ref: crm.source, group: Company}
-  - {name: industry, title: Industry, type: reference, ref: crm.industry, group: Company}
+  - {name: industry, title: Industry, type: reference, ref: party.industry, group: Company}
   - {name: territory, title: Territory, type: reference, ref: crm.territory, group: Company}
   - {name: employees, title: Employees, type: choice, group: Company, choices: "1-10:1-10,11-50:11-50,51-200:51-200,201-500:201-500,501-1000:501-1000,1000+:1000+"}
   - {name: need, title: Need, type: longtext, group: Qualification, help: "What problem do they want to solve, and why now?"}

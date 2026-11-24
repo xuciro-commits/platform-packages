@@ -60,7 +60,7 @@ Contacts: 联系人
 Content: 内容
 Convert to deal: 转为商机
 Converted: 已转化
-Create the account, contact and deal from this lead in one step; link existing ones instead when they already exist.: 一步按这条线索建好客户、联系人和商机；已经有的就关联现有的。
+Create the account, contact and deal from this lead in one step; link existing ones instead when they already exist. A new account and contact also create their organization and person in Business partners.: 一步按这条线索建好客户、联系人和商机；已经有的就关联现有的。新客户、新联系人也会在往来单位里建好单位和人。
 Customer: 成交客户
 Customers: 客户
 Cyan: 青
@@ -145,8 +145,6 @@ Manufacturing: 制造
 Mark lost: 丢单
 Mark this activity done and write what happened.: 把活动标为完成，并写下结果。
 Mark won: 赢单
-Match accounts by name: 按名称匹配客户
-Match contacts by email: 按邮箱匹配联系人
 Media: 媒体
 Meeting: 会议
 Met: 达成
@@ -174,12 +172,14 @@ Open: 进行中
 Open leads: 进行中的线索
 Open pipeline: 进行中的管道
 Orange: 橙
+Organization: 往来单位
 Other: 其他
 Outbound: 主动开发
 Outcome: 结果
 Outcome notes: 结果说明
 Parent territory: 上级地区
 Partner: 合作伙伴
+Person: 人
 Phone: 电话
 Pink: 粉
 Pinned: 置顶
@@ -237,6 +237,8 @@ Territory: 地区
 Territory manager: 地区经理
 The customer has the proposal and a date to decide.: 客户拿到方案，并定了决定的日期。
 The decision maker has committed verbally; the contract is being signed.: 决策人已口头承诺，合同在签。
+The sales side of a business partner contact. Their name, organization, job title and ways to reach them are kept once in Business partners.: 往来单位里一个联系人在销售这边的信息。姓名、单位、职务和联系方式只在往来单位里存一份。
+The sales side of a business partner organization. Its name, website, industry, size and address are kept once in Business partners.: 往来单位在销售这边的信息。名称、网站、行业、规模和地址只在往来单位里存一份。
 The next step on this deal is due. Do it, or set a new one.: 这个商机的下一步到期了。去做，或者定一个新的。
 The single next thing that moves this deal forward.: 推动这个商机往前走的下一件事。
 This activity is no longer needed.: 这项活动不再需要。
