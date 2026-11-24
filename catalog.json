@@ -4,11 +4,11 @@
   "packages": [
     {
       "id": "crm",
-      "version": "0.2.2",
+      "version": "0.3.0",
       "title": "CRM",
       "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
-      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.2.2/crm.json",
-      "sha256": "sha256:4f032fc54d434893f78a068a8b222d2efbbfef33638c0060bac1fc8553f555e7",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.3.0/crm.json",
+      "sha256": "sha256:a872d5ccae39740b0c1f2ab9d6acc883f87bf8620efb6a519453c488080ab84b",
       "listing": {
         "industries": [
           "general"
@@ -38,16 +38,16 @@
     },
     {
       "id": "geo",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "title": "Places",
       "description": "Countries and regions with their ISO codes, and the provinces, prefectures and counties of China with their official codes, shared once by every application that keeps an address.",
-      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/geo/v0.1.0/geo.json",
-      "sha256": "sha256:2361524205d81f9027476ab2b10b228c2ae0ae5a47244365f81b0d40508bc02e",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/geo/v0.1.1/geo.json",
+      "sha256": "sha256:3a4965e64c89cc6b6c873190266ebab459597fb85f6287db30040c4283bb8b8f",
       "listing": {
         "industries": [
           "general"
         ],
-        "capabilities": [
+        "domains": [
           "master-data"
         ],
         "keywords": [
@@ -58,7 +58,8 @@
           "master-data"
         ],
         "stage": "preview"
-      }
+      },
+      "kind": "master-data"
     },
     {
       "id": "helpdesk",
@@ -129,16 +130,16 @@
     },
     {
       "id": "party",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "title": "Business partners",
       "description": "The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.",
-      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/party/v0.2.0/party.json",
-      "sha256": "sha256:40144a3cfee21405a0933b9563b96a9fbe7f1f4a5ffa8710797f1151bb5233f0",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/party/v0.2.1/party.json",
+      "sha256": "sha256:c1ea1433631fb2403b21874845d6f6447089e3dc05694dd365a00573fc2c3917",
       "listing": {
         "industries": [
           "general"
         ],
-        "capabilities": [
+        "domains": [
           "master-data"
         ],
         "keywords": [
@@ -149,20 +150,21 @@
           "master-data"
         ],
         "stage": "preview"
-      }
+      },
+      "kind": "master-data"
     },
     {
       "id": "uom",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "title": "Units of measure",
       "description": "The units every application counts, weighs and measures in, with exact conversion factors, shared once by stock, purchasing, production and time keeping.",
-      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/uom/v0.1.0/uom.json",
-      "sha256": "sha256:a082b9140f7b81ff6e7eda019accc09207ece4c6030c130d069281e3499832f1",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/uom/v0.1.1/uom.json",
+      "sha256": "sha256:e3af0f90086f6b8a2f411eb6fdc662fabdead90566b3c94a182fce4563b992e1",
       "listing": {
         "industries": [
           "general"
         ],
-        "capabilities": [
+        "domains": [
           "master-data"
         ],
         "keywords": [
@@ -172,7 +174,8 @@
           "master-data"
         ],
         "stage": "preview"
-      }
+      },
+      "kind": "master-data"
     }
   ]
 }
