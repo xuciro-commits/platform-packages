@@ -1,0 +1,9 @@
+title: Put on hold
+description: Pause this project for now.
+from: [active]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'onhold'"

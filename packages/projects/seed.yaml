@@ -1,0 +1,123 @@
+records:
+  - type: party.organization
+    id: demo-prj-org-1
+    values:
+      name: Brightline Studio
+      website: https://brightline.example
+  - type: projects.project
+    id: demo-project-1
+    values:
+      title: Brightline website relaunch
+      projecttype: client
+      customer: demo-prj-org-1
+      startdate: "2026-11-16"
+      enddate: "2026-12-18"
+      estimate: 120
+      description: New marketing site with a booking flow, launched before the holiday campaign.
+    then:
+      - {action: start}
+  - type: projects.project
+    id: demo-project-2
+    values:
+      title: Quarterly security review
+      projecttype: internal
+      startdate: "2026-12-01"
+      enddate: "2026-12-12"
+      estimate: 30
+  - type: projects.task
+    id: demo-task-1
+    values:
+      project: demo-project-1
+      title: Discovery workshop
+      startdate: "2026-11-16"
+      enddate: "2026-11-18"
+      estimate: 10
+    then:
+      - {action: complete}
+  - type: projects.task
+    id: demo-task-2
+    values:
+      project: demo-project-1
+      title: Wireframes
+      startdate: "2026-11-19"
+      enddate: "2026-11-27"
+      estimate: 24
+      after: demo-task-1
+      stage: inprogress
+      priority: high
+  - type: projects.task
+    id: demo-task-3
+    values:
+      project: demo-project-1
+      title: Visual design
+      startdate: "2026-11-30"
+      enddate: "2026-12-09"
+      estimate: 32
+      after: demo-task-2
+  - type: projects.task
+    id: demo-task-4
+    values:
+      project: demo-project-1
+      title: Build pages
+      startdate: "2026-12-03"
+      enddate: "2026-12-15"
+      estimate: 48
+      after: demo-task-3
+  - type: projects.task
+    id: demo-task-5
+    values:
+      project: demo-project-1
+      title: Launch
+      startdate: "2026-12-18"
+      enddate: "2026-12-18"
+      after: demo-task-4
+      milestone: true
+  - type: projects.task
+    id: demo-task-6
+    values:
+      project: demo-project-2
+      title: Audit access rights
+      startdate: "2026-12-01"
+      enddate: "2026-12-05"
+      estimate: 12
+  - type: projects.task
+    id: demo-task-7
+    values:
+      project: demo-project-2
+      title: Fix findings
+      startdate: "2026-12-08"
+      enddate: "2026-12-12"
+      estimate: 18
+      after: demo-task-6
+  - type: projects.timelog
+    id: demo-time-1
+    values:
+      task: demo-task-1
+      workdate: "2026-11-16"
+      hours: 4
+      activity: meeting
+      notes: Kick-off with the marketing team.
+  - type: projects.timelog
+    id: demo-time-2
+    values:
+      task: demo-task-1
+      workdate: "2026-11-17"
+      hours: 5
+      activity: design
+      notes: Mapped the booking journey.
+  - type: projects.timelog
+    id: demo-time-3
+    values:
+      task: demo-task-2
+      workdate: "2026-11-19"
+      hours: 6
+      activity: design
+  - type: projects.timelog
+    id: demo-time-4
+    values:
+      task: demo-task-2
+      workdate: "2026-11-20"
+      hours: 3
+      activity: management
+      billable: false
+      notes: Internal review of the sitemap.

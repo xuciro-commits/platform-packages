@@ -1,0 +1,23 @@
+name: projects
+title: Projects
+icon: rectangle-group
+pages: [projects.task, projects.timelog, projects.project, projects.stage, projects.projecttype, projects.activity]
+groups:
+  - {title: Work, pages: [projects.task, projects.timelog]}
+  - {title: Planning, pages: [projects.project]}
+  - title: Settings
+    layout: settings
+    roles: [manager]
+    pages: [projects.stage, projects.projecttype, projects.activity]
+dashboard:
+  - {title: Active projects, kind: metric, object: projects.project, domain: [[state, "=", active]]}
+  - {title: Open tasks, kind: metric, object: projects.task, domain: [[state, "=", open]]}
+  - {title: Hours logged, kind: metric, object: projects.timelog, measure: "sum:hours"}
+  - {title: Billable hours, kind: metric, object: projects.timelog, domain: [[billable, "=", true]], measure: "sum:hours"}
+  - {title: Hours by project, kind: bar, object: projects.timelog, group: project, measure: "sum:hours"}
+  - {title: Hours by person, kind: bar, object: projects.timelog, group: person, measure: "sum:hours"}
+  - {title: Hours by activity, kind: share, object: projects.timelog, group: activity, measure: "sum:hours"}
+  - {title: Open tasks by stage, kind: share, object: projects.task, domain: [[state, "=", open]], group: stage}
+  - {title: Hours by month, kind: line, object: projects.timelog, group: "workdate:month", measure: "sum:hours"}
+resources:
+  - {app: build, kind: flow, name: build.projectstaskdue}

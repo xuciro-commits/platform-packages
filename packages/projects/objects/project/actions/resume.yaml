@@ -1,0 +1,9 @@
+title: Resume
+description: Carry on with this project.
+from: [onhold]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'active'"

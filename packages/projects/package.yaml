@@ -1,0 +1,33 @@
+id: projects
+version: 0.1.0
+title: Projects
+namespace: projects
+description: Projects with their tasks on a Gantt chart, task dependencies and milestones, time logged per person and task with billable hours,
+  and progress and hours rolled up from the tasks.
+listing:
+  industries:
+  - general
+  - professional-services
+  domains:
+  - projects
+  keywords:
+  - project
+  - task
+  - gantt
+  - milestone
+  - timesheet
+  - time-tracking
+  stage: preview
+  source:
+    ecosystem: frappe
+    app: erpnext
+    version: v15.x
+    license: GPL-3.0
+    relation: redesign
+roots:
+- app: build
+  kind: app
+  name: projects
+artifact: projects.json
+requires:
+- party@^0.2.0

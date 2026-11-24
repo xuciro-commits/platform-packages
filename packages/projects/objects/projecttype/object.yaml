@@ -1,0 +1,20 @@
+name: projecttype
+namespace: projects
+title: Project type
+plural: Project types
+icon: tag
+display: title
+
+fields:
+  - {name: title, title: Project type, type: text, required: true, search: true}
+
+access:
+  - {role: member, read: all}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: client, title: Client work}
+  - {id: internal, title: Internal}
+  - {id: support, title: Support and maintenance}

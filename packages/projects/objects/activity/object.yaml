@@ -1,0 +1,24 @@
+name: activity
+namespace: projects
+title: Activity type
+plural: Activity types
+icon: wrench-screwdriver
+display: title
+description: What the time was spent on.
+
+fields:
+  - {name: title, title: Activity, type: text, required: true, search: true}
+
+access:
+  - {role: member, read: all}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: development, title: Development}
+  - {id: design, title: Design}
+  - {id: meeting, title: Meeting}
+  - {id: support, title: Support}
+  - {id: documentation, title: Documentation}
+  - {id: management, title: Project management}

@@ -1,0 +1,102 @@
+roles: {projects: manager}
+at: 2026-11-23T09:00:00Z
+org:
+  units:
+    - {id: DELIVERY, name: Delivery, kind: team}
+    - {id: DESIGN, name: Design, kind: team}
+members:
+  mei: {roles: {build: user, projects: member}, units: {DELIVERY: member}}
+  tao: {roles: {build: user, projects: member}, units: {DELIVERY: member}}
+  lan: {roles: {build: user, projects: member}, units: {DESIGN: member}}
+steps:
+  - do: party.organization.create
+    on: party.organization/O1
+    with: {name: Xinghe Cloud}
+  - do: projects.project.create
+    on: projects.project/P1
+    with: {title: Website relaunch, customer: O1, startdate: "2026-11-23", enddate: "2026-12-18", estimate: 40}
+    show: [state, taskcount, progress, manager]
+    expect: {state: planned, taskcount: 0, progress: 0}
+  - do: projects.project.start
+    on: projects.project/P1
+    show: [state]
+    expect: {state: active}
+  - do: projects.task.create
+    on: projects.task/T1
+    with: {project: P1, title: Wireframes, startdate: "2026-11-23", enddate: "2026-11-27", estimate: 12, assignee: mei}
+    show: [stage, state, priority]
+    expect: {stage: todo, state: open, priority: medium}
+  - do: projects.task.create
+    on: projects.task/T2
+    with: {project: P1, title: Build pages, startdate: "2026-11-30", enddate: "2026-12-11", after: T1, estimate: 24, assignee: tao}
+  - do: projects.task.create
+    on: projects.task/T3
+    with: {project: P1, title: Launch, startdate: "2026-12-18", enddate: "2026-12-18", milestone: true, assignee: lan}
+  - do: projects.task.create
+    on: projects.task/T4
+    with: {project: P1, title: Backwards, startdate: "2026-12-10", enddate: "2026-12-01"}
+    refused: true
+  - read: projects.project/P1
+    show: [taskcount, opentasks, progress]
+    expect: {taskcount: 3, opentasks: 3, progress: 0}
+  - do: projects.timelog.create
+    on: projects.timelog/L1
+    as: mei
+    with: {task: T1, workdate: "2026-11-23", hours: 3.5}
+    show: [project, person, billable, activity]
+    expect: {project: P1, person: mei, billable: true, activity: development}
+  - do: projects.timelog.create
+    on: projects.timelog/L2
+    as: mei
+    with: {task: T1, workdate: "2026-11-24", hours: 4, billable: false, activity: meeting}
+  - do: projects.timelog.create
+    on: projects.timelog/L3
+    as: mei
+    with: {task: T1, workdate: "2026-11-24", hours: 30}
+    refused: true
+  - read: projects.task/T1
+    show: [hours, billablehours]
+    expect: {hours: 7.5, billablehours: 3.5}
+  - read: projects.project/P1
+    show: [hours, billablehours]
+    expect: {hours: 7.5, billablehours: 3.5}
+  - read: projects.task/T2
+    as: mei
+    show: [title, after]
+    expect: {after: T1}
+  - read: projects.task/T3
+    as: mei
+    refused: true
+  - read: projects.timelog/L1
+    as: tao
+    refused: true
+  - do: projects.project.complete
+    on: projects.project/P1
+    refused: true
+  - do: projects.task.complete
+    on: projects.task/T1
+    as: mei
+    show: [state]
+    expect: {state: done}
+  - do: projects.task.complete
+    on: projects.task/T2
+    as: tao
+  - do: projects.task.cancel
+    on: projects.task/T3
+    as: lan
+    refused: true
+  - do: projects.task.complete
+    on: projects.task/T3
+  - do: projects.project.complete
+    on: projects.project/P1
+    show: [state, progress, opentasks]
+    expect: {state: completed, progress: 100, opentasks: 0}
+  - read: projects.project/demo-project-1
+    show: [title, state, taskcount, hours]
+    expect: {state: active}
+  - do: platform.package.clear-demo
+    on: platform.package/projects
+    with: {id: projects}
+  - read: projects.project/demo-project-1
+    show: [archived]
+    expect: {archived: true}

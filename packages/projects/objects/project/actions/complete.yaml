@@ -1,0 +1,11 @@
+title: Complete
+description: Close this project once every task is done or canceled.
+from: [active]
+roles: [manager]
+transaction:
+  guard: opentasks = 0
+  message: Finish or cancel the open tasks first.
+  steps:
+    - target: $subject
+      set:
+        state: "'completed'"

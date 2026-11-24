@@ -154,6 +154,40 @@
       "kind": "master-data"
     },
     {
+      "id": "projects",
+      "version": "0.1.0",
+      "title": "Projects",
+      "description": "Projects with their tasks on a Gantt chart, task dependencies and milestones, time logged per person and task with billable hours, and progress and hours rolled up from the tasks.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/projects/v0.1.0/projects.json",
+      "sha256": "sha256:95b9805dd63444cafcd8541b9a2833f47dffa3fd4e663e711a202026c362065a",
+      "listing": {
+        "industries": [
+          "general",
+          "professional-services"
+        ],
+        "domains": [
+          "projects"
+        ],
+        "keywords": [
+          "project",
+          "task",
+          "gantt",
+          "milestone",
+          "timesheet",
+          "time-tracking"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application"
+    },
+    {
       "id": "uom",
       "version": "0.1.1",
       "title": "Units of measure",

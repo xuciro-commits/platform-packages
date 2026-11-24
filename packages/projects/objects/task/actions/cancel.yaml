@@ -1,0 +1,9 @@
+title: Cancel
+description: This task is no longer needed.
+from: [open]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'canceled'"

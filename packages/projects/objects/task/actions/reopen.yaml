@@ -1,0 +1,8 @@
+title: Reopen
+description: Put this task back on the list.
+from: [done, canceled]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'open'"

@@ -1,0 +1,51 @@
+name: task
+namespace: projects
+title: Task
+plural: Tasks
+icon: check-circle
+display: title
+naming: TASK-{n:5}
+scope: {owner: assignee}
+sets: {timelogs: {object: projects.timelog, limit: 500}}
+
+fields:
+  - {name: title, title: Task, type: text, required: true, search: true, group: Task}
+  - {name: project, title: Project, type: reference, ref: projects.project, inverse: tasks, required: true, search: true, group: Task}
+  - {name: startdate, title: Start, type: date, required: true, default: today, group: Schedule}
+  - {name: enddate, title: Finish, type: date, required: true, group: Schedule}
+  - {name: after, title: After, type: reference, ref: projects.task, group: Schedule, help: The task that has to finish before this one starts.}
+  - {name: milestone, title: Milestone, type: boolean, default: "false", group: Schedule, help: A point in time rather than a stretch of work; it starts and finishes on the same day.}
+  - {name: estimate, title: Estimated hours, type: decimal, group: Schedule}
+  - {name: hours, title: Logged hours, type: decimal, group: Time, formula: sum(timelogs.hours)}
+  - {name: billablehours, title: Billable hours, type: decimal, group: Time, formula: "sum(timelogs, if(item.billable, item.hours, 0))"}
+  - {name: description, title: Description, type: longtext, group: Task}
+  - {name: stage, title: Stage, type: reference, ref: projects.stage, default: todo, aside: true}
+  - {name: priority, title: Priority, type: choice, default: medium, aside: true, choices: "low:Low,medium:Medium,high:High,urgent:Urgent"}
+  - {name: assignee, title: Assigned to, type: member, default: member, aside: true}
+
+constraints:
+  - {name: dates, kind: expression, fields: [startdate, enddate], expr: "enddate >= startdate", message: The task must finish on or after the day it starts.}
+
+states:
+  - {name: open, title: Open, tone: info, description: Still to be done.}
+  - {name: done, title: Done, tone: success, description: Finished.}
+  - {name: canceled, title: Canceled, tone: neutral, description: No longer needed.}
+actions: [complete, cancel, reopen]
+
+access:
+  - {role: member, read: team, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: gantt
+  dates: startdate
+  until: enddate
+  after: after
+  columns: [title, project, stage, assignee, startdate, enddate, hours, estimate]
+  sort: [{sortKey: startdate, direction: ascending}]
+  lanes: stage
+  group: none
+  filters: []
+  search: ""
+  inbox: {member: assignee, due: enddate, open: {state: [open]}}

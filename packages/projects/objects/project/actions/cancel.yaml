@@ -1,0 +1,9 @@
+title: Cancel
+description: Stop this project before it is finished.
+from: [planned, active, onhold]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'canceled'"

@@ -1,0 +1,52 @@
+name: project
+namespace: projects
+title: Project
+plural: Projects
+icon: folder
+display: title
+naming: PRJ-{year}-{n:4}
+scope: {owner: manager}
+sets: {tasks: {object: projects.task, limit: 500}}
+
+fields:
+  - {name: title, title: Project, type: text, required: true, search: true, group: Project}
+  - {name: projecttype, title: Project type, type: reference, ref: projects.projecttype, group: Project}
+  - {name: customer, title: Customer, type: reference, ref: party.organization, search: true, group: Project, help: The business partner the project is for; leave empty for internal work.}
+  - {name: startdate, title: Start, type: date, required: true, default: today, group: Schedule}
+  - {name: enddate, title: Finish, type: date, required: true, group: Schedule}
+  - {name: estimate, title: Estimated hours, type: decimal, group: Schedule}
+  - {name: description, title: Description, type: longtext, group: Project}
+  - {name: taskcount, title: Tasks, type: integer, group: Progress, formula: "sum(tasks, if(item.state = 'canceled', 0, 1))"}
+  - {name: opentasks, title: Open tasks, type: integer, group: Progress, formula: "sum(tasks, if(item.state = 'open', 1, 0))"}
+  - {name: donetasks, title: Done tasks, type: integer, group: Progress, formula: "sum(tasks, if(item.state = 'done', 1, 0))"}
+  - {name: progress, title: Progress %, type: decimal, group: Progress, formula: "if(taskcount = 0, 0.0, donetasks * 100.0 / taskcount)"}
+  - {name: hours, title: Logged hours, type: decimal, group: Progress, formula: sum(tasks.hours)}
+  - {name: billablehours, title: Billable hours, type: decimal, group: Progress, formula: sum(tasks.billablehours)}
+  - {name: manager, title: Project manager, type: member, default: member, aside: true}
+
+constraints:
+  - {name: dates, kind: expression, fields: [startdate, enddate], expr: "enddate >= startdate", message: The project must finish on or after the day it starts.}
+
+states:
+  - {name: planned, title: Planned, tone: neutral, description: Not started yet.}
+  - {name: active, title: Active, tone: info, description: Work is under way.}
+  - {name: onhold, title: On hold, tone: warning, description: Paused for now.}
+  - {name: completed, title: Completed, tone: success, description: Every task is done or canceled.}
+  - {name: canceled, title: Canceled, tone: neutral, description: Stopped before it was finished.}
+actions: [start, hold, resume, complete, cancel]
+
+access:
+  - {role: member, read: all}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  dates: startdate
+  until: enddate
+  columns: [title, customer, startdate, enddate, progress, hours, estimate, manager]
+  sort: [{sortKey: startdate, direction: ascending}]
+  lanes: ""
+  group: none
+  filters: []
+  search: ""

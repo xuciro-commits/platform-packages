@@ -95,4 +95,6 @@ description: 把一个开放应用（Frappe、Odoo/OCA、Zammad、EspoCRM……�
 | 经理用 `read: below` 或 `unit`，安装预检报“无法检查依赖” | 这两级要记录上的单元字段与组织结构名，包里写不出 | 用 `team`（本单元同事的记录）；v0.2.6 起 `pkg build` 直接指名报错 |
 | `pkg diff` 报 the changes need a minor release | 加了资源或字段而只升了补丁（1.0 以后） | 按版本规则升次版本；0.x 下补丁算次版本 |
 | 装附属对象报 extension field fullname conflicts with base | 附属对象的字段与基础对象同名（如 `fullname`、`notes`） | 换名：带出的显示名写 `title`（`from: base.fullname`），备注写 `background` 之类 |
+| 装包报“没有写入参考记录”，`pkg try` 没有别的提示 | 演示种子里有一条被拒，同一次接受里的参考记录一起回滚 | 先挪开 `seed.yaml` 再跑 `try`，用 `try` 的步骤把同样的记录建一遍，就能看到拒绝原因 |
+| 整数公式报错，或种子在某个比例下才被拒 | 整数相除不整除时整数字段拒收；小数字段配整数表达式报 types differ | 比例用小数字段，表达式写成 `donetasks * 100.0 / taskcount`，另一支写 `0.0` |
 | 转换步骤写 `input.account.base` 报 is not an input of this action | `set` 读不到引用记录的字段 | 只用输入、主体与前面步骤的结果；需要别的记录的字段时先记进平台路线图 |

@@ -1,0 +1,9 @@
+title: Start
+description: Start work on this project.
+from: [planned]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'active'"

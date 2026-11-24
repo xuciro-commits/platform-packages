@@ -1,0 +1,117 @@
+{
+  "format": 2,
+  "package": "projects",
+  "version": "0.1.0",
+  "requires": [
+    "party@^0.2.0"
+  ],
+  "artifact": "sha256:95b9805dd63444cafcd8541b9a2833f47dffa3fd4e663e711a202026c362065a",
+  "assets": {
+    "app/projects": {
+      "digest": "sha256:8e6d96c8e90cdaaf3a1fe492752520119b94b37bc1a17bf97f068d9cfbff10b1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "flow/build.projectstaskdue": {
+      "digest": "sha256:13e71b8aebd162d173c6fd40f42d62eb042e064ce3225906f12b909456164909",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/projects.activity": {
+      "digest": "sha256:5cccca91b90982250b3969c29ef8c93f845ba94c3a0b68f2981bb67568b84854",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.73d53a354fc045cd5f5088327c5eb016c776a933141b6a93b0fa8e058151a082",
+          "family": 1
+        }
+      ]
+    },
+    "object/projects.project": {
+      "digest": "sha256:69908ddd967c01dd8325e4a0789173a8dd4bb84f20993e54ee2b02cddc5eeb3c",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.721424ed7a9310878f652a2fd91b7f22fc15270972d34cc2a9f6e7a7fa5c48c5",
+          "family": 1
+        }
+      ]
+    },
+    "object/projects.projecttype": {
+      "digest": "sha256:18b1b8061e6c20221bfd34c083edacfc42f9fc77a38cb6a7b11e07fcc022d8cc",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.eb69ece0944e30f7118d7e754dac84bbf06dc0227943f090f890b63ab527920c",
+          "family": 1
+        }
+      ]
+    },
+    "object/projects.stage": {
+      "digest": "sha256:387f6d389da0a1613894e1ed88e4f77c0f4be80be9be7af735163a03b20e214c",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.7f8d6bd245ce4ff0d99bc5d8ddbb7a950cf71c9b8d92fbb7229434b530af985d",
+          "family": 1
+        }
+      ]
+    },
+    "object/projects.task": {
+      "digest": "sha256:8ddf40510376073af203c6e39299ec19b75d7dea9ada1a02e57f0c0c1ce9b2fc",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.5492c253c6b9f9d8738fc86db89b180ee9e232577e28d151c56afab0038614d8",
+          "family": 1
+        }
+      ]
+    },
+    "object/projects.timelog": {
+      "digest": "sha256:86a151a89fc90f9e4a6617fab0a13753505756a1216a80762176b45295f06ce6",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.35bd30442560bf51177b701e29ad0b97950dae645d1b9fe34aedd9d2caa6588e",
+          "family": 1
+        }
+      ]
+    },
+    "page/projects.activity": {
+      "digest": "sha256:d403f1faa81451f874882af9bd0d4b1818dfbb41df6ff2fb82f1017e8594bb0e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.project": {
+      "digest": "sha256:c673d7760fba2ae1bede1bc714b301fa07a0ac09688a8197fccd548f9d487ba0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.projecttype": {
+      "digest": "sha256:daee203ef24b73e4f4d4ec6694837aa135b50cb640a5444bc86e6461a1635b2e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.stage": {
+      "digest": "sha256:47e0b0e938f1392806af22bb6add19c2226ca74683a41b9b2e88ffe0202d7b83",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.task": {
+      "digest": "sha256:da9c679a3c7549d6a91f068e6bb99649cf2b3c50e688546250c67a435052183e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.timelog": {
+      "digest": "sha256:706cb5afcc8843b5f942b5317d927aef55c1fd015a43660b37bb987a4090046f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

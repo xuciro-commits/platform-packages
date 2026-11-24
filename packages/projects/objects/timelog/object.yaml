@@ -1,0 +1,36 @@
+name: timelog
+namespace: projects
+title: Time entry
+plural: Time entries
+icon: clock
+display: task
+naming: TIME-{n:6}
+scope: {owner: person}
+
+fields:
+  - {name: task, title: Task, type: reference, ref: projects.task, inverse: timelogs, required: true, search: true}
+  - {name: project, title: Project, type: reference, ref: projects.project, from: task.project}
+  - {name: workdate, title: Date, type: date, required: true, default: today}
+  - {name: hours, title: Hours, type: decimal, required: true}
+  - {name: activity, title: Activity, type: reference, ref: projects.activity, default: development}
+  - {name: billable, title: Billable, type: boolean, default: "true"}
+  - {name: notes, title: What was done, type: longtext}
+  - {name: person, title: Logged by, type: member, default: member, aside: true}
+
+constraints:
+  - {name: hours, kind: expression, fields: [hours], expr: "hours > 0 and hours <= 24", message: Log between a few minutes and 24 hours for one day.}
+
+access:
+  - {role: member, read: own, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  dates: workdate
+  columns: [workdate, task, project, hours, activity, billable, person]
+  sort: [{sortKey: workdate, direction: descending}]
+  lanes: ""
+  group: none
+  filters: []
+  search: ""

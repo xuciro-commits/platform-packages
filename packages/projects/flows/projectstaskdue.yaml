@@ -1,0 +1,15 @@
+name: build.projectstaskdue
+subject: {app: build, kind: object, name: projects.task}
+definition:
+  name: projectstaskdue
+  title: Remind when a task is overdue
+  kind: flow
+  object: projects.task
+  when: open
+  steps:
+    - {name: due, kind: wait, waitUntil: {source: subject, path: [enddate]}, next: tell}
+    - name: tell
+      kind: notify
+      notify: {title: Task overdue, body: "This task was due to finish today. Finish it, or move its finish date.", field: assignee}
+      next: done
+    - {name: done, kind: end}

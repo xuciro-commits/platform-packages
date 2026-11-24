@@ -1,0 +1,8 @@
+title: Complete
+description: Mark this task finished.
+from: [open]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'done'"
