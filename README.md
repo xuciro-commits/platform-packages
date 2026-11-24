@@ -8,7 +8,7 @@
 
 ## 包
 
-包按行业、能力与关键词分类（[分类与标签](docs/taxonomy.md)），在平台市场里按这些筛选。
+包分应用、主数据、能力、扩展四种（[包的种类](docs/package-types.md)），再按行业、业务领域与关键词分类（[分类与标签](docs/taxonomy.md)），在平台市场里按这些筛选。
 官方包来自开放应用：读懂它的业务内容与产品设计，按平台的对象、动作、状态与角色重新设计，不逐一复刻。
 每个版本都是 [Releases](https://github.com/xuciro-commits/platform-packages/releases) 里一个不可变的制品，tag 为 `<id>/v<version>`，附 `SHA256SUMS`。
 
@@ -23,7 +23,7 @@
 ## 开发
 
 - [十分钟做出第一个包](docs/getting-started.md)
-- [概念](docs/concepts.md) · [源格式](docs/format.md) · [各类包规范](docs/package-types.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
+- [概念](docs/concepts.md) · [源格式](docs/format.md) · [包的种类](docs/package-types.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
 - [开放应用接入：黄金路线](docs/intake.md)；按步骤做的版本是 Skill [`open-app-intake`](.claude/skills/open-app-intake/SKILL.md)
 - [发版](docs/release.md) · [自建包库](docs/own-library.md) · [评审清单](docs/review-checklist.md) · [分类与标签](docs/taxonomy.md) · [来源应用与接入顺序](docs/sources.md)
 
