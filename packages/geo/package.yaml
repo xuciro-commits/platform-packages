@@ -1,5 +1,5 @@
 id: geo
-version: 0.1.0
+version: 0.1.1
 title: Places
 namespace: geo
 description: Countries and regions with their ISO codes, and the provinces, prefectures and counties of China with their official codes, shared once by every application that keeps an address.

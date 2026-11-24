@@ -1,12 +1,12 @@
 {
   "format": 2,
   "package": "geo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "requires": [],
-  "artifact": "sha256:2361524205d81f9027476ab2b10b228c2ae0ae5a47244365f81b0d40508bc02e",
+  "artifact": "sha256:3a4965e64c89cc6b6c873190266ebab459597fb85f6287db30040c4283bb8b8f",
   "assets": {
     "app/geo": {
-      "digest": "sha256:ede28eacd38259b281e34dfe33f79ebadc185d698b56ef76b5fd32810a6e5c72",
+      "digest": "sha256:822bd6e20b5752039417731a0db361319d86a318199221a5adedcc8d7c957442",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

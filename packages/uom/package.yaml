@@ -1,5 +1,5 @@
 id: uom
-version: 0.1.0
+version: 0.1.1
 title: Units of measure
 namespace: uom
 description: The units every application counts, weighs and measures in, with exact conversion factors, shared once by stock, purchasing, production and time keeping.

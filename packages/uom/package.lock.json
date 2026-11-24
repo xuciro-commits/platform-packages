@@ -1,12 +1,12 @@
 {
   "format": 2,
   "package": "uom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "requires": [],
-  "artifact": "sha256:a082b9140f7b81ff6e7eda019accc09207ece4c6030c130d069281e3499832f1",
+  "artifact": "sha256:e3af0f90086f6b8a2f411eb6fdc662fabdead90566b3c94a182fce4563b992e1",
   "assets": {
     "app/uom": {
-      "digest": "sha256:a431d1e0f01ee7f843ad4259e6f421bbfe23d49186fe8f7cae76d7c4c9654df7",
+      "digest": "sha256:8bcdf8bb7b72d3ac61fe7aa35e9e02810b19ebc56bb969c63436484614ce1018",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

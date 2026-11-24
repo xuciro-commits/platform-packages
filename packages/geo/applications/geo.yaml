@@ -1,6 +1,7 @@
 name: geo
 title: Places
 icon: globe-alt
+surface: master-data
 pages: [geo.country, geo.division]
 groups:
   - {title: Reference data, pages: [geo.country, geo.division]}

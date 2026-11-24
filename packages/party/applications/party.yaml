@@ -1,6 +1,7 @@
 name: party
 title: Business partners
 icon: globe-alt
+surface: master-data
 pages: [party.organization, party.contact, party.industry]
 groups:
   - {title: Directory, pages: [party.organization, party.contact]}

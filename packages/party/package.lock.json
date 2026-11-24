@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "party",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "requires": [
     "geo@^0.1.0"
   ],
-  "artifact": "sha256:40144a3cfee21405a0933b9563b96a9fbe7f1f4a5ffa8710797f1151bb5233f0",
+  "artifact": "sha256:c1ea1433631fb2403b21874845d6f6447089e3dc05694dd365a00573fc2c3917",
   "assets": {
     "app/party": {
-      "digest": "sha256:f1ae2c62903ba42a5a9619d26d989ab9c93a2e61a8d390a4f8f3b6a5abb4f808",
+      "digest": "sha256:5767cd1b0885a27bba752e143f36c0c20b3aad60a452cfbd00d1268d939fcda9",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
