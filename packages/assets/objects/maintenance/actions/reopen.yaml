@@ -1,0 +1,9 @@
+title: Reopen
+description: The problem came back; put this work order back on the list.
+from: [done, canceled]
+roles: [technician, custodian]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'open'"

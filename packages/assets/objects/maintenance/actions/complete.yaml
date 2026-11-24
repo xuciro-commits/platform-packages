@@ -1,0 +1,15 @@
+title: Complete
+description: Record what was done and what it cost.
+from: [open]
+roles: [technician, custodian]
+inputs:
+  - {name: outcome, title: What was done, type: longtext, required: true}
+  - {name: cost, title: Cost, type: decimal}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'done'"
+        outcome: input.outcome
+        cost: coalesce(input.cost, 0)
+        completedon: today()

@@ -1,0 +1,22 @@
+title: Check in
+description: Take this asset back and record where it is kept now.
+from: [inuse]
+roles: [custodian]
+inputs:
+  - {name: location, title: Location, type: reference, ref: assets.location, help: Leave empty to put it in the storeroom.}
+  - {name: notes, title: Notes, type: text}
+transaction:
+  steps:
+    - name: movement
+      target: assets.movement
+      set:
+        asset: $subject
+        kind: "'checkin'"
+        holder: holder
+        location: coalesce(input.location, 'storeroom')
+        notes: input.notes
+    - target: $subject
+      set:
+        state: "'available'"
+        holder: "''"
+        location: coalesce(input.location, 'storeroom')

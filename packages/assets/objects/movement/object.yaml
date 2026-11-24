@@ -1,0 +1,22 @@
+name: movement
+namespace: assets
+title: Asset movement
+plural: Asset movements
+icon: arrow-trending-up
+display: asset
+naming: MOV-{n:6}
+description: One check-out or check-in, written by the action; it cannot be edited.
+
+fields:
+  - {name: asset, title: Asset, type: reference, ref: assets.asset, inverse: movements, required: true, search: true}
+  - {name: kind, title: Movement, type: choice, required: true, choices: "checkout:Checked out,checkin:Checked in"}
+  - {name: movedon, title: Date, type: date, default: today}
+  - {name: holder, title: Person, type: member}
+  - {name: location, title: Location, type: reference, ref: assets.location}
+  - {name: notes, title: Notes, type: text}
+
+access:
+  - {role: technician, read: all}
+  - {role: custodian, read: all, create: true}
+
+view: {version: 1, layout: table, columns: [movedon, asset, kind, holder, location, notes], sort: [{sortKey: movedon, direction: descending}], group: none, lanes: "", filters: [], search: ""}

@@ -1,0 +1,48 @@
+name: asset
+namespace: assets
+title: Asset
+plural: Assets
+icon: cube
+display: title
+naming: AST-{n:5}
+scope: {owner: holder, assigned: true}
+sets:
+  movements: {object: assets.movement, limit: 500}
+  workorders: {object: assets.maintenance, limit: 500}
+
+fields:
+  - {name: title, title: Asset, type: text, required: true, search: true, group: Asset}
+  - {name: category, title: Category, type: reference, ref: assets.category, required: true, group: Asset}
+  - {name: serial, title: Serial number, type: text, search: true, group: Asset}
+  - {name: model, title: Model, type: text, search: true, group: Asset}
+  - {name: supplier, title: Supplier, type: reference, ref: party.organization, group: Purchase}
+  - {name: purchasedate, title: Purchased on, type: date, group: Purchase}
+  - {name: cost, title: Purchase price, type: money, default: "setting:currency", group: Purchase}
+  - {name: warrantyuntil, title: Warranty until, type: date, group: Purchase}
+  - {name: description, title: Notes, type: longtext, group: Asset}
+  - {name: openwork, title: Open work orders, type: integer, group: Maintenance, formula: "sum(workorders, if(item.state = 'open', 1, 0))"}
+  - {name: maintenancecost, title: Maintenance cost, type: decimal, group: Maintenance, formula: "sum(workorders, if(item.state = 'done', coalesce(item.cost, 0), 0))"}
+  - {name: retiredreason, title: Retired because, type: longtext, readOnly: true, when: state=retired, group: Asset}
+  - {name: location, title: Location, type: reference, ref: assets.location, default: storeroom, aside: true}
+  - {name: holder, title: Checked out to, type: member, readOnly: true, aside: true}
+
+states:
+  - {name: available, title: In stock, tone: info, description: Ready to be checked out.}
+  - {name: inuse, title: In use, tone: success, description: Checked out to someone.}
+  - {name: retired, title: Retired, tone: neutral, description: No longer in service.}
+actions: [checkout, checkin, retire]
+
+access:
+  - {role: staff, read: own}
+  - {role: technician, read: all}
+  - {role: custodian, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  columns: [title, category, serial, location, holder, warrantyuntil, openwork]
+  sort: [{sortKey: title, direction: ascending}]
+  lanes: category
+  group: none
+  filters: []
+  search: ""

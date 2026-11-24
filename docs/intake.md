@@ -61,7 +61,7 @@
 | 布尔字段写 `default: true` 报错 `cannot unmarshal bool into string` | `object.yaml` 的 `default` 统一按字符串解析 | 写成 `default: "true"` |
 | 事务动作报 `Transaction wrote ... more than once` | 单次事务中 `$subject` 只能被写入一次 | 合并为单个 `target: $subject` 步骤 |
 | `if()`/`coalesce()` 报 `operand/result types differ` | 引用字段（`reference`）与字面字符串不可混在同一分支 | 同类型比较，或拆成带条件字段与独立动作 |
-| 动作输入 `type: member` 传给 `coalesce(input.owner, owner)` 报类型不匹配 | 动作参数的 `member` 与记录字段 `member` 绑定规则不一致 | 改由记录右栏就地改负责人，或等待平台补齐动作 `member` 参数类型 |
+| v0.2.10 之前动作输入写 `type: member` 报“has no type member” | 平台还没有成员类型的动作输入 | v0.2.10 起可用，`holder: input.holder` 直接写入成员字段（assets 的领用）；更早的平台改由记录右栏改人 |
 | `pkg check -packages` 同租户多包安装报 `Managed resources are read-only` | 当前平台蓝图草稿 ID 与默认页名按对象裸名 `object.name`（未带 `namespace`）落库，不同包使用相同裸名会碰撞 | 避免与已有官方包共用裸名（如 `crm` 已用 `contact`/`stage`，`helpdesk` 改用 `requester`/`ticketstage`），CI 务必跑 `pkg check -packages` |
 
 

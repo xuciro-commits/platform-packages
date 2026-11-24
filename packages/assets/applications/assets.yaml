@@ -1,0 +1,22 @@
+name: assets
+title: Assets
+icon: cube
+pages: [assets.asset, assets.maintenance, assets.movement, assets.category, assets.location]
+groups:
+  - {title: Assets, pages: [assets.asset, assets.maintenance]}
+  - {title: Records, pages: [assets.movement]}
+  - title: Settings
+    layout: settings
+    roles: [custodian]
+    pages: [assets.category, assets.location]
+dashboard:
+  - {title: In use, kind: metric, object: assets.asset, domain: [[state, "=", inuse]]}
+  - {title: In stock, kind: metric, object: assets.asset, domain: [[state, "=", available]]}
+  - {title: Open work orders, kind: metric, object: assets.maintenance, domain: [[state, "=", open]]}
+  - {title: Maintenance cost, kind: metric, object: assets.maintenance, domain: [[state, "=", done]], measure: "sum:cost"}
+  - {title: Assets by category, kind: bar, object: assets.asset, domain: [[state, "!=", retired]], group: category}
+  - {title: Assets by location, kind: bar, object: assets.asset, domain: [[state, "!=", retired]], group: location}
+  - {title: Work orders by type, kind: share, object: assets.maintenance, group: kind}
+  - {title: Maintenance cost by month, kind: line, object: assets.maintenance, domain: [[state, "=", done]], group: "completedon:month", measure: "sum:cost"}
+resources:
+  - {app: build, kind: flow, name: build.assetsworkdue}

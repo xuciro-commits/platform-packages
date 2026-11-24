@@ -1,0 +1,44 @@
+name: maintenance
+namespace: assets
+title: Work order
+plural: Work orders
+icon: wrench-screwdriver
+display: title
+naming: WO-{year}-{n:5}
+scope: {owner: reporter}
+
+fields:
+  - {name: title, title: Problem or task, type: text, required: true, search: true, group: Work}
+  - {name: asset, title: Asset, type: reference, ref: assets.asset, inverse: workorders, required: true, search: true, group: Work}
+  - {name: category, title: Category, type: reference, ref: assets.category, from: asset.category, group: Work}
+  - {name: kind, title: Type, type: choice, default: corrective, group: Work, choices: "corrective:Repair,preventive:Preventive maintenance"}
+  - {name: due, title: Planned for, type: date, default: today, group: Work}
+  - {name: details, title: Details, type: longtext, group: Work}
+  - {name: outcome, title: What was done, type: longtext, readOnly: true, when: state=done, group: Result}
+  - {name: cost, title: Cost, type: decimal, readOnly: true, when: state=done, group: Result}
+  - {name: completedon, title: Completed on, type: date, readOnly: true, when: state=done, group: Result}
+  - {name: technician, title: Technician, type: member, aside: true}
+  - {name: reporter, title: Reported by, type: member, default: member, aside: true}
+
+states:
+  - {name: open, title: Open, tone: warning, description: Waiting to be done.}
+  - {name: done, title: Done, tone: success, description: "Finished, with its outcome and cost."}
+  - {name: canceled, title: Canceled, tone: neutral, description: No longer needed.}
+actions: [complete, cancel, reopen]
+
+access:
+  - {role: staff, read: own, create: true}
+  - {role: technician, read: all, create: true, edit: true}
+  - {role: custodian, read: all, create: true, edit: true, archive: true}
+
+view:
+  version: 1
+  layout: table
+  dates: due
+  columns: [title, asset, kind, due, technician, state, cost]
+  sort: [{sortKey: due, direction: ascending}]
+  lanes: kind
+  group: none
+  filters: []
+  search: ""
+  inbox: {member: technician, due: due, open: {state: [open]}}

@@ -1,0 +1,15 @@
+name: build.assetsworkdue
+subject: {app: build, kind: object, name: assets.maintenance}
+definition:
+  name: assetsworkdue
+  title: Remind when a work order is due
+  kind: flow
+  object: assets.maintenance
+  when: open
+  steps:
+    - {name: due, kind: wait, waitUntil: {source: subject, path: [due]}, next: tell}
+    - name: tell
+      kind: notify
+      notify: {title: Work order due, body: "This work order is planned for today.", field: technician}
+      next: done
+    - {name: done, kind: end}

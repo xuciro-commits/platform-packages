@@ -1,0 +1,24 @@
+name: location
+namespace: assets
+title: Location
+plural: Locations
+icon: map-pin
+display: title
+
+fields:
+  - {name: title, title: Location, type: text, required: true, search: true}
+  - {name: parent, title: Inside, type: reference, ref: assets.location, help: "The larger place this one is part of, such as the building a room is in."}
+
+access:
+  - {role: staff, read: all}
+  - {role: technician, read: all}
+  - {role: custodian, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, parent], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: headoffice, title: Head office}
+  - {id: storeroom, title: Storeroom, parent: headoffice}
+  - {id: itroom, title: IT room, parent: headoffice}
+  - {id: workshop, title: Workshop}
+  - {id: remote, title: Working remotely}

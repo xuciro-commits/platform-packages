@@ -1,0 +1,98 @@
+roles: {assets: custodian}
+at: 2026-11-23T09:00:00Z
+members:
+  anna: {roles: {build: user, assets: staff}}
+  ben: {roles: {build: user, assets: staff}}
+  tom: {roles: {build: user, assets: technician}}
+steps:
+  - do: party.organization.create
+    on: party.organization/O1
+    with: {name: Northwind Devices}
+  - do: assets.asset.create
+    on: assets.asset/A1
+    with: {title: Laptop 14, category: laptop, serial: SN-1001, supplier: O1, warrantyuntil: "2027-06-30"}
+    show: [state, location, openwork]
+    expect: {state: available, location: storeroom, openwork: 0}
+  - do: assets.asset.create
+    on: assets.asset/A2
+    with: {title: Cordless drill, category: tooling}
+  - do: assets.asset.checkout
+    on: assets.asset/A1
+    with: {holder: anna, location: remote, notes: New starter kit}
+    show: [state, holder, location]
+    expect: {state: inuse, holder: anna, location: remote}
+  - do: assets.asset.checkout
+    on: assets.asset/A1
+    with: {holder: ben}
+    refused: true
+  - read: assets.asset/A1
+    as: anna
+    show: [title, holder]
+    expect: {title: Laptop 14}
+  - read: assets.asset/A2
+    as: anna
+    refused: true
+  - read: assets.asset/A1
+    as: ben
+    refused: true
+  - do: assets.maintenance.create
+    on: assets.maintenance/W1
+    as: anna
+    with: {asset: A1, title: Screen flickers}
+    show: [kind, reporter, category, state]
+    expect: {kind: corrective, reporter: anna, category: laptop, state: open}
+  - read: assets.maintenance/W1
+    as: ben
+    refused: true
+  - read: assets.asset/A1
+    show: [openwork]
+    expect: {openwork: 1}
+  - do: assets.maintenance.complete
+    on: assets.maintenance/W1
+    as: anna
+    with: {outcome: Tried a restart}
+    refused: true
+  - do: assets.maintenance.complete
+    on: assets.maintenance/W1
+    as: tom
+    with: {outcome: Replaced the display cable, cost: 45}
+    show: [state, cost, outcome]
+    expect: {state: done, cost: 45}
+  - read: assets.asset/A1
+    show: [openwork, maintenancecost]
+    expect: {openwork: 0, maintenancecost: 45}
+  - do: assets.maintenance.create
+    on: assets.maintenance/W2
+    with: {asset: A2, title: Annual calibration, kind: preventive, technician: tom, due: "2026-12-01"}
+  - do: assets.asset.retire
+    on: assets.asset/A2
+    with: {reason: Worn out}
+    refused: true
+  - do: assets.maintenance.cancel
+    on: assets.maintenance/W2
+    show: [state]
+    expect: {state: canceled}
+  - do: assets.asset.retire
+    on: assets.asset/A2
+    with: {reason: Worn out}
+    show: [state, retiredreason]
+    expect: {state: retired}
+  - do: assets.asset.checkin
+    on: assets.asset/A1
+    show: [state, holder, location]
+    expect: {state: available, location: storeroom}
+  - read: assets.movement/MOV-000001
+    show: [kind, holder, location, asset]
+    expect: {kind: checkout, holder: anna, location: remote, asset: A1}
+  - read: assets.movement/MOV-000002
+    show: [kind, holder, location]
+    expect: {kind: checkin, holder: anna, location: storeroom}
+  - read: assets.asset/demo-asset-1
+    show: [title, category, openwork]
+    expect: {openwork: 1}
+  - do: platform.package.clear-demo
+    on: platform.package/assets
+    with: {id: assets}
+  - read: assets.asset/demo-asset-1
+    show: [archived]
+    expect: {archived: true}

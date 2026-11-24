@@ -1,0 +1,26 @@
+name: category
+namespace: assets
+title: Asset category
+plural: Asset categories
+icon: tag
+display: title
+
+fields:
+  - {name: title, title: Category, type: text, required: true, search: true}
+  - {name: warrantymonths, title: Usual warranty (months), type: integer}
+
+access:
+  - {role: staff, read: all}
+  - {role: technician, read: all}
+  - {role: custodian, read: all, create: true, edit: true, archive: true}
+
+view: {version: 1, layout: table, columns: [title, warrantymonths], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+
+records:
+  - {id: laptop, title: Laptops, warrantymonths: 36}
+  - {id: monitor, title: Monitors, warrantymonths: 36}
+  - {id: phone, title: Phones and tablets, warrantymonths: 24}
+  - {id: furniture, title: Furniture}
+  - {id: machinery, title: Machinery, warrantymonths: 12}
+  - {id: vehicle, title: Vehicles, warrantymonths: 24}
+  - {id: tooling, title: Tools and instruments, warrantymonths: 12}

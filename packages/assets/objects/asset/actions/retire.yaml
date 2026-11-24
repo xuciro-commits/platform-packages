@@ -1,0 +1,14 @@
+title: Retire
+description: Take this asset out of service for good and record why.
+from: [available]
+roles: [custodian]
+inputs:
+  - {name: reason, title: Reason, type: longtext, required: true}
+transaction:
+  guard: openwork = 0
+  message: Finish or cancel the open work orders first.
+  steps:
+    - target: $subject
+      set:
+        state: "'retired'"
+        retiredreason: input.reason

@@ -1,0 +1,35 @@
+id: assets
+version: 0.1.0
+title: Assets
+namespace: assets
+description: Equipment and other physical assets by category and location, checked out to people and checked back in with a movement history,
+  maintenance and repair work orders with costs, self-service fault reports, and warranty dates.
+listing:
+  industries:
+  - general
+  - manufacturing
+  - professional-services
+  domains:
+  - assets
+  - maintenance
+  keywords:
+  - asset
+  - equipment
+  - checkout
+  - maintenance
+  - repair
+  - warranty
+  stage: preview
+  source:
+    ecosystem: frappe
+    app: erpnext
+    version: v15.x
+    license: GPL-3.0
+    relation: redesign
+roots:
+- app: build
+  kind: app
+  name: assets
+artifact: assets.json
+requires:
+- party@^0.2.0

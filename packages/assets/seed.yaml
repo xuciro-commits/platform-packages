@@ -1,0 +1,56 @@
+records:
+  - type: party.organization
+    id: demo-ast-org-1
+    values:
+      name: Contoso Equipment
+      website: https://contoso-equipment.example
+  - type: assets.asset
+    id: demo-asset-1
+    values:
+      title: Forklift FL-2
+      category: machinery
+      model: Electric 2.5 t
+      serial: FL2-88341
+      supplier: demo-ast-org-1
+      purchasedate: "2024-03-12"
+      warrantyuntil: "2026-12-15"
+      location: workshop
+  - type: assets.asset
+    id: demo-asset-2
+    values:
+      title: Design laptop 16
+      category: laptop
+      model: Pro 16
+      serial: LP16-55120
+      supplier: demo-ast-org-1
+      purchasedate: "2025-09-01"
+      warrantyuntil: "2028-09-01"
+  - type: assets.asset
+    id: demo-asset-3
+    values:
+      title: Meeting room display
+      category: monitor
+      serial: MRD-1209
+      purchasedate: "2023-05-20"
+      warrantyuntil: "2026-05-20"
+      location: headoffice
+  - type: assets.asset
+    id: demo-asset-4
+    values:
+      title: Torque wrench set
+      category: tooling
+      location: workshop
+  - type: assets.maintenance
+    id: demo-work-1
+    values:
+      asset: demo-asset-1
+      title: Quarterly safety inspection
+      kind: preventive
+      due: "2026-12-05"
+      details: Check brakes, mast chains and battery connectors.
+  - type: assets.maintenance
+    id: demo-work-2
+    values:
+      asset: demo-asset-3
+      title: No signal on HDMI input 2
+      due: "2026-11-27"

@@ -1,0 +1,23 @@
+title: Check out
+description: Hand this asset to someone and record where it goes.
+from: [available]
+roles: [custodian]
+inputs:
+  - {name: holder, title: Check out to, type: member, required: true}
+  - {name: location, title: Location, type: reference, ref: assets.location, help: Leave empty to keep the current location.}
+  - {name: notes, title: Notes, type: text}
+transaction:
+  steps:
+    - name: movement
+      target: assets.movement
+      set:
+        asset: $subject
+        kind: "'checkout'"
+        holder: input.holder
+        location: coalesce(input.location, location)
+        notes: input.notes
+    - target: $subject
+      set:
+        state: "'inuse'"
+        holder: input.holder
+        location: coalesce(input.location, location)

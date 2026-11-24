@@ -1,0 +1,9 @@
+title: Cancel
+description: This work is no longer needed.
+from: [open]
+roles: [custodian]
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'canceled'"
