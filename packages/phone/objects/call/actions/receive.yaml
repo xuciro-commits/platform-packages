@@ -7,6 +7,7 @@ inputs:
   - {name: contact, title: Contact, type: reference, ref: party.contact}
   - {name: organization, title: Organization, type: reference, ref: party.organization}
   - {name: agent, title: Agent, type: member, help: Leave empty until someone answers.}
+  - {name: preferred, title: Rings first for, type: member, help: "The contact's owner; only they can take the call until it rings for everyone."}
 transaction:
   guard: answeredat = empty
   steps:
@@ -17,3 +18,4 @@ transaction:
         contact: input.contact
         organization: input.organization
         agent: input.agent
+        preferred: input.preferred

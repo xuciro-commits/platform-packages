@@ -5,8 +5,8 @@ roles: [agent, supervisor]
 inputs:
   - {name: offer, title: Browser session, type: longtext, required: true}
 transaction:
-  guard: offer = empty
-  message: Someone else already took this call.
+  guard: offer = empty and (preferred = empty or widened = true or preferred = caller.id)
+  message: Someone else already took this call, or it is still ringing for the contact's owner.
   steps:
     - target: $subject
       set:
