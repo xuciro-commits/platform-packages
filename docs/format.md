@@ -12,7 +12,10 @@ packages/crm/
 │   ├── object.yaml           字段、状态、视图、权限
 │   ├── actions/<动词>.yaml   这个对象的一个动作：输入、条件、事务
 │   └── page.yaml             可选：自定义页面；不写就按对象生成标准的列表加详情
-├── applications/<应用>.yaml  菜单分组、仪表盘
+├── applications/<应用>.yaml  菜单分组、仪表盘（主数据包写 surface: master-data）
+├── contracts/                可选：能力契约定义（build.contract，含动作、读取、事件与一致性测试用例）
+├── implementations/          可选：连接器实现（build.implementation，声明出站白名单、凭据种类与动作映射）
+├── data/*.yaml               可选：随包按批写入的主数据/参考数据（如 geo 的国家与行政区划）
 ├── flows/                    自动化与流程
 ├── integrations/matching/    匹配规则等集成
 ├── locales/<语言>.yaml       译文：英文原文 → 译文，如 locales/zh-CN.yaml
@@ -65,7 +68,7 @@ access:
   - {role: salesrep, read: team, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}
 
-view:                         # 列表的默认样子：table、board（按 lanes 分列）或 calendar（按 dates）
+view:                         # 列表的默认样子：table、board（按 lanes 分列）、calendar（按 dates）或 gantt（需日期字段）
   version: 1
   layout: board
   lanes: stage
@@ -104,6 +107,7 @@ transaction:
 ```
 
 - `target` 写类型名就是新建（`target: crm.contact`），写 `$subject` 或 `$subject.<引用字段>` 是更新；`when` 决定这一步做不做。
+- `inputs` 支持 `member` 类型（在动作对话框中直接选择工作区成员）；动作也可写 `uses: <契约>/<主版本>#<动作>` 声明依赖某项能力。
 - `set` 的每个值是一个表达式；字面文字加单引号（`"'won'"`），`$subject` 指这条记录。前面步骤新建的记录用 `step.<步骤名>` 引用。
 
 ## 表达式
@@ -129,6 +133,7 @@ YAML 的 `{...}` 一行里，含逗号的表达式要加引号：`formula: "coal
 name: crm
 title: CRM
 icon: user-group
+# surface: master-data                  # 主数据包加上此行，归入“管理 → 主数据”而不占应用轨
 pages: [crm.lead, crm.deal, …]          # 应用里的全部页面
 groups:                                  # 菜单分组；按工作的顺序分，不要一个“全部”
   - {title: Selling, pages: [crm.lead, crm.deal]}

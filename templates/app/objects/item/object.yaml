@@ -1,4 +1,5 @@
 display: title
+icon: cube
 fields:
   - name: title
     required: true
@@ -8,6 +9,9 @@ fields:
   - name: details
     title: Details
     type: longtext
+access:
+  - {role: user, read: team, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
 name: item
 namespace: example
 plural: Items

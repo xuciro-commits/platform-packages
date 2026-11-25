@@ -6,7 +6,7 @@
 | 字段 | 取值 |
 |---|---|
 | `industries` | 行业，最多 8 个：`general`（通用）、`manufacturing`、`retail`、`distribution`、`hospitality`、`healthcare`、`education`、`finance`、`professional-services`、`construction`、`real-estate`、`energy`、`logistics`、`agriculture`、`nonprofit`、`public-sector` |
-| `capabilities` | 业务领域（不是能力契约；随平台 roadmap 2.9 A5 改名 `domains`，旧名再读一个版本），最多 8 个：`sales`、`marketing`、`service`、`hr`、`payroll`、`accounting`、`inventory`、`purchasing`、`production`、`projects`、`assets`、`maintenance`、`quality`、`learning`、`knowledge`、`lending`、`operations`、`master-data` |
+| `domains` | 业务领域（不是能力契约；旧名 `capabilities` 仅作兼容保留），最多 8 个：`sales`、`marketing`、`service`、`hr`、`payroll`、`accounting`、`inventory`、`purchasing`、`production`、`projects`、`assets`、`maintenance`、`quality`、`learning`、`knowledge`、`lending`、`operations`、`master-data` |
 | `keywords` | 自由关键词，最多 10 个，小写、无空格、不超过 32 个字符；进市场搜索 |
 | `stage` | `stable`、`preview`、`test`；市场默认不列 `test` |
 | `source` | `ecosystem`、`app`、`relation` 必填，`version`、`license` 可选 |
@@ -14,7 +14,7 @@
 ```yaml
 listing:
   industries: [general]
-  capabilities: [sales]
+  domains: [sales]
   keywords: [lead, deal, pipeline]
   stage: preview
   source: {ecosystem: frappe, app: crm, version: v1.x, license: AGPL-3.0, relation: redesign}

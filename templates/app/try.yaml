@@ -1,0 +1,6 @@
+roles: {example: manager}
+steps:
+  - do: example.item.create
+    on: example.item/I1
+    with: {title: First item, details: Created by pkg try}
+    expect: {title: First item}

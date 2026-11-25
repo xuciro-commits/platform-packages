@@ -3,20 +3,20 @@
   "package": "example",
   "version": "0.1.0",
   "requires": [],
-  "artifact": "sha256:f444889e819ce8265f7b38e4d02a4f5822ddf4f9ec9f6954fb8e03b6ebbcf19a",
+  "artifact": "sha256:1c5f97fa1f15e5cec1b2af2789201df79c8df0d6a1a348daf66ec805ed63b772",
   "assets": {
     "app/example": {
-      "digest": "sha256:1f128788bbfa5dfee200597fb40e7f984731daa6e47929533c266280a9978962",
+      "digest": "sha256:20a5a1fb4a6073a2de71d5f4478743ed098bae5b721a4d2c6fe8bcf065ab60c2",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
     "object/example.item": {
-      "digest": "sha256:3f491f529993cb2a05fd9aeeee032c256868c7664714259e56405099146d9cfc",
+      "digest": "sha256:fc641236116b6997cb5061fd496a3b43bc605b4613d19d17daabfe65254de2e7",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.cf465a2e8cff8bd1d48e672f058b9e943b75b18434e6f8d23e1e4bd8cf4f4464",
+          "version": "schema.sha256.d399ce908e817bb8efa6c262e342f59aea8816a8776cad8641a792e31672fb9e",
           "family": 1
         }
       ]

@@ -17,6 +17,7 @@ CI 再跑一遍上面这些，并核对 `catalog.json` 与源一致、两次构�
 release 工作流在 main 上对每个包：tag `<id>/v<version>` 已存在就跳过；否则用 `platform.lock` 的 `pkg` 构建制品，
 摘要必须与 `catalog.json` 里的一致，再写 `SHA256SUMS`、附构建来源证明（GitHub attestations），以 CHANGELOG 那一节为说明发 Release。
 
+- `catalog.json` 保留每个包的**全部已发布版本**（按 `id` 升序、同包 `version` 降序排列）；平台市场会按包 ID 聚合展示主卡片，并在审阅抽屉中支持版本切换、升级与回滚。
 - `platform.lock` 写平台提交号时（新包要用平台还没发版的能力），release 工作流什么都不发，`catalog.json` 也只列已发布的版本；
   CI 照常检查，包可以先合入 main。平台发版后把 `platform.lock` 改回发行版，重新生成 `catalog.json`，合入即发版。对外发布的包总是由正式发布的 `pkg` 构建。
 - tag 规则：`*/v*` 不可删除、不可移动。一个 `id@version` 发出后不改、不删，有问题发新版本。

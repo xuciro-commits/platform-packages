@@ -3,6 +3,11 @@ version: 0.1.0
 title: Example
 namespace: example
 description: A starting point for a new application package. Rename example, then add objects, actions and pages.
+listing:
+  industries: [general]
+  domains: [operations]
+  keywords: [example]
+  stage: test
 roots:
   - app: build
     kind: app

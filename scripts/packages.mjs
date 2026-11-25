@@ -60,13 +60,21 @@ function released(entry) {
 function writeCatalog(list, out) {
   const previous = existsSync(catalogFile) ? JSON.parse(readFileSync(catalogFile, "utf8")).packages : [];
   run(pkg, ["catalog", "-o", out, "-title", catalogTitle, "-url", releaseURL, ...list.map((p) => p.dir)]);
-  if (pinsRelease()) return;
   const doc = JSON.parse(readFileSync(out, "utf8"));
-  doc.packages = doc.packages.flatMap((entry) => {
-    if (released(entry)) return [entry];
-    const kept = previous.find((item) => item.id === entry.id && released(item));
-    return kept ? [kept] : [];
-  });
+  const merged = new Map();
+  const add = (entry) => {
+    const key = `${entry.id}@${entry.version}`;
+    if (!merged.has(key)) merged.set(key, entry);
+  };
+  for (const entry of doc.packages) {
+    if (pinsRelease() || released(entry)) add(entry);
+  }
+  for (const item of previous) {
+    if (released(item)) add(item);
+  }
+  doc.packages = [...merged.values()].sort((a, b) =>
+    a.id !== b.id ? a.id.localeCompare(b.id) : compareVersions(b.version, a.version),
+  );
   writeFileSync(out, JSON.stringify(doc, null, 2) + "\n");
 }
 
