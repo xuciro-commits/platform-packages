@@ -6,7 +6,7 @@
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:18ed8377106982e234a33d1634fc1003b97253bf63235c76ae20c43f1ac01c91",
+  "artifact": "sha256:7b2a4e67dd320ecf2aeb07faceff31d319c5dd4faba2997a621d2f6164a315db",
   "assets": {
     "app/crm": {
       "digest": "sha256:1556174d9eeb8107aa12db5d33f5c3cc29eeb4ae825053b2aaf9557293c1e15a",
@@ -134,7 +134,7 @@
       ]
     },
     "object/crm.lead": {
-      "digest": "sha256:d59066231bc0f6e7cc70c2726f99bc9e45b12b429f6cdc0658d653bf6c64af6b",
+      "digest": "sha256:a992271c29f880c9de25e62ce2f6f45e176edab5d9fe07d89263cc5fb14a70eb",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -145,6 +145,10 @@
         {
           "version": "schema.sha256.5866bf402e14a8678e42448793a7a2c66f62177af0a0fd087f0d277cb574d480",
           "family": 2
+        },
+        {
+          "version": "schema.sha256.553ed6e5dfbbc03af5ca49090b32632eeb8bad21a8e3851d8fe8fc8f3d651266",
+          "family": 3
         },
         {
           "version": "schema.sha256.068b98ad06bdc7df5f6cdcda81f4d7ce122d85e6695a1c2ce6f2d191a557f630",
