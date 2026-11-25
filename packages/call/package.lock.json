@@ -1,0 +1,14 @@
+{
+  "format": 2,
+  "package": "call",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:d0b1306cce3d51b0d4b0eddf3c463ac22c6569d604c41d0d50a653775809f540",
+  "assets": {
+    "contract/call": {
+      "digest": "sha256:142dfe5c8ca2235735c80dd6b2ce59b33efe2a49fe659ad45693efde0f3dd002",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    }
+  }
+}

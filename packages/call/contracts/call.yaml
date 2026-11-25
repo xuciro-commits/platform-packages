@@ -1,0 +1,17 @@
+name: call
+major: 1
+title: Phone calls
+description: Place an outbound phone call. The implementation answers with its own ID for the call.
+actions:
+  - name: dial
+    title: Dial
+    description: Place a call to a phone number.
+    payload:
+      - {name: number, label: Number, type: text, required: true}
+      - {name: reference, label: About, type: text}
+tests:
+  - name: dials
+    title: Places a call and answers with its call ID
+    action: dial
+    payload: {number: "+15550100"}
+    expect: [call]

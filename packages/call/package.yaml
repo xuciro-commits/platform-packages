@@ -1,0 +1,26 @@
+id: call
+version: 0.1.0
+title: Phone calls
+namespace: call
+description: The phone call capability, contract call/1. Apps that place calls declare uses call/1#dial on an action;
+  a tenant administrator binds an implementation in Admin → Capabilities. Until then the entry stays hidden.
+listing:
+  industries:
+  - general
+  domains:
+  - operations
+  keywords:
+  - call
+  - phone
+  - telephony
+  - dial
+  stage: preview
+  source:
+    ecosystem: platform
+    app: call
+    relation: original
+roots:
+- app: build
+  kind: contract
+  name: call
+artifact: call.json
