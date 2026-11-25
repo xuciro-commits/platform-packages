@@ -1,5 +1,5 @@
 title: Connect
-description: The call was answered; the voice gateway records who took it and when.
+description: The call was answered; the voice gateway records who took it and when, with its answer to the browser.
 from: [ringing]
 roles: [gateway]
 inputs:
@@ -7,6 +7,7 @@ inputs:
   - {name: line, title: Line, type: text}
   - {name: contact, title: Contact, type: reference, ref: party.contact}
   - {name: organization, title: Organization, type: reference, ref: party.organization}
+  - {name: answer, title: Gateway session, type: longtext}
 transaction:
   steps:
     - target: $subject
@@ -17,3 +18,4 @@ transaction:
         line: coalesce(input.line, line)
         contact: coalesce(input.contact, contact)
         organization: coalesce(input.organization, organization)
+        answer: coalesce(input.answer, answer)

@@ -22,6 +22,9 @@ fields:
   - {name: failure, title: What went wrong, type: text, readOnly: true, when: state=failed, group: Call}
   - {name: notes, title: Notes, type: longtext, readOnly: true, group: Notes}
   - {name: agent, title: Agent, type: member, readOnly: true, aside: true}
+  - {name: offer, title: Browser session, type: longtext, readOnly: true, group: Media, help: "The browser's audio session description, written when someone takes or places the call."}
+  - {name: answer, title: Gateway session, type: longtext, readOnly: true, group: Media, help: "The voice gateway's answer to the browser's session description."}
+  - {name: ended, title: Hung up in the browser, type: boolean, default: "false", readOnly: true, group: Media}
 
 createTransaction:
   steps:
@@ -37,7 +40,7 @@ states:
   - {name: completed, title: Completed, tone: success, description: "Answered and ended, with its talk time."}
   - {name: missed, title: Missed, tone: danger, description: Ended before anyone answered.}
   - {name: failed, title: Failed, tone: neutral, description: The voice gateway could not carry the call.}
-actions: [receive, connect, finish, miss, fail, note]
+actions: [receive, take, connect, hangup, finish, miss, fail, note]
 
 protocols:
   - name: call
@@ -59,3 +62,4 @@ view:
   group: none
   filters: []
   search: ""
+  call: {number: number, direction: direction, contact: contact, agent: agent, offer: offer, answer: answer, ended: ended, take: take, hangup: hangup, ringing: ringing, connected: connected}

@@ -42,7 +42,19 @@ Ended before anyone answered.: 没有人接就结束了。
 Failed: 失败
 The voice gateway could not carry the call.: 语音网关没能接通这通电话。
 Connect: 接通
-"The call was answered; the voice gateway records who took it and when.": 电话被接起，语音网关记下谁接的、几点接的。
+"The call was answered; the voice gateway records who took it and when, with its answer to the browser.": 电话被接起，语音网关记下谁接的、几点接的，并把应答交给浏览器。
+Take: 接听
+"Answer an incoming call or place an outgoing one in the browser; the first agent to take a ringing call gets it.": 在浏览器里接听来电或拨出电话；振铃中的来电由先接的坐席接到。
+Hang up: 挂断
+"End the call from the browser; the voice gateway hangs up the line and records how it ended.": 在浏览器里结束通话；语音网关挂断线路，并记下通话怎么结束的。
+Media: 媒体
+Browser session: 浏览器会话
+"The browser's audio session description, written when someone takes or places the call.": 浏览器的音频会话描述，在有人接听或拨出时写入。
+Gateway session: 网关会话
+"The voice gateway's answer to the browser's session description.": 语音网关对浏览器会话描述的应答。
+Hung up in the browser: 已在浏览器挂断
+Someone else already took this call.: 这通电话已经有人接了。
+This call is already hanging up.: 这通电话正在挂断。
 Finish: 结束
 "The answered call ended; the voice gateway records the talk time.": 接通的电话结束了，语音网关记下通话时长。
 Mark missed: 记为未接

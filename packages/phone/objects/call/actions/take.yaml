@@ -1,0 +1,14 @@
+title: Take
+description: Answer an incoming call or place an outgoing one in the browser; the first agent to take a ringing call gets it.
+from: [ringing]
+roles: [agent, supervisor]
+inputs:
+  - {name: offer, title: Browser session, type: longtext, required: true}
+transaction:
+  guard: offer = empty
+  message: Someone else already took this call.
+  steps:
+    - target: $subject
+      set:
+        agent: me()
+        offer: input.offer

@@ -85,6 +85,45 @@ steps:
     with: {failure: The phone line dropped.}
     show: [state, failure]
     expect: {state: failed, failure: The phone line dropped.}
+  - do: phone.call.create
+    on: phone.call/IN2
+    as: gw
+    with: {number: "+8613800138000"}
+  - do: phone.call.receive
+    on: phone.call/IN2
+    as: gw
+    with: {line: phone1, contact: C1, organization: O1}
+  - do: phone.call.take
+    on: phone.call/IN2
+    as: amy
+    with: {offer: "v=0 browser offer of amy"}
+    show: [state, agent, offer]
+    expect: {state: ringing, agent: amy, offer: "v=0 browser offer of amy"}
+  - do: phone.call.take
+    on: phone.call/IN2
+    as: bob
+    with: {offer: "v=0 browser offer of bob"}
+    refused: true
+  - do: phone.call.connect
+    on: phone.call/IN2
+    as: gw
+    with: {agent: amy, answer: "v=0 gateway answer"}
+    show: [state, agent, answer]
+    expect: {state: connected, agent: amy, answer: "v=0 gateway answer"}
+  - do: phone.call.hangup
+    on: phone.call/IN2
+    as: amy
+    show: [state, ended]
+    expect: {state: connected, ended: true}
+  - do: phone.call.hangup
+    on: phone.call/IN2
+    as: amy
+    refused: true
+  - do: phone.call.finish
+    on: phone.call/IN2
+    as: gw
+    with: {seconds: 42}
+    expect: {state: completed, seconds: 42}
   - read: phone.call/IN1
     as: bob
     show: [state, agent, notes]
