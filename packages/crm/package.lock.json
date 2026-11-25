@@ -1,14 +1,15 @@
 {
   "format": 2,
   "package": "crm",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "requires": [
-    "party@^0.2.0"
+    "party@^0.2.0",
+    "call@^0.1.0"
   ],
-  "artifact": "sha256:a872d5ccae39740b0c1f2ab9d6acc883f87bf8620efb6a519453c488080ab84b",
+  "artifact": "sha256:5c21ef29a4f7366b19b07db1b1cbacb71300dd75c5447b8fe44884ae18bd4e3b",
   "assets": {
     "app/crm": {
-      "digest": "sha256:d1da6cba4a40597ce254adb242ee2eb434170fa5c37ecd1b89eec8849f25d6cb",
+      "digest": "sha256:1556174d9eeb8107aa12db5d33f5c3cc29eeb4ae825053b2aaf9557293c1e15a",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -48,12 +49,16 @@
       ]
     },
     "object/crm.activity": {
-      "digest": "sha256:35247856b579dc76ea7f48de60aeade1a60241fbd249dc5894d15e9c255e76c3",
+      "digest": "sha256:9c0f6d4ed3e7963349616a083352ed4add34c4e7f162a3fcaff694c0a2622f96",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.da38b23fc6d77b65259f9116d9079250b3ccd98bcb48e7f1d700fd9b8a9bf308",
+          "family": 1
+        },
+        {
+          "version": "schema.sha256.bf74ae3287371fc0ab2d13ed3cb999d33b43171dd0672a41263289faf4161ce3",
           "family": 1
         }
       ]
@@ -129,7 +134,7 @@
       ]
     },
     "object/crm.lead": {
-      "digest": "sha256:c7098427ab5a0a2bae708a089830e45556c00a5063942614a47ddc1703f16a2b",
+      "digest": "sha256:14fc3306e8c02f77b3cd6adf84566d24c6076ac7885e2e3e99ab4f1fb58beb77",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -142,7 +147,7 @@
           "family": 2
         },
         {
-          "version": "schema.sha256.553ed6e5dfbbc03af5ca49090b32632eeb8bad21a8e3851d8fe8fc8f3d651266",
+          "version": "schema.sha256.d55b049eb92be2f9448ce7266ca7b4f10be429c4f827b69f20748eac61e01ed8",
           "family": 3
         }
       ]

@@ -89,3 +89,9 @@ steps:
   - read: crm.deal/demo-deal-1
     show: [archived]
     expect: {archived: true}
+  - do: crm.lead.create
+    on: crm.lead/DIAL1
+    with: {fullname: Gao Yan, mobile: "+8613900139000", source: website}
+  - do: crm.lead.dial
+    on: crm.lead/DIAL1
+    refused: true

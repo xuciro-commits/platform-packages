@@ -1,0 +1,10 @@
+title: Call
+description: Call the contact or lead of this activity through the tenant's phone service; the call shows up in the call bar.
+from: [open]
+uses: [call/1#dial]
+transaction:
+  steps:
+    - request: call/1#dial
+      with:
+        number: coalesce(contact.base.mobile, contact.base.phone, lead.mobile, lead.phone)
+        reference: concat('crm.activity/', id)

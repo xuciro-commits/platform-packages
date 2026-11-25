@@ -1,0 +1,10 @@
+title: Call
+description: Call this lead through the tenant's phone service; the call shows up in the call bar.
+from: [open]
+uses: [call/1#dial]
+transaction:
+  steps:
+    - request: call/1#dial
+      with:
+        number: coalesce(mobile, phone)
+        reference: concat('crm.lead/', id)

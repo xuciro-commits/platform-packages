@@ -36,7 +36,7 @@ states:
   - {name: open, title: Open, tone: info, description: Being worked.}
   - {name: converted, title: Converted, tone: success, description: Became a deal.}
   - {name: disqualified, title: Disqualified, tone: danger, description: Not worth pursuing.}
-actions: [convert, disqualify, reopen]
+actions: [dial, convert, disqualify, reopen]
 
 access:
   - {role: salesrep, read: team, create: true, edit: true}

@@ -24,7 +24,7 @@ states:
   - {name: open, title: To do, tone: info, description: Still to be done.}
   - {name: done, title: Done, tone: success, description: "Done, with its outcome."}
   - {name: canceled, title: Canceled, tone: neutral, description: No longer needed.}
-actions: [complete, cancel, reopen]
+actions: [dial, complete, cancel, reopen]
 
 access:
   - {role: salesrep, read: team, create: true, edit: true}
