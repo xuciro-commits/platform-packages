@@ -176,3 +176,25 @@ steps:
     with: {offer: "v=0 browser offer of amy"}
     show: [agent]
     expect: {agent: amy}
+  - do: phone.trunk.create
+    on: phone.trunk/T1
+    with: {account: phone1, password: s3cret, numberheader: X-Dial-Number, headers: "X-Sim-Slot: 1"}
+    show: [account, active, numberheader]
+    expect: {account: phone1, active: true}
+  - do: phone.trunk.create
+    on: phone.trunk/T2
+    with: {account: phone1, password: other}
+    refused: true
+  - do: phone.trunk.create
+    on: phone.trunk/T3
+    as: amy
+    with: {account: phone3, password: x}
+    refused: true
+  - read: phone.trunk/T1
+    as: gw
+    show: [account, password]
+    expect: {password: s3cret}
+  - do: phone.trunk.edit
+    on: phone.trunk/T1
+    with: {active: false}
+    expect: {active: false}

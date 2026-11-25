@@ -74,3 +74,19 @@ Ring everyone: 响给所有人
 "Nobody answered in time for the contact's owner, so the call now rings for every agent.": 联系人负责人没有及时接听，电话改为响给所有坐席。
 Someone already took this call.: 这通电话已经有人接了。
 "Someone else already took this call, or it is still ringing for the contact's owner.": 这通电话已经有人接了，或者还在优先响给联系人负责人。
+Phone line: 线路
+Phone lines: 线路
+"A SIP trunk that registers with the voice gateway, such as a desk phone, a gateway device or a phone running a gateway app. The voice gateway reads these lines and picks up changes without a restart.": 注册到语音网关的 SIP 中继，例如话机、网关设备或装了网关应用的手机。语音网关读这里的线路，改动不用重启就生效。
+Account: 账号
+"The SIP user name the trunk registers with; letters, digits and - . _ only.": 中继注册用的 SIP 用户名，只用字母、数字和 - . _。
+Password: 密码
+The SIP password the trunk registers with.: 中继注册用的 SIP 密码。
+In use: 启用
+Turn off to stop the line registering without deleting it.: 关掉后这条线路不能注册，但不删除。
+Number header: 号码头
+"A header that repeats the dialed number, for trunks that do not read it from the Request-URI.": 重复被叫号码的消息头，给不从 Request-URI 读号码的中继用。
+Fixed headers: 固定头
+"One Name: value per line, sent with every outgoing call, such as the SIM slot to dial from.": "每行一个“名字: 值”，每通外呼都带上，例如用哪张 SIM 卡拨出。"
+Another phone line already uses this account.: 已有线路使用这个账号。
+Settings: 设置
+Dialing: 拨号

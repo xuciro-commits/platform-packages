@@ -1,0 +1,29 @@
+name: trunk
+namespace: phone
+title: Phone line
+plural: Phone lines
+icon: server
+display: account
+description: A SIP trunk that registers with the voice gateway, such as a desk phone, a gateway device or a phone running a gateway app. The voice gateway reads these lines and picks up changes without a restart.
+
+fields:
+  - {name: account, title: Account, type: text, required: true, search: true, group: Line, help: "The SIP user name the trunk registers with; letters, digits and - . _ only."}
+  - {name: password, title: Password, type: text, required: true, read: [supervisor, gateway], group: Line, help: The SIP password the trunk registers with.}
+  - {name: active, title: In use, type: boolean, default: "true", aside: true, help: Turn off to stop the line registering without deleting it.}
+  - {name: numberheader, title: Number header, type: text, group: Dialing, help: "A header that repeats the dialed number, for trunks that do not read it from the Request-URI."}
+  - {name: headers, title: Fixed headers, type: longtext, group: Dialing, help: "One Name: value per line, sent with every outgoing call, such as the SIM slot to dial from."}
+  - {name: notes, title: Notes, type: longtext, group: Line}
+
+constraints:
+  - name: account
+    kind: unique
+    fields: [account]
+    message: Another phone line already uses this account.
+    translations:
+      zh-CN: 已有线路使用这个账号。
+
+access:
+  - {role: supervisor, read: all, create: true, edit: true, archive: true}
+  - {role: gateway, read: all}
+
+view: {version: 1, layout: table, columns: [account, active, numberheader, notes], sort: [{sortKey: account, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

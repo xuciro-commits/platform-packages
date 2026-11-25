@@ -6,10 +6,10 @@
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:244b191adfd49eba7a3b781f3996fc96e2ceef0b4a4b693a199a5d6d62a3dd20",
+  "artifact": "sha256:ceb37b194fe915a38617f04220fa4bec13b10a258f3a4f64aefc69347f9bbf91",
   "assets": {
     "app/phone": {
-      "digest": "sha256:a848752a5f56b3a31f6d913dd687d073e151ccc03a179926812c9e179ee45da6",
+      "digest": "sha256:4c6c55f7ebe6dd253adba6305c8db1d12487ca18f7c697f3e419322189a523b2",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -24,8 +24,24 @@
         }
       ]
     },
+    "object/phone.trunk": {
+      "digest": "sha256:9bdc075a785fa64e763ca20c928a09ac15360043149d8d244cbab11937309ce3",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.b1a1a5ad65f31b478c7a0a688fa345236c298fed8bf9c42e60d48ae566b2112b",
+          "family": 1
+        }
+      ]
+    },
     "page/phone.call": {
       "digest": "sha256:6b1ceba31699a4d219942d5732c1680f9b12469719ad0a827963ecbb1c9d3353",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/phone.trunk": {
+      "digest": "sha256:6dd65eceb635455bfecb2d85e1d1f56d49fd2f451432b4d9e614e212b3c8151d",
       "contractVersion": 1,
       "sourceVersion": "1"
     }
