@@ -1,12 +1,12 @@
 {
   "format": 2,
   "package": "crm",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "requires": [
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:5c21ef29a4f7366b19b07db1b1cbacb71300dd75c5447b8fe44884ae18bd4e3b",
+  "artifact": "sha256:18ed8377106982e234a33d1634fc1003b97253bf63235c76ae20c43f1ac01c91",
   "assets": {
     "app/crm": {
       "digest": "sha256:1556174d9eeb8107aa12db5d33f5c3cc29eeb4ae825053b2aaf9557293c1e15a",
@@ -134,7 +134,7 @@
       ]
     },
     "object/crm.lead": {
-      "digest": "sha256:14fc3306e8c02f77b3cd6adf84566d24c6076ac7885e2e3e99ab4f1fb58beb77",
+      "digest": "sha256:d59066231bc0f6e7cc70c2726f99bc9e45b12b429f6cdc0658d653bf6c64af6b",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -147,7 +147,7 @@
           "family": 2
         },
         {
-          "version": "schema.sha256.d55b049eb92be2f9448ce7266ca7b4f10be429c4f827b69f20748eac61e01ed8",
+          "version": "schema.sha256.068b98ad06bdc7df5f6cdcda81f4d7ce122d85e6695a1c2ce6f2d191a557f630",
           "family": 3
         }
       ]

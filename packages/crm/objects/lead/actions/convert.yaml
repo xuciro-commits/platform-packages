@@ -33,7 +33,7 @@ transaction:
       when: input.contact = empty
       set:
         fullname: fullname
-        organization: step.organization
+        organization: coalesce(input.account.base, step.organization)
         jobtitle: jobtitle
         email: email
         mobile: mobile

@@ -97,4 +97,3 @@ description: 把一个开放应用（Frappe、Odoo/OCA、Zammad、EspoCRM……�
 | 装附属对象报 extension field fullname conflicts with base | 附属对象的字段与基础对象同名（如 `fullname`、`notes`） | 换名：带出的显示名写 `title`（`from: base.fullname`），备注写 `background` 之类 |
 | 装包报“没有写入参考记录”，`pkg try` 没有别的提示 | 演示种子里有一条被拒，同一次接受里的参考记录一起回滚 | 先挪开 `seed.yaml` 再跑 `try`，用 `try` 的步骤把同样的记录建一遍，就能看到拒绝原因 |
 | 整数公式报错，或种子在某个比例下才被拒 | 整数相除不整除时整数字段拒收；小数字段配整数表达式报 types differ | 比例用小数字段，表达式写成 `donetasks * 100.0 / taskcount`，另一支写 `0.0` |
-| 转换步骤写 `input.account.base` 报 is not an input of this action | `set` 读不到引用记录的字段 | 只用输入、主体与前面步骤的结果；需要别的记录的字段时先记进平台路线图 |

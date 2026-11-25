@@ -43,6 +43,12 @@ steps:
   - read: crm.deal/{crm.lead/L4.deal}
     show: [account, contact]
     expect: {account: demo-account-1}
+  - read: crm.contact/CON-00002
+    show: [title, account, base]
+    expect: {title: Gao Yan, account: demo-account-1}
+  - read: party.contact/{crm.contact/CON-00002.base}
+    show: [fullname, organization]
+    expect: {fullname: Gao Yan, organization: demo-crm-org-1}
   - do: crm.product.create
     on: crm.product/P1
     with: {title: Platform licence, price: {amount: 120000, currency: CNY}}
