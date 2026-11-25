@@ -1,0 +1,9 @@
+title: Call
+description: Call this contact through the tenant's phone service; the call shows up in the call bar.
+uses: [call/1#dial]
+transaction:
+  steps:
+    - request: call/1#dial
+      with:
+        number: coalesce(base.mobile, base.phone)
+        reference: concat('crm.contact/', id)

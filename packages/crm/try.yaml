@@ -4,7 +4,7 @@ at: 2026-11-23T09:00:00Z
 steps:
   - do: crm.lead.create
     on: crm.lead/L1
-    with: {fullname: Zhou Ning, company: Xihe Precision, email: zhou@xihe.example, source: website, authority: decisionmaker, budget: {amount: 300000, currency: CNY}}
+    with: {fullname: Zhou Ning, company: Xihe Precision, email: zhou@xihe.example, mobile: "+8613800138000", source: website, authority: decisionmaker, budget: {amount: 300000, currency: CNY}}
     show: [stage, owner, budget]
   - do: crm.lead.edit
     on: crm.lead/L1
@@ -100,4 +100,7 @@ steps:
     with: {fullname: Gao Yan, mobile: "+8613900139000", source: website}
   - do: crm.lead.dial
     on: crm.lead/DIAL1
+    refused: true
+  - do: crm.contact.dial
+    on: crm.contact/CON-00001
     refused: true

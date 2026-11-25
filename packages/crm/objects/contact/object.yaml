@@ -17,6 +17,8 @@ fields:
   - {name: background, title: Background, type: longtext, group: Contact}
   - {name: owner, title: Contact owner, type: member, default: member, aside: true}
 
+actions: [dial]
+
 access:
   - {role: salesrep, read: all, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}
