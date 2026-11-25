@@ -1,0 +1,19 @@
+title: Connect
+description: The call was answered; the voice gateway records who took it and when.
+from: [ringing]
+roles: [gateway]
+inputs:
+  - {name: agent, title: Agent, type: member, required: true}
+  - {name: line, title: Line, type: text}
+  - {name: contact, title: Contact, type: reference, ref: party.contact}
+  - {name: organization, title: Organization, type: reference, ref: party.organization}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'connected'"
+        agent: input.agent
+        answeredat: now()
+        line: coalesce(input.line, line)
+        contact: coalesce(input.contact, contact)
+        organization: coalesce(input.organization, organization)

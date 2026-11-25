@@ -1,0 +1,19 @@
+title: Receive
+description: An incoming call is ringing; the voice gateway records the line and the matched contact.
+from: [ringing]
+roles: [gateway]
+inputs:
+  - {name: line, title: Line, type: text, required: true}
+  - {name: contact, title: Contact, type: reference, ref: party.contact}
+  - {name: organization, title: Organization, type: reference, ref: party.organization}
+  - {name: agent, title: Agent, type: member, help: Leave empty until someone answers.}
+transaction:
+  guard: answeredat = empty
+  steps:
+    - target: $subject
+      set:
+        direction: "'inbound'"
+        line: input.line
+        contact: input.contact
+        organization: input.organization
+        agent: input.agent

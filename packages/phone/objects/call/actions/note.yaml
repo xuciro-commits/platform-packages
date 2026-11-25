@@ -1,0 +1,11 @@
+title: Add notes
+description: Write down what the call was about and what happens next.
+from: [ringing, connected, completed, missed, failed]
+roles: [agent, supervisor]
+inputs:
+  - {name: notes, title: Notes, type: longtext, required: true}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        notes: input.notes

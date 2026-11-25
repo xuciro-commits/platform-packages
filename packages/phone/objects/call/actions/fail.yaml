@@ -1,0 +1,12 @@
+title: Mark failed
+description: The voice gateway could not carry the call.
+from: [ringing, connected]
+roles: [gateway]
+inputs:
+  - {name: failure, title: What went wrong, type: text, required: true}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'failed'"
+        failure: input.failure

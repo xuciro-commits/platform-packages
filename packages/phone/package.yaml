@@ -1,0 +1,31 @@
+id: phone
+version: 0.1.0
+title: Phone
+namespace: phone
+description: Incoming and outgoing calls through the platform's voice gateway, answered and placed in the browser, with a call log matched to business partner contacts.
+  It implements the call/1 capability, so other apps can place calls once an administrator binds it.
+listing:
+  industries:
+  - general
+  domains:
+  - sales
+  - service
+  keywords:
+  - phone
+  - call
+  - calllog
+  - telephony
+  - sip
+  stage: preview
+  source:
+    ecosystem: platform
+    app: phone
+    relation: original
+roots:
+- app: build
+  kind: app
+  name: phone
+artifact: phone.json
+requires:
+- party@^0.2.0
+- call@^0.1.0

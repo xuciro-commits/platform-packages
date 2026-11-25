@@ -1,0 +1,91 @@
+roles: {phone: supervisor, party: user}
+at: 2026-11-24T09:00:00Z
+members:
+  gw: {roles: {build: user, phone: gateway, party: user}}
+  amy: {roles: {build: user, phone: agent, party: user}}
+  bob: {roles: {build: user, phone: agent, party: user}}
+steps:
+  - do: party.organization.create
+    on: party.organization/O1
+    with: {name: Northwind Devices}
+  - do: party.contact.create
+    on: party.contact/C1
+    with: {fullname: Lin Hai, organization: O1, mobile: "+8613800138000"}
+  - do: phone.call.create
+    on: phone.call/IN1
+    as: gw
+    with: {number: "+8613800138000"}
+  - do: phone.call.receive
+    on: phone.call/IN1
+    as: gw
+    with: {line: phone1, contact: C1, organization: O1}
+    show: [direction, number, line, contact, organization, agent, state, calledat]
+    expect: {direction: inbound, line: phone1, contact: C1, organization: O1, state: ringing}
+  - do: phone.call.connect
+    on: phone.call/IN1
+    as: amy
+    with: {agent: amy}
+    refused: true
+  - do: phone.call.connect
+    on: phone.call/IN1
+    as: gw
+    with: {agent: amy}
+    show: [state, agent, line, contact, answeredat]
+    expect: {state: connected, agent: amy, line: phone1, contact: C1}
+  - do: phone.call.finish
+    on: phone.call/IN1
+    as: gw
+    with: {seconds: 95}
+    show: [state, seconds]
+    expect: {state: completed, seconds: 95}
+  - do: phone.call.finish
+    on: phone.call/IN1
+    as: gw
+    with: {seconds: 10}
+    refused: true
+  - do: phone.call.note
+    on: phone.call/IN1
+    as: amy
+    with: {notes: Asked for a quote on the 16-inch model.}
+    expect: {notes: Asked for a quote on the 16-inch model.}
+  - do: phone.call.create
+    on: phone.call/OUT1
+    as: bob
+    with: {number: "13900139000", reference: crm.deal/D1}
+    show: [direction, number, reference, agent, state, calledat]
+    expect: {direction: outbound, agent: bob, state: ringing, reference: crm.deal/D1}
+  - do: phone.call.create
+    on: phone.call/BAD1
+    as: bob
+    with: {number: "13900139002", agent: amy}
+    refused: true
+  - do: phone.call.miss
+    on: phone.call/OUT1
+    as: gw
+    with: {reason: unanswered}
+    show: [state, reason]
+    expect: {state: missed, reason: unanswered}
+  - do: phone.call.connect
+    on: phone.call/OUT1
+    as: gw
+    with: {agent: bob}
+    refused: true
+  - do: phone.call.create
+    on: phone.call/OUT2
+    as: bob
+    with: {number: "13900139001"}
+  - do: phone.call.connect
+    on: phone.call/OUT2
+    as: gw
+    with: {agent: bob, line: phone1, contact: C1, organization: O1}
+    expect: {state: connected, line: phone1, contact: C1, organization: O1}
+  - do: phone.call.fail
+    on: phone.call/OUT2
+    as: gw
+    with: {failure: The phone line dropped.}
+    show: [state, failure]
+    expect: {state: failed, failure: The phone line dropped.}
+  - read: phone.call/IN1
+    as: bob
+    show: [state, agent, notes]
+    expect: {state: completed, agent: amy}

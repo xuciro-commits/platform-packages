@@ -1,0 +1,12 @@
+title: Finish
+description: The answered call ended; the voice gateway records the talk time.
+from: [connected]
+roles: [gateway]
+inputs:
+  - {name: seconds, title: Talk time in seconds, type: integer, required: true}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'completed'"
+        seconds: input.seconds

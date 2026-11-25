@@ -1,0 +1,12 @@
+title: Mark missed
+description: The call ended before anyone answered.
+from: [ringing]
+roles: [gateway]
+inputs:
+  - {name: reason, title: Why it was missed, type: choice, required: true, choices: "unanswered:No answer,canceled:Hung up while ringing,rejected:Declined,busy:Line busy"}
+transaction:
+  steps:
+    - target: $subject
+      set:
+        state: "'missed'"
+        reason: input.reason

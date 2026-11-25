@@ -107,6 +107,8 @@ transaction:
 ```
 
 - `target` 写类型名就是新建（`target: crm.contact`），写 `$subject` 或 `$subject.<引用字段>` 是更新；`when` 决定这一步做不做。
+- 对象可写 `createTransaction`（写法同动作的 `transaction`），在新建时跑：只读字段的初值（方向、开始时间、`agent: me()`）就写在这里。
+  `me()` 是当前成员，赋给成员字段；`now()` 是现在。
 - `inputs` 支持 `member` 类型（在动作对话框中直接选择工作区成员）；动作也可写 `uses: <契约>/<主版本>#<动作>` 声明依赖某项能力。
 - `set` 的每个值是一个表达式；字面文字加单引号（`"'won'"`），`$subject` 指这条记录。前面步骤新建的记录用 `step.<步骤名>` 引用。
 

@@ -1,0 +1,14 @@
+name: phone
+title: Phone
+icon: phone
+pages: [phone.call]
+groups:
+  - {title: Calls, pages: [phone.call]}
+dashboard:
+  - {title: Missed calls, kind: metric, object: phone.call, domain: [[state, "=", missed]]}
+  - {title: Calls in progress, kind: metric, object: phone.call, domain: [[state, "=", connected]]}
+  - {title: Talk time in seconds, kind: metric, object: phone.call, domain: [[state, "=", completed]], measure: "sum:seconds"}
+  - {title: Calls by direction, kind: share, object: phone.call, group: direction}
+  - {title: Calls by outcome, kind: bar, object: phone.call, group: state}
+  - {title: Talk time by agent, kind: bar, object: phone.call, domain: [[state, "=", completed]], group: agent, measure: "sum:seconds"}
+  - {title: Calls by month, kind: line, object: phone.call, group: "calledat:month"}

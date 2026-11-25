@@ -1,0 +1,33 @@
+{
+  "format": 2,
+  "package": "phone",
+  "version": "0.1.0",
+  "requires": [
+    "party@^0.2.0",
+    "call@^0.1.0"
+  ],
+  "artifact": "sha256:6094e44bd1adf61838d62d0eac771102e819d61926e811500579a1ede6bbd1cd",
+  "assets": {
+    "app/phone": {
+      "digest": "sha256:40bb322e3e043fc59f212eda7c5d48d8e39d8ae3925229c2ac7bbab0a48019cb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/phone.call": {
+      "digest": "sha256:f0ed9c68b1e964a65e927ac7032d08f8d9c656e85a1e7c3008d627225c334928",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.6ed63b9e65c512961cb418efcb9692f14564faf637371490d56bb179514be1bc",
+          "family": 1
+        }
+      ]
+    },
+    "page/phone.call": {
+      "digest": "sha256:45a734eefa0f91dc4d3784b3a3a8304acd7609a67ce54443166ecf8ca954ca30",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

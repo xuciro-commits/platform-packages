@@ -1,0 +1,61 @@
+name: call
+namespace: phone
+title: Call
+plural: Calls
+icon: phone
+display: number
+naming: CALL-{year}-{n:6}
+description: One incoming or outgoing call. The voice gateway records it and moves it through its states; agents add notes.
+scope: {owner: agent}
+
+fields:
+  - {name: number, title: Number, type: text, required: true, search: true, group: Call}
+  - {name: reference, title: About, type: text, group: Call, help: "The record this call is about, as type/ID."}
+  - {name: direction, title: Direction, type: choice, readOnly: true, choices: "inbound:Incoming,outbound:Outgoing", group: Call}
+  - {name: contact, title: Contact, type: reference, ref: party.contact, readOnly: true, search: true, group: Call}
+  - {name: organization, title: Organization, type: reference, ref: party.organization, readOnly: true, group: Call}
+  - {name: line, title: Line, type: text, readOnly: true, group: Call, help: The trunk the call went through.}
+  - {name: calledat, title: Started, type: datetime, readOnly: true, group: Call}
+  - {name: answeredat, title: Answered, type: datetime, readOnly: true, group: Call}
+  - {name: seconds, title: Talk time in seconds, type: integer, readOnly: true, when: state=completed, group: Call}
+  - {name: reason, title: Why it was missed, type: choice, readOnly: true, when: state=missed, group: Call, choices: "unanswered:No answer,canceled:Hung up while ringing,rejected:Declined,busy:Line busy"}
+  - {name: failure, title: What went wrong, type: text, readOnly: true, when: state=failed, group: Call}
+  - {name: notes, title: Notes, type: longtext, readOnly: true, group: Notes}
+  - {name: agent, title: Agent, type: member, readOnly: true, aside: true}
+
+createTransaction:
+  steps:
+    - target: $subject
+      set:
+        direction: "'outbound'"
+        agent: me()
+        calledat: now()
+
+states:
+  - {name: ringing, title: Ringing, tone: info, description: Ringing and not answered yet.}
+  - {name: connected, title: In progress, tone: warning, description: Answered; both sides are talking.}
+  - {name: completed, title: Completed, tone: success, description: "Answered and ended, with its talk time."}
+  - {name: missed, title: Missed, tone: danger, description: Ended before anyone answered.}
+  - {name: failed, title: Failed, tone: neutral, description: The voice gateway could not carry the call.}
+actions: [receive, connect, finish, miss, fail, note]
+
+protocols:
+  - name: call
+    version: 1
+    actions: {dial: create}
+
+access:
+  - {role: agent, read: all, create: true}
+  - {role: supervisor, read: all, create: true, archive: true}
+  - {role: gateway, read: all, create: true}
+
+view:
+  version: 1
+  layout: table
+  dates: calledat
+  columns: [calledat, direction, number, contact, organization, agent, state, seconds]
+  sort: [{sortKey: calledat, direction: descending}]
+  lanes: direction
+  group: none
+  filters: []
+  search: ""
