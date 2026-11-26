@@ -68,3 +68,5 @@
 "Postal code": "邮政编码"
 "Other address details": "其他地址信息"
 "Free text for what the fields above do not hold, and for addresses kept before they existed.": "上面几项装不下的内容，以及有这些字段之前记下的地址。"
+user: 使用者
+steward: 数据管家

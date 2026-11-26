@@ -274,3 +274,6 @@ Work this lead again.: 重新跟进这条线索。
 "Call this contact through the tenant's phone service; the call shows up in the call bar.": 经租户的电话服务拨打这位联系人；通话显示在通话条里。
 "Call this lead through the tenant's phone service; the call shows up in the call bar.": 经租户的电话服务拨打这条线索；通话显示在通话条里。
 "Call the contact or lead of this activity through the tenant's phone service; the call shows up in the call bar.": 经租户的电话服务拨打这条活动的联系人或线索；通话显示在通话条里。
+"Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.": 涵盖首响时效与资格认定的线索跟进、每笔在途商机必有下一步动作的阶段漏斗、客户与商机干系人角色、产品报价、跟进纪要、赢单丢单复盘与销售仪表盘。
+salesrep: 销售代表
+salesmanager: 销售主管

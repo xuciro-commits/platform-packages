@@ -90,3 +90,6 @@ Fixed headers: 固定头
 Another phone line already uses this account.: 已有线路使用这个账号。
 Settings: 设置
 Dialing: 拨号
+"Incoming and outgoing calls through the platform's voice gateway, answered and placed in the browser, with a call log matched to business partner contacts. It implements the call/1 capability, so other apps can place calls once an administrator binds it.": 经平台语音网关接打来电与外呼，在浏览器内直接通话，通话记录自动关联往来单位联系人；实现 call/1 通话能力契约，管理员绑定后可供其他应用直接拨号。
+gateway: 语音网关
+supervisor: 通话主管

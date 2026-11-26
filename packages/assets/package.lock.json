@@ -5,10 +5,10 @@
   "requires": [
     "party@^0.2.0"
   ],
-  "artifact": "sha256:d8bc372df4e73f7f2c0dbf8e753773a527be8d0155e9060eae5b6eae3ecc04c4",
+  "artifact": "sha256:b62e59b3b148970db31c721db82d5d8b46c64a44035dfb5aa6947bf1f416189f",
   "assets": {
     "app/assets": {
-      "digest": "sha256:29cfe66d84fc7746e1c2ecea0a6e9f293f6ffc0ec731d7518b04c7b1dc3b9ef0",
+      "digest": "sha256:10659772392193c6fa85058c5f55958b61290b774d20acd723dde623edfc37a2",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

@@ -6,10 +6,10 @@
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:ceb37b194fe915a38617f04220fa4bec13b10a258f3a4f64aefc69347f9bbf91",
+  "artifact": "sha256:37c87b4b0a5bb6ebcfc78a4506f9617946f26923433a704b99c864c99fd22756",
   "assets": {
     "app/phone": {
-      "digest": "sha256:4c6c55f7ebe6dd253adba6305c8db1d12487ca18f7c697f3e419322189a523b2",
+      "digest": "sha256:b241fed2e5de7b971c9e8640a97d4573801af7256c3b65563ef4f3a8356fbc5a",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "helpdesk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "requires": [
     "party@^0.2.0"
   ],
-  "artifact": "sha256:f58eb3b9359f87391f210bc1130ee6073172e1335c58147c025db04e790bc61e",
+  "artifact": "sha256:1011e99411569ea97d7e24d1c5ec20e26b52e0828300079c0994159fe967cb97",
   "assets": {
     "app/helpdesk": {
-      "digest": "sha256:dc0923ffb798a15275864b86812161fa043616e51ebbb25fb95d75ac6620348f",
+      "digest": "sha256:73865e6c09c6d69325c460505d9266b3f799de8e7aa21654e682cf7e089cf11f",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

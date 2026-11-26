@@ -199,3 +199,5 @@ Retire this article from active support use.: 将这篇知识库文章从活跃�
 Select the specialist queue to receive this ticket.: 选择接收该升级工单的专项队列。
 Organization: 往来单位
 The support side of a business partner organization. The organization itself, with its name, contacts and addresses, is kept once in Business partners.: 往来单位在售后这一侧的信息。单位本身（名称、联系人、地址）只在“往来单位”里存一份。
+supervisor: 客服主管
+agent: 客服坐席

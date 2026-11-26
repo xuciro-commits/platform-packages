@@ -124,3 +124,7 @@ HR: 人事
 "Works here.": "在职。"
 Person: 人员
 "The HR side of a person in your organization. The person, with their name, sign-in account and units, is kept once in the organization; HR attaches the employment details here.": 组织里一个人在人事这一侧的信息。人本身（姓名、登录账号、所属单元）只在组织里存一份，人事在这里挂上任职信息。
+"Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager, and claims paid by finance.": 管理员工档案及所属组织单元、实时扣减余额的假期额度、直属主管审批的请假与费用报销单，以及财务付款核销。
+staff: 员工
+hradmin: 人事管理员
+finance: 财务出纳

@@ -1,5 +1,5 @@
 id: helpdesk
-version: 0.2.0
+version: 0.2.1
 title: Helpdesk
 namespace: helpdesk
 description: Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.

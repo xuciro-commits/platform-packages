@@ -95,3 +95,6 @@
 "Work orders by type": "按类型的维修单"
 "Working remotely": "远程办公"
 "Workshop": "车间"
+"Equipment and other physical assets by category and location, checked out to people and checked back in with a movement history, maintenance and repair work orders with costs, self-service fault reports, and warranty dates.": 按类别与存放位置管理设备及实物资产，完整记录领用、归还流转台账，涵盖带费用核算的维保工单、员工自助报修与保修期跟踪。
+custodian: 资产管理员
+staff: 员工

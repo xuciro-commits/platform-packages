@@ -112,3 +112,6 @@
 "What was done": "做了什么"
 "Work": "工作"
 "Work is under way.": "工作在进行中。"
+"Projects with their tasks on a Gantt chart, task dependencies and milestones, time logged per person and task with billable hours, and progress and hours rolled up from the tasks.": 提供项目甘特图排期、任务前置依赖与里程碑、按成员与任务登记的计费工时，以及自动自下而上汇总的进度与工时统计。
+member: 项目成员
+manager: 项目经理

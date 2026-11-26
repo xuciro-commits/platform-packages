@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "projects",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "requires": [
     "party@^0.2.0"
   ],
-  "artifact": "sha256:95b9805dd63444cafcd8541b9a2833f47dffa3fd4e663e711a202026c362065a",
+  "artifact": "sha256:37bdb7aa927c1215f000748df77d1097993de22419bf0259f05cc221c3259b51",
   "assets": {
     "app/projects": {
-      "digest": "sha256:8e6d96c8e90cdaaf3a1fe492752520119b94b37bc1a17bf97f068d9cfbff10b1",
+      "digest": "sha256:5e350809238cfb9e8b568918fa7862db8bf43858497e9e656d6615d88ac6a060",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

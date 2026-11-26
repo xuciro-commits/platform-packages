@@ -6,10 +6,10 @@
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:e14529198c9a7ca98a1b141780f6ff74ab3a000e95f31dcf474cd80d6c3644c1",
+  "artifact": "sha256:68b4e5328a7690884670d1d3a0a3c08da1b7cd71435993624c6bdbc37ff1b471",
   "assets": {
     "app/crm": {
-      "digest": "sha256:d1a4658dc80093e90579127c20afded367956c93f902fcc8c00e770f102cacab",
+      "digest": "sha256:4b2484c4e6a89a04c524cf0bc5e2d13cb2f2bc2c56d0d020ee721748e3b03da7",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
