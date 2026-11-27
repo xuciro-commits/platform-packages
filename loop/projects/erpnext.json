@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "id": "erpnext",
+  "queue": "docs/erpnext/loop-tasks.json",
+  "protocol": "docs/erpnext/loop.md",
+  "plan": "docs/erpnext/plan.md",
+  "checkpoint": "docs/erpnext/checkpoint.json",
+  "evidenceDir": "docs/erpnext",
+  "feedbackDir": "../platform/inner-box/erp",
+  "budgets": {
+    "maxTurns": 20,
+    "turnSeconds": 900,
+    "maxMinutes": 240,
+    "gateSeconds": 240,
+    "maxAttempts": 6,
+    "maxStalls": 2
+  },
+  "quality": {
+    "coverage": "docs/erpnext/coverage.json",
+    "evidence": "docs/erpnext/evidence.json",
+    "productGates": "docs/erpnext/product-gates.json",
+    "blockers": "docs/erpnext/blockers.json",
+    "capabilities": "docs/erpnext/capabilities.json"
+  },
+  "displayName": "PackageLoop · ERP 研发",
+  "navigationContracts": [
+    "docs/erpnext/accounts-navigation-contract.json",
+    "docs/erpnext/assets-navigation-contract.json",
+    "docs/erpnext/buying-navigation-contract.json",
+    "docs/erpnext/crm-navigation-contract.json",
+    "docs/erpnext/manufacturing-navigation-contract.json",
+    "docs/erpnext/projects-navigation-contract.json",
+    "docs/erpnext/quality_management-navigation-contract.json",
+    "docs/erpnext/selling-navigation-contract.json",
+    "docs/erpnext/setup-navigation-contract.json",
+    "docs/erpnext/stock-navigation-contract.json",
+    "docs/erpnext/support-navigation-contract.json"
+  ],
+  "navigationIndex": "docs/erpnext/navigation-source-index.json",
+  "fieldAudits": [
+    "docs/erpnext/purchasing-field-operation-matrix.json"
+  ],
+  "batchArtifacts": [
+    "docs/erpnext/purchasing-five-batches.json",
+    "docs/erpnext/supplier-master-operation-supplement.json"
+  ],
+  "deliveryLayout": true
+}

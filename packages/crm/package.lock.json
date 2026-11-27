@@ -1,15 +1,15 @@
 {
   "format": 2,
   "package": "crm",
-  "version": "0.3.2",
+  "version": "0.3.5",
   "requires": [
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:7b2a4e67dd320ecf2aeb07faceff31d319c5dd4faba2997a621d2f6164a315db",
+  "artifact": "sha256:6ef8d88e8c6cb9daf4071a4170109b14fbebd4349813dd91653a9448782879f6",
   "assets": {
     "app/crm": {
-      "digest": "sha256:1556174d9eeb8107aa12db5d33f5c3cc29eeb4ae825053b2aaf9557293c1e15a",
+      "digest": "sha256:5894a32b7572e4a4af958b8b9b8ac39afc2addee7b238bd2555f9c03686e0ebd",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -75,7 +75,7 @@
       ]
     },
     "object/crm.contact": {
-      "digest": "sha256:2c983f938a753d1e993d131e295f379bd1b0090f604af9f5c27b262bdee378ba",
+      "digest": "sha256:1b8278739e449e24dc5dae540bb4f0ccaed1dca621533e9fed90d1c6ab98145c",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -86,17 +86,25 @@
         {
           "version": "schema.sha256.3886f4eb13d705a3d9bcc24eaf8b20b76212bc0f611ea3b2d75d58a43f69f3ed",
           "family": 2
+        },
+        {
+          "version": "schema.sha256.71c5e5e10e71f4e220c772457640c3bc95413c8024fc6199862df7abc3e11f29",
+          "family": 2
         }
       ]
     },
     "object/crm.deal": {
-      "digest": "sha256:8a3b78027904fc33f7877026954636117e5d299bc07fec8aa27ce6864685d48d",
+      "digest": "sha256:36a7bcccb41c9e4db83fd41907ee8473d34c456fc146112b8082c918f19fb016",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.db9013342161bb58b18a984c6283efc60ce7358492ede2aedf9310751ee2379c",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.f1f3574e248188bf994d4365c8c16a82c4552e4e2c03cee4fa14dacd67957526",
+          "family": 2
         }
       ]
     },
@@ -134,7 +142,7 @@
       ]
     },
     "object/crm.lead": {
-      "digest": "sha256:a992271c29f880c9de25e62ce2f6f45e176edab5d9fe07d89263cc5fb14a70eb",
+      "digest": "sha256:ea14cff767cb0656310971ac754e1d328fcde22ff9b9d40e3a4be35f42bd8e2d",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -151,7 +159,7 @@
           "family": 3
         },
         {
-          "version": "schema.sha256.068b98ad06bdc7df5f6cdcda81f4d7ce122d85e6695a1c2ce6f2d191a557f630",
+          "version": "schema.sha256.9ac83fcf850b9580950846b37d2d972690030fdb20e55afa8f2c9a643a952f94",
           "family": 3
         }
       ]
@@ -163,6 +171,17 @@
       "schemaVersions": [
         {
           "version": "schema.sha256.81df6c7ed9e5b483f796354f2ba079b9cb9a784ecf68c6e21c5d341cecd653e4",
+          "family": 1
+        }
+      ]
+    },
+    "object/crm.navpending": {
+      "digest": "sha256:b373392e37f9586fe8e4372ec5ef933c9c9885709d88dac41f3d29616086b954",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.dca7e831c95d7b738116926849e0e7d1683a56f2d19418243bb717a4247b2d51",
           "family": 1
         }
       ]
@@ -243,12 +262,162 @@
       "sourceVersion": "1"
     },
     "page/crm.deal": {
-      "digest": "sha256:bf78684e8cbc329692072d187d05175ce735e9300c08a9dde354c7dcae23e1e4",
+      "digest": "sha256:27aad63db0c9b79e2191213e228a55eb2cf4dbeebfc9dabd670c34c0559631ec",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
     "page/crm.disqualifyreason": {
       "digest": "sha256:d6907e8478cc11f66392182b8e9ee1d3e9756ebb51d8fa742d2ba0913326de9d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_appointment": {
+      "digest": "sha256:3961e17a399fe6ed90f2d3c7c451afb77671de82c74dd583454107e555706cfd",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_campaign": {
+      "digest": "sha256:07c897c65fe1a0360398c62a781cd295ae97bc0050906e3d93007c2a5cb8ae48",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_campaign_efficiency": {
+      "digest": "sha256:ebd96286c72372e42dc4738e81a0caff5075a01d4f79c4f47d56e8cd26da4c4b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_communication": {
+      "digest": "sha256:10f79a9666e262aafb4b5bfa324673bdfbc40900e223d744ad9c4ec24dabf19c",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_contact": {
+      "digest": "sha256:861b6926e9e2cc48b93a2a92db4b501669ec8b12c73dc85d4e6668199516929d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_contract": {
+      "digest": "sha256:1371dd39e07405c8fb12675602b4faf3aa79e1ba0c1ba02d91c166b3e85cf2a2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_crm_settings": {
+      "digest": "sha256:189a6dbff5fd67eab13003e30f54bf903c8320e12d44455e3bf3f399942f6008",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_customer_group": {
+      "digest": "sha256:b38acaca073c167d5da7c1c5a985e04ea32fd0049aacb6d83319c2219e3af018",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_email_campaign": {
+      "digest": "sha256:5bdf08bc9528020e9bf8a444996e257555bf0d7ac2cd65bd7fa8142e4fd50a65",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_email_group": {
+      "digest": "sha256:5fee009be51bbd4f7c0a39049b350edceac08096242e5fb3793188ee0a0bbcf7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_first_response_time_for_opportunity": {
+      "digest": "sha256:de5ca616237c8dfeeddb0d82f84a48bf561fa1d0328b84f1038b67fe7094ba5f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_home": {
+      "digest": "sha256:7748e17a7a4de52a716109b42d862917ccaae786862faefbb926579100756fd6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_lead_details": {
+      "digest": "sha256:5d828fab40d5dd582308eb3f7f92109152f383e3c52da4fa6c111886b4cc7883",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_lead_owner_efficiency": {
+      "digest": "sha256:36f3ba9fcaa162cdfdc7bc8c474ed490da358c7af4157764331afd0d08018718",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_lead_source": {
+      "digest": "sha256:83ea1beb00ba97378128d3547cd24c838c9cc94b8e54f23dd1bf642fc227401b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_maintenance_schedule": {
+      "digest": "sha256:841eaf2dab91e8216e42a76a7ba938e943ae0e7392fc3d34cd5def5f3b3dcacf",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_maintenance_visit": {
+      "digest": "sha256:c13d83d78033683eb0a1ed24e02f27ad2d0796dd2646894be7bd9f44551e1134",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_opportunity_summary_by_sales_stage": {
+      "digest": "sha256:f4acf08f2d9faf786c170c091a627e6403151486d9379f5e1e9f44699c7ed8f7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_prospect": {
+      "digest": "sha256:f4f2613de821b6f162767a4c71672de05d661f318a4265371ac61e55777662f9",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_prospects_engaged_but_not_converted": {
+      "digest": "sha256:87d93ad5a21fd0da4294b55720fd701a30baa85ce03a28494c7a3941876b1590",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sales_analytics": {
+      "digest": "sha256:84b26214a61d9c973ff64b7c913d7d8039ed77db48208424c51baa02bdd3d9da",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sales_funnel": {
+      "digest": "sha256:d42fd9d2931509c0b01d2cba31d6599a25ff7f3e606db77857d5ee17cfb3cbc9",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sales_person": {
+      "digest": "sha256:08202455eb4a60b7e0e7f7b9c90b2714b371ae361672b78ab9315bd4edf3e413",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sales_pipeline_analytics": {
+      "digest": "sha256:9a0ecfbd0b322c50013c5b4d6e48aceb00c803ea728742bd2a4bf3f21a352f75",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sales_stage": {
+      "digest": "sha256:48ec1d8548b525b1b15b2d25ba3833161a077b64f812763cf40a6a8adc092b06",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sms_center": {
+      "digest": "sha256:ab188959aaa6f6c826959e1e5f7198d05fb274b83a0c6e62ba144002383d9320",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sms_log": {
+      "digest": "sha256:8cf25c528176c38c4a9697169d4520b8769d3ea3b57d0647c919b9cb295fdcaf",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_sms_settings": {
+      "digest": "sha256:8d998a28714c5f8d8f70dea6180f8d29a6bb50e143aa7a0bb45403d3a22c7253",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_territory": {
+      "digest": "sha256:97cffb4b26a2f4af686139bada7985e7b7c0d94f6aaa92ffe63cde1a48704f93",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/crm.erp_warranty_claim": {
+      "digest": "sha256:c7052f485197c065243f541598c007711398627cfcdbcdc0951602bcab8078ac",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

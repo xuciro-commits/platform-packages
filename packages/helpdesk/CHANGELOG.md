@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- 补齐包级多语言元数据与客服角色（客服坐席、客服主管）简体中文译文。
+
 ## 0.2.0
 
 - Customers and contacts now come from Business partners (`party` 0.2, required): a customer is the support side of a `party.organization`, attached to it one-to-one, and a ticket's contact is a `party.contact`. The organization's name, website, contacts and addresses are kept once and shared with other applications.
@@ -14,3 +18,7 @@
 ## 0.1.0
 
 - Initial preview release: tickets with dual response/resolution SLAs, stage Kanban board, balanced assignment, replies/internal notes, escalation, structured resolution with CSAT, knowledge base, canned replies, customer/contact rollups, supervisor settings page, dashboard, and Simplified Chinese (`zh-CN`) localization.
+
+## 0.2.2 candidate
+
+- ERP navigation coverage: preserve original business pages, actions, settings and dashboards; add explicit read-only placeholders and selected existing-object aliases. Browser and workflow parity remain unverified.

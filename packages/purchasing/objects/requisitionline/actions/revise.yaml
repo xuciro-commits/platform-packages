@@ -1,0 +1,13 @@
+title: Revise demand line
+from: [active]
+roles: [buyer, manager]
+inputs:
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: neededon, title: Needed on, type: date, required: true}
+  - {name: description, title: Line description, type: longtext}
+transaction:
+  guard: "request.state = 'draft' and material.state = 'active' and input.quantity > 0 and input.neededon >= coalesce(request.requestedon, input.neededon) and (coalesce(unit.rounding, 0) = 0 or (unit.rounding > 0 and round(input.quantity / unit.rounding, 0) * unit.rounding = input.quantity))"
+  message: Quantity must match the configured unit step and draft action requirements.
+  steps:
+    - target: $subject
+      set: {quantity: input.quantity, enteredunit: material.unit, enteredquantity: input.quantity, conversionfactor: "1", neededon: input.neededon, description: input.description}

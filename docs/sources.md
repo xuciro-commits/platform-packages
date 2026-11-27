@@ -41,7 +41,7 @@
 
 | 应用 | 许可 | 星 | 业务 | 判断 |
 |---|---|---|---|---|
-| erpnext | GPL-3.0 | 41.5k | 一个仓库 39 个模块：accounts、selling、buying、stock、manufacturing、projects、assets、maintenance、quality_management、support、crm、subcontracting | 按能力拆成多个包重新设计 |
+| erpnext | GPL-3.0 | 41.5k | v16 固定检出声明 21 个模块（见 [长期计划](erpnext/plan.md) 与 [普查](erpnext/inventory.md)）：accounts、selling、buying、stock、manufacturing、projects、assets、maintenance、quality_management、support、crm、subcontracting | 按能力拆成多个包重新设计 |
 | hrms | GPL-3.0 | 9.1k | hr、leaves、shift_and_attendance、expenses、payroll、performance、recruitment、tax_and_benefits | 拆成人事核心与薪资两包 |
 | crm | AGPL-3.0 | 4.0k | 线索、商机、组织、联系人、任务、备注 | 第一个，已有能力矩阵 |
 | helpdesk | AGPL-3.0 | 3.5k | 工单、SLA、指派、知识库、客户门户 | 第二个 |

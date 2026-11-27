@@ -1,6 +1,14 @@
 # Changelog
 
+## 0.1.1
+
+- 补齐项目包简介与角色（项目成员、项目经理）简体中文译文。
+
 ## 0.1.0
 
 - 第一个预览版：项目（客户、起止、预计工时，进度与工时汇总，启动、暂停、恢复、完成、取消），任务（甘特、前置、里程碑、阶段看板、到期进收件箱、逾期提醒），
   工时（按人按天按任务，活动类型与计费），仪表盘，简体中文。需要 `party` 0.2。
+
+## 0.1.2 candidate
+
+- ERP navigation coverage: preserve original business pages, actions, settings and dashboards; add explicit read-only placeholders and selected existing-object aliases. Browser and workflow parity remain unverified.

@@ -103,7 +103,8 @@ Existing contact: 已有联系人
 Existing customer: 老客户
 Exit criteria: 出阶段条件
 Expected close: 预计成交
-Fill in the budget before converting; it becomes the deal amount.: 转换前先填预算，它会成为商机金额。
+Fill in the budget and choose an existing contact belonging to the selected account.: 转换前先填预算；如复用已有联系人，请选择其所属客户。
+Losses by competitor: 按竞争对手统计丢单
 Financial services: 金融服务
 First response: 首次响应
 First response missed: 首次响应超时
@@ -271,5 +272,75 @@ Won: 赢单
 Won by month: 每月赢单
 Won revenue: 已赢金额
 Work this lead again.: 重新跟进这条线索。
+"Call this contact through the tenant's phone service; the call shows up in the call bar.": 经租户的电话服务拨打这位联系人；通话显示在通话条里。
 "Call this lead through the tenant's phone service; the call shows up in the call bar.": 经租户的电话服务拨打这条线索；通话显示在通话条里。
 "Call the contact or lead of this activity through the tenant's phone service; the call shows up in the call bar.": 经租户的电话服务拨打这条活动的联系人或线索；通话显示在通话条里。
+"Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.": 涵盖首响时效与资格认定的线索跟进、每笔在途商机必有下一步动作的阶段漏斗、客户与商机干系人角色、产品报价、跟进纪要、赢单丢单复盘与销售仪表盘。
+salesrep: 销售代表
+salesmanager: 销售主管
+"[Pending] Home": "【待实现】CRM首页"
+"Not implemented: Home requires domain modeling, authorization and independent acceptance.": "待实现：CRM首页，尚需业务建模、授权及独立验收。"
+"Reports": "报表"
+"[Pending] Sales Analytics": "【待实现】销售分析"
+"Not implemented: Sales Analytics requires domain modeling, authorization and independent acceptance.": "待实现：销售分析，尚需业务建模、授权及独立验收。"
+"[Pending] Lead Details": "【待实现】线索详情"
+"Not implemented: Lead Details requires domain modeling, authorization and independent acceptance.": "待实现：线索详情，尚需业务建模、授权及独立验收。"
+"[Pending] Sales Pipeline Analytics": "【待实现】销售管道分析"
+"Not implemented: Sales Pipeline Analytics requires domain modeling, authorization and independent acceptance.": "待实现：销售管道分析，尚需业务建模、授权及独立验收。"
+"[Pending] Opportunity Summary by Sales Stage": "【待实现】商机阶段汇总"
+"Not implemented: Opportunity Summary by Sales Stage requires domain modeling, authorization and independent acceptance.": "待实现：商机阶段汇总，尚需业务建模、授权及独立验收。"
+"[Pending] Sales Funnel": "【待实现】销售漏斗"
+"Not implemented: Sales Funnel requires domain modeling, authorization and independent acceptance.": "待实现：销售漏斗，尚需业务建模、授权及独立验收。"
+"[Pending] Prospects Engaged But Not Converted": "【待实现】未转化潜客"
+"Not implemented: Prospects Engaged But Not Converted requires domain modeling, authorization and independent acceptance.": "待实现：未转化潜客，尚需业务建模、授权及独立验收。"
+"[Pending] First Response Time for Opportunity": "【待实现】商机首次响应时间"
+"Not implemented: First Response Time for Opportunity requires domain modeling, authorization and independent acceptance.": "待实现：商机首次响应时间，尚需业务建模、授权及独立验收。"
+"[Pending] Campaign Efficiency": "【待实现】营销活动效率"
+"Not implemented: Campaign Efficiency requires domain modeling, authorization and independent acceptance.": "待实现：营销活动效率，尚需业务建模、授权及独立验收。"
+"[Pending] Lead Owner Efficiency": "【待实现】线索负责人效率"
+"Not implemented: Lead Owner Efficiency requires domain modeling, authorization and independent acceptance.": "待实现：线索负责人效率，尚需业务建模、授权及独立验收。"
+"Maintenance": "维保"
+"[Pending] Maintenance Schedule": "【待实现】维保计划"
+"Not implemented: Maintenance Schedule requires domain modeling, authorization and independent acceptance.": "待实现：维保计划，尚需业务建模、授权及独立验收。"
+"[Pending] Maintenance Visit": "【待实现】维保访问"
+"Not implemented: Maintenance Visit requires domain modeling, authorization and independent acceptance.": "待实现：维保访问，尚需业务建模、授权及独立验收。"
+"[Pending] Warranty Claim": "【待实现】保修申请"
+"Not implemented: Warranty Claim requires domain modeling, authorization and independent acceptance.": "待实现：保修申请，尚需业务建模、授权及独立验收。"
+"Sales Pipeline": "销售管道"
+"[Pending] Contract": "【待实现】合同"
+"Not implemented: Contract requires domain modeling, authorization and independent acceptance.": "待实现：合同，尚需业务建模、授权及独立验收。"
+"[Pending] Appointment": "【待实现】预约"
+"Not implemented: Appointment requires domain modeling, authorization and independent acceptance.": "待实现：预约，尚需业务建模、授权及独立验收。"
+"[Pending] Communication": "【待实现】沟通记录"
+"Not implemented: Communication requires domain modeling, authorization and independent acceptance.": "待实现：沟通记录，尚需业务建模、授权及独立验收。"
+"Campaign": "营销活动"
+"[Pending] Campaign": "【待实现】营销活动"
+"Not implemented: Campaign requires domain modeling, authorization and independent acceptance.": "待实现：营销活动，尚需业务建模、授权及独立验收。"
+"[Pending] Email Campaign": "【待实现】邮件营销"
+"Not implemented: Email Campaign requires domain modeling, authorization and independent acceptance.": "待实现：邮件营销，尚需业务建模、授权及独立验收。"
+"[Pending] SMS Center": "【待实现】短信中心"
+"Not implemented: SMS Center requires domain modeling, authorization and independent acceptance.": "待实现：短信中心，尚需业务建模、授权及独立验收。"
+"[Pending] SMS Log": "【待实现】短信日志"
+"Not implemented: SMS Log requires domain modeling, authorization and independent acceptance.": "待实现：短信日志，尚需业务建模、授权及独立验收。"
+"[Pending] Email Group": "【待实现】邮件组"
+"Not implemented: Email Group requires domain modeling, authorization and independent acceptance.": "待实现：邮件组，尚需业务建模、授权及独立验收。"
+"Setup": "ERP 配置"
+"Shared existing object view; complete source-specific workflow is unverified.": "复用已有对象，来源应用的完整业务流程尚未验收。"
+"[Pending] Customer Group": "【待实现】客户分类"
+"Not implemented: Customer Group requires domain modeling, authorization and independent acceptance.": "待实现：客户分类，尚需业务建模、授权及独立验收。"
+"[Pending] Prospect": "【待实现】潜在客户"
+"Not implemented: Prospect requires domain modeling, authorization and independent acceptance.": "待实现：潜在客户，尚需业务建模、授权及独立验收。"
+"[Pending] Sales Person": "【待实现】销售人员"
+"Not implemented: Sales Person requires domain modeling, authorization and independent acceptance.": "待实现：销售人员，尚需业务建模、授权及独立验收。"
+"Sales Stage": "销售阶段"
+"Lead Source": "线索来源"
+"ERP Settings": "ERP 设置"
+"[Pending] CRM Settings": "【待实现】CRM设置"
+"Not implemented: CRM Settings requires domain modeling, authorization and independent acceptance.": "待实现：CRM设置，尚需业务建模、授权及独立验收。"
+"[Pending] SMS Settings": "【待实现】短信设置"
+"Not implemented: SMS Settings requires domain modeling, authorization and independent acceptance.": "待实现：短信设置，尚需业务建模、授权及独立验收。"
+"Pending feature": "待实现功能"
+"Pending features": "待实现功能"
+"Reference": "标识"
+"Technical navigation placeholder. No business records or operations.": "技术导航占位，不含业务记录和操作。"
+"Overview": "概览"

@@ -1,0 +1,27 @@
+name: reservation
+namespace: inventory
+title: Stock reservation
+plural: Stock reservations
+icon: clipboard-document-list
+display: title
+fields:
+  - {name: title, title: Reference, type: text, required: true}
+  - {name: position, title: Stock position, type: reference, ref: inventory.position, inverse: reservations, required: true}
+  - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: reserved, title: Reserved, tone: success}
+  - {name: released, title: Released, tone: neutral}
+actions: [reserve, release]
+constraints:
+  - name: positivequantity
+    kind: expression
+    fields: [quantity]
+    expr: quantity > 0
+    message: Reservation quantity must be positive.
+    translations:
+      zh-CN: 预留数量必须为正数。
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, position, quantity, state], sort: [], group: state, lanes: "", filters: [], search: ""}

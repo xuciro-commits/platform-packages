@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "helpdesk",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "requires": [
     "party@^0.2.0"
   ],
-  "artifact": "sha256:f58eb3b9359f87391f210bc1130ee6073172e1335c58147c025db04e790bc61e",
+  "artifact": "sha256:bf13c5181e8c0f9e2da52165a609e5ad6794f093d0c67f451ed2769e9adb1514",
   "assets": {
     "app/helpdesk": {
-      "digest": "sha256:dc0923ffb798a15275864b86812161fa043616e51ebbb25fb95d75ac6620348f",
+      "digest": "sha256:a4a13a15d71eca2bf1a28146485359ab54176a547454abd5c9090bb2a2e4074d",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -88,6 +88,17 @@
         {
           "version": "schema.sha256.71c3e4e3f1c66a0e04f9b365074f020e9a41752d8d8ea4a7997a8a7ea55e95c8",
           "family": 2
+        }
+      ]
+    },
+    "object/helpdesk.navpending": {
+      "digest": "sha256:6e2e5b9dc0144009e78ced33fef94dc96b7b02cdfc981c5d179bd47733609e2c",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.ef74d8d0d014dbe98a30def0be4daadd6505184c3f1820f383a6231650d7b77a",
+          "family": 1
         }
       ]
     },
@@ -183,6 +194,51 @@
     },
     "page/helpdesk.customer": {
       "digest": "sha256:24d649dee2abcb766370aef1f4722d6e67eb0e8157d4ae701d2f4a537f885ba1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_first_response_time_for_issues": {
+      "digest": "sha256:aaf57907bd0579689c442aa353547518b8c9f9f5816b85813b3827692c7c5da7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_home": {
+      "digest": "sha256:4265d9b64dac7fadade4d88d7af98ed885ec3d6a246b7a3e4155dcafad7ac420",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_issue_priority": {
+      "digest": "sha256:123d8eafa18b0100c72aaa1e38598a25ac7bef43eb66d18e6f7984873a48fb04",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_issue_type": {
+      "digest": "sha256:f6fb5cff88866b971915e559d35f7f465e3a1a92f146c774bb94ff8e4657423d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_maintenance_schedule": {
+      "digest": "sha256:abc137dd476624a1ab87ec42e773577ec7f8cf4708d258790ee9ecf181d5ecd4",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_maintenance_visit": {
+      "digest": "sha256:ee7097340cb4dbcb937f4256ece390c528e132712b92bc0367ef51ba727643e6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_service_level_agreement": {
+      "digest": "sha256:2b82c0304766bf54faefc2103cd8870628859567c624df240ccb856677daa601",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_settings": {
+      "digest": "sha256:b6b7ba5613168913775eb2f200c328808dffc7a51365cdefb3cc3c57c315af1e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/helpdesk.erp_warranty_claim": {
+      "digest": "sha256:a8fd7de77ea1d1912a5bfb5636d4545dd48e753810826f0ad1d0acd0eea0cb4d",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

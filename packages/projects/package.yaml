@@ -1,5 +1,5 @@
 id: projects
-version: 0.1.0
+version: 0.1.2
 title: Projects
 namespace: projects
 description: Projects with their tasks on a Gantt chart, task dependencies and milestones, time logged per person and task with billable hours,
@@ -17,7 +17,7 @@ listing:
   - milestone
   - timesheet
   - time-tracking
-  stage: preview
+  stage: test
   source:
     ecosystem: frappe
     app: erpnext

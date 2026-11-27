@@ -1,0 +1,24 @@
+roles: {inventory: keeper, item: steward, uom: user}
+at: 2026-11-26T00:00:00Z
+members:
+  operator: {roles: {inventory: keeper, item: user, uom: user}}
+  reader: {roles: {inventory: reader, item: user, uom: user}}
+steps:
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: item.master.create, on: item.master/I2, with: {title: Copper, code: COPPER, kind: material, unit: kg}}
+  - {do: inventory.position.create, on: inventory.position/A, as: operator, with: {title: A, item: I1}}
+  - {do: inventory.position.create, on: inventory.position/B, as: operator, with: {title: B, item: I2}}
+  - {do: inventory.position.create, on: inventory.position/C, as: operator, with: {title: C, item: I1}}
+  - {do: inventory.movement.create, on: inventory.movement/R1, as: operator, with: {title: Receipt, destination: A, quantity: 10}}
+  - {do: inventory.movement.receive, on: inventory.movement/R1, as: operator}
+  - {do: inventory.movement.create, on: inventory.movement/T1, as: operator, with: {title: Wrong item, source: A, destination: B, quantity: 1}}
+  - {do: inventory.movement.transfer, on: inventory.movement/T1, as: operator, refused: true}
+  - {do: inventory.movement.create, on: inventory.movement/T2, as: operator, with: {title: Same location, source: A, destination: A, quantity: 1}}
+  - {do: inventory.movement.transfer, on: inventory.movement/T2, as: operator, refused: true}
+  - {do: inventory.movement.create, on: inventory.movement/T3, as: operator, with: {title: Wrong action, source: A, destination: C, quantity: 1}}
+  - {do: inventory.movement.receive, on: inventory.movement/T3, as: operator, refused: true}
+  - {do: inventory.movement.transfer, on: inventory.movement/T3, as: reader, refused: true}
+  - {do: item.master.deactivate, on: item.master/I1}
+  - {do: inventory.movement.transfer, on: inventory.movement/T3, as: operator, refused: true}
+  - {read: inventory.position/A, as: operator, expect: {balance: 10}}
+  - {read: inventory.movement/T3, as: operator, expect: {state: draft}}

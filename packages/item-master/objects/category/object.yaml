@@ -1,0 +1,21 @@
+name: category
+namespace: item
+title: Item category
+plural: Item categories
+icon: folder
+display: title
+fields:
+  - {name: title, title: Name, type: text, required: true, search: true}
+  - {name: code, title: Code, type: text, required: true, search: true}
+  - {name: parent, title: Parent category, type: reference, ref: item.category}
+constraints:
+  - name: categorycode
+    kind: unique
+    fields: [code]
+    message: Category code must be unique.
+    translations:
+      zh-CN: 分类编码必须唯一。
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true}
+view: {version: 1, layout: table, columns: [code, title, parent], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

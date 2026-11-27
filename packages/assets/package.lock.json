@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "assets",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "requires": [
     "party@^0.2.0"
   ],
-  "artifact": "sha256:d8bc372df4e73f7f2c0dbf8e753773a527be8d0155e9060eae5b6eae3ecc04c4",
+  "artifact": "sha256:19a6e0c42bcc93cd87d7ce3747899b670243e64c58f99c48a0a0508f3feb995a",
   "assets": {
     "app/assets": {
-      "digest": "sha256:29cfe66d84fc7746e1c2ecea0a6e9f293f6ffc0ec731d7518b04c7b1dc3b9ef0",
+      "digest": "sha256:e7ee4ac0220e3efc139d6cf1731368faca7cc595619c50a1becc741649698795",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -72,6 +72,17 @@
         }
       ]
     },
+    "object/assets.navpending": {
+      "digest": "sha256:3aa2f8369d244ccbcba487b574aae6b677d2933a1744399b86b4195b753b81b0",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.37d620234bb21976b6d3f9f3fe086b19adb589b02d4a2f5273efc5927f52a1f9",
+          "family": 1
+        }
+      ]
+    },
     "page/assets.asset": {
       "digest": "sha256:5e4663f1d2d56dfc72b764f4ddc60e2c4dd0b155a119a7dfcce9e069f27680bb",
       "contractVersion": 1,
@@ -79,6 +90,76 @@
     },
     "page/assets.category": {
       "digest": "sha256:fe35927a37b9c91cfe6243be005768f930fba5d853531479583d4631f4c7c1a0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_activity": {
+      "digest": "sha256:f2ccea911a1bf7c4421048e263d314cb93b1aefb3337a9b21d1a4fbd6cecbf98",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_capitalization": {
+      "digest": "sha256:522c1999653e18af8cf580e9e724a5b03df40f7f6238fc0f33a85820de2c1696",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_category": {
+      "digest": "sha256:eb3b2a7a376e99ebd43889dd5f751cf7cf479df5e0acebd3bf28dec2e8e43db2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_depreciation_ledger": {
+      "digest": "sha256:3e676631f357896e626726a595db623e7322c382b93db1c729d474882ff77ce6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_depreciations_and_balances": {
+      "digest": "sha256:3273dd7bbc9c9bb40ffac09849b83ea64c846870d4bf460dd7a1868e8db96f98",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_maintenance_log": {
+      "digest": "sha256:23cbffe6e04296983cad463da935699f0dece9a6cac633a179c16025d13dec95",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_maintenance_team": {
+      "digest": "sha256:50cd374fd8307634cad8ff0a2d4c822580f91138b257c9193a572008d2cb4659",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_repair": {
+      "digest": "sha256:9a686d4831680409e107ce735aca1221bb9728a07ba0a4bb6cb661c74830ce2f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_asset_value_adjustment": {
+      "digest": "sha256:7500b701c709e3c0ded28fc07f174ecb2316561b8504ce60170df8070c12ecbf",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_depreciation_schedule": {
+      "digest": "sha256:a00b6ff9ed37ddcfca7ab3f346e3e30cf5e996aa7d185472dd6eef0f797d29b8",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_fixed_asset_register": {
+      "digest": "sha256:cb780a966dc1111b4ed911e666a208e4c5fdc28bcc6052165a295f3e60fd38de",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_home": {
+      "digest": "sha256:463ccd9fd39e77a66db7ae0174a0e6a88e1826eb219bd209e0135e40c9d277a7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_location": {
+      "digest": "sha256:c829d4dbcda784a126cedf9b58436d7d6da6fcc898f5e3bf51f32af11480e0ee",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/assets.erp_settings": {
+      "digest": "sha256:8f3eb0280d063ed8b6e6e40edfca82175df3370d3c4ef1b657d8a3534373f36d",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

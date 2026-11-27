@@ -1,0 +1,9 @@
+title: Approve requisition
+from: [requested]
+roles: [manager]
+transaction:
+  guard: "mode = 'single' and material.state = 'active'"
+  message: Single-item approval requires an active item; multi-line approval is pending live validation.
+  steps:
+    - target: $subject
+      set: {state: "'approved'"}

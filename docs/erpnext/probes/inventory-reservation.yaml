@@ -1,0 +1,27 @@
+roles: {inventory: keeper, item: steward, uom: user}
+at: 2026-11-26T00:00:00Z
+members:
+  operator: {roles: {inventory: keeper, item: user, uom: user}}
+  reader: {roles: {inventory: reader, item: user, uom: user}}
+steps:
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: inventory.position.create, on: inventory.position/A, as: operator, with: {title: A, item: I1}}
+  - {do: inventory.movement.create, on: inventory.movement/R1, as: operator, with: {title: Receipt, destination: A, quantity: 100}}
+  - {do: inventory.movement.receive, on: inventory.movement/R1, as: operator}
+  - {do: inventory.reservation.create, on: inventory.reservation/P1, as: operator, with: {title: Order reservation, position: A, quantity: 60}}
+  - {read: inventory.position/A, as: operator, expect: {balance: 100, available: 100}}
+  - {do: inventory.reservation.reserve, on: inventory.reservation/P1, as: reader, refused: true}
+  - {do: inventory.reservation.reserve, on: inventory.reservation/P1, as: operator, expect: {state: reserved}}
+  - {read: inventory.position/A, as: operator, expect: {balance: 100, available: 40}}
+  - {do: inventory.reservation.reserve, on: inventory.reservation/P1, as: operator, refused: true}
+  - {do: inventory.reservation.create, on: inventory.reservation/P2, as: operator, with: {title: Excess reservation, position: A, quantity: 41}}
+  - {do: inventory.reservation.reserve, on: inventory.reservation/P2, as: operator, refused: true}
+  - {do: inventory.movement.create, on: inventory.movement/I1, as: operator, with: {title: Issue, source: A, quantity: 41}}
+  - {do: inventory.movement.issue, on: inventory.movement/I1, as: operator, refused: true}
+  - {read: inventory.position/A, as: operator, expect: {balance: 100, available: 40}}
+  - {do: inventory.reservation.edit, on: inventory.reservation/P1, as: operator, with: {quantity: 1}, refused: true}
+  - {do: inventory.reservation.release, on: inventory.reservation/P1, as: operator, expect: {state: released}}
+  - {do: inventory.reservation.release, on: inventory.reservation/P1, as: operator, refused: true}
+  - {read: inventory.position/A, as: operator, expect: {balance: 100, available: 100}}
+  - {do: inventory.movement.issue, on: inventory.movement/I1, as: operator, expect: {state: posted}}
+  - {read: inventory.position/A, as: operator, expect: {balance: 59, available: 59}}

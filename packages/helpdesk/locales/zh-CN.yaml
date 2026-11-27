@@ -199,3 +199,29 @@ Retire this article from active support use.: 将这篇知识库文章从活跃�
 Select the specialist queue to receive this ticket.: 选择接收该升级工单的专项队列。
 Organization: 往来单位
 The support side of a business partner organization. The organization itself, with its name, contacts and addresses, is kept once in Business partners.: 往来单位在售后这一侧的信息。单位本身（名称、联系人、地址）只在“往来单位”里存一份。
+supervisor: 客服主管
+agent: 客服坐席
+"[Pending] Home": "【待实现】客服首页"
+"Not implemented: Home requires domain modeling, authorization and independent acceptance.": "待实现：客服首页，尚需业务建模、授权及独立验收。"
+"[Pending] Maintenance Schedule": "【待实现】维保计划"
+"Not implemented: Maintenance Schedule requires domain modeling, authorization and independent acceptance.": "待实现：维保计划，尚需业务建模、授权及独立验收。"
+"[Pending] Maintenance Visit": "【待实现】维保访问"
+"Not implemented: Maintenance Visit requires domain modeling, authorization and independent acceptance.": "待实现：维保访问，尚需业务建模、授权及独立验收。"
+"[Pending] Warranty Claim": "【待实现】保修申请"
+"Not implemented: Warranty Claim requires domain modeling, authorization and independent acceptance.": "待实现：保修申请，尚需业务建模、授权及独立验收。"
+"Setup": "ERP 配置"
+"Issue Type": "问题类型"
+"Shared existing object view; complete source-specific workflow is unverified.": "复用已有对象，来源应用的完整业务流程尚未验收。"
+"Issue Priority": "问题优先级"
+"[Pending] Service Level Agreement": "【待实现】服务级别协议"
+"Not implemented: Service Level Agreement requires domain modeling, authorization and independent acceptance.": "待实现：服务级别协议，尚需业务建模、授权及独立验收。"
+"Reports": "报表"
+"[Pending] First Response Time for Issues": "【待实现】问题首次响应时间"
+"Not implemented: First Response Time for Issues requires domain modeling, authorization and independent acceptance.": "待实现：问题首次响应时间，尚需业务建模、授权及独立验收。"
+"[Pending] Settings": "【待实现】客服设置"
+"Not implemented: Settings requires domain modeling, authorization and independent acceptance.": "待实现：客服设置，尚需业务建模、授权及独立验收。"
+"Pending feature": "待实现功能"
+"Pending features": "待实现功能"
+"Reference": "标识"
+"Technical navigation placeholder. No business records or operations.": "技术导航占位，不含业务记录和操作。"
+"Overview": "概览"

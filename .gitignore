@@ -3,3 +3,5 @@ dist/
 pending.txt
 .platform/
 .DS_Store
+
+.package-loop/

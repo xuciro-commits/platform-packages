@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "module": "assets",
+  "package": "assets",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/assets/sidebar/assets/assets.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Assets",
+      "target": "assets.erp_home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Dashboard",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Asset",
+      "target": "dashboard",
+      "group": "Overview",
+      "implementation": "dashboard",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing application dashboard; source-specific business parity unverified."
+    },
+    {
+      "reference": "Asset",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset",
+      "target": "assets.asset",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Depreciation Schedule",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Depreciation Schedule",
+      "target": "assets.erp_depreciation_schedule",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Asset Movement",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Movement",
+      "target": "assets.movement",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Fixed Asset Register",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Fixed Asset Register",
+      "target": "assets.erp_fixed_asset_register",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Asset Depreciation Ledger",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Asset Depreciation Ledger",
+      "target": "assets.erp_asset_depreciation_ledger",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Asset Depreciations and Balances",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Asset Depreciations and Balances",
+      "target": "assets.erp_asset_depreciations_and_balances",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Asset Activity",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Asset Activity",
+      "target": "assets.erp_asset_activity",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Value Changes",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Asset Capitalization",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Capitalization",
+      "target": "assets.erp_asset_capitalization",
+      "group": "Value Changes",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Asset Value Adjustment",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Value Adjustment",
+      "target": "assets.erp_asset_value_adjustment",
+      "group": "Value Changes",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Maintenance",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Asset Maintenance",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Maintenance",
+      "target": "assets.maintenance",
+      "group": "Maintenance",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Asset Maintenance Log",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Maintenance Log",
+      "target": "assets.erp_asset_maintenance_log",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Asset Repair",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Repair",
+      "target": "assets.erp_asset_repair",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Asset Maintenance Team",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Maintenance Team",
+      "target": "assets.erp_asset_maintenance_team",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Asset Category",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Asset Category",
+      "target": "assets.erp_asset_category",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Location",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Location",
+      "target": "assets.erp_location",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Accounts Settings",
+      "target": "assets.erp_settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [
+    "assets.category",
+    "assets.location"
+  ],
+  "additionalGroups": [
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "custodian"
+      ],
+      "pages": [
+        "assets.category",
+        "assets.location"
+      ]
+    }
+  ],
+  "groupRoles": {
+    "Setup": [
+      "custodian"
+    ]
+  },
+  "groupTitles": {},
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "assets.erp_home",
+        "assets.asset",
+        "assets.erp_depreciation_schedule",
+        "assets.movement",
+        "assets.erp_fixed_asset_register"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "assets.erp_asset_depreciation_ledger",
+        "assets.erp_asset_depreciations_and_balances",
+        "assets.erp_asset_activity"
+      ]
+    },
+    {
+      "title": "Value Changes",
+      "pages": [
+        "assets.erp_asset_capitalization",
+        "assets.erp_asset_value_adjustment"
+      ]
+    },
+    {
+      "title": "Maintenance",
+      "pages": [
+        "assets.maintenance",
+        "assets.erp_asset_maintenance_log",
+        "assets.erp_asset_repair",
+        "assets.erp_asset_maintenance_team"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "assets.erp_asset_category",
+        "assets.erp_location",
+        "assets.erp_settings"
+      ],
+      "roles": [
+        "custodian"
+      ]
+    },
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "custodian"
+      ],
+      "pages": [
+        "assets.category",
+        "assets.location"
+      ]
+    }
+  ],
+  "limitations": [
+    "Existing business pages and setting-role groups preserved; aliases do not duplicate records.",
+    "Flat groups, browser unverified. Existing route/menu order changes require regression."
+  ]
+}

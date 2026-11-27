@@ -1,0 +1,27 @@
+name: option
+namespace: item
+title: Attribute option
+plural: Attribute options
+icon: clipboard-document-list
+display: title
+fields:
+  - {name: title, title: Name, type: text, required: true, search: true}
+  - {name: code, title: Code, type: text, required: true, search: true}
+  - {name: attribute, title: Item attribute, type: reference, ref: item.attribute, required: true}
+constraints:
+  - name: optioncode
+    kind: unique
+    fields: [attribute, code]
+    message: Option code must be unique within its attribute.
+    translations:
+      zh-CN: 同一属性下选项编码必须唯一。
+  - name: optionname
+    kind: unique
+    fields: [attribute, title]
+    message: Option name must be unique within its attribute.
+    translations:
+      zh-CN: 同一属性下选项名称必须唯一。
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true}
+view: {version: 1, layout: table, columns: [attribute, code, title], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

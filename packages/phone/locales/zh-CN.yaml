@@ -65,3 +65,31 @@ The call ended before anyone answered.: 这通电话没有人接就结束了。
 Receive: 来电入线
 An incoming call is ringing; the voice gateway records the line and the matched contact.: 来电正在振铃，语音网关记下线路和对上的联系人。
 Leave empty until someone answers.: 有人接听前留空。
+Rings first for: 优先振铃
+"The contact's owner, who gets the call before everyone else.": 联系人负责人，来电先响给他。
+Ringing for everyone: 已响给所有人
+The contact's owner did not answer in time.: 联系人负责人没有及时接听。
+"The contact's owner; only they can take the call until it rings for everyone.": 联系人负责人；在响给所有人之前，只有他能接。
+Ring everyone: 响给所有人
+"Nobody answered in time for the contact's owner, so the call now rings for every agent.": 联系人负责人没有及时接听，电话改为响给所有坐席。
+Someone already took this call.: 这通电话已经有人接了。
+"Someone else already took this call, or it is still ringing for the contact's owner.": 这通电话已经有人接了，或者还在优先响给联系人负责人。
+Phone line: 线路
+Phone lines: 线路
+"A SIP trunk that registers with the voice gateway, such as a desk phone, a gateway device or a phone running a gateway app. The voice gateway reads these lines and picks up changes without a restart.": 注册到语音网关的 SIP 中继，例如话机、网关设备或装了网关应用的手机。语音网关读这里的线路，改动不用重启就生效。
+Account: 账号
+"The SIP user name the trunk registers with; letters, digits and - . _ only.": 中继注册用的 SIP 用户名，只用字母、数字和 - . _。
+Password: 密码
+The SIP password the trunk registers with.: 中继注册用的 SIP 密码。
+In use: 启用
+Turn off to stop the line registering without deleting it.: 关掉后这条线路不能注册，但不删除。
+Number header: 号码头
+"A header that repeats the dialed number, for trunks that do not read it from the Request-URI.": 重复被叫号码的消息头，给不从 Request-URI 读号码的中继用。
+Fixed headers: 固定头
+"One Name: value per line, sent with every outgoing call, such as the SIM slot to dial from.": "每行一个“名字: 值”，每通外呼都带上，例如用哪张 SIM 卡拨出。"
+Another phone line already uses this account.: 已有线路使用这个账号。
+Settings: 设置
+Dialing: 拨号
+"Incoming and outgoing calls through the platform's voice gateway, answered and placed in the browser, with a call log matched to business partner contacts. It implements the call/1 capability, so other apps can place calls once an administrator binds it.": 经平台语音网关接打来电与外呼，在浏览器内直接通话，通话记录自动关联往来单位联系人；实现 call/1 通话能力契约，管理员绑定后可供其他应用直接拨号。
+gateway: 语音网关
+supervisor: 通话主管

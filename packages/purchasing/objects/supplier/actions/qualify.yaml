@@ -1,0 +1,7 @@
+title: Qualify supplier
+from: [pending, suspended]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'qualified'"}

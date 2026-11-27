@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "observedAt": "2026-11-27T10:17:56.795Z",
+  "packageHead": "6ef8de9fa313d6abd202f74dff565b2d27f69730",
+  "remoteLastCheck": {
+    "run": 45661203436,
+    "head": "b9da3764dfdf16621abda6cdf8f9b63f5421a34c",
+    "conclusion": "success",
+    "coversCurrentCandidates": false
+  },
+  "platformPin": "ac5e787623a960dee31722741465bfd9c8798f18",
+  "latestPlatformRelease": "v0.2.9",
+  "feedback": {
+    "path": "../platform/inner-box/erp",
+    "reported": 7,
+    "verified": 0,
+    "gitIgnored": true
+  },
+  "checks": {
+    "layout": "passed after normalizing five manifests",
+    "erpReproducibility": "8 candidates passed before B2 changes",
+    "cleanPinnedBuild": "passed",
+    "cleanPinnedCandidateBuilds": "8 passed before B2 changes",
+    "cleanPinnedB1": "38/38",
+    "cleanPinnedB2Draft": "26/26",
+    "catalog": "failed: call contract locale requires exactly one application at pinned commit",
+    "remoteCI": "not run for current candidates",
+    "browser": "unverified",
+    "upgrade": "unverified",
+    "release": "blocked: commit pin and failing catalog; candidates uncommitted/unpushed"
+  },
+  "relatedPlatformChange": "01abfb89168cf6c0ed0a5070b1843c566c72a708 removes old locale restriction; newer toolchain requires separate verification and released pin"
+}

@@ -1,0 +1,15 @@
+id: "sales"
+version: "0.1.0"
+title: "Sales"
+namespace: "sales"
+description: "Navigation candidate only; no business posting or settings operations."
+listing:
+  industries: ["general"]
+  domains: ["sales"]
+  keywords: ["erp","navigation"]
+  stage: "test"
+  source: {"ecosystem":"frappe","app":"erpnext","version":"v16","license":"GPL-3.0","relation":"redesign"}
+roots:
+  - {"app":"build","kind":"app","name":"sales"}
+artifact: "sales.json"
+requires: ["item-master@^0.1.1","uom@^0.1.3"]

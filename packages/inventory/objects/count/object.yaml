@@ -1,0 +1,26 @@
+name: count
+namespace: inventory
+title: Stock count
+plural: Stock counts
+icon: clipboard-document-list
+display: title
+description: Capture a count and compare it with the book quantity at review. This does not post a stock adjustment.
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: position, title: Stock position, type: reference, ref: inventory.position, required: true}
+  - {name: counted, title: Counted quantity, type: decimal, required: true}
+  - {name: countedon, title: Counted on, type: date, required: true}
+  - {name: bookqty, title: Book quantity at review, type: decimal, readOnly: true}
+  - {name: difference, title: Count difference, type: decimal, readOnly: true}
+  - {name: reviewedat, title: Reviewed at, type: datetime, readOnly: true}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: reviewed, title: Reviewed, tone: info}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [review, cancel]
+constraints:
+  - {name: nonnegative, kind: expression, fields: [counted], expr: "counted >= 0", message: Counted quantity cannot be negative.}
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, position, countedon, counted, bookqty, difference, state], sort: [{sortKey: countedon, direction: descending}], group: state, lanes: "", filters: [], search: ""}

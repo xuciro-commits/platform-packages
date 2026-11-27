@@ -1,0 +1,30 @@
+name: master
+namespace: item
+title: Item
+plural: Items
+icon: tag
+display: title
+description: A stable item identity with its base unit; inventory and commercial facts belong elsewhere.
+fields:
+  - {name: title, title: Name, type: text, required: true, search: true}
+  - {name: code, title: Item code, type: text, required: true, search: true}
+  - {name: kind, title: Item kind, type: choice, required: true, choices: "goods:Goods,material:Material,service:Service"}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, required: true}
+  - {name: category, title: Item category, type: reference, ref: item.category}
+  - {name: brand, title: Brand, type: reference, ref: item.brand}
+  - {name: description, title: Description, type: longtext}
+states:
+  - {name: active, title: Active, tone: success}
+  - {name: inactive, title: Inactive, tone: neutral}
+actions: [deactivate, activate]
+constraints:
+  - name: codeidentity
+    kind: unique
+    fields: [code]
+    message: Another item already uses this code.
+    translations:
+      zh-CN: 已有物料使用此编码。
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true}
+view: {version: 1, layout: table, columns: [code, title, kind, category, brand, unit, state], sort: [{sortKey: code, direction: ascending}], group: kind, lanes: "", filters: [], search: ""}

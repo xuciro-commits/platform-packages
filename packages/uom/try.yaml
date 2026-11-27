@@ -8,3 +8,5 @@ steps:
   - {do: uom.unit.create, on: uom.unit/box, as: clerk, with: {title: Box, symbol: box, dimension: count, factor: 24}, refused: true}
   - {do: uom.unit.create, on: uom.unit/box, with: {title: Box of 24, symbol: box, dimension: count, factor: 24}, show: [factor, base], expect: {base: false}}
   - {do: uom.unit.create, on: uom.unit/kilo, with: {title: Kilo, symbol: kg, dimension: mass, factor: 1000}, refused: true}
+  - {do: uom.unit.create, on: uom.unit/zero, with: {title: Zero factor, symbol: zero, dimension: count, factor: 0}, refused: true}
+  - {do: uom.unit.create, on: uom.unit/negative, with: {title: Negative factor, symbol: neg, dimension: count, factor: -1}, refused: true}

@@ -1,9 +1,10 @@
 name: phone
 title: Phone
 icon: phone
-pages: [phone.call]
+pages: [phone.call, phone.trunk]
 groups:
   - {title: Calls, pages: [phone.call]}
+  - {title: Settings, pages: [phone.trunk]}
 dashboard:
   - {title: Missed calls, kind: metric, object: phone.call, domain: [[state, "=", missed]]}
   - {title: Calls in progress, kind: metric, object: phone.call, domain: [[state, "=", connected]]}

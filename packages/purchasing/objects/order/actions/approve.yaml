@@ -1,0 +1,9 @@
+title: Approve purchase order
+from: [draft]
+roles: [manager]
+transaction:
+  guard: "supplier.state = 'qualified' and linecount > 0 and invalidlines = 0"
+  message: Order requires a qualified supplier and at least one active item line.
+  steps:
+    - target: $subject
+      set: {state: "'approved'"}

@@ -1,0 +1,31 @@
+roles: {item: steward, uom: user}
+at: 2026-11-26T00:00:00Z
+members:
+  keeper: {roles: {item: steward, uom: user}}
+  clerk: {roles: {item: user, uom: user}}
+steps:
+  - {do: item.category.create, on: item.category/C1, as: keeper, with: {title: Metals, code: METAL}}
+  - {do: item.category.create, on: item.category/C2, as: keeper, with: {title: Fasteners, code: FAST, parent: C1}}
+  - {do: item.category.create, on: item.category/C3, as: keeper, with: {title: Duplicate, code: FAST}, refused: true}
+  - {do: item.category.create, on: item.category/C4, as: keeper, with: {title: Missing parent, code: MISS, parent: nonexistent}, refused: true}
+  - {do: item.category.create, on: item.category/C5, as: keeper, with: {title: Self parent, code: SELF, parent: C5}, refused: true}
+  - {do: item.category.edit, on: item.category/C1, as: keeper, with: {parent: C2}, refused: true}
+  - {do: item.brand.create, on: item.brand/B1, as: keeper, with: {title: Example brand, code: EXAMPLE}}
+  - {do: item.brand.create, on: item.brand/B2, as: keeper, with: {title: Duplicate, code: EXAMPLE}, refused: true}
+  - {do: item.attribute.create, on: item.attribute/A1, as: keeper, with: {title: Finish, code: FINISH}}
+  - {do: item.attribute.create, on: item.attribute/A2, as: keeper, with: {title: Grade, code: GRADE}}
+  - {do: item.attribute.create, on: item.attribute/A3, as: clerk, with: {title: Forbidden, code: BAD}, refused: true}
+  - {do: item.option.create, on: item.option/O1, as: keeper, with: {title: Zinc, code: ZN, attribute: A1}}
+  - {do: item.option.create, on: item.option/O2, as: keeper, with: {title: Zinc 2, code: ZN, attribute: A1}, refused: true}
+  - {do: item.option.create, on: item.option/O3, as: keeper, with: {title: Zinc, code: ZINC, attribute: A1}, refused: true}
+  - {do: item.option.create, on: item.option/O4, as: keeper, with: {title: Grade A, code: A, attribute: A2}}
+  - {do: item.option.create, on: item.option/O5, as: keeper, with: {title: Plain, code: PLAIN, attribute: A1}}
+  - {do: item.master.create, on: item.master/I1, as: keeper, with: {title: Bolt, code: BOLT, kind: material, unit: pcs, category: C2, brand: B1}}
+  - {read: item.master/I1, as: clerk, expect: {category: C2, brand: B1, unit: pcs, state: active}}
+  - {do: item.assignment.create, on: item.assignment/V1, as: keeper, with: {title: Bolt finish, material: I1, attribute: A1, option: O4}, refused: true}
+  - {do: item.assignment.create, on: item.assignment/V2, as: keeper, with: {title: Bolt finish, material: I1, attribute: A1, option: O1}}
+  - {do: item.assignment.create, on: item.assignment/V3, as: keeper, with: {title: Duplicate, material: I1, attribute: A1, option: O5}, refused: true}
+  - {do: item.assignment.create, on: item.assignment/V4, as: clerk, with: {title: Forbidden, material: I1, attribute: A2, option: O4}, refused: true}
+  - {do: item.assignment.create, on: item.assignment/V5, as: keeper, with: {title: Bolt grade, material: I1, attribute: A2, option: O4}}
+  - {read: item.assignment/V5, as: clerk, expect: {material: I1, attribute: A2, option: O4}}
+  - {do: item.option.edit, on: item.option/O1, as: keeper, with: {attribute: A2}, refused: true}

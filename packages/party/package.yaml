@@ -1,5 +1,5 @@
 id: party
-version: 0.2.1
+version: 0.2.2
 title: Business partners
 namespace: party
 description: The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.

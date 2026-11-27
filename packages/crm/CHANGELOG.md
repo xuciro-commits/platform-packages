@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.5
+
+- 拒绝跨客户复用已有联系人；主要竞争对手与最终输给的竞争对手分开保存，增加反向关系与竞品丢单统计。
+- 商机默认列显示生命周期，区分进行中与已关闭记录。
+- 补充产品带价与折扣、转化原子性、竞品归因试跑断言。
+
+## 0.3.3
+
+- 联系人上加“拨打”：经能力契约 `call/1#dial` 拨出（需要无状态对象动作支持，随平台下一个发行版），号码先取往来单位联系人的手机、再取电话；未绑定通话实现时入口不显示、提交被拒。
+
 ## 0.3.2
 
 - 线索转商机时选了已有客户，新建的人直接归到那个客户的往来单位，不用再去往来单位里补（需要能读引用记录字段的 `pkg`，随平台下一个发行版）。
@@ -32,3 +42,7 @@
 ## 0.2.0
 
 - 第一个官方版本。版本号接在平台测试夹具 `crm` 0.1.x 之后，同一 `id` 的版本史保持递增；夹具与它不兼容，不能升级过来。
+
+## 0.3.4 candidate
+
+- ERP navigation coverage: preserve original business pages, actions, settings and dashboards; add explicit read-only placeholders and selected existing-object aliases. Browser and workflow parity remain unverified.

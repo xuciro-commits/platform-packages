@@ -1,14 +1,14 @@
 name: assets
 title: Assets
 icon: cube
-pages: [assets.asset, assets.maintenance, assets.movement, assets.category, assets.location]
+pages: [assets.erp_home, assets.asset, assets.erp_depreciation_schedule, assets.movement, assets.erp_fixed_asset_register, assets.erp_asset_depreciation_ledger, assets.erp_asset_depreciations_and_balances, assets.erp_asset_activity, assets.erp_asset_capitalization, assets.erp_asset_value_adjustment, assets.maintenance, assets.erp_asset_maintenance_log, assets.erp_asset_repair, assets.erp_asset_maintenance_team, assets.erp_asset_category, assets.erp_location, assets.erp_settings, assets.category, assets.location]
 groups:
-  - {title: Assets, pages: [assets.asset, assets.maintenance]}
-  - {title: Records, pages: [assets.movement]}
-  - title: Settings
-    layout: settings
-    roles: [custodian]
-    pages: [assets.category, assets.location]
+  - {"title":"Overview","pages":["assets.erp_home","assets.asset","assets.erp_depreciation_schedule","assets.movement","assets.erp_fixed_asset_register"]}
+  - {"title":"Reports","pages":["assets.erp_asset_depreciation_ledger","assets.erp_asset_depreciations_and_balances","assets.erp_asset_activity"]}
+  - {"title":"Value Changes","pages":["assets.erp_asset_capitalization","assets.erp_asset_value_adjustment"]}
+  - {"title":"Maintenance","pages":["assets.maintenance","assets.erp_asset_maintenance_log","assets.erp_asset_repair","assets.erp_asset_maintenance_team"]}
+  - {"title":"Setup","pages":["assets.erp_asset_category","assets.erp_location","assets.erp_settings"],"roles":["custodian"]}
+  - {"title":"Settings","layout":"settings","roles":["custodian"],"pages":["assets.category","assets.location"]}
 dashboard:
   - {title: In use, kind: metric, object: assets.asset, domain: [[state, "=", inuse]]}
   - {title: In stock, kind: metric, object: assets.asset, domain: [[state, "=", available]]}

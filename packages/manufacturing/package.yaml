@@ -1,0 +1,14 @@
+id: "manufacturing"
+version: "0.1.0"
+title: "Manufacturing"
+namespace: "manufacturing"
+description: "Navigation candidate only; no business posting or settings operations."
+listing:
+  industries: ["general"]
+  domains: ["production"]
+  keywords: ["erp","navigation"]
+  stage: "test"
+  source: {"ecosystem":"frappe","app":"erpnext","version":"v16","license":"GPL-3.0","relation":"redesign"}
+roots:
+  - {"app":"build","kind":"app","name":"manufacturing"}
+artifact: "manufacturing.json"

@@ -1,0 +1,14 @@
+title: Revise supplier profile
+description: Replace commercial profile values without changing shared organization identity or qualification state.
+from: [pending, qualified, suspended]
+roles: [manager]
+inputs:
+  - {name: alias, title: Trading alias, type: text}
+  - {name: supplierkind, title: Supplier type, type: choice, required: true, choices: "company:Company,individual:Individual,partnership:Partnership"}
+  - {name: transporter, title: Transport provider, type: boolean, required: true}
+  - {name: defaultcurrency, title: Preferred currency, type: choice, choices: "CNY:CNY,USD:USD,EUR:EUR"}
+  - {name: notes, title: Qualification notes, type: longtext}
+transaction:
+  steps:
+    - target: $subject
+      set: {alias: input.alias, supplierkind: input.supplierkind, transporter: input.transporter, defaultcurrency: input.defaultcurrency, notes: input.notes}

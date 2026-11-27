@@ -1,0 +1,9 @@
+title: Open quotation request
+from: [draft]
+roles: [buyer, manager]
+transaction:
+  guard: "request.state = 'approved' and supplier.state = 'qualified' and deadline >= today()"
+  message: An approved requisition, qualified supplier and valid deadline are required.
+  steps:
+    - target: $subject
+      set: {state: "'open'"}

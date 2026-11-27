@@ -1,5 +1,5 @@
 id: phone
-version: 0.1.0
+version: 0.1.1
 title: Phone
 namespace: phone
 description: Incoming and outgoing calls through the platform's voice gateway, answered and placed in the browser, with a call log matched to business partner contacts.

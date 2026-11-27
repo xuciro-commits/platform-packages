@@ -1,0 +1,11 @@
+title: Ring everyone
+description: Nobody answered in time for the contact's owner, so the call now rings for every agent.
+from: [ringing]
+roles: [gateway]
+transaction:
+  guard: offer = empty
+  message: Someone already took this call.
+  steps:
+    - target: $subject
+      set:
+        widened: "true"

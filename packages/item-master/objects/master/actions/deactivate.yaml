@@ -1,0 +1,8 @@
+title: Deactivate
+description: Stop offering the item for new business operations.
+from: [active]
+roles: [steward]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'inactive'"}

@@ -1,0 +1,21 @@
+name: attribute
+namespace: item
+title: Item attribute
+plural: Item attributes
+icon: clipboard-document-list
+display: title
+fields:
+  - {name: title, title: Name, type: text, required: true, search: true}
+  - {name: code, title: Code, type: text, required: true, search: true}
+  - {name: description, title: Description, type: longtext}
+constraints:
+  - name: attributecode
+    kind: unique
+    fields: [code]
+    message: Attribute code must be unique.
+    translations:
+      zh-CN: 属性编码必须唯一。
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true}
+view: {version: 1, layout: table, columns: [code, title], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

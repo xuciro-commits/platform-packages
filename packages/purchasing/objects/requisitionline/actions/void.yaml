@@ -1,0 +1,9 @@
+title: Void demand line
+from: [active]
+roles: [buyer, manager]
+transaction:
+  guard: "request.state = 'draft'"
+  message: Only draft requests allow line withdrawal.
+  steps:
+    - target: $subject
+      set: {state: "'voided'"}

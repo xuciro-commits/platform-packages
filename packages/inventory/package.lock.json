@@ -1,0 +1,276 @@
+{
+  "format": 2,
+  "package": "inventory",
+  "version": "0.1.5",
+  "requires": [
+    "item-master@^0.1.0",
+    "uom@^0.1.3"
+  ],
+  "artifact": "sha256:dcc1360eefa1fa574ac662a0f2e61b12b1ddd87ee99f768541c5cef10c70baed",
+  "assets": {
+    "app/inventory": {
+      "digest": "sha256:461a2c2735fa5e62960bea50496a75556f70c26c204f4ecb4497f9e8eff2b2f1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/inventory.batch": {
+      "digest": "sha256:7d4181c7961b1f9446d68ee9165ed94aa3443db9e1edbe4fd4a4cbcdbd75171f",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.d3642afab5015b73f3f08f309a663c2df89ad742f4ceb320bef4a8a3fad277eb",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.count": {
+      "digest": "sha256:023e4713ebbe92a7f4adb13ebf49273b4bdd8dac0da10c172cf897791fd51112",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.09b96ea57d077f4d4103a73c2238c74cbe59791165d9663d227c8875150ed7e8",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.movement": {
+      "digest": "sha256:a038f70a0693085af417e7228b23ce849d90c9498129001fff7802f99488e2ce",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.896e831058b2353fcf961e41d1b86bb9acfc5b8d744ee5d92986773f698ed3f7",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.navpending": {
+      "digest": "sha256:156fd5ef92bcf3b793f6316b24ad482f0c1cec57e62d281c945630b52d2a1c26",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.7999109667611c13d2e9c048c5fa46b6550a54bed0662502d66f4a7b6f27236f",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.position": {
+      "digest": "sha256:bc198e50ea810679cc801a95b0bda220e60cfa04fd1e318650a5ec1f8d3d853d",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.fd7a95c4bd80a14cedc18d7c5ab77923b1d57dba7b72cb2af60297de2c30af0c",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.request": {
+      "digest": "sha256:84198dba14ff1119b951225036bd754cdf0865fea7dfa8f86bf537769897dd36",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.a9b8ca1138c1e632465cdf38664271ec6b09980cc6b6d3f41cffd351f097a4d1",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.reservation": {
+      "digest": "sha256:bbf17254ff76f76112e28095645d12b01cfad10edf258741aeb0c822b9bf322f",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.6a2698b15555916295da3b442c4e90d5719e62ef65258b97f208e4bdfd9b1dcb",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.serial": {
+      "digest": "sha256:9630e9311796dad13b88872ff6e7443f98f2f3d1cbb8285b04f699c893870e07",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.c900f58d0a038e8306aad29f7f047f31ce35593d42c59054f752454f091a2d67",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.warehouse": {
+      "digest": "sha256:2396f598b7d35715a520a3e7d5a250a66b6092bcde63038e463f715f5042de0a",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.24e57c5f9105525cbf7c45ab5bc2c7988fc17fe390b5b8cfd1e372c3129e0eb5",
+          "family": 1
+        }
+      ]
+    },
+    "page/inventory.available_qty": {
+      "digest": "sha256:4f95aed68d3dd0b867242535fde4baa4675aa07c8b59235980838eb7cf2926f0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.batch": {
+      "digest": "sha256:18de02b346afe38244e0a00877884f0c68f57656e53a9f15102fcf250e9709d5",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.brand": {
+      "digest": "sha256:5a1a8ba3ff6c557c011eb8745b33f40ae921ce9efcf17183456dfdb76c9317d2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.count": {
+      "digest": "sha256:c530fa9e7417bd0b8c8501973fedc6fe0024446aa5dfa3948567ad3125d7b28b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.delivery_note": {
+      "digest": "sha256:ed4db0871f50ee247880fe245fa69e4ee41fef18292afff397e5cee723b217f6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.delivery_settings": {
+      "digest": "sha256:e5547119a2b1aff51d0ab65156fb61b57f0c10d407d24c9f3fc3c1ab2dac0a3c",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.home": {
+      "digest": "sha256:6114fd066079e7f2259df29bb4873e613188559381a425e5dfd667b3dda20700",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.inventory_dimension": {
+      "digest": "sha256:512a85263055e19ab7a446f747400e74b4a5380e91eea92bca7f561df889a6ad",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.item": {
+      "digest": "sha256:12f76095c6e0fc1857adfafd7189a557df506860d8dd9086e6ac9a599ce3adaf",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.item_attribute": {
+      "digest": "sha256:8f8b05b63ec2c289bf17371a61df4b999e66e0440371250c6d572e69600515ed",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.item_group": {
+      "digest": "sha256:ecdf41d9570d4b67d2a7de5d59284760a08d443b7a8a4b8181263b5125104438",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.landed_cost": {
+      "digest": "sha256:c10fe3e85ce9737226358680b145e4f8082e0588c119584fd1d4141c6baa2776",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.movement": {
+      "digest": "sha256:069560372dbcad081a9ac9df0b545eb6341b5b83bfe5c1100a9a235c10974f17",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.packing_slip": {
+      "digest": "sha256:f4800504c3f180abf5aafd15e6303b6240533cc7210d455c006be6f61b2b8815",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.pick_list": {
+      "digest": "sha256:25ed0882f43824246d7bb75f9c48166c663f5a25927bf1d9f8cce6c73c0ad18b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.position": {
+      "digest": "sha256:ef317b029a53aff2fcfcaa007dc49601c1fdd1c5c0d9c265c181161e087e05d6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.purchase_receipt": {
+      "digest": "sha256:a95667fb11479424b702058385a798e8d7583482f7b2c19441bd05c49d512129",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.quality_inspection": {
+      "digest": "sha256:0e5e162b5ebcbe4eee329f73195a4a67a10620ba69cf1bc0a4e55ca0f04a6794",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.request": {
+      "digest": "sha256:c2a63424a9a83ff11c88da142278241159d77c27cb898293155d8e7cd1127357",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.reservation": {
+      "digest": "sha256:c8048ec6375a215e9e2e19f0ba34435543c809b022adc51951652dd770894ad6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.serial": {
+      "digest": "sha256:843f3d8d748ba78d56d1720fe281d27c2322c51781c6540d9873bfe7b0c888e9",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.serial_batch_bundle": {
+      "digest": "sha256:e40a680fa606ebe15a3abfc44f85a77cd82d7f446b0541c79fc0d97bae633e5a",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.stock_ageing": {
+      "digest": "sha256:9a8ba299d21f894271e93d4a74ac31ab6aabe6692a9d8743bf040d4a05a167a6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.stock_analytics": {
+      "digest": "sha256:5111b344ebfd171533de56659502d2e9f647a2f08a7490dafea671bae2b812a7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.stock_balance": {
+      "digest": "sha256:1d1b9b7275b2f959cddcce8e297d2fd7ee3ca82d37b9a6dc632d6867f080587a",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.stock_ledger": {
+      "digest": "sha256:e8c4c8ba18833fe83cfeed72e746fc2d34706f73735eace2d0bdb29797daa5a5",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.stock_projected_qty": {
+      "digest": "sha256:f84068cd70b43c37c7c47a44a80b530c087880ed46f0289100876f1fb383c545",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.stock_reposting_settings": {
+      "digest": "sha256:02f06794fbfd921326182dcaa3c2f6180d0bbe713ec311e4b365bec27373bdc5",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.stock_settings": {
+      "digest": "sha256:199a268aac7557eb3b67fa1452633021a5fa25000ef23c7701d91d25f306c4b8",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.uom": {
+      "digest": "sha256:637ae7fd841d106dcae25203cb44dc0d10b31893c57f9935888203bfb10e1e18",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.variant_settings": {
+      "digest": "sha256:1f308a45116a0d989b19dafac76f3dacb237588b078ca023030bbca9656a8a81",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/inventory.warehouse": {
+      "digest": "sha256:a15014b32bc9d1c91abad7663ead79cc7f5fc759724ee5d6af3a08224466c3a7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

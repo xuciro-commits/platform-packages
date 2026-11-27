@@ -1,0 +1,100 @@
+{
+  "sidebars": 12,
+  "links": 276,
+  "groups": 45,
+  "placeholders": 235,
+  "supplemental": 4,
+  "additional": 28,
+  "verified": [
+    {
+      "module": "accounts",
+      "links": 39,
+      "groups": 5,
+      "placeholders": 39,
+      "additional": 0,
+      "browserVerified": false
+    },
+    {
+      "module": "assets",
+      "links": 18,
+      "groups": 4,
+      "placeholders": 12,
+      "additional": 2,
+      "browserVerified": false
+    },
+    {
+      "module": "buying",
+      "links": 21,
+      "groups": 3,
+      "placeholders": 12,
+      "additional": 1,
+      "browserVerified": false
+    },
+    {
+      "module": "crm",
+      "links": 33,
+      "groups": 6,
+      "placeholders": 26,
+      "additional": 10,
+      "browserVerified": false
+    },
+    {
+      "module": "manufacturing",
+      "links": 28,
+      "groups": 4,
+      "placeholders": 28,
+      "additional": 0,
+      "browserVerified": false
+    },
+    {
+      "module": "projects",
+      "links": 17,
+      "groups": 2,
+      "placeholders": 11,
+      "additional": 3,
+      "browserVerified": false
+    },
+    {
+      "module": "quality_management",
+      "links": 16,
+      "groups": 4,
+      "placeholders": 16,
+      "additional": 0,
+      "browserVerified": false
+    },
+    {
+      "module": "selling",
+      "links": 22,
+      "groups": 4,
+      "placeholders": 21,
+      "additional": 0,
+      "browserVerified": false
+    },
+    {
+      "module": "setup",
+      "links": 45,
+      "groups": 7,
+      "placeholders": 45,
+      "additional": 0,
+      "browserVerified": false
+    },
+    {
+      "module": "stock",
+      "links": 27,
+      "groups": 4,
+      "placeholders": 18,
+      "additional": 2,
+      "supplemental": 4,
+      "browserVerified": false
+    },
+    {
+      "module": "support",
+      "links": 10,
+      "groups": 2,
+      "placeholders": 7,
+      "additional": 10,
+      "browserVerified": false
+    }
+  ],
+  "browserVerified": false
+}

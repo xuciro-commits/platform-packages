@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "scope",
+      "text": "Use the frozen task and scope; read only relevant source ranges, not entire archives. Save each completed finding immediately."
+    },
+    {
+      "id": "evidence",
+      "text": "Distinguish observed facts, inference and unknowns; cite fixed source anchors and counterexamples. Never invent or close unknowns without evidence."
+    },
+    {
+      "id": "authority",
+      "text": "Use existing Platform contracts and permissions; no direct database writes, weakened guards or copied incompatible source."
+    },
+    {
+      "id": "gates",
+      "text": "Do not change controller, frozen scope, gates, queue, state or existing tests; independent verification decides completion."
+    },
+    {
+      "id": "boundary",
+      "text": "Study tasks change evidence only; implementation tasks change only assigned candidate packages and relevant design. Preserve unrelated work."
+    },
+    {
+      "id": "delivery",
+      "text": "No commits, pushes, publishing or production tenant changes. Temporary probes are evidence, not final delivery."
+    },
+    {
+      "id": "feedback",
+      "text": "Register proven platform gaps through the configured feedback path on implementation tasks; distinguish unverified hypotheses."
+    },
+    {
+      "id": "exit",
+      "text": "Return after one bounded attempt. If blocked, record the reason and next discriminating probe; do not repeat a failed approach blindly."
+    }
+  ]
+}

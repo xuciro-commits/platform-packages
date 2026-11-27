@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "cycle": "W1-001",
+  "stage": "check",
+  "status": "partial_verified",
+  "sourceCommit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+  "platformCommit": "bb2f5ed3550bf5554baefbe09200a095872dd364",
+  "tool": {
+    "pinnedRevision": "ac5e787623a960dee31722741465bfd9c8798f18",
+    "buildModified": true
+  },
+  "results": [
+    {
+      "id": "EV-W1-001",
+      "confidence": "observed",
+      "source": "erpnext/stock/doctype/item/item.py:1119–1146; packages/uom/objects/unit/object.yaml; packages/crm/objects/product/object.yaml",
+      "finding": "Base units and positive conversion are business invariants; existing CRM product lacks base-unit semantics. CRM identity mapping still open."
+    },
+    {
+      "id": "EV-W1-002",
+      "confidence": "observed",
+      "command": "pkg check packages/uom packages/item-master",
+      "result": "exit 0; combined installation and try scripts passed (7 UOM, 11 item-master steps)."
+    },
+    {
+      "id": "EV-W1-003",
+      "confidence": "observed",
+      "command": "pkg try -script docs/erpnext/probes/uom-positive-factor.yaml packages/uom",
+      "result": "uom 0.1.2 accepted zero; scratch constraint and uom 0.1.3 rejected zero and negative (2 steps)."
+    },
+    {
+      "id": "EV-W1-004",
+      "confidence": "observed",
+      "command": "pkg build twice for each package",
+      "hashes": {
+        "uom": [
+          "a36acc18008c727b3bc63a9cb575d4767040a2c907005e1f9421ae3166dd32fe",
+          "a36acc18008c727b3bc63a9cb575d4767040a2c907005e1f9421ae3166dd32fe"
+        ],
+        "item-master": [
+          "fbf20608279c05a4fcd873d5a429c6d6dae31b418d1e4eadfb4131cabf8822fd",
+          "fbf20608279c05a4fcd873d5a429c6d6dae31b418d1e4eadfb4131cabf8822fd"
+        ]
+      }
+    },
+    {
+      "id": "EV-W1-005",
+      "confidence": "observed",
+      "result": "Original action build had null target because shell expanded subject variable; corrected and tested. Author (admin) could edit; actual steward denied. No general platform defect inferred."
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "UNK-W1-001",
+      "severity": "critical",
+      "status": "open",
+      "question": "How to map legacy crm.product into shared item identity without losing sales data?",
+      "probe": "Design explicit mapping/extension and migration on copied fixture; verify upgraded references."
+    },
+    {
+      "id": "UNK-W1-002",
+      "severity": "critical",
+      "status": "open",
+      "question": "Can base unit and factor semantics be frozen after posting, including admin/upgrade paths?",
+      "probe": "Verify lifecycle/constraint support using committed movement facts; ordinary steward denial alone insufficient."
+    },
+    {
+      "id": "UNK-W1-003",
+      "severity": "critical",
+      "status": "open",
+      "question": "Exact quantity arithmetic and atomic stock movement/reservation under concurrent writes?",
+      "probe": "Construct isolated ledger/position transaction probe; test fractional quantities, guards, replay and contention."
+    },
+    {
+      "id": "UNK-W1-004",
+      "severity": "high",
+      "status": "open",
+      "question": "Can current pinned toolchain and released artifacts be reproduced in clean CI?",
+      "probe": "Build pkg from clean pinned commit and run full lock/check/diff; current local binary reports vcs.modified=true."
+    }
+  ],
+  "remainingGates": [
+    "CRM migration",
+    "immutable quantity semantics including administrative path",
+    "browser acceptance",
+    "upgrade and recovery",
+    "cover and real catalog release",
+    "independent clean pinned toolchain checks"
+  ],
+  "next": "W1-002: inventory ledger/quantity transaction probe, including same-item transfer conservation and negative-stock rejection. Keep item-master stage test, uom 0.1.3 unpublished."
+}

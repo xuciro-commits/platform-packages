@@ -1,0 +1,9 @@
+title: Submit requisition
+from: [draft]
+roles: [buyer, manager]
+transaction:
+  guard: "(mode = 'single' and material.state = 'active') or (mode = 'multi' and linecount > 0)"
+  message: An active single item or at least one active detail line is required.
+  steps:
+    - target: $subject
+      set: {state: "'requested'"}

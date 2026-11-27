@@ -128,3 +128,73 @@ steps:
     as: bob
     show: [state, agent, notes]
     expect: {state: completed, agent: amy}
+  - do: phone.call.create
+    on: phone.call/IN3
+    as: gw
+    with: {number: "+8613800138000"}
+  - do: phone.call.receive
+    on: phone.call/IN3
+    as: gw
+    with: {line: phone1, contact: C1, organization: O1, preferred: amy}
+    show: [state, preferred, widened]
+    expect: {state: ringing, preferred: amy, widened: false}
+  - do: phone.call.take
+    on: phone.call/IN3
+    as: bob
+    with: {offer: "v=0 browser offer of bob"}
+    refused: true
+  - do: phone.call.widen
+    on: phone.call/IN3
+    as: amy
+    refused: true
+  - do: phone.call.widen
+    on: phone.call/IN3
+    as: gw
+    show: [preferred, widened]
+    expect: {preferred: amy, widened: true}
+  - do: phone.call.take
+    on: phone.call/IN3
+    as: bob
+    with: {offer: "v=0 browser offer of bob"}
+    show: [agent, offer]
+    expect: {agent: bob}
+  - do: phone.call.widen
+    on: phone.call/IN3
+    as: gw
+    refused: true
+  - do: phone.call.create
+    on: phone.call/IN4
+    as: gw
+    with: {number: "+8613800138000"}
+  - do: phone.call.receive
+    on: phone.call/IN4
+    as: gw
+    with: {line: phone1, contact: C1, preferred: amy}
+  - do: phone.call.take
+    on: phone.call/IN4
+    as: amy
+    with: {offer: "v=0 browser offer of amy"}
+    show: [agent]
+    expect: {agent: amy}
+  - do: phone.trunk.create
+    on: phone.trunk/T1
+    with: {account: phone1, password: s3cret, numberheader: X-Dial-Number, headers: "X-Sim-Slot: 1"}
+    show: [account, active, numberheader]
+    expect: {account: phone1, active: true}
+  - do: phone.trunk.create
+    on: phone.trunk/T2
+    with: {account: phone1, password: other}
+    refused: true
+  - do: phone.trunk.create
+    on: phone.trunk/T3
+    as: amy
+    with: {account: phone3, password: x}
+    refused: true
+  - read: phone.trunk/T1
+    as: gw
+    show: [account, password]
+    expect: {password: s3cret}
+  - do: phone.trunk.edit
+    on: phone.trunk/T1
+    with: {active: false}
+    expect: {active: false}

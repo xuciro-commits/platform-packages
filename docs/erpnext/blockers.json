@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "blockers": [
+    {
+      "id": "printing",
+      "gate": "stock:printing",
+      "innerBox": "IB-ERP-0001",
+      "status": "open"
+    },
+    {
+      "id": "line-items",
+      "gate": "stock:line-items",
+      "innerBox": "IB-ERP-0002",
+      "status": "open"
+    },
+    {
+      "id": "package-contracts",
+      "gate": "stock:integration",
+      "innerBox": "IB-ERP-0003",
+      "status": "open"
+    },
+    {
+      "id": "navigation",
+      "gate": "stock:navigation",
+      "status": "open",
+      "reason": "固定提交静态契约缺少子组；真实安装及浏览器探针待补",
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "id": "reports",
+      "gate": "stock:reports",
+      "status": "open",
+      "reason": "静态资产契约差异；实际组合报表、授权、导出、异步验收待补",
+      "innerBox": "IB-ERP-0005"
+    },
+    {
+      "id": "ledger-scale",
+      "gate": "stock:performance",
+      "status": "open",
+      "reason": "第501笔移动创建被有界集合保护拒绝；事务投影候选授权拒绝，未判定平台无等价能力",
+      "innerBox": "IB-ERP-0006"
+    }
+  ]
+}

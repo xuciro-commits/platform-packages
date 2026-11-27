@@ -1,0 +1,70 @@
+{
+  "name": "quality",
+  "title": "Quality management",
+  "icon": "clipboard-document-check",
+  "pages": [
+    "quality.home",
+    "quality.quality_inspection",
+    "quality.quality_goal",
+    "quality.quality_procedure",
+    "quality.quality_review",
+    "quality.non_conformance",
+    "quality.quality_action",
+    "quality.quality_inspection_summary",
+    "quality.review",
+    "quality.maintenance_schedules",
+    "quality.quality_meeting",
+    "quality.quality_feedback",
+    "quality.maintenance_schedule",
+    "quality.maintenance_visit",
+    "quality.quality_inspection_template",
+    "quality.feedback_template"
+  ],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "quality.home",
+        "quality.quality_inspection",
+        "quality.quality_goal",
+        "quality.quality_procedure",
+        "quality.quality_review",
+        "quality.non_conformance",
+        "quality.quality_action"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "quality.quality_inspection_summary",
+        "quality.review",
+        "quality.maintenance_schedules"
+      ]
+    },
+    {
+      "title": "Meetings & Feedback",
+      "pages": [
+        "quality.quality_meeting",
+        "quality.quality_feedback"
+      ]
+    },
+    {
+      "title": "Maintenance",
+      "pages": [
+        "quality.maintenance_schedule",
+        "quality.maintenance_visit"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "quality.quality_inspection_template",
+        "quality.feedback_template"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ]
+}

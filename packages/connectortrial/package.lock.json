@@ -5,10 +5,10 @@
   "requires": [
     "connectortrial-contract"
   ],
-  "artifact": "sha256:f3a82b6ce97954914607c6d17cf9ec777f23b46ddc1462eabfddff99274b474c",
+  "artifact": "sha256:46215f9371374775304652a8530da1dabc245ad0e0e92d5bf1a625789441d4d4",
   "assets": {
     "app/connectortrial": {
-      "digest": "sha256:4dec695254f88cdd6b67951a4e25d5e01c4381c8d1d46e9b62eadb96ba5125ed",
+      "digest": "sha256:c4a7d101149c1645047b9c41fd8d44184fec59f306816630d238456335ec6558",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

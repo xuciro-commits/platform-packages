@@ -1,0 +1,138 @@
+{
+  "format": 2,
+  "package": "sales",
+  "version": "0.1.0",
+  "requires": [
+    "item-master@^0.1.1",
+    "uom@^0.1.3"
+  ],
+  "artifact": "sha256:935e8d1364c9fc4ad1828f224c04acb08030f3084a72584c3e54297da2045cd2",
+  "assets": {
+    "app/sales": {
+      "digest": "sha256:7325c093ccac355121031c0072528f4c1958e7fede1326de4e05f27497d3cc7e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/sales.navpending": {
+      "digest": "sha256:26df26577167bb17a327f860bb7e28abceba8f904c0d9a7879b1f3328d2778f9",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.48ffdd295cd65efb0bc2349a31cc3cba75d1b455564f5e0e4934043a7482df16",
+          "family": 1
+        }
+      ]
+    },
+    "page/sales.accounts_receivable": {
+      "digest": "sha256:208408aabae714824e61e6fac4bea550b08ae204d04688fc1540563178b69b70",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.accounts_receivable_summary": {
+      "digest": "sha256:bc692a96b2b4f4afce6af2a192ab8776a16a639862301b4a9d4ef0c06c7d89a7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.customer": {
+      "digest": "sha256:10f4c9ba5c06c0f620055830c752f1957f4c7f6c38731f01bb3d97e4251bc388",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.customer_group": {
+      "digest": "sha256:29cf49bbc1ced59bc2580a12ce8af83f8e2e9da9c143741f428df3ad6582febb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.dashboard": {
+      "digest": "sha256:707d2ce45b3b58c10d7224d92481a1118b62993ce0263613eeee383fa3ecf941",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.delivery_note": {
+      "digest": "sha256:a68c4d5ae704edd1de40bd84b5ac2977ecc8456f657b005a35d9a4123072bea1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.gross_profit": {
+      "digest": "sha256:2eb03d217db94529af59583cdb84082123e1dafb0da9a4536d632881ce125713",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.home": {
+      "digest": "sha256:5fc5ee656abc9fac2d510ed3785a2c3adba38d586e05d1471ca70772bd805f8e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.item": {
+      "digest": "sha256:8aee64f3b6e1cacaaaea1ed1ddb25bd73f1a3418d2cbec1e130b0f0ebdd7554b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.pos": {
+      "digest": "sha256:81c9a32afe46481799ad19e3c9904edb827297f79e9157d43fc6d312b380c374",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.pos_invoice": {
+      "digest": "sha256:d7b6acc9d0299d51de355e5939e34e73aa80b4e53102adf0d7bcc23aeb775d8e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.pos_profile": {
+      "digest": "sha256:d456a135881b4cbeb35167aeaf6b233c96a388e0719d2d02930a0569ea4a7fb2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.price_list": {
+      "digest": "sha256:4c07f80a96f4c9290bd607947f04f54c03522429fe04c896711980b00089e279",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.pricing_rule": {
+      "digest": "sha256:35a6c2bf584485807dbfb0f9294f36cd26ba59516b50404e526fb8cd3a777376",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.quotation": {
+      "digest": "sha256:7316ff34f99e7244a139ecda17f8c95461f348a20840be9711ae544370e75142",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.sales_analytics": {
+      "digest": "sha256:aaccacefe3b9aa09c28646cad0dbf5ba7828df57cc13eaec64e0da36ae4a9d39",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.sales_invoice": {
+      "digest": "sha256:9c230a44775f775a3afeceac2a11c93980c15a28f145e0237228145a21f07902",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.sales_order": {
+      "digest": "sha256:454a6d2ee90ddc21b67c8e0fa090e228e1f6920142ae25a0165a462b55a212c3",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.sales_person": {
+      "digest": "sha256:b689027390abffecd3c1b709abc1b286b661bec4bf4a5805ca3ecdc7a33cce56",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.sales_register": {
+      "digest": "sha256:d09eae9fb8d96a77af4ba74b5f094d837dedc5a9806425919585ead2b3befba0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.settings": {
+      "digest": "sha256:f00e5e41aff34a19dd1b518f89e0da749e68086d3683aa1b75a4c6e4a09cdb19",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/sales.territory": {
+      "digest": "sha256:a494acbb88a8a8c903a6245f646839445b7e461acac5ff86f1ee5c83dece6d34",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

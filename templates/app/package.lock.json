@@ -3,10 +3,10 @@
   "package": "example",
   "version": "0.1.0",
   "requires": [],
-  "artifact": "sha256:1c5f97fa1f15e5cec1b2af2789201df79c8df0d6a1a348daf66ec805ed63b772",
+  "artifact": "sha256:07739e70ca553b26f201bc8944868a24844b9a2f114e629655422c72c2626da0",
   "assets": {
     "app/example": {
-      "digest": "sha256:20a5a1fb4a6073a2de71d5f4478743ed098bae5b721a4d2c6fe8bcf065ab60c2",
+      "digest": "sha256:ddc8d3d5c559fef151b846468013888c132a9c72f6369cc3009f1b0ae34dd4f1",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

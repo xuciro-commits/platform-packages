@@ -1,0 +1,7 @@
+title: Close quotation request
+from: [open]
+roles: [buyer, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'closed'"}

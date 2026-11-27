@@ -1,0 +1,8 @@
+name: item
+title: Item master
+icon: cube
+surface: master-data
+pages: [item.master, item.category, item.brand, item.attribute, item.option, item.assignment]
+groups:
+  - {title: Directory, pages: [item.master, item.category, item.brand]}
+  - {title: Specifications, pages: [item.attribute, item.option, item.assignment]}

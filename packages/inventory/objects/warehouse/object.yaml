@@ -1,0 +1,32 @@
+name: warehouse
+namespace: inventory
+title: Warehouse
+plural: Warehouses
+icon: building-office
+display: title
+description: Directory of physical storage sites. Stock movements remain the quantity authority.
+fields:
+  - {name: title, title: Warehouse name, type: text, required: true, search: true}
+  - {name: code, title: Warehouse code, type: text, required: true, search: true}
+  - {name: nodekind, title: Warehouse kind, type: choice, default: storage, choices: "group:Warehouse group,storage:Storage warehouse"}
+  - {name: parent, title: Parent warehouse, type: reference, ref: inventory.warehouse}
+  - {name: address, title: Storage address, type: longtext}
+  - {name: notes, title: Notes, type: longtext}
+constraints:
+  - name: warehousecode
+    kind: unique
+    fields: [code]
+    message: Warehouse code must be unique.
+    translations:
+      zh-CN: 仓库编码必须唯一。
+  - name: parentgroup
+    kind: expression
+    fields: [parent]
+    expr: "parent = empty or parent.nodekind = 'group'"
+    message: Parent warehouse must be a group.
+    translations:
+      zh-CN: 上级仓库必须是仓库分组。
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true}
+view: {version: 1, layout: table, columns: [code, title, nodekind, parent, address], sort: [{sortKey: code, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

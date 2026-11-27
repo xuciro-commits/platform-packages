@@ -1,0 +1,33 @@
+name: order
+namespace: purchasing
+title: Purchase order
+plural: Purchase orders
+icon: shopping-cart
+display: title
+naming: PO-{year}-{n:5}
+sets:
+  lines: {object: purchasing.orderline, limit: 500}
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true, group: Order}
+  - {name: supplier, title: Supplier, type: reference, ref: purchasing.supplier, required: true, group: Order}
+  - {name: currency, title: Currency, type: choice, required: true, choices: "CNY:CNY,USD:USD,EUR:EUR", group: Order}
+  - {name: orderedon, title: Order date, type: date, required: true, group: Order}
+  - {name: expectedon, title: Expected on, type: date, required: true, group: Order}
+  - {name: confirmationno, title: Supplier confirmation number, type: text, group: Order}
+  - {name: confirmationdate, title: Confirmation date, type: date, group: Order}
+  - {name: terms, title: Terms, type: longtext, group: Commercial}
+  - {name: remarks, title: Remarks, type: longtext, group: Commercial}
+  - {name: total, title: Net amount, type: decimal, formula: sum(lines.amount), group: Totals}
+  - {name: invalidlines, title: Inactive item lines, type: integer, formula: "sum(lines, if(item.itemstate = 'active', 0, 1))", group: Totals}
+  - {name: linecount, title: Line count, type: integer, formula: count(lines), group: Totals}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: approved, title: Approved, tone: success}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [approve, cancel]
+constraints:
+  - {name: dates, kind: expression, fields: [orderedon, expectedon], expr: "expectedon >= orderedon", message: Expected date cannot precede order date.}
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, supplier, orderedon, expectedon, currency, total, state], sort: [{sortKey: expectedon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

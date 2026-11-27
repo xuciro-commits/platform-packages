@@ -1,0 +1,250 @@
+{
+  "format": 2,
+  "package": "erp-settings",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:e386b2e75a0d28bf1aa342908f687563c6ffbbb1fa67285c479a2303c8ad93c2",
+  "assets": {
+    "app/erpsettings": {
+      "digest": "sha256:900f4446894cb393c1f9674c725e4b6b3ed30302f50f4da8da926984ba9749d6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/erpsettings.navpending": {
+      "digest": "sha256:ef3204f7f33a0e2d76d200f8140d60e1051fc494b12d2e9a5c7d0eabacc09977",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.7cec0268ccc849cc7cc56744abbfe3ecbe688594a1bd7236ee4cc3d5a51a9ce5",
+          "family": 1
+        }
+      ]
+    },
+    "page/erpsettings.accounts": {
+      "digest": "sha256:25307bc2d12e4365dc651b180b8196a0de2b64ed9fbafc5712b8ca61189a61e8",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.appointment_booking": {
+      "digest": "sha256:b078ab402402d68ee10dc16aeef395a0ff6264b402d86d9243b1ea2642a787ab",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.authorization_rule": {
+      "digest": "sha256:df1e00b213920d74f88ba7025e768d0c403c0b1d18befdcc7902fc9e178c644f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.branch": {
+      "digest": "sha256:02946fe2776db95eac3e17721202e19ed1d7a42757f8ddf2300c2a18715244e4",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.bulk_transaction_log": {
+      "digest": "sha256:8b8f19dcacc94adcf1b3ecd3ee250d4225892faeeca4f98803cd341737e71bbd",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.buying": {
+      "digest": "sha256:0ead9132eb6f32767c986680f9875065c17a7fdf52f37946423dd5c0197d51c5",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.call_log": {
+      "digest": "sha256:14ddb727dbd7a1953b486a65d3ab09507859d672eaecfca8c7fcb229ead45abd",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.code_list": {
+      "digest": "sha256:28a11e396324f46fc4e03e9160401ec13fb5fb310874971f34439fa374d4119e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.common_code": {
+      "digest": "sha256:a6ab51700bf854c8df170d409f24c151cfd3ee83a283482ab2db6004c6917ba6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.communication_medium": {
+      "digest": "sha256:8bf7af62b31a6a9dd4b4edf8caa198933b8ad1061c41af333261a19c79bdf51d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.company": {
+      "digest": "sha256:006f9e3f94aac27ad6f7b849e990f4e0f381027f6d7787823f49e75dd967963b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.crm": {
+      "digest": "sha256:930f1da429574c15b7ddf6898746b1ef5e1eaae536afe6945f095df5a8cff875",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.currency_exchange": {
+      "digest": "sha256:fea75d55b9d99a29e408e2ad4ea7768f23d3233f76f14edcf097adc8f4107be1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.data_import": {
+      "digest": "sha256:801948d850173566ac9445e9a730e6c03db94036537c942369cd34e62d785870",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.delivery": {
+      "digest": "sha256:04e2b7f60cbc6adc32676fd5161daffc2bfc0a59f6fdf9f613ec5b0c6ad5e1c0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.department": {
+      "digest": "sha256:6ec357faf2353fd187f8e8269e902eb71989e0678adfa60556459c5f76f49ef7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.designation": {
+      "digest": "sha256:10d73aeb10a65431ea0abe532cc4e50e6e3dac46b68e38081cf3d561ec2c731e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.email_account": {
+      "digest": "sha256:c9f337291ff2ad515144a4b960c6ec8ad292fe5249ec1026b63763fb9508e002",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.email_digest": {
+      "digest": "sha256:823aa2603b04f107daa541e9108d648ac57c98caa3c05aa90b43c99a3aad94b0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.email_template": {
+      "digest": "sha256:0954ebb552b0a5b45619b61ff255edee1ace2b7cab683eb732164f627145a844",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.global_defaults": {
+      "digest": "sha256:ee2b44ea162e20b84ba8f0a96d8b55cfd5addbac06fb82ab7db2cd8e6bb7ec77",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.holiday_list": {
+      "digest": "sha256:efbde95772ab12f75f606924b1303bd0709910b8c6201c04be8159cf307e18c8",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.home": {
+      "digest": "sha256:9df6be47c3765510f74c77e7d14e7e885c2713becf04f5fda7a08dc3e4567c0f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.incoming_call_settings": {
+      "digest": "sha256:c10269518128a3439bd6aff60d81fe5608305587163ff9c6d74d26356dcc5653",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.item_variant": {
+      "digest": "sha256:2ebd701f79f6cf92b275b38b33904a07f712715d6d8fd17cdb954b697d0a687a",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.letter_head": {
+      "digest": "sha256:e688cb09217a8208d388d7a0181a7f473fbbdd439e42628a19bd98b7c05ed80d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.manufacturing": {
+      "digest": "sha256:f86c3cc0ab09bc66f0b1eac75dbe439b394223d99de1b63bfd52bd5c9afeda32",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.pos": {
+      "digest": "sha256:59ddecb90bb24d985eedff795c0706c5aca7afb7b3478392537086f09ed18480",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.print_format": {
+      "digest": "sha256:ea77f590a25f351c326b1415e6c456a2cb216afe3f4235dc129e80b34c6d3a19",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.print_settings": {
+      "digest": "sha256:ac39e07fb065df3d12bc74ee90745cbbaece92c94aaa780a5dce5787bcd72262",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.projects": {
+      "digest": "sha256:e029f0db730ec8070a3ec14ad3b58873bf20289c0f1bbd2498438c95dc378722",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.rename_tool": {
+      "digest": "sha256:da356bfdc92eed0cc0c460bdf32c8096cec8a8a43d870b8f68201805e6eb962a",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.role": {
+      "digest": "sha256:781f62a2a0cbc97b95ab9805520722f4eebd2fac364d1604e9a2daff9493ee44",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.role_permissions": {
+      "digest": "sha256:73e85806b3a9fe58e6e085f9c038f99a22fb2a9c906ce4fbad4c17f65e115573",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.selling": {
+      "digest": "sha256:29093a8c8b2fdfc81796b6d6affcdc8bb8a7ef3fbf8347ff88b2dfb8a3d5a7c3",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.stock": {
+      "digest": "sha256:dc9a562cfeec647a871120cfa2c85c1a381f2d1dda1bedf758a8f4232220ac95",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.stock_reposting": {
+      "digest": "sha256:351c56a4b33af2bba1fdf00e6e121852b776482526b8e18d1536e53362ced530",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.subscription": {
+      "digest": "sha256:a80675b90a2cfe6cbdf58b7297ad72d8389571b7c3216d80fab82033deb2ab8d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.support": {
+      "digest": "sha256:6c77f422d11d8b805e38d486a5c2db2068e09ce5d55a61f05e342b77c84bb53d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.system": {
+      "digest": "sha256:7973a4254c0e63b82b980585fa38ac4c940a89121852c86bca5846c1d2da0670",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.telephony_call_type": {
+      "digest": "sha256:8b536a01e497a22584aa1bd963de4b5f2f533dd5f4d08c61fa9d9c876a263426",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.transaction_deletion_record": {
+      "digest": "sha256:7ce70d88d3888ab106d16b0c370e7f9fa87936211e6ec383d991ca78d575fdb1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.user_permissions": {
+      "digest": "sha256:fb7f00ec001715880383e1f9113dc59920795428f10ccff9ae65d00be6219b97",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.users": {
+      "digest": "sha256:56407f31d909a458374387cf4c784e724f13b6481e67a3743fd862aa9f5fdae2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/erpsettings.voice_call_settings": {
+      "digest": "sha256:cef71c168889f2bc93d3974bfa85014dc745f344d55001424cfb7325a9ae91a1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

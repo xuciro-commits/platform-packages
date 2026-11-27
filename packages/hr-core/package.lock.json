@@ -1,12 +1,12 @@
 {
   "format": 2,
   "package": "hr-core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "requires": [],
-  "artifact": "sha256:52823c6c9439b23615d8d0261ee946024ca93b2b49faec4e029d4b08c0c242d6",
+  "artifact": "sha256:03f0194e9f256e8c77c2b43bbedda187d8f99b2d33643e67e2c9bdb6781c0f98",
   "assets": {
     "app/hr": {
-      "digest": "sha256:6ac8b3b73116852c848892fc89a5874e4e941a26e6c2c36f6445753169505ada",
+      "digest": "sha256:e80a4df0a0cdb4d667b37f8d9100c603666969382460b89f78420a3ce187cb43",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

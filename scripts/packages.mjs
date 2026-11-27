@@ -73,6 +73,10 @@ function writeCatalog(list, out) {
     if (!merged.has(key)) merged.set(key, entry);
   };
   for (const entry of doc.packages) {
+    const zh = entry.locales?.["zh-CN"];
+    if (!zh?.title || (entry.description && !zh?.description)) {
+      problems.push(`${entry.id}@${entry.version}: catalog entry is missing zh-CN title or description in locales`);
+    }
     if (pinsRelease() || released(entry)) add(entry);
   }
   for (const item of previous) {
@@ -106,8 +110,12 @@ const problems = [];
 const commands = {
   layout(list) {
     for (const p of list) {
-      for (const file of ["README.md", "LICENSE", "CHANGELOG.md"]) {
+      for (const file of ["README.md", "LICENSE", "CHANGELOG.md", "locales/zh-CN.yaml"]) {
         if (!existsSync(join(p.dir, file))) problems.push(`${p.name}: ${file} is missing`);
+      }
+      const zhLocale = join(p.dir, "locales/zh-CN.yaml");
+      if (existsSync(zhLocale) && readFileSync(zhLocale, "utf8").trim().length === 0) {
+        problems.push(`${p.name}: locales/zh-CN.yaml is empty`);
       }
       if (!p.artifact) problems.push(`${p.name}: package.yaml needs artifact, the file name of its release asset`);
       const changelog = existsSync(join(p.dir, "CHANGELOG.md")) ? readFileSync(join(p.dir, "CHANGELOG.md"), "utf8") : "";

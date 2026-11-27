@@ -5,3 +5,6 @@ Items: 条目列表
 Title: 标题
 Details: 详情
 Territories: 区域
+"A starting point for a new application package. Rename example, then add objects, actions and pages.": 新应用包的起始模板。重命名 example 后即可按需添加对象、动作与页面。
+user: 成员
+manager: 主管

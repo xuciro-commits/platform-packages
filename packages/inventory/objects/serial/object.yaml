@@ -1,0 +1,19 @@
+name: serial
+namespace: inventory
+title: Serial register
+plural: Serial registers
+icon: tag
+display: title
+description: Register individual identity only. A serial registration does not establish stock or location.
+fields:
+  - {name: title, title: Serial number, type: text, required: true, search: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: batch, title: Batch register, type: reference, ref: inventory.batch}
+constraints:
+  - {name: serialidentity, kind: unique, fields: [title], message: Serial number must be unique.}
+  - {name: stockitem, kind: expression, fields: [material], expr: "material.state = 'active' and material.kind != 'service'", message: Select an active stock item.}
+  - {name: matchingbatch, kind: expression, fields: [material, batch], expr: "batch = empty or batch.material = material", message: The batch must belong to the same item.}
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, material, batch], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

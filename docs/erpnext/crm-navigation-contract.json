@@ -1,0 +1,628 @@
+{
+  "version": 1,
+  "module": "crm",
+  "package": "crm",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/crm/sidebar/crm/crm.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "CRM",
+      "target": "crm.erp_home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Lead",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Lead",
+      "target": "crm.lead",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Opportunity",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Opportunity",
+      "target": "crm.deal",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Customer",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Customer",
+      "target": "crm.account",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Sales Analytics",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Sales Analytics",
+      "target": "crm.erp_sales_analytics",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Lead Details",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Lead Details",
+      "target": "crm.erp_lead_details",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Pipeline Analytics",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Sales Pipeline Analytics",
+      "target": "crm.erp_sales_pipeline_analytics",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Opportunity Summary by Sales Stage",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Opportunity Summary by Sales Stage",
+      "target": "crm.erp_opportunity_summary_by_sales_stage",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Funnel",
+      "kind": "page",
+      "sourceType": "Page",
+      "sourceTarget": "sales-funnel",
+      "target": "crm.erp_sales_funnel",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Prospects Engaged But Not Converted",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Prospects Engaged But Not Converted",
+      "target": "crm.erp_prospects_engaged_but_not_converted",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "First Response Time for Opportunity",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "First Response Time for Opportunity",
+      "target": "crm.erp_first_response_time_for_opportunity",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Campaign Efficiency",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Campaign Efficiency",
+      "target": "crm.erp_campaign_efficiency",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Lead Owner Efficiency",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Lead Owner Efficiency",
+      "target": "crm.erp_lead_owner_efficiency",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Maintenance",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Maintenance Schedule",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Maintenance Schedule",
+      "target": "crm.erp_maintenance_schedule",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Maintenance Visit",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Maintenance Visit",
+      "target": "crm.erp_maintenance_visit",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Warranty Claim",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Warranty Claim",
+      "target": "crm.erp_warranty_claim",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Pipeline",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Contract",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Contract",
+      "target": "crm.erp_contract",
+      "group": "Sales Pipeline",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Appointment",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Appointment",
+      "target": "crm.erp_appointment",
+      "group": "Sales Pipeline",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Communication",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Communication",
+      "target": "crm.erp_communication",
+      "group": "Sales Pipeline",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Campaign",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Campaign",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Campaign",
+      "target": "crm.erp_campaign",
+      "group": "Campaign",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Email Campaign",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Email Campaign",
+      "target": "crm.erp_email_campaign",
+      "group": "Campaign",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "SMS Center",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "SMS Center",
+      "target": "crm.erp_sms_center",
+      "group": "Campaign",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "SMS Log",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "SMS Log",
+      "target": "crm.erp_sms_log",
+      "group": "Campaign",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Email Group",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Email Group",
+      "target": "crm.erp_email_group",
+      "group": "Campaign",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Territory",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Territory",
+      "target": "crm.erp_territory",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Customer Group",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Customer Group",
+      "target": "crm.erp_customer_group",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Contact",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Contact",
+      "target": "crm.erp_contact",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Prospect",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Prospect",
+      "target": "crm.erp_prospect",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Person",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Sales Person",
+      "target": "crm.erp_sales_person",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Stage",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Sales Stage",
+      "target": "crm.erp_sales_stage",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Lead Source",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "UTM Source",
+      "target": "crm.erp_lead_source",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Settings",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "CRM Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "CRM Settings",
+      "target": "crm.erp_crm_settings",
+      "group": "ERP Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "SMS Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "SMS Settings",
+      "target": "crm.erp_sms_settings",
+      "group": "ERP Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [
+    "crm.contact",
+    "crm.activity",
+    "crm.note",
+    "crm.product",
+    "crm.competitor",
+    "crm.stage",
+    "crm.source",
+    "crm.territory",
+    "crm.lostreason",
+    "crm.disqualifyreason"
+  ],
+  "additionalGroups": [
+    {
+      "title": "Customers",
+      "pages": [
+        "crm.contact"
+      ]
+    },
+    {
+      "title": "Follow-up",
+      "pages": [
+        "crm.activity",
+        "crm.note"
+      ]
+    },
+    {
+      "title": "Catalog",
+      "pages": [
+        "crm.product",
+        "crm.competitor"
+      ]
+    },
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "salesmanager"
+      ],
+      "pages": [
+        "crm.stage",
+        "crm.source",
+        "crm.territory",
+        "crm.lostreason",
+        "crm.disqualifyreason"
+      ]
+    }
+  ],
+  "groupRoles": {
+    "Setup": [
+      "salesmanager"
+    ],
+    "ERP Settings": [
+      "salesmanager"
+    ]
+  },
+  "groupTitles": {
+    "Settings": "ERP Settings"
+  },
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "crm.erp_home",
+        "crm.lead",
+        "crm.deal",
+        "crm.account"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "crm.erp_sales_analytics",
+        "crm.erp_lead_details",
+        "crm.erp_sales_pipeline_analytics",
+        "crm.erp_opportunity_summary_by_sales_stage",
+        "crm.erp_sales_funnel",
+        "crm.erp_prospects_engaged_but_not_converted",
+        "crm.erp_first_response_time_for_opportunity",
+        "crm.erp_campaign_efficiency",
+        "crm.erp_lead_owner_efficiency"
+      ]
+    },
+    {
+      "title": "Maintenance",
+      "pages": [
+        "crm.erp_maintenance_schedule",
+        "crm.erp_maintenance_visit",
+        "crm.erp_warranty_claim"
+      ]
+    },
+    {
+      "title": "Sales Pipeline",
+      "pages": [
+        "crm.erp_contract",
+        "crm.erp_appointment",
+        "crm.erp_communication"
+      ]
+    },
+    {
+      "title": "Campaign",
+      "pages": [
+        "crm.erp_campaign",
+        "crm.erp_email_campaign",
+        "crm.erp_sms_center",
+        "crm.erp_sms_log",
+        "crm.erp_email_group"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "crm.erp_territory",
+        "crm.erp_customer_group",
+        "crm.erp_contact",
+        "crm.erp_prospect",
+        "crm.erp_sales_person",
+        "crm.erp_sales_stage",
+        "crm.erp_lead_source"
+      ],
+      "roles": [
+        "salesmanager"
+      ]
+    },
+    {
+      "title": "ERP Settings",
+      "pages": [
+        "crm.erp_crm_settings",
+        "crm.erp_sms_settings"
+      ],
+      "roles": [
+        "salesmanager"
+      ]
+    },
+    {
+      "title": "Customers",
+      "pages": [
+        "crm.contact"
+      ]
+    },
+    {
+      "title": "Follow-up",
+      "pages": [
+        "crm.activity",
+        "crm.note"
+      ]
+    },
+    {
+      "title": "Catalog",
+      "pages": [
+        "crm.product",
+        "crm.competitor"
+      ]
+    },
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "salesmanager"
+      ],
+      "pages": [
+        "crm.stage",
+        "crm.source",
+        "crm.territory",
+        "crm.lostreason",
+        "crm.disqualifyreason"
+      ]
+    }
+  ],
+  "limitations": [
+    "Existing business pages and setting-role groups preserved; aliases do not duplicate records.",
+    "Flat groups, browser unverified. Existing route/menu order changes require regression."
+  ]
+}

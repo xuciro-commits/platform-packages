@@ -1,0 +1,44 @@
+roles: {purchasing: manager, party: steward, geo: user, item: steward, uom: user}
+at: 2026-11-27T00:00:00Z
+members:
+  buyer: {roles: {purchasing: buyer, party: user, geo: user, item: user, uom: user}}
+  manager: {roles: {purchasing: manager, party: user, geo: user, item: user, uom: user}}
+steps:
+  - {do: party.organization.create, on: party.organization/O1, with: {name: Steel supplier}}
+  - {do: party.organization.create, on: party.organization/O2, with: {name: Copper supplier}}
+  - {do: party.organization.create, on: party.organization/O3, with: {name: Third supplier}}
+  - {do: party.contact.create, on: party.contact/C1, with: {fullname: First contact, organization: O1}}
+  - {do: party.contact.create, on: party.contact/C2, with: {fullname: Second contact, organization: O2}}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/G1, as: manager, with: {title: Industrial, code: IND, nodekind: group}}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/G2, as: manager, with: {title: Metals, code: MET, parent: G1}, expect: {nodekind: leaf, parent: G1}}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/G3, as: manager, with: {title: Other, code: OTH, parent: G1}}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/BAD1, as: manager, with: {title: Wrong parent, code: BAD1, parent: G2}, refused: true}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/BAD2, as: manager, with: {title: Metals, code: BAD2}, refused: true}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/BAD3, as: manager, with: {title: Duplicate code, code: MET}, refused: true}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/BAD4, as: manager, with: {title: Self, code: SELF, parent: BAD4, nodekind: group}, refused: true}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/BAD5, as: buyer, with: {title: Forbidden, code: FORB}, refused: true}
+  - {do: purchasing.suppliergroup.edit, on: purchasing.suppliergroup/G1, as: manager, with: {parent: G2}, refused: true}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/BAD1, as: manager, with: {base: O1, group: G1}, refused: true}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/BAD2, as: manager, with: {base: O1, primarycontact: C2}, refused: true}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S1, as: manager, with: {base: O1, group: G2, alias: STEEL, primarycontact: C1}, expect: {supplierkind: company, state: pending, primarycontact: C1}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/BAD3, as: manager, with: {base: O1}, refused: true}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/BAD4, as: manager, with: {base: O2, alias: STEEL}, refused: true}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S2, as: manager, with: {base: O2, group: G3}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S3, as: manager, with: {base: O3}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: buyer, refused: true}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager, expect: {state: qualified}}
+  - {do: purchasing.supplier.revise, on: purchasing.supplier/S1, as: buyer, with: {alias: NEW, supplierkind: company, transporter: true}, refused: true}
+  - {do: purchasing.supplier.revise, on: purchasing.supplier/S1, as: manager, with: {alias: NEW, supplierkind: partnership, transporter: true, defaultcurrency: EUR, notes: Approved profile}, expect: {alias: NEW, supplierkind: partnership, transporter: true, defaultcurrency: EUR, notes: Approved profile, state: qualified, base: O1}}
+  - {do: purchasing.supplier.revise, on: purchasing.supplier/S2, as: manager, with: {alias: NEW, supplierkind: company, transporter: false}, refused: true}
+  - {do: purchasing.supplier.setcontact, on: purchasing.supplier/S1, as: manager, with: {contact: C2}, refused: true}
+  - {do: purchasing.supplier.setcontact, on: purchasing.supplier/S1, as: manager, with: {}, expect: {primarycontact: null}}
+  - {do: purchasing.supplier.setcontact, on: purchasing.supplier/S1, as: buyer, with: {contact: C1}, refused: true}
+  - {do: purchasing.supplier.setcontact, on: purchasing.supplier/S1, as: manager, with: {contact: C1}, expect: {primarycontact: C1}}
+  - {do: purchasing.supplier.changegroup, on: purchasing.supplier/S1, as: manager, with: {group: G1}, refused: true}
+  - {do: purchasing.supplier.changegroup, on: purchasing.supplier/S1, as: buyer, with: {group: G3}, refused: true}
+  - {do: purchasing.supplier.changegroup, on: purchasing.supplier/S1, as: manager, with: {group: G3}, expect: {group: G3, state: qualified}}
+  - {do: purchasing.supplier.edit, on: purchasing.supplier/S1, as: manager, with: {base: O2}, refused: true}
+  - {do: purchasing.supplier.suspend, on: purchasing.supplier/S1, as: manager, expect: {state: suspended}}
+  - {do: purchasing.supplier.suspend, on: purchasing.supplier/S1, as: manager, refused: true}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager, expect: {state: qualified}}
+  - {read: purchasing.supplier/S1, as: buyer, expect: {base: O1, alias: NEW, primarycontact: C1, group: G3, state: qualified}}

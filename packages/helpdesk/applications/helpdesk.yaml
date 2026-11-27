@@ -1,16 +1,15 @@
 name: helpdesk
 title: Helpdesk
 icon: lifebuoy
-pages: [helpdesk.ticket, helpdesk.reply, helpdesk.customer, helpdesk.article, helpdesk.cannedreply,
-        helpdesk.ticketstage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
+pages: [helpdesk.erp_home, helpdesk.ticket, helpdesk.erp_maintenance_schedule, helpdesk.erp_maintenance_visit, helpdesk.erp_warranty_claim, helpdesk.erp_issue_type, helpdesk.erp_issue_priority, helpdesk.erp_service_level_agreement, helpdesk.erp_first_response_time_for_issues, helpdesk.erp_settings, helpdesk.reply, helpdesk.customer, helpdesk.article, helpdesk.cannedreply, helpdesk.ticketstage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
 groups:
-  - {title: Support, pages: [helpdesk.ticket, helpdesk.reply]}
-  - {title: Customers, pages: [helpdesk.customer]}
-  - {title: Knowledge, pages: [helpdesk.article, helpdesk.cannedreply]}
-  - title: Settings
-    layout: settings
-    roles: [supervisor]
-    pages: [helpdesk.ticketstage, helpdesk.priority, helpdesk.queue, helpdesk.category, helpdesk.channel, helpdesk.resolution]
+  - {"title":"Overview","pages":["helpdesk.erp_home","helpdesk.ticket","helpdesk.erp_maintenance_schedule","helpdesk.erp_maintenance_visit","helpdesk.erp_warranty_claim"]}
+  - {"title":"Setup","pages":["helpdesk.erp_issue_type","helpdesk.erp_issue_priority","helpdesk.erp_service_level_agreement"],"roles":["supervisor"]}
+  - {"title":"Reports","pages":["helpdesk.erp_first_response_time_for_issues","helpdesk.erp_settings"]}
+  - {"title":"Support","pages":["helpdesk.reply"]}
+  - {"title":"Customers","pages":["helpdesk.customer"]}
+  - {"title":"Knowledge","pages":["helpdesk.article","helpdesk.cannedreply"]}
+  - {"title":"Settings","layout":"settings","roles":["supervisor"],"pages":["helpdesk.ticketstage","helpdesk.priority","helpdesk.queue","helpdesk.category","helpdesk.channel","helpdesk.resolution"]}
 dashboard:
   - {title: Open tickets, kind: metric, object: helpdesk.ticket, domain: [[state, "=", open]]}
   - {title: Escalated tickets, kind: metric, object: helpdesk.ticket, domain: [[state, "=", open], [stage, "=", escalated]]}

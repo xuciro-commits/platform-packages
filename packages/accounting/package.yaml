@@ -1,0 +1,14 @@
+id: "accounting"
+version: "0.1.0"
+title: "Accounting"
+namespace: "accounting"
+description: "Navigation candidate only; no business posting or settings operations."
+listing:
+  industries: ["general"]
+  domains: ["accounting"]
+  keywords: ["erp","navigation"]
+  stage: "test"
+  source: {"ecosystem":"frappe","app":"erpnext","version":"v16","license":"GPL-3.0","relation":"redesign"}
+roots:
+  - {"app":"build","kind":"app","name":"accounting"}
+artifact: "accounting.json"

@@ -1,0 +1,31 @@
+name: quotation
+namespace: purchasing
+title: Supplier quotation
+plural: Supplier quotations
+icon: document-text
+display: title
+naming: SQ-{year}-{n:5}
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: rfq, title: Request for quotation, type: reference, ref: purchasing.rfq, required: true}
+  - {name: supplier, title: Supplier, type: reference, ref: purchasing.supplier, from: rfq.supplier}
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: currency, title: Currency, type: choice, required: true, choices: "CNY:CNY,USD:USD,EUR:EUR"}
+  - {name: total, title: Net amount, type: decimal, formula: "quantity * unitprice"}
+  - {name: vendorref, title: Supplier quotation reference, type: text, search: true}
+  - {name: terms, title: Terms, type: longtext}
+  - {name: quotedon, title: Quoted on, type: date, required: true}
+  - {name: validuntil, title: Valid until, type: date, required: true}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: recorded, title: Recorded quote, tone: success}
+  - {name: withdrawn, title: Withdrawn, tone: neutral}
+actions: [record, withdraw]
+constraints:
+  - {name: commercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity and price are invalid.}
+  - {name: validity, kind: expression, fields: [quotedon, validuntil], expr: "validuntil >= quotedon", message: Validity must end on or after quotation date.}
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, supplier, rfq, quantity, unitprice, currency, total, validuntil, state], sort: [], group: state, lanes: "", filters: [], search: ""}

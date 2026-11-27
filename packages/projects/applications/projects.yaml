@@ -1,14 +1,12 @@
 name: projects
 title: Projects
 icon: rectangle-group
-pages: [projects.task, projects.timelog, projects.project, projects.stage, projects.projecttype, projects.activity]
+pages: [projects.erp_home, projects.project, projects.task, projects.timelog, projects.erp_project_summary, projects.erp_timesheet_billing_summary, projects.erp_daily_timesheet_summary, projects.erp_delayed_tasks_summary, projects.erp_project_wise_stock_tracking, projects.erp_activity_type, projects.erp_activity_cost, projects.erp_project_type, projects.erp_task_type, projects.erp_project_template, projects.erp_project_update, projects.erp_settings, projects.stage, projects.projecttype, projects.activity]
 groups:
-  - {title: Work, pages: [projects.task, projects.timelog]}
-  - {title: Planning, pages: [projects.project]}
-  - title: Settings
-    layout: settings
-    roles: [manager]
-    pages: [projects.stage, projects.projecttype, projects.activity]
+  - {"title":"Overview","pages":["projects.erp_home","projects.project","projects.task","projects.timelog"]}
+  - {"title":"Reports","pages":["projects.erp_project_summary","projects.erp_timesheet_billing_summary","projects.erp_daily_timesheet_summary","projects.erp_delayed_tasks_summary","projects.erp_project_wise_stock_tracking"]}
+  - {"title":"Setup","pages":["projects.erp_activity_type","projects.erp_activity_cost","projects.erp_project_type","projects.erp_task_type","projects.erp_project_template","projects.erp_project_update","projects.erp_settings"],"roles":["manager"]}
+  - {"title":"Settings","layout":"settings","roles":["manager"],"pages":["projects.stage","projects.projecttype","projects.activity"]}
 dashboard:
   - {title: Active projects, kind: metric, object: projects.project, domain: [[state, "=", active]]}
   - {title: Open tasks, kind: metric, object: projects.task, domain: [[state, "=", open]]}

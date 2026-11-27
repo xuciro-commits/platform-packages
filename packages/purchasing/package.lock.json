@@ -1,0 +1,227 @@
+{
+  "format": 2,
+  "package": "purchasing",
+  "version": "0.1.0",
+  "requires": [
+    "party@^0.2.2",
+    "item-master@^0.1.1",
+    "uom@^0.1.3"
+  ],
+  "artifact": "sha256:fadd40b0e16d873f795cecbea54f1a157135d99273fc3d6078394a7ca16d4a28",
+  "assets": {
+    "app/purchasing": {
+      "digest": "sha256:94bdf748205f5c988c33b00359bf0cf095317f7f75cdda78f1df31022db18594",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/purchasing.navpending": {
+      "digest": "sha256:40630993fcc842642cfc2b384cb03bd599eb56cb1647f2caa6aab814765cfbf4",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.6c5433e3bb4fd5854636476520f890c6fbc56c0f9c6369e12d36e0b377584ce3",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.order": {
+      "digest": "sha256:e80d072b55e32b27bb6c76b96794ececeb7acf2069c1af911789ef3021daa293",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.15792f78069b8d7b67a94af724f5f5ea65a8977ca12042881817768d12f87746",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.orderline": {
+      "digest": "sha256:570efb487d4b50033415792cd4e4e2c6008cb4b09564b25ee7961899356fced0",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.310cf18ae661a846219502e56495aa0700283bdc5c71256d6ace3a8f492e3863",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.quotation": {
+      "digest": "sha256:ab61d741f3ffcf413ae6d57c9e3229014513757cdf2f5e687d5b31d61a878d73",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.38e9a49941a8bec30f34be8710cb43473b46249e73ea875c9aecfd12b5c85b94",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.requisition": {
+      "digest": "sha256:150537f89abead77315f7a1c92df9c501d61d046e7eedd6974c99d31552cd5b1",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.d8df2b801da95e6661590fec74ba9fc653478c116b32023acfadb20b3239df60",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.requisitionline": {
+      "digest": "sha256:161a44e861f2999bf03003b664e571ca1a7667ee0c5ba14308d0651ff54924c4",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.9c663f0d45994d1c82df5d4d6d2fe6e0398c5ea0ba017ae8fcc138b282928dd7",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.rfq": {
+      "digest": "sha256:8723d62be02d0ecbc6700e3b547c5b4813a456c16cc1f13707184de2fcd1412b",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.2d543c0d874f0e7d40ae0f40847de4f13ac22b0c62f20f355c0dc892f6036e25",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.supplier": {
+      "digest": "sha256:a72e980a3af9f34c20f3ce487a880d8f19c6ee64b8e706bf5e625c2d05a68f20",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.c65204e3f58925d0d8dfab80ffe73c7d1e9fc1ded39a89ae001d3e6b269b3245",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.suppliergroup": {
+      "digest": "sha256:e3c5d380e11da6c65d57fcdb63637db8f6ffc59ec17084f0dbd53fb72386df9a",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.0f3441cd2099979320995cd9b001c6fb8285f55b2008976e4290be0b871e5d91",
+          "family": 1
+        }
+      ]
+    },
+    "page/purchasing.accounts_payable": {
+      "digest": "sha256:6db8e7ee991d470442281c4558d63570d65326cc225a10cfde84b91a922e59f5",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.buying_settings": {
+      "digest": "sha256:65f180c9e7626b538414971ebc82cc286e4aa2669c5f08e52dc956c11eba6fd2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.home": {
+      "digest": "sha256:ef92be69f9a74bf88f36e69b6c3a0fbfcdd9df5227f7824645ef43d42460149f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.item": {
+      "digest": "sha256:d96be03de665887193c49dbdeddee08202a4a4cba7b3f2c8a4205bf0d74114e0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.item_group": {
+      "digest": "sha256:f9c15e80ebf3bf56925178e9f63a2dd96383ee8bd0034f39eee0a6086c6a38ce",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.order": {
+      "digest": "sha256:001c3f5674fab3faabba001adfa6f66a40736c8295886b00dcbc85b225636473",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.order_analysis": {
+      "digest": "sha256:5dd93a0ded74e484c35ece8a99bde47d8e5b2faff62b2ac1c41700d9c0afe678",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.orderline": {
+      "digest": "sha256:9611cfab4adcc5f7755f194407e22f20a6d6e8ab4dea18f418b99cdd520101b3",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.payable_summary": {
+      "digest": "sha256:a4ff6a093e000f07687353ede42f90be21da696cb58ce8f7ec9b7cfac3f82085",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.price_list": {
+      "digest": "sha256:778c4964b580af595ec3a4253253562bb2b5ad2a535ca2a244e124de184edf82",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.purchase_analytics": {
+      "digest": "sha256:b66a682ddb53d5a4f6ecec5a22d3cabda04594aa2e7c74eb4ad66ff8276a6a4d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.purchase_invoice": {
+      "digest": "sha256:1a56fd9b394e5e6d057906c209e5f9bf582a51bc7f691398cb05440fb9515aec",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.purchase_receipt": {
+      "digest": "sha256:ea6e0781074f26f458409cadb695b62a21bdbb2f978b94af2fdd61e74c301f7f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.purchase_register": {
+      "digest": "sha256:b9c9f90e043163f88511019c55d8df6d76cfc3d90009be2500a98d15eaa84fc4",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.quotation": {
+      "digest": "sha256:35fdcd60c2a8f8caa75e9c0076e44178b05d184480a6860604a794c0d6087f2d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.quotation_comparison": {
+      "digest": "sha256:f74c72621af8c85e84877b1c9b81e3b30d7d18e05f299645a91cce9dba22573f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.requisition": {
+      "digest": "sha256:a46f04870b4380273976e23cd622feca46faca0cc92a8efb678bb20f9895bf85",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.requisitionline": {
+      "digest": "sha256:719e5b6aa85c419172822d88e0bc4468941c555fd46dbd12a00417e3b89b28f1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.rfq": {
+      "digest": "sha256:4a94b75414bf165b121c530e7c5327ce957ba4a943f8ee4608579ea1513e52c7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.supplier": {
+      "digest": "sha256:2cb9d37f73db5ad651d6b60553a7c194d33c981014b1eb8c7e9aaaa8c6d14c9a",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.supplier_scorecard": {
+      "digest": "sha256:e5195cc1aab8bb659cc33954fdc2253059fd568db39f7c7e5161b407270cefb1",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.suppliergroup": {
+      "digest": "sha256:418962110521bca8028a9e30d26bc09d522e467c0fffb2ef30f7002f1ac8a500",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

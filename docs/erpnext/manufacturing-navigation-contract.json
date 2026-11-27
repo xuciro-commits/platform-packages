@@ -1,0 +1,444 @@
+{
+  "version": 1,
+  "module": "manufacturing",
+  "package": "manufacturing",
+  "namespace": "manufacturing",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/manufacturing/sidebar/manufacturing/manufacturing.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Manufacturing",
+      "target": "manufacturing.home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Dashboard",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Manufacturing",
+      "target": "manufacturing.dashboard",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "BOM",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "BOM",
+      "target": "manufacturing.bom",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Production Plan",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Production Plan",
+      "target": "manufacturing.production_plan",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Work Order",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Work Order",
+      "target": "manufacturing.work_order",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Job Card",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Job Card",
+      "target": "manufacturing.job_card",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Stock Entry",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Entry",
+      "target": "manufacturing.stock_entry",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Production Analytics",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Production Analytics",
+      "target": "manufacturing.production_analytics",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Work Order Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Work Order Summary",
+      "target": "manufacturing.work_order_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Job Card Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Job Card Summary",
+      "target": "manufacturing.job_card_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Production Planning Report",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Production Planning Report",
+      "target": "manufacturing.production_planning_report",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Material Requirements Planning Report",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Material Requirements Planning Report",
+      "target": "manufacturing.material_requirements_planning_report",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Subcontracting",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Subcontracting Order",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Subcontracting Order",
+      "target": "manufacturing.subcontracting_order",
+      "group": "Subcontracting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Subcontracting Receipt",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Subcontracting Receipt",
+      "target": "manufacturing.subcontracting_receipt",
+      "group": "Subcontracting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Subcontracting BOM",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Subcontracting BOM",
+      "target": "manufacturing.subcontracting_bom",
+      "group": "Subcontracting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Subcontracting Inward Order",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Subcontracting Inward Order",
+      "target": "manufacturing.subcontracting_inward_order",
+      "group": "Subcontracting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Inward Order Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Subcontracting Inward Order Summary",
+      "target": "manufacturing.inward_order_summary",
+      "group": "Subcontracting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Raw Materials To Be Received",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Subcontracted Raw Materials To Be Received",
+      "target": "manufacturing.raw_materials_to_be_received",
+      "group": "Subcontracting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Items To Be Delivered",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Subcontracted Items To Be Delivered",
+      "target": "manufacturing.items_to_be_delivered",
+      "group": "Subcontracting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Tools",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "BOM Creator",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "BOM Creator",
+      "target": "manufacturing.bom_creator",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "BOM Update Tool",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "BOM Update Tool",
+      "target": "manufacturing.bom_update_tool",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "BOM Comparison Tool",
+      "kind": "page",
+      "sourceType": "Page",
+      "sourceTarget": "bom-comparison-tool",
+      "target": "manufacturing.bom_comparison_tool",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Downtime Entry",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Downtime Entry",
+      "target": "manufacturing.downtime_entry",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Workstation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Workstation",
+      "target": "manufacturing.workstation",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Operation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Operation",
+      "target": "manufacturing.operation",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Routing",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Routing",
+      "target": "manufacturing.routing",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Plant Floor",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Plant Floor",
+      "target": "manufacturing.plant_floor",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Manufacturing Settings",
+      "target": "manufacturing.settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "manufacturing.home",
+        "manufacturing.dashboard",
+        "manufacturing.bom",
+        "manufacturing.production_plan",
+        "manufacturing.work_order",
+        "manufacturing.job_card",
+        "manufacturing.stock_entry"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "manufacturing.production_analytics",
+        "manufacturing.work_order_summary",
+        "manufacturing.job_card_summary",
+        "manufacturing.production_planning_report",
+        "manufacturing.material_requirements_planning_report"
+      ]
+    },
+    {
+      "title": "Subcontracting",
+      "pages": [
+        "manufacturing.subcontracting_order",
+        "manufacturing.subcontracting_receipt",
+        "manufacturing.subcontracting_bom",
+        "manufacturing.subcontracting_inward_order",
+        "manufacturing.inward_order_summary",
+        "manufacturing.raw_materials_to_be_received",
+        "manufacturing.items_to_be_delivered"
+      ]
+    },
+    {
+      "title": "Tools",
+      "pages": [
+        "manufacturing.bom_creator",
+        "manufacturing.bom_update_tool",
+        "manufacturing.bom_comparison_tool",
+        "manufacturing.downtime_entry"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "manufacturing.workstation",
+        "manufacturing.operation",
+        "manufacturing.routing",
+        "manufacturing.plant_floor",
+        "manufacturing.settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ],
+  "limitations": [
+    "Flat group projection only; no browser verification.",
+    "Placeholders contain no business operations."
+  ]
+}

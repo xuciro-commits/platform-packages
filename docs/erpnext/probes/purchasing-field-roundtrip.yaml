@@ -1,0 +1,28 @@
+roles: {purchasing: manager, party: steward, geo: user, item: steward, uom: user}
+at: 2026-11-26T00:00:00Z
+members:
+  buyer: {roles: {purchasing: buyer, party: user, geo: user, item: user, uom: user}}
+  manager: {roles: {purchasing: manager, party: user, geo: user, item: user, uom: user}}
+steps:
+  - {do: party.organization.create, on: party.organization/O1, with: {name: Example supplier}}
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S1, as: manager, with: {base: O1, alias: SteelCo, supplierkind: company, transporter: true, defaultcurrency: CNY}}
+  - {read: purchasing.supplier/S1, as: buyer, expect: {alias: SteelCo, supplierkind: company, transporter: true, defaultcurrency: CNY}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S2, as: buyer, with: {base: O1, supplierkind: individual}, refused: true}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/R1, as: buyer, with: {title: Steel, material: I1, quantity: 10, neededon: "2026-12-15", requestedon: "2026-11-26", terms: Confirm specification}}
+  - {read: purchasing.requisition/R1, as: buyer, expect: {requestedon: "2026-11-26", terms: Confirm specification}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/R1, as: buyer}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/R1, as: manager}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F1, as: buyer, with: {title: Inquiry, request: R1, supplier: S1, deadline: "2026-12-05", issuedon: "2026-11-26", subject: Steel quote, message: Send certificate, terms: Confirm grade}}
+  - {read: purchasing.rfq/F1, as: buyer, expect: {issuedon: "2026-11-26", subject: Steel quote, message: Send certificate, terms: Confirm grade}}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F1, as: buyer}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/Q1, as: buyer, with: {title: Quote, rfq: F1, quantity: 10, unitprice: 2.5, currency: CNY, quotedon: "2026-11-26", validuntil: "2026-12-10", vendorref: Q-101, terms: Net 30}}
+  - {read: purchasing.quotation/Q1, as: buyer, expect: {vendorref: Q-101, terms: Net 30, total: 25}}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q1, as: buyer}
+  - {do: purchasing.order.create, on: purchasing.order/P1, as: buyer, with: {title: Order, supplier: S1, currency: CNY, orderedon: "2026-11-26", expectedon: "2026-12-15", confirmationno: CONF-1, confirmationdate: "2026-11-26", terms: Net 30, remarks: Check certificate}}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/L1, as: buyer, with: {order: P1, material: I1, quantity: 10, unitprice: 2.5, description: Steel grade A, expectedon: "2026-12-14"}}
+  - {read: purchasing.orderline/L1, as: buyer, expect: {description: Steel grade A, expectedon: "2026-12-14", amount: 25}}
+  - {read: purchasing.order/P1, as: buyer, expect: {confirmationno: CONF-1, confirmationdate: "2026-11-26", terms: Net 30, remarks: Check certificate, total: 25}}
+  - {do: purchasing.navpending.create, on: purchasing.navpending/X1, as: buyer, with: {title: Fake}, refused: true}
+  - {do: purchasing.navpending.create, on: purchasing.navpending/X2, as: manager, with: {title: Fake}, refused: true}

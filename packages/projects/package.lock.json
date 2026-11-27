@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "projects",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "requires": [
     "party@^0.2.0"
   ],
-  "artifact": "sha256:95b9805dd63444cafcd8541b9a2833f47dffa3fd4e663e711a202026c362065a",
+  "artifact": "sha256:71b829eed05275c014e7e086218f68350fd56a5cc1be158cd4e6510a0732c4f7",
   "assets": {
     "app/projects": {
-      "digest": "sha256:8e6d96c8e90cdaaf3a1fe492752520119b94b37bc1a17bf97f068d9cfbff10b1",
+      "digest": "sha256:32875f92e8130d935714ecebf98cda33aac41ea63fb47795b52b7a7467f12679",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -24,6 +24,17 @@
       "schemaVersions": [
         {
           "version": "schema.sha256.73d53a354fc045cd5f5088327c5eb016c776a933141b6a93b0fa8e058151a082",
+          "family": 1
+        }
+      ]
+    },
+    "object/projects.navpending": {
+      "digest": "sha256:8b551982fa8c00d5600374c0993ce0e36407e5a1d7388294b487f220b413cd5e",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.a8da655984cdfb0a1ff1e1f48741a90911b59f571f7fcbd2d52c69057727fb84",
           "family": 1
         }
       ]
@@ -85,6 +96,71 @@
     },
     "page/projects.activity": {
       "digest": "sha256:d403f1faa81451f874882af9bd0d4b1818dfbb41df6ff2fb82f1017e8594bb0e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_activity_cost": {
+      "digest": "sha256:1166c43d8c83d3cb09ec37142f94ba4126f9ed7713d3fde3a7ffec6a32baf839",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_activity_type": {
+      "digest": "sha256:46674072e78d2c766e4e69c24cbc37bcfcd4ab1e3e90181ae4c83e289199328a",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_daily_timesheet_summary": {
+      "digest": "sha256:8f56de34da5d1a545d9589c1239bbfe6020952660a95570892e290b54ae39bc9",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_delayed_tasks_summary": {
+      "digest": "sha256:6745e01e770697e1dc3a5d2860bea0c4440c62348f49f54f9a1d19d86cf149f2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_home": {
+      "digest": "sha256:1560a029d91024e2860004d819ba65f251e298bef7019439880e688deeb59150",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_project_summary": {
+      "digest": "sha256:89c58ad7ee1101b6bbf50d0ff47a3bcfde4a99589f2ba8b1de1e62baacd2ca33",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_project_template": {
+      "digest": "sha256:fac6644d59632030882dc15f0ea475500c1ace504da4d2053713840a48c43981",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_project_type": {
+      "digest": "sha256:91c9bf56b7ca79159b56a3f8762549fde72df474f51171b788efe6a526222e95",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_project_update": {
+      "digest": "sha256:5bde355adf343a162c40f4cf7430befb4311b936194cc310fc6ce7843f5687e9",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_project_wise_stock_tracking": {
+      "digest": "sha256:309a7edb2edf14606d01d4415a43bf22d8c9ecd7ad6740f780861b9224e93d7c",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_settings": {
+      "digest": "sha256:3cd75ea72f773d423522c85a200e239fec980273f4daf93be6ecb7d713884d0f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_task_type": {
+      "digest": "sha256:4bce4ac9213a3bf9bbec5c295fad893ad53a34b76e35d7aaa0bf3d15aaded31f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/projects.erp_timesheet_billing_summary": {
+      "digest": "sha256:99854265cc489f5f5cabce4b5508673fc28b0b9cd884d9199b332d3526e72162",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

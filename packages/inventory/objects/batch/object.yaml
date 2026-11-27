@@ -1,0 +1,20 @@
+name: batch
+namespace: inventory
+title: Batch register
+plural: Batch registers
+icon: archive-box
+display: title
+description: Register lot identity and dates only. Stock per lot is not yet supported.
+fields:
+  - {name: title, title: Batch number, type: text, required: true, search: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: manufacturedon, title: Manufactured on, type: date, required: true}
+  - {name: expireson, title: Expires on, type: date}
+constraints:
+  - {name: lotidentity, kind: unique, fields: [material, title], message: Batch number must be unique for the item.}
+  - {name: lotdates, kind: expression, fields: [manufacturedon, expireson], expr: "expireson = empty or expireson >= manufacturedon", message: Expiry must not precede manufacture.}
+  - {name: stockitem, kind: expression, fields: [material], expr: "material.state = 'active' and material.kind != 'service'", message: Select an active stock item.}
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, material, manufacturedon, expireson], sort: [{sortKey: expireson, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

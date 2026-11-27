@@ -1,5 +1,5 @@
 id: hr-core
-version: 0.2.0
+version: 0.2.1
 title: HR
 namespace: hr
 description: Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager,

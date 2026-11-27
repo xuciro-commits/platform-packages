@@ -1,0 +1,9 @@
+title: Reserve
+from: [draft]
+roles: [keeper]
+transaction:
+  guard: position.available >= quantity
+  message: Insufficient available stock for this reservation.
+  steps:
+    - target: $subject
+      set: {state: "'reserved'"}

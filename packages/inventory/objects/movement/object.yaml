@@ -1,0 +1,29 @@
+name: movement
+namespace: inventory
+title: Stock movement
+plural: Stock movements
+icon: arrow-trending-up
+display: title
+fields:
+  - {name: title, title: Reference, type: text, required: true}
+  - {name: source, title: Source position, type: reference, ref: inventory.position, inverse: outgoing}
+  - {name: destination, title: Destination position, type: reference, ref: inventory.position, inverse: incoming}
+  - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
+  - {name: reversalof, title: Reversal of, type: reference, ref: inventory.movement}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: posted, title: Posted, tone: success}
+  - {name: reversed, title: Reversed, tone: neutral}
+actions: [receive, issue, transfer, reverse]
+constraints:
+  - name: positivequantity
+    kind: expression
+    fields: [quantity]
+    expr: quantity > 0
+    message: Movement quantity must be positive.
+    translations:
+      zh-CN: 移动数量必须为正数。
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, source, destination, quantity, state, reversalof], sort: [], group: state, lanes: "", filters: [], search: ""}

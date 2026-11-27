@@ -1,0 +1,477 @@
+{
+  "version": 1,
+  "module": "stock",
+  "source": {
+    "repo": "erpnext",
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/stock/sidebar/stock/stock.json"
+  },
+  "pages": [
+    {
+      "reference": "Home",
+      "sourceType": "Workspace",
+      "sourceTarget": "Stock",
+      "target": "inventory.dashboard",
+      "status": "missing",
+      "owner": "package",
+      "note": "Dedicated workspace shortcuts and tasks are not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.home",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Dashboard",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Stock",
+      "target": "inventory.dashboard",
+      "status": "declared",
+      "owner": "package",
+      "note": "指标及状态分布，非完整工作台",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "dashboard",
+      "navigationStatus": "declared"
+    },
+    {
+      "reference": "Item",
+      "sourceType": "DocType",
+      "sourceTarget": "Item",
+      "target": "item.master",
+      "status": "partial",
+      "owner": "package",
+      "note": "Shared authoritative object item.master",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.item",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Warehouse",
+      "sourceType": "DocType",
+      "sourceTarget": "Warehouse",
+      "target": "inventory.warehouse",
+      "status": "partial",
+      "owner": "package",
+      "note": "多级分组、实体仓库约束已通过顺序探针；真实树形UI、迁移和法人范围待补",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.warehouse",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Material Request",
+      "sourceType": "DocType",
+      "sourceTarget": "Material Request",
+      "target": "inventory.request",
+      "status": "partial",
+      "owner": "package",
+      "note": "单项需求及撤回，多行审批与履行待补",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.request",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Stock Entry",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Entry",
+      "target": "inventory.movement",
+      "status": "partial",
+      "owner": "package",
+      "note": "基础数量与冲正，多行、批次、投影待补",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.movement",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Stock Reconciliation",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Reconciliation",
+      "target": "inventory.count",
+      "status": "partial",
+      "owner": "package",
+      "note": "单项实盘、复核时账面快照与差异；未调整、未审批、未过账",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.count",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Purchase Receipt",
+      "sourceType": "DocType",
+      "sourceTarget": "Purchase Receipt",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Cross-package purchase fulfillment and stock receipt are not implemented (IB-ERP-0003/0006).; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.purchase_receipt",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Delivery Note",
+      "sourceType": "DocType",
+      "sourceTarget": "Delivery Note",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Sales fulfillment and stock issue are not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.delivery_note",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Reports",
+      "sourceType": "DocType",
+      "sourceTarget": null,
+      "target": null,
+      "status": "missing",
+      "owner": "platform_review",
+      "note": "flat section declared; actual folding unverified / IB-ERP-0004",
+      "innerBox": "IB-ERP-0004 / IB-ERP-0005",
+      "browserVerified": false,
+      "navigationTarget": null,
+      "navigationStatus": "declared_flat"
+    },
+    {
+      "reference": "Stock Ledger",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Ledger",
+      "target": null,
+      "status": "missing",
+      "owner": "platform_review",
+      "note": "Authorized historical stock ledger requires verified aggregation (IB-ERP-0005/0006).; explicit placeholder page declared",
+      "innerBox": "IB-ERP-0005 / IB-ERP-0006",
+      "browserVerified": false,
+      "navigationTarget": "inventory.stock_ledger",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Stock Balance",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Balance",
+      "target": null,
+      "status": "missing",
+      "owner": "platform_review",
+      "note": "Warehouse and period balance reports are not implemented (IB-ERP-0005/0006).; explicit placeholder page declared",
+      "innerBox": "IB-ERP-0005 / IB-ERP-0006",
+      "browserVerified": false,
+      "navigationTarget": "inventory.stock_balance",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Stock Projected Qty",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Projected Qty",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Supply and demand projection is not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.stock_projected_qty",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Stock Ageing",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Ageing",
+      "target": null,
+      "status": "missing",
+      "owner": "platform_review",
+      "note": "Historical lot age and valuation are not implemented.; explicit placeholder page declared",
+      "innerBox": "IB-ERP-0005",
+      "browserVerified": false,
+      "navigationTarget": "inventory.stock_ageing",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Stock Analytics",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Analytics",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Authorized period inventory analysis is not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.stock_analytics",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Tools",
+      "sourceType": "DocType",
+      "sourceTarget": null,
+      "target": null,
+      "status": "missing",
+      "owner": "platform_review",
+      "note": "flat section declared; actual folding unverified / IB-ERP-0004",
+      "innerBox": "IB-ERP-0004",
+      "browserVerified": false,
+      "navigationTarget": null,
+      "navigationStatus": "declared_flat"
+    },
+    {
+      "reference": "Pick List",
+      "sourceType": "DocType",
+      "sourceTarget": "Pick List",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Picking allocation and fulfillment are not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.pick_list",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Landed Cost Voucher",
+      "sourceType": "DocType",
+      "sourceTarget": "Landed Cost Voucher",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Landed cost allocation and accounting are not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.landed_cost",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Quality Inspection",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Inspection",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Quality inspection package is not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.quality_inspection",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Packing Slip",
+      "sourceType": "DocType",
+      "sourceTarget": "Packing Slip",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Packing and delivery details are not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.packing_slip",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Serial & Batch",
+      "sourceType": "DocType",
+      "sourceTarget": null,
+      "target": null,
+      "status": "missing",
+      "owner": "platform_review",
+      "note": "flat section declared; actual folding unverified / IB-ERP-0004",
+      "innerBox": "IB-ERP-0004",
+      "browserVerified": false,
+      "navigationTarget": null,
+      "navigationStatus": "declared_flat"
+    },
+    {
+      "reference": "Serial No",
+      "sourceType": "DocType",
+      "sourceTarget": "Serial No",
+      "target": "inventory.serial",
+      "status": "partial",
+      "owner": "package",
+      "note": "唯一序列档案及同物料批次；未实现库存流转追踪",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.serial",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Batch No",
+      "sourceType": "DocType",
+      "sourceTarget": "Batch",
+      "target": "inventory.batch",
+      "status": "partial",
+      "owner": "package",
+      "note": "物料批号和生产/失效日期；未建立批次库存分配",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.batch",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Serial and Batch Bundle",
+      "sourceType": "DocType",
+      "sourceTarget": "Serial and Batch Bundle",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Atomic serial and lot allocation is not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.serial_batch_bundle",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Setup",
+      "sourceType": "DocType",
+      "sourceTarget": null,
+      "target": null,
+      "status": "missing",
+      "owner": "platform_review",
+      "note": "flat section declared; actual folding unverified / IB-ERP-0004",
+      "innerBox": "IB-ERP-0004",
+      "browserVerified": false,
+      "navigationTarget": null,
+      "navigationStatus": "declared_flat"
+    },
+    {
+      "reference": "Item Group",
+      "sourceType": "DocType",
+      "sourceTarget": "Item Group",
+      "target": "item.category",
+      "status": "partial",
+      "owner": "package",
+      "note": "Shared authoritative object item.category",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.item_group",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Item Attribute",
+      "sourceType": "DocType",
+      "sourceTarget": "Item Attribute",
+      "target": "item.attribute",
+      "status": "partial",
+      "owner": "package",
+      "note": "Shared authoritative object item.attribute",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.item_attribute",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Brand",
+      "sourceType": "DocType",
+      "sourceTarget": "Brand",
+      "target": "item.brand",
+      "status": "partial",
+      "owner": "package",
+      "note": "Shared authoritative object item.brand",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.brand",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Unit of Measure (UOM)",
+      "sourceType": "DocType",
+      "sourceTarget": "UOM",
+      "target": "uom.unit",
+      "status": "partial",
+      "owner": "package",
+      "note": "Shared authoritative object uom.unit",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.uom",
+      "navigationStatus": "partial"
+    },
+    {
+      "reference": "Inventory Dimension",
+      "sourceType": "DocType",
+      "sourceTarget": "Inventory Dimension",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Configurable inventory dimensions are not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.inventory_dimension",
+      "navigationStatus": "placeholder"
+    },
+    {
+      "reference": "Settings",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Settings",
+      "target": null,
+      "status": "missing",
+      "owner": "package",
+      "note": "Organization inventory policy is not implemented.; explicit placeholder page declared",
+      "innerBox": null,
+      "browserVerified": false,
+      "navigationTarget": "inventory.stock_settings",
+      "navigationStatus": "placeholder"
+    }
+  ],
+  "additional": [
+    {
+      "target": "inventory.position",
+      "status": "partial",
+      "note": "数量与可用量列表；IB-ERP-0006"
+    },
+    {
+      "target": "inventory.reservation",
+      "status": "partial",
+      "note": "顺序预留；并发重放待验收"
+    },
+    {
+      "target": "item.option",
+      "status": "partial",
+      "note": "枚举选项",
+      "browserVerified": false
+    },
+    {
+      "target": "item.assignment",
+      "status": "partial",
+      "note": "物料规格关联",
+      "browserVerified": false
+    }
+  ],
+  "uiGates": [
+    {
+      "id": "browser-core",
+      "status": "unverified",
+      "owner": "package",
+      "acceptance": "安装后核对六个库存入口、真实创建及动作、角色、中文与错误提示"
+    },
+    {
+      "id": "multi-line-entry",
+      "status": "platform_review",
+      "innerBox": "IB-ERP-0002",
+      "acceptance": "现有通用子行编辑完成50行单据录入和错误定位"
+    },
+    {
+      "id": "navigation",
+      "status": "platform_review",
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "id": "reports",
+      "status": "platform_review",
+      "innerBox": "IB-ERP-0005"
+    },
+    {
+      "id": "printing",
+      "status": "platform_review",
+      "innerBox": "IB-ERP-0001"
+    },
+    {
+      "id": "cross-package",
+      "status": "platform_review",
+      "innerBox": "IB-ERP-0003"
+    },
+    {
+      "id": "ledger",
+      "status": "platform_review",
+      "innerBox": "IB-ERP-0006"
+    }
+  ]
+}
