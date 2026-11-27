@@ -1,0 +1,7 @@
+title: Cancel draft invitation
+from: [draft]
+roles: [buyer, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

@@ -7,22 +7,32 @@ display: material
 naming: POL-{n:6}
 fields:
   - {name: order, title: Purchase order, type: reference, ref: purchasing.order, inverse: lines, required: true}
+  - {name: sourcequote, title: Source quotation, type: reference, ref: purchasing.quotation}
+  - {name: sourcerequest, title: Source purchase requisition, type: reference, ref: purchasing.requisition, inverse: orderallocations, readOnly: true}
   - {name: material, title: Item, type: reference, ref: item.master, required: true}
   - {name: itemstate, title: Item status, type: choice, from: material.state, choices: "active:Active,inactive:Inactive"}
   - {name: description, title: Line description, type: longtext}
   - {name: expectedon, title: Line expected delivery, type: date}
   - {name: quantity, title: Base quantity, type: decimal, required: true}
   - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: material.unit}
   - {name: amount, title: Net amount, type: decimal, formula: "quantity * unitprice"}
+actions: [revise]
 constraints:
   - {name: commercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity and price are invalid.}
 createTransaction:
-  guard: "order.state = 'draft' and material.state = 'active'"
-  message: Only draft orders accept new lines for active items.
+  guard: "order.state = 'draft' and material.state = 'active' and coalesce(expectedon, order.orderedon) >= order.orderedon and (coalesce(material.unit.rounding, 0) = 0 or (material.unit.rounding > 0 and round(quantity / material.unit.rounding, 0) * material.unit.rounding = quantity)) and sourcerequest = empty and ((order.sourcekind = 'manual' and sourcequote = empty) or (order.sourcekind = 'quote' and sourcequote != empty and sourcequote = order.sourcequote and sourcequote.state = 'recorded' and sourcequote.mode = 'single' and sourcequote.validuntil >= today() and sourcequote.rfq.supplier = order.supplier and sourcequote.currency = order.currency and order.supplier.state = 'qualified' and sourcequote.rfq.request.state = 'approved' and material = sourcequote.rfq.request.material and quantity <= sourcequote.quantity and quantity <= sourcequote.rfq.request.quantity and coalesce(sourcequote.rfq.request.allocatedqty, 0) + quantity <= sourcequote.rfq.request.quantity and unitprice = sourcequote.unitprice * (100 - coalesce(sourcequote.discountpercent, 0)) / 100))"
+  message: Order line must match its draft order source, item, quantity and agreed net price.
   steps:
-    - target: $subject
+    - name: manual
+      target: $subject
+      when: order.sourcekind = 'manual'
       set: {quantity: quantity}
+    - name: sourced
+      target: $subject
+      when: order.sourcekind = 'quote'
+      set: {quantity: quantity, sourcerequest: sourcequote.rfq.request}
 access:
-  - {role: buyer, read: all, create: true}
-  - {role: manager, read: all, create: true}
-view: {version: 1, layout: table, columns: [order, material, quantity, unitprice, amount], sort: [], group: none, lanes: "", filters: [], search: ""}
+  - {role: buyer, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [order, sourcequote, sourcerequest, material, unit, quantity, unitprice, amount], sort: [], group: none, lanes: "", filters: [], search: ""}

@@ -7,6 +7,7 @@ display: title
 naming: REQ-{year}-{n:5}
 sets:
   lines: {object: purchasing.requisitionline, limit: 500}
+  orderallocations: {object: purchasing.orderline, limit: 500}
 fields:
   - {name: title, title: Reference, type: text, required: true, search: true, group: Request}
   - {name: mode, title: Request entry mode, type: choice, required: true, default: single, choices: "single:Single item,multi:Multiple items", group: Request}
@@ -16,6 +17,8 @@ fields:
   - {name: requestedon, title: Request date, type: date, group: Request}
   - {name: terms, title: Terms, type: longtext, group: Request}
   - {name: reason, title: Reason, type: longtext, group: Request}
+  - {name: allocatedqty, title: Allocated base quantity, type: decimal, formula: sum(orderallocations.quantity), group: Request}
+  - {name: remainingqty, title: Remaining base quantity, type: decimal, formula: "if(mode = 'single', quantity - allocatedqty, 0)", group: Request}
   - {name: linecount, title: Active request lines, type: integer, formula: "sum(lines, if(item.state = 'active', 1, 0))", group: Request}
 states:
   - {name: draft, title: Draft, tone: neutral}
@@ -35,4 +38,4 @@ createTransaction:
 access:
   - {role: buyer, read: all, create: true}
   - {role: manager, read: all, create: true}
-view: {version: 1, layout: table, columns: [title, mode, material, quantity, linecount, neededon, state], sort: [{sortKey: neededon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}
+view: {version: 1, layout: table, columns: [title, mode, material, quantity, allocatedqty, remainingqty, linecount, neededon, state], sort: [{sortKey: neededon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

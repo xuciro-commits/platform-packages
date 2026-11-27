@@ -1,0 +1,701 @@
+{
+  "roles": {
+    "purchasing": "manager",
+    "party": "user",
+    "item": "steward",
+    "uom": "user"
+  },
+  "at": "2026-11-26T09:00:00Z",
+  "members": {
+    "mgr": {
+      "roles": {
+        "purchasing": "manager",
+        "party": "user",
+        "item": "user",
+        "uom": "user"
+      }
+    },
+    "buyer": {
+      "roles": {
+        "purchasing": "buyer",
+        "party": "user",
+        "item": "user",
+        "uom": "user"
+      }
+    }
+  },
+  "steps": [
+    {
+      "do": "party.organization.create",
+      "on": "party.organization/ORG1",
+      "with": {
+        "name": "Shenzhen Fasteners"
+      }
+    },
+    {
+      "do": "purchasing.supplier.create",
+      "on": "purchasing.supplier/S1",
+      "as": "mgr",
+      "with": {
+        "base": "ORG1",
+        "supplierkind": "company"
+      }
+    },
+    {
+      "do": "purchasing.supplier.qualify",
+      "on": "purchasing.supplier/S1",
+      "as": "mgr"
+    },
+    {
+      "do": "item.master.create",
+      "on": "item.master/I1",
+      "with": {
+        "title": "M6 Bolt",
+        "code": "M6-BOLT",
+        "kind": "material",
+        "unit": "pcs"
+      }
+    },
+    {
+      "do": "purchasing.order.create",
+      "on": "purchasing.order/PO1",
+      "as": "buyer",
+      "with": {
+        "title": "PO-50LINES",
+        "supplier": "S1",
+        "sourcekind": "manual",
+        "currency": "CNY",
+        "orderedon": "2026-11-01",
+        "expectedon": "2026-11-10"
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-BAD1",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": -2,
+        "unitprice": 5
+      },
+      "refused": true
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-BAD2",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "MISSING",
+        "quantity": 2,
+        "unitprice": 5
+      },
+      "refused": true
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-01",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-02",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-03",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-04",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-05",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-06",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-07",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-08",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-09",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-10",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-11",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-12",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-13",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-14",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-15",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-16",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-17",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-18",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-19",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-20",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-21",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-22",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-23",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-24",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-25",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-26",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-27",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-28",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-29",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-30",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-31",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-32",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-33",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-34",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-35",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-36",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-37",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-38",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-39",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-40",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-41",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-42",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-43",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-44",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-45",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-46",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-47",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-48",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-49",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-50",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.order.approve",
+      "on": "purchasing.order/PO1",
+      "as": "mgr",
+      "expect": {
+        "state": "approved",
+        "linecount": 50,
+        "total": 500
+      }
+    },
+    {
+      "do": "purchasing.receipt.create",
+      "on": "purchasing.receipt/RCV-STANDALONE",
+      "as": "buyer",
+      "with": {
+        "title": "RCV-STANDALONE",
+        "order": "PO1",
+        "supplier": "S1",
+        "warehouse": "MAIN",
+        "receivedon": "2026-11-10"
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-S1",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-STANDALONE",
+        "material": "I1",
+        "quantity": 10,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receipt.post",
+      "on": "purchasing.receipt/RCV-STANDALONE",
+      "as": "buyer",
+      "expect": {
+        "state": "posted",
+        "totalquantity": 10,
+        "total": 50
+      }
+    },
+    {
+      "do": "purchasing.receipt.void",
+      "on": "purchasing.receipt/RCV-STANDALONE",
+      "as": "mgr",
+      "with": {
+        "on": "2026-11-11"
+      },
+      "expect": {
+        "state": "reversed"
+      }
+    }
+  ]
+}

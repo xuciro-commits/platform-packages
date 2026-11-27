@@ -1,0 +1,12 @@
+title: Revise invitation line
+from: [active]
+roles: [buyer, manager]
+inputs:
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: description, title: Line description, type: longtext}
+transaction:
+  guard: "rfq.state = 'draft' and (rfq.request.state = 'requested' or rfq.request.state = 'approved') and source.state = 'active' and source.material.state = 'active' and input.quantity > 0 and input.quantity <= source.quantity and (coalesce(source.material.unit.rounding, 0) = 0 or (source.material.unit.rounding > 0 and round(input.quantity / source.material.unit.rounding, 0) * source.material.unit.rounding = input.quantity))"
+  message: Select an active line of the same submitted demand with a valid quantity in a draft invitation.
+  steps:
+    - target: $subject
+      set: {quantity: input.quantity, description: input.description}

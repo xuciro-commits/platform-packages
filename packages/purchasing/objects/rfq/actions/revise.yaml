@@ -1,0 +1,16 @@
+title: Revise quotation invitation
+from: [draft]
+roles: [buyer, manager]
+inputs:
+  - {name: title, title: Reference, type: text, required: true}
+  - {name: issuedon, title: Invitation date, type: date}
+  - {name: deadline, title: Response deadline, type: date, required: true}
+  - {name: subject, title: Invitation subject, type: text}
+  - {name: message, title: Supplier message, type: longtext}
+  - {name: terms, title: Terms, type: longtext}
+transaction:
+  guard: "input.deadline >= coalesce(input.issuedon, input.deadline)"
+  message: Response deadline cannot precede invitation date.
+  steps:
+    - target: $subject
+      set: {title: input.title, issuedon: input.issuedon, deadline: input.deadline, subject: input.subject, message: input.message, terms: input.terms}

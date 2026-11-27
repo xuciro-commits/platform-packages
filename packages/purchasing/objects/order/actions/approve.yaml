@@ -1,9 +1,378 @@
-title: Approve purchase order
-from: [draft]
-roles: [manager]
-transaction:
-  guard: "supplier.state = 'qualified' and linecount > 0 and invalidlines = 0"
-  message: Order requires a qualified supplier and at least one active item line.
-  steps:
-    - target: $subject
-      set: {state: "'approved'"}
+{
+  "title": "Approve purchase order",
+  "from": [
+    "draft"
+  ],
+  "roles": [
+    "manager"
+  ],
+  "transaction": {
+    "guard": {
+      "op": "and",
+      "kind": "boolean",
+      "args": [
+        {
+          "op": "=",
+          "kind": "boolean",
+          "args": [
+            {
+              "op": "path",
+              "kind": "choice",
+              "args": [
+                {
+                  "op": "",
+                  "kind": "reference",
+                  "ref": "supplier"
+                }
+              ],
+              "path": [
+                "state"
+              ]
+            },
+            {
+              "op": "",
+              "kind": "choice",
+              "lit": {
+                "value": "qualified"
+              }
+            }
+          ]
+        },
+        {
+          "op": ">",
+          "kind": "boolean",
+          "args": [
+            {
+              "op": "count",
+              "kind": "integer",
+              "agg": {
+                "source": "lines"
+              }
+            },
+            {
+              "op": "",
+              "kind": "integer",
+              "lit": {
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "op": "=",
+          "kind": "boolean",
+          "args": [
+            {
+              "op": "sum",
+              "kind": "integer",
+              "agg": {
+                "source": "lines"
+              },
+              "in": {
+                "op": "if",
+                "kind": "integer",
+                "args": [
+                  {
+                    "op": "=",
+                    "kind": "boolean",
+                    "args": [
+                      {
+                        "op": "path",
+                        "kind": "choice",
+                        "args": [
+                          {
+                            "op": "",
+                            "kind": "reference",
+                            "ref": "item.material"
+                          }
+                        ],
+                        "path": [
+                          "state"
+                        ]
+                      },
+                      {
+                        "op": "",
+                        "kind": "choice",
+                        "lit": {
+                          "value": "active"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "op": "",
+                    "kind": "integer",
+                    "lit": {
+                      "value": 0
+                    }
+                  },
+                  {
+                    "op": "",
+                    "kind": "integer",
+                    "lit": {
+                      "value": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "op": "",
+              "kind": "integer",
+              "lit": {
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "op": "or",
+          "kind": "boolean",
+          "args": [
+            {
+              "op": "=",
+              "kind": "boolean",
+              "args": [
+                {
+                  "op": "",
+                  "kind": "choice",
+                  "ref": "sourcekind"
+                },
+                {
+                  "op": "",
+                  "kind": "choice",
+                  "lit": {
+                    "value": "manual"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "and",
+              "kind": "boolean",
+              "args": [
+                {
+                  "op": "=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "",
+                      "kind": "choice",
+                      "ref": "sourcekind"
+                    },
+                    {
+                      "op": "",
+                      "kind": "choice",
+                      "lit": {
+                        "value": "quote"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "op": "=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "count",
+                      "kind": "integer",
+                      "agg": {
+                        "source": "lines"
+                      }
+                    },
+                    {
+                      "op": "",
+                      "kind": "integer",
+                      "lit": {
+                        "value": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "op": "=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "path",
+                      "kind": "choice",
+                      "args": [
+                        {
+                          "op": "",
+                          "kind": "reference",
+                          "ref": "sourcequote"
+                        }
+                      ],
+                      "path": [
+                        "state"
+                      ]
+                    },
+                    {
+                      "op": "",
+                      "kind": "choice",
+                      "lit": {
+                        "value": "recorded"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "op": "=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "path",
+                      "kind": "choice",
+                      "args": [
+                        {
+                          "op": "",
+                          "kind": "reference",
+                          "ref": "sourcequote"
+                        }
+                      ],
+                      "path": [
+                        "mode"
+                      ]
+                    },
+                    {
+                      "op": "",
+                      "kind": "choice",
+                      "lit": {
+                        "value": "single"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "op": ">=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "path",
+                      "kind": "date",
+                      "args": [
+                        {
+                          "op": "",
+                          "kind": "reference",
+                          "ref": "sourcequote"
+                        }
+                      ],
+                      "path": [
+                        "validuntil"
+                      ]
+                    },
+                    {
+                      "op": "$today",
+                      "kind": "date"
+                    }
+                  ]
+                },
+                {
+                  "op": "=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "path",
+                      "kind": "choice",
+                      "args": [
+                        {
+                          "op": "",
+                          "kind": "reference",
+                          "ref": "sourcequote"
+                        }
+                      ],
+                      "path": [
+                        "rfq",
+                        "request",
+                        "state"
+                      ]
+                    },
+                    {
+                      "op": "",
+                      "kind": "choice",
+                      "lit": {
+                        "value": "approved"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "op": "=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "path",
+                      "kind": "reference",
+                      "args": [
+                        {
+                          "op": "",
+                          "kind": "reference",
+                          "ref": "sourcequote"
+                        }
+                      ],
+                      "path": [
+                        "rfq",
+                        "supplier"
+                      ]
+                    },
+                    {
+                      "op": "",
+                      "kind": "reference",
+                      "ref": "supplier"
+                    }
+                  ]
+                },
+                {
+                  "op": "=",
+                  "kind": "boolean",
+                  "args": [
+                    {
+                      "op": "path",
+                      "kind": "choice",
+                      "args": [
+                        {
+                          "op": "",
+                          "kind": "reference",
+                          "ref": "sourcequote"
+                        }
+                      ],
+                      "path": [
+                        "currency"
+                      ]
+                    },
+                    {
+                      "op": "",
+                      "kind": "choice",
+                      "ref": "currency"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "reads": {
+      "collections": {
+        "lines": {
+          "app": "build",
+          "object": "purchasing.orderline",
+          "policy": "complete",
+          "query": "",
+          "set": "lines",
+          "version": 0
+        }
+      }
+    },
+    "message": "Order requires active items, qualified supplier and a valid source.",
+    "steps": [
+      {
+        "target": "$subject",
+        "set": {
+          "state": "'approved'"
+        }
+      }
+    ]
+  }
+}

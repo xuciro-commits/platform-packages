@@ -1,25 +1,9 @@
 # Changelog
 
-## 0.1.1
+## 0.2.0
 
-- Add stock reservations, release actions, and available-quantity checks for issues and transfers.
-
-## 0.1.0
-
-- Experimental stock position and posted movement model.
-
-## 0.1.2
-
-- 候选冲正：反向移动关联原事实，原单标记已冲正；顺序验收通过前不视为交付。
-
-## 0.1.3
-
-- 增加仓库名录、单项物料需求生命周期和库存工作台；不把未履行的需求计为库存。仓库与既有位置的正式迁移、树形管理、多行明细和跨包履行仍待验收。
-
-## 0.1.4
-
-- 父子仓库及分组/实体类型；分组不可作为位置或需求目标。旧无仓库位置仍兼容，19步候选探针通过。
+- 库存流水 `inventory.movement` 升级为宿主原生 `ledger: true` 账本，维护 `item × warehouse` 实时余额投影，实现系统冲正与期间汇总报表，并提供 `stock.post/1` 契约。
 
 ## 0.1.5
 
-0.1.5：新增批次、序列号和盘点复核三个真实档案/操作入口。盘点在 review 动作捕获当时账面数量及差异，之后不随余额变化，不产生调整或会计凭证；批次、序列号仅身份登记，不表示库存存在、不含仓位或可用量。34步探针通过；完整过账、历史时点、并发、追溯、浏览器及迁移未验收。
+- 初始候选切片。

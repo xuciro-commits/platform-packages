@@ -1,0 +1,9 @@
+title: Void invitation line
+from: [active]
+roles: [buyer, manager]
+transaction:
+  guard: "rfq.state = 'draft'"
+  message: Only draft invitations allow line withdrawal.
+  steps:
+    - target: $subject
+      set: {state: "'voided'"}

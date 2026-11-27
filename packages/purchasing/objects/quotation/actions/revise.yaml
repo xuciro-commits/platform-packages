@@ -1,0 +1,17 @@
+title: Revise draft quotation
+from: [draft]
+roles: [buyer, manager]
+inputs:
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: currency, title: Currency, type: choice, required: true, choices: "CNY:CNY,USD:USD,EUR:EUR"}
+  - {name: vendorref, title: Supplier quotation reference, type: text}
+  - {name: terms, title: Terms, type: longtext}
+  - {name: quotedon, title: Quoted on, type: date, required: true}
+  - {name: validuntil, title: Valid until, type: date, required: true}
+transaction:
+  guard: "mode = 'single' and input.quantity > 0 and input.unitprice >= 0 and input.validuntil >= input.quotedon"
+  message: Quantity and price are invalid or quotation dates are inconsistent.
+  steps:
+    - target: $subject
+      set: {quantity: input.quantity, unitprice: input.unitprice, currency: input.currency, vendorref: input.vendorref, terms: input.terms, quotedon: input.quotedon, validuntil: input.validuntil}

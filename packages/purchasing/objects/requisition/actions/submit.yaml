@@ -1,9 +1,263 @@
-title: Submit requisition
-from: [draft]
-roles: [buyer, manager]
-transaction:
-  guard: "(mode = 'single' and material.state = 'active') or (mode = 'multi' and linecount > 0)"
-  message: An active single item or at least one active detail line is required.
-  steps:
-    - target: $subject
-      set: {state: "'requested'"}
+{
+  "title": "Submit requisition",
+  "from": [
+    "draft"
+  ],
+  "roles": [
+    "buyer",
+    "manager"
+  ],
+  "transaction": {
+    "guard": {
+      "op": "or",
+      "kind": "boolean",
+      "args": [
+        {
+          "op": "and",
+          "kind": "boolean",
+          "args": [
+            {
+              "op": "=",
+              "kind": "boolean",
+              "args": [
+                {
+                  "op": "",
+                  "kind": "choice",
+                  "ref": "mode"
+                },
+                {
+                  "op": "",
+                  "kind": "choice",
+                  "lit": {
+                    "value": "single"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "=",
+              "kind": "boolean",
+              "args": [
+                {
+                  "op": "path",
+                  "kind": "choice",
+                  "args": [
+                    {
+                      "op": "",
+                      "kind": "reference",
+                      "ref": "material"
+                    }
+                  ],
+                  "path": [
+                    "state"
+                  ]
+                },
+                {
+                  "op": "",
+                  "kind": "choice",
+                  "lit": {
+                    "value": "active"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "op": "and",
+          "kind": "boolean",
+          "args": [
+            {
+              "op": "=",
+              "kind": "boolean",
+              "args": [
+                {
+                  "op": "",
+                  "kind": "choice",
+                  "ref": "mode"
+                },
+                {
+                  "op": "",
+                  "kind": "choice",
+                  "lit": {
+                    "value": "multi"
+                  }
+                }
+              ]
+            },
+            {
+              "op": ">",
+              "kind": "boolean",
+              "args": [
+                {
+                  "op": "sum",
+                  "kind": "integer",
+                  "agg": {
+                    "source": "lines"
+                  },
+                  "in": {
+                    "op": "if",
+                    "kind": "integer",
+                    "args": [
+                      {
+                        "op": "=",
+                        "kind": "boolean",
+                        "args": [
+                          {
+                            "op": "",
+                            "kind": "choice",
+                            "ref": "item.state"
+                          },
+                          {
+                            "op": "",
+                            "kind": "choice",
+                            "lit": {
+                              "value": "active"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "op": "",
+                        "kind": "integer",
+                        "lit": {
+                          "value": 1
+                        }
+                      },
+                      {
+                        "op": "",
+                        "kind": "integer",
+                        "lit": {
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "op": "",
+                  "kind": "integer",
+                  "lit": {
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            {
+              "op": "=",
+              "kind": "boolean",
+              "args": [
+                {
+                  "op": "sum",
+                  "kind": "integer",
+                  "agg": {
+                    "source": "lines"
+                  },
+                  "in": {
+                    "op": "if",
+                    "kind": "integer",
+                    "args": [
+                      {
+                        "op": "and",
+                        "kind": "boolean",
+                        "args": [
+                          {
+                            "op": "=",
+                            "kind": "boolean",
+                            "args": [
+                              {
+                                "op": "",
+                                "kind": "choice",
+                                "ref": "item.state"
+                              },
+                              {
+                                "op": "",
+                                "kind": "choice",
+                                "lit": {
+                                  "value": "active"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "op": "!=",
+                            "kind": "boolean",
+                            "args": [
+                              {
+                                "op": "path",
+                                "kind": "choice",
+                                "args": [
+                                  {
+                                    "op": "",
+                                    "kind": "reference",
+                                    "ref": "item.material"
+                                  }
+                                ],
+                                "path": [
+                                  "state"
+                                ]
+                              },
+                              {
+                                "op": "",
+                                "kind": "choice",
+                                "lit": {
+                                  "value": "active"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "op": "",
+                        "kind": "integer",
+                        "lit": {
+                          "value": 1
+                        }
+                      },
+                      {
+                        "op": "",
+                        "kind": "integer",
+                        "lit": {
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "op": "",
+                  "kind": "integer",
+                  "lit": {
+                    "value": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "reads": {
+      "collections": {
+        "lines": {
+          "app": "build",
+          "object": "purchasing.requisitionline",
+          "policy": "complete",
+          "query": "",
+          "set": "lines",
+          "version": 0
+        }
+      }
+    },
+    "message": "Requisition requires at least one active line and all active items.",
+    "steps": [
+      {
+        "target": "$subject",
+        "set": {
+          "state": "'requested'"
+        }
+      }
+    ]
+  }
+}

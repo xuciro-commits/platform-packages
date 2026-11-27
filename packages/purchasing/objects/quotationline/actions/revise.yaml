@@ -1,0 +1,15 @@
+title: Revise quotation line
+from: [active]
+roles: [buyer, manager]
+inputs:
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: description, title: Line description, type: longtext}
+  - {name: expectedon, title: Line expected delivery, type: date}
+  - {name: supplierpart, title: Supplier part number, type: text}
+transaction:
+  guard: "quotation.state = 'draft' and quotation.rfq.state = 'draft' and (quotation.rfq.request.state = 'requested' or quotation.rfq.request.state = 'approved') and invitationline.state = 'active' and invitationline.source.state = 'active' and invitationline.source.material.state = 'active' and input.quantity > 0 and input.quantity <= invitationline.quantity and input.quantity <= invitationline.source.quantity and input.unitprice >= 0 and (coalesce(invitationline.source.material.unit.rounding, 0) = 0 or (invitationline.source.material.unit.rounding > 0 and round(input.quantity / invitationline.source.material.unit.rounding, 0) * invitationline.source.material.unit.rounding = input.quantity))"
+  message: Draft quote line must reference an active line of its own invitation and valid quantity.
+  steps:
+    - target: $subject
+      set: {quantity: input.quantity, unitprice: input.unitprice, description: input.description, expectedon: input.expectedon, supplierpart: input.supplierpart}

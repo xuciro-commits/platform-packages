@@ -2,9 +2,11 @@ title: Review count
 description: Capture the current book quantity and record the discrepancy without moving stock.
 from: [draft]
 roles: [keeper]
+inputs:
+  - {name: bookqty, title: Book quantity at review, type: decimal, required: true}
 transaction:
-  guard: "countedon <= today() and position.balance != empty"
+  guard: "countedon <= today()"
   message: Count date or current book quantity is unavailable.
   steps:
     - target: $subject
-      set: {bookqty: "position.balance", difference: "counted - position.balance", reviewedat: "now()", state: "'reviewed'"}
+      set: {bookqty: input.bookqty, difference: "counted - input.bookqty", reviewedat: "now()", state: "'reviewed'"}

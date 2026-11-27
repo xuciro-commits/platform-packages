@@ -1,0 +1,22 @@
+title: Reverse receipt
+description: Reverse a posted receipt and reverse its stock movements when inventory is connected.
+from: [posted]
+roles: [manager]
+uses: [stock.post/1#reverse]
+inputs:
+  - {name: on, title: Reversal date, type: date}
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'reversed'"}
+    - name: voidlines
+      forEach:
+        set: lines
+        steps:
+          - name: stockrev
+            request: stock.post/1#reverse
+            deferred: true
+            optional: true
+            key: row.id
+            with:
+              on: coalesce(input.on, today())

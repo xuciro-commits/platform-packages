@@ -1,0 +1,16 @@
+title: Revise draft purchase order
+from: [draft]
+roles: [buyer, manager]
+inputs:
+  - {name: title, title: Reference, type: text, required: true}
+  - {name: expectedon, title: Expected on, type: date, required: true}
+  - {name: confirmationno, title: Supplier confirmation number, type: text}
+  - {name: confirmationdate, title: Confirmation date, type: date}
+  - {name: terms, title: Terms, type: longtext}
+  - {name: remarks, title: Remarks, type: longtext}
+transaction:
+  guard: "input.expectedon >= orderedon and coalesce(input.confirmationdate, orderedon) >= orderedon and (sourcekind = 'manual' or (sourcequote.state = 'recorded' and sourcequote.validuntil >= today() and supplier.state = 'qualified' and sourcequote.rfq.request.state = 'approved' and sourcequote.rfq.request.material.state = 'active'))"
+  message: Draft order revision requires valid dates and a still valid quotation source.
+  steps:
+    - target: $subject
+      set: {title: input.title, expectedon: input.expectedon, confirmationno: input.confirmationno, confirmationdate: input.confirmationdate, terms: input.terms, remarks: input.remarks}

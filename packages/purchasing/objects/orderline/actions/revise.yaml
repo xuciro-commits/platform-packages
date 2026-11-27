@@ -1,0 +1,14 @@
+title: Revise draft order line
+from: []
+roles: [buyer, manager]
+inputs:
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: expectedon, title: Line expected delivery, type: date}
+  - {name: description, title: Line description, type: longtext}
+transaction:
+  guard: "order.state = 'draft' and material.state = 'active' and input.quantity > 0 and input.unitprice >= 0 and coalesce(input.expectedon, order.orderedon) >= order.orderedon and (coalesce(material.unit.rounding, 0) = 0 or (material.unit.rounding > 0 and round(input.quantity / material.unit.rounding, 0) * material.unit.rounding = input.quantity)) and ((order.sourcekind = 'manual' and sourcequote = empty) or (order.sourcekind = 'quote' and sourcequote != empty and sourcequote = order.sourcequote and sourcequote.state = 'recorded' and sourcequote.validuntil >= today() and sourcequote.rfq.supplier = order.supplier and sourcequote.currency = order.currency and order.supplier.state = 'qualified' and sourcequote.rfq.request.state = 'approved' and material = sourcequote.rfq.request.material and input.quantity <= sourcequote.quantity and input.quantity <= sourcequote.rfq.request.quantity and sourcerequest = sourcequote.rfq.request and coalesce(sourcerequest.allocatedqty, 0) - quantity + input.quantity <= sourcerequest.quantity and input.unitprice = sourcequote.unitprice * (100 - coalesce(sourcequote.discountpercent, 0)) / 100))"
+  message: Order line must match its draft order source, item, quantity and agreed net price.
+  steps:
+    - target: $subject
+      set: {quantity: input.quantity, unitprice: input.unitprice, expectedon: input.expectedon, description: input.description}

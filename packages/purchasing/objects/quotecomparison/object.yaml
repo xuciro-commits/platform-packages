@@ -1,0 +1,36 @@
+name: quotecomparison
+namespace: purchasing
+title: Quote comparison snapshot
+plural: Quote comparison snapshots
+icon: scale
+display: title
+naming: QCS-{n:6}
+description: Immutable comparison of two recorded single-item quotes on identical demand, quantity and currency. Not a supplier award or financial report.
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: leftquote, title: First quote, type: reference, ref: purchasing.quotation, required: true}
+  - {name: rightquote, title: Second quote, type: reference, ref: purchasing.quotation, required: true}
+  - {name: request, title: Purchase requisition, type: reference, ref: purchasing.requisition}
+  - {name: quantity, title: Base quantity, type: decimal}
+  - {name: currency, title: Currency, type: choice, choices: "CNY:CNY,USD:USD,EUR:EUR"}
+  - {name: leftamount, title: First quote net amount, type: decimal}
+  - {name: rightamount, title: Second quote net amount, type: decimal}
+  - {name: difference, title: Second minus first amount, type: decimal, formula: "coalesce(rightamount, 0) - coalesce(leftamount, 0)"}
+  - {name: capturedon, title: Compared on, type: date}
+  - {name: notes, title: Remarks, type: longtext}
+createTransaction:
+  guard: "leftquote.state = 'recorded' and rightquote.state = 'recorded' and leftquote.mode = 'single' and rightquote.mode = 'single' and leftquote.rfq.request = rightquote.rfq.request and leftquote.rfq.supplier != rightquote.rfq.supplier and leftquote.quantity = rightquote.quantity and leftquote.currency = rightquote.currency and leftquote.validuntil >= today() and rightquote.validuntil >= today() and leftquote.rfq.supplier.state = 'qualified' and rightquote.rfq.supplier.state = 'qualified' and leftquote.rfq.request.state = 'approved' and leftquote.rfq.request.material.state = 'active'"
+  message: Compare valid recorded quotes from different qualified suppliers for the same demand, base quantity and currency.
+  steps:
+    - target: $subject
+      set:
+        request: leftquote.rfq.request
+        quantity: leftquote.quantity
+        currency: leftquote.currency
+        leftamount: leftquote.total
+        rightamount: rightquote.total
+        capturedon: today()
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, request, leftquote, rightquote, quantity, currency, leftamount, rightamount, difference, capturedon], sort: [], group: none, lanes: "", filters: [], search: ""}

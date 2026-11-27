@@ -1,0 +1,33 @@
+name: rfqline
+namespace: purchasing
+title: Quotation invitation line
+plural: Quotation invitation lines
+icon: cube
+display: material
+naming: RFQL-{n:6}
+description: Select a source demand line for one supplier invitation. Preparation only until multi-line approval is supported.
+fields:
+  - {name: rfq, title: Request for quotation, type: reference, ref: purchasing.rfq, required: true}
+  - {name: source, title: Purchase requisition line, type: reference, ref: purchasing.requisitionline, required: true}
+  - {name: material, title: Item, type: reference, ref: item.master, from: source.material}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: source.material.unit}
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: neededon, title: Needed on, type: date, from: source.neededon}
+  - {name: description, title: Line description, type: longtext}
+states:
+  - {name: active, title: Active, tone: success}
+  - {name: voided, title: Voided, tone: neutral}
+actions: [revise, void, reinstate]
+constraints:
+  - {name: sourceidentity, kind: unique, fields: [rfq, source], message: Source demand line already selected in this invitation.}
+  - {name: positiveqty, kind: expression, fields: [quantity], expr: "quantity > 0", message: Quantity must be positive.}
+createTransaction:
+  guard: "rfq.state = 'draft' and rfq.request.mode = 'multi' and (rfq.request.state = 'requested' or rfq.request.state = 'approved') and source.request = rfq.request and source.state = 'active' and source.material.state = 'active' and quantity <= source.quantity and (coalesce(source.material.unit.rounding, 0) = 0 or (source.material.unit.rounding > 0 and round(quantity / source.material.unit.rounding, 0) * source.material.unit.rounding = quantity))"
+  message: Select an active line of the same submitted demand with a valid quantity in a draft invitation.
+  steps:
+    - target: $subject
+      set: {quantity: quantity}
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [rfq, source, material, unit, quantity, neededon, state], sort: [], group: none, lanes: "", filters: [], search: ""}

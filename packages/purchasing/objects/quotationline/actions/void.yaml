@@ -1,0 +1,9 @@
+title: Void quotation line
+from: [active]
+roles: [buyer, manager]
+transaction:
+  guard: "quotation.state = 'draft' and quotation.rfq.state = 'draft'"
+  message: Only draft quotation and invitation allow quotation line withdrawal.
+  steps:
+    - target: $subject
+      set: {state: "'voided'"}

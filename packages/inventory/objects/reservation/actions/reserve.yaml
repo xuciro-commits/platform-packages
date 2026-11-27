@@ -2,7 +2,7 @@ title: Reserve
 from: [draft]
 roles: [keeper]
 transaction:
-  guard: position.available >= quantity
+  guard: "material.state = 'active' and coalesce(warehouse.nodekind, 'storage') = 'storage' and quantity > 0"
   message: Insufficient available stock for this reservation.
   steps:
     - target: $subject

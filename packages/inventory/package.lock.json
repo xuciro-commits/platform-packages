@@ -1,15 +1,16 @@
 {
   "format": 2,
   "package": "inventory",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "requires": [
-    "item-master@^0.1.0",
-    "uom@^0.1.3"
+    "item-master@^0.1.1",
+    "uom@^0.1.3",
+    "stock-contract@^0.1.0"
   ],
-  "artifact": "sha256:dcc1360eefa1fa574ac662a0f2e61b12b1ddd87ee99f768541c5cef10c70baed",
+  "artifact": "sha256:17f0193568d6cb98ecca2038ccafc2e594c3e95a871aa3ad7a32729c32fa666c",
   "assets": {
     "app/inventory": {
-      "digest": "sha256:461a2c2735fa5e62960bea50496a75556f70c26c204f4ecb4497f9e8eff2b2f1",
+      "digest": "sha256:9cd96a2b1d000d8ceda8fe70ddf2c6970598afe35fa8c68fc7dde70ccabdcc55",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -25,23 +26,23 @@
       ]
     },
     "object/inventory.count": {
-      "digest": "sha256:023e4713ebbe92a7f4adb13ebf49273b4bdd8dac0da10c172cf897791fd51112",
+      "digest": "sha256:58217d9590a88be72ae09dbbe54586393b3f988922c045ef83440247f1520d95",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.09b96ea57d077f4d4103a73c2238c74cbe59791165d9663d227c8875150ed7e8",
+          "version": "schema.sha256.278488091eaa2b1cc355476c75474d2c24ac57153016efecf1e52209e58d4ef2",
           "family": 1
         }
       ]
     },
     "object/inventory.movement": {
-      "digest": "sha256:a038f70a0693085af417e7228b23ce849d90c9498129001fff7802f99488e2ce",
+      "digest": "sha256:dc3ee8ac6946caba49a2d0086681412a2cf135a880ebce7093340182d612cdb5",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.896e831058b2353fcf961e41d1b86bb9acfc5b8d744ee5d92986773f698ed3f7",
+          "version": "schema.sha256.e13bbc71b82cc02860bf68858a2424d7ff019a9f948da8f50e8978893fadefd4",
           "family": 1
         }
       ]
@@ -53,17 +54,6 @@
       "schemaVersions": [
         {
           "version": "schema.sha256.7999109667611c13d2e9c048c5fa46b6550a54bed0662502d66f4a7b6f27236f",
-          "family": 1
-        }
-      ]
-    },
-    "object/inventory.position": {
-      "digest": "sha256:bc198e50ea810679cc801a95b0bda220e60cfa04fd1e318650a5ec1f8d3d853d",
-      "contractVersion": 1,
-      "sourceVersion": "1",
-      "schemaVersions": [
-        {
-          "version": "schema.sha256.fd7a95c4bd80a14cedc18d7c5ab77923b1d57dba7b72cb2af60297de2c30af0c",
           "family": 1
         }
       ]
@@ -80,12 +70,12 @@
       ]
     },
     "object/inventory.reservation": {
-      "digest": "sha256:bbf17254ff76f76112e28095645d12b01cfad10edf258741aeb0c822b9bf322f",
+      "digest": "sha256:a662173f8508080b9f68b32583b44876073afff5381945c0c4539c8ac745ede0",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.6a2698b15555916295da3b442c4e90d5719e62ef65258b97f208e4bdfd9b1dcb",
+          "version": "schema.sha256.72a7c3eb89c5b352bc35f3de024d2f107a10d1fcd4a4616ed6d819499af7e452",
           "family": 1
         }
       ]
@@ -112,11 +102,6 @@
         }
       ]
     },
-    "page/inventory.available_qty": {
-      "digest": "sha256:4f95aed68d3dd0b867242535fde4baa4675aa07c8b59235980838eb7cf2926f0",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
     "page/inventory.batch": {
       "digest": "sha256:18de02b346afe38244e0a00877884f0c68f57656e53a9f15102fcf250e9709d5",
       "contractVersion": 1,
@@ -128,7 +113,7 @@
       "sourceVersion": "1"
     },
     "page/inventory.count": {
-      "digest": "sha256:c530fa9e7417bd0b8c8501973fedc6fe0024446aa5dfa3948567ad3125d7b28b",
+      "digest": "sha256:0392e864b41e09c7d9487640ae9f2758008e24255eaf3b6d7036a76ac7c67b36",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -173,7 +158,7 @@
       "sourceVersion": "1"
     },
     "page/inventory.movement": {
-      "digest": "sha256:069560372dbcad081a9ac9df0b545eb6341b5b83bfe5c1100a9a235c10974f17",
+      "digest": "sha256:991b666a50101e59f668afbe06ecf673eaf3e331088dc7da110dc71de2834a4b",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -184,16 +169,6 @@
     },
     "page/inventory.pick_list": {
       "digest": "sha256:25ed0882f43824246d7bb75f9c48166c663f5a25927bf1d9f8cce6c73c0ad18b",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/inventory.position": {
-      "digest": "sha256:ef317b029a53aff2fcfcaa007dc49601c1fdd1c5c0d9c265c181161e087e05d6",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/inventory.purchase_receipt": {
-      "digest": "sha256:a95667fb11479424b702058385a798e8d7583482f7b2c19441bd05c49d512129",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -208,7 +183,7 @@
       "sourceVersion": "1"
     },
     "page/inventory.reservation": {
-      "digest": "sha256:c8048ec6375a215e9e2e19f0ba34435543c809b022adc51951652dd770894ad6",
+      "digest": "sha256:992adff25929395473226b76e74209ec2cb0fb209714c0b1ea9a24760aedfb2b",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -229,16 +204,6 @@
     },
     "page/inventory.stock_analytics": {
       "digest": "sha256:5111b344ebfd171533de56659502d2e9f647a2f08a7490dafea671bae2b812a7",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/inventory.stock_balance": {
-      "digest": "sha256:1d1b9b7275b2f959cddcce8e297d2fd7ee3ca82d37b9a6dc632d6867f080587a",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/inventory.stock_ledger": {
-      "digest": "sha256:e8c4c8ba18833fe83cfeed72e746fc2d34706f73735eace2d0bdb29797daa5a5",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

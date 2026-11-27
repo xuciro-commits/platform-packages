@@ -1,27 +1,32 @@
 roles: {inventory: keeper, item: steward, uom: user}
-at: 2026-11-26T00:00:00Z
+at: 2026-11-26T09:00:00Z
 members:
-  operator: {roles: {inventory: keeper, item: user, uom: user}}
+  keeper1: {roles: {inventory: keeper, item: user, uom: user}}
+  keeper2: {roles: {inventory: keeper, item: user, uom: user}}
   reader: {roles: {inventory: reader, item: user, uom: user}}
 steps:
-  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
-  - {do: inventory.position.create, on: inventory.position/A, as: operator, with: {title: A, item: I1}}
-  - {do: inventory.position.create, on: inventory.position/B, as: operator, with: {title: B, item: I1}}
-  - {do: inventory.movement.create, on: inventory.movement/R1, as: operator, with: {title: Receipt, destination: A, quantity: 100.3}}
-  - {read: inventory.position/A, as: operator, expect: {balance: 0}}
-  - {do: inventory.movement.receive, on: inventory.movement/R1, as: operator, expect: {state: posted}}
-  - {read: inventory.position/A, as: operator, expect: {balance: 100.3}}
-  - {do: inventory.movement.receive, on: inventory.movement/R1, as: operator, refused: true}
-  - {do: inventory.movement.create, on: inventory.movement/I1, as: operator, with: {title: Issue, source: A, quantity: 20.1}}
-  - {do: inventory.movement.issue, on: inventory.movement/I1, as: operator}
-  - {do: inventory.movement.create, on: inventory.movement/T1, as: operator, with: {title: Transfer, source: A, destination: B, quantity: 30.2}}
-  - {do: inventory.movement.transfer, on: inventory.movement/T1, as: operator}
-  - {read: inventory.position/A, as: operator, expect: {balance: 50}}
-  - {read: inventory.position/B, as: operator, expect: {balance: 30.2}}
-  - {do: inventory.movement.create, on: inventory.movement/N1, as: operator, with: {title: Excess, source: A, quantity: 51}}
-  - {do: inventory.movement.issue, on: inventory.movement/N1, as: operator, refused: true}
-  - {read: inventory.movement/N1, expect: {state: draft}}
-  - {read: inventory.position/A, expect: {balance: 50}}
-  - {do: inventory.movement.edit, on: inventory.movement/R1, as: operator, with: {quantity: 999}, refused: true}
-  - {do: inventory.movement.create, on: inventory.movement/X1, as: reader, with: {title: Forbidden, destination: B, quantity: 1}, refused: true}
-  - {do: inventory.movement.create, on: inventory.movement/Z1, as: operator, with: {title: Zero, destination: B, quantity: 0}, refused: true}
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel bolt, code: BOLT-01, kind: material, unit: pcs}}
+  - {do: inventory.warehouse.create, on: inventory.warehouse/MAIN, as: keeper1, with: {title: Main warehouse, code: MAIN}}
+  - {do: inventory.movement.create, on: inventory.movement/M1, as: keeper1, with: {title: Opening receipt, material: I1, warehouse: MAIN, quantity: 10, on: "2026-10-25"}}
+  - {do: inventory.movement.create, on: inventory.movement/M2, as: keeper1, with: {title: November receipt, material: I1, warehouse: MAIN, quantity: 6, on: "2026-11-05"}}
+  - {do: inventory.movement.create, on: inventory.movement/M3, as: keeper1, with: {title: Production issue, material: I1, warehouse: MAIN, quantity: -12, on: "2026-11-10"}}
+  - race:
+      expectAccepted: 1
+      expectRefused: 1
+      expectReason: Insufficient stock on hand
+      submissions:
+        - {do: inventory.movement.create, on: inventory.movement/RACE-A, as: keeper1, with: {title: Keeper 1 issue, material: I1, warehouse: MAIN, quantity: -4, on: "2026-11-12"}}
+        - {do: inventory.movement.create, on: inventory.movement/RACE-B, as: keeper2, with: {title: Keeper 2 issue, material: I1, warehouse: MAIN, quantity: -4, on: "2026-11-12"}}
+  - {do: inventory.movement.create, on: inventory.movement/M4, as: keeper1, with: {title: Mistaken receipt, material: I1, warehouse: MAIN, quantity: 5, on: "2026-11-15"}}
+  - {do: inventory.movement.reverse, on: inventory.movement/M4, as: keeper1, with: {on: "2026-11-16"}}
+  - {read: inventory.movement/M4, as: reader, expect: {reversed: true, quantity: 5}}
+  - period:
+      object: inventory.movement.stock
+      groups: [material, warehouse]
+      measures: ["sum:quantity"]
+      from: "2026-11-01"
+      to: "2026-11-30"
+      expectRows:
+        - {material: I1, warehouse: MAIN, "opening:quantity": 10, "debit:quantity": 11, "credit:quantity": 21, "closing:quantity": 0}
+  - {do: inventory.movement.edit, on: inventory.movement/M1, as: keeper1, with: {quantity: 999}, refused: true}
+  - {do: inventory.movement.create, on: inventory.movement/FORBIDDEN, as: reader, with: {title: Denied, material: I1, warehouse: MAIN, quantity: 1, on: "2026-11-20"}, refused: true}

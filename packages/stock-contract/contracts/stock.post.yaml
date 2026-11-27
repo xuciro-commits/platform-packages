@@ -1,0 +1,26 @@
+name: stock.post
+major: 1
+title: Inventory
+description: Post and reverse signed stock ledger movements across package authorities.
+actions:
+  - name: post
+    title: Post stock movement
+    description: Post a signed stock movement for an item and warehouse.
+    payload:
+      - {name: title, label: Reference, type: text, required: true}
+      - {name: material, label: Item, type: text, required: true}
+      - {name: warehouse, label: Warehouse, type: text, required: true}
+      - {name: quantity, label: Quantity in base unit, type: decimal, required: true}
+      - {name: on, label: Business date, type: date}
+      - {name: sourcetype, label: Source document type, type: text}
+      - {name: sourceid, label: Source document, type: text}
+  - name: reverse
+    title: Reverse stock movement
+    description: Reverse a posted stock movement without editing the original fact.
+    payload:
+      - {name: on, label: Business date, type: date}
+tests:
+  - name: posts
+    title: Posts an inbound stock movement
+    action: post
+    payload: {title: RCV-001, material: I1, warehouse: MAIN, quantity: 1, on: "2026-11-26"}

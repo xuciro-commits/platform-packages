@@ -1,0 +1,35 @@
+title: Create sourced order draft
+description: Create the draft order and its single source line together; not an approval or allocation across quotes.
+from: [recorded]
+roles: [buyer, manager]
+open: draftorder
+inputs:
+  - {name: title, title: Reference, type: text, required: true}
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: expectedon, title: Expected on, type: date, required: true}
+transaction:
+  guard: "mode = 'single' and draftorder = empty and validuntil >= today() and quotedon <= today() and rfq.supplier.state = 'qualified' and rfq.request.state = 'approved' and rfq.request.mode = 'single' and rfq.request.material.state = 'active' and input.expectedon >= today() and input.quantity > 0 and input.quantity <= quantity and input.quantity <= rfq.request.quantity and coalesce(rfq.request.allocatedqty, 0) + input.quantity <= rfq.request.quantity and (coalesce(rfq.request.material.unit.rounding, 0) = 0 or (rfq.request.material.unit.rounding > 0 and round(input.quantity / rfq.request.material.unit.rounding, 0) * rfq.request.material.unit.rounding = input.quantity))"
+  message: Create one sourced draft only from a valid recorded quote with an active approved demand and valid quantity and dates.
+  steps:
+    - name: po
+      target: purchasing.order
+      set:
+        title: input.title
+        supplier: rfq.supplier
+        sourcekind: "'quote'"
+        sourcequote: $subject
+        currency: currency
+        orderedon: today()
+        expectedon: input.expectedon
+        terms: terms
+    - name: line
+      target: purchasing.orderline
+      set:
+        order: step.po
+        sourcequote: $subject
+        material: rfq.request.material
+        quantity: input.quantity
+        unitprice: "unitprice * (100 - coalesce(discountpercent, 0)) / 100"
+        expectedon: input.expectedon
+    - target: $subject
+      set: {draftorder: step.po, draftorderline: step.line}

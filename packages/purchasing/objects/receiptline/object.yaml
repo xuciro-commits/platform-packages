@@ -1,0 +1,28 @@
+name: receiptline
+namespace: purchasing
+title: Purchase receipt line
+plural: Purchase receipt lines
+icon: cube
+display: material
+naming: PRL-{n:6}
+fields:
+  - {name: receipt, title: Purchase receipt, type: reference, ref: purchasing.receipt, inverse: lines, required: true}
+  - {name: orderline, title: Purchase order line, type: reference, ref: purchasing.orderline}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: material.unit}
+  - {name: warehouse, title: Line warehouse, type: text}
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true, default: "0"}
+  - {name: amount, title: Net amount, type: decimal, formula: "quantity * unitprice"}
+constraints:
+  - {name: commercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity and price are invalid.}
+createTransaction:
+  guard: "receipt.state = 'draft' and material.state = 'active'"
+  message: Only draft receipts accept new lines for active items.
+  steps:
+    - target: $subject
+      set: {quantity: quantity}
+access:
+  - {role: buyer, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [receipt, orderline, material, unit, warehouse, quantity, unitprice, amount], sort: [], group: none, lanes: "", filters: [], search: ""}

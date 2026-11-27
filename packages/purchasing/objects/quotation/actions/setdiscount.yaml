@@ -1,0 +1,11 @@
+title: Set quotation discount
+from: [draft]
+roles: [buyer, manager]
+inputs:
+  - {name: percent, title: Discount percent, type: decimal, required: true}
+transaction:
+  guard: "mode = 'single' and (rfq.state = 'draft' or rfq.state = 'open') and input.percent >= 0 and input.percent <= 100"
+  message: Single draft quotation discount must be between zero and one hundred percent.
+  steps:
+    - target: $subject
+      set: {discountpercent: input.percent}

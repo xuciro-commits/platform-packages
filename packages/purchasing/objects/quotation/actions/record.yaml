@@ -2,7 +2,7 @@ title: Record quotation
 from: [draft]
 roles: [buyer, manager]
 transaction:
-  guard: "rfq.state = 'open' and rfq.deadline >= today() and rfq.supplier.state = 'qualified' and quotedon <= today() and validuntil >= today()"
+  guard: "mode = 'single' and rfq.state = 'open' and rfq.request.state = 'approved' and rfq.request.mode = 'single' and rfq.request.material.state = 'active' and rfq.deadline >= today() and rfq.supplier.state = 'qualified' and quotedon <= today() and validuntil >= today()"
   message: Quote is outside the active invitation or validity window.
   steps:
     - target: $subject

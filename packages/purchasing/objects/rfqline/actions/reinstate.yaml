@@ -1,0 +1,9 @@
+title: Restore invitation line
+from: [voided]
+roles: [buyer, manager]
+transaction:
+  guard: "rfq.state = 'draft' and (rfq.request.state = 'requested' or rfq.request.state = 'approved') and source.state = 'active' and source.material.state = 'active' and quantity <= source.quantity and (coalesce(source.material.unit.rounding, 0) = 0 or (source.material.unit.rounding > 0 and round(quantity / source.material.unit.rounding, 0) * source.material.unit.rounding = quantity))"
+  message: Select an active line of the same submitted demand with a valid quantity in a draft invitation.
+  steps:
+    - target: $subject
+      set: {state: "'active'"}

@@ -1,0 +1,31 @@
+title: Post receipt
+description: Record the purchase receipt and post inbound stock movements when inventory is connected.
+from: [draft]
+roles: [buyer, manager]
+uses: [stock.post/1#post]
+transaction:
+  reads:
+    collections:
+      lines: {app: build, object: purchasing.receiptline, policy: complete, query: "", set: lines, version: 0}
+  guard: "count(lines) > 0 and supplier.state = 'qualified' and sum(lines, if(item.material.state = 'active', 0, 1)) = 0"
+  message: Receipt requires a qualified supplier and at least one active item line.
+  steps:
+    - target: $subject
+      set: {state: "'posted'"}
+    - name: postlines
+      forEach:
+        set: lines
+        steps:
+          - name: stockin
+            request: stock.post/1#post
+            deferred: true
+            optional: true
+            key: row.id
+            with:
+              title: title
+              material: row.material
+              warehouse: coalesce(row.warehouse, warehouse)
+              quantity: row.quantity
+              on: receivedon
+              sourcetype: "'purchasing.receipt'"
+              sourceid: row.receipt

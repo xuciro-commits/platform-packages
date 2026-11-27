@@ -1,0 +1,41 @@
+name: quotationline
+namespace: purchasing
+title: Supplier quotation line
+plural: Supplier quotation lines
+icon: cube
+display: material
+naming: SQL-{n:6}
+description: Draft commercial line linked to an invitation line; not an accepted supplier response.
+fields:
+  - {name: quotation, title: Supplier quotation, type: reference, ref: purchasing.quotation, inverse: lines, required: true}
+  - {name: invitationline, title: Quotation invitation line, type: reference, ref: purchasing.rfqline, required: true}
+  - {name: material, title: Item, type: reference, ref: item.master, from: invitationline.source.material}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: invitationline.source.material.unit}
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: discountpercent, title: Discount percent, type: decimal, default: "0"}
+  - {name: grossamount, title: Gross amount, type: decimal, formula: "quantity * unitprice"}
+  - {name: discountamount, title: Discount amount, type: decimal, formula: "grossamount - amount"}
+  - {name: leadtime, title: Lead time days, type: integer}
+  - {name: amount, title: Net amount, type: decimal, formula: "quantity * unitprice * (100 - coalesce(discountpercent, 0)) / 100"}
+  - {name: description, title: Line description, type: longtext}
+  - {name: expectedon, title: Line expected delivery, type: date}
+  - {name: supplierpart, title: Supplier part number, type: text}
+states:
+  - {name: active, title: Active, tone: success}
+  - {name: voided, title: Voided, tone: neutral}
+actions: [revise, void, setcommercial]
+constraints:
+  - {name: sourceline, kind: unique, fields: [quotation, invitationline], message: Invitation line already quoted in this draft.}
+  - {name: commercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity and price are invalid.}
+  - {name: discountbounds, kind: expression, fields: [discountpercent, leadtime], expr: "coalesce(discountpercent, 0) >= 0 and coalesce(discountpercent, 0) <= 100 and coalesce(leadtime, 0) >= 0", message: Discount and lead time are invalid.}
+createTransaction:
+  guard: "quotation.state = 'draft' and quotation.mode = 'multi' and quotation.rfq.state = 'draft' and (quotation.rfq.request.state = 'requested' or quotation.rfq.request.state = 'approved') and invitationline.rfq = quotation.rfq and invitationline.state = 'active' and invitationline.source.state = 'active' and invitationline.source.material.state = 'active' and quantity <= invitationline.quantity and quantity <= invitationline.source.quantity and (coalesce(invitationline.source.material.unit.rounding, 0) = 0 or (invitationline.source.material.unit.rounding > 0 and round(quantity / invitationline.source.material.unit.rounding, 0) * invitationline.source.material.unit.rounding = quantity))"
+  message: Draft quote line must reference an active line of its own invitation and valid quantity.
+  steps:
+    - target: $subject
+      set: {quantity: quantity}
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [quotation, invitationline, material, unit, quantity, unitprice, discountpercent, grossamount, discountamount, amount, leadtime, state], sort: [], group: none, lanes: "", filters: [], search: ""}

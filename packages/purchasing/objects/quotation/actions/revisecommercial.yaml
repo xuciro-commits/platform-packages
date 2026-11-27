@@ -1,0 +1,15 @@
+title: Revise quotation terms
+from: [draft]
+roles: [buyer, manager]
+inputs:
+  - {name: title, title: Reference, type: text, required: true}
+  - {name: vendorref, title: Supplier quotation reference, type: text}
+  - {name: terms, title: Terms, type: longtext}
+  - {name: quotedon, title: Quoted on, type: date, required: true}
+  - {name: validuntil, title: Valid until, type: date, required: true}
+transaction:
+  guard: "(rfq.state = 'draft' or rfq.state = 'open') and input.validuntil >= input.quotedon"
+  message: Revise terms only on an active draft quotation with valid dates.
+  steps:
+    - target: $subject
+      set: {title: input.title, vendorref: input.vendorref, terms: input.terms, quotedon: input.quotedon, validuntil: input.validuntil}

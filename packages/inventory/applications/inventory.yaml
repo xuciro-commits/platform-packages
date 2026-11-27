@@ -1,18 +1,16 @@
 name: inventory
 title: Inventory
 icon: archive-box
-pages: [inventory.home, inventory.item, inventory.warehouse, inventory.request, inventory.movement, inventory.count, inventory.purchase_receipt, inventory.delivery_note, inventory.stock_ledger, inventory.stock_balance, inventory.stock_projected_qty, inventory.stock_ageing, inventory.stock_analytics, inventory.available_qty, inventory.pick_list, inventory.landed_cost, inventory.quality_inspection, inventory.packing_slip, inventory.serial, inventory.batch, inventory.serial_batch_bundle, inventory.item_group, inventory.item_attribute, inventory.brand, inventory.uom, inventory.inventory_dimension, inventory.stock_settings, inventory.variant_settings, inventory.delivery_settings, inventory.stock_reposting_settings, inventory.position, inventory.reservation]
+pages: [inventory.home, inventory.item, inventory.warehouse, inventory.movement, inventory.reservation, inventory.request, inventory.count, inventory.delivery_note, inventory.stock_projected_qty, inventory.stock_ageing, inventory.stock_analytics, inventory.pick_list, inventory.landed_cost, inventory.quality_inspection, inventory.packing_slip, inventory.serial, inventory.batch, inventory.serial_batch_bundle, inventory.item_group, inventory.item_attribute, inventory.brand, inventory.uom, inventory.inventory_dimension, inventory.stock_settings, inventory.variant_settings, inventory.delivery_settings, inventory.stock_reposting_settings]
 groups:
-  - {title: "Overview", pages: [inventory.home, inventory.item, inventory.warehouse, inventory.request, inventory.movement, inventory.count, inventory.purchase_receipt, inventory.delivery_note]}
-  - {title: "Reports", pages: [inventory.stock_ledger, inventory.stock_balance, inventory.stock_projected_qty, inventory.stock_ageing, inventory.stock_analytics, inventory.available_qty]}
+  - {title: "Overview", pages: [inventory.home, inventory.item, inventory.warehouse, inventory.movement, inventory.reservation, inventory.request, inventory.count, inventory.delivery_note]}
+  - {title: "Reports", pages: [inventory.stock_projected_qty, inventory.stock_ageing, inventory.stock_analytics]}
   - {title: "Tools", pages: [inventory.pick_list, inventory.landed_cost, inventory.quality_inspection, inventory.packing_slip]}
   - {title: "Serial & Batch", pages: [inventory.serial, inventory.batch, inventory.serial_batch_bundle]}
   - {title: "Setup", pages: [inventory.item_group, inventory.item_attribute, inventory.brand, inventory.uom, inventory.inventory_dimension, inventory.stock_settings, inventory.variant_settings, inventory.delivery_settings, inventory.stock_reposting_settings]}
-  - {title: "Additional operations", pages: [inventory.position, inventory.reservation]}
 dashboard:
-  - {title: Stock positions, kind: metric, object: inventory.position}
-  - {title: Draft movements, kind: metric, object: inventory.movement, domain: [[state, "=", draft]]}
+  - {title: Posted movements, kind: metric, object: inventory.movement}
   - {title: Active reservations, kind: metric, object: inventory.reservation, domain: [[state, "=", reserved]]}
   - {title: Open material demands, kind: metric, object: inventory.request, domain: [[state, "=", requested]]}
-  - {title: Movements by state, kind: bar, object: inventory.movement, group: state}
+  - {title: Movements by warehouse, kind: bar, object: inventory.movement, group: warehouse, measure: "sum:quantity"}
   - {title: Demands by state, kind: bar, object: inventory.request, group: state}

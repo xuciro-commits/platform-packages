@@ -7,9 +7,12 @@ display: title
 naming: PO-{year}-{n:5}
 sets:
   lines: {object: purchasing.orderline, limit: 500}
+  receipts: {object: purchasing.receipt, limit: 200}
 fields:
   - {name: title, title: Reference, type: text, required: true, search: true, group: Order}
   - {name: supplier, title: Supplier, type: reference, ref: purchasing.supplier, required: true, group: Order}
+  - {name: sourcekind, title: Order source kind, type: choice, required: true, default: manual, choices: "manual:Manual order,quote:From quotation", group: Order}
+  - {name: sourcequote, title: Source quotation, type: reference, ref: purchasing.quotation, group: Order}
   - {name: currency, title: Currency, type: choice, required: true, choices: "CNY:CNY,USD:USD,EUR:EUR", group: Order}
   - {name: orderedon, title: Order date, type: date, required: true, group: Order}
   - {name: expectedon, title: Expected on, type: date, required: true, group: Order}
@@ -24,10 +27,27 @@ states:
   - {name: draft, title: Draft, tone: neutral}
   - {name: approved, title: Approved, tone: success}
   - {name: cancelled, title: Cancelled, tone: neutral}
-actions: [approve, cancel]
+actions: [approve, cancel, revise]
 constraints:
   - {name: dates, kind: expression, fields: [orderedon, expectedon], expr: "expectedon >= orderedon", message: Expected date cannot precede order date.}
+  - {name: sourceidentity, kind: unique, fields: [sourcequote], message: A draft or historical order already exists for this quotation.}
+  - {name: sourcemode, kind: expression, fields: [sourcekind, sourcequote], expr: "(sourcekind = 'manual' and sourcequote = empty) or (sourcekind = 'quote' and sourcequote != empty)", message: Select a quotation only for a sourced order.}
+createTransaction:
+  guard: "sourcekind = 'manual' or (sourcequote.state = 'recorded' and sourcequote.mode = 'single' and sourcequote.validuntil >= today() and sourcequote.validuntil >= orderedon and sourcequote.quotedon <= orderedon and sourcequote.rfq.supplier = supplier and sourcequote.currency = currency and supplier.state = 'qualified' and sourcequote.rfq.request.state = 'approved' and sourcequote.rfq.request.material.state = 'active')"
+  message: Sourced order requires a valid recorded single quote with matching supplier and currency.
+  steps:
+    - target: $subject
+      set: {sourcekind: sourcekind}
 access:
-  - {role: buyer, read: all, create: true}
-  - {role: manager, read: all, create: true}
-view: {version: 1, layout: table, columns: [title, supplier, orderedon, expectedon, currency, total, state], sort: [{sortKey: expectedon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}
+  - {role: buyer, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [title, supplier, sourcekind, sourcequote, orderedon, expectedon, currency, total, state]
+  sort: [{sortKey: expectedon, direction: ascending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  print: {title: Purchase order, fields: [title, supplier, orderedon, expectedon, currency, linecount, total]}

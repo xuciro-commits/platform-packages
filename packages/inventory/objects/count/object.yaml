@@ -7,7 +7,8 @@ display: title
 description: Capture a count and compare it with the book quantity at review. This does not post a stock adjustment.
 fields:
   - {name: title, title: Reference, type: text, required: true, search: true}
-  - {name: position, title: Stock position, type: reference, ref: inventory.position, required: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, required: true}
   - {name: counted, title: Counted quantity, type: decimal, required: true}
   - {name: countedon, title: Counted on, type: date, required: true}
   - {name: bookqty, title: Book quantity at review, type: decimal, readOnly: true}
@@ -23,4 +24,4 @@ constraints:
 access:
   - {role: reader, read: all}
   - {role: keeper, read: all, create: true}
-view: {version: 1, layout: table, columns: [title, position, countedon, counted, bookqty, difference, state], sort: [{sortKey: countedon, direction: descending}], group: state, lanes: "", filters: [], search: ""}
+view: {version: 1, layout: table, columns: [title, material, warehouse, countedon, counted, bookqty, difference, state], sort: [{sortKey: countedon, direction: descending}], group: state, lanes: "", filters: [], search: ""}

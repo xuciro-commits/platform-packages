@@ -1,16 +1,17 @@
 {
   "format": 2,
   "package": "purchasing",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "requires": [
     "party@^0.2.2",
     "item-master@^0.1.1",
-    "uom@^0.1.3"
+    "uom@^0.1.3",
+    "stock-contract@^0.1.0"
   ],
-  "artifact": "sha256:fadd40b0e16d873f795cecbea54f1a157135d99273fc3d6078394a7ca16d4a28",
+  "artifact": "sha256:01d1ec2b7dff5756d75554bfa8191e1686cfb9f986cc52c239980afc7b81da67",
   "assets": {
     "app/purchasing": {
-      "digest": "sha256:94bdf748205f5c988c33b00359bf0cf095317f7f75cdda78f1df31022db18594",
+      "digest": "sha256:ee35f1736b84d312c4ba93593b4a7f9ac601cdd03eeeb5930c2b48e5e05f761f",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -26,45 +27,89 @@
       ]
     },
     "object/purchasing.order": {
-      "digest": "sha256:e80d072b55e32b27bb6c76b96794ececeb7acf2069c1af911789ef3021daa293",
+      "digest": "sha256:c48861730a482bd9ff00b9fb2a091eb35817182d1b50b0ccbb6257dbccfb4499",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.15792f78069b8d7b67a94af724f5f5ea65a8977ca12042881817768d12f87746",
+          "version": "schema.sha256.f08fa41b1f49cd3b77c2b7ffd7cfdc08fa45409b413215863d6869f32f4b7d21",
           "family": 1
         }
       ]
     },
     "object/purchasing.orderline": {
-      "digest": "sha256:570efb487d4b50033415792cd4e4e2c6008cb4b09564b25ee7961899356fced0",
+      "digest": "sha256:64eaa7d50be52f9670b0f368feaa7c5a15730c94f05300cb40e42b2e6aa29345",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.310cf18ae661a846219502e56495aa0700283bdc5c71256d6ace3a8f492e3863",
+          "version": "schema.sha256.b38e36a8856fad2b06d76422aefcb8adb9630d76134c1af91a872409521ecf56",
           "family": 1
         }
       ]
     },
     "object/purchasing.quotation": {
-      "digest": "sha256:ab61d741f3ffcf413ae6d57c9e3229014513757cdf2f5e687d5b31d61a878d73",
+      "digest": "sha256:378691c16cdab4dd1a8003a478ca4bddd4b5151f40193c54df7fe8876049df40",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.38e9a49941a8bec30f34be8710cb43473b46249e73ea875c9aecfd12b5c85b94",
+          "version": "schema.sha256.5a16fcb956e8ad0c9519d5072d9147beb719c44ed4c2e2e06f7df2d7bcf47fe2",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.quotationline": {
+      "digest": "sha256:03efcb10dca4f315ebda4149785e352ab837a0e7efbbcc3214e6d40d7af8deba",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.60843fab13fadceb1d73bdfce0f84da7d553ed2f64bb3874650702359cd22cb2",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.quotecomparison": {
+      "digest": "sha256:46ff08cabf97c060358e1eee3a44964474a883adb9e77dfc388a94a7466c6977",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.ef377fc0dadf593557662fd6f082d8ce9a531c57731f04e2ea9f3c4543d1fb0a",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.receipt": {
+      "digest": "sha256:94dcc186005691972594835cf613667d96320212dfe9f26bc606b97e533b6d79",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.314e8da8e41c2575af6363492265841fa780227ce243f1462556dbbbc9d7da52",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.receiptline": {
+      "digest": "sha256:ea3aa7b5e4d5765d555d6670aac394fef7b1732d5769600b82b8cdbd7fd0a1f9",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.58b7f5ddb31d498bbeb02505f36f53e2cbae57939d70ca346fdd73e31a70c875",
           "family": 1
         }
       ]
     },
     "object/purchasing.requisition": {
-      "digest": "sha256:150537f89abead77315f7a1c92df9c501d61d046e7eedd6974c99d31552cd5b1",
+      "digest": "sha256:29280fb93218080d0f40933ee0d5a6c4cb850475c2ce96cd07b7efa42d7495dd",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.d8df2b801da95e6661590fec74ba9fc653478c116b32023acfadb20b3239df60",
+          "version": "schema.sha256.d732fc627d1023c2d03a49bf1805b780b7d0d5829f1bb714dfebbf8d983554a8",
           "family": 1
         }
       ]
@@ -81,12 +126,23 @@
       ]
     },
     "object/purchasing.rfq": {
-      "digest": "sha256:8723d62be02d0ecbc6700e3b547c5b4813a456c16cc1f13707184de2fcd1412b",
+      "digest": "sha256:1a007f49f3f1f52bc93d9c048f045c969de852fcd643b8302641302e1a5fd570",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.2d543c0d874f0e7d40ae0f40847de4f13ac22b0c62f20f355c0dc892f6036e25",
+          "version": "schema.sha256.e7fc708afb8cc3d0d37bffc717d8d06e18faacb67d68b4e8fe33b5ea712749a6",
+          "family": 1
+        }
+      ]
+    },
+    "object/purchasing.rfqline": {
+      "digest": "sha256:f884f14048c274923e7d745dfb7239e17c48a934fc523e92641cfc489e2a1c98",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.643559f66936ca053bb4cb6786394325b8b8b1fcd20d0fcbc8dc2b2bdab57cc5",
           "family": 1
         }
       ]
@@ -139,7 +195,7 @@
       "sourceVersion": "1"
     },
     "page/purchasing.order": {
-      "digest": "sha256:001c3f5674fab3faabba001adfa6f66a40736c8295886b00dcbc85b225636473",
+      "digest": "sha256:acb9f57e11068911877edbe971533929ed9730e3741644ba99e8bc9830c090de",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -149,7 +205,7 @@
       "sourceVersion": "1"
     },
     "page/purchasing.orderline": {
-      "digest": "sha256:9611cfab4adcc5f7755f194407e22f20a6d6e8ab4dea18f418b99cdd520101b3",
+      "digest": "sha256:5ab10eaebc48fe54d1e7f7a33247244befab2a53d7bceeb1f3ce01206e5a438f",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -173,18 +229,13 @@
       "contractVersion": 1,
       "sourceVersion": "1"
     },
-    "page/purchasing.purchase_receipt": {
-      "digest": "sha256:ea6e0781074f26f458409cadb695b62a21bdbb2f978b94af2fdd61e74c301f7f",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
     "page/purchasing.purchase_register": {
       "digest": "sha256:b9c9f90e043163f88511019c55d8df6d76cfc3d90009be2500a98d15eaa84fc4",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
     "page/purchasing.quotation": {
-      "digest": "sha256:35fdcd60c2a8f8caa75e9c0076e44178b05d184480a6860604a794c0d6087f2d",
+      "digest": "sha256:8ff866056e2b1aa1d77559658e802ab50284a81e0ed0857526d0b5e0ee771130",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -193,8 +244,28 @@
       "contractVersion": 1,
       "sourceVersion": "1"
     },
+    "page/purchasing.quotationline": {
+      "digest": "sha256:4fdd5460313dc44a200a027cfd76233a6054c7f87467d7a83b06a73bd2082d11",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.quotecomparison": {
+      "digest": "sha256:485f071b7a3484efd500a0152eb09d52605c570e652c7a00fccfcef4dd49570f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.receipt": {
+      "digest": "sha256:4f95047dd634ed3f12817260ebcd73b96c1bcf1109f307e66896d796d545102f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.receiptline": {
+      "digest": "sha256:29e584e475a2d5b86c1756dd3e7b7c7ded9ce59bc5b2a59dd4f354efecaebe4f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
     "page/purchasing.requisition": {
-      "digest": "sha256:a46f04870b4380273976e23cd622feca46faca0cc92a8efb678bb20f9895bf85",
+      "digest": "sha256:cfc2cfe1870533cac87ac48ad2de7cca69ca26eb5bb81ea4d714895919aa26e2",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -205,6 +276,11 @@
     },
     "page/purchasing.rfq": {
       "digest": "sha256:4a94b75414bf165b121c530e7c5327ce957ba4a943f8ee4608579ea1513e52c7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/purchasing.rfqline": {
+      "digest": "sha256:02594090cf01be08f2307f9049d7939c19665863791dba0892473275b0efa35c",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

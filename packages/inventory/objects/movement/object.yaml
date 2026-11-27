@@ -4,26 +4,62 @@ title: Stock movement
 plural: Stock movements
 icon: arrow-trending-up
 display: title
+ledger: true
 fields:
-  - {name: title, title: Reference, type: text, required: true}
-  - {name: source, title: Source position, type: reference, ref: inventory.position, inverse: outgoing}
-  - {name: destination, title: Destination position, type: reference, ref: inventory.position, inverse: incoming}
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, required: true}
   - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
-  - {name: reversalof, title: Reversal of, type: reference, ref: inventory.movement}
-states:
-  - {name: draft, title: Draft, tone: neutral}
-  - {name: posted, title: Posted, tone: success}
-  - {name: reversed, title: Reversed, tone: neutral}
-actions: [receive, issue, transfer, reverse]
+  - {name: on, title: Business date, type: date, required: true, default: today}
+  - {name: sourcetype, title: Source document type, type: text}
+  - {name: sourceid, title: Source document, type: text, search: true}
+  - {name: reverses, title: Reverses, type: reference, ref: inventory.movement, readOnly: true}
+  - {name: reversed, title: Reversed, type: boolean, readOnly: true}
+balances:
+  - name: stock
+    title: Stock balance
+    keys: [material, warehouse]
+    measures: [quantity]
+    access:
+      - {role: reader, read: all}
+      - {role: keeper, read: all}
+    constraints:
+      - name: onhand
+        kind: expression
+        expr: "quantity >= 0"
+        message: Insufficient stock on hand for this item and warehouse.
 constraints:
-  - name: positivequantity
+  - name: nonzero
     kind: expression
     fields: [quantity]
-    expr: quantity > 0
-    message: Movement quantity must be positive.
-    translations:
-      zh-CN: 移动数量必须为正数。
+    expr: "quantity != 0"
+    message: Movement quantity cannot be zero.
+  - name: activeitem
+    kind: expression
+    fields: [material]
+    expr: "material.state = 'active'"
+    message: Select an active item.
+  - name: storagewarehouse
+    kind: expression
+    fields: [warehouse]
+    expr: "coalesce(warehouse.nodekind, 'storage') = 'storage'"
+    message: Select a storage warehouse, not a group.
+protocols:
+  - name: stock.post
+    version: 1
+    actions: {post: create, reverse: reverse}
 access:
   - {role: reader, read: all}
   - {role: keeper, read: all, create: true}
-view: {version: 1, layout: table, columns: [title, source, destination, quantity, state, reversalof], sort: [], group: state, lanes: "", filters: [], search: ""}
+view:
+  version: 1
+  layout: table
+  columns: [on, title, material, warehouse, quantity, sourcetype, sourceid, reversed, reverses]
+  sort: [{sortKey: on, direction: descending}]
+  group: warehouse
+  lanes: ""
+  filters: []
+  search: ""
+  dates: on
+  reports:
+    - {name: period_summary, title: Stock period summary, group: material, subGroup: warehouse, measure: "sum:quantity", dates: on}

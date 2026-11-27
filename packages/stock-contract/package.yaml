@@ -1,0 +1,26 @@
+id: stock-contract
+version: 0.1.0
+title: Inventory contract
+namespace: stockcontract
+description: Stock posting and reversal capability contract stock.post/1.
+listing:
+  industries:
+  - general
+  - manufacturing
+  - distribution
+  domains:
+  - inventory
+  keywords:
+  - stock
+  - ledger
+  - contract
+  stage: preview
+  source:
+    ecosystem: platform
+    app: stock
+    relation: original
+roots:
+- app: build
+  kind: contract
+  name: stock.post
+artifact: stock-contract.json

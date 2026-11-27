@@ -1,0 +1,1523 @@
+{
+  "roles": {
+    "purchasing": "manager",
+    "inventory": "keeper",
+    "party": "user",
+    "item": "steward",
+    "uom": "user"
+  },
+  "at": "2026-11-26T09:00:00Z",
+  "members": {
+    "mgr": {
+      "roles": {
+        "purchasing": "manager",
+        "inventory": "keeper",
+        "party": "user",
+        "item": "user",
+        "uom": "user"
+      }
+    },
+    "buyer": {
+      "roles": {
+        "purchasing": "buyer",
+        "inventory": "keeper",
+        "party": "user",
+        "item": "user",
+        "uom": "user"
+      }
+    },
+    "keeper1": {
+      "roles": {
+        "inventory": "keeper",
+        "item": "user",
+        "uom": "user"
+      }
+    },
+    "keeper2": {
+      "roles": {
+        "inventory": "keeper",
+        "item": "user",
+        "uom": "user"
+      }
+    }
+  },
+  "steps": [
+    {
+      "do": "platform.protocol.bind",
+      "on": "platform.protocol/stock.post/1",
+      "with": {
+        "provider": "build"
+      }
+    },
+    {
+      "do": "party.organization.create",
+      "on": "party.organization/ORG1",
+      "with": {
+        "name": "Shenzhen Fasteners"
+      }
+    },
+    {
+      "do": "purchasing.supplier.create",
+      "on": "purchasing.supplier/S1",
+      "as": "mgr",
+      "with": {
+        "base": "ORG1",
+        "supplierkind": "company"
+      }
+    },
+    {
+      "do": "purchasing.supplier.qualify",
+      "on": "purchasing.supplier/S1",
+      "as": "mgr"
+    },
+    {
+      "do": "item.master.create",
+      "on": "item.master/I1",
+      "with": {
+        "title": "M6 Bolt",
+        "code": "M6-BOLT",
+        "kind": "material",
+        "unit": "pcs"
+      }
+    },
+    {
+      "do": "inventory.warehouse.create",
+      "on": "inventory.warehouse/MAIN",
+      "as": "keeper1",
+      "with": {
+        "title": "Main warehouse",
+        "code": "MAIN"
+      }
+    },
+    {
+      "do": "inventory.movement.create",
+      "on": "inventory.movement/OPEN-1",
+      "as": "keeper1",
+      "with": {
+        "title": "Opening stock",
+        "material": "I1",
+        "warehouse": "MAIN",
+        "quantity": 10,
+        "on": "2026-10-25"
+      }
+    },
+    {
+      "do": "purchasing.order.create",
+      "on": "purchasing.order/PO1",
+      "as": "buyer",
+      "with": {
+        "title": "PO-2026-0001",
+        "supplier": "S1",
+        "sourcekind": "manual",
+        "currency": "CNY",
+        "orderedon": "2026-11-01",
+        "expectedon": "2026-11-05"
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/BAD-1",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 0,
+        "unitprice": 5
+      },
+      "refused": true
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/BAD-2",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "NO-SUCH-ITEM",
+        "quantity": 2,
+        "unitprice": 5
+      },
+      "refused": true
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-01",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-02",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-03",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-04",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-05",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-06",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-07",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-08",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-09",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-10",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-11",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-12",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-13",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-14",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-15",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-16",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-17",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-18",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-19",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-20",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-21",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-22",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-23",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-24",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-25",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-26",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-27",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-28",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-29",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-30",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-31",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-32",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-33",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-34",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-35",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-36",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-37",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-38",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-39",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-40",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-41",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-42",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-43",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-44",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-45",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-46",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-47",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-48",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-49",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.orderline.create",
+      "on": "purchasing.orderline/POL-50",
+      "as": "buyer",
+      "with": {
+        "order": "PO1",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.order.approve",
+      "on": "purchasing.order/PO1",
+      "as": "mgr",
+      "expect": {
+        "state": "approved",
+        "linecount": 50,
+        "total": 500
+      }
+    },
+    {
+      "do": "purchasing.receipt.create",
+      "on": "purchasing.receipt/RCV-50",
+      "as": "buyer",
+      "with": {
+        "title": "RCV-50",
+        "order": "PO1",
+        "supplier": "S1",
+        "warehouse": "MAIN",
+        "receivedon": "2026-11-05"
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-01",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-01",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-02",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-02",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-03",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-03",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-04",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-04",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-05",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-05",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-06",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-06",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-07",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-07",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-08",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-08",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-09",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-09",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-10",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-10",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-11",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-11",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-12",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-12",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-13",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-13",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-14",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-14",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-15",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-15",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-16",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-16",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-17",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-17",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-18",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-18",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-19",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-19",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-20",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-20",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-21",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-21",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-22",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-22",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-23",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-23",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-24",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-24",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-25",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-25",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-26",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-26",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-27",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-27",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-28",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-28",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-29",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-29",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-30",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-30",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-31",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-31",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-32",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-32",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-33",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-33",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-34",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-34",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-35",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-35",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-36",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-36",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-37",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-37",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-38",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-38",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-39",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-39",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-40",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-40",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-41",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-41",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-42",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-42",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-43",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-43",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-44",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-44",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-45",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-45",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-46",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-46",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-47",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-47",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-48",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-48",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-49",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-49",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-50",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-50",
+        "orderline": "POL-50",
+        "material": "I1",
+        "quantity": 2,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receipt.post",
+      "on": "purchasing.receipt/RCV-50",
+      "as": "mgr",
+      "expect": {
+        "state": "posted",
+        "linecount": 50,
+        "totalquantity": 100
+      }
+    },
+    {
+      "read": "inventory.movement/PRL-01",
+      "as": "keeper1",
+      "expect": {
+        "material": "I1",
+        "warehouse": "MAIN",
+        "quantity": 2,
+        "sourcetype": "purchasing.receipt",
+        "sourceid": "RCV-50"
+      }
+    },
+    {
+      "read": "inventory.movement/PRL-50",
+      "as": "keeper1",
+      "expect": {
+        "material": "I1",
+        "warehouse": "MAIN",
+        "quantity": 2,
+        "sourcetype": "purchasing.receipt",
+        "sourceid": "RCV-50"
+      }
+    },
+    {
+      "do": "inventory.movement.create",
+      "on": "inventory.movement/ISS-106",
+      "as": "keeper1",
+      "with": {
+        "title": "Shopfloor issue",
+        "material": "I1",
+        "warehouse": "MAIN",
+        "quantity": -106,
+        "on": "2026-11-08"
+      }
+    },
+    {
+      "race": {
+        "expectAccepted": 1,
+        "expectRefused": 1,
+        "expectReason": "Insufficient stock on hand",
+        "submissions": [
+          {
+            "do": "inventory.movement.create",
+            "on": "inventory.movement/RACE-1",
+            "as": "keeper1",
+            "with": {
+              "title": "Keeper1 last 4",
+              "material": "I1",
+              "warehouse": "MAIN",
+              "quantity": -4,
+              "on": "2026-11-09"
+            }
+          },
+          {
+            "do": "inventory.movement.create",
+            "on": "inventory.movement/RACE-2",
+            "as": "keeper2",
+            "with": {
+              "title": "Keeper2 last 4",
+              "material": "I1",
+              "warehouse": "MAIN",
+              "quantity": -4,
+              "on": "2026-11-09"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "do": "purchasing.receipt.create",
+      "on": "purchasing.receipt/RCV-REV",
+      "as": "buyer",
+      "with": {
+        "title": "RCV-REV",
+        "order": "PO1",
+        "supplier": "S1",
+        "warehouse": "MAIN",
+        "receivedon": "2026-11-12"
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-REV1",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-REV",
+        "material": "I1",
+        "quantity": 6,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receipt.post",
+      "on": "purchasing.receipt/RCV-REV",
+      "as": "mgr",
+      "expect": {
+        "state": "posted"
+      }
+    },
+    {
+      "read": "inventory.movement/PRL-REV1",
+      "as": "keeper1",
+      "expect": {
+        "quantity": 6
+      }
+    },
+    {
+      "do": "purchasing.receipt.void",
+      "on": "purchasing.receipt/RCV-REV",
+      "as": "mgr",
+      "with": {
+        "on": "2026-11-13"
+      },
+      "expect": {
+        "state": "reversed"
+      }
+    },
+    {
+      "read": "inventory.movement/PRL-REV1",
+      "as": "keeper1",
+      "expect": {
+        "quantity": 6,
+        "reversed": true
+      }
+    },
+    {
+      "period": {
+        "object": "inventory.movement.stock",
+        "groups": [
+          "material",
+          "warehouse"
+        ],
+        "measures": [
+          "sum:quantity"
+        ],
+        "from": "2026-11-01",
+        "to": "2026-11-30",
+        "expectRows": [
+          {
+            "material": "I1",
+            "warehouse": "MAIN",
+            "opening:quantity": 10,
+            "debit:quantity": 106,
+            "credit:quantity": 116,
+            "closing:quantity": 0
+          }
+        ]
+      }
+    },
+    {
+      "do": "platform.package.drain",
+      "on": "platform.package/inventory",
+      "with": {
+        "id": "inventory"
+      }
+    },
+    {
+      "do": "platform.package.retire",
+      "on": "platform.package/inventory",
+      "with": {
+        "id": "inventory"
+      }
+    },
+    {
+      "do": "purchasing.receipt.create",
+      "on": "purchasing.receipt/RCV-AFTER-RETIRE",
+      "as": "buyer",
+      "with": {
+        "title": "RCV-AFTER-RETIRE",
+        "order": "PO1",
+        "supplier": "S1",
+        "warehouse": "MAIN",
+        "receivedon": "2026-11-20"
+      }
+    },
+    {
+      "do": "purchasing.receiptline.create",
+      "on": "purchasing.receiptline/PRL-AFTER1",
+      "as": "buyer",
+      "with": {
+        "receipt": "RCV-AFTER-RETIRE",
+        "material": "I1",
+        "quantity": 8,
+        "unitprice": 5
+      }
+    },
+    {
+      "do": "purchasing.receipt.post",
+      "on": "purchasing.receipt/RCV-AFTER-RETIRE",
+      "as": "mgr",
+      "expect": {
+        "state": "posted",
+        "totalquantity": 8
+      }
+    },
+    {
+      "read": "inventory.movement/PRL-AFTER1",
+      "as": "keeper1",
+      "refused": true
+    }
+  ]
+}

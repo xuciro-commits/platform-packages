@@ -1,0 +1,38 @@
+name: receipt
+namespace: purchasing
+title: Purchase receipt
+plural: Purchase receipts
+icon: inbox
+display: title
+naming: PR-{year}-{n:5}
+sets:
+  lines: {object: purchasing.receiptline, limit: 500}
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true, group: Receipt}
+  - {name: order, title: Purchase order, type: reference, ref: purchasing.order, inverse: receipts, group: Receipt}
+  - {name: supplier, title: Supplier, type: reference, ref: purchasing.supplier, required: true, group: Receipt}
+  - {name: warehouse, title: Warehouse, type: text, required: true, default: MAIN, group: Receipt}
+  - {name: receivedon, title: Receipt date, type: date, required: true, default: today, group: Receipt}
+  - {name: deliverynote, title: Supplier delivery note, type: text, group: Receipt}
+  - {name: remarks, title: Remarks, type: longtext, group: Receipt}
+  - {name: linecount, title: Line count, type: integer, formula: count(lines), group: Totals}
+  - {name: totalquantity, title: Total quantity, type: decimal, formula: sum(lines.quantity), group: Totals}
+  - {name: total, title: Net amount, type: decimal, formula: sum(lines.amount), group: Totals}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: posted, title: Posted, tone: success}
+  - {name: reversed, title: Reversed, tone: neutral}
+actions: [post, void]
+access:
+  - {role: buyer, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [title, order, supplier, warehouse, receivedon, linecount, totalquantity, total, state]
+  sort: [{sortKey: receivedon, direction: descending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  print: {title: Purchase receipt, fields: [title, order, supplier, warehouse, receivedon, deliverynote, totalquantity, total]}

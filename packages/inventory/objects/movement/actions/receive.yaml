@@ -1,9 +1,0 @@
-title: Receive
-from: [draft]
-roles: [keeper]
-transaction:
-  guard: "reversalof = empty and source = empty and destination != empty and destination.item.state = 'active'"
-  message: Invalid stock movement or insufficient available stock.
-  steps:
-    - target: $subject
-      set: {state: "'posted'"}

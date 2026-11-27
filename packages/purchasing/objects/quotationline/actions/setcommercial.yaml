@@ -1,0 +1,12 @@
+title: Set line discount and lead time
+from: [active]
+roles: [buyer, manager]
+inputs:
+  - {name: percent, title: Discount percent, type: decimal, required: true}
+  - {name: leadtime, title: Lead time days, type: integer}
+transaction:
+  guard: "quotation.state = 'draft' and quotation.rfq.state = 'draft' and (quotation.rfq.request.state = 'requested' or quotation.rfq.request.state = 'approved') and invitationline.state = 'active' and invitationline.source.state = 'active' and invitationline.source.material.state = 'active' and quantity <= invitationline.quantity and quantity <= invitationline.source.quantity and input.percent >= 0 and input.percent <= 100 and coalesce(input.leadtime, 0) >= 0"
+  message: Draft line requires an active source, valid quantity, discount and lead time.
+  steps:
+    - target: $subject
+      set: {discountpercent: input.percent, leadtime: input.leadtime}

@@ -20,9 +20,11 @@ states:
   - {name: draft, title: Draft, tone: neutral}
   - {name: open, title: Open for quotes, tone: info}
   - {name: closed, title: Closed, tone: neutral}
-actions: [open, close]
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [open, close, revise, cancel]
 constraints:
   - {name: uniqueinvitation, kind: unique, fields: [request, supplier], message: Supplier already invited for this requisition.}
+  - {name: invitationdates, kind: expression, fields: [issuedon, deadline], expr: "issuedon = empty or deadline >= issuedon", message: Response deadline cannot precede invitation date.}
 access:
   - {role: buyer, read: all, create: true}
   - {role: manager, read: all, create: true}
