@@ -14,6 +14,8 @@ fields:
   - {name: discount, title: Discount %, type: integer}
   - {name: amount, title: Amount, type: money, formula: "quantity * price - quantity * price * coalesce(discount, 0) / 100"}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: team, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

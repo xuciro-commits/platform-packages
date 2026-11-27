@@ -13,6 +13,8 @@ fields:
   - {name: color, title: Color, type: choice, choices: "gray:Gray,blue:Blue,green:Green,red:Red,orange:Orange,purple:Purple,pink:Pink,amber:Amber,cyan:Cyan"}
   - {name: exit, title: Exit criteria, type: longtext}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: all}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

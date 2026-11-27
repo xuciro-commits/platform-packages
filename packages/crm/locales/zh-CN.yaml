@@ -344,3 +344,5 @@ salesmanager: 销售主管
 "Reference": "标识"
 "Technical navigation placeholder. No business records or operations.": "技术导航占位，不含业务记录和操作。"
 "Overview": "概览"
+"Archiving moves this record out of active views.": "归档将把这条记录移出活动视图。"
+"Calling dials an external phone number immediately.": "拨打会立即向外部号码发起通话。"

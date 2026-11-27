@@ -12,6 +12,8 @@ fields:
   - {name: role, title: Role, type: choice, required: true, choices: "decisionmaker:Decision maker,champion:Champion,influencer:Influencer,user:User,blocker:Blocker"}
   - {name: notes, title: Notes, type: longtext}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: team, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

@@ -19,6 +19,8 @@ fields:
 
 actions: [dial]
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: all, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

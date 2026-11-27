@@ -9,6 +9,8 @@ fields:
   - {name: title, title: Reason, type: text, required: true, search: true}
   - {name: position, title: Position, type: integer}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: all}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

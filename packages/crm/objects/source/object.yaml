@@ -10,6 +10,8 @@ fields:
   - {name: position, title: Position, type: integer}
   - {name: details, title: Details, type: longtext}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: all}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

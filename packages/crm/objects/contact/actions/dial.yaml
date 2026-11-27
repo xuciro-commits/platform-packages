@@ -1,5 +1,6 @@
 title: Call
 description: Call this contact through the tenant's phone service; the call shows up in the call bar.
+ask: 'Calling dials an external phone number immediately.'
 uses: [call/1#dial]
 transaction:
   steps:

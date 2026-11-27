@@ -13,6 +13,8 @@ fields:
   - {name: description, title: Description, type: longtext, group: Product}
   - {name: active, title: Active, type: boolean, default: "true", aside: true}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: all}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

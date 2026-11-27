@@ -38,6 +38,8 @@ states:
   - {name: disqualified, title: Disqualified, tone: danger, description: Not worth pursuing.}
 actions: [dial, convert, disqualify, reopen]
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: team, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

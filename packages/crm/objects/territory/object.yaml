@@ -10,6 +10,8 @@ fields:
   - {name: parent, title: Parent territory, type: reference, ref: crm.territory}
   - {name: manager, title: Territory manager, type: member}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: all}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

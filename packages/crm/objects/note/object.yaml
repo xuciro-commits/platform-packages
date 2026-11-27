@@ -15,6 +15,8 @@ fields:
   - {name: content, title: Content, type: longtext}
   - {name: pinned, title: Pinned, type: boolean, aside: true}
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: team, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}

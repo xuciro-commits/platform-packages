@@ -26,6 +26,8 @@ states:
   - {name: canceled, title: Canceled, tone: neutral, description: No longer needed.}
 actions: [dial, complete, cancel, reopen]
 
+ask: {archive: 'Archiving moves this record out of active views.'}
+
 access:
   - {role: salesrep, read: team, create: true, edit: true}
   - {role: salesmanager, read: all, create: true, edit: true, archive: true}
