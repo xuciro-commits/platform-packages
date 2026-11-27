@@ -25,6 +25,10 @@
 | [call](packages/call) | 能力：电话呼出的契约 `call/1`（拨号与一致性测试），实现见 phone | 预览 |
 | [phone](packages/phone) | 来电与外呼：浏览器里接听与拨打，通话记录对上往来单位的联系人；实现 `call/1` | 预览 |
 
+## 平台验收夹具
+
+所有包作者态统一位于 `packages/<id>/`。独立验收包使用 `listing.stage: test` 与 `listing.source.app: fixtures` 标识，只参与验收、不进入市场；测试制品临时构建，不保留历史副本。
+
 ## 开发
 
 - [十分钟做出第一个包](docs/getting-started.md)
