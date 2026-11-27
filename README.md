@@ -27,7 +27,7 @@
 
 ## 平台验收夹具
 
-[Platform 验收夹具](fixtures/platform/README.md) 与正式 `packages/` 分离，保存独立测试包作者态及固定版本制品，不进入正式市场。
+[Platform 验收夹具](fixtures/platform/README.md) 与正式 `packages/` 分离，只保存独立测试包的当前作者态，制品临时构建，不进入正式市场。
 
 ## 开发
 
