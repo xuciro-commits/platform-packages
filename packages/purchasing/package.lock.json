@@ -7,7 +7,7 @@
     "item-master@^0.1.1",
     "uom@^0.1.3"
   ],
-  "artifact": "sha256:971c7c9be96a736528b67501d3373d6579481d85737679ef3016793f356abbef",
+  "artifact": "sha256:fadd40b0e16d873f795cecbea54f1a157135d99273fc3d6078394a7ca16d4a28",
   "assets": {
     "app/purchasing": {
       "digest": "sha256:94bdf748205f5c988c33b00359bf0cf095317f7f75cdda78f1df31022db18594",

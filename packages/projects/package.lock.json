@@ -5,7 +5,7 @@
   "requires": [
     "party@^0.2.0"
   ],
-  "artifact": "sha256:ef38321d7c8afc593021a8f6719875f0dbba481a37a753f82b7ce75ea789e4cb",
+  "artifact": "sha256:71b829eed05275c014e7e086218f68350fd56a5cc1be158cd4e6510a0732c4f7",
   "assets": {
     "app/projects": {
       "digest": "sha256:32875f92e8130d935714ecebf98cda33aac41ea63fb47795b52b7a7467f12679",

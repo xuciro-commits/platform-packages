@@ -3,7 +3,7 @@
   "package": "manufacturing",
   "version": "0.1.0",
   "requires": [],
-  "artifact": "sha256:46104d2ee4a16cf13933b094261c1d6b767b5cec5248517e555a7cb6e26019d8",
+  "artifact": "sha256:82b64744409352e952de03da2519ecb5931f95833fd8e539f954c2efef12a31e",
   "assets": {
     "app/manufacturing": {
       "digest": "sha256:10b01381f658e857d2015287d8e5c66fd828928bfc4c568063ddc071734c5fd9",

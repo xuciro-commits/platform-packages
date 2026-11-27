@@ -3,7 +3,7 @@
   "package": "quality",
   "version": "0.1.0",
   "requires": [],
-  "artifact": "sha256:6ada6e8a86a89edcd5aa58f1f687dc7650a4d4c4367e7a6fc300de6254a810e5",
+  "artifact": "sha256:2d0b12ffcad778f56c3a27736f4186cc90da466148ccc16d28dc613678a45d85",
   "assets": {
     "app/quality": {
       "digest": "sha256:7b0a634a3026833dc89d1bb879565585ee8c73a53de8800ec8f7d07973054ea7",

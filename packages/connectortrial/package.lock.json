@@ -5,7 +5,7 @@
   "requires": [
     "connectortrial-contract"
   ],
-  "artifact": "sha256:6ca97338688f82f764bd098523c93ed02d2580873f2cb11cc71fc4aade30a53a",
+  "artifact": "sha256:46215f9371374775304652a8530da1dabc245ad0e0e92d5bf1a625789441d4d4",
   "assets": {
     "app/connectortrial": {
       "digest": "sha256:c4a7d101149c1645047b9c41fd8d44184fec59f306816630d238456335ec6558",

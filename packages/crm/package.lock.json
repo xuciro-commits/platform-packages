@@ -6,7 +6,7 @@
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:cd4ea9ecb2e79b0252132bc774bf6de13e453069e406a9d3288f842dcaaf64e9",
+  "artifact": "sha256:6ef8d88e8c6cb9daf4071a4170109b14fbebd4349813dd91653a9448782879f6",
   "assets": {
     "app/crm": {
       "digest": "sha256:5894a32b7572e4a4af958b8b9b8ac39afc2addee7b238bd2555f9c03686e0ebd",

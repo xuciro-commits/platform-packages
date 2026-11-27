@@ -3,7 +3,7 @@
   "package": "accounting",
   "version": "0.1.0",
   "requires": [],
-  "artifact": "sha256:425cdbbd1294041c560b8e0a02479f133b07107c2bc2ceea7778d3d429bcbe8a",
+  "artifact": "sha256:2b0f4197d2107ee03e3bcaa4f7bdbe84d279316b45b99791b217202240b6593c",
   "assets": {
     "app/accounting": {
       "digest": "sha256:3d3cba22e0e090810a0ba664bdbe20611557678e6f760ef0eef20c9f65940373",

@@ -3,7 +3,7 @@
   "package": "erp-settings",
   "version": "0.1.0",
   "requires": [],
-  "artifact": "sha256:ba340971a9ad5842c208a9030520d7b2203aae71a99a990a597cc9d68f2b4308",
+  "artifact": "sha256:e386b2e75a0d28bf1aa342908f687563c6ffbbb1fa67285c479a2303c8ad93c2",
   "assets": {
     "app/erpsettings": {
       "digest": "sha256:900f4446894cb393c1f9674c725e4b6b3ed30302f50f4da8da926984ba9749d6",

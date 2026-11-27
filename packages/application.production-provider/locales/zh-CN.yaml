@@ -39,3 +39,4 @@ Unit production cost: 单位生产成本
 "Batch identity has already been accepted.": "该批次标识已接收。"
 "One stock balance per product.": "每个产品仅有一条库存余额。"
 "The production quantities are invalid or exceed the remaining allowance.": "生产数量无效或超过剩余限额。"
+"user": "用户"
