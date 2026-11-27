@@ -32,7 +32,9 @@
           "version": "v1.x",
           "license": "AGPL-3.0",
           "relation": "redesign"
-        }
+        },
+        "icon": "user-group",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/88ecbf4c4feae9d4b791f342b63fb8823e7390a0/packages/crm/assets/cover.avif"
       },
       "kind": "application"
     },
@@ -66,7 +68,9 @@
         },
         "domains": [
           "sales"
-        ]
+        ],
+        "icon": "user-group",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/crm/assets/cover.avif"
       },
       "kind": "application"
     },
@@ -100,7 +104,8 @@
         },
         "domains": [
           "sales"
-        ]
+        ],
+        "icon": "user-group"
       },
       "kind": "application"
     },
@@ -134,7 +139,8 @@
         },
         "domains": [
           "sales"
-        ]
+        ],
+        "icon": "user-group"
       },
       "kind": "application"
     },
@@ -159,7 +165,8 @@
           "administrative-division",
           "master-data"
         ],
-        "stage": "preview"
+        "stage": "preview",
+        "icon": "globe-alt"
       },
       "kind": "master-data"
     },
@@ -184,7 +191,8 @@
         "stage": "preview",
         "domains": [
           "master-data"
-        ]
+        ],
+        "icon": "globe-alt"
       },
       "kind": "master-data"
     },
@@ -219,7 +227,9 @@
           "version": "v1.x",
           "license": "AGPL-3.0",
           "relation": "redesign"
-        }
+        },
+        "icon": "lifebuoy",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/helpdesk/assets/cover.avif"
       },
       "kind": "application"
     },
@@ -254,7 +264,8 @@
         "domains": [
           "service",
           "knowledge"
-        ]
+        ],
+        "icon": "lifebuoy"
       },
       "kind": "application"
     },
@@ -289,7 +300,8 @@
         "domains": [
           "service",
           "knowledge"
-        ]
+        ],
+        "icon": "lifebuoy"
       },
       "kind": "application"
     },
@@ -321,7 +333,9 @@
           "version": "v15.x",
           "license": "GPL-3.0",
           "relation": "redesign"
-        }
+        },
+        "icon": "users",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/hr-core/assets/cover.avif"
       },
       "kind": "application"
     },
@@ -353,7 +367,8 @@
         },
         "domains": [
           "hr"
-        ]
+        ],
+        "icon": "users"
       },
       "kind": "application"
     },
@@ -378,7 +393,9 @@
           "supplier",
           "master-data"
         ],
-        "stage": "preview"
+        "stage": "preview",
+        "icon": "globe-alt",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/88ecbf4c4feae9d4b791f342b63fb8823e7390a0/packages/party/assets/cover.avif"
       },
       "kind": "master-data"
     },
@@ -403,7 +420,9 @@
         "stage": "preview",
         "domains": [
           "master-data"
-        ]
+        ],
+        "icon": "globe-alt",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/party/assets/cover.avif"
       },
       "kind": "master-data"
     },
@@ -428,7 +447,8 @@
         "stage": "preview",
         "domains": [
           "master-data"
-        ]
+        ],
+        "icon": "globe-alt"
       },
       "kind": "master-data"
     },
@@ -462,7 +482,8 @@
           "version": "v15.x",
           "license": "GPL-3.0",
           "relation": "redesign"
-        }
+        },
+        "icon": "rectangle-group"
       },
       "kind": "application"
     },
@@ -486,7 +507,9 @@
           "conversion",
           "master-data"
         ],
-        "stage": "preview"
+        "stage": "preview",
+        "icon": "scale",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/88ecbf4c4feae9d4b791f342b63fb8823e7390a0/packages/uom/assets/cover.avif"
       },
       "kind": "master-data"
     },
@@ -510,7 +533,8 @@
         "stage": "preview",
         "domains": [
           "master-data"
-        ]
+        ],
+        "icon": "scale"
       },
       "kind": "master-data"
     }

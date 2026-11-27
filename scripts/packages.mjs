@@ -68,6 +68,8 @@ function writeCatalog(list, out) {
   run(pkg, ["catalog", "-o", out, "-title", catalogTitle, "-url", releaseURL, ...list.map((p) => p.dir)]);
   const doc = JSON.parse(readFileSync(out, "utf8"));
   const merged = new Map();
+  const historical = new Map(previous.map(entry => [`${entry.id}@${entry.version}`, entry]));
+  const sources = new Map(list.map(p => [p.id, p]));
   const add = (entry) => {
     const key = `${entry.id}@${entry.version}`;
     if (!merged.has(key)) merged.set(key, entry);
@@ -77,7 +79,18 @@ function writeCatalog(list, out) {
     if (!zh?.title || (entry.description && !zh?.description)) {
       problems.push(`${entry.id}@${entry.version}: catalog entry is missing zh-CN title or description in locales`);
     }
-    if (pinsRelease() || released(entry)) add(entry);
+    if (pinsRelease() || released(entry)) {
+      const prior = historical.get(`${entry.id}@${entry.version}`)?.listing;
+      const source = sources.get(entry.id);
+      const cover = entry.listing?.cover || prior?.cover || (source && existsSync(join(source.dir, "assets", "cover.avif")) ? `packages/${source.name}/assets/cover.avif` : undefined);
+      const icon = entry.listing?.icon || prior?.icon;
+      if (icon || cover) {
+        entry.listing ??= {};
+        if (icon) entry.listing.icon = icon;
+        if (cover) entry.listing.cover = cover;
+      }
+      add(entry);
+    }
   }
   for (const item of previous) {
     if (released(item)) add(item);
