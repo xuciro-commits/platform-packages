@@ -1,0 +1,8 @@
+title: Activate
+description: Offer the item for new business operations again.
+from: [inactive]
+roles: [steward]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'active'"}

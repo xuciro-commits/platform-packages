@@ -1,17 +1,19 @@
 name: crm
 title: CRM
 icon: user-group
-pages: [crm.lead, crm.deal, crm.account, crm.contact, crm.activity, crm.note, crm.product, crm.competitor,
-        crm.stage, crm.source, crm.territory, crm.lostreason, crm.disqualifyreason]
+pages: [crm.erp_home, crm.lead, crm.deal, crm.account, crm.erp_sales_analytics, crm.erp_lead_details, crm.erp_sales_pipeline_analytics, crm.erp_opportunity_summary_by_sales_stage, crm.erp_sales_funnel, crm.erp_prospects_engaged_but_not_converted, crm.erp_first_response_time_for_opportunity, crm.erp_campaign_efficiency, crm.erp_lead_owner_efficiency, crm.erp_maintenance_schedule, crm.erp_maintenance_visit, crm.erp_warranty_claim, crm.erp_contract, crm.erp_appointment, crm.erp_communication, crm.erp_campaign, crm.erp_email_campaign, crm.erp_sms_center, crm.erp_sms_log, crm.erp_email_group, crm.erp_territory, crm.erp_customer_group, crm.erp_contact, crm.erp_prospect, crm.erp_sales_person, crm.erp_sales_stage, crm.erp_lead_source, crm.erp_crm_settings, crm.erp_sms_settings, crm.contact, crm.activity, crm.note, crm.product, crm.competitor, crm.stage, crm.source, crm.territory, crm.lostreason, crm.disqualifyreason]
 groups:
-  - {title: Selling, pages: [crm.lead, crm.deal]}
-  - {title: Customers, pages: [crm.account, crm.contact]}
-  - {title: Follow-up, pages: [crm.activity, crm.note]}
-  - {title: Catalog, pages: [crm.product, crm.competitor]}
-  - title: Settings
-    layout: settings
-    roles: [salesmanager]
-    pages: [crm.stage, crm.source, crm.territory, crm.lostreason, crm.disqualifyreason]
+  - {"title":"Overview","pages":["crm.erp_home","crm.lead","crm.deal","crm.account"]}
+  - {"title":"Reports","pages":["crm.erp_sales_analytics","crm.erp_lead_details","crm.erp_sales_pipeline_analytics","crm.erp_opportunity_summary_by_sales_stage","crm.erp_sales_funnel","crm.erp_prospects_engaged_but_not_converted","crm.erp_first_response_time_for_opportunity","crm.erp_campaign_efficiency","crm.erp_lead_owner_efficiency"]}
+  - {"title":"Maintenance","pages":["crm.erp_maintenance_schedule","crm.erp_maintenance_visit","crm.erp_warranty_claim"]}
+  - {"title":"Sales Pipeline","pages":["crm.erp_contract","crm.erp_appointment","crm.erp_communication"]}
+  - {"title":"Campaign","pages":["crm.erp_campaign","crm.erp_email_campaign","crm.erp_sms_center","crm.erp_sms_log","crm.erp_email_group"]}
+  - {"title":"Setup","pages":["crm.erp_territory","crm.erp_customer_group","crm.erp_contact","crm.erp_prospect","crm.erp_sales_person","crm.erp_sales_stage","crm.erp_lead_source"],"roles":["salesmanager"]}
+  - {"title":"ERP Settings","pages":["crm.erp_crm_settings","crm.erp_sms_settings"],"roles":["salesmanager"]}
+  - {"title":"Customers","pages":["crm.contact"]}
+  - {"title":"Follow-up","pages":["crm.activity","crm.note"]}
+  - {"title":"Catalog","pages":["crm.product","crm.competitor"]}
+  - {"title":"Settings","layout":"settings","roles":["salesmanager"],"pages":["crm.stage","crm.source","crm.territory","crm.lostreason","crm.disqualifyreason"]}
 dashboard:
   - {title: Open pipeline, kind: metric, object: crm.deal, domain: [[state, "=", open]], measure: "sum:amount"}
   - {title: Weighted forecast, kind: metric, object: crm.deal, domain: [[state, "=", open]], measure: "sum:weighted"}

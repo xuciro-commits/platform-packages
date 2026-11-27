@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+  "scope": "Supplier master dynamic and inherited operation supplement",
+  "source": "erpnext/buying/doctype/supplier/supplier.js",
+  "actions": [
+    {
+      "label": "Purchase Order",
+      "sourceRange": [
+        80,
+        108
+      ],
+      "status": "missing",
+      "note": "Direct create route not implemented; no source operation parity."
+    },
+    {
+      "label": "Purchase Invoice",
+      "sourceRange": [
+        80,
+        108
+      ],
+      "status": "missing",
+      "note": "Direct create route not implemented; no source operation parity."
+    },
+    {
+      "label": "Request for Quotation",
+      "sourceRange": [
+        80,
+        108
+      ],
+      "status": "missing",
+      "note": "Direct create route not implemented; no source operation parity."
+    },
+    {
+      "label": "Supplier Quotation",
+      "sourceRange": [
+        80,
+        108
+      ],
+      "status": "missing",
+      "note": "Direct create route not implemented; no source operation parity."
+    },
+    {
+      "label": "Bank Account",
+      "sourceRange": [
+        80,
+        108
+      ],
+      "status": "missing",
+      "note": "Direct create route not implemented; no source operation parity."
+    },
+    {
+      "label": "Pricing Rule",
+      "sourceRange": [
+        80,
+        108
+      ],
+      "status": "missing",
+      "note": "Direct create route not implemented; no source operation parity."
+    },
+    {
+      "label": "Timed hold evaluation",
+      "sourcePath": "erpnext/buying/doctype/supplier/supplier.py",
+      "sourceRange": [
+        104,
+        110
+      ],
+      "status": "missing",
+      "note": "Requires invoice/payment authority."
+    },
+    {
+      "label": "Contact/address creation and portal entitlement",
+      "sourcePath": "erpnext/buying/doctype/supplier/supplier.py",
+      "sourceRange": [
+        125,
+        152
+      ],
+      "status": "missing",
+      "note": "Shared identity selection is not automatic creation or role grants."
+    },
+    {
+      "label": "Primary contact/address creation",
+      "sourcePath": "erpnext/buying/doctype/supplier/supplier.py",
+      "sourceRange": [
+        249,
+        269
+      ],
+      "status": "missing",
+      "note": "No auto-create duplicate contact/address."
+    },
+    {
+      "label": "Rename/merge completion",
+      "sourcePath": "erpnext/buying/doctype/supplier/supplier.py",
+      "sourceRange": [
+        279,
+        285
+      ],
+      "status": "missing",
+      "note": "Shared identity and finance migration need acceptance."
+    }
+  ]
+}

@@ -1,0 +1,2063 @@
+{
+  "version": 1,
+  "gates": [
+    {
+      "id": "accounts:domain",
+      "module": "accounts",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:navigation",
+      "module": "accounts",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:workspace",
+      "module": "accounts",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:forms",
+      "module": "accounts",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:line-items",
+      "module": "accounts",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:reports",
+      "module": "accounts",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:printing",
+      "module": "accounts",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:permissions",
+      "module": "accounts",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:exceptions",
+      "module": "accounts",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:integration",
+      "module": "accounts",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:performance",
+      "module": "accounts",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:recovery",
+      "module": "accounts",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:upgrade",
+      "module": "accounts",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "accounts:delivery",
+      "module": "accounts",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:domain",
+      "module": "crm",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:navigation",
+      "module": "crm",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:workspace",
+      "module": "crm",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:forms",
+      "module": "crm",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:line-items",
+      "module": "crm",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:reports",
+      "module": "crm",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:printing",
+      "module": "crm",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:permissions",
+      "module": "crm",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:exceptions",
+      "module": "crm",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:integration",
+      "module": "crm",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:performance",
+      "module": "crm",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:recovery",
+      "module": "crm",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:upgrade",
+      "module": "crm",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "crm:delivery",
+      "module": "crm",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:domain",
+      "module": "buying",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:navigation",
+      "module": "buying",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:workspace",
+      "module": "buying",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:forms",
+      "module": "buying",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:line-items",
+      "module": "buying",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:reports",
+      "module": "buying",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:printing",
+      "module": "buying",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:permissions",
+      "module": "buying",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:exceptions",
+      "module": "buying",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:integration",
+      "module": "buying",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:performance",
+      "module": "buying",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:recovery",
+      "module": "buying",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:upgrade",
+      "module": "buying",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "buying:delivery",
+      "module": "buying",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:domain",
+      "module": "projects",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:navigation",
+      "module": "projects",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:workspace",
+      "module": "projects",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:forms",
+      "module": "projects",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:line-items",
+      "module": "projects",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:reports",
+      "module": "projects",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:printing",
+      "module": "projects",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:permissions",
+      "module": "projects",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:exceptions",
+      "module": "projects",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:integration",
+      "module": "projects",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:performance",
+      "module": "projects",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:recovery",
+      "module": "projects",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:upgrade",
+      "module": "projects",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "projects:delivery",
+      "module": "projects",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:domain",
+      "module": "selling",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:navigation",
+      "module": "selling",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:workspace",
+      "module": "selling",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:forms",
+      "module": "selling",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:line-items",
+      "module": "selling",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:reports",
+      "module": "selling",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:printing",
+      "module": "selling",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:permissions",
+      "module": "selling",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:exceptions",
+      "module": "selling",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:integration",
+      "module": "selling",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:performance",
+      "module": "selling",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:recovery",
+      "module": "selling",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:upgrade",
+      "module": "selling",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "selling:delivery",
+      "module": "selling",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:domain",
+      "module": "setup",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:navigation",
+      "module": "setup",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:workspace",
+      "module": "setup",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:forms",
+      "module": "setup",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:line-items",
+      "module": "setup",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:reports",
+      "module": "setup",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:printing",
+      "module": "setup",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:permissions",
+      "module": "setup",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:exceptions",
+      "module": "setup",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:integration",
+      "module": "setup",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:performance",
+      "module": "setup",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:recovery",
+      "module": "setup",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:upgrade",
+      "module": "setup",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "setup:delivery",
+      "module": "setup",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:domain",
+      "module": "manufacturing",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:navigation",
+      "module": "manufacturing",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:workspace",
+      "module": "manufacturing",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:forms",
+      "module": "manufacturing",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:line-items",
+      "module": "manufacturing",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:reports",
+      "module": "manufacturing",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:printing",
+      "module": "manufacturing",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:permissions",
+      "module": "manufacturing",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:exceptions",
+      "module": "manufacturing",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:integration",
+      "module": "manufacturing",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:performance",
+      "module": "manufacturing",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:recovery",
+      "module": "manufacturing",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:upgrade",
+      "module": "manufacturing",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "manufacturing:delivery",
+      "module": "manufacturing",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:domain",
+      "module": "stock",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:navigation",
+      "module": "stock",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:workspace",
+      "module": "stock",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:forms",
+      "module": "stock",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:line-items",
+      "module": "stock",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:reports",
+      "module": "stock",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:printing",
+      "module": "stock",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:permissions",
+      "module": "stock",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:exceptions",
+      "module": "stock",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:integration",
+      "module": "stock",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:performance",
+      "module": "stock",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:recovery",
+      "module": "stock",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:upgrade",
+      "module": "stock",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "stock:delivery",
+      "module": "stock",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:domain",
+      "module": "support",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:navigation",
+      "module": "support",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:workspace",
+      "module": "support",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:forms",
+      "module": "support",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:line-items",
+      "module": "support",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:reports",
+      "module": "support",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:printing",
+      "module": "support",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:permissions",
+      "module": "support",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:exceptions",
+      "module": "support",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:integration",
+      "module": "support",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:performance",
+      "module": "support",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:recovery",
+      "module": "support",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:upgrade",
+      "module": "support",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "support:delivery",
+      "module": "support",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:domain",
+      "module": "utilities",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:navigation",
+      "module": "utilities",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:workspace",
+      "module": "utilities",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:forms",
+      "module": "utilities",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:line-items",
+      "module": "utilities",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:reports",
+      "module": "utilities",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:printing",
+      "module": "utilities",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:permissions",
+      "module": "utilities",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:exceptions",
+      "module": "utilities",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:integration",
+      "module": "utilities",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:performance",
+      "module": "utilities",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:recovery",
+      "module": "utilities",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:upgrade",
+      "module": "utilities",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "utilities:delivery",
+      "module": "utilities",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:domain",
+      "module": "assets",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:navigation",
+      "module": "assets",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:workspace",
+      "module": "assets",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:forms",
+      "module": "assets",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:line-items",
+      "module": "assets",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:reports",
+      "module": "assets",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:printing",
+      "module": "assets",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:permissions",
+      "module": "assets",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:exceptions",
+      "module": "assets",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:integration",
+      "module": "assets",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:performance",
+      "module": "assets",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:recovery",
+      "module": "assets",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:upgrade",
+      "module": "assets",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "assets:delivery",
+      "module": "assets",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:domain",
+      "module": "portal",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:navigation",
+      "module": "portal",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:workspace",
+      "module": "portal",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:forms",
+      "module": "portal",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:line-items",
+      "module": "portal",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:reports",
+      "module": "portal",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:printing",
+      "module": "portal",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:permissions",
+      "module": "portal",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:exceptions",
+      "module": "portal",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:integration",
+      "module": "portal",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:performance",
+      "module": "portal",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:recovery",
+      "module": "portal",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:upgrade",
+      "module": "portal",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "portal:delivery",
+      "module": "portal",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:domain",
+      "module": "maintenance",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:navigation",
+      "module": "maintenance",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:workspace",
+      "module": "maintenance",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:forms",
+      "module": "maintenance",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:line-items",
+      "module": "maintenance",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:reports",
+      "module": "maintenance",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:printing",
+      "module": "maintenance",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:permissions",
+      "module": "maintenance",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:exceptions",
+      "module": "maintenance",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:integration",
+      "module": "maintenance",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:performance",
+      "module": "maintenance",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:recovery",
+      "module": "maintenance",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:upgrade",
+      "module": "maintenance",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "maintenance:delivery",
+      "module": "maintenance",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:domain",
+      "module": "regional",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:navigation",
+      "module": "regional",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:workspace",
+      "module": "regional",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:forms",
+      "module": "regional",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:line-items",
+      "module": "regional",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:reports",
+      "module": "regional",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:printing",
+      "module": "regional",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:permissions",
+      "module": "regional",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:exceptions",
+      "module": "regional",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:integration",
+      "module": "regional",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:performance",
+      "module": "regional",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:recovery",
+      "module": "regional",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:upgrade",
+      "module": "regional",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "regional:delivery",
+      "module": "regional",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:domain",
+      "module": "erpnext_integrations",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:navigation",
+      "module": "erpnext_integrations",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:workspace",
+      "module": "erpnext_integrations",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:forms",
+      "module": "erpnext_integrations",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:line-items",
+      "module": "erpnext_integrations",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:reports",
+      "module": "erpnext_integrations",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:printing",
+      "module": "erpnext_integrations",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:permissions",
+      "module": "erpnext_integrations",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:exceptions",
+      "module": "erpnext_integrations",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:integration",
+      "module": "erpnext_integrations",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:performance",
+      "module": "erpnext_integrations",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:recovery",
+      "module": "erpnext_integrations",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:upgrade",
+      "module": "erpnext_integrations",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "erpnext_integrations:delivery",
+      "module": "erpnext_integrations",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:domain",
+      "module": "quality_management",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:navigation",
+      "module": "quality_management",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:workspace",
+      "module": "quality_management",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:forms",
+      "module": "quality_management",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:line-items",
+      "module": "quality_management",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:reports",
+      "module": "quality_management",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:printing",
+      "module": "quality_management",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:permissions",
+      "module": "quality_management",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:exceptions",
+      "module": "quality_management",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:integration",
+      "module": "quality_management",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:performance",
+      "module": "quality_management",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:recovery",
+      "module": "quality_management",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:upgrade",
+      "module": "quality_management",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "quality_management:delivery",
+      "module": "quality_management",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:domain",
+      "module": "communication",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:navigation",
+      "module": "communication",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:workspace",
+      "module": "communication",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:forms",
+      "module": "communication",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:line-items",
+      "module": "communication",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:reports",
+      "module": "communication",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:printing",
+      "module": "communication",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:permissions",
+      "module": "communication",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:exceptions",
+      "module": "communication",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:integration",
+      "module": "communication",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:performance",
+      "module": "communication",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:recovery",
+      "module": "communication",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:upgrade",
+      "module": "communication",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "communication:delivery",
+      "module": "communication",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:domain",
+      "module": "telephony",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:navigation",
+      "module": "telephony",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:workspace",
+      "module": "telephony",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:forms",
+      "module": "telephony",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:line-items",
+      "module": "telephony",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:reports",
+      "module": "telephony",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:printing",
+      "module": "telephony",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:permissions",
+      "module": "telephony",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:exceptions",
+      "module": "telephony",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:integration",
+      "module": "telephony",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:performance",
+      "module": "telephony",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:recovery",
+      "module": "telephony",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:upgrade",
+      "module": "telephony",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "telephony:delivery",
+      "module": "telephony",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:domain",
+      "module": "bulk_transaction",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:navigation",
+      "module": "bulk_transaction",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:workspace",
+      "module": "bulk_transaction",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:forms",
+      "module": "bulk_transaction",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:line-items",
+      "module": "bulk_transaction",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:reports",
+      "module": "bulk_transaction",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:printing",
+      "module": "bulk_transaction",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:permissions",
+      "module": "bulk_transaction",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:exceptions",
+      "module": "bulk_transaction",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:integration",
+      "module": "bulk_transaction",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:performance",
+      "module": "bulk_transaction",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:recovery",
+      "module": "bulk_transaction",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:upgrade",
+      "module": "bulk_transaction",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "bulk_transaction:delivery",
+      "module": "bulk_transaction",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:domain",
+      "module": "subcontracting",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:navigation",
+      "module": "subcontracting",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:workspace",
+      "module": "subcontracting",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:forms",
+      "module": "subcontracting",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:line-items",
+      "module": "subcontracting",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:reports",
+      "module": "subcontracting",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:printing",
+      "module": "subcontracting",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:permissions",
+      "module": "subcontracting",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:exceptions",
+      "module": "subcontracting",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:integration",
+      "module": "subcontracting",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:performance",
+      "module": "subcontracting",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:recovery",
+      "module": "subcontracting",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:upgrade",
+      "module": "subcontracting",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "subcontracting:delivery",
+      "module": "subcontracting",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:domain",
+      "module": "edi",
+      "dimension": "domain",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:navigation",
+      "module": "edi",
+      "dimension": "navigation",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:workspace",
+      "module": "edi",
+      "dimension": "workspace",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:forms",
+      "module": "edi",
+      "dimension": "forms",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:line-items",
+      "module": "edi",
+      "dimension": "line-items",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:reports",
+      "module": "edi",
+      "dimension": "reports",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:printing",
+      "module": "edi",
+      "dimension": "printing",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:permissions",
+      "module": "edi",
+      "dimension": "permissions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:exceptions",
+      "module": "edi",
+      "dimension": "exceptions",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:integration",
+      "module": "edi",
+      "dimension": "integration",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:performance",
+      "module": "edi",
+      "dimension": "performance",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:recovery",
+      "module": "edi",
+      "dimension": "recovery",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:upgrade",
+      "module": "edi",
+      "dimension": "upgrade",
+      "required": true,
+      "tasks": []
+    },
+    {
+      "id": "edi:delivery",
+      "module": "edi",
+      "dimension": "delivery",
+      "required": true,
+      "tasks": []
+    }
+  ]
+}

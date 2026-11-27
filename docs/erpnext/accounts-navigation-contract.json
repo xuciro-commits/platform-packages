@@ -1,0 +1,600 @@
+{
+  "version": 1,
+  "module": "accounts",
+  "package": "accounting",
+  "namespace": "accounting",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/accounts/sidebar/accounts/accounts.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Accounting",
+      "target": "accounting.home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Dashboard",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Accounts",
+      "target": "accounting.dashboard",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Chart of Accounts",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Account",
+      "target": "accounting.chart_of_accounts",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Invoice",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Sales Invoice",
+      "target": "accounting.sales_invoice",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Purchase Invoice",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Purchase Invoice",
+      "target": "accounting.purchase_invoice",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Payment Entry",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Payment Entry",
+      "target": "accounting.payment_entry",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Journal Entry",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Journal Entry",
+      "target": "accounting.journal_entry",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "General Ledger",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "General Ledger",
+      "target": "accounting.general_ledger",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Trial Balance",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Trial Balance",
+      "target": "accounting.trial_balance",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Trial Balance for Party",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Trial Balance for Party",
+      "target": "accounting.trial_balance_for_party",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Profit and Loss",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Profit and Loss Statement",
+      "target": "accounting.profit_and_loss",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Balance Sheet",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Balance Sheet",
+      "target": "accounting.balance_sheet",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Cash Flow",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Cash Flow",
+      "target": "accounting.cash_flow",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Consolidated Report",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Consolidated Financial Statement",
+      "target": "accounting.consolidated_report",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Profitability Analysis",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Profitability Analysis",
+      "target": "accounting.profitability_analysis",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Accounts Receivable",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Accounts Receivable",
+      "target": "accounting.accounts_receivable",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Accounts Payable",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Accounts Payable",
+      "target": "accounting.accounts_payable",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Banking",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Banking",
+      "kind": "page",
+      "sourceType": "URL",
+      "sourceTarget": null,
+      "target": "accounting.banking",
+      "group": "Banking",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Bank Account",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Bank Account",
+      "target": "accounting.bank_account",
+      "group": "Banking",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Bank Clearance",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Bank Clearance",
+      "target": "accounting.bank_clearance",
+      "group": "Banking",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Taxes",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Sales Tax Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Sales Taxes and Charges Template",
+      "target": "accounting.sales_tax_template",
+      "group": "Taxes",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Purchase Tax Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Purchase Taxes and Charges Template",
+      "target": "accounting.purchase_tax_template",
+      "group": "Taxes",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Item Tax Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item Tax Template",
+      "target": "accounting.item_tax_template",
+      "group": "Taxes",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Tax Rule",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Tax Rule",
+      "target": "accounting.tax_rule",
+      "group": "Taxes",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Tax Withholding Category",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Tax Withholding Category",
+      "target": "accounting.tax_withholding_category",
+      "group": "Taxes",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Budgeting",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Budget",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Budget",
+      "target": "accounting.budget",
+      "group": "Budgeting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Cost Center Allocation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Cost Center Allocation",
+      "target": "accounting.cost_center_allocation",
+      "group": "Budgeting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Monthly Distribution",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Monthly Distribution",
+      "target": "accounting.monthly_distribution",
+      "group": "Budgeting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Budget Variance",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Budget Variance Report",
+      "target": "accounting.budget_variance",
+      "group": "Budgeting",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Company",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Company",
+      "target": "accounting.company",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Fiscal Year",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Fiscal Year",
+      "target": "accounting.fiscal_year",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Chart of Cost Centers",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Cost Center",
+      "target": "accounting.chart_of_cost_centers",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Accounting Dimension",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Accounting Dimension",
+      "target": "accounting.accounting_dimension",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Account Category",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Account Category",
+      "target": "accounting.account_category",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Financial Report Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Financial Report Template",
+      "target": "accounting.financial_report_template",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Mode of Payment",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Mode of Payment",
+      "target": "accounting.mode_of_payment",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Payment Terms Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Payment Terms Template",
+      "target": "accounting.payment_terms_template",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Currency Exchange",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Currency Exchange",
+      "target": "accounting.currency_exchange",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Accounts Settings",
+      "target": "accounting.settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "accounting.home",
+        "accounting.dashboard",
+        "accounting.chart_of_accounts",
+        "accounting.sales_invoice",
+        "accounting.purchase_invoice",
+        "accounting.payment_entry",
+        "accounting.journal_entry"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "accounting.general_ledger",
+        "accounting.trial_balance",
+        "accounting.trial_balance_for_party",
+        "accounting.profit_and_loss",
+        "accounting.balance_sheet",
+        "accounting.cash_flow",
+        "accounting.consolidated_report",
+        "accounting.profitability_analysis",
+        "accounting.accounts_receivable",
+        "accounting.accounts_payable"
+      ]
+    },
+    {
+      "title": "Banking",
+      "pages": [
+        "accounting.banking",
+        "accounting.bank_account",
+        "accounting.bank_clearance"
+      ]
+    },
+    {
+      "title": "Taxes",
+      "pages": [
+        "accounting.sales_tax_template",
+        "accounting.purchase_tax_template",
+        "accounting.item_tax_template",
+        "accounting.tax_rule",
+        "accounting.tax_withholding_category"
+      ]
+    },
+    {
+      "title": "Budgeting",
+      "pages": [
+        "accounting.budget",
+        "accounting.cost_center_allocation",
+        "accounting.monthly_distribution",
+        "accounting.budget_variance"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "accounting.company",
+        "accounting.fiscal_year",
+        "accounting.chart_of_cost_centers",
+        "accounting.accounting_dimension",
+        "accounting.account_category",
+        "accounting.financial_report_template",
+        "accounting.mode_of_payment",
+        "accounting.payment_terms_template",
+        "accounting.currency_exchange",
+        "accounting.settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ],
+  "limitations": [
+    "Flat group projection only; no browser verification.",
+    "Placeholders contain no business operations."
+  ]
+}

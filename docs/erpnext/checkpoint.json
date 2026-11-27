@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "cycle": "W2-006",
+  "stage": "check",
+  "status": "candidate_checked",
+  "sourceCommit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+  "platformCommit": "cada0492bf775b51832fa6d929999e1c4713ad11",
+  "tool": {
+    "pinnedRevision": "ac5e787623a960dee31722741465bfd9c8798f18",
+    "buildModified": true
+  },
+  "results": [
+    {
+      "id": "EV-W1-001",
+      "confidence": "observed",
+      "source": "erpnext/stock/doctype/item/item.py:1119–1146; packages/uom/objects/unit/object.yaml; packages/crm/objects/product/object.yaml",
+      "finding": "Base units and positive conversion are business invariants; existing CRM product lacks base-unit semantics. CRM identity mapping still open."
+    },
+    {
+      "id": "EV-W1-002",
+      "confidence": "observed",
+      "command": "pkg check packages/uom packages/item-master",
+      "result": "exit 0; combined installation and try scripts passed (7 UOM, 11 item-master steps)."
+    },
+    {
+      "id": "EV-W1-003",
+      "confidence": "observed",
+      "command": "pkg try -script docs/erpnext/probes/uom-positive-factor.yaml packages/uom",
+      "result": "uom 0.1.2 accepted zero; scratch constraint and uom 0.1.3 rejected zero and negative (2 steps)."
+    },
+    {
+      "id": "EV-W1-004",
+      "confidence": "observed",
+      "command": "pkg build twice for each package",
+      "hashes": {
+        "uom": [
+          "a36acc18008c727b3bc63a9cb575d4767040a2c907005e1f9421ae3166dd32fe",
+          "a36acc18008c727b3bc63a9cb575d4767040a2c907005e1f9421ae3166dd32fe"
+        ],
+        "item-master": [
+          "fbf20608279c05a4fcd873d5a429c6d6dae31b418d1e4eadfb4131cabf8822fd",
+          "fbf20608279c05a4fcd873d5a429c6d6dae31b418d1e4eadfb4131cabf8822fd"
+        ]
+      }
+    },
+    {
+      "id": "EV-W1-005",
+      "confidence": "observed",
+      "result": "Original action build had null target because shell expanded subject variable; corrected and tested. Author (admin) could edit; actual steward denied. No general platform defect inferred."
+    },
+    {
+      "id": "EV-W1-006",
+      "confidence": "observed",
+      "source": "erpnext/stock/stock_ledger.py:1569–1588,3065–3081; stock/doctype/stock_reservation_entry/stock_reservation_entry.py:676–716",
+      "finding": "Overdraw and reservation-aware availability require precision-aware validation. Scope: selected functions, not full module."
+    },
+    {
+      "id": "EV-W1-007",
+      "confidence": "observed",
+      "command": "pkg try packages/uom packages/item-master packages/inventory",
+      "result": "21 steps passed: 100.3 receipt, 20.1 issue, 30.2 transfer -> A=50 B=30.2; repeated post, overdraw, edit by keeper, unauthorized create and zero quantity rejected."
+    },
+    {
+      "id": "EV-W1-008",
+      "confidence": "observed",
+      "finding": "Guard without message in pinned locally modified pkg was accepted at lock and failed open at overdraw; adding message yielded GUARD_NOT_SATISFIED. Current Platform source transaction.go requires message; clean pinned version not tested."
+    },
+    {
+      "id": "EV-W1-009",
+      "confidence": "observed",
+      "command": "node scripts/erp-loop.mjs verify --task W1-003",
+      "result": "Combined pkg check exit 0; boundary probe 18 steps passed (different item, same position, wrong action, inactive item, reader rejection)."
+    },
+    {
+      "id": "EV-W1-010",
+      "confidence": "observed",
+      "source": "ERPNext 8e10a348daaa93853de8c36dc55ec789a440c219: erpnext/stock/doctype/stock_reservation_entry/stock_reservation_entry.py:120–148 (submit/cancel), 676–705 (validate_with_allowed_qty), 837–874 (get_available_qty_to_reserve); test_stock_reservation_entry.py:129–151 and 200–245",
+      "finding": "有效预留占用库存可用量；取消回收预留，原本拒绝的发料可再过账。源测试以静态阅读为证。"
+    },
+    {
+      "id": "EV-W1-011",
+      "confidence": "derived",
+      "source": "packages/inventory/objects/{position,reservation,movement}",
+      "finding": "原独立门禁第 5 步失败，inventory 0.1.0 未定义预留对象。0.1.1 test 候选使用位置反向集合与派生公式，只有 reserved 数量从实存扣除。库管员只能创建草稿和执行预留、释放动作；发料和调拨检查同一可用量。预测：实存为 100 时预留 60 后可用量为 40，41 的新预留和发料均拒绝；释放后可用量回到 100，同一发料成功后实存和可用量均为 59。"
+    },
+    {
+      "id": "EV-W1-012",
+      "confidence": "observed",
+      "command": "pkg check packages/uom packages/item-master packages/inventory",
+      "result": "退出码 0，组合装入内存租户，原 try.yaml 分别通过 7、11、21 步。"
+    },
+    {
+      "id": "EV-W1-013",
+      "confidence": "observed",
+      "command": "pkg try -script docs/erpnext/probes/inventory-reservation.yaml packages/uom packages/item-master packages/inventory",
+      "result": "退出码 0，固定探针 21 步通过。草稿和释放后的预留不占可用量；超额预留和发料由业务守卫拒绝，重复预留和释放由状态门禁拒绝，查询员预留和库管员直接编辑由权限拒绝。结果为预期的 100 → 40 → 100 → 59。"
+    },
+    {
+      "id": "EV-W1-014",
+      "confidence": "observed",
+      "command": "pkg try -script docs/erpnext/probes/inventory-boundary.yaml packages/uom packages/item-master packages/inventory; pkg try -script docs/erpnext/probes/uom-positive-factor.yaml packages/uom",
+      "result": "均退出 0，分别通过 18 步和 2 步。"
+    },
+    {
+      "id": "EV-W1-015",
+      "confidence": "observed",
+      "command": "pkg try -script <临时调拨探针> packages/uom packages/item-master packages/inventory",
+      "result": "20 步通过。A 收货 100 并预留 60.5、10.25，可用量 29.25，往同物料 B 调拨 40 被拒且仍为草稿。释放 60.5 后，同一调拨成功，A 实存 60、可用 49.75，B 实存及可用均为 40。零数量预留、释放草稿及查询员释放也被拒。"
+    },
+    {
+      "id": "EV-W1-016",
+      "confidence": "observed",
+      "command": "pkg lock packages/inventory; pkg build -o <临时路径> packages/inventory（两次）",
+      "result": "inventory@0.1.1 锁定 7 个资源。两次构建字节相同，SHA-256 为 b8a52dc369fa9a14a0c97fdd32b2760e1c6af713e185bae4a565d08761e060a6。pkg 的 vcs.revision 与 platform.lock 相符，vcs.modified=true。"
+    },
+    {
+      "id": "EV-W1-014-SCALE",
+      "confidence": "observed",
+      "command": "pkg try -script docs/erpnext/probes/inventory-scale.yaml packages/uom packages/item-master packages/inventory",
+      "result": "499/500 correct; step 1006 refused 501st receipt draft, ERROR_CODE_POLICY_DENIED collection incoming limit 500",
+      "log": "1795760765355-7f59c165-W1-006-probe.log"
+    },
+    {
+      "id": "EV-W1-015-PROJECTION",
+      "confidence": "observed",
+      "result": "Isolated candidate initialized balance/reservedqty to zero after coalesce; step 4 reservation probe receive refused ERROR_CODE_POLICY_DENIED at verb. No permission expansion. Patch preserved.",
+      "source": "docs/erpnext/probes/inventory-projection.patch",
+      "gap": "IB-ERP-0006"
+    },
+    {
+      "id": "EV-W1-016-PAGES",
+      "confidence": "observed",
+      "command": "node scripts/package-loop.mjs verify --project erpnext --task W1-008 --gate-seconds 120",
+      "result": "exit 0; combined pkg check passed; inventory-demand.yaml 19 steps passed; inventory 0.1.3, 5 object page declarations + 1 dashboard; browser unverified",
+      "logs": [
+        "1795762727052-eadae9ed-W1-008-check.log",
+        "1795762744933-f60706a8-W1-008-probe.log"
+      ]
+    },
+    {
+      "id": "EV-W1-017-REGISTER",
+      "confidence": "observed",
+      "result": "inventory 0.1.5: inventory-count-registers.yaml 34 steps passed; no adjustment or lot/serial stock allocation; browser unverified",
+      "log": "count-registers-first.log"
+    },
+    {
+      "id": "EV-W2-001-NAVIGATION",
+      "confidence": "observed",
+      "result": "buying 21 links/3 groups/12 placeholders; stock 27 links/4 groups/15 placeholders. Both actual pkg build artifact comparisons passed. Browser and folding unverified. 12 current ERP sidebars indexed (321 entries).",
+      "source": "docs/erpnext/navigation-source-index.json"
+    },
+    {
+      "id": "EV-W2-002-SOURCING",
+      "confidence": "observed",
+      "result": "41-step procurement probe stopped at step 29: after item master deactivate, order invalidlines remained 0 instead of 1. Step 28 now succeeds after moving lifetime constraints to createTransaction. Earlier empty order and suspended supplier correctly refused. Full approval and placeholder create rejection not reached.",
+      "log": "purchasing-sourcing-fourth.log"
+    },
+    {
+      "id": "EV-NAV-018",
+      "confidence": "observed",
+      "result": "All 11 non-empty current sidebars compared to compiled package artifacts; 276 source links, 45 groups, 4 screenshot extra, 28 additional existing business routes, 235 placeholders. 20/20 controller/IR/navigation tests passed. No browser or install acceptance.",
+      "source": "docs/erpnext/navigation-acceptance.json"
+    },
+    {
+      "id": "EV-W2-003-FIELDS",
+      "confidence": "observed",
+      "result": "22-step purchasing-field-roundtrip.yaml passed; 18 new fields and placeholder negative create tests; source matrix 11 documents,714 declarations,187 direct candidate operations,48 permission rows. Full semantic/browser coverage not verified.",
+      "log": "purchasing-field-roundtrip.log"
+    },
+    {
+      "id": "EV-W2-004-SUPPLIER",
+      "confidence": "observed",
+      "result": "38/38 supplier master steps passed; source dispositions 85 fields,19 direct operation candidates,23 permission rows; 35 unmapped+31 layout pending; no product parity",
+      "log": "purchasing-supplier-master.log"
+    },
+    {
+      "id": "EV-W2-005-B1-REGRESSION",
+      "confidence": "observed",
+      "result": "22/22 purchasing field roundtrip after B1; 22/22 controller, field audit, IR and navigation unit tests; purchasing navigation artifact passed.",
+      "log": "purchasing-field-roundtrip-after-b1.log"
+    },
+    {
+      "id": "EV-W2-006-DELIVERY",
+      "confidence": "observed",
+      "result": "Clean pinned B1 38/38; B2 draft 26/26; layout passed; remote CI and catalog/release blocked.",
+      "source": "docs/erpnext/delivery-audit.json"
+    },
+    {
+      "id": "EV-W2-007-UOM",
+      "confidence": "observed",
+      "result": "Clean pinned pkg 32/32 requisition-conversion probe; dimension guard, entered values and factor snapshot, base quantity, revision and submission restrictions. Full source parity and multi approval remain open.",
+      "log": "purchasing-requisition-conversion.log"
+    },
+    {
+      "id": "EV-W2-008-STEP",
+      "confidence": "observed",
+      "result": "Clean pinned pkg 46/46; single and multiline configured step; invalid entered and converted quantities refused; missing header requestedon handled via coalesce. Two failed iterations retained; fixed package expressions. Loop regression 23/23.",
+      "logs": [
+        "purchasing-requisition-unit-step.log",
+        "purchasing-requisition-unit-step-second.log",
+        "purchasing-requisition-unit-step-third.log"
+      ]
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "UNK-W1-001",
+      "severity": "critical",
+      "status": "open",
+      "question": "How to map legacy crm.product into shared item identity without losing sales data?",
+      "probe": "Design explicit mapping/extension and migration on copied fixture; verify upgraded references."
+    },
+    {
+      "id": "UNK-W1-002",
+      "severity": "critical",
+      "status": "open",
+      "question": "Can base unit and factor semantics be frozen after posting, including admin/upgrade paths?",
+      "probe": "Verify lifecycle/constraint support using committed movement facts; ordinary steward denial alone insufficient."
+    },
+    {
+      "id": "UNK-W1-003",
+      "severity": "critical",
+      "status": "open",
+      "question": "Exact quantity arithmetic and atomic stock movement/reservation under concurrent writes?",
+      "probe": "Construct isolated ledger/position transaction probe; test fractional quantities, guards, replay and contention."
+    },
+    {
+      "id": "UNK-W1-004",
+      "severity": "high",
+      "status": "open",
+      "question": "Can current pinned toolchain and released artifacts be reproduced in clean CI?",
+      "probe": "Build pkg from clean pinned commit and run full lock/check/diff; current local binary reports vcs.modified=true."
+    },
+    {
+      "id": "UNK-W1-005",
+      "severity": "critical",
+      "status": "open",
+      "question": "Can movement and reservation aggregates remain complete beyond their collection limits and under competing submissions?",
+      "probe": "Use >500 incoming/outgoing movements and >500 reservations at one position; compare all accepted facts against projections; competing real requests, crash/replay and bounded latency."
+    }
+  ],
+  "remainingGates": [
+    "CRM migration",
+    "immutable quantity semantics including administrative path",
+    "browser acceptance",
+    "upgrade and recovery",
+    "cover and real catalog release",
+    "independent clean pinned toolchain checks",
+    "independent controller acceptance of W1-004",
+    "stock reversal",
+    "real concurrency and >500 movement or reservation aggregates"
+  ],
+  "next": "B2 remaining direct operations and item-specific UOM, source fulfillment and live approval; B3 independent RFQ/quotation slices; do not release."
+}

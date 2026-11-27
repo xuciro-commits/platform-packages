@@ -1,0 +1,38 @@
+name: requisition
+namespace: purchasing
+title: Purchase requisition
+plural: Purchase requisitions
+icon: clipboard-document-list
+display: title
+naming: REQ-{year}-{n:5}
+sets:
+  lines: {object: purchasing.requisitionline, limit: 500}
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true, group: Request}
+  - {name: mode, title: Request entry mode, type: choice, required: true, default: single, choices: "single:Single item,multi:Multiple items", group: Request}
+  - {name: material, title: Item, type: reference, ref: item.master, group: Request}
+  - {name: quantity, title: Base quantity, type: decimal, group: Request}
+  - {name: neededon, title: Needed on, type: date, required: true, group: Request}
+  - {name: requestedon, title: Request date, type: date, group: Request}
+  - {name: terms, title: Terms, type: longtext, group: Request}
+  - {name: reason, title: Reason, type: longtext, group: Request}
+  - {name: linecount, title: Active request lines, type: integer, formula: "sum(lines, if(item.state = 'active', 1, 0))", group: Request}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: requested, title: Requested, tone: info}
+  - {name: approved, title: Approved, tone: success}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [submit, approve, cancel, reopen]
+constraints:
+  - {name: entrymode, kind: expression, fields: [mode, material, quantity], expr: "(mode = 'single' and material != empty and quantity > 0) or (mode = 'multi' and material = empty and quantity = empty)", message: "Use either one header item or multiple detail lines, not both."}
+  - {name: requestdates, kind: expression, fields: [requestedon, neededon], expr: "requestedon = empty or neededon >= requestedon", message: Need date cannot precede request date.}
+createTransaction:
+  guard: "mode = 'multi' or coalesce(material.unit.rounding, 0) = 0 or (material.unit.rounding > 0 and round(quantity / material.unit.rounding, 0) * material.unit.rounding = quantity)"
+  message: Quantity must match the configured base unit step.
+  steps:
+    - target: $subject
+      set: {mode: mode}
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, mode, material, quantity, linecount, neededon, state], sort: [{sortKey: neededon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

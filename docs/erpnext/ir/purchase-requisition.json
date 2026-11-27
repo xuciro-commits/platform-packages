@@ -1,0 +1,184 @@
+{
+  "version": 1,
+  "entity": {
+    "namespace": "purchasing",
+    "id": "requisition",
+    "label": "Purchase requisition",
+    "plural": "Purchase requisitions",
+    "icon": "clipboard-document-list",
+    "numbering": "REQ-{year}-{n:5}",
+    "display": "title",
+    "fields": {
+      "title": {
+        "kind": "identifier",
+        "label": "Reference",
+        "required": true,
+        "search": true,
+        "section": "Request"
+      },
+      "material": {
+        "kind": "reference",
+        "label": "Item",
+        "target": "item.master",
+        "required": true,
+        "section": "Request"
+      },
+      "quantity": {
+        "kind": "quantity",
+        "label": "Base quantity",
+        "required": true,
+        "section": "Request"
+      },
+      "neededon": {
+        "kind": "date",
+        "label": "Needed on",
+        "required": true,
+        "section": "Request"
+      },
+      "reason": {
+        "kind": "narrative",
+        "label": "Reason",
+        "section": "Request"
+      }
+    },
+    "states": [
+      {
+        "id": "draft",
+        "label": "Draft",
+        "tone": "neutral"
+      },
+      {
+        "id": "requested",
+        "label": "Requested",
+        "tone": "info"
+      },
+      {
+        "id": "approved",
+        "label": "Approved",
+        "tone": "success"
+      },
+      {
+        "id": "cancelled",
+        "label": "Cancelled",
+        "tone": "neutral"
+      }
+    ],
+    "permissions": [
+      {
+        "role": "buyer",
+        "read": "all",
+        "create": true
+      },
+      {
+        "role": "manager",
+        "read": "all",
+        "create": true
+      }
+    ],
+    "rules": [
+      {
+        "id": "positiveqty",
+        "enforce": "record",
+        "fields": [
+          "quantity"
+        ],
+        "predicate": {
+          "op": "gt",
+          "args": [
+            {
+              "field": "quantity"
+            },
+            {
+              "literal": 0
+            }
+          ]
+        },
+        "message": "Quantity must be positive."
+      },
+      {
+        "id": "activeitem",
+        "enforce": "transition",
+        "fields": [
+          "material"
+        ],
+        "predicate": {
+          "op": "eq",
+          "args": [
+            {
+              "field": "material.state"
+            },
+            {
+              "literal": "active"
+            }
+          ]
+        },
+        "message": "An active item is required."
+      }
+    ],
+    "transitions": [
+      {
+        "id": "submit",
+        "label": "Submit requisition",
+        "from": [
+          "draft"
+        ],
+        "to": "requested",
+        "roles": [
+          "buyer",
+          "manager"
+        ],
+        "rule": "activeitem"
+      },
+      {
+        "id": "approve",
+        "label": "Approve requisition",
+        "from": [
+          "requested"
+        ],
+        "to": "approved",
+        "roles": [
+          "manager"
+        ],
+        "rule": "activeitem"
+      },
+      {
+        "id": "cancel",
+        "label": "Cancel requisition",
+        "from": [
+          "draft",
+          "requested"
+        ],
+        "to": "cancelled",
+        "roles": [
+          "buyer",
+          "manager"
+        ]
+      }
+    ],
+    "list": {
+      "columns": [
+        "title",
+        "material",
+        "quantity",
+        "neededon",
+        "state"
+      ],
+      "sort": [
+        {
+          "field": "neededon",
+          "direction": "ascending"
+        }
+      ],
+      "group": "state"
+    }
+  },
+  "evidence": [
+    "object:stock:material_request"
+  ],
+  "unresolved": [
+    "多行需求与销售制造需求来源",
+    "部分履约及跨包转换",
+    "多单位换算与组织范围授权",
+    "浏览器、并发与升级"
+  ]
+}

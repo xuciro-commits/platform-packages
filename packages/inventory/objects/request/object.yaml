@@ -1,0 +1,38 @@
+name: request
+namespace: inventory
+title: Material demand
+plural: Material demands
+icon: clipboard-document-list
+display: title
+description: Record demand for one material. Submitting demand does not reserve, move, purchase or consume stock.
+fields:
+  - {name: title, title: Demand reference, type: text, required: true, search: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, required: true}
+  - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
+  - {name: neededon, title: Needed on, type: date, required: true}
+  - {name: reason, title: Demand reason, type: longtext}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: requested, title: Requested, tone: info}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [submit, cancel]
+constraints:
+  - name: positivequantity
+    kind: expression
+    fields: [quantity]
+    expr: quantity > 0
+    message: Demand quantity must be positive.
+    translations:
+      zh-CN: 需求数量必须为正数。
+  - name: storageonly
+    kind: expression
+    fields: [warehouse]
+    expr: "warehouse = empty or coalesce(warehouse.nodekind, 'storage') = 'storage'"
+    message: Select a storage warehouse, not a group.
+    translations:
+      zh-CN: 请选择实体仓库而不是仓库分组。
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, material, warehouse, quantity, neededon, state], sort: [{sortKey: neededon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

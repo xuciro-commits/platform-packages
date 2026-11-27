@@ -1,0 +1,165 @@
+{
+  "format": 2,
+  "package": "manufacturing",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:46104d2ee4a16cf13933b094261c1d6b767b5cec5248517e555a7cb6e26019d8",
+  "assets": {
+    "app/manufacturing": {
+      "digest": "sha256:10b01381f658e857d2015287d8e5c66fd828928bfc4c568063ddc071734c5fd9",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/manufacturing.navpending": {
+      "digest": "sha256:27e00ed85b7d5d97d022079c940de22672e96f21e31a74433928b526b5cf2f45",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.001edd0de8129c208111fad6991a306e1ace91b51ff298b19b279af256bbfc95",
+          "family": 1
+        }
+      ]
+    },
+    "page/manufacturing.bom": {
+      "digest": "sha256:c272dd842e62e7bf0ba7dcbd168cf8d50d3d795e3f378f94e9b62cf0589bd295",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.bom_comparison_tool": {
+      "digest": "sha256:9574e7a366387e83cb52afaeef1e5d49ca33865a459e262353b5294da2e1a0c2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.bom_creator": {
+      "digest": "sha256:0ee9942a4a6f5d8c817fb677560c411c0329d8cbee1176aae945850712a1babc",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.bom_update_tool": {
+      "digest": "sha256:b8e2ea7fb56ea2c00371606e8c5b1a899b446581a54a858ff79d3ca845d89293",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.dashboard": {
+      "digest": "sha256:df171abe01a6b6bf2c9bd01b6d413698196d046e6907a92741115b448efa4a6e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.downtime_entry": {
+      "digest": "sha256:26196e4b5c0dec3edcb87fcb94df04c2565eea7358f7fbbfb932a1fa1da84487",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.home": {
+      "digest": "sha256:ac5bbd854b0096d47b99eddc08b5cb7493b882a17fe3dcf17707850f9c8ea1d7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.inward_order_summary": {
+      "digest": "sha256:129041774bd6f8308d7520f7090037a9fd79b5e543fe702d7958f97e41c994fb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.items_to_be_delivered": {
+      "digest": "sha256:a8308efb991e7fdf9af4863158ae252dd4435c28bee3de06b10b29d4720a4e52",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.job_card": {
+      "digest": "sha256:9b24f420fc88dc863aba84e98c9481f15222fd6765975fd606309253beb9ea6a",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.job_card_summary": {
+      "digest": "sha256:bd2818ae905a402ca420b27543ffb642ea241cbbf183f41d88319f8c172deeeb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.material_requirements_planning_report": {
+      "digest": "sha256:cb791dd1274f2251fb8fd34752ce87ad7ddfcd3c3f659888838f7e46cf3720af",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.operation": {
+      "digest": "sha256:0bb8e9606ab72a161ce995a899475d0c18a7cc55a290817570f29cb142a02ab2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.plant_floor": {
+      "digest": "sha256:a7fa3fe245f2ef89ff817ea2ecb890b26696e0f31764702e162785d97598f927",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.production_analytics": {
+      "digest": "sha256:eaba5d72bc0b47f954b36673bfe99e71c7d21ffa8d2d0da239b4d8751716e950",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.production_plan": {
+      "digest": "sha256:8b92cf7d463dce2f7339ba3c09744746268d0ae3a8df44dacc3ba41ac6f56070",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.production_planning_report": {
+      "digest": "sha256:253d0c0e9db15d3750db30547bff728140c532504fa8db1bd3e172906154f091",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.raw_materials_to_be_received": {
+      "digest": "sha256:716e4b24283afa577e8f129b1f916f6930dd0368c7e6b671b6b7c915f565a712",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.routing": {
+      "digest": "sha256:f58fa5ad35fc09bba5997e8ee19c96a2f34c6d3b271fcc4c00bdfc9eeb892f58",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.settings": {
+      "digest": "sha256:127b3c557fbaa79541e418b60802d2a7a4a82c277ba6e08b7af4b3d2027b3383",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.stock_entry": {
+      "digest": "sha256:10dee2e7800eab264e2b0b482f2bea50b3453815ddae7da3c23b183023e789cb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.subcontracting_bom": {
+      "digest": "sha256:fc644e1514db0d623d6bfdd9ad446a955788dea92a2fe1553c299b5321d66f80",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.subcontracting_inward_order": {
+      "digest": "sha256:d099b9f9c183b57dc8ddf3171b46150fee32af23fe26d775e0160d551d9aca01",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.subcontracting_order": {
+      "digest": "sha256:83df58977c3185f3f7dd9cbf2e798d5b0d795b9994a978da51309f130f76ec05",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.subcontracting_receipt": {
+      "digest": "sha256:e6661b39b8f340aef50fb0e3609fdb820b4b0bde15d3e7b369a2444bc76608bc",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.work_order": {
+      "digest": "sha256:b67e99daa5e3875c8f1ad29288c882fb0cd6793e5af067dda4ad5ffbe1700557",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.work_order_summary": {
+      "digest": "sha256:2c70c53dba4c8d1eb15757cc61534337dd384cab64df9198f469ba2ab032a3d8",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/manufacturing.workstation": {
+      "digest": "sha256:295b556a931f8e80765a62a152835702aaab544ea708bd180e9af7510a7d486e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

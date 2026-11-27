@@ -1,0 +1,16 @@
+id: item-master
+version: 0.1.1
+title: Item master
+namespace: item
+description: Shared identities and base units for goods, materials and services.
+listing:
+  industries: [general, manufacturing, distribution]
+  domains: [master-data]
+  keywords: [item, material, product, unit]
+  stage: test
+  source: {ecosystem: frappe, app: erpnext, version: v16, license: GPL-3.0, relation: redesign}
+roots:
+  - {app: build, kind: app, name: item}
+artifact: item-master.json
+requires:
+  - uom@^0.1.3

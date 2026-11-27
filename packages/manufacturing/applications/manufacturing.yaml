@@ -1,0 +1,94 @@
+{
+  "name": "manufacturing",
+  "title": "Manufacturing",
+  "icon": "building-office",
+  "pages": [
+    "manufacturing.home",
+    "manufacturing.dashboard",
+    "manufacturing.bom",
+    "manufacturing.production_plan",
+    "manufacturing.work_order",
+    "manufacturing.job_card",
+    "manufacturing.stock_entry",
+    "manufacturing.production_analytics",
+    "manufacturing.work_order_summary",
+    "manufacturing.job_card_summary",
+    "manufacturing.production_planning_report",
+    "manufacturing.material_requirements_planning_report",
+    "manufacturing.subcontracting_order",
+    "manufacturing.subcontracting_receipt",
+    "manufacturing.subcontracting_bom",
+    "manufacturing.subcontracting_inward_order",
+    "manufacturing.inward_order_summary",
+    "manufacturing.raw_materials_to_be_received",
+    "manufacturing.items_to_be_delivered",
+    "manufacturing.bom_creator",
+    "manufacturing.bom_update_tool",
+    "manufacturing.bom_comparison_tool",
+    "manufacturing.downtime_entry",
+    "manufacturing.workstation",
+    "manufacturing.operation",
+    "manufacturing.routing",
+    "manufacturing.plant_floor",
+    "manufacturing.settings"
+  ],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "manufacturing.home",
+        "manufacturing.dashboard",
+        "manufacturing.bom",
+        "manufacturing.production_plan",
+        "manufacturing.work_order",
+        "manufacturing.job_card",
+        "manufacturing.stock_entry"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "manufacturing.production_analytics",
+        "manufacturing.work_order_summary",
+        "manufacturing.job_card_summary",
+        "manufacturing.production_planning_report",
+        "manufacturing.material_requirements_planning_report"
+      ]
+    },
+    {
+      "title": "Subcontracting",
+      "pages": [
+        "manufacturing.subcontracting_order",
+        "manufacturing.subcontracting_receipt",
+        "manufacturing.subcontracting_bom",
+        "manufacturing.subcontracting_inward_order",
+        "manufacturing.inward_order_summary",
+        "manufacturing.raw_materials_to_be_received",
+        "manufacturing.items_to_be_delivered"
+      ]
+    },
+    {
+      "title": "Tools",
+      "pages": [
+        "manufacturing.bom_creator",
+        "manufacturing.bom_update_tool",
+        "manufacturing.bom_comparison_tool",
+        "manufacturing.downtime_entry"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "manufacturing.workstation",
+        "manufacturing.operation",
+        "manufacturing.routing",
+        "manufacturing.plant_floor",
+        "manufacturing.settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "name": "sales",
+  "title": "Sales",
+  "icon": "shopping-cart",
+  "pages": [
+    "sales.home",
+    "sales.dashboard",
+    "sales.customer",
+    "sales.quotation",
+    "sales.sales_order",
+    "sales.delivery_note",
+    "sales.sales_invoice",
+    "sales.sales_analytics",
+    "sales.sales_register",
+    "sales.accounts_receivable",
+    "sales.accounts_receivable_summary",
+    "sales.gross_profit",
+    "sales.item",
+    "sales.price_list",
+    "sales.pricing_rule",
+    "sales.pos",
+    "sales.pos_profile",
+    "sales.pos_invoice",
+    "sales.customer_group",
+    "sales.territory",
+    "sales.sales_person",
+    "sales.settings"
+  ],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "sales.home",
+        "sales.dashboard",
+        "sales.customer",
+        "sales.quotation",
+        "sales.sales_order",
+        "sales.delivery_note",
+        "sales.sales_invoice"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "sales.sales_analytics",
+        "sales.sales_register",
+        "sales.accounts_receivable",
+        "sales.accounts_receivable_summary",
+        "sales.gross_profit"
+      ]
+    },
+    {
+      "title": "Items",
+      "pages": [
+        "sales.item",
+        "sales.price_list",
+        "sales.pricing_rule"
+      ]
+    },
+    {
+      "title": "POS",
+      "pages": [
+        "sales.pos",
+        "sales.pos_profile",
+        "sales.pos_invoice"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "sales.customer_group",
+        "sales.territory",
+        "sales.sales_person",
+        "sales.settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ]
+}

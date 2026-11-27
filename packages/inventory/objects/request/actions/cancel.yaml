@@ -1,0 +1,8 @@
+title: Cancel demand
+description: Withdraw an unfulfilled demand without changing stock.
+from: [draft, requested]
+roles: [keeper]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

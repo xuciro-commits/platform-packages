@@ -1,0 +1,113 @@
+{
+  "format": 4,
+  "name": "purchasing.purchase_receipt",
+  "title": "[Pending] Purchase Receipt",
+  "description": "Not implemented: Stock receipt and purchase fulfillment require verified cross-package contracts (IB-ERP-0003/0006).",
+  "object": {
+    "app": "build",
+    "kind": "object",
+    "name": "purchasing.navpending"
+  },
+  "dataBindings": [
+    {
+      "id": "list",
+      "kind": "record",
+      "object": {
+        "app": "build",
+        "kind": "object",
+        "name": "purchasing.navpending"
+      },
+      "model": {
+        "type": "purchasing.navpending",
+        "fields": [
+          {
+            "name": "title"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "name": "title"
+        }
+      ],
+      "owner": "binding:list",
+      "ports": {
+        "selectionMode": "write",
+        "widget": "table"
+      }
+    },
+    {
+      "id": "detail",
+      "kind": "record",
+      "object": {
+        "app": "build",
+        "kind": "object",
+        "name": "purchasing.navpending"
+      },
+      "model": {
+        "type": "purchasing.navpending",
+        "fields": [
+          {
+            "name": "title"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "name": "title"
+        }
+      ],
+      "owner": "binding:detail",
+      "ports": {
+        "selectionMode": "read",
+        "widget": "detail"
+      }
+    }
+  ],
+  "actionTriggers": [],
+  "inputSchema": {},
+  "scopeVisibility": {
+    "root": "page",
+    "owners": {
+      "list": "binding:list",
+      "detail": "binding:detail"
+    },
+    "scopes": [
+      {
+        "id": "page",
+        "kind": "page"
+      },
+      {
+        "id": "binding:list",
+        "kind": "page",
+        "binding": "list",
+        "parent": "page"
+      },
+      {
+        "id": "binding:detail",
+        "kind": "page",
+        "binding": "detail",
+        "parent": "page"
+      }
+    ]
+  },
+  "widgetSpec": {
+    "format": "platform.page.web.v1",
+    "body": {
+      "document": null,
+      "layout": "list-detail",
+      "sections": [
+        {
+          "id": "list",
+          "binding": "list",
+          "triggers": []
+        },
+        {
+          "id": "detail",
+          "binding": "detail",
+          "triggers": []
+        }
+      ]
+    }
+  }
+}

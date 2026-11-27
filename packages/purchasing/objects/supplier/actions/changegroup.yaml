@@ -1,0 +1,11 @@
+title: Change supplier group
+from: [pending, qualified, suspended]
+roles: [manager]
+inputs:
+  - {name: group, title: Supplier group, type: reference, ref: purchasing.suppliergroup, required: true}
+transaction:
+  guard: "coalesce(input.group.nodekind, 'leaf') = 'leaf'"
+  message: Select a leaf supplier group.
+  steps:
+    - target: $subject
+      set: {group: input.group}

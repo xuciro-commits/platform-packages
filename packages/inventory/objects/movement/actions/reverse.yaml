@@ -1,0 +1,19 @@
+title: Reverse movement
+description: Post an opposite movement and retain the original fact.
+from: [posted]
+roles: [keeper]
+transaction:
+  guard: "reversalof = empty and (destination = empty or destination.available >= quantity)"
+  message: Movement cannot be reversed or available stock is insufficient.
+  steps:
+    - name: compensation
+      target: inventory.movement
+      set:
+        title: title
+        source: destination
+        destination: source
+        quantity: quantity
+        reversalof: $subject
+        state: "'posted'"
+    - target: $subject
+      set: {state: "'reversed'"}

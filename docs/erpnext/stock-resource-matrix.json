@@ -1,0 +1,1093 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "object:stock:batch",
+      "kind": "object",
+      "title": "Batch",
+      "target": "inventory.batch",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:bin",
+      "kind": "object",
+      "title": "Bin",
+      "target": "inventory.position",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:company_restriction",
+      "kind": "object",
+      "title": "Company Restriction",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:customs_tariff_number",
+      "kind": "object",
+      "title": "Customs Tariff Number",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:delivery_note",
+      "kind": "object",
+      "title": "Delivery Note",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:delivery_note_item",
+      "kind": "object",
+      "title": "Delivery Note Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:delivery_settings",
+      "kind": "object",
+      "title": "Delivery Settings",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:delivery_stop",
+      "kind": "object",
+      "title": "Delivery Stop",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:delivery_trip",
+      "kind": "object",
+      "title": "Delivery Trip",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:inventory_dimension",
+      "kind": "object",
+      "title": "Inventory Dimension",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item",
+      "kind": "object",
+      "title": "Item",
+      "target": "item.master",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_alternative",
+      "kind": "object",
+      "title": "Item Alternative",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_attribute",
+      "kind": "object",
+      "title": "Item Attribute",
+      "target": "item.attribute",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_attribute_value",
+      "kind": "object",
+      "title": "Item Attribute Value",
+      "target": "item.option",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_barcode",
+      "kind": "object",
+      "title": "Item Barcode",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_customer_detail",
+      "kind": "object",
+      "title": "Item Customer Detail",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_default",
+      "kind": "object",
+      "title": "Item Default",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_lead_time",
+      "kind": "object",
+      "title": "Item Lead Time",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_manufacturer",
+      "kind": "object",
+      "title": "Item Manufacturer",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_price",
+      "kind": "object",
+      "title": "Item Price",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_quality_inspection_parameter",
+      "kind": "object",
+      "title": "Item Quality Inspection Parameter",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_reorder",
+      "kind": "object",
+      "title": "Item Reorder",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_supplier",
+      "kind": "object",
+      "title": "Item Supplier",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_tax",
+      "kind": "object",
+      "title": "Item Tax",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_variant",
+      "kind": "object",
+      "title": "Item Variant",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_variant_attribute",
+      "kind": "object",
+      "title": "Item Variant Attribute",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_variant_settings",
+      "kind": "object",
+      "title": "Item Variant Settings",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:item_website_specification",
+      "kind": "object",
+      "title": "Item Website Specification",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:landed_cost_item",
+      "kind": "object",
+      "title": "Landed Cost Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:landed_cost_purchase_receipt",
+      "kind": "object",
+      "title": "Landed Cost Purchase Receipt",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:landed_cost_taxes_and_charges",
+      "kind": "object",
+      "title": "Landed Cost Taxes and Charges",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:landed_cost_vendor_invoice",
+      "kind": "object",
+      "title": "Landed Cost Vendor Invoice",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:landed_cost_voucher",
+      "kind": "object",
+      "title": "Landed Cost Voucher",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:manufacturer",
+      "kind": "object",
+      "title": "Manufacturer",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:material_request",
+      "kind": "object",
+      "title": "Material Request",
+      "target": "inventory.request",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:material_request_item",
+      "kind": "object",
+      "title": "Material Request Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:packed_item",
+      "kind": "object",
+      "title": "Packed Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:packing_slip",
+      "kind": "object",
+      "title": "Packing Slip",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:packing_slip_item",
+      "kind": "object",
+      "title": "Packing Slip Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:pick_list",
+      "kind": "object",
+      "title": "Pick List",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:pick_list_item",
+      "kind": "object",
+      "title": "Pick List Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:price_list",
+      "kind": "object",
+      "title": "Price List",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:price_list_country",
+      "kind": "object",
+      "title": "Price List Country",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:purchase_receipt",
+      "kind": "object",
+      "title": "Purchase Receipt",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:purchase_receipt_item",
+      "kind": "object",
+      "title": "Purchase Receipt Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:putaway_rule",
+      "kind": "object",
+      "title": "Putaway Rule",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:quality_inspection",
+      "kind": "object",
+      "title": "Quality Inspection",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:quality_inspection_parameter",
+      "kind": "object",
+      "title": "Quality Inspection Parameter",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:quality_inspection_parameter_group",
+      "kind": "object",
+      "title": "Quality Inspection Parameter Group",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:quality_inspection_reading",
+      "kind": "object",
+      "title": "Quality Inspection Reading",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:quality_inspection_template",
+      "kind": "object",
+      "title": "Quality Inspection Template",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:quick_stock_balance",
+      "kind": "object",
+      "title": "Quick Stock Balance",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:repost_item_valuation",
+      "kind": "object",
+      "title": "Repost Item Valuation",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:serial_and_batch_bundle",
+      "kind": "object",
+      "title": "Serial and Batch Bundle",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:serial_and_batch_entry",
+      "kind": "object",
+      "title": "Serial and Batch Entry",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:serial_no",
+      "kind": "object",
+      "title": "Serial No",
+      "target": "inventory.serial",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:shipment",
+      "kind": "object",
+      "title": "Shipment",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:shipment_delivery_note",
+      "kind": "object",
+      "title": "Shipment Delivery Note",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:shipment_parcel",
+      "kind": "object",
+      "title": "Shipment Parcel",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:shipment_parcel_template",
+      "kind": "object",
+      "title": "Shipment Parcel Template",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_closing_balance",
+      "kind": "object",
+      "title": "Stock Closing Balance",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_closing_entry",
+      "kind": "object",
+      "title": "Stock Closing Entry",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_entry",
+      "kind": "object",
+      "title": "Stock Entry",
+      "target": "inventory.movement",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_entry_detail",
+      "kind": "object",
+      "title": "Stock Entry Detail",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_entry_type",
+      "kind": "object",
+      "title": "Stock Entry Type",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_ledger_entry",
+      "kind": "object",
+      "title": "Stock Ledger Entry",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_reconciliation",
+      "kind": "object",
+      "title": "Stock Reconciliation",
+      "target": "inventory.count",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_reconciliation_item",
+      "kind": "object",
+      "title": "Stock Reconciliation Item",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_reposting_settings",
+      "kind": "object",
+      "title": "Stock Reposting Settings",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_reservation_entry",
+      "kind": "object",
+      "title": "Stock Reservation Entry",
+      "target": "inventory.reservation",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:stock_settings",
+      "kind": "object",
+      "title": "Stock Settings",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:uom_category",
+      "kind": "object",
+      "title": "UOM Category",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:uom_conversion_detail",
+      "kind": "object",
+      "title": "UOM Conversion Detail",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:variant_field",
+      "kind": "object",
+      "title": "Variant Field",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:warehouse",
+      "kind": "object",
+      "title": "Warehouse",
+      "target": "inventory.warehouse",
+      "status": "partial",
+      "browserVerified": false
+    },
+    {
+      "id": "object:stock:warehouse_type",
+      "kind": "object",
+      "title": "Warehouse Type",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "print:stock:delivery_note_bordered",
+      "kind": "print",
+      "title": "Delivery Note Bordered",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "print:stock:delivery_note_classic",
+      "kind": "print",
+      "title": "Delivery Note Classic",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "print:stock:delivery_note_modern",
+      "kind": "print",
+      "title": "Delivery Note Modern",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "print:stock:delivery_note_modern_with_images",
+      "kind": "print",
+      "title": "Delivery Note Modern with Images",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "print:stock:pick_list",
+      "kind": "print",
+      "title": "Pick List",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "print:stock:purchase_receipt_serial_and_batch_bundle_print",
+      "kind": "print",
+      "title": "Purchase Receipt Serial and Batch Bundle Print",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:available_batch_report",
+      "kind": "report",
+      "title": "Available Batch Report",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:available_serial_no",
+      "kind": "report",
+      "title": "Available Serial No",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:batch_item_expiry_status",
+      "kind": "report",
+      "title": "Batch Item Expiry Status",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:batch_wise_balance_history",
+      "kind": "report",
+      "title": "Batch-Wise Balance History",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:bom_search",
+      "kind": "report",
+      "title": "BOM Search",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:cogs_by_item_group",
+      "kind": "report",
+      "title": "COGS By Item Group",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:delayed_item_report",
+      "kind": "report",
+      "title": "Delayed Item Report",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:delayed_order_report",
+      "kind": "report",
+      "title": "Delayed Order Report",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:delivery_note_trends",
+      "kind": "report",
+      "title": "Delivery Note Trends",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:fifo_queue_vs_qty_after_transaction_comparison",
+      "kind": "report",
+      "title": "FIFO Queue vs Qty After Transaction Comparison",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:incorrect_balance_qty_after_transaction",
+      "kind": "report",
+      "title": "Incorrect Balance Qty After Transaction",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:incorrect_serial_and_batch_bundle",
+      "kind": "report",
+      "title": "Incorrect Serial and Batch Bundle",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:incorrect_serial_no_valuation",
+      "kind": "report",
+      "title": "Incorrect Serial No Valuation",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:incorrect_stock_value_report",
+      "kind": "report",
+      "title": "Incorrect Stock Value Report",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_balance_(simple)",
+      "kind": "report",
+      "title": "Item Balance (Simple)",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_price_stock",
+      "kind": "report",
+      "title": "Item Price Stock",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_prices",
+      "kind": "report",
+      "title": "Item Prices",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_shortage_report",
+      "kind": "report",
+      "title": "Item Shortage Report",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_variant_details",
+      "kind": "report",
+      "title": "Item Variant Details",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_where_used",
+      "kind": "report",
+      "title": "Item Where Used",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_wise_consumption",
+      "kind": "report",
+      "title": "Item Wise Consumption",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:item_wise_price_list_rate",
+      "kind": "report",
+      "title": "Item-wise Price List Rate",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:items_to_be_requested",
+      "kind": "report",
+      "title": "Items To Be Requested",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:itemwise_recommended_reorder_level",
+      "kind": "report",
+      "title": "Itemwise Recommended Reorder Level",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:landed_cost_report",
+      "kind": "report",
+      "title": "Landed Cost Report",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:material_requests_for_which_supplier_quotations_are_not_created",
+      "kind": "report",
+      "title": "Material Requests for which Supplier Quotations are not created",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:negative_batch_report",
+      "kind": "report",
+      "title": "Negative Batch Report",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:product_bundle_balance",
+      "kind": "report",
+      "title": "Product Bundle Balance",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:purchase_receipt_trends",
+      "kind": "report",
+      "title": "Purchase Receipt Trends",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:requested_items_to_be_transferred",
+      "kind": "report",
+      "title": "Requested Items To Be Transferred",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:reserved_stock",
+      "kind": "report",
+      "title": "Reserved Stock",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:serial_and_batch_summary",
+      "kind": "report",
+      "title": "Serial and Batch Summary",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:serial_no_and_batch_traceability",
+      "kind": "report",
+      "title": "Serial No and Batch Traceability",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:serial_no_ledger",
+      "kind": "report",
+      "title": "Serial No Ledger",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:serial_no_service_contract_expiry",
+      "kind": "report",
+      "title": "Serial No Service Contract Expiry",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:serial_no_status",
+      "kind": "report",
+      "title": "Serial No Status",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:serial_no_warranty_expiry",
+      "kind": "report",
+      "title": "Serial No Warranty Expiry",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_ageing",
+      "kind": "report",
+      "title": "Stock Ageing",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_analytics",
+      "kind": "report",
+      "title": "Stock Analytics",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_and_account_value_comparison",
+      "kind": "report",
+      "title": "Stock and Account Value Comparison",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_balance",
+      "kind": "report",
+      "title": "Stock Balance",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_ledger",
+      "kind": "report",
+      "title": "Stock Ledger",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_ledger_entries_of_cancelled_vouchers",
+      "kind": "report",
+      "title": "Stock Ledger Entries of Cancelled Vouchers",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_ledger_invariant_check",
+      "kind": "report",
+      "title": "Stock Ledger Invariant Check",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_ledger_variance",
+      "kind": "report",
+      "title": "Stock Ledger Variance",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_projected_qty",
+      "kind": "report",
+      "title": "Stock Projected Qty",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_qty_vs_batch_qty",
+      "kind": "report",
+      "title": "Stock Qty vs Batch Qty",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_qty_vs_serial_no_count",
+      "kind": "report",
+      "title": "Stock Qty vs Serial No Count",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:stock_valuation_comparison",
+      "kind": "report",
+      "title": "Stock Valuation Comparison",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:total_stock_summary",
+      "kind": "report",
+      "title": "Total Stock Summary",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:warehouse_wise_item_balance_age_and_value",
+      "kind": "report",
+      "title": "Warehouse wise Item Balance Age and Value",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "report:stock:warehouse_wise_stock_balance",
+      "kind": "report",
+      "title": "Warehouse Wise Stock Balance",
+      "target": null,
+      "status": "not_implemented",
+      "browserVerified": false
+    },
+    {
+      "id": "workspace:stock:stock",
+      "kind": "workspace",
+      "title": "Stock",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    },
+    {
+      "id": "navigation:sidebar:erpnext:stock:stock",
+      "kind": "navigation",
+      "title": "Stock",
+      "target": null,
+      "status": "not_mapped",
+      "browserVerified": false
+    }
+  ]
+}

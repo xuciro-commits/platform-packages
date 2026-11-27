@@ -1,0 +1,17 @@
+roles: {item: steward, uom: user}
+at: 2026-11-26T00:00:00Z
+members:
+  keeper: {roles: {item: steward, uom: user}}
+  clerk: {roles: {item: user, uom: user}}
+steps:
+  - {do: item.master.create, on: item.master/I1, as: keeper, with: {title: Steel bolt, code: BOLT-01, kind: material, unit: pcs}, expect: {code: BOLT-01, unit: pcs, state: active}}
+  - {read: item.master/I1, as: clerk, expect: {code: BOLT-01, unit: pcs}}
+  - {do: item.master.create, on: item.master/I2, as: keeper, with: {title: Duplicate, code: BOLT-01, kind: goods, unit: pcs}, refused: true}
+  - {do: item.master.create, on: item.master/I3, as: keeper, with: {title: Missing unit, code: BOLT-03, kind: material, unit: nonexistent}, refused: true}
+  - {do: item.master.create, on: item.master/I4, as: clerk, with: {title: Forbidden, code: BOLT-04, kind: goods, unit: pcs}, refused: true}
+  - {do: item.master.deactivate, on: item.master/I1, as: clerk, refused: true}
+  - {do: item.master.deactivate, on: item.master/I1, as: keeper, expect: {state: inactive}}
+  - {do: item.master.deactivate, on: item.master/I1, as: keeper, refused: true}
+  - {do: item.master.activate, on: item.master/I1, as: keeper, expect: {state: active, code: BOLT-01, unit: pcs}}
+  - {do: item.master.edit, on: item.master/I1, as: keeper, with: {code: CHANGED, unit: kg}, refused: true}
+  - {read: item.master/I1, expect: {state: active, code: BOLT-01, unit: pcs}}

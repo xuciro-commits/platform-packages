@@ -1,0 +1,308 @@
+{
+  "version": 1,
+  "module": "projects",
+  "package": "projects",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/projects/sidebar/projects/projects.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Projects",
+      "target": "projects.erp_home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Dashboard",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Project",
+      "target": "dashboard",
+      "group": "Overview",
+      "implementation": "dashboard",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing application dashboard; source-specific business parity unverified."
+    },
+    {
+      "reference": "Project",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Project",
+      "target": "projects.project",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Task",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Task",
+      "target": "projects.task",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Timesheet",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Timesheet",
+      "target": "projects.timelog",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Project Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Project Summary",
+      "target": "projects.erp_project_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Timesheet Billing Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Timesheet Billing Summary",
+      "target": "projects.erp_timesheet_billing_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Daily Timesheet Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Daily Timesheet Summary",
+      "target": "projects.erp_daily_timesheet_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Delayed Tasks Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Delayed Tasks Summary",
+      "target": "projects.erp_delayed_tasks_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Project wise Stock Tracking",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Project wise Stock Tracking",
+      "target": "projects.erp_project_wise_stock_tracking",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Activity Type",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Activity Type",
+      "target": "projects.erp_activity_type",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Activity Cost",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Activity Cost",
+      "target": "projects.erp_activity_cost",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Project Type",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Project Type",
+      "target": "projects.erp_project_type",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Task Type",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Task Type",
+      "target": "projects.erp_task_type",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Project Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Project Template",
+      "target": "projects.erp_project_template",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Project Update",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Project Update",
+      "target": "projects.erp_project_update",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Projects Settings",
+      "target": "projects.erp_settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [
+    "projects.stage",
+    "projects.projecttype",
+    "projects.activity"
+  ],
+  "additionalGroups": [
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "manager"
+      ],
+      "pages": [
+        "projects.stage",
+        "projects.projecttype",
+        "projects.activity"
+      ]
+    }
+  ],
+  "groupRoles": {
+    "Setup": [
+      "manager"
+    ]
+  },
+  "groupTitles": {},
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "projects.erp_home",
+        "projects.project",
+        "projects.task",
+        "projects.timelog"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "projects.erp_project_summary",
+        "projects.erp_timesheet_billing_summary",
+        "projects.erp_daily_timesheet_summary",
+        "projects.erp_delayed_tasks_summary",
+        "projects.erp_project_wise_stock_tracking"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "projects.erp_activity_type",
+        "projects.erp_activity_cost",
+        "projects.erp_project_type",
+        "projects.erp_task_type",
+        "projects.erp_project_template",
+        "projects.erp_project_update",
+        "projects.erp_settings"
+      ],
+      "roles": [
+        "manager"
+      ]
+    },
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "manager"
+      ],
+      "pages": [
+        "projects.stage",
+        "projects.projecttype",
+        "projects.activity"
+      ]
+    }
+  ],
+  "limitations": [
+    "Existing business pages and setting-role groups preserved; aliases do not duplicate records.",
+    "Flat groups, browser unverified. Existing route/menu order changes require regression."
+  ]
+}

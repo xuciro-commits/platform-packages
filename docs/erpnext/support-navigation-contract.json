@@ -1,0 +1,269 @@
+{
+  "version": 1,
+  "module": "support",
+  "package": "helpdesk",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/support/sidebar/support/support.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Support",
+      "target": "helpdesk.erp_home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Issue",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Issue",
+      "target": "helpdesk.ticket",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing object workflow, partial source mapping."
+    },
+    {
+      "reference": "Maintenance Schedule",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Maintenance Schedule",
+      "target": "helpdesk.erp_maintenance_schedule",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Maintenance Visit",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Maintenance Visit",
+      "target": "helpdesk.erp_maintenance_visit",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Warranty Claim",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Warranty Claim",
+      "target": "helpdesk.erp_warranty_claim",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Issue Type",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Issue Type",
+      "target": "helpdesk.erp_issue_type",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Issue Priority",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Issue Priority",
+      "target": "helpdesk.erp_issue_priority",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Existing authoritative object, not duplicated."
+    },
+    {
+      "reference": "Service Level Agreement",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Service Level Agreement",
+      "target": "helpdesk.erp_service_level_agreement",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "First Response Time for Issues",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "First Response Time for Issues",
+      "target": "helpdesk.erp_first_response_time_for_issues",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Support Settings",
+      "target": "helpdesk.erp_settings",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [
+    "helpdesk.reply",
+    "helpdesk.customer",
+    "helpdesk.article",
+    "helpdesk.cannedreply",
+    "helpdesk.ticketstage",
+    "helpdesk.priority",
+    "helpdesk.queue",
+    "helpdesk.category",
+    "helpdesk.channel",
+    "helpdesk.resolution"
+  ],
+  "additionalGroups": [
+    {
+      "title": "Support",
+      "pages": [
+        "helpdesk.reply"
+      ]
+    },
+    {
+      "title": "Customers",
+      "pages": [
+        "helpdesk.customer"
+      ]
+    },
+    {
+      "title": "Knowledge",
+      "pages": [
+        "helpdesk.article",
+        "helpdesk.cannedreply"
+      ]
+    },
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "supervisor"
+      ],
+      "pages": [
+        "helpdesk.ticketstage",
+        "helpdesk.priority",
+        "helpdesk.queue",
+        "helpdesk.category",
+        "helpdesk.channel",
+        "helpdesk.resolution"
+      ]
+    }
+  ],
+  "groupRoles": {
+    "Setup": [
+      "supervisor"
+    ]
+  },
+  "groupTitles": {},
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "helpdesk.erp_home",
+        "helpdesk.ticket",
+        "helpdesk.erp_maintenance_schedule",
+        "helpdesk.erp_maintenance_visit",
+        "helpdesk.erp_warranty_claim"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "helpdesk.erp_issue_type",
+        "helpdesk.erp_issue_priority",
+        "helpdesk.erp_service_level_agreement"
+      ],
+      "roles": [
+        "supervisor"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "helpdesk.erp_first_response_time_for_issues",
+        "helpdesk.erp_settings"
+      ]
+    },
+    {
+      "title": "Support",
+      "pages": [
+        "helpdesk.reply"
+      ]
+    },
+    {
+      "title": "Customers",
+      "pages": [
+        "helpdesk.customer"
+      ]
+    },
+    {
+      "title": "Knowledge",
+      "pages": [
+        "helpdesk.article",
+        "helpdesk.cannedreply"
+      ]
+    },
+    {
+      "title": "Settings",
+      "layout": "settings",
+      "roles": [
+        "supervisor"
+      ],
+      "pages": [
+        "helpdesk.ticketstage",
+        "helpdesk.priority",
+        "helpdesk.queue",
+        "helpdesk.category",
+        "helpdesk.channel",
+        "helpdesk.resolution"
+      ]
+    }
+  ],
+  "limitations": [
+    "Existing business pages and setting-role groups preserved; aliases do not duplicate records.",
+    "Flat groups, browser unverified. Existing route/menu order changes require regression."
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "scope": "采购主线11个来源对象；外部收货、开票和支付的完整产品实现单列在第五批，非全ERP五批",
+  "batches": [
+    {
+      "id": "B1",
+      "title": "供应商、分类及准入",
+      "sources": [
+        "Supplier",
+        "Supplier Group"
+      ],
+      "state": "candidate_checked",
+      "test": "docs/erpnext/probes/purchasing-supplier-master.yaml",
+      "steps": 38,
+      "remaining": [
+        "35个未映射来源字段",
+        "31个布局声明",
+        "财务冻结、法人、税务、银行、供应商门户、评分限制、树形UI、继承操作、权限全量等价与浏览器"
+      ],
+      "regression": {
+        "probe": "docs/erpnext/probes/purchasing-field-roundtrip.yaml",
+        "steps": 22,
+        "passed": true
+      },
+      "controllerTests": {
+        "passed": 22,
+        "total": 22
+      },
+      "navigationArtifact": "passed",
+      "browserVerified": false
+    },
+    {
+      "id": "B2",
+      "title": "采购需求及需求明细",
+      "sources": [
+        "Material Request",
+        "Material Request Item"
+      ],
+      "state": "in_progress",
+      "acceptance": "多行、单位、日期、状态、受控修订、需求来源与履约数量；非采购需求与跨包协作单独标记",
+      "candidate": {
+        "probe": "docs/erpnext/probes/purchasing-requisition-lines.yaml",
+        "steps": 26,
+        "passed": true,
+        "pin": "ac5e787623a960dee31722741465bfd9c8798f18",
+        "remaining": [
+          "multi-line approval live validation (IB-ERP-0007)",
+          "unit conversion, fulfillment, source links, remaining field/operation review, browser, migration"
+        ]
+      },
+      "conversion": {
+        "probe": "docs/erpnext/probes/purchasing-requisition-conversion.yaml",
+        "steps": 32,
+        "passed": true,
+        "pin": "ac5e787623a960dee31722741465bfd9c8798f18",
+        "remaining": [
+          "item-specific unit authorization, integer/rounding policy, factor changes and migration",
+          "multi-line approval and fulfillment",
+          "remaining source field/operation review, browser"
+        ]
+      },
+      "unitStep": {
+        "probe": "docs/erpnext/probes/purchasing-requisition-unit-step.yaml",
+        "steps": 46,
+        "passed": true,
+        "pin": "ac5e787623a960dee31722741465bfd9c8798f18",
+        "policy": "Configured positive step requires exact multiples, absent/zero means unconstrained; no automatic rounding; negative step refused by guard. Missing request date means no lower bound. Product-specific UOM and master-data changes unverified."
+      },
+      "fieldReview": "101 source declarations annotated; direct operation review remains open"
+    },
+    {
+      "id": "B3",
+      "title": "询价及供应商报价",
+      "sources": [
+        "Request for Quotation",
+        "Request for Quotation Item",
+        "Request for Quotation Supplier",
+        "Supplier Quotation",
+        "Supplier Quotation Item"
+      ],
+      "state": "planned",
+      "acceptance": "多供应商、多行、有效期、报价价格、比价、转换、发送/打印门禁；不伪造发送"
+    },
+    {
+      "id": "B4",
+      "title": "采购订单及订单明细",
+      "sources": [
+        "Purchase Order",
+        "Purchase Order Item"
+      ],
+      "state": "planned",
+      "acceptance": "多行、日期、币种、税/折扣、受控变更、审批、暂停、关闭、来源与采购履约；IB-ERP-0007保留失败门禁"
+    },
+    {
+      "id": "B5",
+      "title": "采购履约、报表与端到端交付",
+      "sources": [
+        "Purchase Receipt",
+        "Purchase Invoice",
+        "付款与采购报表",
+        "采购设置与供应商评分"
+      ],
+      "state": "planned",
+      "acceptance": "扩展来源字段操作矩阵至收货、发票、付款、采购剩余占位；跨包一致性、报表、角色、浏览器、迁移、发布门禁。外部能力明确标记，不强行通过。"
+    }
+  ]
+}

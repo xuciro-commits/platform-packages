@@ -1,0 +1,16 @@
+name: purchasing
+title: Purchasing
+icon: briefcase
+pages: [purchasing.home, purchasing.supplier, purchasing.requisition, purchasing.rfq, purchasing.quotation, purchasing.order, purchasing.purchase_receipt, purchasing.purchase_invoice, purchasing.purchase_analytics, purchasing.order_analysis, purchasing.purchase_register, purchasing.quotation_comparison, purchasing.accounts_payable, purchasing.payable_summary, purchasing.item, purchasing.item_group, purchasing.price_list, purchasing.suppliergroup, purchasing.supplier_scorecard, purchasing.buying_settings, purchasing.orderline, purchasing.requisitionline]
+groups:
+  - {title: "Overview", pages: [purchasing.home, purchasing.supplier, purchasing.requisition, purchasing.rfq, purchasing.quotation, purchasing.order, purchasing.purchase_receipt, purchasing.purchase_invoice]}
+  - {title: "Reports", pages: [purchasing.purchase_analytics, purchasing.order_analysis, purchasing.purchase_register, purchasing.quotation_comparison, purchasing.accounts_payable, purchasing.payable_summary]}
+  - {title: "Items", pages: [purchasing.item, purchasing.item_group, purchasing.price_list]}
+  - {title: "Setup", pages: [purchasing.suppliergroup, purchasing.supplier_scorecard, purchasing.buying_settings]}
+  - {title: "Additional operations", pages: [purchasing.orderline, purchasing.requisitionline]}
+dashboard:
+  - {title: Pending requisitions, kind: metric, object: purchasing.requisition, domain: [[state, "=", requested]]}
+  - {title: Open invitations, kind: metric, object: purchasing.rfq, domain: [[state, "=", open]]}
+  - {title: Draft orders, kind: metric, object: purchasing.order, domain: [[state, "=", draft]]}
+  - {title: Qualified suppliers, kind: metric, object: purchasing.supplier, domain: [[state, "=", qualified]]}
+  - {title: Orders by state, kind: bar, object: purchasing.order, group: state}

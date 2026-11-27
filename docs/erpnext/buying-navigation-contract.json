@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "module": "buying",
+  "package": "purchasing",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/buying/sidebar/buying/buying.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Buying",
+      "target": "purchasing.home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Dedicated workspace shortcuts and tasks are not implemented."
+    },
+    {
+      "reference": "Dashboard",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Buying",
+      "target": "dashboard",
+      "group": "Overview",
+      "implementation": "dashboard",
+      "status": "declared",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Supplier",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Supplier",
+      "target": "purchasing.supplier",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Material Request",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Material Request",
+      "target": "purchasing.requisition",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Request for Quotation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Request for Quotation",
+      "target": "purchasing.rfq",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Supplier Quotation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Supplier Quotation",
+      "target": "purchasing.quotation",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Purchase Order",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Purchase Order",
+      "target": "purchasing.order",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Purchase Receipt",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Purchase Receipt",
+      "target": "purchasing.purchase_receipt",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Stock receipt and purchase fulfillment require verified cross-package contracts (IB-ERP-0003/0006)."
+    },
+    {
+      "reference": "Purchase Invoice",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Purchase Invoice",
+      "target": "purchasing.purchase_invoice",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Invoice matching, tax and accounting posting are not implemented."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Purchase Analytics",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Purchase Analytics",
+      "target": "purchasing.purchase_analytics",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Authorized period reports are not implemented (IB-ERP-0005)."
+    },
+    {
+      "reference": "Purchase Order Analysis",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Purchase Order Analysis",
+      "target": "purchasing.order_analysis",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Order fulfillment analysis is not implemented."
+    },
+    {
+      "reference": "Purchase Register",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Purchase Register",
+      "target": "purchasing.purchase_register",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Purchase and accounting register is not implemented."
+    },
+    {
+      "reference": "Supplier Quotation Comparison",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Supplier Quotation Comparison",
+      "target": "purchasing.quotation_comparison",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Comparable pricing, currencies and quote selection are not implemented."
+    },
+    {
+      "reference": "Accounts Payable",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Accounts Payable",
+      "target": "purchasing.accounts_payable",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Accounting payable ledger is not implemented."
+    },
+    {
+      "reference": "Accounts Payable Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Accounts Payable Summary",
+      "target": "purchasing.payable_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Accounting payable summary is not implemented."
+    },
+    {
+      "reference": "Items",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Item",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item",
+      "target": "purchasing.item",
+      "group": "Items",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative object item.master"
+    },
+    {
+      "reference": "Item Group",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item Group",
+      "target": "purchasing.item_group",
+      "group": "Items",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative object item.category"
+    },
+    {
+      "reference": "Price List",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Price List",
+      "target": "purchasing.price_list",
+      "group": "Items",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Shared price policy and effective-date pricing are not implemented."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Supplier Group",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Supplier Group",
+      "target": "purchasing.suppliergroup",
+      "group": "Setup",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Supplier Scorecard",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Supplier Scorecard",
+      "target": "purchasing.supplier_scorecard",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Supplier performance assessment is not implemented."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Buying Settings",
+      "target": "purchasing.buying_settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Organization purchasing policy is not implemented."
+    }
+  ],
+  "additional": [
+    "purchasing.orderline",
+    "purchasing.requisitionline"
+  ],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "purchasing.home",
+        "purchasing.supplier",
+        "purchasing.requisition",
+        "purchasing.rfq",
+        "purchasing.quotation",
+        "purchasing.order",
+        "purchasing.purchase_receipt",
+        "purchasing.purchase_invoice"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "purchasing.purchase_analytics",
+        "purchasing.order_analysis",
+        "purchasing.purchase_register",
+        "purchasing.quotation_comparison",
+        "purchasing.accounts_payable",
+        "purchasing.payable_summary"
+      ]
+    },
+    {
+      "title": "Items",
+      "pages": [
+        "purchasing.item",
+        "purchasing.item_group",
+        "purchasing.price_list"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "purchasing.suppliergroup",
+        "purchasing.supplier_scorecard",
+        "purchasing.buying_settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": [
+        "purchasing.orderline",
+        "purchasing.requisitionline"
+      ]
+    }
+  ],
+  "limitations": [
+    "Platform uses flat sections; collapse state and exact dashboard order not supported by current contract.",
+    "All pages require actual browser verification. Placeholder pages expose only read-only empty technical marker object, no fake business records or create actions."
+  ]
+}

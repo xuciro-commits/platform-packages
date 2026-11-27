@@ -1,5 +1,5 @@
 id: assets
-version: 0.1.0
+version: 0.1.1
 title: Assets
 namespace: assets
 description: Equipment and other physical assets by category and location, checked out to people and checked back in with a movement history,
@@ -19,7 +19,7 @@ listing:
   - maintenance
   - repair
   - warranty
-  stage: preview
+  stage: test
   source:
     ecosystem: frappe
     app: erpnext

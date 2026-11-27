@@ -1,0 +1,2990 @@
+{
+  "version": 1,
+  "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+  "sidebars": [
+    {
+      "path": "erpnext/accounts/sidebar/accounts/accounts.json",
+      "module": "accounts",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Accounting",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Dashboard",
+          "type": "Link",
+          "target": "Accounts",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Chart of Accounts",
+          "type": "Link",
+          "target": "Account",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Sales Invoice",
+          "type": "Link",
+          "target": "Sales Invoice",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Invoice",
+          "type": "Link",
+          "target": "Purchase Invoice",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Payment Entry",
+          "type": "Link",
+          "target": "Payment Entry",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Journal Entry",
+          "type": "Link",
+          "target": "Journal Entry",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "General Ledger",
+          "type": "Link",
+          "target": "General Ledger",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Trial Balance",
+          "type": "Link",
+          "target": "Trial Balance",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Trial Balance for Party",
+          "type": "Link",
+          "target": "Trial Balance for Party",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Profit and Loss",
+          "type": "Link",
+          "target": "Profit and Loss Statement",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Balance Sheet",
+          "type": "Link",
+          "target": "Balance Sheet",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Cash Flow",
+          "type": "Link",
+          "target": "Cash Flow",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Consolidated Report",
+          "type": "Link",
+          "target": "Consolidated Financial Statement",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Profitability Analysis",
+          "type": "Link",
+          "target": "Profitability Analysis",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounts Receivable",
+          "type": "Link",
+          "target": "Accounts Receivable",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounts Payable",
+          "type": "Link",
+          "target": "Accounts Payable",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Banking",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Banking",
+          "type": "Link",
+          "target": null,
+          "linkType": "URL",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Bank Account",
+          "type": "Link",
+          "target": "Bank Account",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Bank Clearance",
+          "type": "Link",
+          "target": "Bank Clearance",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Taxes",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Sales Tax Template",
+          "type": "Link",
+          "target": "Sales Taxes and Charges Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Tax Template",
+          "type": "Link",
+          "target": "Purchase Taxes and Charges Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Item Tax Template",
+          "type": "Link",
+          "target": "Item Tax Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Tax Rule",
+          "type": "Link",
+          "target": "Tax Rule",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Tax Withholding Category",
+          "type": "Link",
+          "target": "Tax Withholding Category",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Budgeting",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Budget",
+          "type": "Link",
+          "target": "Budget",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Cost Center Allocation",
+          "type": "Link",
+          "target": "Cost Center Allocation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Monthly Distribution",
+          "type": "Link",
+          "target": "Monthly Distribution",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Budget Variance",
+          "type": "Link",
+          "target": "Budget Variance Report",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Company",
+          "type": "Link",
+          "target": "Company",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Fiscal Year",
+          "type": "Link",
+          "target": "Fiscal Year",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Chart of Cost Centers",
+          "type": "Link",
+          "target": "Cost Center",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounting Dimension",
+          "type": "Link",
+          "target": "Accounting Dimension",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Account Category",
+          "type": "Link",
+          "target": "Account Category",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Financial Report Template",
+          "type": "Link",
+          "target": "Financial Report Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Mode of Payment",
+          "type": "Link",
+          "target": "Mode of Payment",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Payment Terms Template",
+          "type": "Link",
+          "target": "Payment Terms Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Currency Exchange",
+          "type": "Link",
+          "target": "Currency Exchange",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Accounts Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "accounts-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/assets/sidebar/assets/assets.json",
+      "module": "assets",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Assets",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Dashboard",
+          "type": "Link",
+          "target": "Asset",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Asset",
+          "type": "Link",
+          "target": "Asset",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Depreciation Schedule",
+          "type": "Link",
+          "target": "Asset Depreciation Schedule",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Asset Movement",
+          "type": "Link",
+          "target": "Asset Movement",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Fixed Asset Register",
+          "type": "Link",
+          "target": "Fixed Asset Register",
+          "linkType": "Report",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Asset Depreciation Ledger",
+          "type": "Link",
+          "target": "Asset Depreciation Ledger",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Asset Depreciations and Balances",
+          "type": "Link",
+          "target": "Asset Depreciations and Balances",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Asset Activity",
+          "type": "Link",
+          "target": "Asset Activity",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Value Changes",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Asset Capitalization",
+          "type": "Link",
+          "target": "Asset Capitalization",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Asset Value Adjustment",
+          "type": "Link",
+          "target": "Asset Value Adjustment",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Asset Maintenance",
+          "type": "Link",
+          "target": "Asset Maintenance",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Asset Maintenance Log",
+          "type": "Link",
+          "target": "Asset Maintenance Log",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Asset Repair",
+          "type": "Link",
+          "target": "Asset Repair",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Asset Maintenance Team",
+          "type": "Link",
+          "target": "Asset Maintenance Team",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Asset Category",
+          "type": "Link",
+          "target": "Asset Category",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Location",
+          "type": "Link",
+          "target": "Location",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Accounts Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "assets-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/buying/sidebar/buying/buying.json",
+      "module": "buying",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Buying",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Dashboard",
+          "type": "Link",
+          "target": "Buying",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Supplier",
+          "type": "Link",
+          "target": "Supplier",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Material Request",
+          "type": "Link",
+          "target": "Material Request",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Request for Quotation",
+          "type": "Link",
+          "target": "Request for Quotation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Supplier Quotation",
+          "type": "Link",
+          "target": "Supplier Quotation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Order",
+          "type": "Link",
+          "target": "Purchase Order",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Receipt",
+          "type": "Link",
+          "target": "Purchase Receipt",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Invoice",
+          "type": "Link",
+          "target": "Purchase Invoice",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Purchase Analytics",
+          "type": "Link",
+          "target": "Purchase Analytics",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Order Analysis",
+          "type": "Link",
+          "target": "Purchase Order Analysis",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Register",
+          "type": "Link",
+          "target": "Purchase Register",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Supplier Quotation Comparison",
+          "type": "Link",
+          "target": "Supplier Quotation Comparison",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounts Payable",
+          "type": "Link",
+          "target": "Accounts Payable",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounts Payable Summary",
+          "type": "Link",
+          "target": "Accounts Payable Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Items",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Item",
+          "type": "Link",
+          "target": "Item",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Item Group",
+          "type": "Link",
+          "target": "Item Group",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Price List",
+          "type": "Link",
+          "target": "Price List",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Supplier Group",
+          "type": "Link",
+          "target": "Supplier Group",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Supplier Scorecard",
+          "type": "Link",
+          "target": "Supplier Scorecard",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Buying Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "buying-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/crm/sidebar/crm/crm.json",
+      "module": "crm",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "CRM",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Lead",
+          "type": "Link",
+          "target": "Lead",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Opportunity",
+          "type": "Link",
+          "target": "Opportunity",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Customer",
+          "type": "Link",
+          "target": "Customer",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Sales Analytics",
+          "type": "Link",
+          "target": "Sales Analytics",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Lead Details",
+          "type": "Link",
+          "target": "Lead Details",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Sales Pipeline Analytics",
+          "type": "Link",
+          "target": "Sales Pipeline Analytics",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Opportunity Summary by Sales Stage",
+          "type": "Link",
+          "target": "Opportunity Summary by Sales Stage",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Sales Funnel",
+          "type": "Link",
+          "target": "sales-funnel",
+          "linkType": "Page",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Prospects Engaged But Not Converted",
+          "type": "Link",
+          "target": "Prospects Engaged But Not Converted",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "First Response Time for Opportunity",
+          "type": "Link",
+          "target": "First Response Time for Opportunity",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Campaign Efficiency",
+          "type": "Link",
+          "target": "Campaign Efficiency",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Lead Owner Efficiency",
+          "type": "Link",
+          "target": "Lead Owner Efficiency",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Maintenance Schedule",
+          "type": "Link",
+          "target": "Maintenance Schedule",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance Visit",
+          "type": "Link",
+          "target": "Maintenance Visit",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Warranty Claim",
+          "type": "Link",
+          "target": "Warranty Claim",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Sales Pipeline",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Contract",
+          "type": "Link",
+          "target": "Contract",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Appointment",
+          "type": "Link",
+          "target": "Appointment",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Communication",
+          "type": "Link",
+          "target": "Communication",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Campaign",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Campaign",
+          "type": "Link",
+          "target": "Campaign",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Email Campaign",
+          "type": "Link",
+          "target": "Email Campaign",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "SMS Center",
+          "type": "Link",
+          "target": "SMS Center",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "SMS Log",
+          "type": "Link",
+          "target": "SMS Log",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Email Group",
+          "type": "Link",
+          "target": "Email Group",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Territory",
+          "type": "Link",
+          "target": "Territory",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Customer Group",
+          "type": "Link",
+          "target": "Customer Group",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Contact",
+          "type": "Link",
+          "target": "Contact",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Prospect",
+          "type": "Link",
+          "target": "Prospect",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Sales Person",
+          "type": "Link",
+          "target": "Sales Person",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Sales Stage",
+          "type": "Link",
+          "target": "Sales Stage",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Lead Source",
+          "type": "Link",
+          "target": "UTM Source",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "CRM Settings",
+          "type": "Link",
+          "target": "CRM Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "SMS Settings",
+          "type": "Link",
+          "target": "SMS Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "crm-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/manufacturing/sidebar/manufacturing/manufacturing.json",
+      "module": "manufacturing",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Manufacturing",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Dashboard",
+          "type": "Link",
+          "target": "Manufacturing",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "BOM",
+          "type": "Link",
+          "target": "BOM",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Production Plan",
+          "type": "Link",
+          "target": "Production Plan",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Work Order",
+          "type": "Link",
+          "target": "Work Order",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Job Card",
+          "type": "Link",
+          "target": "Job Card",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Stock Entry",
+          "type": "Link",
+          "target": "Stock Entry",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Production Analytics",
+          "type": "Link",
+          "target": "Production Analytics",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Work Order Summary",
+          "type": "Link",
+          "target": "Work Order Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Job Card Summary",
+          "type": "Link",
+          "target": "Job Card Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Production Planning Report",
+          "type": "Link",
+          "target": "Production Planning Report",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Material Requirements Planning Report",
+          "type": "Link",
+          "target": "Material Requirements Planning Report",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Subcontracting",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Subcontracting Order",
+          "type": "Link",
+          "target": "Subcontracting Order",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Subcontracting Receipt",
+          "type": "Link",
+          "target": "Subcontracting Receipt",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Subcontracting BOM",
+          "type": "Link",
+          "target": "Subcontracting BOM",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Subcontracting Inward Order",
+          "type": "Link",
+          "target": "Subcontracting Inward Order",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Inward Order Summary",
+          "type": "Link",
+          "target": "Subcontracting Inward Order Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Raw Materials To Be Received",
+          "type": "Link",
+          "target": "Subcontracted Raw Materials To Be Received",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Items To Be Delivered",
+          "type": "Link",
+          "target": "Subcontracted Items To Be Delivered",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Tools",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "BOM Creator",
+          "type": "Link",
+          "target": "BOM Creator",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "BOM Update Tool",
+          "type": "Link",
+          "target": "BOM Update Tool",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "BOM Comparison Tool",
+          "type": "Link",
+          "target": "bom-comparison-tool",
+          "linkType": "Page",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Downtime Entry",
+          "type": "Link",
+          "target": "Downtime Entry",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Workstation",
+          "type": "Link",
+          "target": "Workstation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Operation",
+          "type": "Link",
+          "target": "Operation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Routing",
+          "type": "Link",
+          "target": "Routing",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Plant Floor",
+          "type": "Link",
+          "target": "Plant Floor",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Manufacturing Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "manufacturing-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/portal/sidebar/portal/portal.json",
+      "module": "portal",
+      "entries": [],
+      "contract": null,
+      "status": "empty_source"
+    },
+    {
+      "path": "erpnext/projects/sidebar/projects/projects.json",
+      "module": "projects",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Projects",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Dashboard",
+          "type": "Link",
+          "target": "Project",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Project",
+          "type": "Link",
+          "target": "Project",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Task",
+          "type": "Link",
+          "target": "Task",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Timesheet",
+          "type": "Link",
+          "target": "Timesheet",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Project Summary",
+          "type": "Link",
+          "target": "Project Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Timesheet Billing Summary",
+          "type": "Link",
+          "target": "Timesheet Billing Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Daily Timesheet Summary",
+          "type": "Link",
+          "target": "Daily Timesheet Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Delayed Tasks Summary",
+          "type": "Link",
+          "target": "Delayed Tasks Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Project wise Stock Tracking",
+          "type": "Link",
+          "target": "Project wise Stock Tracking",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Activity Type",
+          "type": "Link",
+          "target": "Activity Type",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Activity Cost",
+          "type": "Link",
+          "target": "Activity Cost",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Project Type",
+          "type": "Link",
+          "target": "Project Type",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Task Type",
+          "type": "Link",
+          "target": "Task Type",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Project Template",
+          "type": "Link",
+          "target": "Project Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Project Update",
+          "type": "Link",
+          "target": "Project Update",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Projects Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "projects-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/quality_management/sidebar/quality/quality.json",
+      "module": "quality_management",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Quality",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Quality Inspection",
+          "type": "Link",
+          "target": "Quality Inspection",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Quality Goal",
+          "type": "Link",
+          "target": "Quality Goal",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Quality Procedure",
+          "type": "Link",
+          "target": "Quality Procedure",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Quality Review",
+          "type": "Link",
+          "target": "Quality Review",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Non Conformance",
+          "type": "Link",
+          "target": "Non Conformance",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Quality Action",
+          "type": "Link",
+          "target": "Quality Action",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Quality Inspection Summary",
+          "type": "Link",
+          "target": "Quality Inspection Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Review",
+          "type": "Link",
+          "target": "Review",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance Schedules",
+          "type": "Link",
+          "target": "Maintenance Schedules",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Meetings & Feedback",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Quality Meeting",
+          "type": "Link",
+          "target": "Quality Meeting",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Quality Feedback",
+          "type": "Link",
+          "target": "Quality Feedback",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Maintenance Schedule",
+          "type": "Link",
+          "target": "Maintenance Schedule",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance Visit",
+          "type": "Link",
+          "target": "Maintenance Visit",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Quality Inspection Template",
+          "type": "Link",
+          "target": "Quality Inspection Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Feedback Template",
+          "type": "Link",
+          "target": "Quality Feedback Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "quality_management-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/selling/sidebar/selling/selling.json",
+      "module": "selling",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Selling",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Dashboard",
+          "type": "Link",
+          "target": "Selling",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Customer",
+          "type": "Link",
+          "target": "Customer",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Quotation",
+          "type": "Link",
+          "target": "Quotation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Sales Order",
+          "type": "Link",
+          "target": "Sales Order",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Delivery Note",
+          "type": "Link",
+          "target": "Delivery Note",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Sales Invoice",
+          "type": "Link",
+          "target": "Sales Invoice",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Sales Analytics",
+          "type": "Link",
+          "target": "Sales Analytics",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Sales Register",
+          "type": "Link",
+          "target": "Sales Register",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounts Receivable",
+          "type": "Link",
+          "target": "Accounts Receivable",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounts Receivable Summary",
+          "type": "Link",
+          "target": "Accounts Receivable Summary",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Gross Profit",
+          "type": "Link",
+          "target": "Gross Profit",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Items",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Item",
+          "type": "Link",
+          "target": "Item",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Price List",
+          "type": "Link",
+          "target": "Price List",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Pricing Rule",
+          "type": "Link",
+          "target": "Pricing Rule",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "POS",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "POS",
+          "type": "Link",
+          "target": "point-of-sale",
+          "linkType": "Page",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "POS Profile",
+          "type": "Link",
+          "target": "POS Profile",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "POS Invoice",
+          "type": "Link",
+          "target": "POS Invoice",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Customer Group",
+          "type": "Link",
+          "target": "Customer Group",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Territory",
+          "type": "Link",
+          "target": "Territory",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Sales Person",
+          "type": "Link",
+          "target": "Sales Person",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Selling Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "selling-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/setup/sidebar/setup/setup.json",
+      "module": "setup",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Home",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Company",
+          "type": "Link",
+          "target": "Company",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Users",
+          "type": "Link",
+          "target": "User",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Organization",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Branch",
+          "type": "Link",
+          "target": "Branch",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Department",
+          "type": "Link",
+          "target": "Department",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Designation",
+          "type": "Link",
+          "target": "Designation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Holiday List",
+          "type": "Link",
+          "target": "Holiday List",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Access",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Role",
+          "type": "Link",
+          "target": "Role",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Role Permissions",
+          "type": "Link",
+          "target": "permission-manager",
+          "linkType": "Page",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "User Permissions",
+          "type": "Link",
+          "target": "User Permission",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Authorization Rule",
+          "type": "Link",
+          "target": "Authorization Rule",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Printing",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Letter Head",
+          "type": "Link",
+          "target": "Letter Head",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Print Format",
+          "type": "Link",
+          "target": "Print Format",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Print Settings",
+          "type": "Link",
+          "target": "Print Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Email",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Email Account",
+          "type": "Link",
+          "target": "Email Account",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Email Template",
+          "type": "Link",
+          "target": "Email Template",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Email Digest",
+          "type": "Link",
+          "target": "Email Digest",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Data",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Data Import",
+          "type": "Link",
+          "target": "Data Import",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Rename Tool",
+          "type": "Link",
+          "target": "Rename Tool",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Bulk Transaction Log",
+          "type": "Link",
+          "target": "Bulk Transaction Log",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Transaction Deletion Record",
+          "type": "Link",
+          "target": "Transaction Deletion Record",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Integrations",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Incoming Call Settings",
+          "type": "Link",
+          "target": "Incoming Call Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Voice Call Settings",
+          "type": "Link",
+          "target": "Voice Call Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Call Log",
+          "type": "Link",
+          "target": "Call Log",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Telephony Call Type",
+          "type": "Link",
+          "target": "Telephony Call Type",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Communication Medium",
+          "type": "Link",
+          "target": "Communication Medium",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Code List",
+          "type": "Link",
+          "target": "Code List",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Common Code",
+          "type": "Link",
+          "target": "Common Code",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "System",
+          "type": "Link",
+          "target": "System Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Global Defaults",
+          "type": "Link",
+          "target": "Global Defaults",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Accounts",
+          "type": "Link",
+          "target": "Accounts Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Selling",
+          "type": "Link",
+          "target": "Selling Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Buying",
+          "type": "Link",
+          "target": "Buying Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Stock",
+          "type": "Link",
+          "target": "Stock Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Manufacturing",
+          "type": "Link",
+          "target": "Manufacturing Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Projects",
+          "type": "Link",
+          "target": "Projects Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "CRM",
+          "type": "Link",
+          "target": "CRM Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Support",
+          "type": "Link",
+          "target": "Support Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "POS",
+          "type": "Link",
+          "target": "POS Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Subscription",
+          "type": "Link",
+          "target": "Subscription Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Item Variant",
+          "type": "Link",
+          "target": "Item Variant Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Delivery",
+          "type": "Link",
+          "target": "Delivery Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Currency Exchange",
+          "type": "Link",
+          "target": "Currency Exchange Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Appointment Booking",
+          "type": "Link",
+          "target": "Appointment Booking Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Stock Reposting",
+          "type": "Link",
+          "target": "Stock Reposting Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "setup-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/stock/sidebar/stock/stock.json",
+      "module": "stock",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Stock",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Dashboard",
+          "type": "Link",
+          "target": "Stock",
+          "linkType": "Dashboard",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Item",
+          "type": "Link",
+          "target": "Item",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Warehouse",
+          "type": "Link",
+          "target": "Warehouse",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Material Request",
+          "type": "Link",
+          "target": "Material Request",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Stock Entry",
+          "type": "Link",
+          "target": "Stock Entry",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Stock Reconciliation",
+          "type": "Link",
+          "target": "Stock Reconciliation",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Purchase Receipt",
+          "type": "Link",
+          "target": "Purchase Receipt",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Delivery Note",
+          "type": "Link",
+          "target": "Delivery Note",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Stock Ledger",
+          "type": "Link",
+          "target": "Stock Ledger",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Stock Balance",
+          "type": "Link",
+          "target": "Stock Balance",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Stock Projected Qty",
+          "type": "Link",
+          "target": "Stock Projected Qty",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Stock Ageing",
+          "type": "Link",
+          "target": "Stock Ageing",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Stock Analytics",
+          "type": "Link",
+          "target": "Stock Analytics",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Tools",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Pick List",
+          "type": "Link",
+          "target": "Pick List",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Landed Cost Voucher",
+          "type": "Link",
+          "target": "Landed Cost Voucher",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Quality Inspection",
+          "type": "Link",
+          "target": "Quality Inspection",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Packing Slip",
+          "type": "Link",
+          "target": "Packing Slip",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Serial & Batch",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Serial No",
+          "type": "Link",
+          "target": "Serial No",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Batch No",
+          "type": "Link",
+          "target": "Batch",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Serial and Batch Bundle",
+          "type": "Link",
+          "target": "Serial and Batch Bundle",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Item Group",
+          "type": "Link",
+          "target": "Item Group",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Item Attribute",
+          "type": "Link",
+          "target": "Item Attribute",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Brand",
+          "type": "Link",
+          "target": "Brand",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Unit of Measure (UOM)",
+          "type": "Link",
+          "target": "UOM",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Inventory Dimension",
+          "type": "Link",
+          "target": "Inventory Dimension",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Stock Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        }
+      ],
+      "contract": "stock-navigation-contract.json",
+      "status": "artifact_checked"
+    },
+    {
+      "path": "erpnext/support/sidebar/support/support.json",
+      "module": "support",
+      "entries": [
+        {
+          "label": "Home",
+          "type": "Link",
+          "target": "Support",
+          "linkType": "Workspace",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Issue",
+          "type": "Link",
+          "target": "Issue",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance Schedule",
+          "type": "Link",
+          "target": "Maintenance Schedule",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Maintenance Visit",
+          "type": "Link",
+          "target": "Maintenance Visit",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Warranty Claim",
+          "type": "Link",
+          "target": "Warranty Claim",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        },
+        {
+          "label": "Setup",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "Issue Type",
+          "type": "Link",
+          "target": "Issue Type",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Issue Priority",
+          "type": "Link",
+          "target": "Issue Priority",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Service Level Agreement",
+          "type": "Link",
+          "target": "Service Level Agreement",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Reports",
+          "type": "Section Break",
+          "target": null,
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 1
+        },
+        {
+          "label": "First Response Time for Issues",
+          "type": "Link",
+          "target": "First Response Time for Issues",
+          "linkType": "Report",
+          "foldable": true,
+          "child": true,
+          "indent": 0
+        },
+        {
+          "label": "Settings",
+          "type": "Link",
+          "target": "Support Settings",
+          "linkType": "DocType",
+          "foldable": true,
+          "child": false,
+          "indent": 0
+        }
+      ],
+      "contract": "support-navigation-contract.json",
+      "status": "artifact_checked"
+    }
+  ]
+}

@@ -1,0 +1,932 @@
+{
+  "version": 1,
+  "findings": [
+    {
+      "feature": "navigation:workspace_sidebar:stock",
+      "intent": "仓库人员从同一个库存应用进入业务单据、工具、工作区和看板，不需要知道各资源的底层类型。",
+      "observation": "固定版本的库存侧栏用独立 Workspace Sidebar 记录组织有序 items，条目具有 link_type/link_to、图标、折叠及缩进元数据；Home 指向 Workspace，Dashboard 指向 Dashboard，Stock Entry 指向 DocType；Tools 是 Section Break，随后为 child 条目。该文件证明区段式折叠和多资源类型入口，不证明任意深度递归。 后续复核固定版本：旧 WorkspaceSidebar 已是只读归档，当前模块使用新版 Sidebar（stock/sidebar/stock/stock.json）；不能把归档当现行运行资源。",
+      "design": "Platform 应采用有稳定身份的导航节点和统一资源引用，支持区段、子组、顺序、权限裁剪及个人折叠状态。先验证递归导航契约与包编译、安装、前端消费的完整链路，避免库存包自定义侧栏。",
+      "counterexample": "若仅将每个对象生成一个平铺页面，报表/看板入口和工具区段不能表达；若按角色隐藏菜单而不校验目标资源权限，直接访问仍可能越权。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/workspace_sidebar/stock.json",
+          "start": 8,
+          "end": 43,
+          "symbol": "link_type"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/workspace_sidebar/stock.json",
+          "start": 93,
+          "end": 105,
+          "symbol": "Section Break"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/workspace_sidebar/workspace_sidebar.py",
+          "start": 44,
+          "end": 67,
+          "symbol": "archive"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/sidebar/stock/stock.json",
+          "start": 1,
+          "end": 104,
+          "symbol": "Sidebar"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "当前 Platform 的 AppGroup 是否可以通过受支持的嵌套资源表达折叠层级及报表目标？",
+          "probe": "以真实包声明两级折叠导航并安装，在浏览器检验直接路由权限、刷新保持和升级；对照 AppGroup 与 AppSidebar。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "report:stock:stock_balance",
+      "intent": "财务与库存人员按公司、仓库、物料和期间重建期初、期间收发、期末及成本，而不是仅查看当前余额。",
+      "observation": "报表元数据将其声明为 Script Report、允许 prepared report 并设置角色；JS 提供期间、公司、物料与仓库筛选；执行器先准备期初快照，再查询流水并汇总，按需使用全历史而非不适用的期末快照。盘点有按过账后余额计算差量的分支；期间前变化进入期初，期间内按符号划分入出，随后更新数量与金额。",
+      "design": "独立 Report Definition 应包含参数、权限、列契约、计算资源和执行方式；库存权威仍为不可变移动事实，历史快照仅作优化，结果必须以全量重算对账；支持期间、维度、币种与导出。先构建期初/期末确定性探针，再研究历史快照、金额和准备报表能力。",
+      "counterexample": "将当前实存量直接当指定日期期末会把未来交易混入；快照与全历史同时累加会重复计算；按单个库存维度快照无法重建组合维度的期初。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_balance/stock_balance.json",
+          "start": 20,
+          "end": 33,
+          "symbol": "prepared_report"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_balance/stock_balance.js",
+          "start": 4,
+          "end": 29,
+          "symbol": "from_date"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_balance/stock_balance.js",
+          "start": 37,
+          "end": 90,
+          "symbol": "MultiSelectList"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_balance/stock_balance.py",
+          "start": 83,
+          "end": 100,
+          "symbol": "prepare_opening_stock"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_balance/stock_balance.py",
+          "start": 131,
+          "end": 154,
+          "symbol": "ignore_closing_balance"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_balance/stock_balance.py",
+          "start": 487,
+          "end": 532,
+          "symbol": "opening_qty"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 能否按授权范围对任意历史期间完整聚合并提供可复用报表参数、列、执行和导出？",
+          "probe": "用已知 期初100/入20/出15/期末105 的数据加未来交易、越权仓库、超过500条流水；验证结果、权限和完整性。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "report:stock:stock_ledger",
+      "intent": "按公司、期间、仓库和物料追查每笔库存变化及其单据来源、变动数量、余额和金额，并保留批次及库存维度上下文。",
+      "observation": "元数据定义为 Script Report；客户端定义公司、日期、仓库及物料选择。执行先校验日期及允许仓库，再取得流水和按批次、维度或普通方式计算的期初；查询排除已取消流水，按过账时间及创建时间排序，带单据引用、数量、金额、批次和维度。仓库权限有交集处理。",
+      "design": "建立只读库存流水报告，使用不可变过账事实和稳定顺序键，保留业务单据引用、仓库、物料、数量单位和金额；在查询前施加授权过滤，期初与期间流水采用同一权限与维度条件。后续结合冲正、历史回放和分页实现。",
+      "counterexample": "仅按当前库存对象的更新时间排序会丢失历史交易顺序；未限制期初查询权限可能通过开期余额泄漏其他仓库；相同过账时间的多笔流水必须稳定排序。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ledger/stock_ledger.json",
+          "start": 16,
+          "end": 25,
+          "symbol": "Script Report"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ledger/stock_ledger.js",
+          "start": 4,
+          "end": 45,
+          "symbol": "MultiSelectList"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ledger/stock_ledger.py",
+          "start": 26,
+          "end": 90,
+          "symbol": "apply_permitted_warehouses"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ledger/stock_ledger.py",
+          "start": 478,
+          "end": 537,
+          "symbol": "is_cancelled"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ledger/stock_ledger.py",
+          "start": 824,
+          "end": 838,
+          "symbol": "permitted"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 的记录查询是否支持完整历史流水的稳定复合排序、授权期初和大规模分页？",
+          "probe": "构造同一时刻、跨仓库、冲正、未来日期和超过500条记录的样本；验证排序、期初、权限及分页无重复遗漏。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "report:stock:stock_ageing",
+      "intent": "按指定日期重建剩余库存的库龄、数量及金额分桶，以便发现长期积压库存。",
+      "observation": "执行器从历史流水生成剩余货层，再计算按数量加权平均库龄、最老和最新货层、可配置区间的数量金额，并生成图表。处理过程支持批次、序列号、盘点、调整净额；出库逻辑还区分 LIFO。流水可流式消费并预取估值信息，避免流式游标被嵌套查询打断。",
+      "design": "独立库龄投影应在过账事实之上重建剩余货层，明确货层标识、原始入库日期、数量和估值规则；将货层计算与报表分桶分离。按截止日期和权限重放，避免重复计入调拨或调整。",
+      "counterexample": "两批同物料分别入库10件和20件，消耗10件后不能按最后一次入库时间给全部库存赋龄；盘点或内部调整也不应无条件重置原始货龄。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ageing/stock_ageing.json",
+          "start": 15,
+          "end": 26,
+          "symbol": "Script Report"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ageing/stock_ageing.js",
+          "start": 4,
+          "end": 43,
+          "symbol": "to_date"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ageing/stock_ageing.py",
+          "start": 39,
+          "end": 76,
+          "symbol": "FIFOSlots"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ageing/stock_ageing.py",
+          "start": 103,
+          "end": 174,
+          "symbol": "get_average_age"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ageing/stock_ageing.py",
+          "start": 300,
+          "end": 343,
+          "symbol": "unbuffered_cursor"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/report/stock_ageing/stock_ageing.py",
+          "start": 388,
+          "end": 409,
+          "symbol": "LIFO"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "现有 Platform 是否有可扩展的有序流水投影、货层计算和大规模流式读取能力？",
+          "probe": "用独立参考计算器验证两批收货、部分出货、跨库调拨、盘点及历史截止日期，比较分桶数量金额；百万流水测试内存及耗时。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "print:stock:delivery_note_classic",
+      "intent": "从交货单生成可交付给客户的正式版式，显示单据信息、商品明细、金额及业务条款。",
+      "observation": "打印格式是绑定 Delivery Note 的独立资源，启用 beta builder，存储结构化 format_data。布局由页眉、页脚、区段、列和字段组成；明细表包含合并字段、条件列、货币字段、数量与单位组合，税费通过 repeater 和行条件呈现；另有纸面边距、字体、Chrome PDF 渲染配置。",
+      "design": "建立独立版本化 DocumentTemplate 资源，使用授权单据快照绑定标量字段、明细和重复区段；条件表达式受控，版式定义与业务金额计算分离。预览和 PDF 应共享渲染模型；支持不同页长及打印权限。",
+      "counterexample": "把当前表单截图当 PDF 无法保证分页、明细重复表头、动态税费或字段授权；打印模板不得重新计算业务单据金额而产生第二套权威。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/print_format/delivery_note_classic/delivery_note_classic.json",
+          "start": 5,
+          "end": 12,
+          "symbol": "format_data"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/print_format/delivery_note_classic/delivery_note_classic.json",
+          "start": 12,
+          "end": 12,
+          "symbol": "table_columns"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/print_format/delivery_note_classic/delivery_note_classic.json",
+          "start": 12,
+          "end": 12,
+          "symbol": "row_condition"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/print_format/delivery_note_classic/delivery_note_classic.json",
+          "start": 16,
+          "end": 30,
+          "symbol": "pdf_generator"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 的打印/文档能力是否能覆盖可编辑版式、条件明细、预览、PDF 和权限？",
+          "probe": "用真实交货单模板输出一页及跨页的20/100条明细，检查表头、税费条件、金额一致、字体、权限和PDF产物；关联 IB-ERP-0001。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "framework:report-engine",
+      "intent": "将不同计算方式的报表统一为可授权、可执行、可管理的资源，并处理慢报表。",
+      "observation": "Report 资源通过角色检查；查询报表执行前调用安全SQL检查，返回列与结果；脚本报表区分标准模块、快照和受限脚本执行。脚本报表在符合条件时设15秒观察计时器以启用 prepared report，记录运行时长；快照入口通过固定方法名解析。上述代码只证明其调用和分派策略，不证明安全SQL或脚本沙箱没有缺陷。",
+      "design": "在 Platform 以版本化报表契约声明参数、列、权限和计算绑定，优先声明式查询，复杂计算走受控后端能力；异步任务提供结果身份、有效期和取消。不能开放任意SQL或任意代码作为默认报表能力。",
+      "counterexample": "只提供列表聚合或硬编码行业页面，无法统一管理不同报表执行形式；把慢报表无条件放在同步HTTP请求中会导致超时；查询只读不等于租户数据可授权。",
+      "anchors": [
+        {
+          "repo": "frappe",
+          "path": "frappe/core/doctype/report/report.py",
+          "start": 137,
+          "end": 159,
+          "symbol": "is_permitted"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/core/doctype/report/report.py",
+          "start": 179,
+          "end": 220,
+          "symbol": "check_safe_sql_query"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/core/doctype/report/report.py",
+          "start": 222,
+          "end": 248,
+          "symbol": "safe_exec"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 是否具备可安装的独立 Report 资源，以及带租户、角色、参数与结果契约的执行/异步结果机制？",
+          "probe": "检查定义、编译、运行时注册、查询/能力调用、权限与导出链路；用同一包注册简单聚合与慢计算报告，验证失败、隔离和取消。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "framework:report-ui",
+      "intent": "让用户通过统一报表页面选择参数、运行、配置列、查看结果和图表，并按权限导出。",
+      "observation": "服务端加载报表及自定义列/筛选后检查报表角色、对象 report 权限及禁用状态；运行入口验证 Link 参数权限，分派 prepared result 或实时计算，归一化列和结果，执行结果过滤及字段遮蔽，再追加总计和图表等响应字段。导出另检查 can_export，可进入后台任务。前端 QueryReport 统一页面初始化并引入 DataTable。尚未全面验证客户端设计器行为。",
+      "design": "将报表定义、授权执行、结果呈现和用户保存的视图设置分离；标准客户端消费带类型列、行、摘要、图表与任务状态的契约。筛选、详情跳转、下载、导出必须通过同样的服务端权限约束；聚合前授权，避免后置过滤泄漏总计。",
+      "counterexample": "菜单隐藏不是报表权限；只限制浏览器筛选器却接受越权链接参数会泄漏；缓存结果只按报表名称复用可能将其他用户的结果交给当前用户。",
+      "anchors": [
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/query_report.py",
+          "start": 30,
+          "end": 64,
+          "symbol": "is_permitted"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/query_report.py",
+          "start": 110,
+          "end": 184,
+          "symbol": "get_filtered_data"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/query_report.py",
+          "start": 272,
+          "end": 337,
+          "symbol": "validate_filters_permissions"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/query_report.py",
+          "start": 436,
+          "end": 469,
+          "symbol": "can_export"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/query_report.py",
+          "start": 968,
+          "end": 1012,
+          "symbol": "mask_field_value"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/query_report.py",
+          "start": 1206,
+          "end": 1235,
+          "symbol": "has_permission"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/public/js/frappe/views/reports/query_report.js",
+          "start": 3,
+          "end": 49,
+          "symbol": "QueryReport"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 的页面定义、查询、保存视图和导出是否能统一支撑报表交互，而不是每个行业包重复建设？",
+          "probe": "以同一个报表定义验证参数生成、保存筛选/列、动态列变化、汇总和导出；切换角色及租户验证缓存、链接和遮蔽。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "framework:print-template",
+      "intent": "将单据或报表的打印设计作为可编辑、可发布、可回滚的独立资源，保存草稿而不影响正在使用的版式。",
+      "observation": "Print Format 定义支持单据或报表绑定、标准与自定义格式、Jinja/JS、结构化布局、样式、纸张及渲染器。控制器校验模板和条件；标准格式非开发/安装等模式不可直接更新。编辑器草稿限定字段，检查写权限和 modified 乐观并发版本，保存草稿不改变正式版式，应用时保存并记录版本。",
+      "design": "将版式模板、草稿与发布版本分离；以资源引用绑定单据/报表，版本化布局 AST、字段绑定、条件及输出参数；使用现有授权及版本 CAS，草稿和正式模板独立读取，回滚产生明确版本。优先受控声明而非任意脚本。",
+      "counterexample": "用户编辑一半即改变正式交货单会破坏已上线业务；两个设计者同时提交不能静默覆盖；模板版式版本不应被误当作业务单据版本。",
+      "anchors": [
+        {
+          "repo": "frappe",
+          "path": "frappe/printing/doctype/print_format/print_format.json",
+          "start": 55,
+          "end": 145,
+          "symbol": "custom_format"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/printing/doctype/print_format/print_format.json",
+          "start": 238,
+          "end": 355,
+          "symbol": "draft_data"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/printing/doctype/print_format/print_format.py",
+          "start": 103,
+          "end": 159,
+          "symbol": "validate_template"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/printing/doctype/print_format/print_format.py",
+          "start": 548,
+          "end": 632,
+          "symbol": "_writable_format"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 的资源编辑、草稿、版本发布与 document.render 契约能否完整表达打印模板生命周期？",
+          "probe": "用两个编辑者修改同一模板，验证草稿不影响正式预览、冲突拒绝、应用、命名版本、回滚及权限；关联 IB-ERP-0001。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "framework:print-preview",
+      "intent": "按照当前单据、模板、用户授权、语言、抬头和打印设置生成可信预览，且禁止不符合业务状态的输出。",
+      "observation": "预览入口加载单据及元数据、格式、语言、版式方向和渲染设置；模板渲染前执行打印权限检查（存在内部豁免），拒绝未获允许的草稿或取消单据并调用 before_print。权限判断含 read/print、网站权限及有效 key 的替代路径；布局字段可按 permlevel 和 print_hide 隐藏。源码不能据此证明所有自定义模板路径都没有越权。",
+      "design": "预览服务以授权后的不可变单据视图及模板版本为输入；统一处理文档级、字段级、子表权限和业务状态，拒绝越权覆盖；预览与输出复用规范化上下文、语言和布局，缓存键必须包含权限范围。",
+      "counterexample": "前端隐藏字段而服务端仍将整份单据传给自定义模板会泄露字段；取消单据在预览被拦截而 PDF 下载不拦截会破坏状态约束。",
+      "anchors": [
+        {
+          "repo": "frappe",
+          "path": "frappe/www/printview.py",
+          "start": 46,
+          "end": 113,
+          "symbol": "resolve_print_format"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/www/printview.py",
+          "start": 213,
+          "end": 275,
+          "symbol": "validate_print_permission"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/www/printview.py",
+          "start": 529,
+          "end": 573,
+          "symbol": "validate_print"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/www/printview.py",
+          "start": 732,
+          "end": 740,
+          "symbol": "has_permlevel_access_to"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/utils/print_utils.py",
+          "start": 141,
+          "end": 173,
+          "symbol": "validate_print"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 是否可在预览与下载两条路径统一执行文档状态和字段级授权？",
+          "probe": "对同一版本使用只读、无权、字段受限用户和草稿/取消单据分别测试预览、PDF与直达资源，比较可见字段及拒绝原因。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "framework:pdf-render",
+      "intent": "将授权后的业务文档按确定版式转换为可下载、可组合的 PDF，处理页眉页脚、图片、纸张、失败及资源清理。",
+      "observation": "get_pdf 预处理 URL/HTML/纸张参数，wkhtmltopdf 路径禁用 JS 与本地文件读取，生成内存 PDF 后解析、合并或加密，finally 清理。Chrome 路径由 Browser 与 PDFTransformer 合并页眉页脚，finally 关闭浏览器；PlutoPrint 在部分不支持情况回退 Chrome。print_utils 根据格式、设置及生成器分派，builder PDF 前验证权限，记录访问；恢复请求上下文。",
+      "design": "独立 DocumentRender 执行契约接收不可变模板版本、授权数据快照及输出选项；限定渲染器网络/文件访问、字体和资产解析，设置时限、页数及大小预算。预览与 PDF 共享布局语义；渲染失败可诊断，不自动提交业务状态。",
+      "counterexample": "直接截图网页会在跨页明细时丢失重复表头；并发渲染不能共享未隔离的用户上下文；损坏图片、异常模板和渲染超时不能产出伪成功 PDF。",
+      "anchors": [
+        {
+          "repo": "frappe",
+          "path": "frappe/utils/pdf.py",
+          "start": 110,
+          "end": 163,
+          "symbol": "disable-local-file-access"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/utils/pdf.py",
+          "start": 189,
+          "end": 221,
+          "symbol": "PDFTransformer"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/utils/pdf.py",
+          "start": 234,
+          "end": 280,
+          "symbol": "inline_private_images"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/utils/print_utils.py",
+          "start": 111,
+          "end": 220,
+          "symbol": "restore_print_context"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform document.render/1 能否提供可重复的多页 PDF、错误恢复与渲染资源隔离？",
+          "probe": "在固定字体和测试资源下渲染1/20/100行单据，检查页数、文本完整性、重复表头、权限拒绝、坏图、超时及并发隔离；记录 PDF 哈希和语义差异。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "framework:navigation-contract",
+      "intent": "将业务模块的标准导航与站点、用户级定制分离，以稳定入口身份保留升级后的布局、资源目标和权限。",
+      "observation": "Workspace Sidebar Item 定义链接、区段、折叠、缩进、过滤和路由参数，但其父 WorkspaceSidebar 已禁止新增及编辑，明确为归档。当前 Sidebar/Sidebar Item 资源承载模块导航，固定 ERPNext stock/sidebar/stock/stock.json 使用新版资源；frappe.boot.module_sidebars 驱动前端。新版编辑器区分 app 基层及上层定制，链接身份由已有列派生，非链接身份以类型/标签等派生，避免导入重建子行破坏引用。这里未证明支持任意深度递归。",
+      "design": "Platform 导航契约应有稳定节点与目标身份，支持包标准层、租户覆盖层和用户偏好；折叠状态与资源授权独立，升级合并保留显式覆盖，避免用标签页序号或可变显示名标识资源。先验证声明式嵌套与权限，再决定最小扩展。",
+      "counterexample": "用归档 Workspace Sidebar 作为当前架构将生成无运行消费者的资源；升级重建子行 ID 时，用户定制引用不应失效；隐藏菜单不能代替目标权限。",
+      "anchors": [
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/workspace_sidebar_item/workspace_sidebar_item.json",
+          "start": 34,
+          "end": 94,
+          "symbol": "collapsible"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/workspace_sidebar_item/workspace_sidebar_item.json",
+          "start": 118,
+          "end": 176,
+          "symbol": "route_options"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/workspace_sidebar/workspace_sidebar.py",
+          "start": 44,
+          "end": 67,
+          "symbol": "archive"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/sidebar_item/sidebar_item.json",
+          "start": 39,
+          "end": 99,
+          "symbol": "link_type"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/sidebar/sidebar.py",
+          "start": 815,
+          "end": 852,
+          "symbol": "get_app_sidebar_layer"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/sidebar/sidebar.py",
+          "start": 934,
+          "end": 981,
+          "symbol": "item_key"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/public/js/frappe/ui/sidebar/sidebar.js",
+          "start": 280,
+          "end": 315,
+          "symbol": "module_sidebars"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/sidebar/stock/stock.json",
+          "start": 1,
+          "end": 104,
+          "symbol": "Sidebar"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "Platform 包导航能否表达标准与租户/个人覆盖层、稳定资源身份及升级合并？",
+          "probe": "安装带两级区段和报表目标的包，定制顺序、隐藏和折叠，升级后验证覆盖与权限；对照 IB-ERP-0004，不将 Frappe 区段声明当成任意递归证明。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "navigation:sidebar:erpnext:stock:stock",
+      "intent": "为库存模块提供现行可安装的导航资源，连接主数据、业务单据、报表与工作区。",
+      "observation": "现行 ERPNext 库存 Sidebar fixture 使用标准 Sidebar 资源，条目含 added/hidden、折叠、child、缩进和不同资源目标。Reports 是折叠区段，Stock Ledger 与 Stock Balance 是其子项，明确链接 Report 而不是通用单据页。旧 WorkspaceSidebar 属归档，二者不可混同。",
+      "design": "将现行导航作为声明式应用资源；使用稳定目标和节点标识管理业务区段、报表目标及用户覆盖，并保留升级迁移契约。",
+      "counterexample": "只导入旧 Workspace Sidebar 会忽略当前标准模块侧栏；将 Stock Ledger 当成普通对象列表会丢失报表执行语义。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/sidebar/stock/stock.json",
+          "start": 1,
+          "end": 104,
+          "symbol": "Sidebar"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/sidebar/stock/stock.json",
+          "start": 153,
+          "end": 194,
+          "symbol": "Section Break"
+        },
+        {
+          "repo": "frappe",
+          "path": "frappe/desk/doctype/sidebar/sidebar.py",
+          "start": 934,
+          "end": 981,
+          "symbol": "item_key"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "与 framework:navigation-contract 同源的 IB-ERP-0004 真实安装和浏览器探针是否通过？",
+          "probe": "复用 IB-ERP-0004 验收；不新增重复平台缺口。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:setup:item_group",
+      "intent": "分层分类与按分类组织物料",
+      "observation": "元数据包含父分类与分组，控制器补根、检查单根及税率和法人默认值，更新时清子分类缓存。",
+      "design": "独立分类字典、唯一稳定编码、父分类引用；现阶段只创建不重挂。",
+      "counterexample": "重挂祖先可造成循环；同名分类未必同一身份。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/setup/doctype/item_group/item_group.json",
+          "start": 46,
+          "end": 60,
+          "symbol": "parent_item_group"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/setup/doctype/item_group/item_group.py",
+          "start": 34,
+          "end": 74,
+          "symbol": "validate_one_root"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "单根/多根策略、管理员重挂与历史迁移；真实树形UI。",
+          "probe": "验证实际包新增与迁移场景、权限、真实界面；不以当前顺序测试替代完整实现。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:setup:brand",
+      "intent": "统一品牌身份及可选默认策略",
+      "observation": "品牌验证复用物料默认规则，并按公司查品牌默认配置。",
+      "design": "品牌唯一编码，与物料可选关联；默认供应商、税务等按后续场景设计。",
+      "counterexample": "不能将品牌默认值直接当作订单已确定的事实。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/setup/doctype/brand/brand.json",
+          "start": 22,
+          "end": 46,
+          "symbol": "brand_defaults"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/setup/doctype/brand/brand.py",
+          "start": 28,
+          "end": 45,
+          "symbol": "get_brand_defaults"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "法人级默认策略与优先级、品牌修改和迁移。",
+          "probe": "验证实际包新增与迁移场景、权限、真实界面；不以当前顺序测试替代完整实现。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:item_attribute",
+      "intent": "定义物料的可选规格及数值规格",
+      "observation": "源控制器分别校验数值范围/步长、重复值及缩写，检查已有变体使用情况。",
+      "design": "先实现枚举属性、选项、规格关联的类型一致与唯一性；数值和变体单独研究。",
+      "counterexample": "无跨引用校验时，物料可选错属性；删除选项会破坏已有规格。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/item_attribute/item_attribute.json",
+          "start": 36,
+          "end": 73,
+          "symbol": "numeric_values"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/item_attribute/item_attribute.py",
+          "start": 80,
+          "end": 136,
+          "symbol": "validate_duplication"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "数值范围步长、大小写规范、变体身份及安全修改。",
+          "probe": "验证实际包新增与迁移场景、权限、真实界面；不以当前顺序测试替代完整实现。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:item_attribute_value",
+      "intent": "限定某属性下的候选值",
+      "observation": "子表存值与缩写；父控制器按小写检查二者重复。",
+      "design": "独立选项字典按属性+编码及名称唯一；每件物料每属性最多一项。",
+      "counterexample": "相同编码在不同属性可合理存在；大小写等价尚未验证。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/item_attribute_value/item_attribute_value.json",
+          "start": 14,
+          "end": 36,
+          "symbol": "istable"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/item_attribute/item_attribute.py",
+          "start": 125,
+          "end": 136,
+          "symbol": "validate_duplication"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "大小写等价约束、重命名、停用、变体引用与迁移。",
+          "probe": "验证实际包新增与迁移场景、权限、真实界面；不以当前顺序测试替代完整实现。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:warehouse",
+      "intent": "层级组织仓库并区分分组和实际库存地点",
+      "observation": "元数据为树；控制器限制父级分组和公司、存货时停用、历史交易时禁止转换或更换公司。",
+      "design": "稳定编码、父仓库、分组与实体仓库；限制实体仓库承载库存和需求，普通用户不能重挂。",
+      "counterexample": "允许在分组记实存会污染汇总；历史有库存后改父级或类型会破坏语义。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/warehouse/warehouse.json",
+          "start": 203,
+          "end": 297,
+          "symbol": "is_tree"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/warehouse/warehouse.py",
+          "start": 99,
+          "end": 167,
+          "symbol": "validate_parent_warehouse"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "法人边界、迁移、唯一位置身份、树形界面、管理员重挂及停用。",
+          "probe": "验证实际包新增与迁移场景、权限、真实界面；不以当前顺序测试替代完整实现。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:batch",
+      "intent": "批次身份、生产和有效期、批次库存",
+      "observation": "元数据登记物料和日期；控制器验证启用批次及日期，并从库存读取汇总数量。",
+      "design": "物料+批号唯一档案；不保存推测的库存，后续增加分配和流转。",
+      "counterexample": "登记一批货不等于收货。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/batch/batch.json",
+          "start": 50,
+          "end": 98,
+          "symbol": "manufacturing_date"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/batch/batch.py",
+          "start": 155,
+          "end": 182,
+          "symbol": "item_has_batch_enabled"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "批次启用策略、库存分配、FEFO、效期拦截、分拆及成本。",
+          "probe": "在完整库存权威、权限和真实页面上增加独立验收，保持档案与过账区分。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:serial_no",
+      "intent": "唯一单件身份和库位追踪",
+      "observation": "控制器拒绝直接创建带仓库的序列记录，并保护由台账维护的字段。",
+      "design": "序列号唯一、物料和可选同物料批次；不提供库位或库存状态字段。",
+      "counterexample": "登记序列号不意味着已入库。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/serial_no/serial_no.json",
+          "start": 60,
+          "end": 70,
+          "symbol": "serial_no"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/serial_no/serial_no.py",
+          "start": 78,
+          "end": 99,
+          "symbol": "via_stock_ledger"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "库存动作原子分配、退货、重复流转、单件数量和历史回放。",
+          "probe": "在完整库存权威、权限和真实页面上增加独立验收，保持档案与过账区分。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:stock_reconciliation",
+      "intent": "盘点实物与账面，形成差异并受控调整",
+      "observation": "元数据有过账日期时间、明细和差异金额；提交更新库存与总账并处理未来重算，取消也涉及反向处理。",
+      "design": "独立盘点记录只捕获复核时账面数量和差异快照，不调整库存；后续实现调整、审批和过账。",
+      "counterexample": "复核时余额不是盘点时点余额，不能直接以旧差异调整当前库存。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/stock_reconciliation/stock_reconciliation.json",
+          "start": 78,
+          "end": 137,
+          "symbol": "difference_amount"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/stock_reconciliation/stock_reconciliation.py",
+          "start": 145,
+          "end": 178,
+          "symbol": "update_stock_ledger"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "历史时点、并发盘点、预留、调整过账、成本与总账。",
+          "probe": "在完整库存权威、权限和真实页面上增加独立验收，保持档案与过账区分。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:buying:supplier",
+      "intent": "供应商共享身份、准入及联系人",
+      "observation": "来源包含唯一别名与默认供应商类型，禁止选分组，主联系人/地址必须与供应商关联；账务、门户和内部供应商另有规则。",
+      "design": "复用 party.organization/contact，唯一别名、公司默认、末级分类，受控修改档案和联系人/分类；暂停准入与财务冻结严格分开。",
+      "counterexample": "不同单位的联系人不能成为该供应商主联系人；不得通过供应商修订直接改写共享身份。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/supplier/supplier.json",
+          "start": 108,
+          "end": 120,
+          "symbol": "alias"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/supplier/supplier.py",
+          "start": 170,
+          "end": 202,
+          "symbol": "validate_primary_contact_and_address"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "财务冻结、法人、门户授权、联系人重挂后的持续一致性、真实浏览器及源角色等价",
+          "probe": "逐项矩阵及跨包、重挂与UI探针；保持开放。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:setup:supplier_group",
+      "intent": "供应商分类树及末级归属",
+      "observation": "来源以NestedSet维护父级、默认根及单根规则，并校验公司应付和预付款账户币种。",
+      "design": "父引用和分组/末级区分；唯一名称与编码，禁止普通角色重挂，末级才能成为供应商分类。",
+      "counterexample": "把分组直接作为供应商分类会破坏分类语义；重挂祖先可能形成循环。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/setup/doctype/supplier_group/supplier_group.json",
+          "start": 35,
+          "end": 55,
+          "symbol": "parent_supplier_group"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/setup/doctype/supplier_group/supplier_group.py",
+          "start": 34,
+          "end": 75,
+          "symbol": "validate_one_root"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "单根与默认根、受控重挂、旧数据迁移、树形UI、集团级财务默认",
+          "probe": "多根、重挂、升级、浏览器和财务规则独立验收。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    }
+  ]
+}

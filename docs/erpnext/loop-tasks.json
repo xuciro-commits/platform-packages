@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "W1-003",
+      "title": "库存边界与授权探针",
+      "intent": "在现有库存候选包上通过冻结的边界探针，修复真实拒绝错误；不绕过授权。若已通过，研究原因并记录结果即可。",
+      "probe": "docs/erpnext/probes/inventory-boundary.yaml",
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ]
+    },
+    {
+      "id": "W1-004",
+      "title": "库存预留与释放（顺序语义）",
+      "intent": "实现 inventory.reservation 对象：title、position（引用 inventory.position）、quantity（decimal），草稿→reserved→released；reserve 检查可用余额，release 仅从 reserved。position.available 派生实存减有效预留；issue/transfer 必须以 available 为门禁。保留原有库存探针，不假定并发安全。以固定探针和组合 pkg check 验收；如平台能力不足，登记后停止。",
+      "probe": "docs/erpnext/probes/inventory-reservation.yaml",
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ]
+    },
+    {
+      "id": "S-W1-001",
+      "kind": "study",
+      "title": "库存工作区、报表与打印深度学习",
+      "intent": "逐一读取固定源码中的工作区侧栏、库存余额/台账报表、打印格式及 Frappe 报表/打印运行框架；按每个 feature 写 evidence.json，记录真实用户意图、观察、独立设计、反例、未知项及原始源码行区间。不要实现替代功能或自称验收；未知平台缺口保留。",
+      "packages": [
+        "inventory"
+      ],
+      "probe": null,
+      "study": [
+        "navigation:workspace_sidebar:stock",
+        "report:stock:stock_balance",
+        "report:stock:stock_ledger",
+        "report:stock:stock_ageing",
+        "print:stock:delivery_note_classic",
+        "framework:report-engine",
+        "framework:report-ui",
+        "framework:print-template",
+        "framework:print-preview",
+        "framework:pdf-render",
+        "framework:navigation-contract",
+        "navigation:sidebar:erpnext:stock:stock"
+      ]
+    },
+    {
+      "id": "W1-005",
+      "title": "冲正与顺序库存一致性",
+      "intent": "对已过账收货、发料、调拨执行一次可追溯冲正，保留原数量及位置；拒绝草稿、重复、越权和侵占预留的冲正。顺序语义，不声称并发安全。",
+      "probe": "docs/erpnext/probes/inventory-reversal.yaml",
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ]
+    },
+    {
+      "id": "W1-008",
+      "title": "仓库名录、物料需求与工作台候选",
+      "intent": "仅验收包声明、名录编码唯一性、物料需求提交取消、权限及不改变库存；浏览器与完整单据另验收。",
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ],
+      "probe": "docs/erpnext/probes/inventory-demand.yaml"
+    },
+    {
+      "id": "S-W1-002",
+      "kind": "study",
+      "title": "物料分类、品牌、属性与仓库学习",
+      "intent": "固定源证据与未知项，结构验证不等于产品验收。",
+      "packages": [
+        "item-master",
+        "inventory"
+      ],
+      "probe": null,
+      "study": [
+        "object:setup:item_group",
+        "object:setup:brand",
+        "object:stock:item_attribute",
+        "object:stock:item_attribute_value",
+        "object:stock:warehouse"
+      ]
+    },
+    {
+      "id": "W1-009",
+      "title": "物料分类、品牌及枚举规格",
+      "intent": "独立验证分类、选项和物料引用、权限、唯一性。",
+      "packages": [
+        "uom",
+        "item-master"
+      ],
+      "probe": "docs/erpnext/probes/item-classification.yaml"
+    },
+    {
+      "id": "W1-010",
+      "title": "仓库层级与实体仓库限定",
+      "intent": "独立验证多级父子、分组不可存货及历史兼容；不包含真实树形页面或升级验收。",
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ],
+      "probe": "docs/erpnext/probes/inventory-warehouse-hierarchy.yaml"
+    },
+    {
+      "id": "W1-006",
+      "title": "超过集合边界的完整库存聚合",
+      "intent": "独立验证超过500条流水与预留、拒绝超额扣减；不通过增大固定上限掩盖问题。",
+      "probe": "docs/erpnext/probes/inventory-scale.yaml",
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ],
+      "defer": {
+        "reason": "501笔独立探针真实失败；等待受控聚合或事务投影能力评审。保留原失败门禁。",
+        "feedback": "IB-ERP-0006"
+      }
+    },
+    {
+      "id": "W1-007",
+      "title": "并发、幂等与持久重放",
+      "intent": "需要真实并发、同请求重试与持久化重启验证器；顺序脚本不得替代。",
+      "probe": null,
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ],
+      "defer": {
+        "reason": "依赖账本一致性与真实并发/重放验证器；当前仅顺序探针，不计完成。",
+        "feedback": "IB-ERP-0006"
+      }
+    },
+    {
+      "id": "S-W1-003",
+      "kind": "study",
+      "title": "批次、序列号、盘点源证据",
+      "intent": "证据和未知项与完整库存调整分开。",
+      "packages": [
+        "inventory"
+      ],
+      "probe": null,
+      "study": [
+        "object:stock:batch",
+        "object:stock:serial_no",
+        "object:stock:stock_reconciliation"
+      ]
+    },
+    {
+      "id": "W1-011",
+      "title": "盘点复核及批次序列档案",
+      "intent": "独立验收盘点差异快照、批次日期和唯一性、序列号同物料绑定及权限；不声称库存调整或完整追溯。",
+      "packages": [
+        "uom",
+        "item-master",
+        "inventory"
+      ],
+      "probe": "docs/erpnext/probes/inventory-count-registers.yaml"
+    },
+    {
+      "id": "W2-002",
+      "title": "采购主线字段写入读取与权限",
+      "intent": "六类记录新增18字段、读回及金额、占位写入拒绝；不包含完整订单审批、来源语义等价和浏览器。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-field-roundtrip.yaml"
+    },
+    {
+      "id": "S-W2-001",
+      "kind": "study",
+      "title": "供应商与分类逐项学习",
+      "intent": "固定源码证据，字段权限与操作逐项处置；非功能完备",
+      "packages": [
+        "purchasing"
+      ],
+      "probe": null,
+      "study": [
+        "object:buying:supplier",
+        "object:setup:supplier_group"
+      ]
+    },
+    {
+      "id": "W2-003",
+      "title": "采购B1供应商分类和准入",
+      "intent": "供应商身份、别名、默认类型、末级分类、主要联系人归属、受控修订与准入；38步独立验收；缺失字段和操作不计完成",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-supplier-master.yaml"
+    },
+    {
+      "id": "W2-001",
+      "title": "采购寻源与多行订单审批",
+      "intent": "单项需求审批、供应商准入、单供应商询价、报价有效期、订单行金额与审批权限，拒绝停用物料或审批后新增；导航完整、占位不写入。非收货、税务、浏览器与发布验收。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-sourcing.yaml",
+      "defer": {
+        "reason": "订单多跳派生失效状态实测异常，审批正确性未确认；等平台评审或等价契约验证，保留原41步门禁。",
+        "feedback": "IB-ERP-0007"
+      }
+    },
+    {
+      "id": "W2-004",
+      "title": "B2采购需求多行草稿及退回",
+      "intent": "26步验证单项兼容、多行草稿、基本单位、日期、明细修订作废、提交及退回；多行正式审批保守拒绝，不计完整需求交付。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-requisition-lines.yaml"
+    },
+    {
+      "id": "W2-005",
+      "title": "B2需求单位换算与快照",
+      "intent": "32步：录入量、单位、换算系数和库存基本量；同维度正数校验、草稿限制、旧单项兼容。非物料特定换算、舍入及正式多行审批。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-requisition-conversion.yaml"
+    },
+    {
+      "id": "W2-006",
+      "title": "B2需求计量步长及空日期兼容",
+      "intent": "46步测试：配置步长时拒绝非整倍数量，输入及换算后基本数量均校验；未配置或0视为无步长，缺失申请日期兼容；不自动舍入，非完整物料专属UOM与多行审批。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-requisition-unit-step.yaml"
+    }
+  ]
+}

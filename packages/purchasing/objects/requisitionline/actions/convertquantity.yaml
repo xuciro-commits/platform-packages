@@ -1,0 +1,17 @@
+title: Convert demand quantity
+description: Replace draft quantity using a compatible measurement unit and capture the conversion factor.
+from: [active]
+roles: [buyer, manager]
+inputs:
+  - {name: unit, title: Entered unit, type: reference, ref: uom.unit, required: true}
+  - {name: quantity, title: Entered quantity, type: decimal, required: true}
+transaction:
+  guard: "request.state = 'draft' and material.state = 'active' and input.quantity > 0 and input.unit.dimension = unit.dimension and input.unit.factor > 0 and unit.factor > 0 and (coalesce(input.unit.rounding, 0) = 0 or (input.unit.rounding > 0 and round(input.quantity / input.unit.rounding, 0) * input.unit.rounding = input.quantity)) and (coalesce(unit.rounding, 0) = 0 or (unit.rounding > 0 and round((input.quantity * input.unit.factor / unit.factor) / unit.rounding, 0) * unit.rounding = (input.quantity * input.unit.factor / unit.factor)))"
+  message: Quantity must match the configured unit step and draft action requirements.
+  steps:
+    - target: $subject
+      set:
+        enteredunit: input.unit
+        enteredquantity: input.quantity
+        conversionfactor: "input.unit.factor / unit.factor"
+        quantity: "input.quantity * input.unit.factor / unit.factor"

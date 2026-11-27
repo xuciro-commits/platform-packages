@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "capabilities": [
+    {
+      "id": "navigation-tree",
+      "state": "reported_gap",
+      "source": "capabilities/server/platform/definition.go:107 AppGroup; frontend/src/shell/AppSidebar.tsx",
+      "intent": "递归可折叠菜单和统一资源入口",
+      "next": "真实包安装与浏览器验收待补",
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "id": "reports",
+      "state": "reported_gap",
+      "source": "Platform definition.go:12-42,63-77 与 Frappe report.py/query_report.py",
+      "intent": "可设计、可运行、授权的期间报表",
+      "next": "组合能力探针；尚未证明现有资源组合不能完成报表",
+      "innerBox": "IB-ERP-0005"
+    },
+    {
+      "id": "printing",
+      "state": "reported_gap",
+      "innerBox": "IB-ERP-0001",
+      "intent": "可配置模板、预览与 PDF"
+    },
+    {
+      "id": "line-items",
+      "state": "reported_gap",
+      "innerBox": "IB-ERP-0002",
+      "intent": "多行单据明细录入"
+    },
+    {
+      "id": "package-contracts",
+      "state": "reported_gap",
+      "innerBox": "IB-ERP-0003",
+      "intent": "跨包协作与组合预检"
+    },
+    {
+      "id": "ledger-scale",
+      "state": "reported_gap",
+      "intent": "超过500条账本聚合、真实并发与重放",
+      "innerBox": "IB-ERP-0006",
+      "next": "501笔实测失败，隔离投影授权被拒；等平台评审，不阻塞无关包开发"
+    }
+  ]
+}

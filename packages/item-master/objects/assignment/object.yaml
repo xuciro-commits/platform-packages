@@ -1,0 +1,29 @@
+name: assignment
+namespace: item
+title: Item specification
+plural: Item specifications
+icon: clipboard-document-list
+display: title
+fields:
+  - {name: title, title: Name, type: text, required: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: attribute, title: Item attribute, type: reference, ref: item.attribute, required: true}
+  - {name: option, title: Attribute option, type: reference, ref: item.option, required: true}
+constraints:
+  - name: onevalue
+    kind: unique
+    fields: [material, attribute]
+    message: An item can have only one option per attribute.
+    translations:
+      zh-CN: 同一物料的每个属性只能选择一个选项。
+  - name: optionmatches
+    kind: expression
+    fields: [attribute, option]
+    expr: "option.attribute = attribute"
+    message: The option must belong to the selected attribute.
+    translations:
+      zh-CN: 选项必须属于所选属性。
+access:
+  - {role: user, read: all}
+  - {role: steward, read: all, create: true}
+view: {version: 1, layout: table, columns: [material, attribute, option], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

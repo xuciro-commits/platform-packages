@@ -1,0 +1,11 @@
+title: Set primary contact
+from: [pending, qualified, suspended]
+roles: [manager]
+inputs:
+  - {name: contact, title: Primary contact, type: reference, ref: party.contact, required: false}
+transaction:
+  guard: "input.contact = empty or input.contact.organization = base"
+  message: Primary contact must belong to the supplier organization.
+  steps:
+    - target: $subject
+      set: {primarycontact: input.contact}

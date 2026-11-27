@@ -1,0 +1,121 @@
+{
+  "name": "accounting",
+  "title": "Accounting",
+  "icon": "scale",
+  "pages": [
+    "accounting.home",
+    "accounting.dashboard",
+    "accounting.chart_of_accounts",
+    "accounting.sales_invoice",
+    "accounting.purchase_invoice",
+    "accounting.payment_entry",
+    "accounting.journal_entry",
+    "accounting.general_ledger",
+    "accounting.trial_balance",
+    "accounting.trial_balance_for_party",
+    "accounting.profit_and_loss",
+    "accounting.balance_sheet",
+    "accounting.cash_flow",
+    "accounting.consolidated_report",
+    "accounting.profitability_analysis",
+    "accounting.accounts_receivable",
+    "accounting.accounts_payable",
+    "accounting.banking",
+    "accounting.bank_account",
+    "accounting.bank_clearance",
+    "accounting.sales_tax_template",
+    "accounting.purchase_tax_template",
+    "accounting.item_tax_template",
+    "accounting.tax_rule",
+    "accounting.tax_withholding_category",
+    "accounting.budget",
+    "accounting.cost_center_allocation",
+    "accounting.monthly_distribution",
+    "accounting.budget_variance",
+    "accounting.company",
+    "accounting.fiscal_year",
+    "accounting.chart_of_cost_centers",
+    "accounting.accounting_dimension",
+    "accounting.account_category",
+    "accounting.financial_report_template",
+    "accounting.mode_of_payment",
+    "accounting.payment_terms_template",
+    "accounting.currency_exchange",
+    "accounting.settings"
+  ],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "accounting.home",
+        "accounting.dashboard",
+        "accounting.chart_of_accounts",
+        "accounting.sales_invoice",
+        "accounting.purchase_invoice",
+        "accounting.payment_entry",
+        "accounting.journal_entry"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "accounting.general_ledger",
+        "accounting.trial_balance",
+        "accounting.trial_balance_for_party",
+        "accounting.profit_and_loss",
+        "accounting.balance_sheet",
+        "accounting.cash_flow",
+        "accounting.consolidated_report",
+        "accounting.profitability_analysis",
+        "accounting.accounts_receivable",
+        "accounting.accounts_payable"
+      ]
+    },
+    {
+      "title": "Banking",
+      "pages": [
+        "accounting.banking",
+        "accounting.bank_account",
+        "accounting.bank_clearance"
+      ]
+    },
+    {
+      "title": "Taxes",
+      "pages": [
+        "accounting.sales_tax_template",
+        "accounting.purchase_tax_template",
+        "accounting.item_tax_template",
+        "accounting.tax_rule",
+        "accounting.tax_withholding_category"
+      ]
+    },
+    {
+      "title": "Budgeting",
+      "pages": [
+        "accounting.budget",
+        "accounting.cost_center_allocation",
+        "accounting.monthly_distribution",
+        "accounting.budget_variance"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "accounting.company",
+        "accounting.fiscal_year",
+        "accounting.chart_of_cost_centers",
+        "accounting.accounting_dimension",
+        "accounting.account_category",
+        "accounting.financial_report_template",
+        "accounting.mode_of_payment",
+        "accounting.payment_terms_template",
+        "accounting.currency_exchange",
+        "accounting.settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ]
+}

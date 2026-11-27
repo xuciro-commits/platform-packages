@@ -1,0 +1,37 @@
+name: supplier
+namespace: purchasing
+title: Supplier
+plural: Suppliers
+icon: building-office-2
+display: title
+extends: party.organization
+naming: SUP-{n:5}
+fields:
+  - {name: base, title: Organization, type: reference, ref: party.organization, required: true, group: Identity}
+  - {name: title, title: Supplier, type: text, from: base.name, search: true, group: Identity}
+  - {name: group, title: Supplier group, type: reference, ref: purchasing.suppliergroup, group: Identity}
+  - {name: alias, title: Trading alias, type: text, search: true, group: Identity}
+  - {name: supplierkind, title: Supplier type, type: choice, required: true, default: company, choices: "company:Company,individual:Individual,partnership:Partnership", group: Identity}
+  - {name: transporter, title: Transport provider, type: boolean, default: "false", group: Qualification}
+  - {name: defaultcurrency, title: Preferred currency, type: choice, choices: "CNY:CNY,USD:USD,EUR:EUR", group: Commercial}
+  - {name: primarycontact, title: Primary contact, type: reference, ref: party.contact, group: Identity}
+  - {name: notes, title: Qualification notes, type: longtext, group: Identity}
+states:
+  - {name: pending, title: Pending qualification, tone: neutral}
+  - {name: qualified, title: Qualified, tone: success}
+  - {name: suspended, title: Suspended, tone: danger}
+actions: [qualify, suspend, revise, setcontact, changegroup]
+constraints:
+  - {name: supplieridentity, kind: unique, fields: [base], message: Organization already has a supplier profile.}
+  - {name: supplieralias, kind: unique, fields: [alias], message: Trading alias must be unique.}
+  - {name: leafgroup, kind: expression, fields: [group], expr: "group = empty or coalesce(group.nodekind, 'leaf') = 'leaf'", message: Select a leaf supplier group.}
+createTransaction:
+  guard: "primarycontact = empty or primarycontact.organization = base"
+  message: Primary contact must belong to the supplier organization.
+  steps:
+    - target: $subject
+      set: {supplierkind: supplierkind}
+access:
+  - {role: buyer, read: all}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, alias, supplierkind, group, primarycontact, state], sort: [], group: state, lanes: "", filters: [], search: ""}

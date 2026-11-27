@@ -56,3 +56,4 @@
 "Day": "天"
 user: 使用者
 steward: 数据管家
+"Unit conversion factor must be positive.": "单位换算系数必须为正数。"

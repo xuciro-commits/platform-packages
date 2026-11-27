@@ -1,0 +1,13 @@
+name: navpending
+namespace: quality
+title: Pending feature
+plural: Pending features
+icon: document-text
+display: title
+description: Technical navigation placeholder. No business records or operations.
+fields:
+  - {name: title, title: Reference, type: text, required: true}
+access:
+  - {role: reader, read: all}
+  - {role: manager, read: all}
+view: {version: 1, layout: table, columns: [title], sort: [], group: none, lanes: "", filters: [], search: ""}

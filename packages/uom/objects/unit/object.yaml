@@ -15,6 +15,13 @@ fields:
   - {name: rounding, title: Rounding step, type: decimal, help: The smallest step a quantity in this unit is rounded to. Leave empty for no rounding.}
 
 constraints:
+  - name: positivefactor
+    kind: expression
+    fields: [factor]
+    expr: factor > 0
+    message: Unit conversion factor must be positive.
+    translations:
+      zh-CN: 单位换算系数必须为正数。
   - name: symbolidentity
     kind: unique
     fields: [symbol]

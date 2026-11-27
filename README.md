@@ -25,11 +25,16 @@
 | [call](packages/call) | 能力：电话呼出的契约 `call/1`（拨号与一致性测试），实现见 phone | 预览 |
 | [phone](packages/phone) | 来电与外呼：浏览器里接听与拨打，通话记录对上往来单位的联系人；实现 `call/1` | 预览 |
 
+## 平台验收夹具
+
+所有包作者态统一位于 `packages/<id>/`。独立验收包使用 `listing.stage: test` 与 `listing.source.app: fixtures` 标识，只参与验收、不进入市场；测试制品临时构建，不保留历史副本。
+
 ## 开发
 
 - [十分钟做出第一个包](docs/getting-started.md)
 - [概念](docs/concepts.md) · [源格式](docs/format.md) · [包的种类](docs/package-types.md) · [版本规则](docs/versioning.md) · [测试](docs/testing.md)
 - [开放应用接入：黄金路线](docs/intake.md)；按步骤做的版本是 Skill [`open-app-intake`](.claude/skills/open-app-intake/SKILL.md)
+- [ERPNext v16 解耦重建长期计划](docs/erpnext/plan.md) · [源码普查](docs/erpnext/inventory.md) · [W1 库存设计](docs/erpnext/inventory-design.md)
 - [发版](docs/release.md) · [自建包库](docs/own-library.md) · [评审清单](docs/review-checklist.md) · [分类与标签](docs/taxonomy.md) · [来源应用与接入顺序](docs/sources.md)
 
 新包从 [`templates/app`](templates/app) 开始。每个 PR 都由 CI 用 `platform.lock` 钉住的那个平台的 `pkg` 校验：源能打成平台接受的制品，锁文件没有过期，
@@ -53,3 +58,5 @@ platform.lock     本仓库对齐的平台：发行版（如 v0.2.9）或平台�
 
 本仓库自研的包以 [Apache-2.0](LICENSE) 发布，每个包目录带自己的 `LICENSE`。
 从 GPL 授权的应用转换来的包不在这里，另在独立仓库按原许可发布。
+
+长期产品包工程执行器：[PackageLoop](docs/package-loop.md)；改进账本：[loop/IMPROVEMENTS.md](loop/IMPROVEMENTS.md)。

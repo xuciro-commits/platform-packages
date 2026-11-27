@@ -1,0 +1,40 @@
+roles: {inventory: keeper, item: steward, uom: user}
+at: 2026-11-26T00:00:00Z
+members:
+  operator: {roles: {inventory: keeper, item: user, uom: user}}
+  reader: {roles: {inventory: reader, item: user, uom: user}}
+steps:
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: item.master.create, on: item.master/I2, with: {title: Copper, code: COPPER, kind: material, unit: kg}}
+  - {do: item.master.create, on: item.master/I3, with: {title: Service, code: SERVICE, kind: service, unit: kg}}
+  - {do: inventory.position.create, on: inventory.position/A, as: operator, with: {title: A, item: I1}}
+  - {do: inventory.batch.create, on: inventory.batch/B1, as: operator, with: {title: LOT-1, material: I1, manufacturedon: "2026-11-01", expireson: "2027-11-01"}}
+  - {do: inventory.batch.create, on: inventory.batch/B2, as: operator, with: {title: LOT-1, material: I1, manufacturedon: "2026-11-01"}, refused: true}
+  - {do: inventory.batch.create, on: inventory.batch/B3, as: operator, with: {title: LOT-1, material: I2, manufacturedon: "2026-11-01"}}
+  - {do: inventory.batch.create, on: inventory.batch/B4, as: operator, with: {title: LOT-BAD, material: I1, manufacturedon: "2026-11-01", expireson: "2026-10-31"}, refused: true}
+  - {do: inventory.batch.create, on: inventory.batch/B5, as: operator, with: {title: LOT-SVC, material: I3, manufacturedon: "2026-11-01"}, refused: true}
+  - {do: inventory.batch.create, on: inventory.batch/B6, as: reader, with: {title: LOT-READER, material: I1, manufacturedon: "2026-11-01"}, refused: true}
+  - {do: inventory.serial.create, on: inventory.serial/S1, as: operator, with: {title: SN-1, material: I1, batch: B1}}
+  - {do: inventory.serial.create, on: inventory.serial/S2, as: operator, with: {title: SN-1, material: I2}, refused: true}
+  - {do: inventory.serial.create, on: inventory.serial/S3, as: operator, with: {title: SN-3, material: I1, batch: B3}, refused: true}
+  - {do: inventory.serial.create, on: inventory.serial/S4, as: operator, with: {title: SN-4, material: I1}}
+  - {do: inventory.serial.edit, on: inventory.serial/S1, as: operator, with: {material: I2}, refused: true}
+  - {read: inventory.serial/S1, as: reader, expect: {material: I1, batch: B1}}
+  - {read: inventory.position/A, as: reader, expect: {balance: 0, available: 0}}
+  - {do: inventory.movement.create, on: inventory.movement/M1, as: operator, with: {title: Receipt, destination: A, quantity: 20}}
+  - {do: inventory.movement.receive, on: inventory.movement/M1, as: operator}
+  - {do: inventory.count.create, on: inventory.count/C0, as: operator, with: {title: Invalid, position: A, counted: -1, countedon: "2026-11-26"}, refused: true}
+  - {do: inventory.count.create, on: inventory.count/C1, as: operator, with: {title: Count, position: A, counted: 17, countedon: "2026-11-26"}}
+  - {do: inventory.count.review, on: inventory.count/C1, as: reader, refused: true}
+  - {do: inventory.count.review, on: inventory.count/C1, as: operator, expect: {state: reviewed, bookqty: 20, difference: -3}}
+  - {do: inventory.count.review, on: inventory.count/C1, as: operator, refused: true}
+  - {read: inventory.position/A, as: reader, expect: {balance: 20, available: 20}}
+  - {do: inventory.movement.create, on: inventory.movement/M2, as: operator, with: {title: Next receipt, destination: A, quantity: 5}}
+  - {do: inventory.movement.receive, on: inventory.movement/M2, as: operator}
+  - {read: inventory.count/C1, as: reader, expect: {state: reviewed, bookqty: 20, difference: -3}}
+  - {read: inventory.position/A, as: reader, expect: {balance: 25, available: 25}}
+  - {do: inventory.count.create, on: inventory.count/C2, as: operator, with: {title: Future, position: A, counted: 0, countedon: "2026-11-27"}}
+  - {do: inventory.count.review, on: inventory.count/C2, as: operator, refused: true}
+  - {do: inventory.count.cancel, on: inventory.count/C2, as: operator, expect: {state: cancelled}}
+  - {do: inventory.count.review, on: inventory.count/C2, as: operator, refused: true}
+  - {do: inventory.count.edit, on: inventory.count/C1, as: operator, with: {bookqty: 100}, refused: true}

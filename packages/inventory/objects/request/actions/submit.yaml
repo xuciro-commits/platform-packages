@@ -1,0 +1,10 @@
+title: Submit demand
+description: Register the demand without changing stock.
+from: [draft]
+roles: [keeper]
+transaction:
+  guard: "material.state = 'active' and material.kind != 'service'"
+  message: Demand requires an active stock item.
+  steps:
+    - target: $subject
+      set: {state: "'requested'"}

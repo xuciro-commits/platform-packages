@@ -1,0 +1,7 @@
+roles: {uom: steward}
+at: 2026-11-26T00:00:00Z
+members:
+  keeper: {roles: {uom: steward}}
+steps:
+  - {do: uom.unit.create, on: uom.unit/zero, as: keeper, with: {title: Zero factor, symbol: zero, dimension: count, factor: 0}, refused: true}
+  - {do: uom.unit.create, on: uom.unit/negative, as: keeper, with: {title: Negative factor, symbol: neg, dimension: count, factor: -1}, refused: true}

@@ -1,0 +1,7 @@
+title: Reopen request for revision
+from: [requested]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'draft'"}

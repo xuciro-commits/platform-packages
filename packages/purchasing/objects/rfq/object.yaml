@@ -1,0 +1,29 @@
+name: rfq
+namespace: purchasing
+title: Request for quotation
+plural: Requests for quotation
+icon: envelope
+display: title
+naming: RFQ-{year}-{n:5}
+description: One supplier invitation for an approved demand. Opening does not send email.
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: request, title: Purchase requisition, type: reference, ref: purchasing.requisition, required: true}
+  - {name: supplier, title: Supplier, type: reference, ref: purchasing.supplier, required: true}
+  - {name: material, title: Item, type: reference, ref: item.master, from: request.material}
+  - {name: issuedon, title: Invitation date, type: date}
+  - {name: subject, title: Invitation subject, type: text}
+  - {name: message, title: Supplier message, type: longtext}
+  - {name: terms, title: Terms, type: longtext}
+  - {name: deadline, title: Response deadline, type: date, required: true}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: open, title: Open for quotes, tone: info}
+  - {name: closed, title: Closed, tone: neutral}
+actions: [open, close]
+constraints:
+  - {name: uniqueinvitation, kind: unique, fields: [request, supplier], message: Supplier already invited for this requisition.}
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [title, request, supplier, deadline, state], sort: [{sortKey: deadline, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

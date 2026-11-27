@@ -1,12 +1,12 @@
 {
   "format": 2,
   "package": "uom",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "requires": [],
-  "artifact": "sha256:d3df2a52b78d1d00424cafc5d064fd8f4dcbfe7645e7af6d68e5cc7d8bc6eebd",
+  "artifact": "sha256:a36acc18008c727b3bc63a9cb575d4767040a2c907005e1f9421ae3166dd32fe",
   "assets": {
     "app/uom": {
-      "digest": "sha256:18ceae43be6d86e330abe7a65733dd11857be36675239ae82122b767f3d5e274",
+      "digest": "sha256:f923d1081b0e4c13d4617625657579336799bf6cb8fdd1ba73ddb32dfd132410",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -22,13 +22,17 @@
       ]
     },
     "object/uom.unit": {
-      "digest": "sha256:127600e78d6de32671ed6f144649fb5f3df5b84167ce3c3dbf082c020cdba34d",
+      "digest": "sha256:8f929d146c468ca494a388388be3059a8b43e45f98cdd92c03ff08f3114e91cc",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.c76ce93c7d719e83dd752b0c049a9d8b43514f40b04c4de07f8dee5b91d23737",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.ee6057e4a62cdf52b7300fafeacc66a2347cce361840f9f27134105282ff761c",
+          "family": 2
         }
       ]
     },

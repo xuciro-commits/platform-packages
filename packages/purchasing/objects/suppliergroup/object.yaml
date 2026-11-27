@@ -1,0 +1,19 @@
+name: suppliergroup
+namespace: purchasing
+title: Supplier group
+plural: Supplier groups
+icon: folder
+display: title
+fields:
+  - {name: title, title: Name, type: text, required: true, search: true}
+  - {name: code, title: Code, type: text, required: true}
+  - {name: nodekind, title: Supplier group kind, type: choice, default: leaf, choices: "group:Group,leaf:Leaf"}
+  - {name: parent, title: Parent supplier group, type: reference, ref: purchasing.suppliergroup}
+constraints:
+  - {name: groupcode, kind: unique, fields: [code], message: Supplier group code must be unique.}
+  - {name: groupname, kind: unique, fields: [title], message: Supplier group name must be unique.}
+  - {name: parentgroup, kind: expression, fields: [parent], expr: "parent = empty or parent.nodekind = 'group'", message: Parent supplier group must be a group.}
+access:
+  - {role: buyer, read: all}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [code, title, nodekind, parent], sort: [], group: none, lanes: "", filters: [], search: ""}

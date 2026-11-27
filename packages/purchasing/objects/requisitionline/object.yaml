@@ -1,0 +1,34 @@
+name: requisitionline
+namespace: purchasing
+title: Purchase requisition line
+plural: Purchase requisition lines
+icon: cube
+display: material
+naming: RQL-{n:6}
+description: A draft demand line expressed in the item's base unit. Approval and fulfillment remain separate.
+fields:
+  - {name: request, title: Purchase requisition, type: reference, ref: purchasing.requisition, inverse: lines, required: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: material.unit}
+  - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: enteredunit, title: Entered unit, type: reference, ref: uom.unit}
+  - {name: enteredquantity, title: Entered quantity, type: decimal}
+  - {name: conversionfactor, title: Conversion factor snapshot, type: decimal}
+  - {name: neededon, title: Needed on, type: date, required: true}
+  - {name: description, title: Line description, type: longtext}
+states:
+  - {name: active, title: Active, tone: success}
+  - {name: voided, title: Voided, tone: neutral}
+actions: [revise, convertquantity, void]
+constraints:
+  - {name: positiveqty, kind: expression, fields: [quantity], expr: "quantity > 0", message: Quantity must be positive.}
+createTransaction:
+  guard: "request.state = 'draft' and request.mode = 'multi' and material.state = 'active' and neededon >= coalesce(request.requestedon, neededon) and (coalesce(material.unit.rounding, 0) = 0 or (material.unit.rounding > 0 and round(quantity / material.unit.rounding, 0) * material.unit.rounding = quantity))"
+  message: Quantity must match the configured unit step and draft action requirements.
+  steps:
+    - target: $subject
+      set: {quantity: quantity, enteredunit: material.unit, enteredquantity: quantity, conversionfactor: "1"}
+access:
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [request, material, enteredunit, enteredquantity, conversionfactor, unit, quantity, neededon, state], sort: [], group: none, lanes: "", filters: [], search: ""}

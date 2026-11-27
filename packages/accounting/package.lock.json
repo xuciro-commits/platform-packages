@@ -1,0 +1,220 @@
+{
+  "format": 2,
+  "package": "accounting",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:425cdbbd1294041c560b8e0a02479f133b07107c2bc2ceea7778d3d429bcbe8a",
+  "assets": {
+    "app/accounting": {
+      "digest": "sha256:3d3cba22e0e090810a0ba664bdbe20611557678e6f760ef0eef20c9f65940373",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/accounting.navpending": {
+      "digest": "sha256:c2e4b8ce1f0c7c079dd6523b1ba57fc5ed2266f9e8476bf776c2dd7e0e603559",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.6a7718011a935033739eb836e370a7a824d45eb7bbf1af0e2bfd06732a75a5c3",
+          "family": 1
+        }
+      ]
+    },
+    "page/accounting.account_category": {
+      "digest": "sha256:ed705d537e57a5ac1d2f1c74efb38a03c785d6a936ec42611ff766f213e46163",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.accounting_dimension": {
+      "digest": "sha256:b6cc4279cd5d041234f957c8ecf314546cb7d5495ab890ad9e098818ca202a79",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.accounts_payable": {
+      "digest": "sha256:631d924ffdd9e7ada688ca9c1614be306f0fef68ec34ad6b535c3ac8ea73ae3e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.accounts_receivable": {
+      "digest": "sha256:22d0db73bb9f3d71462d8091f3dbc64af311d315fba83fca98a1558e1a2a959f",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.balance_sheet": {
+      "digest": "sha256:1b9c8ed0f9f5b421ffd732ea9ff944697d4366337d3f1a377172a83697c64deb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.bank_account": {
+      "digest": "sha256:e2f3c62270b0d3b8e48cf8e76abfcdffe2c3c51438890ddd684048a146713889",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.bank_clearance": {
+      "digest": "sha256:ca85e7a91dcb59933aa7486242f02a05a23e2301606087f2ff7858ca2569ab4e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.banking": {
+      "digest": "sha256:b60b32287dfd8072b9bb779b8cb1e3ba46a1d80319a9866a9f13e167c651a21b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.budget": {
+      "digest": "sha256:1841e227067327fe15c4e82822d3b4e2188d595af063aefd8bfd20641d4d295e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.budget_variance": {
+      "digest": "sha256:1785e171b29c5c1e08b4ac178c34d63746b4966587bdf14522db274a8785616b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.cash_flow": {
+      "digest": "sha256:bdbac6821078749729763ec787d97d4a170b26efd05a09f621a3dfc116ef53e4",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.chart_of_accounts": {
+      "digest": "sha256:c8d252cbcd1b93f42901d2b5c63e7577ca42f390db8dee5d7efd604d13da7abf",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.chart_of_cost_centers": {
+      "digest": "sha256:e271907516a9db40675756cb05075e19d80d8ae91a99e386065d207e90cd51ad",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.company": {
+      "digest": "sha256:d8abccd7864a7ab4c3d817f41822315ca96c7a5d9b95ca607c1bbf6ff429e5f6",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.consolidated_report": {
+      "digest": "sha256:e90dc110fdcd9dcc0e244c87c4173d9a21d6a636d46357e64bd9a2ca3bbb5051",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.cost_center_allocation": {
+      "digest": "sha256:c05b541f8e79471e9e3cedb626f5c5dbab4d19e6c7db1633082dc685997369cb",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.currency_exchange": {
+      "digest": "sha256:affcab656acf129bc2f5de94f6c81d3653552a8f2f6eb4612865c291c05f7575",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.dashboard": {
+      "digest": "sha256:65553a4e49800f71d94da8356d6f4b79b63edd5e3691c1f67f87595139ff524e",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.financial_report_template": {
+      "digest": "sha256:790597bc8e1b0cb466cc5cd5aa3788bb7ee3034f02d4dc7a7b3af99e9b60ef04",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.fiscal_year": {
+      "digest": "sha256:49011a42527c4c2baf9012e422b542bef0224228388e4b11656f909a4145fa9b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.general_ledger": {
+      "digest": "sha256:4a8d00e2a81ed433244eeb916773260d60285598b6144bb332eb0f133bc9c6ef",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.home": {
+      "digest": "sha256:14e87b510d5da62484a4944365881b08e4407d9caca8e078924fe444f9d961ca",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.item_tax_template": {
+      "digest": "sha256:7b89a14e95bae81af783f5a0144f7c9cff27e85b401cd17c2138f336551ec1a0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.journal_entry": {
+      "digest": "sha256:4c81bfdcf7d4619cf19d9effbe2a25ddee52018bf794e4b8b391fba273514dee",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.mode_of_payment": {
+      "digest": "sha256:1ba21f592434e66585b293603912ec3c7af5e97cdbb4a4718b4c5d92bef8ab52",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.monthly_distribution": {
+      "digest": "sha256:c74b107a49ea25804d078f71da94958ad63a9f8fd3352d71ffd6ce931e6f2fe8",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.payment_entry": {
+      "digest": "sha256:3a0ec865010fd2d63eb74638649d59d5cd65de16814a1e67db43be21c54318dd",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.payment_terms_template": {
+      "digest": "sha256:20eec0c6e2fe747949eb3d213c9474419b4eefbad26f42791a018445893c90b2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.profit_and_loss": {
+      "digest": "sha256:46c417b63093b7e2d1ef0a3b392de992a1772357223f3e6030c66c30c53657f2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.profitability_analysis": {
+      "digest": "sha256:beeaca85d3539971ec87dee9a19ba16d77d9aa96dbe8326f1668bbdbf9c783d7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.purchase_invoice": {
+      "digest": "sha256:2426bc54e252ffb3008e60277d3dac117872adb00908fc16a3cea37fca996439",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.purchase_tax_template": {
+      "digest": "sha256:6edf715835de511935cbbf57de8338f52aa123e05dea87cb873eed6f6afb461d",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.sales_invoice": {
+      "digest": "sha256:857c650651c37d94952517b73048599471354b1f4a75d083ac9ef9ea769129ba",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.sales_tax_template": {
+      "digest": "sha256:4581f02de422689d66e6fba09473fdf690a0d4a5a0f582e1d96e08feb87b8ffe",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.settings": {
+      "digest": "sha256:c309e51fc96a3a07153f0c6e59419c42d24e25a8f0fd85b31e79d8c0b00a4154",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.tax_rule": {
+      "digest": "sha256:5d97965ac77f53ff85a61c1cf59792e25f6319205599cce2ffa6537cef2ec5a2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.tax_withholding_category": {
+      "digest": "sha256:e87f5c87f05678981fc042898cb5c20764864661b5d69a97bb3ddcc0294e1ac9",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.trial_balance": {
+      "digest": "sha256:769ec4352995db5f57d5259faf2655c809807b82827241eb92a14c025144ebb7",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.trial_balance_for_party": {
+      "digest": "sha256:378134fa95e9ff6332e20828449658c6da3eef3521f367afa4e170611e5f31fc",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

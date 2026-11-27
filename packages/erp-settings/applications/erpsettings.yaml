@@ -1,0 +1,143 @@
+{
+  "name": "erpsettings",
+  "title": "ERP configuration",
+  "icon": "cog-6-tooth",
+  "pages": [
+    "erpsettings.home",
+    "erpsettings.company",
+    "erpsettings.users",
+    "erpsettings.branch",
+    "erpsettings.department",
+    "erpsettings.designation",
+    "erpsettings.holiday_list",
+    "erpsettings.role",
+    "erpsettings.role_permissions",
+    "erpsettings.user_permissions",
+    "erpsettings.authorization_rule",
+    "erpsettings.letter_head",
+    "erpsettings.print_format",
+    "erpsettings.print_settings",
+    "erpsettings.email_account",
+    "erpsettings.email_template",
+    "erpsettings.email_digest",
+    "erpsettings.data_import",
+    "erpsettings.rename_tool",
+    "erpsettings.bulk_transaction_log",
+    "erpsettings.transaction_deletion_record",
+    "erpsettings.incoming_call_settings",
+    "erpsettings.voice_call_settings",
+    "erpsettings.call_log",
+    "erpsettings.telephony_call_type",
+    "erpsettings.communication_medium",
+    "erpsettings.code_list",
+    "erpsettings.common_code",
+    "erpsettings.system",
+    "erpsettings.global_defaults",
+    "erpsettings.accounts",
+    "erpsettings.selling",
+    "erpsettings.buying",
+    "erpsettings.stock",
+    "erpsettings.manufacturing",
+    "erpsettings.projects",
+    "erpsettings.crm",
+    "erpsettings.support",
+    "erpsettings.pos",
+    "erpsettings.subscription",
+    "erpsettings.item_variant",
+    "erpsettings.delivery",
+    "erpsettings.currency_exchange",
+    "erpsettings.appointment_booking",
+    "erpsettings.stock_reposting"
+  ],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "erpsettings.home",
+        "erpsettings.company",
+        "erpsettings.users"
+      ]
+    },
+    {
+      "title": "Organization",
+      "pages": [
+        "erpsettings.branch",
+        "erpsettings.department",
+        "erpsettings.designation",
+        "erpsettings.holiday_list"
+      ]
+    },
+    {
+      "title": "Access",
+      "pages": [
+        "erpsettings.role",
+        "erpsettings.role_permissions",
+        "erpsettings.user_permissions",
+        "erpsettings.authorization_rule"
+      ]
+    },
+    {
+      "title": "Printing",
+      "pages": [
+        "erpsettings.letter_head",
+        "erpsettings.print_format",
+        "erpsettings.print_settings"
+      ]
+    },
+    {
+      "title": "Email",
+      "pages": [
+        "erpsettings.email_account",
+        "erpsettings.email_template",
+        "erpsettings.email_digest"
+      ]
+    },
+    {
+      "title": "Data",
+      "pages": [
+        "erpsettings.data_import",
+        "erpsettings.rename_tool",
+        "erpsettings.bulk_transaction_log",
+        "erpsettings.transaction_deletion_record"
+      ]
+    },
+    {
+      "title": "Integrations",
+      "pages": [
+        "erpsettings.incoming_call_settings",
+        "erpsettings.voice_call_settings",
+        "erpsettings.call_log",
+        "erpsettings.telephony_call_type",
+        "erpsettings.communication_medium",
+        "erpsettings.code_list",
+        "erpsettings.common_code"
+      ]
+    },
+    {
+      "title": "Settings",
+      "pages": [
+        "erpsettings.system",
+        "erpsettings.global_defaults",
+        "erpsettings.accounts",
+        "erpsettings.selling",
+        "erpsettings.buying",
+        "erpsettings.stock",
+        "erpsettings.manufacturing",
+        "erpsettings.projects",
+        "erpsettings.crm",
+        "erpsettings.support",
+        "erpsettings.pos",
+        "erpsettings.subscription",
+        "erpsettings.item_variant",
+        "erpsettings.delivery",
+        "erpsettings.currency_exchange",
+        "erpsettings.appointment_booking",
+        "erpsettings.stock_reposting"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ]
+}

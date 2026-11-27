@@ -1,0 +1,535 @@
+module	path	name	child	single	review_state
+accounts	erpnext/accounts/doctype/account/account.json	Account	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/account_category/account_category.json	Account Category	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/account_closing_balance/account_closing_balance.json	Account Closing Balance	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/accounting_dimension/accounting_dimension.json	Accounting Dimension	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/accounting_dimension_detail/accounting_dimension_detail.json	Accounting Dimension Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/accounting_dimension_filter/accounting_dimension_filter.json	Accounting Dimension Filter	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/accounting_period/accounting_period.json	Accounting Period	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/accounts_settings/accounts_settings.json	Accounts Settings	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/advance_payment_ledger_entry/advance_payment_ledger_entry.json	Advance Payment Ledger Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/advance_taxes_and_charges/advance_taxes_and_charges.json	Advance Taxes and Charges	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/allowed_dimension/allowed_dimension.json	Allowed Dimension	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/allowed_to_transact_with/allowed_to_transact_with.json	Allowed To Transact With	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/applicable_on_account/applicable_on_account.json	Applicable On Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank/bank.json	Bank	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_account/bank_account.json	Bank Account	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_account_balance/bank_account_balance.json	Bank Account Balance	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_account_subtype/bank_account_subtype.json	Bank Account Subtype	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_account_type/bank_account_type.json	Bank Account Type	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_clearance/bank_clearance.json	Bank Clearance	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_clearance_detail/bank_clearance_detail.json	Bank Clearance Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_guarantee/bank_guarantee.json	Bank Guarantee	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_reconciliation_tool/bank_reconciliation_tool.json	Bank Reconciliation Tool	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_statement_import/bank_statement_import.json	Bank Statement Import	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_statement_import_log/bank_statement_import_log.json	Bank Statement Import Log	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_statement_import_log_column_map/bank_statement_import_log_column_map.json	Bank Statement Import Log Column Map	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_transaction/bank_transaction.json	Bank Transaction	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_transaction_mapping/bank_transaction_mapping.json	Bank Transaction Mapping	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_transaction_payments/bank_transaction_payments.json	Bank Transaction Payments	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_transaction_rule/bank_transaction_rule.json	Bank Transaction Rule	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_transaction_rule_accounts/bank_transaction_rule_accounts.json	Bank Transaction Rule Accounts	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bank_transaction_rule_description_conditions/bank_transaction_rule_description_conditions.json	Bank Transaction Rule Description Conditions	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/bisect_accounting_statements/bisect_accounting_statements.json	Bisect Accounting Statements	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/bisect_nodes/bisect_nodes.json	Bisect Nodes	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/budget/budget.json	Budget	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/budget_account/budget_account.json	Budget Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/budget_distribution/budget_distribution.json	Budget Distribution	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/campaign_item/campaign_item.json	Campaign Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/cashier_closing/cashier_closing.json	Cashier Closing	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/cashier_closing_payments/cashier_closing_payments.json	Cashier Closing Payments	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/chart_of_accounts_importer/chart_of_accounts_importer.json	Chart of Accounts Importer	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/cheque_print_template/cheque_print_template.json	Cheque Print Template	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/closed_document/closed_document.json	Closed Document	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/cost_center/cost_center.json	Cost Center	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/cost_center_allocation/cost_center_allocation.json	Cost Center Allocation	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/cost_center_allocation_percentage/cost_center_allocation_percentage.json	Cost Center Allocation Percentage	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/coupon_code/coupon_code.json	Coupon Code	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/currency_exchange_settings/currency_exchange_settings.json	Currency Exchange Settings	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/currency_exchange_settings_details/currency_exchange_settings_details.json	Currency Exchange Settings Details	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/currency_exchange_settings_result/currency_exchange_settings_result.json	Currency Exchange Settings Result	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/customer_group_item/customer_group_item.json	Customer Group Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/customer_item/customer_item.json	Customer Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/discounted_invoice/discounted_invoice.json	Discounted Invoice	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/dunning/dunning.json	Dunning	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/dunning_letter_text/dunning_letter_text.json	Dunning Letter Text	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/dunning_type/dunning_type.json	Dunning Type	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/exchange_rate_revaluation/exchange_rate_revaluation.json	Exchange Rate Revaluation	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/exchange_rate_revaluation_account/exchange_rate_revaluation_account.json	Exchange Rate Revaluation Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/finance_book/finance_book.json	Finance Book	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/financial_report_row/financial_report_row.json	Financial Report Row	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/financial_report_template/financial_report_template.json	Financial Report Template	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/fiscal_year/fiscal_year.json	Fiscal Year	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/fiscal_year_company/fiscal_year_company.json	Fiscal Year Company	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/gl_entry/gl_entry.json	GL Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/invoice_discounting/invoice_discounting.json	Invoice Discounting	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/item_tax_template/item_tax_template.json	Item Tax Template	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/item_tax_template_detail/item_tax_template_detail.json	Item Tax Template Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/item_wise_tax_detail/item_wise_tax_detail.json	Item Wise Tax Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/journal_entry/journal_entry.json	Journal Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/journal_entry_account/journal_entry_account.json	Journal Entry Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/journal_entry_template/journal_entry_template.json	Journal Entry Template	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/journal_entry_template_account/journal_entry_template_account.json	Journal Entry Template Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/ledger_health/ledger_health.json	Ledger Health	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/ledger_health_monitor/ledger_health_monitor.json	Ledger Health Monitor	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/ledger_health_monitor_company/ledger_health_monitor_company.json	Ledger Health Monitor Company	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/ledger_merge/ledger_merge.json	Ledger Merge	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/ledger_merge_accounts/ledger_merge_accounts.json	Ledger Merge Accounts	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/loyalty_point_entry/loyalty_point_entry.json	Loyalty Point Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/loyalty_point_entry_redemption/loyalty_point_entry_redemption.json	Loyalty Point Entry Redemption	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/loyalty_program/loyalty_program.json	Loyalty Program	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/loyalty_program_collection/loyalty_program_collection.json	Loyalty Program Collection	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/mode_of_payment/mode_of_payment.json	Mode of Payment	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/mode_of_payment_account/mode_of_payment_account.json	Mode of Payment Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/monthly_distribution/monthly_distribution.json	Monthly Distribution	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/monthly_distribution_percentage/monthly_distribution_percentage.json	Monthly Distribution Percentage	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/opening_invoice_creation_tool/opening_invoice_creation_tool.json	Opening Invoice Creation Tool	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/opening_invoice_creation_tool_item/opening_invoice_creation_tool_item.json	Opening Invoice Creation Tool Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/overdue_payment/overdue_payment.json	Overdue Payment	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/party_account/party_account.json	Party Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/party_link/party_link.json	Party Link	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_entry/payment_entry.json	Payment Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_entry_deduction/payment_entry_deduction.json	Payment Entry Deduction	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_entry_reference/payment_entry_reference.json	Payment Entry Reference	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_gateway_account/payment_gateway_account.json	Payment Gateway Account	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_ledger_entry/payment_ledger_entry.json	Payment Ledger Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_order/payment_order.json	Payment Order	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_order_reference/payment_order_reference.json	Payment Order Reference	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_reconciliation/payment_reconciliation.json	Payment Reconciliation	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_reconciliation_allocation/payment_reconciliation_allocation.json	Payment Reconciliation Allocation	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_reconciliation_invoice/payment_reconciliation_invoice.json	Payment Reconciliation Invoice	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_reconciliation_payment/payment_reconciliation_payment.json	Payment Reconciliation Payment	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_reference/payment_reference.json	Payment Reference	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_request/payment_request.json	Payment Request	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_schedule/payment_schedule.json	Payment Schedule	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_term/payment_term.json	Payment Term	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_terms_template/payment_terms_template.json	Payment Terms Template	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/payment_terms_template_detail/payment_terms_template_detail.json	Payment Terms Template Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pegged_currencies/pegged_currencies.json	Pegged Currencies	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/pegged_currency_details/pegged_currency_details.json	Pegged Currency Details	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/period_closing_voucher/period_closing_voucher.json	Period Closing Voucher	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_closing_entry/pos_closing_entry.json	POS Closing Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_closing_entry_detail/pos_closing_entry_detail.json	POS Closing Entry Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_closing_entry_taxes/pos_closing_entry_taxes.json	POS Closing Entry Taxes	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_customer_group/pos_customer_group.json	POS Customer Group	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_field/pos_field.json	POS Field	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_invoice/pos_invoice.json	POS Invoice	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_invoice_item/pos_invoice_item.json	POS Invoice Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_invoice_merge_log/pos_invoice_merge_log.json	POS Invoice Merge Log	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_invoice_reference/pos_invoice_reference.json	POS Invoice Reference	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_item_group/pos_item_group.json	POS Item Group	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_opening_entry/pos_opening_entry.json	POS Opening Entry	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_opening_entry_detail/pos_opening_entry_detail.json	POS Opening Entry Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_payment_method/pos_payment_method.json	POS Payment Method	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_profile/pos_profile.json	POS Profile	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_profile_user/pos_profile_user.json	POS Profile User	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_search_fields/pos_search_fields.json	POS Search Fields	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pos_settings/pos_settings.json	POS Settings	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/pricing_rule/pricing_rule.json	Pricing Rule	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pricing_rule_brand/pricing_rule_brand.json	Pricing Rule Brand	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pricing_rule_detail/pricing_rule_detail.json	Pricing Rule Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pricing_rule_item_code/pricing_rule_item_code.json	Pricing Rule Item Code	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/pricing_rule_item_group/pricing_rule_item_group.json	Pricing Rule Item Group	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_deferred_accounting/process_deferred_accounting.json	Process Deferred Accounting	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_payment_reconciliation/process_payment_reconciliation.json	Process Payment Reconciliation	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_payment_reconciliation_log/process_payment_reconciliation_log.json	Process Payment Reconciliation Log	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_payment_reconciliation_log_allocations/process_payment_reconciliation_log_allocations.json	Process Payment Reconciliation Log Allocations	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_period_closing_voucher/process_period_closing_voucher.json	Process Period Closing Voucher	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_period_closing_voucher_detail/process_period_closing_voucher_detail.json	Process Period Closing Voucher Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_statement_of_accounts/process_statement_of_accounts.json	Process Statement Of Accounts	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_statement_of_accounts_cc/process_statement_of_accounts_cc.json	Process Statement Of Accounts CC	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_statement_of_accounts_customer/process_statement_of_accounts_customer.json	Process Statement Of Accounts Customer	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/process_subscription/process_subscription.json	Process Subscription	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/promotional_scheme/promotional_scheme.json	Promotional Scheme	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/promotional_scheme_price_discount/promotional_scheme_price_discount.json	Promotional Scheme Price Discount	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/promotional_scheme_product_discount/promotional_scheme_product_discount.json	Promotional Scheme Product Discount	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/psoa_cost_center/psoa_cost_center.json	PSOA Cost Center	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/psoa_project/psoa_project.json	PSOA Project	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/purchase_invoice/purchase_invoice.json	Purchase Invoice	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/purchase_invoice_advance/purchase_invoice_advance.json	Purchase Invoice Advance	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/purchase_invoice_item/purchase_invoice_item.json	Purchase Invoice Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/purchase_taxes_and_charges/purchase_taxes_and_charges.json	Purchase Taxes and Charges	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/purchase_taxes_and_charges_template/purchase_taxes_and_charges_template.json	Purchase Taxes and Charges Template	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/repost_accounting_ledger/repost_accounting_ledger.json	Repost Accounting Ledger	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/repost_accounting_ledger_items/repost_accounting_ledger_items.json	Repost Accounting Ledger Items	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/repost_allowed_types/repost_allowed_types.json	Repost Allowed Types	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/repost_payment_ledger/repost_payment_ledger.json	Repost Payment Ledger	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/repost_payment_ledger_items/repost_payment_ledger_items.json	Repost Payment Ledger Items	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_invoice/sales_invoice.json	Sales Invoice	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_invoice_advance/sales_invoice_advance.json	Sales Invoice Advance	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_invoice_item/sales_invoice_item.json	Sales Invoice Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_invoice_payment/sales_invoice_payment.json	Sales Invoice Payment	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_invoice_reference/sales_invoice_reference.json	Sales Invoice Reference	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_invoice_timesheet/sales_invoice_timesheet.json	Sales Invoice Timesheet	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_partner_item/sales_partner_item.json	Sales Partner Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_taxes_and_charges/sales_taxes_and_charges.json	Sales Taxes and Charges	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/sales_taxes_and_charges_template/sales_taxes_and_charges_template.json	Sales Taxes and Charges Template	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/share_balance/share_balance.json	Share Balance	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/share_transfer/share_transfer.json	Share Transfer	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/share_type/share_type.json	Share Type	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/shareholder/shareholder.json	Shareholder	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/shipping_rule/shipping_rule.json	Shipping Rule	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/shipping_rule_condition/shipping_rule_condition.json	Shipping Rule Condition	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/shipping_rule_country/shipping_rule_country.json	Shipping Rule Country	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/south_africa_vat_account/south_africa_vat_account.json	South Africa VAT Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/subscription/subscription.json	Subscription	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/subscription_invoice/subscription_invoice.json	Subscription Invoice	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/subscription_plan/subscription_plan.json	Subscription Plan	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/subscription_plan_detail/subscription_plan_detail.json	Subscription Plan Detail	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/subscription_settings/subscription_settings.json	Subscription Settings	0	1	metadata-indexed
+accounts	erpnext/accounts/doctype/supplier_group_item/supplier_group_item.json	Supplier Group Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/supplier_item/supplier_item.json	Supplier Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/tax_category/tax_category.json	Tax Category	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/tax_rule/tax_rule.json	Tax Rule	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/tax_withholding_account/tax_withholding_account.json	Tax Withholding Account	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/tax_withholding_category/tax_withholding_category.json	Tax Withholding Category	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/tax_withholding_entry/tax_withholding_entry.json	Tax Withholding Entry	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/tax_withholding_group/tax_withholding_group.json	Tax Withholding Group	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/tax_withholding_rate/tax_withholding_rate.json	Tax Withholding Rate	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/territory_item/territory_item.json	Territory Item	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/transaction_deletion_record_details/transaction_deletion_record_details.json	Transaction Deletion Record Details	1	0	metadata-indexed
+accounts	erpnext/accounts/doctype/unreconcile_payment/unreconcile_payment.json	Unreconcile Payment	0	0	metadata-indexed
+accounts	erpnext/accounts/doctype/unreconcile_payment_entries/unreconcile_payment_entries.json	Unreconcile Payment Entries	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset/asset.json	Asset	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_activity/asset_activity.json	Asset Activity	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_capitalization/asset_capitalization.json	Asset Capitalization	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_capitalization_asset_item/asset_capitalization_asset_item.json	Asset Capitalization Asset Item	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_capitalization_service_item/asset_capitalization_service_item.json	Asset Capitalization Service Item	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_capitalization_stock_item/asset_capitalization_stock_item.json	Asset Capitalization Stock Item	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_category/asset_category.json	Asset Category	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_category_account/asset_category_account.json	Asset Category Account	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_depreciation_schedule/asset_depreciation_schedule.json	Asset Depreciation Schedule	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_finance_book/asset_finance_book.json	Asset Finance Book	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_maintenance/asset_maintenance.json	Asset Maintenance	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_maintenance_log/asset_maintenance_log.json	Asset Maintenance Log	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_maintenance_task/asset_maintenance_task.json	Asset Maintenance Task	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_maintenance_team/asset_maintenance_team.json	Asset Maintenance Team	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_movement/asset_movement.json	Asset Movement	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_movement_item/asset_movement_item.json	Asset Movement Item	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_repair/asset_repair.json	Asset Repair	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_repair_consumed_item/asset_repair_consumed_item.json	Asset Repair Consumed Item	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_repair_purchase_invoice/asset_repair_purchase_invoice.json	Asset Repair Purchase Invoice	1	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_shift_allocation/asset_shift_allocation.json	Asset Shift Allocation	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_shift_factor/asset_shift_factor.json	Asset Shift Factor	0	0	metadata-indexed
+assets	erpnext/assets/doctype/asset_value_adjustment/asset_value_adjustment.json	Asset Value Adjustment	0	0	metadata-indexed
+assets	erpnext/assets/doctype/depreciation_schedule/depreciation_schedule.json	Depreciation Schedule	1	0	metadata-indexed
+assets	erpnext/assets/doctype/linked_location/linked_location.json	Linked Location	1	0	metadata-indexed
+assets	erpnext/assets/doctype/location/location.json	Location	0	0	metadata-indexed
+assets	erpnext/assets/doctype/maintenance_team_member/maintenance_team_member.json	Maintenance Team Member	1	0	metadata-indexed
+bulk_transaction	erpnext/bulk_transaction/doctype/bulk_transaction_log/bulk_transaction_log.json	Bulk Transaction Log	0	0	metadata-indexed
+bulk_transaction	erpnext/bulk_transaction/doctype/bulk_transaction_log_detail/bulk_transaction_log_detail.json	Bulk Transaction Log Detail	0	0	metadata-indexed
+buying	erpnext/buying/doctype/buying_settings/buying_settings.json	Buying Settings	0	1	metadata-indexed
+buying	erpnext/buying/doctype/customer_number_at_supplier/customer_number_at_supplier.json	Customer Number At Supplier	1	0	metadata-indexed
+buying	erpnext/buying/doctype/purchase_order/purchase_order.json	Purchase Order	0	0	metadata-indexed
+buying	erpnext/buying/doctype/purchase_order_item/purchase_order_item.json	Purchase Order Item	1	0	metadata-indexed
+buying	erpnext/buying/doctype/purchase_order_item_supplied/purchase_order_item_supplied.json	Purchase Order Item Supplied	1	0	metadata-indexed
+buying	erpnext/buying/doctype/purchase_receipt_item_supplied/purchase_receipt_item_supplied.json	Purchase Receipt Item Supplied	1	0	metadata-indexed
+buying	erpnext/buying/doctype/request_for_quotation/request_for_quotation.json	Request for Quotation	0	0	metadata-indexed
+buying	erpnext/buying/doctype/request_for_quotation_item/request_for_quotation_item.json	Request for Quotation Item	1	0	metadata-indexed
+buying	erpnext/buying/doctype/request_for_quotation_supplier/request_for_quotation_supplier.json	Request for Quotation Supplier	1	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier/supplier.json	Supplier	0	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_quotation/supplier_quotation.json	Supplier Quotation	0	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_quotation_item/supplier_quotation_item.json	Supplier Quotation Item	1	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard/supplier_scorecard.json	Supplier Scorecard	0	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard_criteria/supplier_scorecard_criteria.json	Supplier Scorecard Criteria	0	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard_period/supplier_scorecard_period.json	Supplier Scorecard Period	0	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard_scoring_criteria/supplier_scorecard_scoring_criteria.json	Supplier Scorecard Scoring Criteria	1	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard_scoring_standing/supplier_scorecard_scoring_standing.json	Supplier Scorecard Scoring Standing	1	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard_scoring_variable/supplier_scorecard_scoring_variable.json	Supplier Scorecard Scoring Variable	1	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard_standing/supplier_scorecard_standing.json	Supplier Scorecard Standing	0	0	metadata-indexed
+buying	erpnext/buying/doctype/supplier_scorecard_variable/supplier_scorecard_variable.json	Supplier Scorecard Variable	0	0	metadata-indexed
+communication	erpnext/communication/doctype/communication_medium/communication_medium.json	Communication Medium	0	0	metadata-indexed
+communication	erpnext/communication/doctype/communication_medium_timeslot/communication_medium_timeslot.json	Communication Medium Timeslot	1	0	metadata-indexed
+crm	erpnext/crm/doctype/appointment/appointment.json	Appointment	0	0	metadata-indexed
+crm	erpnext/crm/doctype/appointment_booking_settings/appointment_booking_settings.json	Appointment Booking Settings	0	1	metadata-indexed
+crm	erpnext/crm/doctype/appointment_booking_slots/appointment_booking_slots.json	Appointment Booking Slots	1	0	metadata-indexed
+crm	erpnext/crm/doctype/availability_of_slots/availability_of_slots.json	Availability Of Slots	1	0	metadata-indexed
+crm	erpnext/crm/doctype/campaign/campaign.json	Campaign	0	0	metadata-indexed
+crm	erpnext/crm/doctype/campaign_email_schedule/campaign_email_schedule.json	Campaign Email Schedule	1	0	metadata-indexed
+crm	erpnext/crm/doctype/competitor/competitor.json	Competitor	0	0	metadata-indexed
+crm	erpnext/crm/doctype/competitor_detail/competitor_detail.json	Competitor Detail	1	0	metadata-indexed
+crm	erpnext/crm/doctype/contract/contract.json	Contract	0	0	metadata-indexed
+crm	erpnext/crm/doctype/contract_fulfilment_checklist/contract_fulfilment_checklist.json	Contract Fulfilment Checklist	1	0	metadata-indexed
+crm	erpnext/crm/doctype/contract_template/contract_template.json	Contract Template	0	0	metadata-indexed
+crm	erpnext/crm/doctype/contract_template_fulfilment_terms/contract_template_fulfilment_terms.json	Contract Template Fulfilment Terms	1	0	metadata-indexed
+crm	erpnext/crm/doctype/crm_note/crm_note.json	CRM Note	1	0	metadata-indexed
+crm	erpnext/crm/doctype/crm_settings/crm_settings.json	CRM Settings	0	1	metadata-indexed
+crm	erpnext/crm/doctype/email_campaign/email_campaign.json	Email Campaign	0	0	metadata-indexed
+crm	erpnext/crm/doctype/frappe_crm_allowed_user/frappe_crm_allowed_user.json	Frappe CRM Allowed User	1	0	metadata-indexed
+crm	erpnext/crm/doctype/lead/lead.json	Lead	0	0	metadata-indexed
+crm	erpnext/crm/doctype/lost_reason_detail/lost_reason_detail.json	Lost Reason Detail	1	0	metadata-indexed
+crm	erpnext/crm/doctype/market_segment/market_segment.json	Market Segment	0	0	metadata-indexed
+crm	erpnext/crm/doctype/opportunity/opportunity.json	Opportunity	0	0	metadata-indexed
+crm	erpnext/crm/doctype/opportunity_item/opportunity_item.json	Opportunity Item	1	0	metadata-indexed
+crm	erpnext/crm/doctype/opportunity_lost_reason/opportunity_lost_reason.json	Opportunity Lost Reason	0	0	metadata-indexed
+crm	erpnext/crm/doctype/opportunity_lost_reason_detail/opportunity_lost_reason_detail.json	Opportunity Lost Reason Detail	1	0	metadata-indexed
+crm	erpnext/crm/doctype/opportunity_type/opportunity_type.json	Opportunity Type	0	0	metadata-indexed
+crm	erpnext/crm/doctype/prospect/prospect.json	Prospect	0	0	metadata-indexed
+crm	erpnext/crm/doctype/prospect_lead/prospect_lead.json	Prospect Lead	1	0	metadata-indexed
+crm	erpnext/crm/doctype/prospect_opportunity/prospect_opportunity.json	Prospect Opportunity	1	0	metadata-indexed
+crm	erpnext/crm/doctype/sales_stage/sales_stage.json	Sales Stage	0	0	metadata-indexed
+edi	erpnext/edi/doctype/code_list/code_list.json	Code List	0	0	metadata-indexed
+edi	erpnext/edi/doctype/common_code/common_code.json	Common Code	0	0	metadata-indexed
+erpnext_integrations	erpnext/erpnext_integrations/doctype/plaid_settings/plaid_settings.json	Plaid Settings	0	1	metadata-indexed
+maintenance	erpnext/maintenance/doctype/maintenance_schedule/maintenance_schedule.json	Maintenance Schedule	0	0	metadata-indexed
+maintenance	erpnext/maintenance/doctype/maintenance_schedule_detail/maintenance_schedule_detail.json	Maintenance Schedule Detail	1	0	metadata-indexed
+maintenance	erpnext/maintenance/doctype/maintenance_schedule_item/maintenance_schedule_item.json	Maintenance Schedule Item	1	0	metadata-indexed
+maintenance	erpnext/maintenance/doctype/maintenance_visit/maintenance_visit.json	Maintenance Visit	0	0	metadata-indexed
+maintenance	erpnext/maintenance/doctype/maintenance_visit_purpose/maintenance_visit_purpose.json	Maintenance Visit Purpose	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/blanket_order/blanket_order.json	Blanket Order	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/blanket_order_item/blanket_order_item.json	Blanket Order Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom/bom.json	BOM	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_creator/bom_creator.json	BOM Creator	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_creator_item/bom_creator_item.json	BOM Creator Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_creator_material/bom_creator_material.json	BOM Creator Material	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_creator_operation/bom_creator_operation.json	BOM Creator Operation	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_explosion_item/bom_explosion_item.json	BOM Explosion Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_item/bom_item.json	BOM Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_operation/bom_operation.json	BOM Operation	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_secondary_item/bom_secondary_item.json	BOM Secondary Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_update_batch/bom_update_batch.json	BOM Update Batch	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_update_log/bom_update_log.json	BOM Update Log	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_update_tool/bom_update_tool.json	BOM Update Tool	0	1	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_website_item/bom_website_item.json	BOM Website Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/bom_website_operation/bom_website_operation.json	BOM Website Operation	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/downtime_entry/downtime_entry.json	Downtime Entry	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/job_card/job_card.json	Job Card	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/job_card_item/job_card_item.json	Job Card Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/job_card_operation/job_card_operation.json	Job Card Operation	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/job_card_scheduled_time/job_card_scheduled_time.json	Job Card Scheduled Time	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/job_card_secondary_item/job_card_secondary_item.json	Job Card Secondary Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/job_card_time_log/job_card_time_log.json	Job Card Time Log	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/manufacturing_settings/manufacturing_settings.json	Manufacturing Settings	0	1	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/master_production_schedule/master_production_schedule.json	Master Production Schedule	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/master_production_schedule_item/master_production_schedule_item.json	Master Production Schedule Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/material_request_plan_item/material_request_plan_item.json	Material Request Plan Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/operation/operation.json	Operation	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/plant_floor/plant_floor.json	Plant Floor	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/production_plan/production_plan.json	Production Plan	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/production_plan_item/production_plan_item.json	Production Plan Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/production_plan_item_reference/production_plan_item_reference.json	Production Plan Item Reference	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/production_plan_material_request/production_plan_material_request.json	Production Plan Material Request	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/production_plan_material_request_warehouse/production_plan_material_request_warehouse.json	Production Plan Material Request Warehouse	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/production_plan_sales_order/production_plan_sales_order.json	Production Plan Sales Order	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/production_plan_sub_assembly_item/production_plan_sub_assembly_item.json	Production Plan Sub Assembly Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/routing/routing.json	Routing	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/sales_forecast/sales_forecast.json	Sales Forecast	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/sales_forecast_item/sales_forecast_item.json	Sales Forecast Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/sub_operation/sub_operation.json	Sub Operation	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/work_order/work_order.json	Work Order	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/work_order_additional_item/work_order_additional_item.json	Work Order Additional Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/work_order_item/work_order_item.json	Work Order Item	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/work_order_operation/work_order_operation.json	Work Order Operation	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/workstation/workstation.json	Workstation	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/workstation_cost/workstation_cost.json	Workstation Cost	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/workstation_operating_component/workstation_operating_component.json	Workstation Operating Component	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/workstation_operating_component_account/workstation_operating_component_account.json	Workstation Operating Component Account	1	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/workstation_type/workstation_type.json	Workstation Type	0	0	metadata-indexed
+manufacturing	erpnext/manufacturing/doctype/workstation_working_hour/workstation_working_hour.json	Workstation Working Hour	1	0	metadata-indexed
+portal	erpnext/portal/doctype/website_attribute/website_attribute.json	Website Attribute	1	0	metadata-indexed
+portal	erpnext/portal/doctype/website_filter_field/website_filter_field.json	Website Filter Field	1	0	metadata-indexed
+projects	erpnext/projects/doctype/activity_cost/activity_cost.json	Activity Cost	0	0	metadata-indexed
+projects	erpnext/projects/doctype/activity_type/activity_type.json	Activity Type	0	0	metadata-indexed
+projects	erpnext/projects/doctype/dependent_task/dependent_task.json	Dependent Task	1	0	metadata-indexed
+projects	erpnext/projects/doctype/project/project.json	Project	0	0	metadata-indexed
+projects	erpnext/projects/doctype/project_template/project_template.json	Project Template	0	0	metadata-indexed
+projects	erpnext/projects/doctype/project_template_task/project_template_task.json	Project Template Task	1	0	metadata-indexed
+projects	erpnext/projects/doctype/project_type/project_type.json	Project Type	0	0	metadata-indexed
+projects	erpnext/projects/doctype/project_update/project_update.json	Project Update	0	0	metadata-indexed
+projects	erpnext/projects/doctype/project_user/project_user.json	Project User	1	0	metadata-indexed
+projects	erpnext/projects/doctype/projects_settings/projects_settings.json	Projects Settings	0	1	metadata-indexed
+projects	erpnext/projects/doctype/task/task.json	Task	0	0	metadata-indexed
+projects	erpnext/projects/doctype/task_depends_on/task_depends_on.json	Task Depends On	1	0	metadata-indexed
+projects	erpnext/projects/doctype/task_type/task_type.json	Task Type	0	0	metadata-indexed
+projects	erpnext/projects/doctype/timesheet/timesheet.json	Timesheet	0	0	metadata-indexed
+projects	erpnext/projects/doctype/timesheet_detail/timesheet_detail.json	Timesheet Detail	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/non_conformance/non_conformance.json	Non Conformance	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_action/quality_action.json	Quality Action	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_action_resolution/quality_action_resolution.json	Quality Action Resolution	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_feedback/quality_feedback.json	Quality Feedback	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_feedback_parameter/quality_feedback_parameter.json	Quality Feedback Parameter	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_feedback_template/quality_feedback_template.json	Quality Feedback Template	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_feedback_template_parameter/quality_feedback_template_parameter.json	Quality Feedback Template Parameter	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_goal/quality_goal.json	Quality Goal	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_goal_objective/quality_goal_objective.json	Quality Goal Objective	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_meeting/quality_meeting.json	Quality Meeting	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_meeting_agenda/quality_meeting_agenda.json	Quality Meeting Agenda	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_meeting_minutes/quality_meeting_minutes.json	Quality Meeting Minutes	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_procedure/quality_procedure.json	Quality Procedure	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_procedure_process/quality_procedure_process.json	Quality Procedure Process	1	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_review/quality_review.json	Quality Review	0	0	metadata-indexed
+quality_management	erpnext/quality_management/doctype/quality_review_objective/quality_review_objective.json	Quality Review Objective	1	0	metadata-indexed
+regional	erpnext/regional/doctype/import_supplier_invoice/import_supplier_invoice.json	Import Supplier Invoice	0	0	metadata-indexed
+regional	erpnext/regional/doctype/lower_deduction_certificate/lower_deduction_certificate.json	Lower Deduction Certificate	0	0	metadata-indexed
+regional	erpnext/regional/doctype/south_africa_vat_settings/south_africa_vat_settings.json	South Africa VAT Settings	0	0	metadata-indexed
+regional	erpnext/regional/doctype/uae_vat_account/uae_vat_account.json	UAE VAT Account	1	0	metadata-indexed
+regional	erpnext/regional/doctype/uae_vat_settings/uae_vat_settings.json	UAE VAT Settings	0	0	metadata-indexed
+selling	erpnext/selling/doctype/customer/customer.json	Customer	0	0	metadata-indexed
+selling	erpnext/selling/doctype/customer_credit_limit/customer_credit_limit.json	Customer Credit Limit	1	0	metadata-indexed
+selling	erpnext/selling/doctype/delivery_schedule_item/delivery_schedule_item.json	Delivery Schedule Item	0	0	metadata-indexed
+selling	erpnext/selling/doctype/industry_type/industry_type.json	Industry Type	0	0	metadata-indexed
+selling	erpnext/selling/doctype/installation_note/installation_note.json	Installation Note	0	0	metadata-indexed
+selling	erpnext/selling/doctype/installation_note_item/installation_note_item.json	Installation Note Item	1	0	metadata-indexed
+selling	erpnext/selling/doctype/party_specific_item/party_specific_item.json	Party Specific Item	0	0	metadata-indexed
+selling	erpnext/selling/doctype/product_bundle/product_bundle.json	Product Bundle	0	0	metadata-indexed
+selling	erpnext/selling/doctype/product_bundle_item/product_bundle_item.json	Product Bundle Item	1	0	metadata-indexed
+selling	erpnext/selling/doctype/proforma_invoice/proforma_invoice.json	Proforma Invoice	0	0	metadata-indexed
+selling	erpnext/selling/doctype/proforma_invoice_item/proforma_invoice_item.json	Proforma Invoice Item	1	0	metadata-indexed
+selling	erpnext/selling/doctype/quotation/quotation.json	Quotation	0	0	metadata-indexed
+selling	erpnext/selling/doctype/quotation_item/quotation_item.json	Quotation Item	1	0	metadata-indexed
+selling	erpnext/selling/doctype/sales_order/sales_order.json	Sales Order	0	0	metadata-indexed
+selling	erpnext/selling/doctype/sales_order_item/sales_order_item.json	Sales Order Item	1	0	metadata-indexed
+selling	erpnext/selling/doctype/sales_partner_type/sales_partner_type.json	Sales Partner Type	0	0	metadata-indexed
+selling	erpnext/selling/doctype/sales_team/sales_team.json	Sales Team	1	0	metadata-indexed
+selling	erpnext/selling/doctype/selling_settings/selling_settings.json	Selling Settings	0	1	metadata-indexed
+selling	erpnext/selling/doctype/sms_center/sms_center.json	SMS Center	0	1	metadata-indexed
+selling	erpnext/selling/doctype/supplier_number_at_customer/supplier_number_at_customer.json	Supplier Number At Customer	1	0	metadata-indexed
+setup	erpnext/setup/doctype/authorization_control/authorization_control.json	Authorization Control	0	1	metadata-indexed
+setup	erpnext/setup/doctype/authorization_rule/authorization_rule.json	Authorization Rule	0	0	metadata-indexed
+setup	erpnext/setup/doctype/branch/branch.json	Branch	0	0	metadata-indexed
+setup	erpnext/setup/doctype/brand/brand.json	Brand	0	0	metadata-indexed
+setup	erpnext/setup/doctype/company/company.json	Company	0	0	metadata-indexed
+setup	erpnext/setup/doctype/currency_exchange/currency_exchange.json	Currency Exchange	0	0	metadata-indexed
+setup	erpnext/setup/doctype/customer_group/customer_group.json	Customer Group	0	0	metadata-indexed
+setup	erpnext/setup/doctype/department/department.json	Department	0	0	metadata-indexed
+setup	erpnext/setup/doctype/designation/designation.json	Designation	0	0	metadata-indexed
+setup	erpnext/setup/doctype/driver/driver.json	Driver	0	0	metadata-indexed
+setup	erpnext/setup/doctype/driving_license_category/driving_license_category.json	Driving License Category	1	0	metadata-indexed
+setup	erpnext/setup/doctype/email_digest/email_digest.json	Email Digest	0	0	metadata-indexed
+setup	erpnext/setup/doctype/email_digest_recipient/email_digest_recipient.json	Email Digest Recipient	1	0	metadata-indexed
+setup	erpnext/setup/doctype/employee/employee.json	Employee	0	0	metadata-indexed
+setup	erpnext/setup/doctype/employee_education/employee_education.json	Employee Education	1	0	metadata-indexed
+setup	erpnext/setup/doctype/employee_external_work_history/employee_external_work_history.json	Employee External Work History	1	0	metadata-indexed
+setup	erpnext/setup/doctype/employee_group/employee_group.json	Employee Group	0	0	metadata-indexed
+setup	erpnext/setup/doctype/employee_group_table/employee_group_table.json	Employee Group Table	1	0	metadata-indexed
+setup	erpnext/setup/doctype/employee_internal_work_history/employee_internal_work_history.json	Employee Internal Work History	1	0	metadata-indexed
+setup	erpnext/setup/doctype/global_defaults/global_defaults.json	Global Defaults	0	1	metadata-indexed
+setup	erpnext/setup/doctype/holiday/holiday.json	Holiday	1	0	metadata-indexed
+setup	erpnext/setup/doctype/holiday_list/holiday_list.json	Holiday List	0	0	metadata-indexed
+setup	erpnext/setup/doctype/incoterm/incoterm.json	Incoterm	0	0	metadata-indexed
+setup	erpnext/setup/doctype/item_group/item_group.json	Item Group	0	0	metadata-indexed
+setup	erpnext/setup/doctype/party_type/party_type.json	Party Type	0	0	metadata-indexed
+setup	erpnext/setup/doctype/quotation_lost_reason/quotation_lost_reason.json	Quotation Lost Reason	0	0	metadata-indexed
+setup	erpnext/setup/doctype/quotation_lost_reason_detail/quotation_lost_reason_detail.json	Quotation Lost Reason Detail	1	0	metadata-indexed
+setup	erpnext/setup/doctype/sales_partner/sales_partner.json	Sales Partner	0	0	metadata-indexed
+setup	erpnext/setup/doctype/sales_person/sales_person.json	Sales Person	0	0	metadata-indexed
+setup	erpnext/setup/doctype/supplier_group/supplier_group.json	Supplier Group	0	0	metadata-indexed
+setup	erpnext/setup/doctype/target_detail/target_detail.json	Target Detail	1	0	metadata-indexed
+setup	erpnext/setup/doctype/terms_and_conditions/terms_and_conditions.json	Terms and Conditions	0	0	metadata-indexed
+setup	erpnext/setup/doctype/territory/territory.json	Territory	0	0	metadata-indexed
+setup	erpnext/setup/doctype/transaction_deletion_record/transaction_deletion_record.json	Transaction Deletion Record	0	0	metadata-indexed
+setup	erpnext/setup/doctype/transaction_deletion_record_item/transaction_deletion_record_item.json	Transaction Deletion Record Item	1	0	metadata-indexed
+setup	erpnext/setup/doctype/transaction_deletion_record_to_delete/transaction_deletion_record_to_delete.json	Transaction Deletion Record To Delete	1	0	metadata-indexed
+setup	erpnext/setup/doctype/uom/uom.json	UOM	0	0	metadata-indexed
+setup	erpnext/setup/doctype/uom_conversion_factor/uom_conversion_factor.json	UOM Conversion Factor	0	0	metadata-indexed
+setup	erpnext/setup/doctype/vehicle/vehicle.json	Vehicle	0	0	metadata-indexed
+setup	erpnext/setup/doctype/website_item_group/website_item_group.json	Website Item Group	1	0	metadata-indexed
+stock	erpnext/stock/doctype/batch/batch.json	Batch	0	0	metadata-indexed
+stock	erpnext/stock/doctype/bin/bin.json	Bin	0	0	metadata-indexed
+stock	erpnext/stock/doctype/company_restriction/company_restriction.json	Company Restriction	1	0	metadata-indexed
+stock	erpnext/stock/doctype/customs_tariff_number/customs_tariff_number.json	Customs Tariff Number	0	0	metadata-indexed
+stock	erpnext/stock/doctype/delivery_note/delivery_note.json	Delivery Note	0	0	metadata-indexed
+stock	erpnext/stock/doctype/delivery_note_item/delivery_note_item.json	Delivery Note Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/delivery_settings/delivery_settings.json	Delivery Settings	0	1	metadata-indexed
+stock	erpnext/stock/doctype/delivery_stop/delivery_stop.json	Delivery Stop	1	0	metadata-indexed
+stock	erpnext/stock/doctype/delivery_trip/delivery_trip.json	Delivery Trip	0	0	metadata-indexed
+stock	erpnext/stock/doctype/inventory_dimension/inventory_dimension.json	Inventory Dimension	0	0	metadata-indexed
+stock	erpnext/stock/doctype/item/item.json	Item	0	0	metadata-indexed
+stock	erpnext/stock/doctype/item_alternative/item_alternative.json	Item Alternative	0	0	metadata-indexed
+stock	erpnext/stock/doctype/item_attribute/item_attribute.json	Item Attribute	0	0	metadata-indexed
+stock	erpnext/stock/doctype/item_attribute_value/item_attribute_value.json	Item Attribute Value	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_barcode/item_barcode.json	Item Barcode	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_customer_detail/item_customer_detail.json	Item Customer Detail	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_default/item_default.json	Item Default	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_lead_time/item_lead_time.json	Item Lead Time	0	0	metadata-indexed
+stock	erpnext/stock/doctype/item_manufacturer/item_manufacturer.json	Item Manufacturer	0	0	metadata-indexed
+stock	erpnext/stock/doctype/item_price/item_price.json	Item Price	0	0	metadata-indexed
+stock	erpnext/stock/doctype/item_quality_inspection_parameter/item_quality_inspection_parameter.json	Item Quality Inspection Parameter	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_reorder/item_reorder.json	Item Reorder	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_supplier/item_supplier.json	Item Supplier	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_tax/item_tax.json	Item Tax	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_variant/item_variant.json	Item Variant	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_variant_attribute/item_variant_attribute.json	Item Variant Attribute	1	0	metadata-indexed
+stock	erpnext/stock/doctype/item_variant_settings/item_variant_settings.json	Item Variant Settings	0	1	metadata-indexed
+stock	erpnext/stock/doctype/item_website_specification/item_website_specification.json	Item Website Specification	1	0	metadata-indexed
+stock	erpnext/stock/doctype/landed_cost_item/landed_cost_item.json	Landed Cost Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/landed_cost_purchase_receipt/landed_cost_purchase_receipt.json	Landed Cost Purchase Receipt	1	0	metadata-indexed
+stock	erpnext/stock/doctype/landed_cost_taxes_and_charges/landed_cost_taxes_and_charges.json	Landed Cost Taxes and Charges	1	0	metadata-indexed
+stock	erpnext/stock/doctype/landed_cost_vendor_invoice/landed_cost_vendor_invoice.json	Landed Cost Vendor Invoice	1	0	metadata-indexed
+stock	erpnext/stock/doctype/landed_cost_voucher/landed_cost_voucher.json	Landed Cost Voucher	0	0	metadata-indexed
+stock	erpnext/stock/doctype/manufacturer/manufacturer.json	Manufacturer	0	0	metadata-indexed
+stock	erpnext/stock/doctype/material_request/material_request.json	Material Request	0	0	metadata-indexed
+stock	erpnext/stock/doctype/material_request_item/material_request_item.json	Material Request Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/packed_item/packed_item.json	Packed Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/packing_slip/packing_slip.json	Packing Slip	0	0	metadata-indexed
+stock	erpnext/stock/doctype/packing_slip_item/packing_slip_item.json	Packing Slip Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/pick_list/pick_list.json	Pick List	0	0	metadata-indexed
+stock	erpnext/stock/doctype/pick_list_item/pick_list_item.json	Pick List Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/price_list/price_list.json	Price List	0	0	metadata-indexed
+stock	erpnext/stock/doctype/price_list_country/price_list_country.json	Price List Country	1	0	metadata-indexed
+stock	erpnext/stock/doctype/purchase_receipt/purchase_receipt.json	Purchase Receipt	0	0	metadata-indexed
+stock	erpnext/stock/doctype/purchase_receipt_item/purchase_receipt_item.json	Purchase Receipt Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/putaway_rule/putaway_rule.json	Putaway Rule	0	0	metadata-indexed
+stock	erpnext/stock/doctype/quality_inspection/quality_inspection.json	Quality Inspection	0	0	metadata-indexed
+stock	erpnext/stock/doctype/quality_inspection_parameter/quality_inspection_parameter.json	Quality Inspection Parameter	0	0	metadata-indexed
+stock	erpnext/stock/doctype/quality_inspection_parameter_group/quality_inspection_parameter_group.json	Quality Inspection Parameter Group	0	0	metadata-indexed
+stock	erpnext/stock/doctype/quality_inspection_reading/quality_inspection_reading.json	Quality Inspection Reading	1	0	metadata-indexed
+stock	erpnext/stock/doctype/quality_inspection_template/quality_inspection_template.json	Quality Inspection Template	0	0	metadata-indexed
+stock	erpnext/stock/doctype/quick_stock_balance/quick_stock_balance.json	Quick Stock Balance	0	1	metadata-indexed
+stock	erpnext/stock/doctype/repost_item_valuation/repost_item_valuation.json	Repost Item Valuation	0	0	metadata-indexed
+stock	erpnext/stock/doctype/serial_and_batch_bundle/serial_and_batch_bundle.json	Serial and Batch Bundle	0	0	metadata-indexed
+stock	erpnext/stock/doctype/serial_and_batch_entry/serial_and_batch_entry.json	Serial and Batch Entry	1	0	metadata-indexed
+stock	erpnext/stock/doctype/serial_no/serial_no.json	Serial No	0	0	metadata-indexed
+stock	erpnext/stock/doctype/shipment/shipment.json	Shipment	0	0	metadata-indexed
+stock	erpnext/stock/doctype/shipment_delivery_note/shipment_delivery_note.json	Shipment Delivery Note	1	0	metadata-indexed
+stock	erpnext/stock/doctype/shipment_parcel/shipment_parcel.json	Shipment Parcel	1	0	metadata-indexed
+stock	erpnext/stock/doctype/shipment_parcel_template/shipment_parcel_template.json	Shipment Parcel Template	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_closing_balance/stock_closing_balance.json	Stock Closing Balance	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_closing_entry/stock_closing_entry.json	Stock Closing Entry	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_entry/stock_entry.json	Stock Entry	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_entry_detail/stock_entry_detail.json	Stock Entry Detail	1	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_entry_type/stock_entry_type.json	Stock Entry Type	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_ledger_entry/stock_ledger_entry.json	Stock Ledger Entry	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_reconciliation/stock_reconciliation.json	Stock Reconciliation	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_reconciliation_item/stock_reconciliation_item.json	Stock Reconciliation Item	1	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_reposting_settings/stock_reposting_settings.json	Stock Reposting Settings	0	1	metadata-indexed
+stock	erpnext/stock/doctype/stock_reservation_entry/stock_reservation_entry.json	Stock Reservation Entry	0	0	metadata-indexed
+stock	erpnext/stock/doctype/stock_settings/stock_settings.json	Stock Settings	0	1	metadata-indexed
+stock	erpnext/stock/doctype/uom_category/uom_category.json	UOM Category	0	0	metadata-indexed
+stock	erpnext/stock/doctype/uom_conversion_detail/uom_conversion_detail.json	UOM Conversion Detail	1	0	metadata-indexed
+stock	erpnext/stock/doctype/variant_field/variant_field.json	Variant Field	1	0	metadata-indexed
+stock	erpnext/stock/doctype/warehouse/warehouse.json	Warehouse	0	0	metadata-indexed
+stock	erpnext/stock/doctype/warehouse_type/warehouse_type.json	Warehouse Type	0	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_bom/subcontracting_bom.json	Subcontracting BOM	0	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_inward_order/subcontracting_inward_order.json	Subcontracting Inward Order	0	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_inward_order_item/subcontracting_inward_order_item.json	Subcontracting Inward Order Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_inward_order_received_item/subcontracting_inward_order_received_item.json	Subcontracting Inward Order Received Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_inward_order_secondary_item/subcontracting_inward_order_secondary_item.json	Subcontracting Inward Order Secondary Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_inward_order_service_item/subcontracting_inward_order_service_item.json	Subcontracting Inward Order Service Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_order/subcontracting_order.json	Subcontracting Order	0	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_order_item/subcontracting_order_item.json	Subcontracting Order Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_order_service_item/subcontracting_order_service_item.json	Subcontracting Order Service Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_order_supplied_item/subcontracting_order_supplied_item.json	Subcontracting Order Supplied Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_receipt/subcontracting_receipt.json	Subcontracting Receipt	0	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_receipt_item/subcontracting_receipt_item.json	Subcontracting Receipt Item	1	0	metadata-indexed
+subcontracting	erpnext/subcontracting/doctype/subcontracting_receipt_supplied_item/subcontracting_receipt_supplied_item.json	Subcontracting Receipt Supplied Item	1	0	metadata-indexed
+support	erpnext/support/doctype/issue/issue.json	Issue	0	0	metadata-indexed
+support	erpnext/support/doctype/issue_priority/issue_priority.json	Issue Priority	0	0	metadata-indexed
+support	erpnext/support/doctype/issue_type/issue_type.json	Issue Type	0	0	metadata-indexed
+support	erpnext/support/doctype/pause_sla_on_status/pause_sla_on_status.json	Pause SLA On Status	1	0	metadata-indexed
+support	erpnext/support/doctype/service_day/service_day.json	Service Day	1	0	metadata-indexed
+support	erpnext/support/doctype/service_level_agreement/service_level_agreement.json	Service Level Agreement	0	0	metadata-indexed
+support	erpnext/support/doctype/service_level_priority/service_level_priority.json	Service Level Priority	1	0	metadata-indexed
+support	erpnext/support/doctype/sla_fulfilled_on_status/sla_fulfilled_on_status.json	SLA Fulfilled On Status	1	0	metadata-indexed
+support	erpnext/support/doctype/support_search_source/support_search_source.json	Support Search Source	1	0	metadata-indexed
+support	erpnext/support/doctype/support_settings/support_settings.json	Support Settings	0	1	metadata-indexed
+support	erpnext/support/doctype/warranty_claim/warranty_claim.json	Warranty Claim	0	0	metadata-indexed
+telephony	erpnext/telephony/doctype/call_log/call_log.json	Call Log	0	0	metadata-indexed
+telephony	erpnext/telephony/doctype/incoming_call_handling_schedule/incoming_call_handling_schedule.json	Incoming Call Handling Schedule	1	0	metadata-indexed
+telephony	erpnext/telephony/doctype/incoming_call_settings/incoming_call_settings.json	Incoming Call Settings	0	0	metadata-indexed
+telephony	erpnext/telephony/doctype/telephony_call_type/telephony_call_type.json	Telephony Call Type	0	0	metadata-indexed
+telephony	erpnext/telephony/doctype/voice_call_settings/voice_call_settings.json	Voice Call Settings	0	0	metadata-indexed
+utilities	erpnext/utilities/doctype/portal_user/portal_user.json	Portal User	1	0	metadata-indexed
+utilities	erpnext/utilities/doctype/rename_tool/rename_tool.json	Rename Tool	0	1	metadata-indexed
+utilities	erpnext/utilities/doctype/video/video.json	Video	0	0	metadata-indexed
+utilities	erpnext/utilities/doctype/video_settings/video_settings.json	Video Settings	0	1	metadata-indexed

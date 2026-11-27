@@ -1,0 +1,366 @@
+{
+  "version": 1,
+  "module": "selling",
+  "package": "sales",
+  "namespace": "sales",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/selling/sidebar/selling/selling.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Selling",
+      "target": "sales.home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Dashboard",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Selling",
+      "target": "sales.dashboard",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Customer",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Customer",
+      "target": "sales.customer",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Quotation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quotation",
+      "target": "sales.quotation",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Order",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Sales Order",
+      "target": "sales.sales_order",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Delivery Note",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Delivery Note",
+      "target": "sales.delivery_note",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Invoice",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Sales Invoice",
+      "target": "sales.sales_invoice",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Sales Analytics",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Sales Analytics",
+      "target": "sales.sales_analytics",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Register",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Sales Register",
+      "target": "sales.sales_register",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Accounts Receivable",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Accounts Receivable",
+      "target": "sales.accounts_receivable",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Accounts Receivable Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Accounts Receivable Summary",
+      "target": "sales.accounts_receivable_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Gross Profit",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Gross Profit",
+      "target": "sales.gross_profit",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Items",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Item",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item",
+      "target": "sales.item",
+      "group": "Items",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative item.master"
+    },
+    {
+      "reference": "Price List",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Price List",
+      "target": "sales.price_list",
+      "group": "Items",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Pricing Rule",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Pricing Rule",
+      "target": "sales.pricing_rule",
+      "group": "Items",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "POS",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "POS",
+      "kind": "page",
+      "sourceType": "Page",
+      "sourceTarget": "point-of-sale",
+      "target": "sales.pos",
+      "group": "POS",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "POS Profile",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "POS Profile",
+      "target": "sales.pos_profile",
+      "group": "POS",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "POS Invoice",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "POS Invoice",
+      "target": "sales.pos_invoice",
+      "group": "POS",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Customer Group",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Customer Group",
+      "target": "sales.customer_group",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Territory",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Territory",
+      "target": "sales.territory",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Sales Person",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Sales Person",
+      "target": "sales.sales_person",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Selling Settings",
+      "target": "sales.settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "sales.home",
+        "sales.dashboard",
+        "sales.customer",
+        "sales.quotation",
+        "sales.sales_order",
+        "sales.delivery_note",
+        "sales.sales_invoice"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "sales.sales_analytics",
+        "sales.sales_register",
+        "sales.accounts_receivable",
+        "sales.accounts_receivable_summary",
+        "sales.gross_profit"
+      ]
+    },
+    {
+      "title": "Items",
+      "pages": [
+        "sales.item",
+        "sales.price_list",
+        "sales.pricing_rule"
+      ]
+    },
+    {
+      "title": "POS",
+      "pages": [
+        "sales.pos",
+        "sales.pos_profile",
+        "sales.pos_invoice"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "sales.customer_group",
+        "sales.territory",
+        "sales.sales_person",
+        "sales.settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ],
+  "limitations": [
+    "Flat group projection only; no browser verification.",
+    "Placeholders contain no business operations."
+  ]
+}

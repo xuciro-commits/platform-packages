@@ -1,0 +1,481 @@
+{
+  "version": 1,
+  "module": "stock",
+  "package": "inventory",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/stock/sidebar/stock/stock.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Stock",
+      "target": "inventory.home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Dedicated workspace shortcuts and tasks are not implemented."
+    },
+    {
+      "reference": "Dashboard",
+      "kind": "page",
+      "sourceType": "Dashboard",
+      "sourceTarget": "Stock",
+      "target": "dashboard",
+      "group": "Overview",
+      "implementation": "dashboard",
+      "status": "declared",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Item",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item",
+      "target": "inventory.item",
+      "group": "Overview",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative object item.master"
+    },
+    {
+      "reference": "Warehouse",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Warehouse",
+      "target": "inventory.warehouse",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Material Request",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Material Request",
+      "target": "inventory.request",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Stock Entry",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Entry",
+      "target": "inventory.movement",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Stock Reconciliation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Reconciliation",
+      "target": "inventory.count",
+      "group": "Overview",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Purchase Receipt",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Purchase Receipt",
+      "target": "inventory.purchase_receipt",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Cross-package purchase fulfillment and stock receipt are not implemented (IB-ERP-0003/0006)."
+    },
+    {
+      "reference": "Delivery Note",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Delivery Note",
+      "target": "inventory.delivery_note",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Sales fulfillment and stock issue are not implemented."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Stock Ledger",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Ledger",
+      "target": "inventory.stock_ledger",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Authorized historical stock ledger requires verified aggregation (IB-ERP-0005/0006)."
+    },
+    {
+      "reference": "Stock Balance",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Balance",
+      "target": "inventory.stock_balance",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Warehouse and period balance reports are not implemented (IB-ERP-0005/0006)."
+    },
+    {
+      "reference": "Stock Projected Qty",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Projected Qty",
+      "target": "inventory.stock_projected_qty",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Supply and demand projection is not implemented."
+    },
+    {
+      "reference": "Stock Ageing",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Ageing",
+      "target": "inventory.stock_ageing",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Historical lot age and valuation are not implemented."
+    },
+    {
+      "reference": "Stock Analytics",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Stock Analytics",
+      "target": "inventory.stock_analytics",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Authorized period inventory analysis is not implemented."
+    },
+    {
+      "reference": "Tools",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Pick List",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Pick List",
+      "target": "inventory.pick_list",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Picking allocation and fulfillment are not implemented."
+    },
+    {
+      "reference": "Landed Cost Voucher",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Landed Cost Voucher",
+      "target": "inventory.landed_cost",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Landed cost allocation and accounting are not implemented."
+    },
+    {
+      "reference": "Quality Inspection",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Inspection",
+      "target": "inventory.quality_inspection",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Quality inspection package is not implemented."
+    },
+    {
+      "reference": "Packing Slip",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Packing Slip",
+      "target": "inventory.packing_slip",
+      "group": "Tools",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Packing and delivery details are not implemented."
+    },
+    {
+      "reference": "Serial & Batch",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Serial No",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Serial No",
+      "target": "inventory.serial",
+      "group": "Serial & Batch",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Batch No",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Batch",
+      "target": "inventory.batch",
+      "group": "Serial & Batch",
+      "implementation": "partial",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Candidate, not full product acceptance"
+    },
+    {
+      "reference": "Serial and Batch Bundle",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Serial and Batch Bundle",
+      "target": "inventory.serial_batch_bundle",
+      "group": "Serial & Batch",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Atomic serial and lot allocation is not implemented."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Item Group",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item Group",
+      "target": "inventory.item_group",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative object item.category"
+    },
+    {
+      "reference": "Item Attribute",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item Attribute",
+      "target": "inventory.item_attribute",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative object item.attribute"
+    },
+    {
+      "reference": "Brand",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Brand",
+      "target": "inventory.brand",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative object item.brand"
+    },
+    {
+      "reference": "Unit of Measure (UOM)",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "UOM",
+      "target": "inventory.uom",
+      "group": "Setup",
+      "implementation": "alias",
+      "status": "partial",
+      "browserVerified": false,
+      "note": "Shared authoritative object uom.unit"
+    },
+    {
+      "reference": "Inventory Dimension",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Inventory Dimension",
+      "target": "inventory.inventory_dimension",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Configurable inventory dimensions are not implemented."
+    },
+    {
+      "reference": "Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Settings",
+      "target": "inventory.stock_settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Organization inventory policy is not implemented."
+    }
+  ],
+  "additional": [
+    "inventory.position",
+    "inventory.reservation"
+  ],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "inventory.home",
+        "inventory.item",
+        "inventory.warehouse",
+        "inventory.request",
+        "inventory.movement",
+        "inventory.count",
+        "inventory.purchase_receipt",
+        "inventory.delivery_note"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "inventory.stock_ledger",
+        "inventory.stock_balance",
+        "inventory.stock_projected_qty",
+        "inventory.stock_ageing",
+        "inventory.stock_analytics",
+        "inventory.available_qty"
+      ]
+    },
+    {
+      "title": "Tools",
+      "pages": [
+        "inventory.pick_list",
+        "inventory.landed_cost",
+        "inventory.quality_inspection",
+        "inventory.packing_slip"
+      ]
+    },
+    {
+      "title": "Serial & Batch",
+      "pages": [
+        "inventory.serial",
+        "inventory.batch",
+        "inventory.serial_batch_bundle"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "inventory.item_group",
+        "inventory.item_attribute",
+        "inventory.brand",
+        "inventory.uom",
+        "inventory.inventory_dimension",
+        "inventory.stock_settings",
+        "inventory.variant_settings",
+        "inventory.delivery_settings",
+        "inventory.stock_reposting_settings"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": [
+        "inventory.position",
+        "inventory.reservation"
+      ]
+    }
+  ],
+  "limitations": [
+    "Platform uses flat sections; collapse state and exact dashboard order not supported by current contract.",
+    "All pages require actual browser verification. Placeholder pages expose only read-only empty technical marker object, no fake business records or create actions."
+  ],
+  "supplemental": [
+    {
+      "reference": "Available quantity",
+      "kind": "page",
+      "target": "inventory.available_qty",
+      "group": "Reports",
+      "implementation": "alias",
+      "status": "partial",
+      "source": "user screenshot",
+      "browserVerified": false
+    },
+    {
+      "reference": "Item variant settings",
+      "kind": "page",
+      "target": "inventory.variant_settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "source": "user screenshot",
+      "browserVerified": false
+    },
+    {
+      "reference": "Delivery settings",
+      "kind": "page",
+      "target": "inventory.delivery_settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "source": "user screenshot",
+      "browserVerified": false
+    },
+    {
+      "reference": "Stock cost reposting settings",
+      "kind": "page",
+      "target": "inventory.stock_reposting_settings",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "source": "user screenshot",
+      "browserVerified": false
+    }
+  ]
+}

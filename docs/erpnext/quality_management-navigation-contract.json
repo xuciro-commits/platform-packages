@@ -1,0 +1,288 @@
+{
+  "version": 1,
+  "module": "quality_management",
+  "package": "quality",
+  "namespace": "quality",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/quality_management/sidebar/quality/quality.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Quality",
+      "target": "quality.home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Quality Inspection",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Inspection",
+      "target": "quality.quality_inspection",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Quality Goal",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Goal",
+      "target": "quality.quality_goal",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Quality Procedure",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Procedure",
+      "target": "quality.quality_procedure",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Quality Review",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Review",
+      "target": "quality.quality_review",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Non Conformance",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Non Conformance",
+      "target": "quality.non_conformance",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Quality Action",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Action",
+      "target": "quality.quality_action",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Reports",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Quality Inspection Summary",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Quality Inspection Summary",
+      "target": "quality.quality_inspection_summary",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Review",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Review",
+      "target": "quality.review",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Maintenance Schedules",
+      "kind": "page",
+      "sourceType": "Report",
+      "sourceTarget": "Maintenance Schedules",
+      "target": "quality.maintenance_schedules",
+      "group": "Reports",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Meetings & Feedback",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Quality Meeting",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Meeting",
+      "target": "quality.quality_meeting",
+      "group": "Meetings & Feedback",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Quality Feedback",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Feedback",
+      "target": "quality.quality_feedback",
+      "group": "Meetings & Feedback",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Maintenance",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Maintenance Schedule",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Maintenance Schedule",
+      "target": "quality.maintenance_schedule",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Maintenance Visit",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Maintenance Visit",
+      "target": "quality.maintenance_visit",
+      "group": "Maintenance",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Setup",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Quality Inspection Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Inspection Template",
+      "target": "quality.quality_inspection_template",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Feedback Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Quality Feedback Template",
+      "target": "quality.feedback_template",
+      "group": "Setup",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "quality.home",
+        "quality.quality_inspection",
+        "quality.quality_goal",
+        "quality.quality_procedure",
+        "quality.quality_review",
+        "quality.non_conformance",
+        "quality.quality_action"
+      ]
+    },
+    {
+      "title": "Reports",
+      "pages": [
+        "quality.quality_inspection_summary",
+        "quality.review",
+        "quality.maintenance_schedules"
+      ]
+    },
+    {
+      "title": "Meetings & Feedback",
+      "pages": [
+        "quality.quality_meeting",
+        "quality.quality_feedback"
+      ]
+    },
+    {
+      "title": "Maintenance",
+      "pages": [
+        "quality.maintenance_schedule",
+        "quality.maintenance_visit"
+      ]
+    },
+    {
+      "title": "Setup",
+      "pages": [
+        "quality.quality_inspection_template",
+        "quality.feedback_template"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ],
+  "limitations": [
+    "Flat group projection only; no browser verification.",
+    "Placeholders contain no business operations."
+  ]
+}

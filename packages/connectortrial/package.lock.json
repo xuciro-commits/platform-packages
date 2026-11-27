@@ -1,0 +1,32 @@
+{
+  "format": 2,
+  "package": "connectortrial",
+  "version": "0.1.0",
+  "requires": [
+    "connectortrial-contract"
+  ],
+  "artifact": "sha256:6ca97338688f82f764bd098523c93ed02d2580873f2cb11cc71fc4aade30a53a",
+  "assets": {
+    "app/connectortrial": {
+      "digest": "sha256:c4a7d101149c1645047b9c41fd8d44184fec59f306816630d238456335ec6558",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "object/connectortrial.dispatch": {
+      "digest": "sha256:28c57eb154502d907f219bc0e334c61b5772b8a5711b5bf2fd3a0ee71c1bdad7",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.57842f44b433996ee70493ecd32c39be477c22b6d23da53d898126eb8f187a62",
+          "family": 1
+        }
+      ]
+    },
+    "page/connectortrial.dispatch": {
+      "digest": "sha256:e348fac98da587536c1d37be3f4ba776983c3e623b20853698d344b13bb1619b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    }
+  }
+}

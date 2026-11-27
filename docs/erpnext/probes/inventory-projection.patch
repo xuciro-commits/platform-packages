@@ -1,0 +1,129 @@
+diff --git a/packages/inventory/objects/position/object.yaml b/packages/inventory/objects/position/object.yaml
+index 2557a1e..ca54b8e 100644
+--- a/packages/inventory/objects/position/object.yaml
++++ b/packages/inventory/objects/position/object.yaml
+@@ -4,15 +4,16 @@ title: Stock position
+ plural: Stock positions
+ icon: map-pin
+ display: title
+-sets:
+-  incoming: {object: inventory.movement, limit: 500}
+-  outgoing: {object: inventory.movement, limit: 500}
+-  reservations: {object: inventory.reservation, limit: 500}
+ fields:
+   - {name: title, title: Location label, type: text, required: true}
+   - {name: item, title: Item, type: reference, ref: item.master, required: true}
+-  - {name: balance, title: On hand, type: decimal, formula: "sum(incoming, if((item.state = 'posted' or item.state = 'reversed'), item.quantity, 0)) - sum(outgoing, if((item.state = 'posted' or item.state = 'reversed'), item.quantity, 0))"}
+-  - {name: available, title: Available, type: decimal, formula: "balance - sum(reservations, if(item.state = 'reserved', item.quantity, 0))"}
++  - {name: balance, title: On hand, type: decimal, readOnly: true}
++  - {name: reservedqty, title: Reserved quantity, type: decimal, readOnly: true}
++  - {name: available, title: Available, type: decimal, formula: "coalesce(balance, 0) - coalesce(reservedqty, 0)"}
++createTransaction:
++  steps:
++    - target: $subject
++      set: {balance: "0", reservedqty: "0"}
+ constraints:
+   - name: positionidentity
+     kind: unique
+diff --git a/packages/inventory/objects/movement/object.yaml b/packages/inventory/objects/movement/object.yaml
+index 43aaf75..f142f6e 100644
+--- a/packages/inventory/objects/movement/object.yaml
++++ b/packages/inventory/objects/movement/object.yaml
+@@ -9,7 +9,7 @@ fields:
+   - {name: source, title: Source position, type: reference, ref: inventory.position, inverse: outgoing}
+   - {name: destination, title: Destination position, type: reference, ref: inventory.position, inverse: incoming}
+   - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
+-  - {name: reversalof, title: Reversal of, type: reference, ref: inventory.movement}
++  - {name: reversalof, title: Reversal of, type: reference, ref: inventory.movement, readOnly: true}
+ states:
+   - {name: draft, title: Draft, tone: neutral}
+   - {name: posted, title: Posted, tone: success}
+diff --git a/packages/inventory/objects/movement/actions/receive.yaml b/packages/inventory/objects/movement/actions/receive.yaml
+index 6a0788a..09209b5 100644
+--- a/packages/inventory/objects/movement/actions/receive.yaml
++++ b/packages/inventory/objects/movement/actions/receive.yaml
+@@ -5,5 +5,7 @@ transaction:
+   guard: "reversalof = empty and source = empty and destination != empty and destination.item.state = 'active'"
+   message: Invalid stock movement or insufficient available stock.
+   steps:
++    - target: $subject.destination
++      set: {balance: "destination.balance + quantity"}
+     - target: $subject
+       set: {state: "'posted'"}
+diff --git a/packages/inventory/objects/movement/actions/issue.yaml b/packages/inventory/objects/movement/actions/issue.yaml
+index 7c76428..7610840 100644
+--- a/packages/inventory/objects/movement/actions/issue.yaml
++++ b/packages/inventory/objects/movement/actions/issue.yaml
+@@ -5,5 +5,7 @@ transaction:
+   guard: "reversalof = empty and source != empty and destination = empty and source.item.state = 'active' and source.available >= quantity"
+   message: Invalid stock movement or insufficient available stock.
+   steps:
++    - target: $subject.source
++      set: {balance: "source.balance - quantity"}
+     - target: $subject
+       set: {state: "'posted'"}
+diff --git a/packages/inventory/objects/movement/actions/transfer.yaml b/packages/inventory/objects/movement/actions/transfer.yaml
+index 236c79f..1cdd51c 100644
+--- a/packages/inventory/objects/movement/actions/transfer.yaml
++++ b/packages/inventory/objects/movement/actions/transfer.yaml
+@@ -5,5 +5,9 @@ transaction:
+   guard: "reversalof = empty and source != empty and destination != empty and source != destination and source.item = destination.item and source.item.state = 'active' and source.available >= quantity"
+   message: Invalid stock movement or insufficient available stock.
+   steps:
++    - target: $subject.source
++      set: {balance: "source.balance - quantity"}
++    - target: $subject.destination
++      set: {balance: "destination.balance + quantity"}
+     - target: $subject
+       set: {state: "'posted'"}
+diff --git a/packages/inventory/objects/movement/actions/reverse.yaml b/packages/inventory/objects/movement/actions/reverse.yaml
+index 0835b98..2219a16 100644
+--- a/packages/inventory/objects/movement/actions/reverse.yaml
++++ b/packages/inventory/objects/movement/actions/reverse.yaml
+@@ -6,6 +6,12 @@ transaction:
+   guard: "reversalof = empty and (destination = empty or destination.available >= quantity)"
+   message: Movement cannot be reversed or available stock is insufficient.
+   steps:
++    - target: $subject.destination
++      when: destination != empty
++      set: {balance: "destination.balance - quantity"}
++    - target: $subject.source
++      when: source != empty
++      set: {balance: "source.balance + quantity"}
+     - name: compensation
+       target: inventory.movement
+       set:
+diff --git a/packages/inventory/objects/reservation/actions/reserve.yaml b/packages/inventory/objects/reservation/actions/reserve.yaml
+index e9f7ac8..d4b5033 100644
+--- a/packages/inventory/objects/reservation/actions/reserve.yaml
++++ b/packages/inventory/objects/reservation/actions/reserve.yaml
+@@ -5,5 +5,7 @@ transaction:
+   guard: position.available >= quantity
+   message: Insufficient available stock for this reservation.
+   steps:
++    - target: $subject.position
++      set: {reservedqty: "position.reservedqty + quantity"}
+     - target: $subject
+       set: {state: "'reserved'"}
+diff --git a/packages/inventory/objects/reservation/actions/release.yaml b/packages/inventory/objects/reservation/actions/release.yaml
+index f00848b..dac2020 100644
+--- a/packages/inventory/objects/reservation/actions/release.yaml
++++ b/packages/inventory/objects/reservation/actions/release.yaml
+@@ -3,5 +3,7 @@ from: [reserved]
+ roles: [keeper]
+ transaction:
+   steps:
++    - target: $subject.position
++      set: {reservedqty: "position.reservedqty - quantity"}
+     - target: $subject
+       set: {state: "'released'"}
+diff --git a/packages/inventory/locales/zh-CN.yaml b/packages/inventory/locales/zh-CN.yaml
+index f6dac10..5767739 100644
+--- a/packages/inventory/locales/zh-CN.yaml
++++ b/packages/inventory/locales/zh-CN.yaml
+@@ -36,3 +36,5 @@ keeper: 库管员
+ "Reverse movement": "冲正移动"
+ "Post an opposite movement and retain the original fact.": "生成反向移动并保留原始事实。"
+ "Movement cannot be reversed or available stock is insufficient.": "移动不可冲正或可用库存不足。"
++
++"Reserved quantity": "已预留量"

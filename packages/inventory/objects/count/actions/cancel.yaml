@@ -1,0 +1,8 @@
+title: Cancel count
+description: Withdraw a draft count without changing stock.
+from: [draft]
+roles: [keeper]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

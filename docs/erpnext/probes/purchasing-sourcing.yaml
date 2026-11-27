@@ -1,0 +1,47 @@
+roles: {purchasing: manager, party: steward, geo: user, item: steward, uom: user}
+at: 2026-11-26T00:00:00Z
+members:
+  buyer: {roles: {purchasing: buyer, party: user, geo: user, item: user, uom: user}}
+  manager: {roles: {purchasing: manager, party: user, geo: user, item: user, uom: user}}
+steps:
+  - {do: party.organization.create, on: party.organization/O1, with: {name: Example supplier}}
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: item.master.create, on: item.master/I2, with: {title: Copper, code: COPPER, kind: material, unit: kg}}
+  - {do: purchasing.suppliergroup.create, on: purchasing.suppliergroup/G1, as: manager, with: {title: Metals, code: METALS}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S1, as: manager, with: {base: O1, group: G1}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: buyer, refused: true}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager, expect: {state: qualified}}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/R1, as: buyer, with: {title: Steel demand, material: I1, quantity: 10, neededon: "2026-12-15"}}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F1, as: buyer, with: {title: Invite, request: R1, supplier: S1, deadline: "2026-12-05"}}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F1, as: buyer, refused: true}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/R1, as: buyer}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/R1, as: buyer, refused: true}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/R1, as: manager, expect: {state: approved}}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F1, as: buyer, expect: {state: open}}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F2, as: buyer, with: {title: Duplicate, request: R1, supplier: S1, deadline: "2026-12-05"}, refused: true}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/Q0, as: buyer, with: {title: Invalid, rfq: F1, quantity: 10, unitprice: -1, currency: CNY, quotedon: "2026-11-26", validuntil: "2026-12-10"}, refused: true}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/Q1, as: buyer, with: {title: Quote, rfq: F1, quantity: 10, unitprice: 2.5, currency: CNY, quotedon: "2026-11-26", validuntil: "2026-12-10"}}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q1, as: buyer, expect: {state: recorded, total: 25}}
+  - {do: purchasing.order.create, on: purchasing.order/P1, as: buyer, with: {title: Order, supplier: S1, currency: CNY, orderedon: "2026-11-26", expectedon: "2026-12-15"}}
+  - {do: purchasing.order.approve, on: purchasing.order/P1, as: manager, refused: true}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/L1, as: buyer, with: {order: P1, material: I1, quantity: 10, unitprice: 2.5}}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/L2, as: buyer, with: {order: P1, material: I2, quantity: 3, unitprice: 4.5}}
+  - {read: purchasing.order/P1, as: buyer, expect: {total: 38.5, linecount: 2}}
+  - {do: purchasing.order.approve, on: purchasing.order/P1, as: buyer, refused: true}
+  - {do: purchasing.supplier.suspend, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.order.approve, on: purchasing.order/P1, as: manager, refused: true}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager}
+  - {do: item.master.deactivate, on: item.master/I2}
+  - {read: purchasing.order/P1, as: buyer, expect: {invalidlines: 1, linecount: 2}}
+  - {do: purchasing.order.approve, on: purchasing.order/P1, as: manager, refused: true}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/L0, as: buyer, with: {order: P1, material: I2, quantity: 1, unitprice: 1}, refused: true}
+  - {do: item.master.activate, on: item.master/I2}
+  - {read: purchasing.order/P1, as: buyer, expect: {invalidlines: 0}}
+  - {do: purchasing.order.approve, on: purchasing.order/P1, as: manager, expect: {state: approved, total: 38.5}}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/L3, as: buyer, with: {order: P1, material: I1, quantity: 2, unitprice: 1}, refused: true}
+  - {do: purchasing.orderline.edit, on: purchasing.orderline/L1, as: buyer, with: {quantity: 99}, refused: true}
+  - {do: purchasing.order.approve, on: purchasing.order/P1, as: manager, refused: true}
+  - {do: purchasing.order.cancel, on: purchasing.order/P1, as: manager, refused: true}
+  - {read: purchasing.order/P1, as: buyer, expect: {state: approved, total: 38.5, linecount: 2}}
+  - {do: purchasing.navpending.create, on: purchasing.navpending/X1, as: buyer, with: {title: Fake}, refused: true}
+  - {do: purchasing.navpending.create, on: purchasing.navpending/X2, as: manager, with: {title: Fake}, refused: true}

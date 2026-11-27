@@ -1,0 +1,15 @@
+id: purchasing
+version: 0.1.0
+title: Purchasing
+namespace: purchasing
+description: Supplier qualification, sourcing and purchase commitments.
+listing:
+  industries: [general, manufacturing, distribution]
+  domains: [purchasing]
+  keywords: [supplier, sourcing, quotation, purchase-order]
+  stage: test
+  source: {ecosystem: frappe, app: erpnext, version: v16, license: GPL-3.0, relation: redesign}
+roots:
+  - {app: build, kind: app, name: purchasing}
+artifact: purchasing.json
+requires: [party@^0.2.2, item-master@^0.1.1, uom@^0.1.3]

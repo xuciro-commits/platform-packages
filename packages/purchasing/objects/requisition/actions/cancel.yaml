@@ -1,0 +1,7 @@
+title: Cancel requisition
+from: [draft, requested]
+roles: [buyer, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

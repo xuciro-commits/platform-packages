@@ -1,0 +1,704 @@
+{
+  "version": 1,
+  "module": "setup",
+  "package": "erp-settings",
+  "namespace": "erpsettings",
+  "source": {
+    "commit": "8e10a348daaa93853de8c36dc55ec789a440c219",
+    "path": "erpnext/setup/sidebar/setup/setup.json"
+  },
+  "entries": [
+    {
+      "reference": "Home",
+      "kind": "page",
+      "sourceType": "Workspace",
+      "sourceTarget": "Home",
+      "target": "erpsettings.home",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Company",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Company",
+      "target": "erpsettings.company",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Users",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "User",
+      "target": "erpsettings.users",
+      "group": "Overview",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Organization",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Branch",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Branch",
+      "target": "erpsettings.branch",
+      "group": "Organization",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Department",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Department",
+      "target": "erpsettings.department",
+      "group": "Organization",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Designation",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Designation",
+      "target": "erpsettings.designation",
+      "group": "Organization",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Holiday List",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Holiday List",
+      "target": "erpsettings.holiday_list",
+      "group": "Organization",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Access",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Role",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Role",
+      "target": "erpsettings.role",
+      "group": "Access",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Role Permissions",
+      "kind": "page",
+      "sourceType": "Page",
+      "sourceTarget": "permission-manager",
+      "target": "erpsettings.role_permissions",
+      "group": "Access",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "User Permissions",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "User Permission",
+      "target": "erpsettings.user_permissions",
+      "group": "Access",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Authorization Rule",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Authorization Rule",
+      "target": "erpsettings.authorization_rule",
+      "group": "Access",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Printing",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Letter Head",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Letter Head",
+      "target": "erpsettings.letter_head",
+      "group": "Printing",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Print Format",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Print Format",
+      "target": "erpsettings.print_format",
+      "group": "Printing",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Print Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Print Settings",
+      "target": "erpsettings.print_settings",
+      "group": "Printing",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Email",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Email Account",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Email Account",
+      "target": "erpsettings.email_account",
+      "group": "Email",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Email Template",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Email Template",
+      "target": "erpsettings.email_template",
+      "group": "Email",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Email Digest",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Email Digest",
+      "target": "erpsettings.email_digest",
+      "group": "Email",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Data",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Data Import",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Data Import",
+      "target": "erpsettings.data_import",
+      "group": "Data",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Rename Tool",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Rename Tool",
+      "target": "erpsettings.rename_tool",
+      "group": "Data",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Bulk Transaction Log",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Bulk Transaction Log",
+      "target": "erpsettings.bulk_transaction_log",
+      "group": "Data",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Transaction Deletion Record",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Transaction Deletion Record",
+      "target": "erpsettings.transaction_deletion_record",
+      "group": "Data",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Integrations",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "Incoming Call Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Incoming Call Settings",
+      "target": "erpsettings.incoming_call_settings",
+      "group": "Integrations",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Voice Call Settings",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Voice Call Settings",
+      "target": "erpsettings.voice_call_settings",
+      "group": "Integrations",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Call Log",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Call Log",
+      "target": "erpsettings.call_log",
+      "group": "Integrations",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Telephony Call Type",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Telephony Call Type",
+      "target": "erpsettings.telephony_call_type",
+      "group": "Integrations",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Communication Medium",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Communication Medium",
+      "target": "erpsettings.communication_medium",
+      "group": "Integrations",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Code List",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Code List",
+      "target": "erpsettings.code_list",
+      "group": "Integrations",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Common Code",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Common Code",
+      "target": "erpsettings.common_code",
+      "group": "Integrations",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Settings",
+      "kind": "group",
+      "foldable": true,
+      "status": "declared_flat",
+      "browserVerified": false,
+      "innerBox": "IB-ERP-0004"
+    },
+    {
+      "reference": "System",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "System Settings",
+      "target": "erpsettings.system",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Global Defaults",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Global Defaults",
+      "target": "erpsettings.global_defaults",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Accounts",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Accounts Settings",
+      "target": "erpsettings.accounts",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Selling",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Selling Settings",
+      "target": "erpsettings.selling",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Buying",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Buying Settings",
+      "target": "erpsettings.buying",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Stock",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Settings",
+      "target": "erpsettings.stock",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Manufacturing",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Manufacturing Settings",
+      "target": "erpsettings.manufacturing",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Projects",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Projects Settings",
+      "target": "erpsettings.projects",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "CRM",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "CRM Settings",
+      "target": "erpsettings.crm",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Support",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Support Settings",
+      "target": "erpsettings.support",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "POS",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "POS Settings",
+      "target": "erpsettings.pos",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Subscription",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Subscription Settings",
+      "target": "erpsettings.subscription",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Item Variant",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Item Variant Settings",
+      "target": "erpsettings.item_variant",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Delivery",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Delivery Settings",
+      "target": "erpsettings.delivery",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Currency Exchange",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Currency Exchange Settings",
+      "target": "erpsettings.currency_exchange",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Appointment Booking",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Appointment Booking Settings",
+      "target": "erpsettings.appointment_booking",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    },
+    {
+      "reference": "Stock Reposting",
+      "kind": "page",
+      "sourceType": "DocType",
+      "sourceTarget": "Stock Reposting Settings",
+      "target": "erpsettings.stock_reposting",
+      "group": "Settings",
+      "implementation": "pending",
+      "status": "placeholder",
+      "browserVerified": false,
+      "note": "Business implementation pending; no operations."
+    }
+  ],
+  "additional": [],
+  "groups": [
+    {
+      "title": "Overview",
+      "pages": [
+        "erpsettings.home",
+        "erpsettings.company",
+        "erpsettings.users"
+      ]
+    },
+    {
+      "title": "Organization",
+      "pages": [
+        "erpsettings.branch",
+        "erpsettings.department",
+        "erpsettings.designation",
+        "erpsettings.holiday_list"
+      ]
+    },
+    {
+      "title": "Access",
+      "pages": [
+        "erpsettings.role",
+        "erpsettings.role_permissions",
+        "erpsettings.user_permissions",
+        "erpsettings.authorization_rule"
+      ]
+    },
+    {
+      "title": "Printing",
+      "pages": [
+        "erpsettings.letter_head",
+        "erpsettings.print_format",
+        "erpsettings.print_settings"
+      ]
+    },
+    {
+      "title": "Email",
+      "pages": [
+        "erpsettings.email_account",
+        "erpsettings.email_template",
+        "erpsettings.email_digest"
+      ]
+    },
+    {
+      "title": "Data",
+      "pages": [
+        "erpsettings.data_import",
+        "erpsettings.rename_tool",
+        "erpsettings.bulk_transaction_log",
+        "erpsettings.transaction_deletion_record"
+      ]
+    },
+    {
+      "title": "Integrations",
+      "pages": [
+        "erpsettings.incoming_call_settings",
+        "erpsettings.voice_call_settings",
+        "erpsettings.call_log",
+        "erpsettings.telephony_call_type",
+        "erpsettings.communication_medium",
+        "erpsettings.code_list",
+        "erpsettings.common_code"
+      ]
+    },
+    {
+      "title": "Settings",
+      "pages": [
+        "erpsettings.system",
+        "erpsettings.global_defaults",
+        "erpsettings.accounts",
+        "erpsettings.selling",
+        "erpsettings.buying",
+        "erpsettings.stock",
+        "erpsettings.manufacturing",
+        "erpsettings.projects",
+        "erpsettings.crm",
+        "erpsettings.support",
+        "erpsettings.pos",
+        "erpsettings.subscription",
+        "erpsettings.item_variant",
+        "erpsettings.delivery",
+        "erpsettings.currency_exchange",
+        "erpsettings.appointment_booking",
+        "erpsettings.stock_reposting"
+      ]
+    },
+    {
+      "title": "Additional operations",
+      "pages": []
+    }
+  ],
+  "limitations": [
+    "Flat group projection only; no browser verification.",
+    "Placeholders contain no business operations."
+  ]
+}

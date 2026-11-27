@@ -18,3 +18,7 @@
 ## 0.1.0
 
 - Initial preview release: tickets with dual response/resolution SLAs, stage Kanban board, balanced assignment, replies/internal notes, escalation, structured resolution with CSAT, knowledge base, canned replies, customer/contact rollups, supervisor settings page, dashboard, and Simplified Chinese (`zh-CN`) localization.
+
+## 0.2.2 candidate
+
+- ERP navigation coverage: preserve original business pages, actions, settings and dashboards; add explicit read-only placeholders and selected existing-object aliases. Browser and workflow parity remain unverified.

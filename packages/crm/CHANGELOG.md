@@ -36,3 +36,7 @@
 ## 0.2.0
 
 - 第一个官方版本。版本号接在平台测试夹具 `crm` 0.1.x 之后，同一 `id` 的版本史保持递增；夹具与它不兼容，不能升级过来。
+
+## 0.3.4 candidate
+
+- ERP navigation coverage: preserve original business pages, actions, settings and dashboards; add explicit read-only placeholders and selected existing-object aliases. Browser and workflow parity remain unverified.
