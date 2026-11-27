@@ -1,16 +1,16 @@
 {
   "format": 2,
   "package": "inventory",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "requires": [
-    "item-master@^0.1.1",
+    "item-master@^0.1.2",
     "uom@^0.1.3",
-    "stock-contract@^0.1.0"
+    "stock-contract@^0.1.1"
   ],
-  "artifact": "sha256:17f0193568d6cb98ecca2038ccafc2e594c3e95a871aa3ad7a32729c32fa666c",
+  "artifact": "sha256:970159bdc9ad245ecfdd0fd9ae04eb9d9e1feff9b2c7cc99f62de083777e0333",
   "assets": {
     "app/inventory": {
-      "digest": "sha256:9cd96a2b1d000d8ceda8fe70ddf2c6970598afe35fa8c68fc7dde70ccabdcc55",
+      "digest": "sha256:17aea6ad2d56b47b2c8952ec388840171fd1afecc1e09c27c44ebd581d64920c",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -36,13 +36,24 @@
         }
       ]
     },
-    "object/inventory.movement": {
-      "digest": "sha256:dc3ee8ac6946caba49a2d0086681412a2cf135a880ebce7093340182d612cdb5",
+    "object/inventory.layer": {
+      "digest": "sha256:61244cf66c1a36e9235fe12c0f2e42cd0513b2c31da778a7b167c429f72d7dc4",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.e13bbc71b82cc02860bf68858a2424d7ff019a9f948da8f50e8978893fadefd4",
+          "version": "schema.sha256.b3675ea546741c45878543e619e945e08d45e66298cf262b88bf8c16ad7ad9cd",
+          "family": 1
+        }
+      ]
+    },
+    "object/inventory.movement": {
+      "digest": "sha256:68ab09941a4ccd85db7d7a8926cdaeaeaacaeb94ce8f58b55d302cb9bc9f3f08",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.681ba8ec468cc73b01bead7d8a57b536faeb9aec3dc0bf13d718b31e25680fd5",
           "family": 1
         }
       ]
@@ -158,7 +169,7 @@
       "sourceVersion": "1"
     },
     "page/inventory.movement": {
-      "digest": "sha256:991b666a50101e59f668afbe06ecf673eaf3e331088dc7da110dc71de2834a4b",
+      "digest": "sha256:0990f7da2d675c927e923f9ed4ba07ff263d5936b350485202b2b77cf4800c69",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

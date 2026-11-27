@@ -26,6 +26,7 @@ transaction:
               material: row.material
               warehouse: coalesce(row.warehouse, warehouse)
               quantity: row.quantity
+              amount: row.amount
               on: receivedon
               sourcetype: "'purchasing.receipt'"
               sourceid: row.receipt

@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "item-master",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "requires": [
     "uom@^0.1.3"
   ],
-  "artifact": "sha256:27967515d7b10957dd08509bb41997534a135d4102239af08fe19318235f5130",
+  "artifact": "sha256:4a570a06f2ae259a4c6c4e0fb52b430f4f1b554785455b62b75bc20f91efc7eb",
   "assets": {
     "app/item": {
-      "digest": "sha256:78a44dcf3e9ff1417abf00438e02b88d8af0e8ea1378b53b1bd1f6cea223df71",
+      "digest": "sha256:52f88ef1425167aaefdc0a214b7bfd6d8c3fe310ebdb2328a140e879ecd98f65",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -46,23 +46,23 @@
       ]
     },
     "object/item.category": {
-      "digest": "sha256:976b268371dacb592f74796c45b484091e1800701b1b2e69eaaa0bc17e5fbc5e",
+      "digest": "sha256:54cc35aed57783f4dff11bc818b8ba20a9253d0cefc0caa7b0e556759c5cb11b",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.86d4d3eb636b4b262cefdceb7350018639e542ae2141197d4261c3e0f0fdaaa7",
+          "version": "schema.sha256.09e27cd89a3a2caadceeb91ffc75980219c85ce286d1d6e3d3fe0a70fb554685",
           "family": 1
         }
       ]
     },
     "object/item.master": {
-      "digest": "sha256:bd9d226cb8ea5ff20b4b7f39f0e07969d742268f8fa919347f7eaebb3a4007e5",
+      "digest": "sha256:ca5fdca93115898587b206a76adcf7c6b5c3ea46c065accf4f693f7c97017518",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.de96912080764586cd46a913787d6f7c0e9813065eff59fd5ec95a287f00f223",
+          "version": "schema.sha256.cc5861ae1623d69fe1e50d4ee0bb2be2ac258c5f484283189f3615f799490841",
           "family": 1
         }
       ]
@@ -94,12 +94,12 @@
       "sourceVersion": "1"
     },
     "page/item.category": {
-      "digest": "sha256:3447e66eaa89f43f30b078fa04400cea3187b670b05a86a066eae70f1d35e251",
+      "digest": "sha256:63d0570aa299010c3bbb2f4288c415fe6a44a0c7e81b2d4df1971bfcb96a69d5",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
     "page/item.master": {
-      "digest": "sha256:2dd8e7d2d41390f0db50c6c7f97e66922e9ddd5f334c7262337c2e4ff27cba8a",
+      "digest": "sha256:ce2a7629515b8bd7ac5bfa947fedc020bf0cec9a236188bb24591ee84b7079c2",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

@@ -5,21 +5,40 @@ plural: Stock movements
 icon: arrow-trending-up
 display: title
 ledger: true
+ask:
+  reverse: Reversing a posted stock movement writes opposite quantity and cost facts.
+sets:
+  consumedlayers: {object: inventory.layer.allocation, from: consumedlayers, limit: 100}
 fields:
   - {name: title, title: Reference, type: text, required: true, search: true}
   - {name: material, title: Item, type: reference, ref: item.master, required: true}
   - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, required: true}
   - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
+  - name: amount
+    title: Valuation amount
+    type: decimal
+    required: true
+    from: "if(quantity > 0, 0, if(coalesce(material.category.valuation, 'moving_average') = 'moving_average' and prior_balance('stock', 'quantity') > 0, round(quantity * prior_balance('stock', 'amount') / prior_balance('stock', 'quantity'), 2), 0))"
   - {name: on, title: Business date, type: date, required: true, default: today}
   - {name: sourcetype, title: Source document type, type: text}
   - {name: sourceid, title: Source document, type: text, search: true}
   - {name: reverses, title: Reverses, type: reference, ref: inventory.movement, readOnly: true}
   - {name: reversed, title: Reversed, type: boolean, readOnly: true}
+depletion:
+  ledger: inventory.layer
+  balance: remaining
+  when: "material.category.valuation = 'fifo'"
+  origin: origin
+  consumer: consumer
+  quantity: quantity
+  amount: amount
 balances:
   - name: stock
     title: Stock balance
     keys: [material, warehouse]
-    measures: [quantity]
+    measures: [quantity, amount]
+    fields:
+      - {name: unitcost, title: Unit cost, type: decimal, live: "if(quantity > 0, round(amount / quantity, 4), 0)"}
     access:
       - {role: reader, read: all}
       - {role: keeper, read: all}
@@ -34,6 +53,11 @@ constraints:
     fields: [quantity]
     expr: "quantity != 0"
     message: Movement quantity cannot be zero.
+  - name: signedamount
+    kind: expression
+    fields: [quantity, amount]
+    expr: "(quantity > 0 and amount >= 0) or (quantity < 0 and amount <= 0)"
+    message: Valuation amount sign must match movement direction.
   - name: activeitem
     kind: expression
     fields: [material]
@@ -54,7 +78,7 @@ access:
 view:
   version: 1
   layout: table
-  columns: [on, title, material, warehouse, quantity, sourcetype, sourceid, reversed, reverses]
+  columns: [on, title, material, warehouse, quantity, amount, sourcetype, sourceid, reversed, reverses]
   sort: [{sortKey: on, direction: descending}]
   group: warehouse
   lanes: ""
@@ -63,3 +87,4 @@ view:
   dates: on
   reports:
     - {name: period_summary, title: Stock period summary, group: material, subGroup: warehouse, measure: "sum:quantity", dates: on}
+    - {name: value_summary, title: Stock value period summary, group: material, subGroup: warehouse, measure: "sum:amount", dates: on}

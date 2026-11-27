@@ -41,3 +41,8 @@ steward: 数据管家
 "An item can have only one option per attribute.": "同一物料的每个属性只能选择一个选项。"
 "The option must belong to the selected attribute.": "选项必须属于所选属性。"
 "Specifications": "规格管理"
+"Valuation method": "计价方法"
+"Moving average": "移动加权平均"
+"First in first out": "先进先出"
+"Safety stock": "安全库存"
+"Lead time days": "提前期（天）"

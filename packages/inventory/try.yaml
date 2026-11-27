@@ -5,11 +5,17 @@ members:
   keeper2: {roles: {inventory: keeper, item: user, uom: user}}
   reader: {roles: {inventory: reader, item: user, uom: user}}
 steps:
-  - {do: item.master.create, on: item.master/I1, with: {title: Steel bolt, code: BOLT-01, kind: material, unit: pcs}}
+  - {do: item.category.create, on: item.category/CAT-MA, with: {title: Moving average goods, code: CAT-MA, valuation: moving_average}}
+  - {do: item.category.create, on: item.category/CAT-FIFO, with: {title: FIFO goods, code: CAT-FIFO, valuation: fifo}}
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel bolt, code: BOLT-01, kind: material, unit: pcs, category: CAT-MA}}
+  - {do: item.master.create, on: item.master/IMA, with: {title: Copper rod, code: ROD-MA, kind: material, unit: pcs, category: CAT-MA}}
+  - {do: item.master.create, on: item.master/IFIFO, with: {title: Brass valve, code: VLV-FIFO, kind: material, unit: pcs, category: CAT-FIFO}}
   - {do: inventory.warehouse.create, on: inventory.warehouse/MAIN, as: keeper1, with: {title: Main warehouse, code: MAIN}}
-  - {do: inventory.movement.create, on: inventory.movement/M1, as: keeper1, with: {title: Opening receipt, material: I1, warehouse: MAIN, quantity: 10, on: "2026-10-25"}}
-  - {do: inventory.movement.create, on: inventory.movement/M2, as: keeper1, with: {title: November receipt, material: I1, warehouse: MAIN, quantity: 6, on: "2026-11-05"}}
+
+  - {do: inventory.movement.create, on: inventory.movement/M1, as: keeper1, with: {title: Opening receipt, material: I1, warehouse: MAIN, quantity: 10, amount: 100, on: "2026-10-25"}}
+  - {do: inventory.movement.create, on: inventory.movement/M2, as: keeper1, with: {title: November receipt, material: I1, warehouse: MAIN, quantity: 6, amount: 60, on: "2026-11-05"}}
   - {do: inventory.movement.create, on: inventory.movement/M3, as: keeper1, with: {title: Production issue, material: I1, warehouse: MAIN, quantity: -12, on: "2026-11-10"}}
+  - {read: inventory.movement/M3, as: reader, expect: {amount: -120}}
   - race:
       expectAccepted: 1
       expectRefused: 1
@@ -17,16 +23,46 @@ steps:
       submissions:
         - {do: inventory.movement.create, on: inventory.movement/RACE-A, as: keeper1, with: {title: Keeper 1 issue, material: I1, warehouse: MAIN, quantity: -4, on: "2026-11-12"}}
         - {do: inventory.movement.create, on: inventory.movement/RACE-B, as: keeper2, with: {title: Keeper 2 issue, material: I1, warehouse: MAIN, quantity: -4, on: "2026-11-12"}}
-  - {do: inventory.movement.create, on: inventory.movement/M4, as: keeper1, with: {title: Mistaken receipt, material: I1, warehouse: MAIN, quantity: 5, on: "2026-11-15"}}
+  - {do: inventory.movement.create, on: inventory.movement/M4, as: keeper1, with: {title: Mistaken receipt, material: I1, warehouse: MAIN, quantity: 5, amount: 50, on: "2026-11-15"}}
   - {do: inventory.movement.reverse, on: inventory.movement/M4, as: keeper1, with: {on: "2026-11-16"}}
-  - {read: inventory.movement/M4, as: reader, expect: {reversed: true, quantity: 5}}
+  - {read: inventory.movement/M4, as: reader, expect: {reversed: true, quantity: 5, amount: 50}}
+
+  - {do: inventory.movement.create, on: inventory.movement/MA-IN-1, as: keeper1, with: {title: MA batch 1, material: IMA, warehouse: MAIN, quantity: 10, amount: 50, on: "2026-11-01"}}
+  - {do: inventory.movement.create, on: inventory.movement/MA-IN-2, as: keeper1, with: {title: MA batch 2, material: IMA, warehouse: MAIN, quantity: 10, amount: 70, on: "2026-11-02"}}
+  - {do: inventory.movement.create, on: inventory.movement/MA-OUT-1, as: keeper1, with: {title: MA outbound 15, material: IMA, warehouse: MAIN, quantity: -15, on: "2026-11-03"}}
+  - {read: inventory.movement/MA-OUT-1, as: reader, expect: {quantity: -15, amount: -90}}
   - period:
       object: inventory.movement.stock
       groups: [material, warehouse]
-      measures: ["sum:quantity"]
+      measures: ["sum:quantity", "sum:amount"]
       from: "2026-11-01"
       to: "2026-11-30"
       expectRows:
         - {material: I1, warehouse: MAIN, "opening:quantity": 10, "debit:quantity": 11, "credit:quantity": 21, "closing:quantity": 0}
+        - {material: IMA, warehouse: MAIN, "opening:quantity": 0, "debit:quantity": 20, "credit:quantity": 15, "closing:quantity": 5, "opening:amount": 0, "debit:amount": 120, "credit:amount": 90, "closing:amount": 30}
+
+  - {do: inventory.movement.create, on: inventory.movement/FF-IN-1, as: keeper1, with: {title: FIFO batch 1, material: IFIFO, warehouse: MAIN, quantity: 10, amount: 50, on: "2026-11-01"}}
+  - {do: inventory.movement.create, on: inventory.movement/FF-IN-2, as: keeper1, with: {title: FIFO batch 2, material: IFIFO, warehouse: MAIN, quantity: 10, amount: 70, on: "2026-11-02"}}
+  - {do: inventory.movement.create, on: inventory.movement/FF-OUT-1, as: keeper1, with: {title: FIFO outbound 15, material: IFIFO, warehouse: MAIN, quantity: -15, on: "2026-11-03"}}
+  - {read: inventory.movement/FF-OUT-1, as: reader, expect: {quantity: -15, amount: -85}}
+  - {do: inventory.movement.reverse, on: inventory.movement/FF-IN-1, as: keeper1, with: {on: "2026-11-04"}, refused: true}
+  - {do: inventory.movement.reverse, on: inventory.movement/FF-IN-2, as: keeper1, with: {on: "2026-11-04"}, refused: true}
+  - period:
+      object: inventory.movement.stock
+      groups: [material, warehouse]
+      measures: ["sum:quantity", "sum:amount"]
+      from: "2026-11-01"
+      to: "2026-11-30"
+      expectRows:
+        - {material: I1, warehouse: MAIN, "opening:quantity": 10, "debit:quantity": 11, "credit:quantity": 21, "closing:quantity": 0}
+        - {material: IMA, warehouse: MAIN, "opening:quantity": 0, "debit:quantity": 20, "credit:quantity": 15, "closing:quantity": 5, "opening:amount": 0, "debit:amount": 120, "credit:amount": 90, "closing:amount": 30}
+        - {material: IFIFO, warehouse: MAIN, "opening:quantity": 0, "debit:quantity": 20, "credit:quantity": 15, "closing:quantity": 5, "opening:amount": 0, "debit:amount": 120, "credit:amount": 85, "closing:amount": 35}
+
+  - {do: item.category.edit, on: item.category/CAT-FIFO, with: {valuation: moving_average}}
+  - {read: inventory.movement/FF-OUT-1, as: reader, expect: {amount: -85}}
+  - {do: inventory.movement.create, on: inventory.movement/FF-IN-3, as: keeper1, with: {title: Post-switch receipt, material: IFIFO, warehouse: MAIN, quantity: 5, amount: 45, on: "2026-11-05"}}
+  - {do: inventory.movement.create, on: inventory.movement/FF-OUT-2, as: keeper1, with: {title: Post-switch outbound, material: IFIFO, warehouse: MAIN, quantity: -4, on: "2026-11-06"}}
+  - {read: inventory.movement/FF-OUT-2, as: reader, expect: {amount: -32}}
+
   - {do: inventory.movement.edit, on: inventory.movement/M1, as: keeper1, with: {quantity: 999}, refused: true}
-  - {do: inventory.movement.create, on: inventory.movement/FORBIDDEN, as: reader, with: {title: Denied, material: I1, warehouse: MAIN, quantity: 1, on: "2026-11-20"}, refused: true}
+  - {do: inventory.movement.create, on: inventory.movement/FORBIDDEN, as: reader, with: {title: Denied, material: I1, warehouse: MAIN, quantity: 1, amount: 1, on: "2026-11-20"}, refused: true}

@@ -11,6 +11,7 @@ actions:
       - {name: material, label: Item, type: text, required: true}
       - {name: warehouse, label: Warehouse, type: text, required: true}
       - {name: quantity, label: Quantity in base unit, type: decimal, required: true}
+      - {name: amount, label: Valuation amount, type: decimal}
       - {name: on, label: Business date, type: date}
       - {name: sourcetype, label: Source document type, type: text}
       - {name: sourceid, label: Source document, type: text}
@@ -23,4 +24,4 @@ tests:
   - name: posts
     title: Posts an inbound stock movement
     action: post
-    payload: {title: RCV-001, material: I1, warehouse: MAIN, quantity: 1, on: "2026-11-26"}
+    payload: {title: RCV-001, material: I1, warehouse: MAIN, quantity: 1, amount: 5, on: "2026-11-26"}

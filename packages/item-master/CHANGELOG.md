@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- 在物料分类新增计价方法（移动加权平均 / 先进先出），在物料主数据新增安全库存与提前期字段。
+
 ## 0.1.0
 
 - Experimental item identity, unique code, base unit reference and lifecycle actions.

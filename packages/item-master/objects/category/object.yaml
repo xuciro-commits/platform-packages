@@ -7,6 +7,7 @@ display: title
 fields:
   - {name: title, title: Name, type: text, required: true, search: true}
   - {name: code, title: Code, type: text, required: true, search: true}
+  - {name: valuation, title: Valuation method, type: choice, choices: "moving_average:Moving average,fifo:First in first out", default: moving_average}
   - {name: parent, title: Parent category, type: reference, ref: item.category}
 constraints:
   - name: categorycode
@@ -17,5 +18,5 @@ constraints:
       zh-CN: 分类编码必须唯一。
 access:
   - {role: user, read: all}
-  - {role: steward, read: all, create: true}
-view: {version: 1, layout: table, columns: [code, title, parent], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}
+  - {role: steward, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [code, title, valuation, parent], sort: [{sortKey: title, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

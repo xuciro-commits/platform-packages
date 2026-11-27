@@ -12,6 +12,8 @@ fields:
   - {name: unit, title: Base unit, type: reference, ref: uom.unit, required: true}
   - {name: category, title: Item category, type: reference, ref: item.category}
   - {name: brand, title: Brand, type: reference, ref: item.brand}
+  - {name: safetystock, title: Safety stock, type: decimal, default: "0"}
+  - {name: leadtimedays, title: Lead time days, type: integer, default: "0"}
   - {name: description, title: Description, type: longtext}
 states:
   - {name: active, title: Active, tone: success}
@@ -27,4 +29,4 @@ constraints:
 access:
   - {role: user, read: all}
   - {role: steward, read: all, create: true}
-view: {version: 1, layout: table, columns: [code, title, kind, category, brand, unit, state], sort: [{sortKey: code, direction: ascending}], group: kind, lanes: "", filters: [], search: ""}
+view: {version: 1, layout: table, columns: [code, title, kind, category, brand, unit, safetystock, leadtimedays, state], sort: [{sortKey: code, direction: ascending}], group: kind, lanes: "", filters: [], search: ""}

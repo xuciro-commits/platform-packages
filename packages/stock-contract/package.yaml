@@ -1,5 +1,5 @@
 id: stock-contract
-version: 0.1.0
+version: 0.1.1
 title: Inventory contract
 namespace: stockcontract
 description: Stock posting and reversal capability contract stock.post/1.

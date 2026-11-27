@@ -1,19 +1,19 @@
 id: inventory
-version: 0.2.0
+version: 0.3.0
 title: Inventory
 namespace: inventory
-description: Track stock ledger movements, period summaries and quantity balances by item and warehouse.
+description: Track stock ledger movements, moving-average and FIFO valuation layers, period summaries and balances by item and warehouse.
 listing:
   industries: [general, manufacturing, distribution]
   domains: [inventory]
-  keywords: [stock, warehouse, movement, ledger]
+  keywords: [stock, warehouse, movement, ledger, valuation, fifo]
   stage: test
   source: {ecosystem: frappe, app: erpnext, version: v16, license: GPL-3.0, relation: redesign}
 roots:
   - {app: build, kind: app, name: inventory}
 artifact: inventory.json
 requires:
-  - item-master@^0.1.1
+  - item-master@^0.1.2
   - uom@^0.1.3
-  - stock-contract@^0.1.0
+  - stock-contract@^0.1.1
 contracts: {}
