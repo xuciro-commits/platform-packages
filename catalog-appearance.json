@@ -1,0 +1,542 @@
+{
+  "version": 1,
+  "title": "Platform packages",
+  "packages": [
+    {
+      "id": "crm",
+      "version": "0.3.0",
+      "title": "CRM",
+      "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.3.0/crm.json",
+      "sha256": "sha256:a872d5ccae39740b0c1f2ab9d6acc883f87bf8620efb6a519453c488080ab84b",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "sales"
+        ],
+        "keywords": [
+          "lead",
+          "deal",
+          "pipeline",
+          "forecast",
+          "account",
+          "contact",
+          "activity"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "crm",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        },
+        "icon": "user-group",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/88ecbf4c4feae9d4b791f342b63fb8823e7390a0/packages/crm/assets/cover.avif"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "crm",
+      "version": "0.2.2",
+      "title": "CRM",
+      "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.2.2/crm.json",
+      "sha256": "sha256:4f032fc54d434893f78a068a8b222d2efbbfef33638c0060bac1fc8553f555e7",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "lead",
+          "deal",
+          "pipeline",
+          "forecast",
+          "account",
+          "contact",
+          "activity"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "crm",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        },
+        "domains": [
+          "sales"
+        ],
+        "icon": "user-group",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/crm/assets/cover.avif"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "crm",
+      "version": "0.2.1",
+      "title": "CRM",
+      "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.2.1/crm.json",
+      "sha256": "sha256:c183cdc38b80204c91a7551bcb6a53b0c08d621a6af5e8ab9ac4e018f4b5c5ac",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "lead",
+          "deal",
+          "pipeline",
+          "forecast",
+          "account",
+          "contact",
+          "activity"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "crm",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        },
+        "domains": [
+          "sales"
+        ],
+        "icon": "user-group"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "crm",
+      "version": "0.2.0",
+      "title": "CRM",
+      "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.2.0/crm.json",
+      "sha256": "sha256:0a946c72f8e4ee2f7737f86a9bc718094075772843759ef5967f4ad6e4990f87",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "lead",
+          "deal",
+          "pipeline",
+          "forecast",
+          "account",
+          "contact",
+          "activity"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "crm",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        },
+        "domains": [
+          "sales"
+        ],
+        "icon": "user-group"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "geo",
+      "version": "0.1.1",
+      "title": "Places",
+      "description": "Countries and regions with their ISO codes, and the provinces, prefectures and counties of China with their official codes, shared once by every application that keeps an address.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/geo/v0.1.1/geo.json",
+      "sha256": "sha256:3a4965e64c89cc6b6c873190266ebab459597fb85f6287db30040c4283bb8b8f",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "master-data"
+        ],
+        "keywords": [
+          "country",
+          "region",
+          "address",
+          "administrative-division",
+          "master-data"
+        ],
+        "stage": "preview",
+        "icon": "globe-alt"
+      },
+      "kind": "master-data"
+    },
+    {
+      "id": "geo",
+      "version": "0.1.0",
+      "title": "Places",
+      "description": "Countries and regions with their ISO codes, and the provinces, prefectures and counties of China with their official codes, shared once by every application that keeps an address.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/geo/v0.1.0/geo.json",
+      "sha256": "sha256:2361524205d81f9027476ab2b10b228c2ae0ae5a47244365f81b0d40508bc02e",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "country",
+          "region",
+          "address",
+          "administrative-division",
+          "master-data"
+        ],
+        "stage": "preview",
+        "domains": [
+          "master-data"
+        ],
+        "icon": "globe-alt"
+      },
+      "kind": "master-data"
+    },
+    {
+      "id": "helpdesk",
+      "version": "0.2.0",
+      "title": "Helpdesk",
+      "description": "Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/helpdesk/v0.2.0/helpdesk.json",
+      "sha256": "sha256:f58eb3b9359f87391f210bc1130ee6073172e1335c58147c025db04e790bc61e",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "service",
+          "knowledge"
+        ],
+        "keywords": [
+          "helpdesk",
+          "support",
+          "ticket",
+          "sla",
+          "knowledge-base",
+          "csat",
+          "escalation"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "helpdesk",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        },
+        "icon": "lifebuoy",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/helpdesk/assets/cover.avif"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "helpdesk",
+      "version": "0.1.1",
+      "title": "Helpdesk",
+      "description": "Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/helpdesk/v0.1.1/helpdesk.json",
+      "sha256": "sha256:9129c90621c62f608b8cca81f29d8f1effddabb2e3fd16a9cba839b0f7428cb0",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "helpdesk",
+          "support",
+          "ticket",
+          "sla",
+          "knowledge-base",
+          "csat",
+          "escalation"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "helpdesk",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        },
+        "domains": [
+          "service",
+          "knowledge"
+        ],
+        "icon": "lifebuoy"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "helpdesk",
+      "version": "0.1.0",
+      "title": "Helpdesk",
+      "description": "Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/helpdesk/v0.1.0/helpdesk.json",
+      "sha256": "sha256:12aa92a70ffc618800613ab9b9281b7ac5bceb944853260e97ce5122d92871c8",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "helpdesk",
+          "support",
+          "ticket",
+          "sla",
+          "knowledge-base",
+          "csat",
+          "escalation"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "helpdesk",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        },
+        "domains": [
+          "service",
+          "knowledge"
+        ],
+        "icon": "lifebuoy"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "hr-core",
+      "version": "0.2.0",
+      "title": "HR",
+      "description": "Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager, and claims paid by finance.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/hr-core/v0.2.0/hr-core.json",
+      "sha256": "sha256:52823c6c9439b23615d8d0261ee946024ca93b2b49faec4e029d4b08c0c242d6",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "hr"
+        ],
+        "keywords": [
+          "employee",
+          "leave",
+          "allowance",
+          "expense",
+          "approval"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "hrms",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        },
+        "icon": "users",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/hr-core/assets/cover.avif"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "hr-core",
+      "version": "0.1.0",
+      "title": "HR",
+      "description": "Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager, and claims paid by finance.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/hr-core/v0.1.0/hr-core.json",
+      "sha256": "sha256:acdda5b708f602df0f54b60ea035e4884f20f02a83bc3578c92edb4abe4c1f53",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "employee",
+          "leave",
+          "allowance",
+          "expense",
+          "approval"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "hrms",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        },
+        "domains": [
+          "hr"
+        ],
+        "icon": "users"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "party",
+      "version": "0.2.1",
+      "title": "Business partners",
+      "description": "The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/party/v0.2.1/party.json",
+      "sha256": "sha256:c1ea1433631fb2403b21874845d6f6447089e3dc05694dd365a00573fc2c3917",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "master-data"
+        ],
+        "keywords": [
+          "organization",
+          "contact",
+          "customer",
+          "supplier",
+          "master-data"
+        ],
+        "stage": "preview",
+        "icon": "globe-alt",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/88ecbf4c4feae9d4b791f342b63fb8823e7390a0/packages/party/assets/cover.avif"
+      },
+      "kind": "master-data"
+    },
+    {
+      "id": "party",
+      "version": "0.2.0",
+      "title": "Business partners",
+      "description": "The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/party/v0.2.0/party.json",
+      "sha256": "sha256:40144a3cfee21405a0933b9563b96a9fbe7f1f4a5ffa8710797f1151bb5233f0",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "organization",
+          "contact",
+          "customer",
+          "supplier",
+          "master-data"
+        ],
+        "stage": "preview",
+        "domains": [
+          "master-data"
+        ],
+        "icon": "globe-alt",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/8f9c6c2fd69e1bf1a17e07146105172c5b1402c1/packages/party/assets/cover.avif"
+      },
+      "kind": "master-data"
+    },
+    {
+      "id": "party",
+      "version": "0.1.0",
+      "title": "Business partners",
+      "description": "The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/party/v0.1.0/party.json",
+      "sha256": "sha256:f45bae3bd7c3cfb012b672f1e4fbe73d6c220f90f4e240c8b889434e95602e47",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "organization",
+          "contact",
+          "customer",
+          "supplier",
+          "master-data"
+        ],
+        "stage": "preview",
+        "domains": [
+          "master-data"
+        ],
+        "icon": "globe-alt"
+      },
+      "kind": "master-data"
+    },
+    {
+      "id": "projects",
+      "version": "0.1.0",
+      "title": "Projects",
+      "description": "Projects with their tasks on a Gantt chart, task dependencies and milestones, time logged per person and task with billable hours, and progress and hours rolled up from the tasks.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/projects/v0.1.0/projects.json",
+      "sha256": "sha256:95b9805dd63444cafcd8541b9a2833f47dffa3fd4e663e711a202026c362065a",
+      "listing": {
+        "industries": [
+          "general",
+          "professional-services"
+        ],
+        "domains": [
+          "projects"
+        ],
+        "keywords": [
+          "project",
+          "task",
+          "gantt",
+          "milestone",
+          "timesheet",
+          "time-tracking"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        },
+        "icon": "rectangle-group"
+      },
+      "kind": "application"
+    },
+    {
+      "id": "uom",
+      "version": "0.1.1",
+      "title": "Units of measure",
+      "description": "The units every application counts, weighs and measures in, with exact conversion factors, shared once by stock, purchasing, production and time keeping.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/uom/v0.1.1/uom.json",
+      "sha256": "sha256:e3af0f90086f6b8a2f411eb6fdc662fabdead90566b3c94a182fce4563b992e1",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "master-data"
+        ],
+        "keywords": [
+          "unit",
+          "measure",
+          "conversion",
+          "master-data"
+        ],
+        "stage": "preview",
+        "icon": "scale",
+        "cover": "https://raw.githubusercontent.com/xuciro-commits/platform-packages/88ecbf4c4feae9d4b791f342b63fb8823e7390a0/packages/uom/assets/cover.avif"
+      },
+      "kind": "master-data"
+    },
+    {
+      "id": "uom",
+      "version": "0.1.0",
+      "title": "Units of measure",
+      "description": "The units every application counts, weighs and measures in, with exact conversion factors, shared once by stock, purchasing, production and time keeping.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/uom/v0.1.0/uom.json",
+      "sha256": "sha256:a082b9140f7b81ff6e7eda019accc09207ece4c6030c130d069281e3499832f1",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "keywords": [
+          "unit",
+          "measure",
+          "conversion",
+          "master-data"
+        ],
+        "stage": "preview",
+        "domains": [
+          "master-data"
+        ],
+        "icon": "scale"
+      },
+      "kind": "master-data"
+    }
+  ]
+}

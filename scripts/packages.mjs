@@ -8,6 +8,7 @@ import { join, resolve } from "node:path";
 const root = resolve(new URL("..", import.meta.url).pathname);
 const packagesDir = join(root, "packages");
 const catalogFile = join(root, "catalog.json");
+const appearanceFile = join(root, "catalog-appearance.json");
 const catalogTitle = "Platform packages";
 const releaseURL = "https://github.com/xuciro-commits/platform-packages/releases/download/{id}/v{version}/";
 
@@ -64,7 +65,8 @@ function released(entry) {
 }
 
 function writeCatalog(list, out) {
-  const previous = existsSync(catalogFile) ? JSON.parse(readFileSync(catalogFile, "utf8")).packages : [];
+  const history = existsSync(appearanceFile) ? appearanceFile : catalogFile;
+  const previous = existsSync(history) ? JSON.parse(readFileSync(history, "utf8")).packages : [];
   run(pkg, ["catalog", "-o", out, "-title", catalogTitle, "-url", releaseURL, ...list.map((p) => p.dir)]);
   const doc = JSON.parse(readFileSync(out, "utf8"));
   const merged = new Map();
@@ -162,16 +164,23 @@ const commands = {
   },
   catalog(list) {
     list = list.filter(p => !p.fixtureOnly);
-    if (!flags.check) {
-      writeCatalog(list, catalogFile);
-      console.log(`catalog.json: ${list.length} packages`);
-      return;
-    }
-    const fresh = join(mkdtempSync(join(tmpdir(), "catalog-")), "catalog.json");
+    const fresh = join(mkdtempSync(join(tmpdir(), "catalog-")), "catalog-appearance.json");
     writeCatalog(list, fresh);
-    if (!existsSync(catalogFile) || !sameJSON(readFileSync(fresh, "utf8"), readFileSync(catalogFile, "utf8"))) {
-      problems.push("catalog.json is out of date; run node scripts/packages.mjs catalog and commit it");
-    } else console.log(`catalog.json: up to date (${list.length} packages)`);
+    const enriched = JSON.parse(readFileSync(fresh, "utf8"));
+    const legacy = structuredClone(enriched);
+    for (const entry of legacy.packages) {
+      if (entry.listing) {
+        delete entry.listing.icon;
+        delete entry.listing.cover;
+      }
+    }
+    const outputs = [[appearanceFile, enriched], [catalogFile, legacy]];
+    for (const [file, doc] of outputs) {
+      const content = JSON.stringify(doc, null, 2) + "\n";
+      if (!flags.check) writeFileSync(file, content);
+      else if (!existsSync(file) || !sameJSON(content, readFileSync(file, "utf8"))) problems.push(file + " is out of date");
+    }
+    console.log(`catalogs: ${enriched.packages.length} versions`);
   },
   release(list) {
     list = list.filter(p => !p.fixtureOnly);
