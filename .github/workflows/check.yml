@@ -47,9 +47,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: scripts/install-pkg.sh "$RUNNER_TEMP/pkg"
 
-      - name: Single-authority fixture sources and reproducible builds
-        run: node scripts/check-platform-fixtures.mjs --pkg="$RUNNER_TEMP/pkg"
-
       - name: Layout, CHANGELOG and version order
         run: node scripts/packages.mjs layout
 

@@ -13,20 +13,26 @@ const releaseURL = "https://github.com/xuciro-commits/platform-packages/releases
 
 function manifest(dir) {
   const fields = {};
-  for (const line of readFileSync(join(dir, "package.yaml"), "utf8").split("\n")) {
+  const raw = readFileSync(join(dir, "package.yaml"), "utf8");
+  for (const line of raw.split("\n")) {
     const match = line.match(/^(id|version|artifact):\s*"?([^"\s]+)"?\s*$/);
     if (match) fields[match[1]] = match[2];
   }
   if (!fields.id || !fields.version) throw new Error(`${dir}/package.yaml: id and version are required`);
+  fields.fixtureOnly = /^    app: fixtures\s*$/m.test(raw) || /^  source: \{[^\n]*\bapp: fixtures(?:,|\s*\})/m.test(raw);
+  if (fields.fixtureOnly && !/^  stage: test\s*$/m.test(raw)) throw new Error(dir + ": acceptance source must remain stage test");
   return fields;
 }
 
 function packages(only) {
   if (!existsSync(packagesDir)) return [];
-  return readdirSync(packagesDir, { withFileTypes: true })
+  if (existsSync(join(root, "fixtures", "platform"))) throw new Error("Obsolete duplicate package root");
+  const list = readdirSync(packagesDir, { withFileTypes: true })
     .filter((entry) => entry.isDirectory() && existsSync(join(packagesDir, entry.name, "package.yaml")))
     .map((entry) => ({ dir: join(packagesDir, entry.name), name: entry.name, ...manifest(join(packagesDir, entry.name)) }))
-    .filter((p) => !only.length || only.includes(p.name) || only.includes(p.id));
+    ;
+  if (new Set(list.map(p => p.id)).size !== list.length) throw new Error("Duplicate package ID");
+  return list.filter((p) => !only.length || only.includes(p.name) || only.includes(p.id));
 }
 
 function run(command, args, options = {}) {
@@ -115,6 +121,7 @@ const commands = {
     }
   },
   download(list) {
+    list = list.filter(p => !p.fixtureOnly);
     for (const p of list) {
       const tag = latestTag(p.id);
       if (!tag) {
@@ -133,6 +140,7 @@ const commands = {
     }
   },
   catalog(list) {
+    list = list.filter(p => !p.fixtureOnly);
     if (!flags.check) {
       writeCatalog(list, catalogFile);
       console.log(`catalog.json: ${list.length} packages`);
@@ -145,6 +153,7 @@ const commands = {
     } else console.log(`catalog.json: up to date (${list.length} packages)`);
   },
   release(list) {
+    list = list.filter(p => !p.fixtureOnly);
     const out = resolve(flags.out || "dist");
     const listed = JSON.parse(readFileSync(catalogFile, "utf8")).packages;
     for (const p of list) {

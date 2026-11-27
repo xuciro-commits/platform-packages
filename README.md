@@ -27,7 +27,7 @@
 
 ## 平台验收夹具
 
-[Platform 验收夹具](fixtures/platform/README.md) 与正式 `packages/` 分离，只保存独立测试包的当前作者态，制品临时构建，不进入正式市场。
+所有包作者态统一位于 `packages/<id>/`。独立验收包使用 `listing.stage: test` 与 `listing.source.app: fixtures` 标识，只参与验收、不进入市场；测试制品临时构建，不保留历史副本。
 
 ## 开发
 
