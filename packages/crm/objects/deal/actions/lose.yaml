@@ -11,6 +11,6 @@ transaction:
       set:
         state: "'lost'"
         lostreason: input.reason
-        competitor: input.competitor
+        lostto: input.competitor
         outcomenotes: input.notes
         closedate: today()

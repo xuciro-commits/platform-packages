@@ -15,7 +15,7 @@ fields:
   - {name: amount, title: Amount, type: money, default: "setting:currency", required: true, group: Deal}
   - {name: expectedclose, title: Expected close, type: date, required: true, group: Deal}
   - {name: source, title: Source, type: reference, ref: crm.source, group: Deal}
-  - {name: competitor, title: Main competitor, type: reference, ref: crm.competitor, group: Deal}
+  - {name: competitor, title: Main competitor, type: reference, ref: crm.competitor, inverse: deals, group: Deal}
   - {name: lead, title: Source lead, type: reference, ref: crm.lead, readOnly: true, group: Deal}
   - {name: nextstep, title: Next step, type: text, required: true, group: Next step, help: The single next thing that moves this deal forward.}
   - {name: nextstepdue, title: Next step due, type: date, required: true, group: Next step}
@@ -25,6 +25,7 @@ fields:
   - {name: productstotal, title: Products total, type: money, formula: sum(lines.amount), group: Forecast}
   - {name: closedate, title: Close date, type: date, readOnly: true, when: "state=won,lost", group: Outcome}
   - {name: lostreason, title: Lost reason, type: reference, ref: crm.lostreason, readOnly: true, when: state=lost, group: Outcome}
+  - {name: lostto, title: Lost to, type: reference, ref: crm.competitor, inverse: losses, readOnly: true, when: state=lost, group: Outcome}
   - {name: outcomenotes, title: Outcome notes, type: longtext, readOnly: true, when: "state=won,lost", group: Outcome}
   - {name: stage, title: Stage, type: reference, ref: crm.stage, default: qualification, aside: true}
   - {name: owner, title: Deal owner, type: member, default: member, aside: true}
@@ -44,7 +45,7 @@ view:
   layout: board
   lanes: stage
   dates: expectedclose
-  columns: [title, account, stage, amount, weighted, expectedclose, nextstep, nextstepdue, owner]
+  columns: [title, account, stage, state, amount, weighted, expectedclose, nextstep, nextstepdue, owner]
   sort: [{sortKey: expectedclose, direction: ascending}]
   group: none
   filters: []

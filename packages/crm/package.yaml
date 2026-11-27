@@ -1,5 +1,5 @@
 id: crm
-version: 0.3.4
+version: 0.3.5
 title: CRM
 namespace: crm
 description: Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal,

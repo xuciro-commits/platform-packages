@@ -1,15 +1,15 @@
 {
   "format": 2,
   "package": "crm",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "requires": [
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:d49fb9aff9bae9b707d2863f34fc552ec708e60266660eeb6351909c934d035a",
+  "artifact": "sha256:cd4ea9ecb2e79b0252132bc774bf6de13e453069e406a9d3288f842dcaaf64e9",
   "assets": {
     "app/crm": {
-      "digest": "sha256:496e5ad3188c00cb16113b1a5a3100e30fae3e8e5b4c803703d5fc419591cb58",
+      "digest": "sha256:5894a32b7572e4a4af958b8b9b8ac39afc2addee7b238bd2555f9c03686e0ebd",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -94,13 +94,17 @@
       ]
     },
     "object/crm.deal": {
-      "digest": "sha256:8a3b78027904fc33f7877026954636117e5d299bc07fec8aa27ce6864685d48d",
+      "digest": "sha256:36a7bcccb41c9e4db83fd41907ee8473d34c456fc146112b8082c918f19fb016",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.db9013342161bb58b18a984c6283efc60ce7358492ede2aedf9310751ee2379c",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.f1f3574e248188bf994d4365c8c16a82c4552e4e2c03cee4fa14dacd67957526",
+          "family": 2
         }
       ]
     },
@@ -138,7 +142,7 @@
       ]
     },
     "object/crm.lead": {
-      "digest": "sha256:a992271c29f880c9de25e62ce2f6f45e176edab5d9fe07d89263cc5fb14a70eb",
+      "digest": "sha256:ea14cff767cb0656310971ac754e1d328fcde22ff9b9d40e3a4be35f42bd8e2d",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -155,7 +159,7 @@
           "family": 3
         },
         {
-          "version": "schema.sha256.068b98ad06bdc7df5f6cdcda81f4d7ce122d85e6695a1c2ce6f2d191a557f630",
+          "version": "schema.sha256.9ac83fcf850b9580950846b37d2d972690030fdb20e55afa8f2c9a643a952f94",
           "family": 3
         }
       ]
@@ -258,7 +262,7 @@
       "sourceVersion": "1"
     },
     "page/crm.deal": {
-      "digest": "sha256:bf78684e8cbc329692072d187d05175ce735e9300c08a9dde354c7dcae23e1e4",
+      "digest": "sha256:27aad63db0c9b79e2191213e228a55eb2cf4dbeebfc9dabd670c34c0559631ec",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

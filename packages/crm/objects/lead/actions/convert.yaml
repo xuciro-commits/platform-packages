@@ -10,8 +10,8 @@ inputs:
   - {name: nextstep, title: Next step, type: text, required: true}
   - {name: nextstepdue, title: Next step due, type: date, required: true}
 transaction:
-  guard: budget != empty
-  message: Fill in the budget before converting; it becomes the deal amount.
+  guard: "budget != empty and (input.contact = empty or (input.account != empty and input.contact.account = input.account))"
+  message: Fill in the budget and choose an existing contact belonging to the selected account.
   steps:
     - name: organization
       target: party.organization

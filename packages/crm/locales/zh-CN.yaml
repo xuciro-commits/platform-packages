@@ -103,7 +103,8 @@ Existing contact: 已有联系人
 Existing customer: 老客户
 Exit criteria: 出阶段条件
 Expected close: 预计成交
-Fill in the budget before converting; it becomes the deal amount.: 转换前先填预算，它会成为商机金额。
+Fill in the budget and choose an existing contact belonging to the selected account.: 转换前先填预算；如复用已有联系人，请选择其所属客户。
+Losses by competitor: 按竞争对手统计丢单
 Financial services: 金融服务
 First response: 首次响应
 First response missed: 首次响应超时
