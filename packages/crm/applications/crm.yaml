@@ -22,6 +22,7 @@ dashboard:
   - {title: Forecast, kind: bar, object: crm.deal, domain: [[state, "=", open]], group: forecast, measure: "sum:weighted"}
   - {title: Win rate, kind: share, object: crm.deal, domain: [[state, in, [won, lost]]], group: state}
   - {title: Lost reasons, kind: share, object: crm.deal, domain: [[state, "=", lost]], group: lostreason}
+  - {title: Losses by competitor, kind: share, object: crm.deal, domain: [[state, "=", lost]], group: lostto}
   - {title: Leads by source, kind: share, object: crm.lead, group: source}
   - {title: New leads, kind: line, object: crm.lead, group: "created:month"}
   - {title: Won by month, kind: line, object: crm.deal, domain: [[state, "=", won]], group: "closedate:month", measure: "sum:amount"}

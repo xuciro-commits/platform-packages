@@ -1,15 +1,15 @@
 {
   "format": 2,
   "package": "crm",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "requires": [
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:68b4e5328a7690884670d1d3a0a3c08da1b7cd71435993624c6bdbc37ff1b471",
+  "artifact": "sha256:204a0ede4a2b6a2b8e8f4f2f205b92366320e97f57d68fee0efae26b9714fbe3",
   "assets": {
     "app/crm": {
-      "digest": "sha256:4b2484c4e6a89a04c524cf0bc5e2d13cb2f2bc2c56d0d020ee721748e3b03da7",
+      "digest": "sha256:6f7a60b5de1d688b0e623738d39db70c2ccdbbf970f1bbba63943dbb09b6a362",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -94,12 +94,12 @@
       ]
     },
     "object/crm.deal": {
-      "digest": "sha256:8a3b78027904fc33f7877026954636117e5d299bc07fec8aa27ce6864685d48d",
+      "digest": "sha256:a6bba302dd951eb04d2e4fe7ad1d72d5e3b8b9f494329a6730600fbb9c9f86f0",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.db9013342161bb58b18a984c6283efc60ce7358492ede2aedf9310751ee2379c",
+          "version": "schema.sha256.f1f3574e248188bf994d4365c8c16a82c4552e4e2c03cee4fa14dacd67957526",
           "family": 1
         }
       ]
@@ -138,25 +138,13 @@
       ]
     },
     "object/crm.lead": {
-      "digest": "sha256:a992271c29f880c9de25e62ce2f6f45e176edab5d9fe07d89263cc5fb14a70eb",
+      "digest": "sha256:2a3ede6332b84f4963ece068880bd08cd3f64e1f67cebe600c9321ecbdd0d432",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.057a7bcb444e67fa2473874f1253fc7086044642e7299d4688b63f576eae5e58",
+          "version": "schema.sha256.9ac83fcf850b9580950846b37d2d972690030fdb20e55afa8f2c9a643a952f94",
           "family": 1
-        },
-        {
-          "version": "schema.sha256.5866bf402e14a8678e42448793a7a2c66f62177af0a0fd087f0d277cb574d480",
-          "family": 2
-        },
-        {
-          "version": "schema.sha256.553ed6e5dfbbc03af5ca49090b32632eeb8bad21a8e3851d8fe8fc8f3d651266",
-          "family": 3
-        },
-        {
-          "version": "schema.sha256.068b98ad06bdc7df5f6cdcda81f4d7ce122d85e6695a1c2ce6f2d191a557f630",
-          "family": 3
         }
       ]
     },
@@ -247,7 +235,7 @@
       "sourceVersion": "1"
     },
     "page/crm.deal": {
-      "digest": "sha256:bf78684e8cbc329692072d187d05175ce735e9300c08a9dde354c7dcae23e1e4",
+      "digest": "sha256:27aad63db0c9b79e2191213e228a55eb2cf4dbeebfc9dabd670c34c0559631ec",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
