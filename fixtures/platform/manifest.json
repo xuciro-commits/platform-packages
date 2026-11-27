@@ -1,0 +1,483 @@
+{
+  "version": 1,
+  "source": {
+    "repository": "xuciro-commits/platform",
+    "commit": "40d39854f4e2d5d5e507b713db5a654cc2a61727"
+  },
+  "files": [
+    {
+      "source": "deploy/packages/README.md",
+      "path": "packages/README.md",
+      "bytes": 1179,
+      "sha256": "2a42835fb3241bc2663887197f433f604dd6c3ec50201131255c00ff002be1eb"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/applications/productionprovider.yaml",
+      "path": "packages/application.production-provider/applications/productionprovider.yaml",
+      "bytes": 1996,
+      "sha256": "05a6b680266d542b214588a61394818c346fb1e702644e3f1129b1ee5250e10f"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/docs/guide.md",
+      "path": "packages/application.production-provider/docs/guide.md",
+      "bytes": 442,
+      "sha256": "6d09f9ddfe301ce6f2b04d2a456eb67fac8550516c33e5c5b46e84d296438812"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/objects/batchproviderbatch/object.yaml",
+      "path": "packages/application.production-provider/objects/batchproviderbatch/object.yaml",
+      "bytes": 1053,
+      "sha256": "b0f0d4f67cc197cbe2d1edab6968a5a96d3464ee7117f02564fde5edc8a7eab4"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/objects/batchproviderorder/object.yaml",
+      "path": "packages/application.production-provider/objects/batchproviderorder/object.yaml",
+      "bytes": 15301,
+      "sha256": "a15277241b36bbff083f06597af0f48622a31d20a9f60a0764947562645a2116"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/objects/finishedstock/object.yaml",
+      "path": "packages/application.production-provider/objects/finishedstock/object.yaml",
+      "bytes": 517,
+      "sha256": "a0276a6d330c2b27ff64e6dfde4fde13943e5b0d47d29d2df000adf3a7f19fb9"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/objects/stockreceipt/object.yaml",
+      "path": "packages/application.production-provider/objects/stockreceipt/object.yaml",
+      "bytes": 577,
+      "sha256": "0d49d0e15cffe251b1e73cc643b25efe077a80ec682722c20f8f976363bda034"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/package.lock.json",
+      "path": "packages/application.production-provider/package.lock.json",
+      "bytes": 1361,
+      "sha256": "e352743b52f8e0761b80f1f25719c46eb9e47bcd77ff2b41c4c8b5ff45b32878"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/package.yaml",
+      "path": "packages/application.production-provider/package.yaml",
+      "bytes": 676,
+      "sha256": "d7052a9144527213c7a8384e173edc63609e3ef60e134936b03efd2fd172def5"
+    },
+    {
+      "source": "deploy/packages/application.production-provider/tests/test-plans/productionbatches.yaml",
+      "path": "packages/application.production-provider/tests/test-plans/productionbatches.yaml",
+      "bytes": 1502,
+      "sha256": "80e798f29d66181f1535759217ffd513ac1ed00df86c5d6caaffbfc04df5828a"
+    },
+    {
+      "source": "deploy/packages/connectortrial-contract/contracts/connectortrial.yaml",
+      "path": "packages/connectortrial-contract/contracts/connectortrial.yaml",
+      "bytes": 371,
+      "sha256": "8c00e285fbb5179ac6e81daf034ae215a4a7a098d7b8378fc17fd2ed0d830c88"
+    },
+    {
+      "source": "deploy/packages/connectortrial-contract/package.lock.json",
+      "path": "packages/connectortrial-contract/package.lock.json",
+      "bytes": 402,
+      "sha256": "1466e0e88a14f1a771159ad90ff6a643893c739d89069dfa2a437ab46e10a33d"
+    },
+    {
+      "source": "deploy/packages/connectortrial-contract/package.yaml",
+      "path": "packages/connectortrial-contract/package.yaml",
+      "bytes": 418,
+      "sha256": "d610bfa1af4c7c5e03dffdaab1b5210f3873ed94ef0aa1ce0ae7ed27a2064fbc"
+    },
+    {
+      "source": "deploy/packages/connectortrial/applications/connectortrial.yaml",
+      "path": "packages/connectortrial/applications/connectortrial.yaml",
+      "bytes": 93,
+      "sha256": "f19578367be74fcdab2bf90dc11ae40c87484a6b415fee18d4274ff3b5f4b1e9"
+    },
+    {
+      "source": "deploy/packages/connectortrial/objects/dispatch/actions/send.yaml",
+      "path": "packages/connectortrial/objects/dispatch/actions/send.yaml",
+      "bytes": 157,
+      "sha256": "5650540f536cdd58318a8176a159676ca0ec9776eaeb116d6b97d5a01b9ca6be"
+    },
+    {
+      "source": "deploy/packages/connectortrial/objects/dispatch/object.yaml",
+      "path": "packages/connectortrial/objects/dispatch/object.yaml",
+      "bytes": 269,
+      "sha256": "21e025c7902ccb7fa5a8e9ea1e68c860f6e397b2801a9939f9e896f3df2845d8"
+    },
+    {
+      "source": "deploy/packages/connectortrial/package.lock.json",
+      "path": "packages/connectortrial/package.lock.json",
+      "bytes": 974,
+      "sha256": "907e50e817be4f334e65508be6d986bddaec97e3b328672653bd6a5a7e3553e8"
+    },
+    {
+      "source": "deploy/packages/connectortrial/package.yaml",
+      "path": "packages/connectortrial/package.yaml",
+      "bytes": 422,
+      "sha256": "6383830b35d39078d3292044df5de90d0f419bb162f44894dc9240a594cae1be"
+    },
+    {
+      "source": "deploy/packages/production-provider.json",
+      "path": "packages/production-provider.json",
+      "bytes": 54660,
+      "sha256": "bdb9b5bcd17b95c21e5bfc9597bc5ae772f6dc8cdfc6a27d5ec12bb4e79d979c"
+    },
+    {
+      "source": "deploy/test-packages/README.md",
+      "path": "test-packages/README.md",
+      "bytes": 171,
+      "sha256": "0a62d73318662a15b1146eb13bb4b2f812520391c7710213d9cccfdc5157c274"
+    },
+    {
+      "source": "deploy/test-packages/crm.json",
+      "path": "test-packages/crm.json",
+      "bytes": 299012,
+      "sha256": "9544e9dffb09259afa756cbc24eb34ea23de97c1e57c4f258b45b53d7dd3fc2f"
+    },
+    {
+      "source": "deploy/test-packages/crm/applications/crm.yaml",
+      "path": "test-packages/crm/applications/crm.yaml",
+      "bytes": 8873,
+      "sha256": "3a4328819cae9b8143cc6658d06fe00945e41a69475eefa6a38766df4abe27ad"
+    },
+    {
+      "source": "deploy/test-packages/crm/flows/leadbalance.yaml",
+      "path": "test-packages/crm/flows/leadbalance.yaml",
+      "bytes": 1325,
+      "sha256": "c7da108c310076299bbdcea8e9c6fb8e5edaaefb2d81db69383f61e875c40070"
+    },
+    {
+      "source": "deploy/test-packages/crm/flows/leadresponded.yaml",
+      "path": "test-packages/crm/flows/leadresponded.yaml",
+      "bytes": 964,
+      "sha256": "751c42272a224191ae88868ac92dd012d967db11976aedce01fa7d9d5f9fcde8"
+    },
+    {
+      "source": "deploy/test-packages/crm/flows/leadresponse.yaml",
+      "path": "test-packages/crm/flows/leadresponse.yaml",
+      "bytes": 963,
+      "sha256": "582daddfd5e8a903369866e4c94346ea254982b8029a9a9d6f29dfe11dd4b1c3"
+    },
+    {
+      "source": "deploy/test-packages/crm/integrations/matching/crmorganizationmatch.yaml",
+      "path": "test-packages/crm/integrations/matching/crmorganizationmatch.yaml",
+      "bytes": 140,
+      "sha256": "ed4bbaed8cbf221b8ab66c21ac01584f22771f7351a5d7634459e641350e7be5"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/contact/actions/create.yaml",
+      "path": "test-packages/crm/objects/contact/actions/create.yaml",
+      "bytes": 1292,
+      "sha256": "150c8b07958e4114ae14459a960eb32adebb70d6afbf64902248257bb3808a7f"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/contact/actions/edit.yaml",
+      "path": "test-packages/crm/objects/contact/actions/edit.yaml",
+      "bytes": 1297,
+      "sha256": "eefea3d3480e703b0422dff97fddba60491e395db404ac0e697d8b07b8bf8d52"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/contact/object.yaml",
+      "path": "test-packages/crm/objects/contact/object.yaml",
+      "bytes": 1218,
+      "sha256": "8afbcf4d9957dee9733e07cec798418137db23d80dcf404edfa736294d98c1a5"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/contact/page.yaml",
+      "path": "test-packages/crm/objects/contact/page.yaml",
+      "bytes": 2129,
+      "sha256": "0e25bf4bdb905e2a53ca61d04fe87de3ea757250787b65f6d6924d408f85c39c"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/deal/actions/create.yaml",
+      "path": "test-packages/crm/objects/deal/actions/create.yaml",
+      "bytes": 1799,
+      "sha256": "5ee679c93905be4840552ad490ff1b4ebb49569b6d5591f68a0961b662b6b5f0"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/deal/actions/edit.yaml",
+      "path": "test-packages/crm/objects/deal/actions/edit.yaml",
+      "bytes": 1729,
+      "sha256": "1fca3a82002562b6900defdc7c165132fbe7398a7d750927f9e0ea434340080f"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/deal/object.yaml",
+      "path": "test-packages/crm/objects/deal/object.yaml",
+      "bytes": 12664,
+      "sha256": "bdfbccb33cc20343e9ccb8bfeed6d7122798ef13447d3bcf077d834011e44c11"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/deal/page.yaml",
+      "path": "test-packages/crm/objects/deal/page.yaml",
+      "bytes": 2536,
+      "sha256": "b094ba6b94d4d55cb0a951545495fe0bfde8c1343c563af725fca23a3c02b12a"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/dealline/object.yaml",
+      "path": "test-packages/crm/objects/dealline/object.yaml",
+      "bytes": 1499,
+      "sha256": "0258c97a12dc90f3717d49e68af023464b84fab40604fa580ddf5734935ba453"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/dealstatus/object.yaml",
+      "path": "test-packages/crm/objects/dealstatus/object.yaml",
+      "bytes": 1615,
+      "sha256": "bb8f484c867c50d5f0358aa07e4c55aaa2256113509b92b4221cda5bb28eb704"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/industry/object.yaml",
+      "path": "test-packages/crm/objects/industry/object.yaml",
+      "bytes": 361,
+      "sha256": "eabbee39f6902bdc5254b547fc6c9ffe862efa60046d211aa52c102b40245236"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/lead/actions/convert.yaml",
+      "path": "test-packages/crm/objects/lead/actions/convert.yaml",
+      "bytes": 664,
+      "sha256": "b98f0b5173797c49700a65da5e4f015e36a257c559d9eb26be62da17c8144ed0"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/lead/actions/create.yaml",
+      "path": "test-packages/crm/objects/lead/actions/create.yaml",
+      "bytes": 2458,
+      "sha256": "111849b2071521ac2602f7f61814c22567b9ea6f6b09126c02358a1a9d6ec3f4"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/lead/actions/edit.yaml",
+      "path": "test-packages/crm/objects/lead/actions/edit.yaml",
+      "bytes": 2379,
+      "sha256": "17dd707bb4c09680067bb0872a12ef6ff2b70819beb19caa968ea8fc51fe848d"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/lead/object.yaml",
+      "path": "test-packages/crm/objects/lead/object.yaml",
+      "bytes": 16489,
+      "sha256": "13eb94282e610e40427d964592bc0224e2f7d1ea76b3662bd9c80c5f4873a714"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/lead/page.yaml",
+      "path": "test-packages/crm/objects/lead/page.yaml",
+      "bytes": 2713,
+      "sha256": "1287d4dc1eef851b5e16a51c6a80ba76eec09128aaa7f53ff495d54d196ba434"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/leadstatus/object.yaml",
+      "path": "test-packages/crm/objects/leadstatus/object.yaml",
+      "bytes": 1347,
+      "sha256": "678ce3936b88dd63e368b0aa6201f0d4b3f5a68b9a5235c05bbd71874ae2fa99"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/lostreason/object.yaml",
+      "path": "test-packages/crm/objects/lostreason/object.yaml",
+      "bytes": 437,
+      "sha256": "ff584e752ebb05ac4ea49a2682c473ccce961744019d3ed597b549b973fb675b"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/note/actions/create.yaml",
+      "path": "test-packages/crm/objects/note/actions/create.yaml",
+      "bytes": 744,
+      "sha256": "a420b567f4947245b3d44d4e690da40600d0ad657d82639a036e6d0a80102e9d"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/note/actions/edit.yaml",
+      "path": "test-packages/crm/objects/note/actions/edit.yaml",
+      "bytes": 749,
+      "sha256": "2207617a9b43e3339ce27c05cd77d83a330843fa5e6ea20b3ee580b82508b42c"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/note/object.yaml",
+      "path": "test-packages/crm/objects/note/object.yaml",
+      "bytes": 740,
+      "sha256": "e48594ae4dad701600293b11b3f8493393a94147dd954ca15bb61d611082148e"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/note/page.yaml",
+      "path": "test-packages/crm/objects/note/page.yaml",
+      "bytes": 1878,
+      "sha256": "de269a04d9a9d3171e2ae39b3e6fadd4af5434dc5af3169699cc98959e20b5ed"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/organization/actions/create.yaml",
+      "path": "test-packages/crm/objects/organization/actions/create.yaml",
+      "bytes": 1268,
+      "sha256": "8c886eb15f837631d9692c4c03ad61bf57adcc73be74575daf9ba66d052fb267"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/organization/actions/edit.yaml",
+      "path": "test-packages/crm/objects/organization/actions/edit.yaml",
+      "bytes": 1273,
+      "sha256": "3f96d6ccad79461090d5b8d2a29fa7e6ece4da3bdb92142fbee8828f43acbc31"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/organization/object.yaml",
+      "path": "test-packages/crm/objects/organization/object.yaml",
+      "bytes": 1140,
+      "sha256": "56dd7783205598308306c2c70dbfc282dd6fa5559c985e1dc467126d7e2a14f8"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/organization/page.yaml",
+      "path": "test-packages/crm/objects/organization/page.yaml",
+      "bytes": 2134,
+      "sha256": "9de46c2d0ebd11504dc467bafaf5f4aea8554c1798a97537615468024a752728"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/product/object.yaml",
+      "path": "test-packages/crm/objects/product/object.yaml",
+      "bytes": 679,
+      "sha256": "a61d5b75bf64168284ced6fbd889e66c627afcc190c06c4ad102f98766e5c1fb"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/product/page.yaml",
+      "path": "test-packages/crm/objects/product/page.yaml",
+      "bytes": 1915,
+      "sha256": "81308d256a8132021f36f5bf218ba09689d185757196f5ea9c0a0fd0bd012f0d"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/source/object.yaml",
+      "path": "test-packages/crm/objects/source/object.yaml",
+      "bytes": 421,
+      "sha256": "2cea9d66b62410aa0ea76d0a5d05671b8fbf6221ae22bfc60bf2ded6b602ef8d"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/task/actions/create.yaml",
+      "path": "test-packages/crm/objects/task/actions/create.yaml",
+      "bytes": 1339,
+      "sha256": "b42548e4f95a8e44521e76b21df3bb9a368c48e60f5b57756974b782f89e22e5"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/task/actions/edit.yaml",
+      "path": "test-packages/crm/objects/task/actions/edit.yaml",
+      "bytes": 1323,
+      "sha256": "6016aca21ae278f96b9bf55904651043be4561859110c7f018fe9af97a5ce146"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/task/object.yaml",
+      "path": "test-packages/crm/objects/task/object.yaml",
+      "bytes": 2815,
+      "sha256": "8014c77c15a9244666e91dd4061283e049b42c851cd6cafd1dd9b779d129e62e"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/task/page.yaml",
+      "path": "test-packages/crm/objects/task/page.yaml",
+      "bytes": 2214,
+      "sha256": "689b41f0b9be7786bbd2c4618e3475e13d20fb9622db3f6548fc6652fc550823"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/territory/object.yaml",
+      "path": "test-packages/crm/objects/territory/object.yaml",
+      "bytes": 570,
+      "sha256": "851d71e20c35d3bef040a9f6e168eaffbcda2c96fc669e62f2bb922960e23d25"
+    },
+    {
+      "source": "deploy/test-packages/crm/objects/territory/page.yaml",
+      "path": "test-packages/crm/objects/territory/page.yaml",
+      "bytes": 1900,
+      "sha256": "79d9b193ff354cbe9e089729c4042e3ef90a891c708cce1b306001537b70f215"
+    },
+    {
+      "source": "deploy/test-packages/crm/package.lock.json",
+      "path": "test-packages/crm/package.lock.json",
+      "bytes": 11634,
+      "sha256": "9d12564be13688f2dd3759de3308dce547eab68baff9f16ac50404779f00f330"
+    },
+    {
+      "source": "deploy/test-packages/crm/package.yaml",
+      "path": "test-packages/crm/package.yaml",
+      "bytes": 542,
+      "sha256": "ba9eaf683e1f137ff08ebc27bc8f67265588099e353d64c43e160e84c6c65fba"
+    },
+    {
+      "source": "scripts/frontend-fixtures/assets-0.1.0.json",
+      "path": "frontend-fixtures/assets-0.1.0.json",
+      "bytes": 99711,
+      "sha256": "b62e59b3b148970db31c721db82d5d8b46c64a44035dfb5aa6947bf1f416189f"
+    },
+    {
+      "source": "scripts/frontend-fixtures/call-0.1.0.json",
+      "path": "frontend-fixtures/call-0.1.0.json",
+      "bytes": 3778,
+      "sha256": "aa55c8403db5b3acb1fab25978818e538e301722155994989b32dffc6c30f615"
+    },
+    {
+      "source": "scripts/frontend-fixtures/connectortrial-0.1.0.json",
+      "path": "frontend-fixtures/connectortrial-0.1.0.json",
+      "bytes": 8313,
+      "sha256": "f3a82b6ce97954914607c6d17cf9ec777f23b46ddc1462eabfddff99274b474c"
+    },
+    {
+      "source": "scripts/frontend-fixtures/connectortrial-contract-0.1.0.json",
+      "path": "frontend-fixtures/connectortrial-contract-0.1.0.json",
+      "bytes": 1600,
+      "sha256": "d6b9a41fb3632b56a03815d16d0d1c597f227ef8f065c86d5bbe4d899b9528d3"
+    },
+    {
+      "source": "scripts/frontend-fixtures/crm-0.1.21.json",
+      "path": "frontend-fixtures/crm-0.1.21.json",
+      "bytes": 293286,
+      "sha256": "6c81842476afd1f758c5584535120dd6e164796741ea8aab7813aee93d4b5070"
+    },
+    {
+      "source": "scripts/frontend-fixtures/crm-official-0.3.0.json",
+      "path": "frontend-fixtures/crm-official-0.3.0.json",
+      "bytes": 262104,
+      "sha256": "a872d5ccae39740b0c1f2ab9d6acc883f87bf8620efb6a519453c488080ab84b"
+    },
+    {
+      "source": "scripts/frontend-fixtures/crm-official-0.3.1.json",
+      "path": "frontend-fixtures/crm-official-0.3.1.json",
+      "bytes": 262105,
+      "sha256": "b828b66e582724e737f6049848083306f7c57daff8ecdc1c257501e62f9fdea7"
+    },
+    {
+      "source": "scripts/frontend-fixtures/crm-official-0.3.2.json",
+      "path": "frontend-fixtures/crm-official-0.3.2.json",
+      "bytes": 262446,
+      "sha256": "a20e6a910ac4cce4fcd93d6baea8a1c67ecdac5a00586fe441ca5beb0a054cbb"
+    },
+    {
+      "source": "scripts/frontend-fixtures/crm-official-0.3.3.json",
+      "path": "frontend-fixtures/crm-official-0.3.3.json",
+      "bytes": 286827,
+      "sha256": "68b4e5328a7690884670d1d3a0a3c08da1b7cd71435993624c6bdbc37ff1b471"
+    },
+    {
+      "source": "scripts/frontend-fixtures/geo-0.1.2.json",
+      "path": "frontend-fixtures/geo-0.1.2.json",
+      "bytes": 851750,
+      "sha256": "8f9a4310de382ae59537dac744bdfa94b140b5881d89f5f83f9b826c391ad96a"
+    },
+    {
+      "source": "scripts/frontend-fixtures/party-0.1.0.json",
+      "path": "frontend-fixtures/party-0.1.0.json",
+      "bytes": 44637,
+      "sha256": "f45bae3bd7c3cfb012b672f1e4fbe73d6c220f90f4e240c8b889434e95602e47"
+    },
+    {
+      "source": "scripts/frontend-fixtures/party-0.2.2.json",
+      "path": "frontend-fixtures/party-0.2.2.json",
+      "bytes": 52644,
+      "sha256": "d2b968d7e33a5ebd7f12cad6cc9c48fc185db975be07d26c902397caa6100001"
+    },
+    {
+      "source": "scripts/frontend-fixtures/phone-0.1.1.json",
+      "path": "frontend-fixtures/phone-0.1.1.json",
+      "bytes": 75829,
+      "sha256": "37c87b4b0a5bb6ebcfc78a4506f9617946f26923433a704b99c864c99fd22756"
+    },
+    {
+      "source": "scripts/frontend-fixtures/production-provider-0.1.4.json",
+      "path": "frontend-fixtures/production-provider-0.1.4.json",
+      "bytes": 43546,
+      "sha256": "ca008980a77246b3ae940a8f51fa587ed6eeb6303721082f41fbfa7f5f5e822c"
+    },
+    {
+      "source": "scripts/frontend-fixtures/projects-0.1.1.json",
+      "path": "frontend-fixtures/projects-0.1.1.json",
+      "bytes": 113134,
+      "sha256": "37bdb7aa927c1215f000748df77d1097993de22419bf0259f05cc221c3259b51"
+    },
+    {
+      "source": "scripts/frontend-fixtures/uom-0.1.1.json",
+      "path": "frontend-fixtures/uom-0.1.1.json",
+      "bytes": 29273,
+      "sha256": "e3af0f90086f6b8a2f411eb6fdc662fabdead90566b3c94a182fce4563b992e1"
+    }
+  ]
+}

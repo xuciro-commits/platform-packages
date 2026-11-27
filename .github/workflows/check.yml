@@ -47,6 +47,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: scripts/install-pkg.sh "$RUNNER_TEMP/pkg"
 
+      - name: Platform fixture integrity and static package checks
+        run: |
+          node scripts/check-platform-fixtures.mjs
+          "$RUNNER_TEMP/pkg" check -install=false -packages fixtures/platform/packages
+          "$RUNNER_TEMP/pkg" check -install=false -packages fixtures/platform/test-packages
+
       - name: Layout, CHANGELOG and version order
         run: node scripts/packages.mjs layout
 
