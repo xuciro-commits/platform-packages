@@ -1,0 +1,43 @@
+name: delivery
+namespace: sales
+title: Delivery note
+plural: Delivery notes
+icon: truck
+display: title
+naming: DN-{year}-{n:5}
+sets:
+  lines: {object: sales.deliveryline, limit: 500}
+  costs: {object: sales.costentry, limit: 200}
+  invoices: {object: sales.invoice, limit: 200}
+fields:
+  - {name: title, title: Delivery reference, type: text, required: true, search: true, group: Delivery}
+  - {name: order, title: Sales order, type: reference, ref: sales.order, inverse: deliveries, group: Delivery}
+  - {name: customer, title: Customer, type: reference, ref: sales.customer, required: true, group: Delivery}
+  - {name: warehouse, title: Warehouse, type: text, required: true, default: MAIN, group: Delivery}
+  - {name: postedon, title: Posting date, type: date, required: true, default: today, group: Delivery}
+  - {name: currency, title: Currency, type: choice, required: true, default: CNY, choices: "CNY:CNY,USD:USD,EUR:EUR", group: Delivery}
+  - {name: carrier, title: Carrier, type: text, group: Delivery}
+  - {name: remarks, title: Remarks, type: longtext, group: Delivery}
+  - {name: linecount, title: Line count, type: integer, formula: count(lines), group: Totals}
+  - {name: totalquantity, title: Total quantity, type: decimal, formula: sum(lines.quantity), group: Totals}
+  - {name: total, title: Sales amount, type: decimal, formula: sum(lines.amount), group: Totals}
+  - {name: totalcost, title: Cost of goods sold, type: decimal, formula: sum(costs.amount), group: Totals}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: posted, title: Posted, tone: success}
+  - {name: reversed, title: Reversed, tone: neutral}
+actions: [post, postreply, void]
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [title, order, customer, warehouse, postedon, currency, totalquantity, total, totalcost, state]
+  sort: [{sortKey: postedon, direction: descending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  print: {title: Delivery note, fields: [title, order, customer, warehouse, postedon, currency, linecount, totalquantity, total, totalcost]}

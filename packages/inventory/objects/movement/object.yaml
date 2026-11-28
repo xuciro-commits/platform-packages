@@ -12,7 +12,7 @@ sets:
 fields:
   - {name: title, title: Reference, type: text, required: true, search: true}
   - {name: material, title: Item, type: reference, ref: item.master, required: true}
-  - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, required: true}
+  - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, inverse: stock, required: true}
   - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
   - name: amount
     title: Valuation amount
@@ -21,7 +21,7 @@ fields:
     from: "if(quantity > 0, 0, if(coalesce(material.category.valuation, 'moving_average') = 'moving_average' and prior_balance('stock', 'quantity') > 0, round(quantity * prior_balance('stock', 'amount') / prior_balance('stock', 'quantity'), 2), 0))"
   - {name: on, title: Business date, type: date, required: true, default: today}
   - {name: sourcetype, title: Source document type, type: text}
-  - {name: sourceid, title: Source document, type: text, search: true}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true}
   - {name: reverses, title: Reverses, type: reference, ref: inventory.movement, readOnly: true}
   - {name: reversed, title: Reversed, type: boolean, readOnly: true}
 depletion:

@@ -1,3 +1,7 @@
+## 0.1.2
+
+- Add `stock.reserve/1` capability contract for cross-authority stock reservation and release.
+
 # Changelog
 
 ## 0.1.1

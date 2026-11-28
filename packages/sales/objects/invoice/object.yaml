@@ -1,0 +1,46 @@
+name: invoice
+namespace: sales
+title: Sales invoice
+plural: Sales invoices
+icon: banknotes
+display: title
+naming: SINV-{year}-{n:5}
+sets:
+  lines: {object: sales.invoiceline, limit: 500}
+fields:
+  - {name: title, title: Invoice reference, type: text, required: true, search: true, group: Invoice}
+  - {name: order, title: Sales order, type: reference, ref: sales.order, inverse: invoices, group: Invoice}
+  - {name: delivery, title: Delivery note, type: reference, ref: sales.delivery, inverse: invoices, group: Invoice}
+  - {name: customer, title: Customer, type: reference, ref: sales.customer, required: true, group: Invoice}
+  - {name: postedon, title: Posting date, type: date, required: true, default: today, group: Invoice}
+  - {name: duedate, title: Due date, type: date, required: true, default: today, group: Invoice}
+  - {name: currency, title: Currency, type: choice, required: true, default: CNY, choices: "CNY:CNY,USD:USD,EUR:EUR", group: Invoice}
+  - {name: remarks, title: Remarks, type: longtext, group: Invoice}
+  - {name: linecount, title: Line count, type: integer, formula: count(lines), group: Totals}
+  - {name: totalquantity, title: Total quantity, type: decimal, formula: sum(lines.quantity), group: Totals}
+  - {name: revenueamount, title: Revenue amount, type: decimal, formula: sum(lines.amount), group: Totals}
+  - {name: taxamount, title: Tax amount, type: decimal, formula: sum(lines.taxamount), group: Totals}
+  - {name: receivableamount, title: Receivable amount, type: decimal, formula: "sum(lines.amount) + sum(lines.taxamount)", group: Totals}
+  - {name: total, title: Total amount, type: decimal, formula: "sum(lines.amount) + sum(lines.taxamount)", group: Totals}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: posted, title: Posted, tone: success}
+  - {name: paid, title: Paid, tone: info}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [post, markpaid, void]
+constraints:
+  - {name: invoicedates, kind: expression, fields: [postedon, duedate], expr: "duedate >= postedon", message: Due date cannot precede posting date.}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [title, order, delivery, customer, postedon, duedate, currency, revenueamount, taxamount, receivableamount, state]
+  sort: [{sortKey: postedon, direction: descending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  print: {title: Sales invoice, fields: [title, order, delivery, customer, postedon, duedate, currency, linecount, revenueamount, taxamount, receivableamount]}

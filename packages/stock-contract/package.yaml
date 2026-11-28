@@ -1,8 +1,8 @@
 id: stock-contract
-version: 0.1.1
+version: 0.1.2
 title: Inventory contract
 namespace: stockcontract
-description: Stock posting and reversal capability contract stock.post/1.
+description: Stock posting, reversal and reservation capability contracts stock.post/1 and stock.reserve/1.
 listing:
   industries:
   - general
@@ -13,6 +13,7 @@ listing:
   keywords:
   - stock
   - ledger
+  - reservation
   - contract
   stage: preview
   source:
@@ -23,4 +24,7 @@ roots:
 - app: build
   kind: contract
   name: stock.post
+- app: build
+  kind: contract
+  name: stock.reserve
 artifact: stock-contract.json

@@ -1,0 +1,26 @@
+title: Reservation reply
+confirmationOnly: true
+from: [confirming]
+roles: [rep, manager]
+inputs:
+  - {name: outcome, title: Outcome, type: text, required: true}
+  - {name: reason, title: Reason, type: text}
+  - {name: ref, title: Reservation reference, type: text}
+transaction:
+  reads:
+    collections:
+      lines: {app: build, object: sales.orderline, policy: complete, query: "", set: lines, version: 0}
+  steps:
+    - target: $subject
+      set:
+        pendinglines: "if(coalesce(pendinglines, 0) > 1, coalesce(pendinglines, 0) - 1, 0)"
+        shortage: "if(input.outcome = 'accepted', coalesce(shortage, ''), if(coalesce(shortage, '') = '', coalesce(input.reason, 'Shortage'), concat(coalesce(shortage, ''), '; ', coalesce(input.reason, 'Shortage'))))"
+        state: "if(input.outcome = 'accepted' and coalesce(pendinglines, 0) <= 1 and coalesce(shortage, '') = '', 'confirmed', 'confirming')"
+    - name: markreserved
+      forEach:
+        set: lines
+        steps:
+          - name: markline
+            when: "input.outcome = 'accepted' and concat('inventory.reservation/RES-', row.id) = coalesce(input.ref, '')"
+            target: $item
+            set: {reserved: true}

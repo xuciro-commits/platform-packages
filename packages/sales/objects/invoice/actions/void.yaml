@@ -1,0 +1,8 @@
+ask: Voiding a posted sales invoice cancels its receivable and revenue facts.
+title: Void invoice
+from: [draft, posted]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

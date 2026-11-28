@@ -1,0 +1,7 @@
+title: Place on hold
+from: [active]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'hold'"}

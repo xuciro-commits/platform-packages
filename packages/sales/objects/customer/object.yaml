@@ -1,0 +1,36 @@
+name: customer
+namespace: sales
+title: Customer
+plural: Customers
+icon: user-circle
+display: title
+extends: party.organization
+naming: CUST-{n:5}
+fields:
+  - {name: base, title: Organization, type: reference, ref: party.organization, required: true, group: Identity}
+  - {name: title, title: Customer name, type: text, from: base.name, search: true, group: Identity}
+  - {name: customerkind, title: Customer type, type: choice, required: true, default: company, choices: "company:Company,individual:Individual,partnership:Partnership", group: Identity}
+  - {name: group, title: Customer group, type: reference, ref: sales.customergroup, group: Identity}
+  - {name: territory, title: Territory, type: reference, ref: sales.territory, group: Identity}
+  - {name: primarycontact, title: Primary contact, type: reference, ref: party.contact, group: Identity}
+  - {name: defaultcurrency, title: Billing currency, type: choice, default: CNY, choices: "CNY:CNY,USD:USD,EUR:EUR", group: Commercial}
+  - {name: creditlimit, title: Credit limit, type: decimal, default: "0", group: Commercial}
+  - {name: notes, title: Customer notes, type: longtext, group: Commercial}
+states:
+  - {name: pending, title: Pending activation, tone: neutral}
+  - {name: active, title: Active, tone: success}
+  - {name: hold, title: On hold, tone: warning}
+actions: [activate, hold, releasehold]
+constraints:
+  - {name: customeridentity, kind: unique, fields: [base], message: Organization already has a customer profile.}
+createTransaction:
+  guard: "primarycontact = empty or primarycontact.organization = base"
+  message: Primary contact must belong to the customer organization.
+  steps:
+    - target: $subject
+      set: {customerkind: customerkind}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [title, customerkind, group, territory, defaultcurrency, creditlimit, state], sort: [], group: state, lanes: "", filters: [], search: ""}

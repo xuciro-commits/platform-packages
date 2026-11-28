@@ -1,12 +1,11 @@
 {
   "format": 4,
   "name": "sales.sales_invoice",
-  "title": "[Pending] Sales Invoice",
-  "description": "Not implemented: Sales Invoice requires domain modeling, authorization and independent acceptance.",
+  "title": "Sales invoices",
   "object": {
     "app": "build",
     "kind": "object",
-    "name": "sales.navpending"
+    "name": "sales.invoice"
   },
   "dataBindings": [
     {
@@ -15,25 +14,104 @@
       "object": {
         "app": "build",
         "kind": "object",
-        "name": "sales.navpending"
+        "name": "sales.invoice"
       },
       "model": {
-        "type": "sales.navpending",
+        "type": "sales.invoice",
         "fields": [
           {
             "name": "title"
+          },
+          {
+            "name": "order"
+          },
+          {
+            "name": "delivery"
+          },
+          {
+            "name": "customer"
+          },
+          {
+            "name": "postedon"
+          },
+          {
+            "name": "duedate"
+          },
+          {
+            "name": "currency"
+          },
+          {
+            "name": "remarks"
+          },
+          {
+            "name": "linecount"
+          },
+          {
+            "name": "totalquantity"
+          },
+          {
+            "name": "revenueamount"
+          },
+          {
+            "name": "taxamount"
+          },
+          {
+            "name": "receivableamount"
+          },
+          {
+            "name": "total"
           }
         ]
       },
       "fields": [
         {
           "name": "title"
+        },
+        {
+          "name": "order"
+        },
+        {
+          "name": "delivery"
+        },
+        {
+          "name": "customer"
+        },
+        {
+          "name": "postedon"
+        },
+        {
+          "name": "duedate"
+        },
+        {
+          "name": "currency"
+        },
+        {
+          "name": "remarks"
+        },
+        {
+          "name": "linecount"
+        },
+        {
+          "name": "totalquantity"
+        },
+        {
+          "name": "revenueamount"
+        },
+        {
+          "name": "taxamount"
+        },
+        {
+          "name": "receivableamount"
+        },
+        {
+          "name": "total"
         }
       ],
       "owner": "binding:list",
       "ports": {
         "selectionMode": "write",
-        "widget": "table"
+        "widget": "table",
+        "parentable": "true"
       }
     },
     {
@@ -42,19 +120,97 @@
       "object": {
         "app": "build",
         "kind": "object",
-        "name": "sales.navpending"
+        "name": "sales.invoice"
       },
       "model": {
-        "type": "sales.navpending",
+        "type": "sales.invoice",
         "fields": [
           {
             "name": "title"
+          },
+          {
+            "name": "order"
+          },
+          {
+            "name": "delivery"
+          },
+          {
+            "name": "customer"
+          },
+          {
+            "name": "postedon"
+          },
+          {
+            "name": "duedate"
+          },
+          {
+            "name": "currency"
+          },
+          {
+            "name": "remarks"
+          },
+          {
+            "name": "linecount"
+          },
+          {
+            "name": "totalquantity"
+          },
+          {
+            "name": "revenueamount"
+          },
+          {
+            "name": "taxamount"
+          },
+          {
+            "name": "receivableamount"
+          },
+          {
+            "name": "total"
           }
         ]
       },
       "fields": [
         {
           "name": "title"
+        },
+        {
+          "name": "order"
+        },
+        {
+          "name": "delivery"
+        },
+        {
+          "name": "customer"
+        },
+        {
+          "name": "postedon"
+        },
+        {
+          "name": "duedate"
+        },
+        {
+          "name": "currency"
+        },
+        {
+          "name": "remarks"
+        },
+        {
+          "name": "linecount"
+        },
+        {
+          "name": "totalquantity"
+        },
+        {
+          "name": "revenueamount"
+        },
+        {
+          "name": "taxamount"
+        },
+        {
+          "name": "receivableamount"
+        },
+        {
+          "name": "total"
         }
       ],
       "owner": "binding:detail",
@@ -64,7 +220,34 @@
       }
     }
   ],
-  "actionTriggers": [],
+  "actionTriggers": [
+    {
+      "id": "page",
+      "binding": "page",
+      "actions": [
+        {
+          "app": "build",
+          "kind": "action",
+          "name": "sales.invoice.create"
+        },
+        {
+          "app": "build",
+          "kind": "action",
+          "name": "sales.invoice.edit"
+        }
+      ]
+    },
+    {
+      "id": "list",
+      "binding": "list",
+      "owner": "binding:list"
+    },
+    {
+      "id": "detail",
+      "binding": "detail",
+      "owner": "binding:detail"
+    }
+  ],
   "inputSchema": {},
   "scopeVisibility": {
     "root": "page",
@@ -100,12 +283,16 @@
         {
           "id": "list",
           "binding": "list",
-          "triggers": []
+          "triggers": [
+            "list"
+          ]
         },
         {
           "id": "detail",
           "binding": "detail",
-          "triggers": []
+          "triggers": [
+            "detail"
+          ]
         }
       ]
     }

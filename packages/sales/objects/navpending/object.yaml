@@ -9,5 +9,6 @@ fields:
   - {name: title, title: Reference, type: text, required: true}
 access:
   - {role: reader, read: all}
+  - {role: rep, read: all}
   - {role: manager, read: all}
 view: {version: 1, layout: table, columns: [title], sort: [], group: none, lanes: "", filters: [], search: ""}

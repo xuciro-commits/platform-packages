@@ -1,0 +1,30 @@
+name: deliveryline
+namespace: sales
+title: Delivery note line
+plural: Delivery note lines
+icon: cube
+display: material
+naming: DNL-{n:6}
+fields:
+  - {name: delivery, title: Delivery note, type: reference, ref: sales.delivery, inverse: lines, required: true}
+  - {name: orderline, title: Sales order line, type: reference, ref: sales.orderline, inverse: deliveries}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: material.unit}
+  - {name: warehouse, title: Line warehouse, type: text}
+  - {name: quantity, title: Quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true, default: "0"}
+  - {name: amount, title: Line amount, type: decimal, formula: "quantity * unitprice"}
+  - {name: posted, title: Posted, type: boolean, default: "false"}
+constraints:
+  - {name: deliverylineqty, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity must be positive and unit price cannot be negative.}
+createTransaction:
+  guard: "delivery.state = 'draft' and material.state = 'active'"
+  message: Delivery line requires a draft delivery note and an active item.
+  steps:
+    - target: $subject
+      set: {quantity: quantity, posted: false}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [delivery, orderline, material, unit, warehouse, quantity, unitprice, amount, posted], sort: [], group: none, lanes: "", filters: [], search: ""}

@@ -1,0 +1,29 @@
+ask: Reversing a posted delivery note reverses its outbound stock movements.
+title: Reverse delivery
+description: Reverse a posted delivery note and reverse its outbound stock movements when inventory is connected.
+from: [posted]
+roles: [manager]
+uses: [stock.post/1#reverse]
+inputs:
+  - {name: on, title: Reversal date, type: date}
+transaction:
+  reads:
+    collections:
+      lines: {app: build, object: sales.deliveryline, policy: complete, query: "", set: lines, version: 0}
+  steps:
+    - target: $subject
+      set: {state: "'reversed'"}
+    - name: voidlines
+      forEach:
+        set: lines
+        steps:
+          - name: unmarkline
+            target: $item
+            set: {posted: false}
+          - name: stockrev
+            request: stock.post/1#reverse
+            deferred: true
+            optional: true
+            key: "concat('DN-', row.id)"
+            with:
+              on: "coalesce(input.on, today())"

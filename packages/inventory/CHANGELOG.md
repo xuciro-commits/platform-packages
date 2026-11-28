@@ -1,3 +1,8 @@
+## 0.3.1
+
+- Implement `stock.reserve/1` on `inventory.reservation` with `onhand - reserved` availability guard and exact shortage messaging.
+- Add polymorphic `refType: sourcetype` provenance on `inventory.movement` and `inventory.reservation`.
+
 # Changelog
 
 ## 0.3.0

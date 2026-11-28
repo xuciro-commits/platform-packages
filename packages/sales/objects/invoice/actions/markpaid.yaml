@@ -1,0 +1,7 @@
+title: Mark paid
+from: [posted]
+roles: [rep, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'paid'"}

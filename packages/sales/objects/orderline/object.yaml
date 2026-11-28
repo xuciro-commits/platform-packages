@@ -1,0 +1,35 @@
+name: orderline
+namespace: sales
+title: Sales order line
+plural: Sales order lines
+icon: cube
+display: material
+naming: SOL-{n:6}
+sets:
+  deliveries: {object: sales.deliveryline, limit: 200}
+fields:
+  - {name: order, title: Sales order, type: reference, ref: sales.order, inverse: lines, required: true}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: material.unit}
+  - {name: warehouse, title: Line warehouse, type: text}
+  - {name: deliverydate, title: Line delivery date, type: date}
+  - {name: quantity, title: Quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: amount, title: Line amount, type: decimal, formula: "quantity * unitprice"}
+  - {name: deliveredqty, title: Delivered quantity, type: decimal, formula: "sum(deliveries, if(item.posted = true, coalesce(item.quantity, 0), 0))"}
+  - {name: openqty, title: Open quantity, type: decimal, formula: "if(quantity > sum(deliveries, if(item.posted = true, coalesce(item.quantity, 0), 0)), quantity - sum(deliveries, if(item.posted = true, coalesce(item.quantity, 0), 0)), 0)"}
+  - {name: reserved, title: Reserved, type: boolean}
+  - {name: reservationkey, title: Reservation key, type: text}
+constraints:
+  - {name: linecommercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity must be positive and unit price cannot be negative.}
+createTransaction:
+  guard: "order.state = 'draft' and material.state = 'active'"
+  message: Order line requires a draft sales order and an active item.
+  steps:
+    - target: $subject
+      set: {quantity: quantity}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [order, material, unit, warehouse, quantity, deliveredqty, openqty, unitprice, amount], sort: [], group: none, lanes: "", filters: [], search: ""}

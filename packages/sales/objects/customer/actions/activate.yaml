@@ -1,0 +1,7 @@
+title: Activate customer
+from: [pending]
+roles: [rep, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'active'"}

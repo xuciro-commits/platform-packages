@@ -1,0 +1,31 @@
+name: invoiceline
+namespace: sales
+title: Sales invoice line
+plural: Sales invoice lines
+icon: cube
+display: material
+naming: SIL-{n:6}
+fields:
+  - {name: invoice, title: Sales invoice, type: reference, ref: sales.invoice, inverse: lines, required: true}
+  - {name: orderline, title: Sales order line, type: reference, ref: sales.orderline}
+  - {name: deliveryline, title: Delivery note line, type: reference, ref: sales.deliveryline}
+  - {name: material, title: Item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: material.unit}
+  - {name: quantity, title: Quantity, type: decimal, required: true}
+  - {name: unitprice, title: Unit price, type: decimal, required: true}
+  - {name: taxrate, title: Tax rate, type: decimal, default: "0"}
+  - {name: amount, title: Net revenue, type: decimal, formula: "quantity * unitprice"}
+  - {name: taxamount, title: Tax amount, type: decimal, formula: "round(quantity * unitprice * coalesce(taxrate, 0) / 100, 2)"}
+constraints:
+  - {name: invoicelinecommercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity must be positive and unit price cannot be negative.}
+createTransaction:
+  guard: "invoice.state = 'draft' and material.state = 'active'"
+  message: Invoice line requires a draft sales invoice and an active item.
+  steps:
+    - target: $subject
+      set: {quantity: quantity}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [invoice, material, unit, quantity, unitprice, taxrate, amount, taxamount], sort: [], group: none, lanes: "", filters: [], search: ""}

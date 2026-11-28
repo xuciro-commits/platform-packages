@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Align `stock-contract` dependency to `^0.1.2`.
+
 # Changelog
 
 ## 0.2.1

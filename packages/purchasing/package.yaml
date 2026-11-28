@@ -1,5 +1,5 @@
 id: purchasing
-version: 0.2.1
+version: 0.2.2
 title: Purchasing
 namespace: purchasing
 description: Supplier qualification, sourcing, purchase orders and receipts optionally connected to stock.
@@ -12,6 +12,6 @@ listing:
 roots:
   - {app: build, kind: app, name: purchasing}
 artifact: purchasing.json
-requires: [party@^0.2.2, item-master@^0.1.2, uom@^0.1.3, stock-contract@^0.1.1]
+requires: [party@^0.2.2, item-master@^0.1.2, uom@^0.1.3, stock-contract@^0.1.2]
 contracts:
   optional: [stock.post/1]

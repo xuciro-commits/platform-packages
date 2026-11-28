@@ -1,0 +1,18 @@
+name: customergroup
+namespace: sales
+title: Customer group
+plural: Customer groups
+icon: user-group
+display: title
+fields:
+  - {name: title, title: Group name, type: text, required: true, search: true}
+  - {name: code, title: Group code, type: text, required: true, search: true}
+  - {name: nodekind, title: Node kind, type: choice, default: leaf, choices: "group:Group,leaf:Leaf"}
+  - {name: parent, title: Parent group, type: reference, ref: sales.customergroup}
+constraints:
+  - {name: groupcode, kind: unique, fields: [code], message: Customer group code must be unique.}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [code, title, nodekind, parent], sort: [{sortKey: code, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

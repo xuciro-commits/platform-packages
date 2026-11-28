@@ -1,0 +1,109 @@
+roles: {sales: manager, purchasing: manager, inventory: keeper, party: user, item: steward, uom: user, geo: user}
+at: 2026-11-26T09:00:00Z
+members:
+  mgr: {roles: {sales: manager, purchasing: manager, inventory: keeper, party: user, item: user, uom: user, geo: user}}
+  rep1: {roles: {sales: rep, inventory: keeper, party: user, item: user, uom: user, geo: user}}
+  rep2: {roles: {sales: rep, inventory: keeper, party: user, item: user, uom: user, geo: user}}
+  buyer: {roles: {purchasing: buyer, inventory: keeper, party: user, item: user, uom: user, geo: user}}
+  keeper1: {roles: {inventory: keeper, item: user, uom: user}}
+  reader: {roles: {sales: reader, inventory: reader, party: user, item: user, uom: user, geo: user}}
+steps:
+  - {do: platform.protocol.bind, on: platform.protocol/stock.post/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/stock.reserve/1, with: {provider: build}}
+  - {do: party.organization.create, on: party.organization/ORG-SUP, with: {name: Shenzhen Precision Parts}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/SUP1, as: mgr, with: {base: ORG-SUP, supplierkind: company}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/SUP1, as: mgr, expect: {state: qualified}}
+
+  - {do: party.organization.create, on: party.organization/ORG-CUST, with: {name: Horizon Robotics}}
+  - {do: sales.customergroup.create, on: sales.customergroup/CG-ENT, as: mgr, with: {title: Enterprise accounts, code: ENT}}
+  - {do: sales.territory.create, on: sales.territory/TER-CN, as: mgr, with: {title: East China, code: CN-EAST}}
+  - {do: sales.customer.create, on: sales.customer/C1, as: rep1, with: {base: ORG-CUST, customerkind: company, group: CG-ENT, territory: TER-CN, creditlimit: 500000}}
+  - {do: sales.customer.activate, on: sales.customer/C1, as: rep1, expect: {state: active}}
+
+  - {do: item.category.create, on: item.category/CAT-FIFO, with: {title: FIFO goods, code: CAT-FIFO, valuation: fifo}}
+  - {do: item.category.create, on: item.category/CAT-MA, with: {title: Moving average goods, code: CAT-MA, valuation: moving_average}}
+  - {do: item.master.create, on: item.master/IFIFO, with: {title: Brass valve, code: VLV-FIFO, kind: goods, unit: pcs, category: CAT-FIFO}}
+  - {do: item.master.create, on: item.master/IMA, with: {title: Copper rod, code: ROD-MA, kind: goods, unit: pcs, category: CAT-MA}}
+  - {do: item.master.create, on: item.master/IRACE, with: {title: Servo controller, code: CTRL-04, kind: goods, unit: pcs, category: CAT-MA}}
+  - {do: inventory.warehouse.create, on: inventory.warehouse/MAIN, as: keeper1, with: {title: Main warehouse, code: MAIN}}
+
+  # 1. FIFO valuation -> Sales COGS = 85 (10@5 + 10@7, ship 15 -> 10*5 + 5*7 = 85)
+  - {do: inventory.movement.create, on: inventory.movement/FF-IN-1, as: keeper1, with: {title: FIFO batch 1, material: IFIFO, warehouse: MAIN, quantity: 10, amount: 50, on: "2026-11-01"}}
+  - {do: inventory.movement.create, on: inventory.movement/FF-IN-2, as: keeper1, with: {title: FIFO batch 2, material: IFIFO, warehouse: MAIN, quantity: 10, amount: 70, on: "2026-11-02"}}
+  - {do: sales.order.create, on: sales.order/SO-FIFO, as: rep1, with: {title: SO-FIFO-01, customer: C1, orderedon: "2026-11-05", deliverydate: "2026-11-10", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-FIFO, as: rep1, with: {order: SO-FIFO, material: IFIFO, quantity: 15, unitprice: 12}}
+  - {do: sales.order.confirm, on: sales.order/SO-FIFO, as: rep1, expect: {state: confirmed, pendinglines: 0}}
+  - {read: inventory.reservation/RES-SOL-FIFO, as: reader, expect: {state: reserved, quantity: 15, sourcetype: sales.order, sourceid: SO-FIFO}}
+  - {do: sales.delivery.create, on: sales.delivery/DN-FIFO, as: rep1, with: {title: DN-FIFO-01, order: SO-FIFO, customer: C1, warehouse: MAIN, postedon: "2026-11-06", currency: CNY}}
+  - {do: sales.deliveryline.create, on: sales.deliveryline/DNL-FIFO, as: rep1, with: {delivery: DN-FIFO, orderline: SOL-FIFO, material: IFIFO, quantity: 15, unitprice: 12}}
+  - {do: sales.delivery.post, on: sales.delivery/DN-FIFO, as: rep1, expect: {state: posted, totalquantity: 15, total: 180, totalcost: 85}}
+  - {read: inventory.movement/DN-DNL-FIFO, as: reader, expect: {quantity: -15, amount: -85, sourcetype: sales.order, sourceid: SO-FIFO}}
+  - {read: inventory.reservation/RES-SOL-FIFO, as: reader, expect: {state: released}}
+  - {read: sales.order/SO-FIFO, as: reader, expect: {state: confirmed, deliverystatus: fully_delivered, deliveredquantity: 15, openquantity: 0}}
+  - {do: sales.invoice.create, on: sales.invoice/SINV-FIFO, as: rep1, with: {title: SINV-FIFO-01, order: SO-FIFO, delivery: DN-FIFO, customer: C1, postedon: "2026-11-06", duedate: "2026-12-06", currency: CNY}}
+  - {do: sales.invoiceline.create, on: sales.invoiceline/SIL-FIFO, as: rep1, with: {invoice: SINV-FIFO, orderline: SOL-FIFO, deliveryline: DNL-FIFO, material: IFIFO, quantity: 15, unitprice: 12, taxrate: 13}}
+  - {do: sales.invoice.post, on: sales.invoice/SINV-FIFO, as: rep1, expect: {state: posted, revenueamount: 180, taxamount: 23.4, receivableamount: 203.4}}
+
+  # 2. Moving-average valuation -> Sales COGS = 90 (10@5 + 10@7, ship 15 -> 15*6 = 90)
+  - {do: inventory.movement.create, on: inventory.movement/MA-IN-1, as: keeper1, with: {title: MA batch 1, material: IMA, warehouse: MAIN, quantity: 10, amount: 50, on: "2026-11-01"}}
+  - {do: inventory.movement.create, on: inventory.movement/MA-IN-2, as: keeper1, with: {title: MA batch 2, material: IMA, warehouse: MAIN, quantity: 10, amount: 70, on: "2026-11-02"}}
+  - {do: sales.order.create, on: sales.order/SO-MA, as: rep1, with: {title: SO-MA-01, customer: C1, orderedon: "2026-11-05", deliverydate: "2026-11-10", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-MA, as: rep1, with: {order: SO-MA, material: IMA, quantity: 15, unitprice: 12}}
+  - {do: sales.order.confirm, on: sales.order/SO-MA, as: rep1, expect: {state: confirmed, pendinglines: 0}}
+  - {do: sales.delivery.create, on: sales.delivery/DN-MA, as: rep1, with: {title: DN-MA-01, order: SO-MA, customer: C1, warehouse: MAIN, postedon: "2026-11-06", currency: CNY}}
+  - {do: sales.deliveryline.create, on: sales.deliveryline/DNL-MA, as: rep1, with: {delivery: DN-MA, orderline: SOL-MA, material: IMA, quantity: 15, unitprice: 12}}
+  - {do: sales.delivery.post, on: sales.delivery/DN-MA, as: rep1, expect: {state: posted, totalquantity: 15, total: 180, totalcost: 90}}
+  - {read: inventory.movement/DN-DNL-MA, as: reader, expect: {quantity: -15, amount: -90}}
+  - {read: inventory.reservation/RES-SOL-MA, as: reader, expect: {state: released}}
+
+  # 3. Two reps simultaneously confirm orders for the last 4 units -> only 1 confirmed, 1 stays confirming
+  - {do: inventory.movement.create, on: inventory.movement/RACE-IN, as: keeper1, with: {title: Last 4 controllers, material: IRACE, warehouse: MAIN, quantity: 4, amount: 40, on: "2026-11-07"}}
+  - {do: sales.order.create, on: sales.order/SO-RACE-A, as: rep1, with: {title: SO-RACE-A, customer: C1, orderedon: "2026-11-08", deliverydate: "2026-11-12", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-RACE-A, as: rep1, with: {order: SO-RACE-A, material: IRACE, quantity: 4, unitprice: 25}}
+  - {do: sales.order.create, on: sales.order/SO-RACE-B, as: rep2, with: {title: SO-RACE-B, customer: C1, orderedon: "2026-11-08", deliverydate: "2026-11-12", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-RACE-B, as: rep2, with: {order: SO-RACE-B, material: IRACE, quantity: 4, unitprice: 25}}
+  - race:
+      expectAccepted: 2
+      expectRefused: 0
+      submissions:
+        - {do: sales.order.confirm, on: sales.order/SO-RACE-A, as: rep1}
+        - {do: sales.order.confirm, on: sales.order/SO-RACE-B, as: rep2}
+  - {do: sales.delivery.create, on: sales.delivery/DN-RACE-A, as: rep1, with: {title: DN-RACE-A, order: SO-RACE-A, customer: C1, warehouse: MAIN, postedon: "2026-11-09", currency: CNY}}
+  - {do: sales.deliveryline.create, on: sales.deliveryline/DNL-RACE-A, as: rep1, with: {delivery: DN-RACE-A, orderline: SOL-RACE-A, material: IRACE, quantity: 4, unitprice: 25}}
+  - {do: sales.delivery.create, on: sales.delivery/DN-RACE-B, as: rep2, with: {title: DN-RACE-B, order: SO-RACE-B, customer: C1, warehouse: MAIN, postedon: "2026-11-09", currency: CNY}}
+  - {do: sales.deliveryline.create, on: sales.deliveryline/DNL-RACE-B, as: rep2, with: {delivery: DN-RACE-B, orderline: SOL-RACE-B, material: IRACE, quantity: 4, unitprice: 25}}
+  - race:
+      expectAccepted: 1
+      expectRefused: 1
+      expectReason: Delivery note requires an active customer, at least one active item line, and a confirmed sales order when linked.
+      submissions:
+        - {do: sales.delivery.post, on: sales.delivery/DN-RACE-A, as: rep1}
+        - {do: sales.delivery.post, on: sales.delivery/DN-RACE-B, as: rep2}
+  - period:
+      object: inventory.movement.stock
+      groups: [material, warehouse]
+      measures: ["sum:quantity", "sum:amount"]
+      from: "2026-11-01"
+      to: "2026-11-30"
+      expectRows:
+        - {material: IRACE, warehouse: MAIN, "opening:quantity": 0, "debit:quantity": 4, "credit:quantity": 4, "closing:quantity": 0, "closing:amount": 0}
+
+  # 4. Exact shortage message on non-atomic confirmation refusal, then replenishment + retry confirm
+  - {do: sales.order.create, on: sales.order/SO-SHORT, as: rep1, with: {title: SO-SHORT-01, customer: C1, orderedon: "2026-11-10", deliverydate: "2026-11-15", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-SHORT, as: rep1, with: {order: SO-SHORT, material: IRACE, quantity: 6, unitprice: 25}}
+  - {do: sales.order.confirm, on: sales.order/SO-SHORT, as: rep1, expect: {state: confirming, pendinglines: 0, shortage: "Insufficient available stock: requested 6, available 0, short by 6."}}
+  - {do: purchasing.receipt.create, on: purchasing.receipt/RCV-REP, as: buyer, with: {title: RCV-REPLENISH-06, supplier: SUP1, warehouse: MAIN, receivedon: "2026-11-11"}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/PRL-REP, as: buyer, with: {receipt: RCV-REP, material: IRACE, quantity: 6, unitprice: 10}}
+  - {do: purchasing.receipt.post, on: purchasing.receipt/RCV-REP, as: mgr, expect: {state: posted, totalquantity: 6}}
+  - {do: sales.order.confirm, on: sales.order/SO-SHORT, as: rep1, expect: {state: confirmed, pendinglines: 0}}
+
+  # 5. Retire inventory -> sales order, delivery, and invoice continue working standalone
+  - {do: platform.package.drain, on: platform.package/inventory, with: {id: inventory}}
+  - {do: platform.package.retire, on: platform.package/inventory, with: {id: inventory}}
+  - {do: sales.order.create, on: sales.order/SO-RETIRED, as: rep1, with: {title: SO-RETIRED-01, customer: C1, orderedon: "2026-11-20", deliverydate: "2026-11-22", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-RETIRED, as: rep1, with: {order: SO-RETIRED, material: IRACE, quantity: 3, unitprice: 25}}
+  - {do: sales.order.confirm, on: sales.order/SO-RETIRED, as: rep1, expect: {state: confirmed}}
+  - {do: sales.delivery.create, on: sales.delivery/DN-RETIRED, as: rep1, with: {title: DN-RETIRED-01, order: SO-RETIRED, customer: C1, warehouse: MAIN, postedon: "2026-11-21", currency: CNY}}
+  - {do: sales.deliveryline.create, on: sales.deliveryline/DNL-RETIRED, as: rep1, with: {delivery: DN-RETIRED, orderline: SOL-RETIRED, material: IRACE, quantity: 3, unitprice: 25}}
+  - {do: sales.delivery.post, on: sales.delivery/DN-RETIRED, as: rep1, expect: {state: posted, totalquantity: 3, total: 75, totalcost: 0}}
+  - {read: inventory.movement/DN-DNL-RETIRED, as: keeper1, refused: true}

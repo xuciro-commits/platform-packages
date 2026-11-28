@@ -5,6 +5,9 @@ plural: Warehouses
 icon: building-office
 display: title
 description: Directory of physical storage sites. Stock movements remain the quantity authority.
+sets:
+  stock: {object: inventory.movement.stock, from: stock, limit: 500}
+  reservations: {object: inventory.reservation, from: reservations, limit: 500}
 fields:
   - {name: title, title: Warehouse name, type: text, required: true, search: true}
   - {name: code, title: Warehouse code, type: text, required: true, search: true}

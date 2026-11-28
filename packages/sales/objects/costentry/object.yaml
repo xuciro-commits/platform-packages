@@ -1,0 +1,21 @@
+name: costentry
+namespace: sales
+title: Sales cost
+plural: Sales costs
+icon: calculator
+display: title
+naming: COGS-{year}-{n:5}
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: order, title: Sales order, type: reference, ref: sales.order, inverse: costs}
+  - {name: delivery, title: Delivery note, type: reference, ref: sales.delivery, inverse: costs, required: true}
+  - {name: postedon, title: Posting date, type: date, required: true}
+  - {name: quantity, title: Outbound quantity, type: decimal, required: true}
+  - {name: amount, title: Cost amount, type: decimal, required: true}
+  - {name: movementtype, title: Movement type, type: text}
+  - {name: movementid, title: Stock movement, type: text, refType: movementtype, search: true}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all}
+  - {role: manager, read: all}
+view: {version: 1, layout: table, columns: [title, order, delivery, postedon, quantity, amount, movementid], sort: [{sortKey: postedon, direction: descending}], group: none, lanes: "", filters: [], search: ""}

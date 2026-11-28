@@ -1,0 +1,17 @@
+name: territory
+namespace: sales
+title: Territory
+plural: Territories
+icon: globe-alt
+display: title
+fields:
+  - {name: title, title: Territory name, type: text, required: true, search: true}
+  - {name: code, title: Territory code, type: text, required: true, search: true}
+  - {name: parent, title: Parent territory, type: reference, ref: sales.territory}
+constraints:
+  - {name: territorycode, kind: unique, fields: [code], message: Territory code must be unique.}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [code, title, parent], sort: [{sortKey: code, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

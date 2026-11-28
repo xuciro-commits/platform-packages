@@ -1,0 +1,24 @@
+name: stock.reserve
+major: 1
+title: Inventory
+description: Reserve and release available stock across package authorities.
+actions:
+  - name: reserve
+    title: Reserve stock
+    description: Reserve available stock for an item and warehouse.
+    payload:
+      - {name: title, label: Reference, type: text, required: true}
+      - {name: material, label: Item, type: text, required: true}
+      - {name: warehouse, label: Warehouse, type: text, required: true}
+      - {name: quantity, label: Quantity in base unit, type: decimal, required: true}
+      - {name: sourcetype, label: Source document type, type: text}
+      - {name: sourceid, label: Source document, type: text}
+  - name: release
+    title: Release stock reservation
+    description: Release an active stock reservation.
+    payload: []
+tests:
+  - name: reserves
+    title: Reserves available stock
+    action: reserve
+    payload: {title: RES-001, material: I1, warehouse: MAIN, quantity: 1}

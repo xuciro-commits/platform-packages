@@ -4,17 +4,33 @@ title: Stock reservation
 plural: Stock reservations
 icon: clipboard-document-list
 display: title
+collections:
+  stock: {of: warehouse, set: stock, object: inventory.movement.stock}
+  reservations: {of: warehouse, set: reservations, object: inventory.reservation}
 fields:
   - {name: title, title: Reference, type: text, required: true, search: true}
   - {name: material, title: Item, type: reference, ref: item.master, required: true}
-  - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, required: true}
+  - {name: warehouse, title: Warehouse, type: reference, ref: inventory.warehouse, inverse: reservations, required: true}
   - {name: quantity, title: Quantity in base unit, type: decimal, required: true}
-  - {name: sourceid, title: Source document, type: text, search: true}
+  - {name: sourcetype, title: Source document type, type: text}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true}
+  - {name: available, title: Available quantity, type: decimal, readOnly: true, from: "sum(stock, if(item.material = material, coalesce(item.quantity, 0), 0)) - sum(reservations, if(item.material = material and item.state = 'reserved', coalesce(item.quantity, 0), 0))"}
+  - {name: shortage, title: Shortage quantity, type: decimal, readOnly: true, from: "if(quantity > available, quantity - available, 0)"}
 states:
   - {name: draft, title: Draft, tone: neutral}
   - {name: reserved, title: Reserved, tone: success}
   - {name: released, title: Released, tone: neutral}
 actions: [reserve, release]
+protocols:
+  - name: stock.reserve
+    version: 1
+    actions: {reserve: create, release: release}
+createTransaction:
+  guard: "material.state = 'active' and coalesce(warehouse.nodekind, 'storage') = 'storage' and quantity > 0 and available >= quantity"
+  message: "Insufficient available stock: requested {quantity}, available {available}, short by {shortage}."
+  steps:
+    - target: $subject
+      set: {state: "'reserved'"}
 constraints:
   - name: positivequantity
     kind: expression
@@ -24,4 +40,4 @@ constraints:
 access:
   - {role: reader, read: all}
   - {role: keeper, read: all, create: true}
-view: {version: 1, layout: table, columns: [title, material, warehouse, quantity, sourceid, state], sort: [], group: state, lanes: "", filters: [], search: ""}
+view: {version: 1, layout: table, columns: [title, material, warehouse, quantity, available, shortage, sourcetype, sourceid, state], sort: [], group: state, lanes: "", filters: [], search: ""}

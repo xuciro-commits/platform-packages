@@ -208,3 +208,6 @@ keeper: 库管员
 "Valuation amount sign must match movement direction.": "计价金额符号须与出入库方向一致。"
 "Stock value period summary": "库存金额期间汇总"
 "Reversing a posted stock movement writes opposite quantity and cost facts.": "冲正已过账库存流水将写入反向数量与成本事实。"
+
+"Shortage quantity": "缺口数量"
+"Insufficient available stock: requested {quantity}, available {available}, short by {shortage}.": "可用库存不足：申请 {quantity}，可用 {available}，缺 {shortage}。"

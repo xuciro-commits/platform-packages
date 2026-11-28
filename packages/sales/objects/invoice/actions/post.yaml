@@ -1,0 +1,13 @@
+title: Post invoice
+description: Post the sales invoice to record customer receivable and sales revenue facts.
+from: [draft]
+roles: [rep, manager]
+transaction:
+  reads:
+    collections:
+      lines: {app: build, object: sales.invoiceline, policy: complete, query: "", set: lines, version: 0}
+  guard: "count(lines) > 0 and customer.state = 'active' and sum(lines, if(item.material.state = 'active', 0, 1)) = 0"
+  message: Sales invoice requires an active customer and at least one active item line.
+  steps:
+    - target: $subject
+      set: {state: "'posted'"}

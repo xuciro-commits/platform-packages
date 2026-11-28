@@ -1,12 +1,17 @@
 {
   "format": 2,
   "package": "stock-contract",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "requires": [],
-  "artifact": "sha256:e49e5cd42f42dbb9a0641d684db9611a4b800c08f4a2cbb1cc5a049effebc13e",
+  "artifact": "sha256:15f2d249b5b678e69f426909df2777e365aac491043029b0de82accb32caa45e",
   "assets": {
     "contract/stock.post": {
-      "digest": "sha256:c6181e801ec8f12ebe7e0a138eeb0976d7aa2c970bbf69807f2bfdbc447581c6",
+      "digest": "sha256:d091dc25b22483bb77a3cbc8b414bbe5596072dac02e5520152112a0dd03bfc4",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    },
+    "contract/stock.reserve": {
+      "digest": "sha256:fb5298efdfa636d40387709ba3d99ada7ba8a0d2ac71947e415a892f99a9eb4b",
       "contractVersion": 1,
       "sourceVersion": "1.contract-1"
     }

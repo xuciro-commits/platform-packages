@@ -1,0 +1,29 @@
+roles: {sales: manager, party: user, item: steward, uom: user, geo: user}
+at: 2026-11-26T09:00:00Z
+members:
+  mgr: {roles: {sales: manager, party: user, item: user, uom: user, geo: user}}
+  rep1: {roles: {sales: rep, party: user, item: user, uom: user, geo: user}}
+  reader: {roles: {sales: reader, party: user, item: user, uom: user, geo: user}}
+steps:
+  - {do: party.organization.create, on: party.organization/ORG-CUST, with: {name: Horizon Robotics}}
+  - {do: sales.customergroup.create, on: sales.customergroup/CG-ENT, as: mgr, with: {title: Enterprise accounts, code: ENT}}
+  - {do: sales.territory.create, on: sales.territory/TER-CN, as: mgr, with: {title: East China, code: CN-EAST}}
+  - {do: sales.customer.create, on: sales.customer/C1, as: rep1, with: {base: ORG-CUST, customerkind: company, group: CG-ENT, territory: TER-CN, creditlimit: 100000}}
+  - {do: sales.customer.activate, on: sales.customer/C1, as: rep1, expect: {state: active, title: Horizon Robotics}}
+  - {do: item.master.create, on: item.master/I1, with: {title: Servo drive, code: SRV-01, kind: goods, unit: pcs}}
+
+  - {do: sales.order.create, on: sales.order/SO1, as: rep1, with: {title: SO-STANDALONE-01, customer: C1, orderedon: "2026-11-10", deliverydate: "2026-11-15", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-BAD, as: rep1, with: {order: SO1, material: I1, quantity: -2, unitprice: 100}, refused: true}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-1, as: rep1, with: {order: SO1, material: I1, quantity: 5, unitprice: 120}, expect: {amount: 600, openqty: 5}}
+  - {do: sales.order.confirm, on: sales.order/SO1, as: rep1, expect: {state: confirmed, linecount: 1, totalquantity: 5, total: 600}}
+
+  - {do: sales.delivery.create, on: sales.delivery/DN1, as: rep1, with: {title: DN-STANDALONE-01, order: SO1, customer: C1, warehouse: MAIN, postedon: "2026-11-12", currency: CNY}}
+  - {do: sales.deliveryline.create, on: sales.deliveryline/DNL-1, as: rep1, with: {delivery: DN1, orderline: SOL-1, material: I1, quantity: 5, unitprice: 120}}
+  - {do: sales.delivery.post, on: sales.delivery/DN1, as: rep1, expect: {state: posted, totalquantity: 5, total: 600, totalcost: 0}}
+  - {read: sales.order/SO1, as: reader, expect: {state: confirmed, deliverystatus: fully_delivered, deliveredquantity: 5, openquantity: 0}}
+  - {read: sales.orderline/SOL-1, as: reader, expect: {deliveredqty: 5, openqty: 0}}
+
+  - {do: sales.invoice.create, on: sales.invoice/SINV1, as: rep1, with: {title: SINV-STANDALONE-01, order: SO1, delivery: DN1, customer: C1, postedon: "2026-11-12", duedate: "2026-12-12", currency: CNY}}
+  - {do: sales.invoiceline.create, on: sales.invoiceline/SIL-1, as: rep1, with: {invoice: SINV1, orderline: SOL-1, deliveryline: DNL-1, material: I1, quantity: 5, unitprice: 120, taxrate: 13}}
+  - {do: sales.invoice.post, on: sales.invoice/SINV1, as: rep1, expect: {state: posted, revenueamount: 600, taxamount: 78, receivableamount: 678}}
+  - {do: sales.invoice.markpaid, on: sales.invoice/SINV1, as: rep1, expect: {state: paid}}

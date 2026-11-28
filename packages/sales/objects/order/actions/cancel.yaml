@@ -1,0 +1,22 @@
+ask: Cancelling a sales order releases active stock reservations and stops fulfillment.
+title: Cancel order
+description: Cancel the sales order and release any active stock reservations.
+from: [draft, confirming, confirmed]
+roles: [manager]
+uses: [stock.reserve/1#release]
+transaction:
+  reads:
+    collections:
+      lines: {app: build, object: sales.orderline, policy: complete, query: "", set: lines, version: 0}
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}
+    - name: releaselines
+      forEach:
+        set: lines
+        steps:
+          - name: release
+            request: stock.reserve/1#release
+            deferred: true
+            optional: true
+            key: "concat('RES-', row.id)"

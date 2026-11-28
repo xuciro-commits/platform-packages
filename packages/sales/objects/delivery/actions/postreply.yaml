@@ -1,0 +1,23 @@
+title: Delivery valuation reply
+confirmationOnly: true
+from: [posted]
+roles: [rep, manager]
+inputs:
+  - {name: outcome, title: Outcome, type: text, required: true}
+  - {name: ref, title: Movement reference, type: text}
+  - {name: quantity, title: Movement quantity, type: decimal}
+  - {name: amount, title: Movement valuation, type: decimal}
+transaction:
+  steps:
+    - name: recordcost
+      when: "input.outcome = 'accepted' and coalesce(input.ref, '') != ''"
+      target: sales.costentry
+      set:
+        title: "concat('COGS-', replace(coalesce(input.ref, ''), 'inventory.movement/', ''))"
+        order: order
+        delivery: $subject
+        postedon: postedon
+        quantity: "0 - coalesce(input.quantity, 0)"
+        amount: "0 - coalesce(input.amount, 0)"
+        movementtype: "'inventory.movement'"
+        movementid: "replace(coalesce(input.ref, ''), 'inventory.movement/', '')"

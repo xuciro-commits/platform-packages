@@ -1,12 +1,11 @@
 {
   "format": 4,
   "name": "sales.delivery_note",
-  "title": "[Pending] Delivery Note",
-  "description": "Not implemented: Delivery Note requires domain modeling, authorization and independent acceptance.",
+  "title": "Delivery notes",
   "object": {
     "app": "build",
     "kind": "object",
-    "name": "sales.navpending"
+    "name": "sales.delivery"
   },
   "dataBindings": [
     {
@@ -15,25 +14,92 @@
       "object": {
         "app": "build",
         "kind": "object",
-        "name": "sales.navpending"
+        "name": "sales.delivery"
       },
       "model": {
-        "type": "sales.navpending",
+        "type": "sales.delivery",
         "fields": [
           {
             "name": "title"
+          },
+          {
+            "name": "order"
+          },
+          {
+            "name": "customer"
+          },
+          {
+            "name": "warehouse"
+          },
+          {
+            "name": "postedon"
+          },
+          {
+            "name": "currency"
+          },
+          {
+            "name": "carrier"
+          },
+          {
+            "name": "remarks"
+          },
+          {
+            "name": "linecount"
+          },
+          {
+            "name": "totalquantity"
+          },
+          {
+            "name": "total"
+          },
+          {
+            "name": "totalcost"
           }
         ]
       },
       "fields": [
         {
           "name": "title"
+        },
+        {
+          "name": "order"
+        },
+        {
+          "name": "customer"
+        },
+        {
+          "name": "warehouse"
+        },
+        {
+          "name": "postedon"
+        },
+        {
+          "name": "currency"
+        },
+        {
+          "name": "carrier"
+        },
+        {
+          "name": "remarks"
+        },
+        {
+          "name": "linecount"
+        },
+        {
+          "name": "totalquantity"
+        },
+        {
+          "name": "total"
+        },
+        {
+          "name": "totalcost"
         }
       ],
       "owner": "binding:list",
       "ports": {
         "selectionMode": "write",
-        "widget": "table"
+        "widget": "table",
+        "parentable": "true"
       }
     },
     {
@@ -42,19 +108,85 @@
       "object": {
         "app": "build",
         "kind": "object",
-        "name": "sales.navpending"
+        "name": "sales.delivery"
       },
       "model": {
-        "type": "sales.navpending",
+        "type": "sales.delivery",
         "fields": [
           {
             "name": "title"
+          },
+          {
+            "name": "order"
+          },
+          {
+            "name": "customer"
+          },
+          {
+            "name": "warehouse"
+          },
+          {
+            "name": "postedon"
+          },
+          {
+            "name": "currency"
+          },
+          {
+            "name": "carrier"
+          },
+          {
+            "name": "remarks"
+          },
+          {
+            "name": "linecount"
+          },
+          {
+            "name": "totalquantity"
+          },
+          {
+            "name": "total"
+          },
+          {
+            "name": "totalcost"
           }
         ]
       },
       "fields": [
         {
           "name": "title"
+        },
+        {
+          "name": "order"
+        },
+        {
+          "name": "customer"
+        },
+        {
+          "name": "warehouse"
+        },
+        {
+          "name": "postedon"
+        },
+        {
+          "name": "currency"
+        },
+        {
+          "name": "carrier"
+        },
+        {
+          "name": "remarks"
+        },
+        {
+          "name": "linecount"
+        },
+        {
+          "name": "totalquantity"
+        },
+        {
+          "name": "total"
+        },
+        {
+          "name": "totalcost"
         }
       ],
       "owner": "binding:detail",
@@ -64,7 +196,34 @@
       }
     }
   ],
-  "actionTriggers": [],
+  "actionTriggers": [
+    {
+      "id": "page",
+      "binding": "page",
+      "actions": [
+        {
+          "app": "build",
+          "kind": "action",
+          "name": "sales.delivery.create"
+        },
+        {
+          "app": "build",
+          "kind": "action",
+          "name": "sales.delivery.edit"
+        }
+      ]
+    },
+    {
+      "id": "list",
+      "binding": "list",
+      "owner": "binding:list"
+    },
+    {
+      "id": "detail",
+      "binding": "detail",
+      "owner": "binding:detail"
+    }
+  ],
   "inputSchema": {},
   "scopeVisibility": {
     "root": "page",
@@ -100,12 +259,16 @@
         {
           "id": "list",
           "binding": "list",
-          "triggers": []
+          "triggers": [
+            "list"
+          ]
         },
         {
           "id": "detail",
           "binding": "detail",
-          "triggers": []
+          "triggers": [
+            "detail"
+          ]
         }
       ]
     }

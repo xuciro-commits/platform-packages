@@ -1,0 +1,40 @@
+title: Confirm order
+description: Confirm the sales order and reserve available stock per line when inventory is connected.
+from: [draft, confirming]
+roles: [rep, manager]
+uses: [stock.reserve/1#reserve]
+transaction:
+  reads:
+    collections:
+      lines: {app: build, object: sales.orderline, policy: complete, query: "", set: lines, version: 0}
+  guard: "coalesce(pendinglines, 0) = 0 and count(lines) > 0 and customer.state = 'active' and sum(lines, if(item.material.state = 'active', 0, 1)) = 0"
+  message: Sales order requires an active customer, at least one active item line, and no reservations in flight.
+  steps:
+    - target: $subject
+      set:
+        state: "if(sum(lines, if(coalesce(item.reserved, false), 0, 1)) > 0, 'confirming', 'confirmed')"
+        pendinglines: "sum(lines, if(coalesce(item.reserved, false), 0, 1))"
+        shortage: "''"
+    - name: reservelines
+      forEach:
+        set: lines
+        steps:
+          - name: stampkey
+            when: "not coalesce(row.reserved, false)"
+            target: $item
+            set:
+              reservationkey: "concat('RES-', row.id)"
+          - name: reserve
+            when: "not coalesce(row.reserved, false)"
+            request: stock.reserve/1#reserve
+            deferred: true
+            optional: true
+            key: "concat('RES-', row.id)"
+            reply: reservereply
+            with:
+              title: "concat(title, '-', row.id)"
+              material: row.material
+              warehouse: "coalesce(row.warehouse, warehouse)"
+              quantity: row.quantity
+              sourcetype: "'sales.order'"
+              sourceid: id

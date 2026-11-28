@@ -1,0 +1,51 @@
+name: order
+namespace: sales
+title: Sales order
+plural: Sales orders
+icon: clipboard-document-check
+display: title
+naming: SO-{year}-{n:5}
+sets:
+  lines: {object: sales.orderline, limit: 500}
+  deliveries: {object: sales.delivery, limit: 200}
+  costs: {object: sales.costentry, limit: 200}
+  invoices: {object: sales.invoice, limit: 200}
+fields:
+  - {name: title, title: Order reference, type: text, required: true, search: true, group: Order}
+  - {name: customer, title: Customer, type: reference, ref: sales.customer, required: true, group: Order}
+  - {name: orderedon, title: Order date, type: date, required: true, default: today, group: Order}
+  - {name: deliverydate, title: Delivery date, type: date, required: true, default: today, group: Order}
+  - {name: currency, title: Currency, type: choice, required: true, default: CNY, choices: "CNY:CNY,USD:USD,EUR:EUR", group: Order}
+  - {name: warehouse, title: Default warehouse, type: text, required: true, default: MAIN, group: Order}
+  - {name: customerpo, title: Customer PO, type: text, search: true, group: Commercial}
+  - {name: remarks, title: Remarks, type: longtext, group: Commercial}
+  - {name: linecount, title: Line count, type: integer, formula: count(lines), group: Totals}
+  - {name: totalquantity, title: Total quantity, type: decimal, formula: sum(lines.quantity), group: Totals}
+  - {name: deliveredquantity, title: Delivered quantity, type: decimal, formula: sum(lines.deliveredqty), group: Totals}
+  - {name: openquantity, title: Open quantity, type: decimal, formula: sum(lines.openqty), group: Totals}
+  - {name: total, title: Net amount, type: decimal, formula: sum(lines.amount), group: Totals}
+  - {name: deliverystatus, title: Delivery status, type: choice, choices: "not_delivered:Not delivered,partly_delivered:Partly delivered,fully_delivered:Fully delivered", formula: "if(sum(lines.quantity) <= 0, 'not_delivered', if(sum(lines.openqty) <= 0, 'fully_delivered', if(sum(lines.deliveredqty) > 0, 'partly_delivered', 'not_delivered')))", group: Fulfillment}
+  - {name: pendinglines, title: Pending reservation lines, type: integer, readOnly: true, group: Fulfillment}
+  - {name: shortage, title: Stock shortage, type: text, readOnly: true, group: Fulfillment}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: confirming, title: Pending confirmation, tone: warning}
+  - {name: confirmed, title: Confirmed, tone: success}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [confirm, reservereply, cancel]
+constraints:
+  - {name: orderdates, kind: expression, fields: [orderedon, deliverydate], expr: "deliverydate >= orderedon", message: Delivery date cannot precede order date.}
+access:
+  - {role: reader, read: all}
+  - {role: rep, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [title, customer, orderedon, deliverydate, warehouse, currency, totalquantity, openquantity, total, deliverystatus, shortage, state]
+  sort: [{sortKey: orderedon, direction: descending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  print: {title: Sales order, fields: [title, customer, orderedon, deliverydate, warehouse, currency, linecount, totalquantity, total]}

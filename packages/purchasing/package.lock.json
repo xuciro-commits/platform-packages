@@ -1,14 +1,14 @@
 {
   "format": 2,
   "package": "purchasing",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "requires": [
     "party@^0.2.2",
     "item-master@^0.1.2",
     "uom@^0.1.3",
-    "stock-contract@^0.1.1"
+    "stock-contract@^0.1.2"
   ],
-  "artifact": "sha256:143230af40ab7f1f7aa75c49d576c10c5e7fc9cc0e7e3a7c1ab86492f6be8691",
+  "artifact": "sha256:ab4c69255bc1fb8370f90a2714bcba64f90867d066c11ce0f85a71cb59f5efb2",
   "assets": {
     "app/purchasing": {
       "digest": "sha256:ee35f1736b84d312c4ba93593b4a7f9ac601cdd03eeeb5930c2b48e5e05f761f",

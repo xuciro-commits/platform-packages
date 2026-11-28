@@ -24,7 +24,15 @@
     "sales.customer_group",
     "sales.territory",
     "sales.sales_person",
-    "sales.settings"
+    "sales.settings",
+    "sales.order",
+    "sales.orderline",
+    "sales.delivery",
+    "sales.deliveryline",
+    "sales.costentry",
+    "sales.invoice",
+    "sales.invoiceline",
+    "sales.customergroup"
   ],
   "groups": [
     {
@@ -76,7 +84,72 @@
     },
     {
       "title": "Additional operations",
-      "pages": []
+      "pages": [
+        "sales.order",
+        "sales.orderline",
+        "sales.delivery",
+        "sales.deliveryline",
+        "sales.costentry",
+        "sales.invoice",
+        "sales.invoiceline",
+        "sales.customergroup"
+      ]
+    }
+  ],
+  "dashboard": [
+    {
+      "title": "Pending confirmations",
+      "kind": "metric",
+      "object": "sales.order",
+      "domain": [
+        [
+          "state",
+          "=",
+          "confirming"
+        ]
+      ]
+    },
+    {
+      "title": "Confirmed orders",
+      "kind": "metric",
+      "object": "sales.order",
+      "domain": [
+        [
+          "state",
+          "=",
+          "confirmed"
+        ]
+      ]
+    },
+    {
+      "title": "Posted deliveries",
+      "kind": "metric",
+      "object": "sales.delivery",
+      "domain": [
+        [
+          "state",
+          "=",
+          "posted"
+        ]
+      ]
+    },
+    {
+      "title": "Open invoices",
+      "kind": "metric",
+      "object": "sales.invoice",
+      "domain": [
+        [
+          "state",
+          "=",
+          "posted"
+        ]
+      ]
+    },
+    {
+      "title": "Orders by state",
+      "kind": "bar",
+      "object": "sales.order",
+      "group": "state"
     }
   ]
 }

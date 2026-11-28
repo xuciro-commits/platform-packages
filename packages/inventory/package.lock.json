@@ -1,16 +1,16 @@
 {
   "format": 2,
   "package": "inventory",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "requires": [
     "item-master@^0.1.2",
     "uom@^0.1.3",
-    "stock-contract@^0.1.1"
+    "stock-contract@^0.1.2"
   ],
-  "artifact": "sha256:970159bdc9ad245ecfdd0fd9ae04eb9d9e1feff9b2c7cc99f62de083777e0333",
+  "artifact": "sha256:aa385a1c434ec7c2ab208e570c36b57747b9c6376666cdd7ecd3f7a5ddc10f15",
   "assets": {
     "app/inventory": {
-      "digest": "sha256:17aea6ad2d56b47b2c8952ec388840171fd1afecc1e09c27c44ebd581d64920c",
+      "digest": "sha256:b7e3f497559f69eb1a92bff95d5390cdc918e9433dda4589393071647874b60c",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -48,12 +48,12 @@
       ]
     },
     "object/inventory.movement": {
-      "digest": "sha256:68ab09941a4ccd85db7d7a8926cdaeaeaacaeb94ce8f58b55d302cb9bc9f3f08",
+      "digest": "sha256:bb165faec25739e93d2754695c323a33dc4247ca7db99cee3d0fe07cdfd8b081",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.681ba8ec468cc73b01bead7d8a57b536faeb9aec3dc0bf13d718b31e25680fd5",
+          "version": "schema.sha256.3f90c607290830428d4c280cdecdc348db37f38a4be6df7405b61150104b40d3",
           "family": 1
         }
       ]
@@ -81,12 +81,12 @@
       ]
     },
     "object/inventory.reservation": {
-      "digest": "sha256:a662173f8508080b9f68b32583b44876073afff5381945c0c4539c8ac745ede0",
+      "digest": "sha256:af5d743ec6ae61d7a7c61d93b679a4710d25d3ec98302104cd5e71789084594b",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.72a7c3eb89c5b352bc35f3de024d2f107a10d1fcd4a4616ed6d819499af7e452",
+          "version": "schema.sha256.720faac19513c3ae7ff4f114973c2b8c21e4d9fff135b1db194464ebe7f987b1",
           "family": 1
         }
       ]
@@ -103,12 +103,12 @@
       ]
     },
     "object/inventory.warehouse": {
-      "digest": "sha256:2396f598b7d35715a520a3e7d5a250a66b6092bcde63038e463f715f5042de0a",
+      "digest": "sha256:440c3f72b8d76be31b65b3dfdeb8ad7cbaf8f4ffe6d1ec3b4062866395763683",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.24e57c5f9105525cbf7c45ab5bc2c7988fc17fe390b5b8cfd1e372c3129e0eb5",
+          "version": "schema.sha256.b5b760761fa6522ceefc8c492cb972e84fe56894a774dd12e4621819496ce0e7",
           "family": 1
         }
       ]
@@ -194,7 +194,7 @@
       "sourceVersion": "1"
     },
     "page/inventory.reservation": {
-      "digest": "sha256:992adff25929395473226b76e74209ec2cb0fb209714c0b1ea9a24760aedfb2b",
+      "digest": "sha256:7680188bba300d522f1ad2c6e3f4940f7c0c0c8865f0ba3ff63f24462fa03843",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
