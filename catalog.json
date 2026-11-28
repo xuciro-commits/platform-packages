@@ -3,6 +3,164 @@
   "title": "Platform packages",
   "packages": [
     {
+      "id": "accounting",
+      "version": "0.2.0",
+      "title": "Accounting",
+      "description": "General ledger facts, customer-editable posting rules, subledger inventory reconciliation with undelivered voucher drilldown, period close guards, and trial balance summaries.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/accounting/v0.2.0/accounting.json",
+      "sha256": "sha256:974b05e34344f92f14d6261317c2f8f6bdc62b1fd6de66679b18d3466da3497e",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "accounting"
+        ],
+        "keywords": [
+          "erp",
+          "accounting",
+          "general-ledger",
+          "trial-balance",
+          "reconciliation",
+          "period-close"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "财务管理",
+          "description": "总账账本事实、客户可改过账规则、带未送达凭证逐笔下钻的存货对账、期间关账三守卫与试算平衡汇总。"
+        }
+      }
+    },
+    {
+      "id": "assets",
+      "version": "0.1.1",
+      "title": "Assets",
+      "description": "Equipment and other physical assets by category and location, checked out to people and checked back in with a movement history, maintenance and repair work orders with costs, self-service fault reports, and warranty dates.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/assets/v0.1.1/assets.json",
+      "sha256": "sha256:19a6e0c42bcc93cd87d7ce3747899b670243e64c58f99c48a0a0508f3feb995a",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "professional-services"
+        ],
+        "domains": [
+          "assets",
+          "maintenance"
+        ],
+        "keywords": [
+          "asset",
+          "equipment",
+          "checkout",
+          "maintenance",
+          "repair",
+          "warranty"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "资产",
+          "description": "按类别与存放位置管理设备及实物资产，完整记录领用、归还流转台账，涵盖带费用核算的维保工单、员工自助报修与保修期跟踪。"
+        }
+      }
+    },
+    {
+      "id": "call",
+      "version": "0.1.0",
+      "title": "Phone calls",
+      "description": "The phone call capability, contract call/1. Apps that place calls declare uses call/1#dial on an action; a tenant administrator binds an implementation in Admin → Capabilities. Until then the entry stays hidden.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/call/v0.1.0/call.json",
+      "sha256": "sha256:aa55c8403db5b3acb1fab25978818e538e301722155994989b32dffc6c30f615",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "operations"
+        ],
+        "keywords": [
+          "call",
+          "phone",
+          "telephony",
+          "dial"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "platform",
+          "app": "call",
+          "relation": "original"
+        }
+      },
+      "kind": "capability",
+      "locales": {
+        "zh-CN": {
+          "title": "语音通话",
+          "description": "语音通话能力契约（call/1）。需要外呼的应用在动作上声明 uses call/1#dial，由管理员在“管理 → 能力连接器”中绑定实现；绑定前外呼入口自动隐藏。"
+        }
+      }
+    },
+    {
+      "id": "crm",
+      "version": "0.3.6",
+      "title": "CRM",
+      "description": "Leads with response times and qualification, a stage-based pipeline where every open deal has a next step, accounts and contacts with roles on each deal, products, activities, win and loss analysis, and a sales dashboard.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/crm/v0.3.6/crm.json",
+      "sha256": "sha256:1544706cfd7ca226b73ebbf9e2e717e06be6c7e9798727fa27eeae9bf3cac90a",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "sales"
+        ],
+        "keywords": [
+          "lead",
+          "deal",
+          "pipeline",
+          "forecast",
+          "account",
+          "contact",
+          "activity"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "crm",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "客户关系",
+          "description": "涵盖首响时效与资格认定的线索跟进、每笔在途商机必有下一步动作的阶段漏斗、客户与商机干系人角色、产品报价、跟进纪要、赢单丢单复盘与销售仪表盘。"
+        }
+      }
+    },
+    {
       "id": "crm",
       "version": "0.3.0",
       "title": "CRM",
@@ -139,6 +297,72 @@
       "kind": "application"
     },
     {
+      "id": "erp-settings",
+      "version": "0.1.0",
+      "title": "ERP configuration",
+      "description": "Navigation candidate only; no business posting or settings operations.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/erp-settings/v0.1.0/erp-settings.json",
+      "sha256": "sha256:e386b2e75a0d28bf1aa342908f687563c6ffbbb1fa67285c479a2303c8ad93c2",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "operations"
+        ],
+        "keywords": [
+          "erp",
+          "navigation"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "ERP 设置",
+          "description": "仅导航候选，不含业务过账或设置操作。"
+        }
+      }
+    },
+    {
+      "id": "geo",
+      "version": "0.1.2",
+      "title": "Places",
+      "description": "Countries and regions with their ISO codes, and the provinces, prefectures and counties of China with their official codes, shared once by every application that keeps an address.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/geo/v0.1.2/geo.json",
+      "sha256": "sha256:8f9a4310de382ae59537dac744bdfa94b140b5881d89f5f83f9b826c391ad96a",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "master-data"
+        ],
+        "keywords": [
+          "country",
+          "region",
+          "address",
+          "administrative-division",
+          "master-data"
+        ],
+        "stage": "preview"
+      },
+      "kind": "master-data",
+      "locales": {
+        "zh-CN": {
+          "title": "地点",
+          "description": "国家和地区及其 ISO 代码，以及中国的省、地、县三级行政区划及其官方代码；凡是记地址的应用都共用这一份。"
+        }
+      }
+    },
+    {
       "id": "geo",
       "version": "0.1.1",
       "title": "Places",
@@ -187,6 +411,84 @@
         ]
       },
       "kind": "master-data"
+    },
+    {
+      "id": "gl-contract",
+      "version": "0.1.0",
+      "title": "General ledger contract",
+      "description": "General ledger voucher posting and reversal capability contract gl.post/1.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/gl-contract/v0.1.0/gl-contract.json",
+      "sha256": "sha256:d703188a09791fd0fb78985d13d704beadd6a7038a942b9d3f2dc98d8aaa96e5",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "accounting"
+        ],
+        "keywords": [
+          "gl",
+          "ledger",
+          "voucher",
+          "contract"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "platform",
+          "app": "gl",
+          "relation": "original"
+        }
+      },
+      "kind": "capability",
+      "locales": {
+        "zh-CN": {
+          "title": "总账契约",
+          "description": "跨包总账凭证过账与冲销能力契约 gl.post/1。"
+        }
+      }
+    },
+    {
+      "id": "helpdesk",
+      "version": "0.2.2",
+      "title": "Helpdesk",
+      "description": "Customer support ticketing with dual response and resolution SLAs, balanced team assignment, structured escalation and resolution, customer satisfaction, reusable reply templates, and a knowledge base.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/helpdesk/v0.2.2/helpdesk.json",
+      "sha256": "sha256:bf13c5181e8c0f9e2da52165a609e5ad6794f093d0c67f451ed2769e9adb1514",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "service",
+          "knowledge"
+        ],
+        "keywords": [
+          "helpdesk",
+          "support",
+          "ticket",
+          "sla",
+          "knowledge-base",
+          "csat",
+          "escalation"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "helpdesk",
+          "version": "v1.x",
+          "license": "AGPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "售后中心",
+          "description": "面向售后与客户支持的工单系统，内置首次响应与解决双时限、均衡派单、结构化升级与解决、客户满意度、常用回复模板与知识库。"
+        }
+      }
     },
     {
       "id": "helpdesk",
@@ -295,6 +597,44 @@
     },
     {
       "id": "hr-core",
+      "version": "0.2.1",
+      "title": "HR",
+      "description": "Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager, and claims paid by finance.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/hr-core/v0.2.1/hr-core.json",
+      "sha256": "sha256:03f0194e9f256e8c77c2b43bbedda187d8f99b2d33643e67e2c9bdb6781c0f98",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "hr"
+        ],
+        "keywords": [
+          "employee",
+          "leave",
+          "allowance",
+          "expense",
+          "approval"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "hrms",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "人事",
+          "description": "管理员工档案及所属组织单元、实时扣减余额的假期额度、直属主管审批的请假与费用报销单，以及财务付款核销。"
+        }
+      }
+    },
+    {
+      "id": "hr-core",
       "version": "0.2.0",
       "title": "HR",
       "description": "Employees and their organization units, leave allowances with live balances, leave requests and expense claims approved by the requester's manager, and claims paid by finance.",
@@ -356,6 +696,157 @@
         ]
       },
       "kind": "application"
+    },
+    {
+      "id": "inventory",
+      "version": "0.3.2",
+      "title": "Inventory",
+      "description": "Track stock ledger movements, moving-average and FIFO valuation layers, period summaries and balances by item and warehouse.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/inventory/v0.3.2/inventory.json",
+      "sha256": "sha256:5bd1f8721e09378b0f3682a22aaadf3dcbea6c8ce8f7e48309d2c869cd441278",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "inventory"
+        ],
+        "keywords": [
+          "stock",
+          "warehouse",
+          "movement",
+          "ledger",
+          "valuation",
+          "fifo"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "库存",
+          "description": "按物料与仓库跟踪库存账本流水、移动加权与先进先出成本层、期间汇总及余额。"
+        }
+      }
+    },
+    {
+      "id": "item-master",
+      "version": "0.1.2",
+      "title": "Item master",
+      "description": "Shared identities and base units for goods, materials and services.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/item-master/v0.1.2/item-master.json",
+      "sha256": "sha256:4a570a06f2ae259a4c6c4e0fb52b430f4f1b554785455b62b75bc20f91efc7eb",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "master-data"
+        ],
+        "keywords": [
+          "item",
+          "material",
+          "product",
+          "unit"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "master-data",
+      "locales": {
+        "zh-CN": {
+          "title": "物料主数据",
+          "description": "统一管理商品、物料及服务的身份和基本计量单位。"
+        }
+      }
+    },
+    {
+      "id": "manufacturing",
+      "version": "0.2.0",
+      "title": "Manufacturing",
+      "description": "Multi-level bills of materials, production work orders with component issue costing and finished-goods receipt valuation, and idempotent MRP backward scheduling with demand/supply provenance.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/manufacturing/v0.2.0/manufacturing.json",
+      "sha256": "sha256:ce105fef99ac61e4399dd23cf9ea5f8a80756d7647841d557c764a6974876f26",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing"
+        ],
+        "domains": [
+          "production"
+        ],
+        "keywords": [
+          "erp",
+          "manufacturing",
+          "bom",
+          "work-order",
+          "mrp",
+          "scheduling"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "制造管理",
+          "description": "多层物料清单、带领料成本核算与完工入库计价的生产工单，以及带需求供给溯源的幂等物料需求计划（MRP）倒排。"
+        }
+      }
+    },
+    {
+      "id": "party",
+      "version": "0.2.2",
+      "title": "Business partners",
+      "description": "The organizations and people outside your company that every application shares, such as customers, suppliers and partners, kept once instead of in each app.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/party/v0.2.2/party.json",
+      "sha256": "sha256:d2b968d7e33a5ebd7f12cad6cc9c48fc185db975be07d26c902397caa6100001",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "master-data"
+        ],
+        "keywords": [
+          "organization",
+          "contact",
+          "customer",
+          "supplier",
+          "master-data"
+        ],
+        "stage": "preview"
+      },
+      "kind": "master-data",
+      "locales": {
+        "zh-CN": {
+          "title": "往来单位",
+          "description": "各应用共用的公司外部组织与人员，如客户、供应商与合作方，只存一份，不在每个应用里各存一份。"
+        }
+      }
     },
     {
       "id": "party",
@@ -433,6 +924,122 @@
       "kind": "master-data"
     },
     {
+      "id": "phone",
+      "version": "0.1.1",
+      "title": "Phone",
+      "description": "Incoming and outgoing calls through the platform's voice gateway, answered and placed in the browser, with a call log matched to business partner contacts. It implements the call/1 capability, so other apps can place calls once an administrator binds it.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/phone/v0.1.1/phone.json",
+      "sha256": "sha256:37c87b4b0a5bb6ebcfc78a4506f9617946f26923433a704b99c864c99fd22756",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "sales",
+          "service"
+        ],
+        "keywords": [
+          "phone",
+          "call",
+          "calllog",
+          "telephony",
+          "sip"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "platform",
+          "app": "phone",
+          "relation": "original"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "电话",
+          "description": "经平台语音网关接打来电与外呼，在浏览器内直接通话，通话记录自动关联往来单位联系人；实现 call/1 通话能力契约，管理员绑定后可供其他应用直接拨号。"
+        }
+      }
+    },
+    {
+      "id": "plan-contract",
+      "version": "0.1.0",
+      "title": "Planning contracts",
+      "description": "Cross-package demand planning, scheduled supply reads, and purchase requisition intake contracts.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/plan-contract/v0.1.0/plan-contract.json",
+      "sha256": "sha256:46cb322faa3efafe2493f4dce268eaa649ea979540516cc215b4422acd1aabbf",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "production"
+        ],
+        "keywords": [
+          "erp",
+          "mrp",
+          "planning",
+          "contract"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "capability",
+      "locales": {
+        "zh-CN": {
+          "title": "计划契约",
+          "description": "跨包需求计划、在途供给读取与采购申请接收契约。"
+        }
+      }
+    },
+    {
+      "id": "projects",
+      "version": "0.1.2",
+      "title": "Projects",
+      "description": "Projects with their tasks on a Gantt chart, task dependencies and milestones, time logged per person and task with billable hours, and progress and hours rolled up from the tasks.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/projects/v0.1.2/projects.json",
+      "sha256": "sha256:71b829eed05275c014e7e086218f68350fd56a5cc1be158cd4e6510a0732c4f7",
+      "listing": {
+        "industries": [
+          "general",
+          "professional-services"
+        ],
+        "domains": [
+          "projects"
+        ],
+        "keywords": [
+          "project",
+          "task",
+          "gantt",
+          "milestone",
+          "timesheet",
+          "time-tracking"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v15.x",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "项目",
+          "description": "提供项目甘特图排期、任务前置依赖与里程碑、按成员与任务登记的计费工时，以及自动自下而上汇总的进度与工时统计。"
+        }
+      }
+    },
+    {
       "id": "projects",
       "version": "0.1.0",
       "title": "Projects",
@@ -465,6 +1072,189 @@
         }
       },
       "kind": "application"
+    },
+    {
+      "id": "purchasing",
+      "version": "0.2.4",
+      "title": "Purchasing",
+      "description": "Supplier qualification, sourcing, purchase orders and receipts optionally connected to stock, general ledger, and MRP.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/purchasing/v0.2.4/purchasing.json",
+      "sha256": "sha256:e22c1c96042cf629438e91d7fe92bd9e19dccfb4be128fc799ab1d1d6428b9ba",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "purchasing"
+        ],
+        "keywords": [
+          "supplier",
+          "sourcing",
+          "quotation",
+          "purchase-order",
+          "receipt"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "采购管理",
+          "description": "供应商准入、寻源比价、采购订单与收货过账，可选接入库存、总账与物料需求计划。"
+        }
+      }
+    },
+    {
+      "id": "quality",
+      "version": "0.1.0",
+      "title": "Quality management",
+      "description": "Navigation candidate only; no business posting or settings operations.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/quality/v0.1.0/quality.json",
+      "sha256": "sha256:2d0b12ffcad778f56c3a27736f4186cc90da466148ccc16d28dc613678a45d85",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "quality"
+        ],
+        "keywords": [
+          "erp",
+          "navigation"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "质量管理",
+          "description": "仅导航候选，不含业务过账或设置操作。"
+        }
+      }
+    },
+    {
+      "id": "sales",
+      "version": "0.2.2",
+      "title": "Sales",
+      "description": "Manage customers, sales orders with stock reservation, delivery notes with outbound costing, and sales invoices optionally connected to general ledger and MRP.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/sales/v0.2.2/sales.json",
+      "sha256": "sha256:b5eee5a43bb0ea3bace3eb6ee71e6ec1f89166ed54a62ee6df92d7a56f1e6ce1",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "sales"
+        ],
+        "keywords": [
+          "erp",
+          "sales",
+          "order",
+          "delivery",
+          "invoice",
+          "reservation"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "销售管理",
+          "description": "管理客户、带库存预留的销售订单、带出库成本结转的发货单及销售发票，可选接入总账与物料需求计划。"
+        }
+      }
+    },
+    {
+      "id": "stock-contract",
+      "version": "0.1.3",
+      "title": "Inventory contract",
+      "description": "Stock posting, reversal, reservation and period close contracts stock.post/1, stock.reserve/1, stock.close/1 and stock.balance/1.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/stock-contract/v0.1.3/stock-contract.json",
+      "sha256": "sha256:0703bc5db9be17c7bc4c952400357aabea5e2e23749fd122f002d085224f21ce",
+      "listing": {
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "inventory"
+        ],
+        "keywords": [
+          "stock",
+          "ledger",
+          "reservation",
+          "contract"
+        ],
+        "stage": "preview",
+        "source": {
+          "ecosystem": "platform",
+          "app": "stock",
+          "relation": "original"
+        }
+      },
+      "kind": "capability",
+      "locales": {
+        "zh-CN": {
+          "title": "库存契约",
+          "description": "库存过账、冲正、预留、期间关账与余额读取契约 stock.post/1、stock.reserve/1、stock.close/1 与 stock.balance/1。"
+        }
+      }
+    },
+    {
+      "id": "uom",
+      "version": "0.1.3",
+      "title": "Units of measure",
+      "description": "The units every application counts, weighs and measures in, with exact conversion factors, shared once by stock, purchasing, production and time keeping.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/uom/v0.1.3/uom.json",
+      "sha256": "sha256:fc5bcfc8f8564049b5363feaf830d263d6c9693d0557949ee3f39d32242d8cac",
+      "listing": {
+        "industries": [
+          "general"
+        ],
+        "domains": [
+          "master-data"
+        ],
+        "keywords": [
+          "unit",
+          "measure",
+          "conversion",
+          "master-data"
+        ],
+        "stage": "preview"
+      },
+      "kind": "master-data",
+      "locales": {
+        "zh-CN": {
+          "title": "计量单位",
+          "description": "各应用计数、称重与度量所用的单位与精确换算系数，库存、采购、生产与工时共用一份。"
+        }
+      }
     },
     {
       "id": "uom",
