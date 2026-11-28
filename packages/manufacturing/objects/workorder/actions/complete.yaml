@@ -1,0 +1,65 @@
+title: Complete work order
+description: Complete production, receive finished goods valued at the sum of issued material costs, and post WIP and finished-goods GL vouchers.
+from: [inprogress]
+roles: [operator, planner, manager]
+uses: [stock.post/1#post, gl.post/1#post]
+inputs:
+  - {name: on, title: Completion date, type: date}
+transaction:
+  guard: "coalesce(postingerror, '') = ''"
+  message: Cannot complete work order with a pending material issue refusal ({postingerror}).
+  steps:
+    - target: $subject
+      set:
+        state: "'completed'"
+        completedqty: quantity
+        completedon: "coalesce(input.on, duedate, today())"
+    - name: postwipgl
+      when: "totalcost > 0"
+      request: gl.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('GL-ISS-', id)"
+      reply: completereply
+      with:
+        book: "'DEFAULT'"
+        title: "concat(title, '-ISS')"
+        rule: "'PRODUCTION_ISSUE'"
+        amount: totalcost
+        taxamount: 0
+        inventorydelta: "0 - totalcost"
+        on: "coalesce(issuedon, plannedstart, today())"
+        sourcetype: "'manufacturing.workorder'"
+        sourceid: id
+    - name: stockin
+      request: stock.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('WO-FIN-', id)"
+      reply: completereply
+      with:
+        title: "concat(title, '-FIN')"
+        material: product
+        warehouse: "coalesce(fgwarehouse, warehouse)"
+        quantity: quantity
+        amount: totalcost
+        on: "coalesce(input.on, duedate, today())"
+        sourcetype: "'manufacturing.workorder'"
+        sourceid: id
+    - name: postfggl
+      when: "totalcost > 0"
+      request: gl.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('GL-FIN-', id)"
+      reply: completereply
+      with:
+        book: "'DEFAULT'"
+        title: "concat(title, '-FIN')"
+        rule: "'PRODUCTION_RECEIPT'"
+        amount: totalcost
+        taxamount: 0
+        inventorydelta: totalcost
+        on: "coalesce(input.on, duedate, today())"
+        sourcetype: "'manufacturing.workorder'"
+        sourceid: id

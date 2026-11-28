@@ -16,6 +16,9 @@ transaction:
       forEach:
         set: lines
         steps:
+          - name: markline
+            target: $item
+            set: {posted: true}
           - name: stockin
             request: stock.post/1#post
             deferred: true

@@ -1,19 +1,20 @@
 {
   "format": 2,
   "package": "sales",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "requires": [
     "geo@^0.1.0",
     "party@^0.2.2",
     "item-master@^0.1.2",
     "uom@^0.1.3",
     "stock-contract@^0.1.3",
-    "gl-contract@^0.1.0"
+    "gl-contract@^0.1.0",
+    "plan-contract@^0.1.0"
   ],
-  "artifact": "sha256:e9bdf4adb1c71bf5bc19a4067d5746c1fc1140b62f2bc7778753f36ebd133e9b",
+  "artifact": "sha256:b5eee5a43bb0ea3bace3eb6ee71e6ec1f89166ed54a62ee6df92d7a56f1e6ce1",
   "assets": {
     "app/sales": {
-      "digest": "sha256:53852e000ee1ebc01b81d9b989c61c9cab1846c1b02cf96ac16b9a08a59974f3",
+      "digest": "sha256:345b5d4f032743d2739b5414d3bcbf453f2be22027a2aabd0e6ee3c6584c0f48",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -117,12 +118,12 @@
       ]
     },
     "object/sales.orderline": {
-      "digest": "sha256:bdfb57c37596cb23d3e5b7d5c3495a415ce5ba9cfdeb64f8343d2925b7672bed",
+      "digest": "sha256:fd1a249ddf5242f957176984f556b38036df223824e5f7098e61a3497adf8c14",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
-          "version": "schema.sha256.889cc385579828986193468f4ae0438472d746ae2c5f6b62d21252549a5f8274",
+          "version": "schema.sha256.93ca965a113e6022ca83a07c101f7e661a9c998fd00942bdcf3fd317a507d8ce",
           "family": 1
         }
       ]
@@ -219,7 +220,7 @@
       "sourceVersion": "1"
     },
     "page/sales.orderline": {
-      "digest": "sha256:812257059ff80e1579828723358ef5271ea63f16ebb87f2a7e2fdc1751ed9ce7",
+      "digest": "sha256:81bac48aec9d41b51d9722a5252450371ca07e591042409b3e09741131bf1689",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

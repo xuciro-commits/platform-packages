@@ -1,0 +1,8 @@
+title: Dismiss suggestion
+description: Dismiss this planned work order suggestion.
+from: [draft]
+roles: [planner, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

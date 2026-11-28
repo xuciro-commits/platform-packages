@@ -1,0 +1,10 @@
+title: Activate BOM
+description: Activate the bill of materials for production work orders and MRP explosion.
+from: [draft, inactive]
+roles: [planner, manager]
+transaction:
+  guard: "linecount > 0 and product.state = 'active'"
+  message: Activating a BOM requires an active parent item and at least one component line.
+  steps:
+    - target: $subject
+      set: {state: "'active'"}

@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 0.2.4
+
+- Provided `supply.order/1#orders` on `purchasing.orderline` (tracking open unreceived approved quantities) and `supply.requisition/1#submit` on `purchasing.requisition` with source provenance.
+
 ## 0.2.1
 
 - 采购收货过账向库存契约传递明细行入库金额。

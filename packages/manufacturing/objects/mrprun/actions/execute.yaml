@@ -1,0 +1,58 @@
+title: Run MRP
+description: Explode active multi-level BOMs by low-level code, net against on-hand stock, open POs, and open work orders, backward-schedule start dates, and idempotently update draft proposals.
+from: [draft, completed]
+roles: [planner, manager]
+transaction:
+  collections:
+    nodes: {query: allitems, object: item.master}
+    edges: {query: allbomlines, object: manufacturing.bomline}
+    openwos: {query: openworkorders, object: manufacturing.workorder}
+    salesdemands: {protocol: demand.plan/1#demands}
+    posupply: {protocol: supply.order/1#orders}
+    reqsupply: {protocol: supply.requisition/1#requisitions}
+    stockbalances: {protocol: stock.balance/1#balances}
+  steps:
+    - name: plan
+      propagate:
+        nodes: nodes
+        offset: leadtimedays
+        edges: {set: edges, parent: parentmaterial, child: component, ratio: effratio, loss: scraprate}
+        demands:
+          - {set: salesdemands, node: material, quantity: planqty, due: plandue, sourceType: sales.order, sourceField: order, label: sales_order}
+          - {set: nodes, node: id, quantity: safetystock, sourceType: item.master, sourceField: id, label: safety_stock}
+        credits:
+          - {set: stockbalances, node: material, quantity: quantity, label: on_hand}
+          - {set: posupply, node: material, quantity: supplyqty, label: open_po}
+          - {set: reqsupply, node: material, quantity: reqsupplyqty, label: open_req}
+          - {set: openwos, node: product, quantity: mrpsupplyqty, label: open_wo}
+        branch:
+          type: manufacturing.plannedworkorder
+          node: material
+          quantity: quantity
+          due: duedate
+          start: startdate
+          level: lowlevelcode
+          origin: demandorigin
+          trace: calculation
+          sourceType: sourcetype
+          sourceID: sourceid
+          set:
+            mrprun: $subject
+        leaf:
+          type: manufacturing.plannedrequisition
+          node: material
+          quantity: quantity
+          due: neededon
+          start: orderdate
+          level: lowlevelcode
+          origin: demandorigin
+          trace: calculation
+          sourceType: sourcetype
+          sourceID: sourceid
+          set:
+            mrprun: $subject
+    - name: markdone
+      target: $subject
+      set:
+        state: "'completed'"
+        ranon: "today()"

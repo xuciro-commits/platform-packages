@@ -1,0 +1,40 @@
+title: Issue materials
+description: Issue work order components from stock and value WIP consumption when inventory and general ledger are connected.
+from: [released]
+roles: [operator, planner, manager]
+uses: [stock.post/1#post]
+inputs:
+  - {name: on, title: Issue date, type: date}
+transaction:
+  reads:
+    collections:
+      lines: {app: build, object: manufacturing.workorderline, policy: complete, query: "", set: lines, version: 0}
+  guard: "count(lines) > 0"
+  message: Material issue requires at least one component line.
+  steps:
+    - target: $subject
+      set:
+        state: "'inprogress'"
+        issuedon: "coalesce(input.on, plannedstart, today())"
+        postingerror: "''"
+    - name: issuelines
+      forEach:
+        set: lines
+        steps:
+          - name: markissued
+            target: $item
+            set: {issued: true}
+          - name: stockout
+            request: stock.post/1#post
+            deferred: true
+            optional: true
+            key: "concat('WO-ISS-', row.id)"
+            reply: issuereply
+            with:
+              title: "concat(title, '-', row.id)"
+              material: row.material
+              warehouse: "coalesce(row.warehouse, warehouse)"
+              quantity: "0 - row.quantity"
+              on: "coalesce(input.on, plannedstart, today())"
+              sourcetype: "'manufacturing.workorder'"
+              sourceid: id

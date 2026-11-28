@@ -1,0 +1,8 @@
+title: Cancel work order
+description: Cancel an unstarted work order.
+from: [draft, released]
+roles: [planner, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

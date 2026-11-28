@@ -5,6 +5,8 @@ plural: Purchase order lines
 icon: cube
 display: material
 naming: POL-{n:6}
+sets:
+  receipts: {object: purchasing.receiptline, limit: 200}
 fields:
   - {name: order, title: Purchase order, type: reference, ref: purchasing.order, inverse: lines, required: true}
   - {name: sourcequote, title: Source quotation, type: reference, ref: purchasing.quotation}
@@ -14,10 +16,18 @@ fields:
   - {name: description, title: Line description, type: longtext}
   - {name: expectedon, title: Line expected delivery, type: date}
   - {name: quantity, title: Base quantity, type: decimal, required: true}
+  - {name: receivedqty, title: Received quantity, type: decimal, formula: "sum(receipts, if(item.posted = true, coalesce(item.quantity, 0), 0))"}
+  - {name: openqty, title: Open quantity, type: decimal, formula: "if(quantity > sum(receipts, if(item.posted = true, coalesce(item.quantity, 0), 0)), quantity - sum(receipts, if(item.posted = true, coalesce(item.quantity, 0), 0)), 0)"}
+  - {name: supplyqty, title: MRP supply quantity, type: decimal, live: "if(order.state = 'approved', openqty, 0)"}
+  - {name: supplydue, title: MRP supply date, type: date, live: "coalesce(expectedon, order.expectedon)"}
   - {name: unitprice, title: Unit price, type: decimal, required: true}
   - {name: unit, title: Base unit, type: reference, ref: uom.unit, from: material.unit}
   - {name: amount, title: Net amount, type: decimal, formula: "quantity * unitprice"}
 actions: [revise]
+protocols:
+  - name: supply.order
+    version: 1
+    reads: [orders]
 constraints:
   - {name: commercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity and price are invalid.}
 createTransaction:
@@ -33,6 +43,7 @@ createTransaction:
       when: order.sourcekind = 'quote'
       set: {quantity: quantity, sourcerequest: sourcequote.rfq.request}
 access:
+  - {role: reader, read: all}
   - {role: buyer, read: all, create: true, edit: true}
   - {role: manager, read: all, create: true, edit: true}
-view: {version: 1, layout: table, columns: [order, sourcequote, sourcerequest, material, unit, quantity, unitprice, amount], sort: [], group: none, lanes: "", filters: [], search: ""}
+view: {version: 1, layout: table, columns: [order, sourcequote, sourcerequest, material, unit, quantity, receivedqty, openqty, unitprice, amount], sort: [], group: none, lanes: "", filters: [], search: ""}

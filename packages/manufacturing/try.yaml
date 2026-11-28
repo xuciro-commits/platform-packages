@@ -1,0 +1,37 @@
+roles: {manufacturing: manager, item: steward, uom: user}
+at: 2026-11-01T09:00:00Z
+members:
+  planner1: {roles: {manufacturing: planner, item: user, uom: user}}
+  op1: {roles: {manufacturing: operator, item: user, uom: user}}
+  reader: {roles: {manufacturing: reader, item: user, uom: user}}
+steps:
+  - {do: item.master.create, on: item.master/FG-1, with: {title: Servo actuator, code: FG-1, kind: goods, unit: pcs, safetystock: 5, leadtimedays: 2}}
+  - {do: item.master.create, on: item.master/SUB-1, with: {title: Rotor assembly, code: SUB-1, kind: goods, unit: pcs, leadtimedays: 3}}
+  - {do: item.master.create, on: item.master/RAW-1, with: {title: Magnet core, code: RAW-1, kind: material, unit: pcs, leadtimedays: 4}}
+
+  - {do: manufacturing.bom.create, on: manufacturing.bom/BOM-FG1, as: planner1, with: {title: BOM-FG1, product: FG-1, versioncode: "1.0"}}
+  - {do: manufacturing.bomline.create, on: manufacturing.bomline/BL-1, as: planner1, with: {bom: BOM-FG1, component: SUB-1, quantity: 2, scraprate: 0}}
+  - {do: manufacturing.bom.activate, on: manufacturing.bom/BOM-FG1, as: planner1, expect: {state: active, linecount: 1}}
+
+  - {do: manufacturing.bom.create, on: manufacturing.bom/BOM-SUB1, as: planner1, with: {title: BOM-SUB1, product: SUB-1, versioncode: "1.0"}}
+  - {do: manufacturing.bomline.create, on: manufacturing.bomline/BL-2, as: planner1, with: {bom: BOM-SUB1, component: RAW-1, quantity: 3, scraprate: 0.1}}
+  - {do: manufacturing.bom.activate, on: manufacturing.bom/BOM-SUB1, as: planner1, expect: {state: active, linecount: 1}}
+
+  # Open WO for 2 units of SUB-1 reduces SUB-1 net requirement from 10 to 8 -> RAW-1 = 8 * 3 * 1.1 = 26.4
+  - {do: manufacturing.workorder.create, on: manufacturing.workorder/WO-EXIST, as: planner1, with: {title: WO-EXIST, bom: BOM-SUB1, product: SUB-1, quantity: 2, warehouse: MAIN, fgwarehouse: MAIN, plannedstart: "2026-10-28", duedate: "2026-10-31"}}
+  - {do: manufacturing.workorder.release, on: manufacturing.workorder/WO-EXIST, as: planner1, expect: {state: released, linecount: 1, mrpsupplyqty: 2}}
+
+  - {do: manufacturing.mrprun.create, on: manufacturing.mrprun/MRP-1, as: planner1, with: {title: Standalone safety-stock MRP}}
+  - {do: manufacturing.mrprun.execute, on: manufacturing.mrprun/MRP-1, as: planner1, expect: {state: completed, workorderproposals: 2, requisitionproposals: 1}}
+  - {read: manufacturing.plannedworkorder/PWO-00001, as: reader, expect: {material: FG-1, quantity: 5, duedate: "2026-11-01", startdate: "2026-10-30", lowlevelcode: 0, demandorigin: "safety_stock:FG-1"}}
+  - {read: manufacturing.plannedworkorder/PWO-00002, as: reader, expect: {material: SUB-1, quantity: 8, duedate: "2026-10-30", startdate: "2026-10-27", lowlevelcode: 1, demandorigin: "safety_stock:FG-1 -> FG-1"}}
+  - {read: manufacturing.plannedrequisition/PREQ-00001, as: reader, expect: {material: RAW-1, quantity: 26.4, neededon: "2026-10-27", orderdate: "2026-10-23", lowlevelcode: 2, demandorigin: "safety_stock:FG-1 -> FG-1 -> SUB-1"}}
+
+  # Idempotent re-run keeps exact same IDs without duplicating drafts
+  - {do: manufacturing.mrprun.execute, on: manufacturing.mrprun/MRP-1, as: planner1, expect: {state: completed, workorderproposals: 2, requisitionproposals: 1}}
+  - {read: manufacturing.plannedrequisition/PREQ-00001, as: reader, expect: {quantity: 26.4, state: draft}}
+
+  # Confirm planned work order and run standalone shop-floor issue + complete
+  - {do: manufacturing.plannedworkorder.confirm, on: manufacturing.plannedworkorder/PWO-00001, as: planner1, with: {bom: BOM-FG1, warehouse: MAIN}, expect: {state: confirmed}}
+  - {do: manufacturing.workorder.issue, on: manufacturing.workorder/WO-EXIST, as: op1, with: {on: "2026-10-29"}, expect: {state: inprogress}}
+  - {do: manufacturing.workorder.complete, on: manufacturing.workorder/WO-EXIST, as: op1, with: {on: "2026-10-31"}, expect: {state: completed, completedqty: 2}}

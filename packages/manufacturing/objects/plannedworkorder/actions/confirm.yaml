@@ -1,0 +1,27 @@
+title: Confirm planned work order
+description: Convert this MRP work order suggestion into an actual draft production work order.
+from: [draft]
+roles: [planner, manager]
+inputs:
+  - {name: bom, title: Bill of materials, type: reference, ref: manufacturing.bom}
+  - {name: warehouse, title: Issue warehouse, type: text}
+transaction:
+  steps:
+    - name: wo
+      target: manufacturing.workorder
+      set:
+        title: "concat('WO-', id)"
+        bom: "coalesce(input.bom, bom)"
+        product: material
+        quantity: quantity
+        warehouse: "coalesce(input.warehouse, 'MAIN')"
+        fgwarehouse: "coalesce(input.warehouse, 'MAIN')"
+        plannedstart: startdate
+        duedate: duedate
+        sourcetype: "'manufacturing.plannedworkorder'"
+        sourceid: id
+        remarks: "concat(coalesce(demandorigin, ''), ' | ', coalesce(calculation, ''))"
+    - target: $subject
+      set:
+        state: "'confirmed'"
+        generatedworkorder: step.wo

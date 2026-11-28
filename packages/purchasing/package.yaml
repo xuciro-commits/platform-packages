@@ -1,8 +1,8 @@
 id: purchasing
-version: 0.2.3
+version: 0.2.4
 title: Purchasing
 namespace: purchasing
-description: Supplier qualification, sourcing, purchase orders and receipts optionally connected to stock and general ledger.
+description: Supplier qualification, sourcing, purchase orders and receipts optionally connected to stock, general ledger, and MRP.
 listing:
   industries: [general, manufacturing, distribution]
   domains: [purchasing]
@@ -12,6 +12,6 @@ listing:
 roots:
   - {app: build, kind: app, name: purchasing}
 artifact: purchasing.json
-requires: [party@^0.2.2, item-master@^0.1.2, uom@^0.1.3, stock-contract@^0.1.3, gl-contract@^0.1.0]
+requires: [party@^0.2.2, item-master@^0.1.2, uom@^0.1.3, stock-contract@^0.1.3, gl-contract@^0.1.0, plan-contract@^0.1.0]
 contracts:
   optional: [stock.post/1, gl.post/1]

@@ -1,0 +1,12 @@
+name: supply.order
+major: 1
+title: Scheduled supply orders
+description: Read open approved purchase order supply lines across package authorities.
+reads:
+  - orders
+readSchemas:
+  orders:
+    - {name: material, description: Item, type: string, ref: item.master, required: true}
+    - {name: supplyqty, description: Open supply quantity, type: number}
+    - {name: supplydue, description: Expected supply date, type: date}
+    - {name: order, description: Source purchase order, type: string, required: true}

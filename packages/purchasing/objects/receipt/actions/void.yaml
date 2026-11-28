@@ -17,6 +17,9 @@ transaction:
       forEach:
         set: lines
         steps:
+          - name: unmarkline
+            target: $item
+            set: {posted: false}
           - name: stockrev
             request: stock.post/1#reverse
             deferred: true

@@ -1,0 +1,26 @@
+{
+  "format": 2,
+  "package": "plan-contract",
+  "version": "0.1.0",
+  "requires": [
+    "item-master@^0.1.2"
+  ],
+  "artifact": "sha256:46cb322faa3efafe2493f4dce268eaa649ea979540516cc215b4422acd1aabbf",
+  "assets": {
+    "contract/demand.plan": {
+      "digest": "sha256:272b3a50a90a7f3ee7adab225a3036af6c10bb47f6f587b9ad1ddf0b655f8a54",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    },
+    "contract/supply.order": {
+      "digest": "sha256:031830d6bafbbecabb718070ddefbb150ad189aee399229b5ef61fb12044f801",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    },
+    "contract/supply.requisition": {
+      "digest": "sha256:eec76de70b09c6410cafb34dcdabd64d74e5991bbf9304255b12ea2c263f1d25",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    }
+  }
+}

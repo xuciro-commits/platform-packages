@@ -1,0 +1,25 @@
+title: Confirm planned requisition
+description: Confirm this MRP purchase suggestion and submit a real purchase requisition when purchasing is connected.
+from: [draft]
+roles: [planner, manager]
+uses: [supply.requisition/1#submit]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'confirmed'"}
+    - name: sendreq
+      request: supply.requisition/1#submit
+      deferred: true
+      optional: true
+      key: "concat('REQ-MRP-', id)"
+      reply: confirmreply
+      with:
+        title: "concat('REQ-', id)"
+        mode: "'single'"
+        material: material
+        quantity: quantity
+        neededon: neededon
+        requestedon: orderdate
+        reason: "concat(coalesce(demandorigin, ''), ' | ', coalesce(calculation, ''))"
+        sourcetype: "'manufacturing.plannedrequisition'"
+        sourceid: id

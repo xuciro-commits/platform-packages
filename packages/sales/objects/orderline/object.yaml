@@ -18,8 +18,14 @@ fields:
   - {name: amount, title: Line amount, type: decimal, formula: "quantity * unitprice"}
   - {name: deliveredqty, title: Delivered quantity, type: decimal, formula: "sum(deliveries, if(item.posted = true, coalesce(item.quantity, 0), 0))"}
   - {name: openqty, title: Open quantity, type: decimal, formula: "if(quantity > sum(deliveries, if(item.posted = true, coalesce(item.quantity, 0), 0)), quantity - sum(deliveries, if(item.posted = true, coalesce(item.quantity, 0), 0)), 0)"}
+  - {name: planqty, title: MRP demand quantity, type: decimal, live: "if(order.state = 'confirmed' or order.state = 'confirming', openqty, 0)"}
+  - {name: plandue, title: MRP due date, type: date, live: "coalesce(deliverydate, order.deliverydate)"}
   - {name: reserved, title: Reserved, type: boolean}
   - {name: reservationkey, title: Reservation key, type: text}
+protocols:
+  - name: demand.plan
+    version: 1
+    reads: [demands]
 constraints:
   - {name: linecommercial, kind: expression, fields: [quantity, unitprice], expr: "quantity > 0 and unitprice >= 0", message: Quantity must be positive and unit price cannot be negative.}
 createTransaction:

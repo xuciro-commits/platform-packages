@@ -1,0 +1,15 @@
+title: Planned requisition confirmation reply
+confirmationOnly: true
+from: [confirmed]
+roles: [planner, manager]
+inputs:
+  - {name: outcome, title: Outcome, type: text, required: true}
+  - {name: ref, title: Requisition reference, type: text}
+transaction:
+  steps:
+    - name: linkreq
+      when: "input.outcome = 'accepted' and coalesce(input.ref, '') != ''"
+      target: $subject
+      set:
+        generatedtype: "'purchasing.requisition'"
+        generatedid: "replace(coalesce(input.ref, ''), 'purchasing.requisition/', '')"

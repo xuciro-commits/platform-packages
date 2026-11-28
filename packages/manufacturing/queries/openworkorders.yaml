@@ -1,0 +1,6 @@
+name: openworkorders
+title: Work orders for MRP supply
+description: Production work orders supplying scheduled finished or semi-finished quantities.
+object: manufacturing.workorder
+sort: [id]
+limit: 200

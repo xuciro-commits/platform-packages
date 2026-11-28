@@ -1,0 +1,31 @@
+name: supply.requisition
+major: 1
+title: Purchase requisition intake
+description: Submit confirmed material requirements as purchase requisitions and read unallocated requisition supply across package authorities.
+reads:
+  - requisitions
+readSchemas:
+  requisitions:
+    - {name: material, description: Item, type: string, ref: item.master}
+    - {name: reqsupplyqty, description: Unallocated requisition quantity, type: number}
+    - {name: neededon, description: Needed on, type: date, required: true}
+actions:
+  - name: submit
+    title: Submit purchase requisition
+    description: Create a purchase requisition from a confirmed planning proposal.
+    payload:
+      - {name: title, label: Reference, type: text, required: true}
+      - {name: mode, label: Request entry mode, type: string, choices: [single, multi]}
+      - {name: material, label: Item, type: text}
+      - {name: quantity, label: Base quantity, type: decimal}
+      - {name: neededon, label: Needed on, type: date, required: true}
+      - {name: requestedon, label: Request date, type: date}
+      - {name: terms, label: Terms, type: text}
+      - {name: reason, label: Reason, type: text}
+      - {name: sourcetype, label: Source document type, type: text}
+      - {name: sourceid, label: Source document, type: text, refType: sourcetype}
+tests:
+  - name: submits
+    title: Submits a planned purchase requisition
+    action: submit
+    payload: {title: REQ-MRP-001, mode: single, material: MAT-01, quantity: 20, neededon: "2026-11-20", reason: "MRP net requirement", sourcetype: manufacturing.plannedrequisition, sourceid: PREQ-00001}

@@ -1,0 +1,29 @@
+name: bomline
+namespace: manufacturing
+title: BOM component line
+plural: BOM component lines
+icon: cube
+display: component
+naming: BOML-{n:6}
+fields:
+  - {name: bom, title: Bill of materials, type: reference, ref: manufacturing.bom, inverse: lines, required: true}
+  - {name: parentmaterial, title: Parent item, type: reference, ref: item.master, readOnly: true, from: bom.product}
+  - {name: component, title: Component item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, readOnly: true, from: component.unit}
+  - {name: quantity, title: Quantity per unit, type: decimal, required: true}
+  - {name: scraprate, title: Scrap rate, type: decimal, default: "0"}
+  - {name: effratio, title: Active usage ratio, type: decimal, live: "if(bom.state = 'active', quantity, 0)"}
+constraints:
+  - {name: positiveusage, kind: expression, fields: [quantity, scraprate, component, parentmaterial], expr: "quantity > 0 and coalesce(scraprate, 0) >= 0 and component != parentmaterial", message: "Component quantity must be positive, scrap rate cannot be negative, and an item cannot contain itself."}
+createTransaction:
+  guard: "bom.state = 'draft' and component.state = 'active'"
+  message: Component lines can only be added to a draft BOM for active items.
+  steps:
+    - target: $subject
+      set: {quantity: quantity}
+access:
+  - {role: reader, read: all}
+  - {role: operator, read: all}
+  - {role: planner, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [bom, parentmaterial, component, unit, quantity, scraprate], sort: [], group: none, lanes: "", filters: [], search: ""}

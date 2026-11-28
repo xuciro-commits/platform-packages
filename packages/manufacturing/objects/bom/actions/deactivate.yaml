@@ -1,0 +1,8 @@
+title: Deactivate BOM
+description: Deactivate the bill of materials so MRP no longer explodes its lines.
+from: [active]
+roles: [planner, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'inactive'"}

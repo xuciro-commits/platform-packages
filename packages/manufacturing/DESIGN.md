@@ -1,3 +1,5 @@
-# Manufacturing
+# Manufacturing Design
 
-所有来源菜单先保留，缺失页明确只读占位。未建任何业务账本、审批或权限设置对象。状态/字典/动作/派生均待业务学习，角色仅用于读取占位，注意力为完整业务入口。设置、打印与平台控制面不在包内重复实现。
+- `manufacturing.bom` and `manufacturing.bomline`: multi-level BOMs referencing `item.master` with component usage and scrap rate.
+- `manufacturing.workorder`, `workorderline`, and `costentry`: material issue posts outbound stock movements and WIP vouchers; completion posts inbound finished-goods stock movements valued at the exact sum of issued component costs plus finished-goods GL vouchers.
+- `manufacturing.mrprun`: executes `propagate` by low-level code over open sales demand + safety stock minus on-hand stock + open PO lines + open work orders, backward-scheduling start dates by item lead time and emitting idempotent draft `plannedworkorder` and `plannedrequisition` records with clickable provenance.

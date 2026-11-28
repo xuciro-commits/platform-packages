@@ -39,6 +39,7 @@ createTransaction:
     - target: $subject
       set: {sourcekind: sourcekind}
 access:
+  - {role: reader, read: all}
   - {role: buyer, read: all, create: true, edit: true}
   - {role: manager, read: all, create: true, edit: true}
 view:

@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Provided `demand.plan/1#demands` on `sales.orderline` exposing open confirmed customer demand quantities and due dates for MRP.
+
 ## 0.2.1
 
 - Connected `sales.delivery` (`SALES_COGS`) and `sales.invoice` (`SALES_REVENUE`) optionally to `gl.post/1`.

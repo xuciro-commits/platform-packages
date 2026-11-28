@@ -1,0 +1,32 @@
+name: plannedrequisition
+namespace: manufacturing
+title: Planned purchase requisition
+plural: Planned purchase requisitions
+icon: shopping-bag
+display: demandorigin
+naming: PREQ-{n:5}
+fields:
+  - {name: mrprun, title: MRP run, type: reference, ref: manufacturing.mrprun, inverse: plannedrequisitions}
+  - {name: material, title: Purchased item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, readOnly: true, from: material.unit}
+  - {name: quantity, title: Net suggested quantity, type: decimal, required: true}
+  - {name: orderdate, title: Suggested order date, type: date, required: true}
+  - {name: neededon, title: Needed on, type: date, required: true}
+  - {name: lowlevelcode, title: Low-level code, type: integer}
+  - {name: demandorigin, title: Demand origin, type: text, search: true}
+  - {name: calculation, title: Net requirement calculation, type: longtext}
+  - {name: sourcetype, title: Source document type, type: text}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true}
+  - {name: generatedtype, title: Generated document type, type: text, readOnly: true}
+  - {name: generatedid, title: Generated requisition, type: text, refType: generatedtype, readOnly: true, search: true}
+states:
+  - {name: draft, title: Draft suggestion, tone: warning}
+  - {name: confirmed, title: Confirmed, tone: success}
+  - {name: cancelled, title: Dismissed, tone: neutral}
+actions: [confirm, confirmreply, cancel]
+access:
+  - {role: reader, read: all}
+  - {role: operator, read: all}
+  - {role: planner, read: all, create: true, edit: true, archive: true}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
+view: {version: 1, layout: table, columns: [material, unit, quantity, orderdate, neededon, lowlevelcode, demandorigin, calculation, sourceid, generatedid, state], sort: [{sortKey: orderdate, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

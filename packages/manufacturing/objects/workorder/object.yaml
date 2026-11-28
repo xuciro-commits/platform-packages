@@ -1,0 +1,57 @@
+name: workorder
+namespace: manufacturing
+title: Work order
+plural: Work orders
+icon: wrench-screwdriver
+display: title
+naming: WO-{year}-{n:5}
+sets:
+  lines: {object: manufacturing.workorderline, limit: 200}
+  costs: {object: manufacturing.costentry, limit: 200}
+fields:
+  - {name: title, title: Work order number, type: text, required: true, search: true}
+  - {name: bom, title: Bill of materials, type: reference, ref: manufacturing.bom}
+  - {name: product, title: Product, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, readOnly: true, from: product.unit}
+  - {name: quantity, title: Planned quantity, type: decimal, required: true}
+  - {name: completedqty, title: Completed quantity, type: decimal, readOnly: true, default: "0"}
+  - {name: openqty, title: Open quantity, type: decimal, formula: "if(quantity > coalesce(completedqty, 0), quantity - coalesce(completedqty, 0), 0)"}
+  - {name: mrpsupplyqty, title: MRP scheduled supply, type: decimal, live: "if(state != 'completed' and state != 'cancelled', openqty, 0)"}
+  - {name: warehouse, title: Issue warehouse, type: text, required: true, default: MAIN}
+  - {name: fgwarehouse, title: Receipt warehouse, type: text, required: true, default: MAIN}
+  - {name: plannedstart, title: Planned start, type: date, required: true, default: today}
+  - {name: duedate, title: Due date, type: date, required: true, default: today}
+  - {name: issuedon, title: Material issue date, type: date, readOnly: true}
+  - {name: completedon, title: Completion date, type: date, readOnly: true}
+  - {name: linecount, title: Component lines, type: integer, formula: "count(lines)"}
+  - {name: totalcost, title: Total material cost, type: decimal, formula: "round(sum(costs, coalesce(item.amount, 0)), 2)"}
+  - {name: unitcost, title: Completed unit cost, type: decimal, formula: "if(quantity > 0, round(sum(costs, coalesce(item.amount, 0)) / quantity, 4), 0)"}
+  - {name: sourcetype, title: Source document type, type: text}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true}
+  - {name: postingerror, title: Posting refusal, type: text, readOnly: true}
+  - {name: remarks, title: Remarks, type: longtext}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: released, title: Released, tone: info}
+  - {name: inprogress, title: In progress, tone: warning}
+  - {name: completed, title: Completed, tone: success}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [release, issue, issuereply, complete, completereply, cancel]
+constraints:
+  - {name: positiveqty, kind: expression, fields: [quantity], expr: "quantity > 0", message: Planned work order quantity must be positive.}
+  - {name: wodates, kind: expression, fields: [plannedstart, duedate], expr: "duedate >= plannedstart", message: Work order due date cannot precede planned start date.}
+access:
+  - {role: reader, read: all}
+  - {role: operator, read: all, create: true, edit: true}
+  - {role: planner, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [title, product, unit, quantity, completedqty, warehouse, fgwarehouse, plannedstart, duedate, totalcost, sourceid, state]
+  sort: [{sortKey: duedate, direction: ascending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  print: {title: Work order, fields: [title, product, unit, quantity, completedqty, warehouse, fgwarehouse, plannedstart, duedate, totalcost, state]}

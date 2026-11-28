@@ -6,15 +6,16 @@
     "manufacturing.home",
     "manufacturing.dashboard",
     "manufacturing.bom",
-    "manufacturing.production_plan",
-    "manufacturing.work_order",
+    "manufacturing.mrprun",
+    "manufacturing.plannedworkorder",
+    "manufacturing.plannedrequisition",
+    "manufacturing.workorder",
     "manufacturing.job_card",
     "manufacturing.stock_entry",
     "manufacturing.production_analytics",
     "manufacturing.work_order_summary",
     "manufacturing.job_card_summary",
     "manufacturing.production_planning_report",
-    "manufacturing.material_requirements_planning_report",
     "manufacturing.subcontracting_order",
     "manufacturing.subcontracting_receipt",
     "manufacturing.subcontracting_bom",
@@ -30,7 +31,10 @@
     "manufacturing.operation",
     "manufacturing.routing",
     "manufacturing.plant_floor",
-    "manufacturing.settings"
+    "manufacturing.settings",
+    "manufacturing.bomline",
+    "manufacturing.workorderline",
+    "manufacturing.costentry"
   ],
   "groups": [
     {
@@ -39,8 +43,10 @@
         "manufacturing.home",
         "manufacturing.dashboard",
         "manufacturing.bom",
-        "manufacturing.production_plan",
-        "manufacturing.work_order",
+        "manufacturing.mrprun",
+        "manufacturing.plannedworkorder",
+        "manufacturing.plannedrequisition",
+        "manufacturing.workorder",
         "manufacturing.job_card",
         "manufacturing.stock_entry"
       ]
@@ -51,8 +57,7 @@
         "manufacturing.production_analytics",
         "manufacturing.work_order_summary",
         "manufacturing.job_card_summary",
-        "manufacturing.production_planning_report",
-        "manufacturing.material_requirements_planning_report"
+        "manufacturing.production_planning_report"
       ]
     },
     {
@@ -88,7 +93,55 @@
     },
     {
       "title": "Additional operations",
-      "pages": []
+      "pages": [
+        "manufacturing.bomline",
+        "manufacturing.workorderline",
+        "manufacturing.costentry"
+      ]
+    }
+  ],
+  "dashboard": [
+    {
+      "title": "Active BOMs",
+      "kind": "metric",
+      "object": "manufacturing.bom",
+      "domain": [
+        [
+          "state",
+          "=",
+          "active"
+        ]
+      ]
+    },
+    {
+      "title": "Draft work order suggestions",
+      "kind": "metric",
+      "object": "manufacturing.plannedworkorder",
+      "domain": [
+        [
+          "state",
+          "=",
+          "draft"
+        ]
+      ]
+    },
+    {
+      "title": "Draft requisition suggestions",
+      "kind": "metric",
+      "object": "manufacturing.plannedrequisition",
+      "domain": [
+        [
+          "state",
+          "=",
+          "draft"
+        ]
+      ]
+    },
+    {
+      "title": "Work orders by state",
+      "kind": "bar",
+      "object": "manufacturing.workorder",
+      "group": "state"
     }
   ]
 }

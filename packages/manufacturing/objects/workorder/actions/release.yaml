@@ -1,0 +1,23 @@
+title: Release work order
+description: Release the work order for shop-floor execution, expanding active BOM components when lines are empty.
+from: [draft]
+roles: [planner, operator, manager]
+transaction:
+  guard: "product.state = 'active' and quantity > 0 and (linecount > 0 or (bom != empty and bom.state = 'active' and bom.product = product))"
+  message: Releasing a work order requires an active product and either component lines or a matching active BOM.
+  steps:
+    - name: expandbom
+      when: "linecount = 0 and bom != empty"
+      forEach:
+        of: bom
+        set: lines
+        steps:
+          - name: addline
+            target: manufacturing.workorderline
+            set:
+              workorder: $subject
+              material: row.component
+              warehouse: warehouse
+              quantity: "round(quantity * row.quantity * (1 + coalesce(row.scraprate, 0)), 4)"
+    - target: $subject
+      set: {state: "'released'", postingerror: "''"}

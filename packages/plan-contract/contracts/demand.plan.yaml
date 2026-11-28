@@ -1,0 +1,12 @@
+name: demand.plan
+major: 1
+title: Demand planning
+description: Read open confirmed customer demand lines across package authorities.
+reads:
+  - demands
+readSchemas:
+  demands:
+    - {name: material, description: Item, type: string, ref: item.master, required: true}
+    - {name: planqty, description: Open demand quantity, type: number}
+    - {name: plandue, description: Demand due date, type: date}
+    - {name: order, description: Source order, type: string, required: true}

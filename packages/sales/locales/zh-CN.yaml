@@ -218,5 +218,8 @@
   "Reverse a posted delivery note and reverse its outbound stock movements and COGS voucher when connected.": "冲正已过账发货单，并在已接入时冲正出库流水与销售成本凭证。",
   "Reversing a posted delivery note reverses its outbound stock movements and COGS voucher.": "冲正已过账发货单将同时冲正出库流水与销售成本凭证。",
   "Send the delivery cost of goods sold voucher to the general ledger when connected.": "在已接入总账时发送发货单销售成本凭证。",
-  "Voiding a posted sales invoice cancels its receivable and revenue facts and reverses its general ledger voucher.": "作废已过账销售发票将取消应收与收入事实并冲正总账凭证。"
+  "Voiding a posted sales invoice cancels its receivable and revenue facts and reverses its general ledger voucher.": "作废已过账销售发票将取消应收与收入事实并冲正总账凭证。",
+  "Manage customers, sales orders with stock reservation, delivery notes with outbound costing, and sales invoices optionally connected to general ledger and MRP.": "管理客户、带库存预留的销售订单、带出库成本结转的发货单及销售发票，可选接入总账与物料需求计划。",
+  "MRP demand quantity": "MRP需求数量",
+  "MRP due date": "MRP需求交期"
 }

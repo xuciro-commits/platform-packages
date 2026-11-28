@@ -1,0 +1,38 @@
+name: bom
+namespace: manufacturing
+title: Bill of materials
+plural: Bills of materials
+icon: clipboard-document-list
+display: title
+naming: BOM-{n:5}
+sets:
+  lines: {object: manufacturing.bomline, limit: 200}
+fields:
+  - {name: title, title: BOM reference, type: text, required: true, search: true}
+  - {name: product, title: Parent item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, readOnly: true, from: product.unit}
+  - {name: versioncode, title: BOM version, type: text, required: true, default: "1.0"}
+  - {name: linecount, title: Component lines, type: integer, formula: "count(lines)"}
+  - {name: remarks, title: Remarks, type: longtext}
+states:
+  - {name: draft, title: Draft, tone: neutral}
+  - {name: active, title: Active, tone: success}
+  - {name: inactive, title: Inactive, tone: neutral}
+actions: [activate, deactivate]
+constraints:
+  - {name: bomidentity, kind: unique, fields: [product, versioncode], message: Another bill of materials already uses this item and version.}
+access:
+  - {role: reader, read: all}
+  - {role: operator, read: all}
+  - {role: planner, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [title, product, unit, versioncode, linecount, state]
+  sort: [{sortKey: title, direction: ascending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  print: {title: Bill of materials, fields: [title, product, unit, versioncode, linecount, state]}

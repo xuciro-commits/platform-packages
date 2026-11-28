@@ -1,0 +1,32 @@
+name: plannedworkorder
+namespace: manufacturing
+title: Planned work order
+plural: Planned work orders
+icon: calendar-days
+display: demandorigin
+naming: PWO-{n:5}
+fields:
+  - {name: mrprun, title: MRP run, type: reference, ref: manufacturing.mrprun, inverse: plannedworkorders}
+  - {name: bom, title: Bill of materials, type: reference, ref: manufacturing.bom}
+  - {name: material, title: Manufactured item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, readOnly: true, from: material.unit}
+  - {name: quantity, title: Net suggested quantity, type: decimal, required: true}
+  - {name: startdate, title: Suggested start date, type: date, required: true}
+  - {name: duedate, title: Suggested due date, type: date, required: true}
+  - {name: lowlevelcode, title: Low-level code, type: integer}
+  - {name: demandorigin, title: Demand origin, type: text, search: true}
+  - {name: calculation, title: Net requirement calculation, type: longtext}
+  - {name: sourcetype, title: Source document type, type: text}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true}
+  - {name: generatedworkorder, title: Generated work order, type: reference, ref: manufacturing.workorder, readOnly: true}
+states:
+  - {name: draft, title: Draft suggestion, tone: warning}
+  - {name: confirmed, title: Confirmed, tone: success}
+  - {name: cancelled, title: Dismissed, tone: neutral}
+actions: [confirm, cancel]
+access:
+  - {role: reader, read: all}
+  - {role: operator, read: all}
+  - {role: planner, read: all, create: true, edit: true, archive: true}
+  - {role: manager, read: all, create: true, edit: true, archive: true}
+view: {version: 1, layout: table, columns: [material, unit, quantity, startdate, duedate, lowlevelcode, demandorigin, calculation, sourceid, generatedworkorder, state], sort: [{sortKey: startdate, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

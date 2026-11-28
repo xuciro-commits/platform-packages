@@ -17,8 +17,11 @@ fields:
   - {name: requestedon, title: Request date, type: date, group: Request}
   - {name: terms, title: Terms, type: longtext, group: Request}
   - {name: reason, title: Reason, type: longtext, group: Request}
+  - {name: sourcetype, title: Source document type, type: text, group: Request}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true, group: Request}
   - {name: allocatedqty, title: Allocated base quantity, type: decimal, formula: sum(orderallocations.quantity), group: Request}
   - {name: remainingqty, title: Remaining base quantity, type: decimal, formula: "if(mode = 'single', quantity - allocatedqty, 0)", group: Request}
+  - {name: reqsupplyqty, title: MRP requisition supply, type: decimal, live: "if(state != 'cancelled' and remainingqty > 0, remainingqty, 0)", group: Request}
   - {name: linecount, title: Active request lines, type: integer, formula: "sum(lines, if(item.state = 'active', 1, 0))", group: Request}
 states:
   - {name: draft, title: Draft, tone: neutral}
@@ -26,6 +29,11 @@ states:
   - {name: approved, title: Approved, tone: success}
   - {name: cancelled, title: Cancelled, tone: neutral}
 actions: [submit, approve, cancel, reopen]
+protocols:
+  - name: supply.requisition
+    version: 1
+    actions: {submit: create}
+    reads: [requisitions]
 constraints:
   - {name: entrymode, kind: expression, fields: [mode, material, quantity], expr: "(mode = 'single' and material != empty and quantity > 0) or (mode = 'multi' and material = empty and quantity = empty)", message: "Use either one header item or multiple detail lines, not both."}
   - {name: requestdates, kind: expression, fields: [requestedon, neededon], expr: "requestedon = empty or neededon >= requestedon", message: Need date cannot precede request date.}
@@ -36,6 +44,7 @@ createTransaction:
     - target: $subject
       set: {mode: mode}
 access:
+  - {role: reader, read: all}
   - {role: buyer, read: all, create: true}
   - {role: manager, read: all, create: true}
-view: {version: 1, layout: table, columns: [title, mode, material, quantity, allocatedqty, remainingqty, linecount, neededon, state], sort: [{sortKey: neededon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}
+view: {version: 1, layout: table, columns: [title, mode, material, quantity, allocatedqty, remainingqty, linecount, neededon, sourceid, state], sort: [{sortKey: neededon, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

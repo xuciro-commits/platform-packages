@@ -1,0 +1,6 @@
+name: allitems
+title: All items
+description: Complete item master catalog for lead-time backward scheduling and safety stock demand.
+object: item.master
+sort: [id]
+limit: 200

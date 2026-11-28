@@ -1,0 +1,6 @@
+name: allbomlines
+title: All BOM lines
+description: Complete bill of materials edges for multi-level low-level-code explosion.
+object: manufacturing.bomline
+sort: [id]
+limit: 200

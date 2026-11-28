@@ -1,0 +1,16 @@
+title: Work order completion reply
+confirmationOnly: true
+from: [completed]
+roles: [operator, planner, manager]
+inputs:
+  - {name: outcome, title: Outcome, type: text, required: true}
+  - {name: reason, title: Refusal reason, type: text}
+transaction:
+  steps:
+    - name: revertrefusal
+      when: "input.outcome = 'refused'"
+      target: $subject
+      set:
+        state: "'inprogress'"
+        completedqty: 0
+        postingerror: "coalesce(input.reason, 'Completion posting refused')"

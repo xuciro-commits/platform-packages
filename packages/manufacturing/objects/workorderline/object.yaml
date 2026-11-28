@@ -1,0 +1,22 @@
+name: workorderline
+namespace: manufacturing
+title: Work order component
+plural: Work order components
+icon: cube
+display: material
+naming: WOL-{n:6}
+fields:
+  - {name: workorder, title: Work order, type: reference, ref: manufacturing.workorder, inverse: lines, required: true}
+  - {name: material, title: Component item, type: reference, ref: item.master, required: true}
+  - {name: unit, title: Base unit, type: reference, ref: uom.unit, readOnly: true, from: material.unit}
+  - {name: warehouse, title: Issue warehouse, type: text}
+  - {name: quantity, title: Required quantity, type: decimal, required: true}
+  - {name: issued, title: Issued, type: boolean}
+constraints:
+  - {name: positiveqty, kind: expression, fields: [quantity], expr: "quantity > 0", message: Component quantity must be positive.}
+access:
+  - {role: reader, read: all}
+  - {role: operator, read: all, create: true, edit: true}
+  - {role: planner, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [workorder, material, unit, warehouse, quantity, issued], sort: [], group: none, lanes: "", filters: [], search: ""}

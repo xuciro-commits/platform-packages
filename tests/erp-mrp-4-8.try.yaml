@@ -1,0 +1,126 @@
+roles: {manufacturing: manager, sales: manager, purchasing: manager, inventory: keeper, accounting: manager, party: user, item: steward, uom: user, geo: user}
+at: 2026-11-01T09:00:00Z
+members:
+  mgr: {roles: {manufacturing: manager, sales: manager, purchasing: manager, inventory: keeper, accounting: manager, party: user, item: user, uom: user, geo: user}}
+  planner1: {roles: {manufacturing: planner, sales: reader, purchasing: buyer, inventory: reader, accounting: reader, party: user, item: user, uom: user, geo: user}}
+  op1: {roles: {manufacturing: operator, inventory: keeper, accounting: clerk, item: user, uom: user}}
+  rep1: {roles: {sales: rep, inventory: keeper, accounting: clerk, party: user, item: user, uom: user, geo: user}}
+  buyer: {roles: {purchasing: buyer, inventory: keeper, accounting: clerk, party: user, item: user, uom: user, geo: user}}
+  keeper1: {roles: {inventory: keeper, accounting: clerk, item: user, uom: user}}
+  reader: {roles: {manufacturing: reader, sales: reader, purchasing: reader, inventory: reader, accounting: reader, party: user, item: user, uom: user, geo: user}}
+steps:
+  - {do: platform.protocol.bind, on: platform.protocol/stock.post/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/stock.reserve/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/stock.close/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/stock.balance/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/gl.post/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/demand.plan/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/supply.order/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/supply.requisition/1, with: {provider: build}}
+
+  # Master data: supplier, customer, warehouse, and 3-level BOM item hierarchy
+  - {do: party.organization.create, on: party.organization/ORG-SUP, with: {name: Suzhou Servo Supply}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/SUP1, as: mgr, with: {base: ORG-SUP, supplierkind: company}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/SUP1, as: mgr, expect: {state: qualified}}
+
+  - {do: party.organization.create, on: party.organization/ORG-CUST, with: {name: Apex Automation}}
+  - {do: sales.customergroup.create, on: sales.customergroup/CG-ENT, as: mgr, with: {title: Enterprise accounts, code: ENT}}
+  - {do: sales.territory.create, on: sales.territory/TER-CN, as: mgr, with: {title: East China, code: CN-EAST}}
+  - {do: sales.customer.create, on: sales.customer/C1, as: rep1, with: {base: ORG-CUST, customerkind: company, group: CG-ENT, territory: TER-CN, creditlimit: 800000}}
+  - {do: sales.customer.activate, on: sales.customer/C1, as: rep1, expect: {state: active}}
+
+  - {do: item.category.create, on: item.category/CAT-MA, with: {title: Moving average items, code: CAT-MA, valuation: moving_average}}
+  - {do: inventory.warehouse.create, on: inventory.warehouse/MAIN, as: keeper1, with: {title: Main warehouse, code: MAIN}}
+
+  # 4-tier / 3-level BOM hierarchy:
+  # L0: FG-BOT (leadtime 2d) -> 2 x SUB-ARM (L1, leadtime 3d) + 1 x MAT-CTRL (L1 leaf, leadtime 4d)
+  # L1: SUB-ARM -> 2 x SUB-JOINT (L2, leadtime 2d)
+  # L2: SUB-JOINT -> 3 x MAT-ROD (L3 leaf, leadtime 5d, 10% scrap => 3.3/joint) + 4 x MAT-BOLT (L3 leaf, leadtime 2d, safetystock 10)
+  - {do: item.master.create, on: item.master/FG-BOT, with: {title: Collaborative robot, code: FG-BOT, kind: goods, unit: pcs, category: CAT-MA, leadtimedays: 2, safetystock: 0}}
+  - {do: item.master.create, on: item.master/SUB-ARM, with: {title: Robot arm module, code: SUB-ARM, kind: goods, unit: pcs, category: CAT-MA, leadtimedays: 3, safetystock: 0}}
+  - {do: item.master.create, on: item.master/MAT-CTRL, with: {title: Motion controller, code: MAT-CTRL, kind: material, unit: pcs, category: CAT-MA, leadtimedays: 4, safetystock: 0}}
+  - {do: item.master.create, on: item.master/SUB-JOINT, with: {title: Harmonic joint, code: SUB-JOINT, kind: goods, unit: pcs, category: CAT-MA, leadtimedays: 2, safetystock: 0}}
+  - {do: item.master.create, on: item.master/MAT-ROD, with: {title: Alloy shaft, code: MAT-ROD, kind: material, unit: pcs, category: CAT-MA, leadtimedays: 5, safetystock: 0}}
+  - {do: item.master.create, on: item.master/MAT-BOLT, with: {title: Titanium bolt, code: MAT-BOLT, kind: material, unit: pcs, category: CAT-MA, leadtimedays: 2, safetystock: 10}}
+
+  - {do: manufacturing.bom.create, on: manufacturing.bom/BOM-FG, as: planner1, with: {title: BOM-FG, product: FG-BOT, versioncode: "1.0"}}
+  - {do: manufacturing.bomline.create, on: manufacturing.bomline/BL-FG-1, as: planner1, with: {bom: BOM-FG, component: SUB-ARM, quantity: 2, scraprate: 0}}
+  - {do: manufacturing.bomline.create, on: manufacturing.bomline/BL-FG-2, as: planner1, with: {bom: BOM-FG, component: MAT-CTRL, quantity: 1, scraprate: 0}}
+  - {do: manufacturing.bom.activate, on: manufacturing.bom/BOM-FG, as: planner1, expect: {state: active, linecount: 2}}
+
+  - {do: manufacturing.bom.create, on: manufacturing.bom/BOM-ARM, as: planner1, with: {title: BOM-ARM, product: SUB-ARM, versioncode: "1.0"}}
+  - {do: manufacturing.bomline.create, on: manufacturing.bomline/BL-ARM-1, as: planner1, with: {bom: BOM-ARM, component: SUB-JOINT, quantity: 2, scraprate: 0}}
+  - {do: manufacturing.bom.activate, on: manufacturing.bom/BOM-ARM, as: planner1, expect: {state: active, linecount: 1}}
+
+  - {do: manufacturing.bom.create, on: manufacturing.bom/BOM-JOINT, as: planner1, with: {title: BOM-JOINT, product: SUB-JOINT, versioncode: "1.0"}}
+  - {do: manufacturing.bomline.create, on: manufacturing.bomline/BL-JNT-1, as: planner1, with: {bom: BOM-JOINT, component: MAT-ROD, quantity: 3, scraprate: 0.1}}
+  - {do: manufacturing.bomline.create, on: manufacturing.bomline/BL-JNT-2, as: planner1, with: {bom: BOM-JOINT, component: MAT-BOLT, quantity: 4, scraprate: 0}}
+  - {do: manufacturing.bom.activate, on: manufacturing.bom/BOM-JOINT, as: planner1, expect: {state: active, linecount: 2}}
+
+  # Supplies:
+  # 1. Approved PO PO-OPEN for 5 x MAT-CTRL, partially received 2 -> on_hand = 2, open_po = 3 (total supply = 5)
+  # 2. On-hand stock via RCV-INIT: FG-BOT = 2 (@1000=2000), MAT-CTRL = 2 (@100=200), MAT-ROD = 19.2 (@10=192), MAT-BOLT = 4 (@2=8)
+  - {do: purchasing.order.create, on: purchasing.order/PO-OPEN, as: buyer, with: {title: PO-OPEN, supplier: SUP1, sourcekind: manual, currency: CNY, orderedon: "2026-10-25", expectedon: "2026-11-10"}}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/POL-OPEN-1, as: buyer, with: {order: PO-OPEN, material: MAT-CTRL, quantity: 5, unitprice: 100, expectedon: "2026-11-10"}}
+  - {do: purchasing.order.approve, on: purchasing.order/PO-OPEN, as: mgr, expect: {state: approved}}
+
+  - {do: purchasing.receipt.create, on: purchasing.receipt/RCV-INIT, as: buyer, with: {title: RCV-INIT, supplier: SUP1, warehouse: MAIN, receivedon: "2026-11-01"}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-INIT-FG, as: buyer, with: {receipt: RCV-INIT, material: FG-BOT, warehouse: MAIN, quantity: 2, unitprice: 1000}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-INIT-CTRL, as: buyer, with: {receipt: RCV-INIT, orderline: POL-OPEN-1, material: MAT-CTRL, warehouse: MAIN, quantity: 2, unitprice: 100}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-INIT-ROD, as: buyer, with: {receipt: RCV-INIT, material: MAT-ROD, warehouse: MAIN, quantity: 19.2, unitprice: 10}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-INIT-BOLT, as: buyer, with: {receipt: RCV-INIT, material: MAT-BOLT, warehouse: MAIN, quantity: 4, unitprice: 2}}
+  - {do: purchasing.receipt.post, on: purchasing.receipt/RCV-INIT, as: buyer, expect: {state: posted, total: 2400}}
+  - {read: purchasing.orderline/POL-OPEN-1, as: reader, expect: {receivedqty: 2, openqty: 3, supplyqty: 3}}
+
+  # 3. Open Work Order WO-OPEN for 4 x SUB-ARM (released -> mrpsupplyqty = 4)
+  - {do: manufacturing.workorder.create, on: manufacturing.workorder/WO-OPEN, as: planner1, with: {title: WO-OPEN, bom: BOM-ARM, product: SUB-ARM, quantity: 4, warehouse: MAIN, fgwarehouse: MAIN, plannedstart: "2026-11-05", duedate: "2026-11-12"}}
+  - {do: manufacturing.workorder.release, on: manufacturing.workorder/WO-OPEN, as: planner1, expect: {state: released, linecount: 1, mrpsupplyqty: 4}}
+
+  # Demand: Sales Order SO-501 for 10 x FG-BOT due 2026-11-20 (confirming because only 2 FG-BOT on hand, short by 8)
+  - {do: sales.order.create, on: sales.order/SO-501, as: rep1, with: {title: SO-501, customer: C1, orderedon: "2026-11-01", deliverydate: "2026-11-20", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-501, as: rep1, with: {order: SO-501, material: FG-BOT, quantity: 10, unitprice: 2000}}
+  - {do: sales.order.confirm, on: sales.order/SO-501, as: rep1, expect: {state: confirming}}
+
+  # Independent hand calculation of MRP-501:
+  # - L0 FG-BOT: gross 10 (due 2026-11-20) - on_hand 2 = net 8, start = 2026-11-18 (PWO-00001)
+  # - L1 SUB-ARM: gross 8*2=16 (due 2026-11-18) - open_wo 4 = net 12, start = 2026-11-15 (PWO-00002)
+  # - L1 MAT-CTRL (leaf): gross 8*1=8 (due 2026-11-18) - (on_hand 2 + open_po 3 = 5) = net 3, orderdate = 2026-11-14 (PREQ-00001)
+  # - L2 SUB-JOINT: gross 12*2=24 (due 2026-11-15) - supply 0 = net 24, start = 2026-11-13 (PWO-00003)
+  # - L3 MAT-BOLT (leaf):
+  #     * safety_stock 10 (due 2026-11-01) - on_hand 4 = net 6, orderdate = 2026-10-30 (PREQ-00002)
+  #     * BOM explosion 24*4=96 (due 2026-11-13) - remaining 0 = net 96, orderdate = 2026-11-11 (PREQ-00003)
+  # - L3 MAT-ROD (leaf): gross 24*3*1.1=79.2 (due 2026-11-13) - on_hand 19.2 = net 60, orderdate = 2026-11-08 (PREQ-00004)
+  - {do: manufacturing.mrprun.create, on: manufacturing.mrprun/MRP-501, as: planner1, with: {title: November master MRP}}
+  - {do: manufacturing.mrprun.execute, on: manufacturing.mrprun/MRP-501, as: planner1, expect: {state: completed, workorderproposals: 3, requisitionproposals: 4}}
+
+  - {read: manufacturing.plannedworkorder/PWO-00001, as: reader, expect: {material: FG-BOT, quantity: 8, duedate: "2026-11-20", startdate: "2026-11-18", lowlevelcode: 0, demandorigin: "sales_order:SO-501", calculation: "gross 10 - supply 2 (on_hand:2) = net 8", sourcetype: sales.order, sourceid: SO-501}}
+  - {read: manufacturing.plannedworkorder/PWO-00002, as: reader, expect: {material: SUB-ARM, quantity: 12, duedate: "2026-11-18", startdate: "2026-11-15", lowlevelcode: 1, demandorigin: "sales_order:SO-501 -> FG-BOT", calculation: "gross 16 - supply 4 (open_wo:4) = net 12", sourcetype: sales.order, sourceid: SO-501}}
+  - {read: manufacturing.plannedworkorder/PWO-00003, as: reader, expect: {material: SUB-JOINT, quantity: 24, duedate: "2026-11-15", startdate: "2026-11-13", lowlevelcode: 2, demandorigin: "sales_order:SO-501 -> FG-BOT -> SUB-ARM", calculation: "gross 24 - supply 0 = net 24", sourcetype: sales.order, sourceid: SO-501}}
+
+  - {read: manufacturing.plannedrequisition/PREQ-00001, as: reader, expect: {material: MAT-CTRL, quantity: 3, neededon: "2026-11-18", orderdate: "2026-11-14", lowlevelcode: 1, demandorigin: "sales_order:SO-501 -> FG-BOT", calculation: "gross 8 - supply 5 (on_hand:2, open_po:3) = net 3", sourcetype: sales.order, sourceid: SO-501}}
+  - {read: manufacturing.plannedrequisition/PREQ-00002, as: reader, expect: {material: MAT-BOLT, quantity: 6, neededon: "2026-11-01", orderdate: "2026-10-30", lowlevelcode: 3, demandorigin: "safety_stock:MAT-BOLT", calculation: "gross 10 - supply 4 (on_hand:4) = net 6", sourcetype: item.master, sourceid: MAT-BOLT}}
+  - {read: manufacturing.plannedrequisition/PREQ-00003, as: reader, expect: {material: MAT-BOLT, quantity: 96, neededon: "2026-11-13", orderdate: "2026-11-11", lowlevelcode: 3, demandorigin: "sales_order:SO-501 -> FG-BOT -> SUB-ARM -> SUB-JOINT", sourcetype: sales.order, sourceid: SO-501}}
+  - {read: manufacturing.plannedrequisition/PREQ-00004, as: reader, expect: {material: MAT-ROD, quantity: 60, neededon: "2026-11-13", orderdate: "2026-11-08", lowlevelcode: 3, demandorigin: "sales_order:SO-501 -> FG-BOT -> SUB-ARM -> SUB-JOINT", calculation: "gross 79.2 - supply 19.2 (on_hand:19.2) = net 60", sourcetype: sales.order, sourceid: SO-501}}
+
+  # Confirm PREQ-00004 (MAT-ROD 60) -> generates real purchasing.requisition REQ-MRP-PREQ-00004!
+  - {do: manufacturing.plannedrequisition.confirm, on: manufacturing.plannedrequisition/PREQ-00004, as: planner1, expect: {state: confirmed, generatedtype: purchasing.requisition, generatedid: REQ-MRP-PREQ-00004}}
+  - {read: purchasing.requisition/REQ-MRP-PREQ-00004, as: reader, expect: {state: draft, mode: single, material: MAT-ROD, quantity: 60, neededon: "2026-11-13", requestedon: "2026-11-08", sourcetype: manufacturing.plannedrequisition, sourceid: PREQ-00004}}
+
+  # Idempotent re-run: updates only the 3 remaining draft requisitions & 3 draft work orders in-place without touching confirmed PREQ-00004!
+  - {do: manufacturing.mrprun.execute, on: manufacturing.mrprun/MRP-501, as: planner1, expect: {state: completed, workorderproposals: 3, requisitionproposals: 3}}
+  - {read: manufacturing.plannedrequisition/PREQ-00004, as: reader, expect: {state: confirmed, quantity: 60, generatedid: REQ-MRP-PREQ-00004}}
+  - {read: manufacturing.plannedrequisition/PREQ-00001, as: reader, expect: {state: draft, quantity: 3}}
+
+  # Production Work Order execution & GL valuation check:
+  # Build 2 x SUB-JOINT (WO-JNT-01): consumes 2 * 3 * 1.1 = 6.6 MAT-ROD (@10 = 66) + 2 * 4 = 8 MAT-BOLT — first receive 10 MAT-BOLT @ 2 = 20 so bolt stock = 14 (@2 = 28)
+  - {do: purchasing.receipt.create, on: purchasing.receipt/RCV-BOLT, as: buyer, with: {title: RCV-BOLT, supplier: SUP1, warehouse: MAIN, receivedon: "2026-11-05"}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-BOLT, as: buyer, with: {receipt: RCV-BOLT, material: MAT-BOLT, warehouse: MAIN, quantity: 10, unitprice: 2}}
+  - {do: purchasing.receipt.post, on: purchasing.receipt/RCV-BOLT, as: buyer, expect: {state: posted, total: 20}}
+
+  - {do: manufacturing.workorder.create, on: manufacturing.workorder/WO-JNT-01, as: planner1, with: {title: WO-JNT-01, bom: BOM-JOINT, product: SUB-JOINT, quantity: 2, warehouse: MAIN, fgwarehouse: MAIN, plannedstart: "2026-11-06", duedate: "2026-11-08"}}
+  - {do: manufacturing.workorder.release, on: manufacturing.workorder/WO-JNT-01, as: planner1, expect: {state: released, linecount: 2}}
+  - {do: manufacturing.workorder.issue, on: manufacturing.workorder/WO-JNT-01, as: op1, with: {on: "2026-11-06"}, expect: {state: inprogress, totalcost: 82, unitcost: 41}}
+  - {do: manufacturing.workorder.complete, on: manufacturing.workorder/WO-JNT-01, as: op1, with: {on: "2026-11-08"}, expect: {state: completed, completedqty: 2, totalcost: 82}}
+  - {read: inventory.movement/WO-FIN-WO-JNT-01, as: reader, expect: {material: SUB-JOINT, quantity: 2, amount: 82, sourcetype: manufacturing.workorder, sourceid: WO-JNT-01}}
+  - {read: accounting.journal/GL-FIN-WO-JNT-01, as: reader, expect: {state: posted, rule: PRODUCTION_RECEIPT, posteddebit: 82, postedcredit: 82, sourcetype: manufacturing.workorder, sourceid: WO-JNT-01}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {subledgervalue: 2420, glinventorybalance: 2420, reconciliationdiff: 0, inflightcount: 0, trialbalancediff: 0}}
