@@ -96,12 +96,12 @@
       "kind": "page",
       "sourceType": "DocType",
       "sourceTarget": "Purchase Receipt",
-      "target": "inventory.purchase_receipt",
+      "target": "inventory.receipt",
       "group": "Overview",
-      "implementation": "pending",
-      "status": "placeholder",
+      "implementation": "partial",
+      "status": "partial",
       "browserVerified": false,
-      "note": "Cross-package purchase fulfillment and stock receipt are not implemented (IB-ERP-0003/0006)."
+      "note": "Unverified intake draft only; no procurement authority or stock posting (IB-ERP-0003/0006/0007)."
     },
     {
       "reference": "Delivery Note",
@@ -366,7 +366,8 @@
   ],
   "additional": [
     "inventory.position",
-    "inventory.reservation"
+    "inventory.reservation",
+    "inventory.receiptline"
   ],
   "groups": [
     {
@@ -378,7 +379,7 @@
         "inventory.request",
         "inventory.movement",
         "inventory.count",
-        "inventory.purchase_receipt",
+        "inventory.receipt",
         "inventory.delivery_note"
       ]
     },
@@ -428,7 +429,8 @@
       "title": "Additional operations",
       "pages": [
         "inventory.position",
-        "inventory.reservation"
+        "inventory.reservation",
+        "inventory.receiptline"
       ]
     }
   ],

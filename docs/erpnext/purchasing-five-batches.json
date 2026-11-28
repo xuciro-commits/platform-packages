@@ -66,7 +66,29 @@
         "pin": "ac5e787623a960dee31722741465bfd9c8798f18",
         "policy": "Configured positive step requires exact multiples, absent/zero means unconstrained; no automatic rounding; negative step refused by guard. Missing request date means no lower bound. Product-specific UOM and master-data changes unverified."
       },
-      "fieldReview": "101 source declarations annotated; direct operation review remains open"
+      "fieldReview": "101 direct field/layout declarations, 63 local operation candidates and 8 permission rows dispositioned; inherited/dynamic coverage and product parity open",
+      "remaining": [
+        "多行需求正式审批 W2-021 已通过；仍待真实持久化并发、迁移及完整产品门禁。",
+        "item-specific UOM and master-data changes",
+        "source-line allocations and actual fulfillment (B4/B5)",
+        "browser and migration"
+      ],
+      "liveApproval": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probe": "docs/erpnext/probes/purchasing-live-requisition-approval.yaml",
+        "steps": 36,
+        "passed": true,
+        "regressions": [
+          26,
+          32,
+          46,
+          41
+        ],
+        "method": "Native transaction guard complete lines collection: at least one active line; all active lines must reference active items; voided lines ignored.",
+        "remaining": [
+          "multi-line RFQ and quote formal actions, line allocations, migration, concurrent master changes and full product gates"
+        ]
+      }
     },
     {
       "id": "B3",
@@ -78,8 +100,78 @@
         "Supplier Quotation",
         "Supplier Quotation Item"
       ],
-      "state": "planned",
-      "acceptance": "多供应商、多行、有效期、报价价格、比价、转换、发送/打印门禁；不伪造发送"
+      "state": "in_progress",
+      "acceptance": "多供应商、多行、有效期、报价价格、比价、转换、发送/打印门禁；不伪造发送",
+      "candidate": {
+        "probe": "docs/erpnext/probes/purchasing-invitation-lifecycle.yaml",
+        "steps": 37,
+        "passed": true,
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "remaining": [
+          "multi-supplier document/line model, source line linkage and partial quantities",
+          "full source field/operation review, allowed UOM, quote comparison and tax/discount rules",
+          "email/print/portal and order conversion",
+          "browser and migration"
+        ]
+      },
+      "fieldReview": {
+        "documents": 5,
+        "declarations": 262,
+        "operationCandidates": 53,
+        "permissions": 13,
+        "mappedPartial": 53,
+        "shared": 6,
+        "unmapped": 124,
+        "layoutPending": 79,
+        "sourceAudit": "passed",
+        "semanticVerified": false
+      },
+      "multiDraft": {
+        "probe": "docs/erpnext/probes/purchasing-multiline-sourcing-draft.yaml",
+        "steps": 44,
+        "passed": true,
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "regression": {
+          "probe": "docs/erpnext/probes/purchasing-invitation-lifecycle.yaml",
+          "steps": 37,
+          "passed": true
+        },
+        "remaining": [
+          "multi-line approval/open/record, live dependencies and concurrent validation IB-ERP-0007",
+          "one collective RFQ and supplier participation/response coverage; currently independent invitation per supplier",
+          "multi quote header revision, line reinstatement, alternate UOM, price/discount/tax and currencies",
+          "actual comparison, order conversion, email/print/portal, browser/migration"
+        ]
+      },
+      "commercial": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probes": [
+          {
+            "probe": "docs/erpnext/probes/purchasing-multiline-commercial.yaml",
+            "steps": 55,
+            "passed": true,
+            "log": "purchasing-multiline-commercial.log"
+          },
+          {
+            "probe": "docs/erpnext/probes/purchasing-single-commercial.yaml",
+            "steps": 41,
+            "passed": true,
+            "log": "purchasing-single-commercial.log"
+          },
+          {
+            "probe": "docs/erpnext/probes/purchasing-quote-comparison.yaml",
+            "steps": 38,
+            "passed": true,
+            "log": "purchasing-quote-comparison-second.log"
+          }
+        ],
+        "remaining": [
+          "line-specific UOM, financial rounding, price list, tax, currency conversion and additional document discounts",
+          "multi formal approval/open/record (IB-ERP-0007), consolidated supplier participation",
+          "actual dynamic comparison report and supplier award, source-to-order conversion and quantities",
+          "admin bypass, browser, concurrency and migration"
+        ]
+      }
     },
     {
       "id": "B4",
@@ -88,8 +180,122 @@
         "Purchase Order",
         "Purchase Order Item"
       ],
-      "state": "planned",
-      "acceptance": "多行、日期、币种、税/折扣、受控变更、审批、暂停、关闭、来源与采购履约；IB-ERP-0007保留失败门禁"
+      "state": "in_progress",
+      "acceptance": "多行、日期、币种、税/折扣、受控变更、审批、暂停、关闭、来源与采购履约；IB-ERP-0007保留失败门禁",
+      "fieldReview": {
+        "documents": 2,
+        "declarations": 266,
+        "operationCandidates": 52,
+        "permissions": 4,
+        "mappedPartial": 29,
+        "shared": 4,
+        "unmapped": 152,
+        "layoutPending": 81,
+        "sourceAudit": "passed",
+        "semanticVerified": false
+      },
+      "draft": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probes": [
+          {
+            "probe": "docs/erpnext/probes/purchasing-sourced-order-draft.yaml",
+            "steps": 39,
+            "passed": true
+          },
+          {
+            "probe": "docs/erpnext/probes/purchasing-order-revision.yaml",
+            "steps": 54,
+            "passed": true
+          }
+        ],
+        "policy": "One recorded single quote per order and line, quantity <= quote and request, exact discounted net rate. Cancellation does not release the quote identity. Draft only. Existing manual multi-line entry preserved but all formal order approval intentionally disabled pending live validation IB-ERP-0007.",
+        "remaining": [
+          "cross-quote cumulative demand allocation, cancellation release, multi quote lines and partial split; fault rollback and concurrent duplicate creation",
+          "actual conversion action creating header and lines atomically, cross-quote cumulative demand allocation, cancellation release, quote line mapping and partial split",
+          "formal approval, submitted edits/hold/close/reopen, authorization and concurrency",
+          "quantity conversion, discounts/taxes, financial rounding, pricing, warehouse/source facts, create-time confirmation date verification",
+          "browser, installation/upgrade and B5 receipt/invoice integration"
+        ]
+      },
+      "atomicDraft": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probe": "docs/erpnext/probes/purchasing-atomic-order.yaml",
+        "steps": 30,
+        "passed": true,
+        "scope": "Single recorded quote, named transaction steps create order and line, update quote with generated references. Successful path shares change ID. No cumulative cross-quote allocation, no approved PO or cancelled allocation release.",
+        "rollback": {
+          "status": "passed",
+          "steps": 31,
+          "kind": "isolated duplicate orderline fault in same transaction; constraint refusal and retry succeeds with one header/line",
+          "log": "purchasing-atomic-order-rollback.log",
+          "reproducer": "scripts/purchasing-atomic-fault.mjs",
+          "concurrencyVerified": false
+        },
+        "concurrency": "unverified"
+      },
+      "cumulative": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probe": "docs/erpnext/probes/purchasing-cumulative-allocation.yaml",
+        "steps": 51,
+        "passed": true,
+        "regression": 54,
+        "atomicRollback": 31,
+        "concurrency": {
+          "passed": true,
+          "scope": "one simultaneous pair, two actors, same in-memory tenant built from exact Platform pin; one 6-unit winner, rejected loser 6-unit retry, accepted 4-unit retry, total 10",
+          "script": "scripts/purchasing-allocation-concurrent.mjs",
+          "fixture": "scripts/testdata/purchasing-allocation-concurrent.go"
+        },
+        "policy": "Direct orderline inverse relation on requisition, quantity sum; all cancelled lines still occupy; only quote-sourced single demand; manual lines excluded.",
+        "remaining": [
+          "migration/backfill for existing sourced order lines, missing/overflow relation bounds, multi-instance PostgreSQL and mixed direct create/revise races",
+          "cross-package receipt allocation and verification",
+          "取消释放、持久派生一致性 IB-ERP-0007；正式审批替代路径已通过 W2-019/020，仍待并发及完整门禁。"
+        ]
+      },
+      "approval": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probes": [
+          {
+            "probe": "docs/erpnext/probes/purchasing-live-order-approval.yaml",
+            "steps": 41,
+            "passed": true
+          },
+          {
+            "probe": "docs/erpnext/probes/purchasing-sourced-order-approval.yaml",
+            "steps": 38,
+            "passed": true
+          }
+        ],
+        "method": "Native transaction guard, complete collection lines, count and live item.material.state path, no line edits; quote requires recorded single valid quote, matching supplier/currency and approved demand.",
+        "regressions": [
+          {
+            "log": "purchasing-sourced-order-draft-after-approval-final.log",
+            "steps": 39,
+            "passed": true
+          },
+          {
+            "log": "purchasing-order-revision-after-approval-final.log",
+            "steps": 54,
+            "passed": true
+          },
+          {
+            "log": "purchasing-atomic-order-after-approval-final.log",
+            "steps": 30,
+            "passed": true
+          },
+          {
+            "log": "purchasing-cumulative-allocation-after-approval-final.log",
+            "steps": 51,
+            "passed": true
+          }
+        ],
+        "remaining": [
+          "IB-ERP-0007 persisted invalidlines is stale; original W2-001 remains deferred",
+          "source migration, concurrent master-state changes, actual install/upgrade and browser",
+          "multi-line requisition/RFQ/quote approvals and actual receipts"
+        ]
+      }
     },
     {
       "id": "B5",
@@ -100,8 +306,63 @@
         "付款与采购报表",
         "采购设置与供应商评分"
       ],
-      "state": "planned",
-      "acceptance": "扩展来源字段操作矩阵至收货、发票、付款、采购剩余占位；跨包一致性、报表、角色、浏览器、迁移、发布门禁。外部能力明确标记，不强行通过。"
+      "state": "in_progress",
+      "acceptance": "扩展来源字段操作矩阵至收货、发票、付款、采购剩余占位；跨包一致性、报表、角色、浏览器、迁移、发布门禁。外部能力明确标记，不强行通过。",
+      "sourceIndex": {
+        "documents": 12,
+        "declarations": 897,
+        "operationCandidates": 224,
+        "permissions": 29,
+        "sourceAudit": "passed",
+        "semanticReviewed": false,
+        "notes": "docs/erpnext/purchasing-fulfillment-design.md"
+      },
+      "accountingDraft": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probe": "docs/erpnext/probes/accounting-journal-draft.yaml",
+        "steps": 44,
+        "passed": true,
+        "objects": [
+          "accounting.book",
+          "accounting.account",
+          "accounting.journal",
+          "accounting.journalline"
+        ],
+        "remaining": [
+          "legal entity binding, financial periods, account category and statutory precision, general ledger, payables, invoice/payment and source matching, browser/upgrade"
+        ]
+      },
+      "receiptCriticalFieldReview": {
+        "declarations": 30,
+        "implementation": "not implemented",
+        "note": "critical fields dispositioned, no full semantic coverage; actual approved source contract pending"
+      },
+      "periodDraft": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probe": "docs/erpnext/probes/accounting-monthly-period.yaml",
+        "steps": 32,
+        "regression": 44,
+        "passed": true,
+        "remaining": [
+          "legal entity and fiscal year binding",
+          "period-required migration",
+          "actual posting, close and reversal"
+        ]
+      },
+      "receiptDraft": {
+        "pin": "464a50142967072b9076545dc2329d8f0491fdbc",
+        "probe": "docs/erpnext/probes/inventory-receipt-intake.yaml",
+        "steps": 35,
+        "passed": true,
+        "fieldsPartiallyMapped": 11,
+        "remaining": [
+          "verified order authority and source line",
+          "cumulative actual receipt and returns",
+          "actual inventory, quality and finance facts",
+          "batch, serial and valuation",
+          "cross-package binding and browser/upgrade"
+        ]
+      }
     }
   ]
 }

@@ -14,3 +14,5 @@
 长任务外层按 plan.md 波次推进；控制器为通用 PackageLoop，参见 ../package-loop.md；本项目配置 loop/projects/erpnext.json。运行状态独立于研究 checkpoint，冻结门禁与验收以控制器记录为准。
 
 执行主体限定为当前对话研究者；PackageLoop 不启动模型。每一研究项完成即持久化证据，再执行控制器验收。
+
+关键拒绝验收：任务可声明 probeRefusals，冻结 step/action/code/message（精确匹配输出）；pkg try 返回0仍须满足断言。错误码或拒绝原因不同即失败，不生成成功回执。不要为正常正例增加拒绝断言。

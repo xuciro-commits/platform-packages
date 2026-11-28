@@ -1,0 +1,42 @@
+roles: {purchasing: manager, party: steward, geo: user, item: steward, uom: user}
+at: 2026-11-27T00:00:00Z
+members:
+  buyer: {roles: {purchasing: buyer, party: user, geo: user, item: user, uom: user}}
+  manager: {roles: {purchasing: manager, party: user, geo: user, item: user, uom: user}}
+steps:
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: item.master.create, on: item.master/I2, with: {title: Bolt, code: BOLT, kind: material, unit: pcs}}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/S1, as: buyer, with: {title: Single, material: I1, quantity: 5, neededon: "2026-12-01"}, expect: {mode: single}}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/BAD1, as: buyer, with: {title: Invalid mixed, mode: multi, material: I1, quantity: 5, neededon: "2026-12-01"}, refused: true}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/BAD2, as: buyer, with: {title: Invalid dates, material: I1, quantity: 5, requestedon: "2026-12-02", neededon: "2026-12-01"}, refused: true}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/M1, as: buyer, with: {title: Multi, mode: multi, neededon: "2026-12-05", requestedon: "2026-11-27"}, expect: {mode: multi, linecount: 0}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/M1, as: buyer, refused: true}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/BAD1, as: buyer, with: {request: S1, material: I1, quantity: 1, neededon: "2026-12-01"}, refused: true}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/BAD2, as: buyer, with: {request: M1, material: I1, quantity: -1, neededon: "2026-12-01"}, refused: true}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/BAD3, as: buyer, with: {request: M1, material: I1, quantity: 1, neededon: "2026-11-26"}, refused: true}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/L1, as: buyer, with: {request: M1, material: I1, quantity: 10, neededon: "2026-12-01"}, expect: {unit: kg, state: active}}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/L2, as: buyer, with: {request: M1, material: I2, quantity: 20, neededon: "2026-12-02"}, expect: {unit: pcs, state: active}}
+  - {read: purchasing.requisition/M1, as: buyer, expect: {linecount: 2}}
+  - {do: purchasing.requisitionline.revise, on: purchasing.requisitionline/L1, as: buyer, with: {quantity: 12, neededon: "2026-12-03", description: Revised}, expect: {quantity: 12, neededon: "2026-12-03", description: Revised}}
+  - {do: item.master.deactivate, on: item.master/I2}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/M1, as: buyer, refused: true}
+  - {do: item.master.activate, on: item.master/I2}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/M1, as: buyer, expect: {state: requested}}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/M1, as: buyer, refused: true}
+  - {do: item.master.deactivate, on: item.master/I2}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/M1, as: manager, refused: true}
+  - {read: purchasing.requisition/M1, as: buyer, expect: {state: requested, linecount: 2}}
+  - {do: purchasing.requisition.reopen, on: purchasing.requisition/M1, as: manager, expect: {state: draft}}
+  - {do: purchasing.requisitionline.void, on: purchasing.requisitionline/L2, as: buyer, expect: {state: voided}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/M1, as: buyer, expect: {state: requested}}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/M1, as: manager, expect: {state: approved, linecount: 1}}
+  - {do: purchasing.requisitionline.revise, on: purchasing.requisitionline/L1, as: buyer, with: {quantity: 13, neededon: "2026-12-03"}, refused: true}
+  - {do: purchasing.requisition.reopen, on: purchasing.requisition/M1, as: manager, refused: true}
+  - {do: item.master.activate, on: item.master/I2}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/M2, as: buyer, with: {title: Two active items, mode: multi, neededon: "2026-12-05"}}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/L3, as: buyer, with: {request: M2, material: I1, quantity: 2, neededon: "2026-12-01"}}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/L4, as: buyer, with: {request: M2, material: I2, quantity: 3, neededon: "2026-12-02"}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/M2, as: buyer, expect: {state: requested}}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/M2, as: manager, expect: {state: approved, linecount: 2}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/S1, as: buyer}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/S1, as: manager, expect: {state: approved}}

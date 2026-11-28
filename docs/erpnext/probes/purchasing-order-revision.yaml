@@ -1,0 +1,60 @@
+roles: {purchasing: manager, party: steward, geo: user, item: steward, uom: user}
+at: 2026-11-27T00:00:00Z
+members:
+  buyer: {roles: {purchasing: buyer, party: user, geo: user, item: user, uom: user}}
+  manager: {roles: {purchasing: manager, party: user, geo: user, item: user, uom: user}}
+steps:
+  - {do: party.organization.create, on: party.organization/O1, with: {name: Supplier one}}
+  - {do: party.organization.create, on: party.organization/O2, with: {name: Supplier two}}
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: item.master.create, on: item.master/I2, with: {title: Copper, code: COPPER, kind: material, unit: kg}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S1, as: manager, with: {base: O1}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S2, as: manager, with: {base: O2}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S2, as: manager}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/R1, as: buyer, with: {title: Demand, material: I1, quantity: 10, neededon: "2026-12-15"}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/R1, as: buyer}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/R1, as: manager}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F1, as: buyer, with: {title: Invitation, request: R1, supplier: S1, deadline: "2026-12-05"}}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F1, as: buyer}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/Q1, as: buyer, with: {title: Quote, rfq: F1, quantity: 12, unitprice: 5, currency: CNY, discountpercent: 10, quotedon: "2026-11-27", validuntil: "2026-12-10"}, expect: {total: 54}}
+  - {do: purchasing.order.create, on: purchasing.order/BAD1, as: buyer, with: {title: Draft quote, supplier: S1, sourcekind: quote, sourcequote: Q1, currency: CNY, orderedon: "2026-11-27", expectedon: "2026-12-15"}, refused: true}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q1, as: buyer}
+  - {do: purchasing.order.create, on: purchasing.order/BAD2, as: buyer, with: {title: Wrong supplier, supplier: S2, sourcekind: quote, sourcequote: Q1, currency: CNY, orderedon: "2026-11-27", expectedon: "2026-12-15"}, refused: true}
+  - {do: purchasing.order.create, on: purchasing.order/BAD3, as: buyer, with: {title: Wrong currency, supplier: S1, sourcekind: quote, sourcequote: Q1, currency: USD, orderedon: "2026-11-27", expectedon: "2026-12-15"}, refused: true}
+  - {do: purchasing.order.create, on: purchasing.order/BAD4, as: buyer, with: {title: Expired on order date, supplier: S1, sourcekind: quote, sourcequote: Q1, currency: CNY, orderedon: "2026-12-11", expectedon: "2026-12-15"}, refused: true}
+  - {do: purchasing.order.create, on: purchasing.order/P1, as: buyer, with: {title: Sourced draft, supplier: S1, sourcekind: quote, sourcequote: Q1, currency: CNY, orderedon: "2026-11-27", expectedon: "2026-12-15"}, expect: {sourcequote: Q1, sourcekind: quote, linecount: 0}}
+  - {do: purchasing.order.create, on: purchasing.order/BAD5, as: buyer, with: {title: Duplicate source, supplier: S1, sourcekind: quote, sourcequote: Q1, currency: CNY, orderedon: "2026-11-27", expectedon: "2026-12-15"}, refused: true}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/BAD1, as: buyer, with: {order: P1, material: I1, quantity: 5, unitprice: 4.5}, refused: true}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/BAD2, as: buyer, with: {order: P1, sourcequote: Q1, material: I2, quantity: 5, unitprice: 4.5}, refused: true}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/BAD3, as: buyer, with: {order: P1, sourcequote: Q1, material: I1, quantity: 11, unitprice: 4.5}, refused: true}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/BAD4, as: buyer, with: {order: P1, sourcequote: Q1, material: I1, quantity: 5, unitprice: 5}, refused: true}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/L1, as: buyer, with: {order: P1, sourcequote: Q1, material: I1, quantity: 8, unitprice: 4.5}, expect: {amount: 36, unit: kg, sourcequote: Q1}}
+  - {read: purchasing.order/P1, as: buyer, expect: {total: 36, linecount: 1}}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/BAD5, as: buyer, with: {order: P1, sourcequote: Q1, material: I1, quantity: 3, unitprice: 4.5}, refused: true}
+  - {do: purchasing.order.revise, on: purchasing.order/P1, as: buyer, with: {title: Invalid date, expectedon: "2026-11-26"}, refused: true}
+  - {do: purchasing.order.revise, on: purchasing.order/P1, as: buyer, with: {title: Invalid confirmation, expectedon: "2026-12-15", confirmationdate: "2026-11-26"}, refused: true}
+  - {do: purchasing.order.revise, on: purchasing.order/P1, as: buyer, with: {title: Revised order, expectedon: "2026-12-18", confirmationno: CN-001, confirmationdate: "2026-11-27", terms: Net 30, remarks: Confirmed}, expect: {title: Revised order, expectedon: "2026-12-18", confirmationno: CN-001, terms: Net 30, sourcequote: Q1, supplier: S1, currency: CNY}}
+  - {do: purchasing.orderline.revise, on: purchasing.orderline/L1, as: buyer, with: {quantity: 11, unitprice: 4.5}, refused: true}
+  - {do: purchasing.orderline.revise, on: purchasing.orderline/L1, as: buyer, with: {quantity: 8, unitprice: 5}, refused: true}
+  - {do: purchasing.orderline.revise, on: purchasing.orderline/L1, as: buyer, with: {quantity: 9, unitprice: 4.5, expectedon: "2026-12-17", description: Grade A}, expect: {quantity: 9, amount: 40.5, expectedon: "2026-12-17", sourcequote: Q1, material: I1}}
+  - {read: purchasing.order/P1, as: buyer, expect: {total: 40.5, linecount: 1}}
+  - {do: purchasing.supplier.suspend, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.orderline.revise, on: purchasing.orderline/L1, as: buyer, with: {quantity: 7, unitprice: 4.5}, refused: true}
+  - {do: purchasing.order.revise, on: purchasing.order/P1, as: buyer, with: {title: Suspended supplier, expectedon: "2026-12-18"}, refused: true}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.orderline.edit, on: purchasing.orderline/L1, as: buyer, with: {quantity: 99}, refused: true}
+  - {do: purchasing.order.approve, on: purchasing.order/P1, as: buyer, refused: true}
+  - {do: purchasing.order.create, on: purchasing.order/P2, as: buyer, with: {title: Manual order, supplier: S1, currency: CNY, orderedon: "2026-11-27", expectedon: "2026-12-15"}, expect: {sourcekind: manual}}
+  - {do: purchasing.order.create, on: purchasing.order/P3, as: buyer, with: {title: Another manual order, supplier: S1, currency: CNY, orderedon: "2026-11-27", expectedon: "2026-12-15"}}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/M1, as: buyer, with: {order: P2, material: I1, quantity: 1, unitprice: 2}}
+  - {do: purchasing.orderline.create, on: purchasing.orderline/M2, as: buyer, with: {order: P2, material: I2, quantity: 3, unitprice: 4.5}}
+  - {read: purchasing.order/P2, as: buyer, expect: {total: 15.5, linecount: 2}}
+  - {do: purchasing.orderline.revise, on: purchasing.orderline/M1, as: buyer, with: {quantity: 2, unitprice: 3}, expect: {quantity: 2, amount: 6}}
+  - {read: purchasing.order/P2, as: buyer, expect: {total: 19.5, linecount: 2}}
+  - {do: purchasing.order.approve, on: purchasing.order/P2, as: buyer, refused: true}
+  - {do: purchasing.order.cancel, on: purchasing.order/P1, as: buyer, expect: {state: cancelled}}
+  - {do: purchasing.order.create, on: purchasing.order/BAD6, as: buyer, with: {title: Reuse cancelled source, supplier: S1, sourcekind: quote, sourcequote: Q1, currency: CNY, orderedon: "2026-11-27", expectedon: "2026-12-15"}, refused: true}
+  - {do: purchasing.order.revise, on: purchasing.order/P1, as: buyer, with: {title: Closed revision, expectedon: "2026-12-18"}, refused: true}
+  - {do: purchasing.orderline.revise, on: purchasing.orderline/L1, as: buyer, with: {quantity: 1, unitprice: 4.5}, refused: true}
+  - {read: purchasing.order/P1, as: buyer, expect: {total: 40.5, state: cancelled}}

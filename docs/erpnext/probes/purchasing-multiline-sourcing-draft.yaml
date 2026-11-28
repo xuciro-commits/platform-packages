@@ -1,0 +1,50 @@
+roles: {purchasing: manager, party: steward, geo: user, item: steward, uom: user}
+at: 2026-11-27T00:00:00Z
+members:
+  buyer: {roles: {purchasing: buyer, party: user, geo: user, item: user, uom: user}}
+  manager: {roles: {purchasing: manager, party: user, geo: user, item: user, uom: user}}
+steps:
+  - {do: party.organization.create, on: party.organization/O1, with: {name: Steel supplier}}
+  - {do: party.organization.create, on: party.organization/O2, with: {name: Other supplier}}
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: item.master.create, on: item.master/I2, with: {title: Bolt, code: BOLT, kind: material, unit: pcs}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S1, as: manager, with: {base: O1}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S2, as: manager, with: {base: O2}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S2, as: manager}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/R1, as: buyer, with: {title: Demand, mode: multi, neededon: "2026-12-10"}}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/R2, as: buyer, with: {title: Other demand, mode: multi, neededon: "2026-12-10"}}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/L1, as: buyer, with: {request: R1, material: I1, quantity: 10, neededon: "2026-12-10"}}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/L2, as: buyer, with: {request: R1, material: I2, quantity: 20, neededon: "2026-12-11"}}
+  - {do: purchasing.requisitionline.create, on: purchasing.requisitionline/L3, as: buyer, with: {request: R2, material: I1, quantity: 10, neededon: "2026-12-10"}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/R1, as: buyer}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/R2, as: buyer}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F1, as: buyer, with: {title: Draft first, request: R1, supplier: S1, deadline: "2026-12-05"}}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F2, as: buyer, with: {title: Draft second, request: R1, supplier: S2, deadline: "2026-12-05"}}
+  - {do: purchasing.rfqline.create, on: purchasing.rfqline/BAD1, as: buyer, with: {rfq: F1, source: L3, quantity: 1}, refused: true}
+  - {do: purchasing.rfqline.create, on: purchasing.rfqline/BAD2, as: buyer, with: {rfq: F1, source: L1, quantity: 11}, refused: true}
+  - {do: purchasing.rfqline.create, on: purchasing.rfqline/A1, as: buyer, with: {rfq: F1, source: L1, quantity: 8}, expect: {material: I1, unit: kg, neededon: "2026-12-10", quantity: 8}}
+  - {do: purchasing.rfqline.create, on: purchasing.rfqline/A2, as: buyer, with: {rfq: F1, source: L2, quantity: 20}, expect: {material: I2, unit: pcs}}
+  - {do: purchasing.rfqline.create, on: purchasing.rfqline/B1, as: buyer, with: {rfq: F2, source: L1, quantity: 10}}
+  - {do: purchasing.rfqline.create, on: purchasing.rfqline/DUP, as: buyer, with: {rfq: F1, source: L1, quantity: 1}, refused: true}
+  - {do: purchasing.rfqline.revise, on: purchasing.rfqline/A1, as: buyer, with: {quantity: 9, description: Grade A}, expect: {quantity: 9, source: L1, material: I1}}
+  - {do: purchasing.rfqline.void, on: purchasing.rfqline/A2, as: buyer, expect: {state: voided}}
+  - {do: purchasing.rfqline.reinstate, on: purchasing.rfqline/A2, as: buyer, expect: {state: active}}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F1, as: buyer, refused: true}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/Q1, as: buyer, with: {title: Internal draft, rfq: F1, mode: multi, currency: CNY, quotedon: "2026-11-27", validuntil: "2026-12-05"}, expect: {total: 0, supplier: S1, mode: multi}}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/QBAD, as: buyer, with: {title: Wrong mode, rfq: F1, quantity: 1, unitprice: 1, currency: CNY, quotedon: "2026-11-27", validuntil: "2026-12-05"}, refused: true}
+  - {do: purchasing.quotationline.create, on: purchasing.quotationline/BAD1, as: buyer, with: {quotation: Q1, invitationline: B1, quantity: 1, unitprice: 2}, refused: true}
+  - {do: purchasing.quotationline.create, on: purchasing.quotationline/BAD2, as: buyer, with: {quotation: Q1, invitationline: A1, quantity: 10, unitprice: 2}, refused: true}
+  - {do: purchasing.quotationline.create, on: purchasing.quotationline/Q1A, as: buyer, with: {quotation: Q1, invitationline: A1, quantity: 8, unitprice: 2.5}, expect: {material: I1, unit: kg, amount: 20}}
+  - {do: purchasing.quotationline.create, on: purchasing.quotationline/Q1B, as: buyer, with: {quotation: Q1, invitationline: A2, quantity: 20, unitprice: 0.5}, expect: {material: I2, unit: pcs, amount: 10}}
+  - {read: purchasing.quotation/Q1, as: buyer, expect: {total: 30}}
+  - {do: purchasing.quotationline.create, on: purchasing.quotationline/DUP, as: buyer, with: {quotation: Q1, invitationline: A1, quantity: 1, unitprice: 1}, refused: true}
+  - {do: purchasing.quotationline.revise, on: purchasing.quotationline/Q1A, as: buyer, with: {quantity: 9, unitprice: 3, supplierpart: SP-1, expectedon: "2026-12-12", description: Grade A}, expect: {amount: 27, supplierpart: SP-1, expectedon: "2026-12-12"}}
+  - {read: purchasing.quotation/Q1, as: buyer, expect: {total: 37}}
+  - {do: purchasing.quotationline.void, on: purchasing.quotationline/Q1B, as: buyer}
+  - {read: purchasing.quotation/Q1, as: buyer, expect: {total: 27}}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q1, as: buyer, refused: true}
+  - {do: purchasing.rfq.cancel, on: purchasing.rfq/F1, as: buyer}
+  - {do: purchasing.quotationline.revise, on: purchasing.quotationline/Q1A, as: buyer, with: {quantity: 1, unitprice: 1}, refused: true}
+  - {do: purchasing.quotation.withdraw, on: purchasing.quotation/Q1, as: buyer}
+  - {read: purchasing.quotation/Q1, as: buyer, expect: {total: 27, state: withdrawn}}

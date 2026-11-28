@@ -5,7 +5,7 @@ import os from "node:os";
 import {fileURLToPath} from "node:url";
 import {createHash,randomUUID} from "node:crypto";
 import {spawn} from "node:child_process";
-import {loadQuality,validateSourceScope} from "./package-loop-quality.mjs";
+import {loadQuality,validateSourceScope,validateProbeRefusals,checkProbeRefusals} from "./package-loop-quality.mjs";
 import {LIMITS,validateRules,observe,brief} from "./package-loop-reflect.mjs";
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
@@ -25,7 +25,7 @@ const navigationContracts=(cfg.navigationContracts??[]).map(p=>({path:p,package:
 const taskFile=local(cfg.queue), queue=read(taskFile);
 if(queue.version!==1||!Array.isArray(queue.tasks))throw Error("Invalid queue");
 const ids=new Set();
-for(const t of queue.tasks){if(!safeId(t.id)||ids.has(t.id)||!Array.isArray(t.packages)||!t.packages.length||!t.packages.every(safeId)||typeof t.intent!=="string")throw Error("Invalid task "+t.id);ids.add(t.id);if(t.probe)local(t.probe)}
+for(const t of queue.tasks){if(!safeId(t.id)||ids.has(t.id)||!Array.isArray(t.packages)||!t.packages.length||!t.packages.every(safeId)||typeof t.intent!=="string")throw Error("Invalid task "+t.id);ids.add(t.id);if(t.probe)local(t.probe);if(t.probeRefusals!==undefined&&!t.probe)throw Error("Refusal assertions require a probe: "+t.id);validateProbeRefusals(t.probeRefusals)}
 const deferred=queue.tasks.filter(t=>t.defer).map(t=>{const d=t.defer;if(!d||typeof d.reason!=="string"||!d.reason.trim()||!/^IB-[A-Z]+-[0-9]{4}$/.test(d.feedback)||typeof cfg.feedbackDir!=="string")throw Error("Invalid deferred task "+t.id);const file=path.resolve(root,cfg.feedbackDir,d.feedback+".json");const g=read(file);if(g.id!==d.feedback||!["reported","accepted","planned","implementing","verified","closed"].includes(g.status))throw Error("Invalid feedback for "+t.id);return {task:t.id,reason:d.reason,feedback:d.feedback,feedbackStatus:g.status}});
 const deferredIds=new Set(deferred.map(d=>d.task));
 const budget=(name,key,def,min,max)=>{const n=Number(opt(name,cfg.budgets?.[key]??def));if(!Number.isInteger(n)||n<min||n>max)throw Error("Invalid "+name);return n};
@@ -77,7 +77,7 @@ if(!fs.existsSync(eventsFile))fs.writeFileSync(eventsFile,state.history.map(e=>J
 state.history=state.history.slice(-32);
 function event(v){const e={...v,at:new Date().toISOString()};fs.appendFileSync(eventsFile,JSON.stringify(e)+"\n");state.history=[...state.history,e].slice(-32)}
 function reflect(v){observe(reflection,v);save(reflectionFile,reflection)}
-function requiredGates(){return [...(cfg.deliveryLayout?[local("scripts/packages.mjs"),local("platform.lock"),local(".github/workflows/check.yml"),local(".github/workflows/release.yml")]:[]),...(cfg.batchArtifacts??[]).map(p=>local(p)),...((cfg.fieldAudits??[]).length?[local("scripts/package-field-audit.mjs"),...cfg.fieldAudits.map(p=>local(p))]:[]),fileURLToPath(import.meta.url),configFile,taskFile,local(cfg.protocol),rulesFile,local("scripts/package-loop-reflect.mjs"),...queue.tasks.filter(t=>t.probe).map(t=>local(t.probe)),...(navigationContracts.length?[local("scripts/package-navigation.mjs"),...navigationContracts.map(x=>local(x.path)),...(cfg.navigationIndex?[local(cfg.navigationIndex)]:[])]:[]),...(cfg.quality?[local(cfg.quality.coverage),local(cfg.quality.productGates),local(cfg.quality.blockers),local(cfg.quality.capabilities),local("scripts/package-loop-quality.mjs")]:[])]}
+function requiredGates(){return [...(cfg.deliveryLayout?[local("scripts/packages.mjs"),local("platform.lock"),local(".github/workflows/check.yml"),local(".github/workflows/release.yml")]:[]),...(cfg.batchArtifacts??[]).map(p=>local(p)),...((cfg.fieldAudits??[]).length?[local("scripts/package-field-audit.mjs"),...cfg.fieldAudits.map(p=>local(p))]:[]),fileURLToPath(import.meta.url),local("scripts/package-loop-quality.mjs"),configFile,taskFile,local(cfg.protocol),rulesFile,local("scripts/package-loop-reflect.mjs"),...queue.tasks.filter(t=>t.probe).map(t=>local(t.probe)),...(navigationContracts.length?[local("scripts/package-navigation.mjs"),...navigationContracts.map(x=>local(x.path)),...(cfg.navigationIndex?[local(cfg.navigationIndex)]:[])]:[]),...(cfg.quality?[local(cfg.quality.coverage),local(cfg.quality.productGates),local(cfg.quality.blockers),local(cfg.quality.capabilities)]:[])]}
 function gatePaths(){return [...requiredGates(),...new Set(queue.tasks.flatMap(t=>t.packages).map(p=>local("packages/"+p+"/try.yaml")).filter(p=>fs.existsSync(p)))]}
 function snapshot(){return Object.fromEntries([...new Set(gatePaths())].sort().map(p=>[path.relative(root,p),hash(p)]))}
 function taskSignatures(files){
@@ -160,9 +160,10 @@ async function gate(task){
     if(!t.probe)throw Error("No independent acceptance gate: "+t.id);
     for(const [label,bin,argv] of gateCommands(t)){
       const before=gateContent(t),key=receiptKey(t,argv,before),slot=receiptSlot(t,label);
-      const commonKey=digest([argv,before,toolHash,environmentHash]);
-      const cached=runGateCache.get(commonKey)??verifiedReceipt(slot,key);const r=cached??await command(bin,argv,t.id+"-"+label,gateMs);verifyFrozen();
+      const commonKey=digest([argv,before,toolHash,environmentHash,label==="probe"?t.probeRefusals??null:null]);
+      const cached=runGateCache.get(commonKey)??verifiedReceipt(slot,key);let r=cached??await command(bin,argv,t.id+"-"+label,gateMs);verifyFrozen();
       if(gateContent(t)!==before)throw Error("Package changed during verification: "+t.id);
+      if(pass(r)&&label==="probe"&&t.probeRefusals){const failures=checkProbeRefusals(fs.readFileSync(path.join(dir,r.log),"utf8"),t.probeRefusals);if(failures.length)r={...r,code:1,reason:"failed",tail:"Probe refusal mismatch: "+JSON.stringify(failures).slice(0,5000)}}
       if(pass(r)){runGateCache.set(commonKey,r);if(!verifiedReceipt(slot,key))cacheReceipt(slot,key,r)}else if(receipts.entries[slot]){delete receipts.entries[slot];save(receiptsFile,receipts)}
       if(!pass(r))return {...r,gateTask:t.id,gateKind:label};
       if(t.id===task.id&&label==="probe")return {...r,gateTask:t.id,gateKind:label};

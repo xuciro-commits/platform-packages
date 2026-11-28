@@ -69,3 +69,28 @@ export function loadQuality(root,cfg,queue,completed=[]){
  const productReady=studies.length===studyCount&&openCritical===0&&gateResults.every(g=>g.status==="verified");
  return {study,summary:{scope:studies.length,evidenceRecorded:studyCount,invalid:studies.filter(s=>s.status==="invalid").length,criticalUnknowns:openCritical,requiredGates:gateResults.length,verifiedGates:gateResults.filter(g=>g.status==="verified").length,blockedGates:gateResults.filter(g=>g.status==="blocked_by_platform_or_unknown").length,productReady},studies,gateResults};
 }
+
+export function validateProbeRefusals(expected){
+ if(expected===undefined)return;
+ if(!Array.isArray(expected)||expected.length<1||expected.length>64)throw Error("probeRefusals needs 1–64 entries");
+ const seen=new Set();
+ for(const x of expected){
+  if(!x||!Number.isSafeInteger(x.step)||x.step<1||seen.has(x.step)||typeof x.action!=="string"||!/^[a-zA-Z0-9_.-]+$/.test(x.action)||typeof x.code!=="string"||!/^ERROR_CODE_[A-Z_]+$/.test(x.code)||typeof x.message!=="string"||!x.message.trim()||x.message.length>512||/[\r\n]/.test(x.message))throw Error("Invalid probeRefusals entry");
+  seen.add(x.step);
+ }
+}
+export function checkProbeRefusals(log,expected){
+ validateProbeRefusals(expected);
+ if(!expected)return [];
+ const records=new Map();let current=null;
+ for(const line of log.split(/\r?\n/)){
+  const head=/^(\d+)\. (\S+)(?:\s|$)/.exec(line);
+  if(head){const n=Number(head[1]);current={action:head[2],refusals:[]};if(records.has(n))current.duplicate=true;records.set(n,current);continue}
+  const refusal=/^\s+refused as expected: (ERROR_CODE_[A-Z_]+): (.*)$/.exec(line);
+  if(current&&refusal)current.refusals.push({code:refusal[1],message:refusal[2]});
+ }
+ return expected.flatMap(x=>{
+  const r=records.get(x.step),v=r?.refusals[0];
+  return r&&!r.duplicate&&r.action===x.action&&r.refusals.length===1&&v.code===x.code&&v.message===x.message?[]:[{step:x.step,expected:{action:x.action,code:x.code,message:x.message},observed:r??null}];
+ });
+}

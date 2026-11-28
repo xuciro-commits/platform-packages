@@ -26,7 +26,7 @@ steps:
   - {do: purchasing.requisitionline.void, on: purchasing.requisitionline/L2, as: buyer, expect: {state: voided}}
   - {read: purchasing.requisition/M1, as: buyer, expect: {linecount: 1}}
   - {do: purchasing.requisition.submit, on: purchasing.requisition/M1, as: buyer, expect: {state: requested}}
-  - {do: purchasing.requisition.approve, on: purchasing.requisition/M1, as: manager, refused: true}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/M1, as: buyer, refused: true}
   - {do: purchasing.requisitionline.convertquantity, on: purchasing.requisitionline/L1, as: buyer, with: {unit: g, quantity: 100}, refused: true}
   - {do: purchasing.requisitionline.revise, on: purchasing.requisitionline/L1, as: buyer, with: {quantity: 13, neededon: "2026-12-03"}, refused: true}
   - {do: purchasing.requisition.reopen, on: purchasing.requisition/M1, as: buyer, refused: true}

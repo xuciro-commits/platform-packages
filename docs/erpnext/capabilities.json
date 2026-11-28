@@ -41,6 +41,20 @@
       "intent": "超过500条账本聚合、真实并发与重放",
       "innerBox": "IB-ERP-0006",
       "next": "501笔实测失败，隔离投影授权被拒；等平台评审，不阻塞无关包开发"
+    },
+    {
+      "id": "derived-live-consistency",
+      "state": "reported_gap",
+      "innerBox": "IB-ERP-0007",
+      "intent": "多跳引用及父集合派生刷新一致性",
+      "next": "原派生探针仍失败；W2-019/020/021 原生事务守卫替代审批已通过；待平台修复、简写诊断与并发验证"
+    },
+    {
+      "id": "reserved-action-names",
+      "state": "reported_gap",
+      "innerBox": "IB-ERP-0008",
+      "intent": "业务动作与系统保留名称编译诊断一致性",
+      "next": "restore 冲突已由 reinstate 规避，待平台编译检查验证"
     }
   ]
 }

@@ -286,7 +286,10 @@
   ],
   "additional": [
     "purchasing.orderline",
-    "purchasing.requisitionline"
+    "purchasing.requisitionline",
+    "purchasing.rfqline",
+    "purchasing.quotationline",
+    "purchasing.quotecomparison"
   ],
   "groups": [
     {
@@ -333,7 +336,10 @@
       "title": "Additional operations",
       "pages": [
         "purchasing.orderline",
-        "purchasing.requisitionline"
+        "purchasing.requisitionline",
+        "purchasing.rfqline",
+        "purchasing.quotationline",
+        "purchasing.quotecomparison"
       ]
     }
   ],

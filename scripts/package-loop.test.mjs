@@ -3,7 +3,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import {spawnSync,execFileSync} from "node:child_process";
-import {loadQuality,validateSourceScope} from "./package-loop-quality.mjs";
+import {loadQuality,validateSourceScope,checkProbeRefusals,validateProbeRefusals} from "./package-loop-quality.mjs";
 import {LIMITS,validateRules,observe,brief} from "./package-loop-reflect.mjs";
 import {fileURLToPath} from "node:url";
 import {test} from "node:test";
@@ -157,4 +157,23 @@ test("descriptive batch notes require explicit freeze but retain runtime receipt
  assert.equal(x.run("run").status,0);assert.deepEqual(JSON.parse(fs.readFileSync(file)).entries["A:probe"],before);
  x.write("packages/demo/model.yaml","changed");assert.deepEqual(JSON.parse(x.run("status").stdout).acceptance.verified,[]);
  assert.equal(x.run("run").status,0);assert.notEqual(JSON.parse(fs.readFileSync(file)).entries["A:probe"].key,before.key);
+ }finally{x.close()}});
+
+test("typed probe refusals require exact step action error and message",()=>{
+ const expected=[{step:2,action:"sample.order.approve",code:"ERROR_CODE_INVALID_ARGUMENT",message:"Inactive item."}];
+ const log="1. sample.order.create X\n2. sample.order.approve X\n  refused as expected: ERROR_CODE_INVALID_ARGUMENT: Inactive item.\n3. read X\n";
+ assert.deepEqual(checkProbeRefusals(log,expected),[]);
+ assert.equal(checkProbeRefusals(log.replace("ERROR_CODE_INVALID_ARGUMENT","ERROR_CODE_POLICY_DENIED"),expected).length,1);
+ assert.equal(checkProbeRefusals(log.replace("Inactive item.","Wrong reason."),expected).length,1);
+ assert.equal(checkProbeRefusals(log.replace("2. sample.order.approve","4. sample.order.approve"),expected).length,1);
+ assert.equal(checkProbeRefusals(log.replace("2. sample.order.approve","2. sample.order.cancel"),expected).length,1);
+ assert.throws(()=>validateProbeRefusals([...expected,...expected]));
+});
+
+test("Loop rejects a successful probe with a wrong business refusal",()=>{const x=fixture();try{
+ const q=JSON.parse(fs.readFileSync(path.join(x.root,"docs/queue.json")));q.tasks[0].probeRefusals=[{step:1,action:"demo.order.approve",code:"ERROR_CODE_INVALID_ARGUMENT",message:"Inactive item."}];x.write("docs/queue.json",JSON.stringify(q));
+ const fake=code=>"#!"+process.execPath+"\n"+JSON.stringify("unused")+";if(process.argv[2]===\"try\"){console.log(\"1. demo.order.approve X\");console.log(\"  refused as expected: "+code+": Inactive item.\")}\n";
+ x.write("fake-pkg",fake("ERROR_CODE_POLICY_DENIED"),0o700);assert.equal(x.run("freeze").status,0);assert.notEqual(x.run("verify",["--task","A"]).status,0);
+ const receipts=path.join(x.root,"runtime/demo/gate-receipts.json");assert.equal(JSON.parse(fs.readFileSync(receipts)).entries["A:probe"],undefined);
+ x.write("fake-pkg",fake("ERROR_CODE_INVALID_ARGUMENT"),0o700);assert.equal(x.run("verify",["--task","A"]).status,0);
  }finally{x.close()}});

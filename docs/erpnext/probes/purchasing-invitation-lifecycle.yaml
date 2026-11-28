@@ -1,0 +1,43 @@
+roles: {purchasing: manager, party: steward, geo: user, item: steward, uom: user}
+at: 2026-11-27T00:00:00Z
+members:
+  buyer: {roles: {purchasing: buyer, party: user, geo: user, item: user, uom: user}}
+  manager: {roles: {purchasing: manager, party: user, geo: user, item: user, uom: user}}
+steps:
+  - {do: party.organization.create, on: party.organization/O1, with: {name: First supplier}}
+  - {do: party.organization.create, on: party.organization/O2, with: {name: Second supplier}}
+  - {do: item.master.create, on: item.master/I1, with: {title: Steel, code: STEEL, kind: material, unit: kg}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S1, as: manager, with: {base: O1}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/S2, as: manager, with: {base: O2}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S2, as: manager}
+  - {do: purchasing.requisition.create, on: purchasing.requisition/R1, as: buyer, with: {title: Steel demand, material: I1, quantity: 10, neededon: "2026-12-15"}}
+  - {do: purchasing.requisition.submit, on: purchasing.requisition/R1, as: buyer}
+  - {do: purchasing.requisition.approve, on: purchasing.requisition/R1, as: manager}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/BAD, as: buyer, with: {title: Invalid date, request: R1, supplier: S1, issuedon: "2026-12-08", deadline: "2026-12-05"}, refused: true}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F1, as: buyer, with: {title: Invite one, request: R1, supplier: S1, deadline: "2026-12-05"}}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/F2, as: buyer, with: {title: Invite two, request: R1, supplier: S2, issuedon: "2026-11-29", deadline: "2026-12-05"}}
+  - {do: purchasing.rfq.create, on: purchasing.rfq/DUP, as: buyer, with: {title: Duplicate, request: R1, supplier: S1, deadline: "2026-12-06"}, refused: true}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F2, as: buyer, refused: true}
+  - {do: purchasing.rfq.revise, on: purchasing.rfq/F1, as: buyer, with: {title: Bad revision, issuedon: "2026-12-10", deadline: "2026-12-05"}, refused: true}
+  - {do: purchasing.rfq.revise, on: purchasing.rfq/F1, as: buyer, with: {title: Revised invitation, issuedon: "2026-11-27", deadline: "2026-12-07", subject: Steel quote, message: Include certificate, terms: Net 30}, expect: {title: Revised invitation, deadline: "2026-12-07", subject: Steel quote, message: Include certificate, terms: Net 30, request: R1, supplier: S1}}
+  - {do: purchasing.rfq.cancel, on: purchasing.rfq/F2, as: buyer, expect: {state: cancelled}}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F2, as: buyer, refused: true}
+  - {do: purchasing.rfq.open, on: purchasing.rfq/F1, as: buyer, expect: {state: open}}
+  - {do: purchasing.rfq.revise, on: purchasing.rfq/F1, as: buyer, with: {title: Changed after open, deadline: "2026-12-09"}, refused: true}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/Q1, as: buyer, with: {title: First quote, rfq: F1, quantity: 10, unitprice: 2, currency: CNY, quotedon: "2026-11-27", validuntil: "2026-12-10"}, expect: {total: 20, supplier: S1}}
+  - {do: purchasing.quotation.revise, on: purchasing.quotation/Q1, as: buyer, with: {quantity: 10, unitprice: -1, currency: CNY, quotedon: "2026-11-27", validuntil: "2026-12-10"}, refused: true}
+  - {do: purchasing.quotation.revise, on: purchasing.quotation/Q1, as: buyer, with: {quantity: 12, unitprice: 2.5, currency: CNY, vendorref: Q-001, terms: Net 30, quotedon: "2026-11-27", validuntil: "2026-12-10"}, expect: {quantity: 12, unitprice: 2.5, total: 30, vendorref: Q-001, rfq: F1, supplier: S1}}
+  - {do: item.master.deactivate, on: item.master/I1}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q1, as: buyer, refused: true}
+  - {do: item.master.activate, on: item.master/I1}
+  - {do: purchasing.supplier.suspend, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q1, as: buyer, refused: true}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/S1, as: manager}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q1, as: buyer, expect: {state: recorded, total: 30}}
+  - {do: purchasing.quotation.revise, on: purchasing.quotation/Q1, as: buyer, with: {quantity: 1, unitprice: 1, currency: CNY, quotedon: "2026-11-27", validuntil: "2026-12-10"}, refused: true}
+  - {do: purchasing.quotation.create, on: purchasing.quotation/Q2, as: buyer, with: {title: Second quote, rfq: F1, quantity: 10, unitprice: 3, currency: CNY, quotedon: "2026-11-27", validuntil: "2026-12-10"}}
+  - {do: purchasing.rfq.close, on: purchasing.rfq/F1, as: buyer, expect: {state: closed}}
+  - {do: purchasing.quotation.record, on: purchasing.quotation/Q2, as: buyer, refused: true}
+  - {do: purchasing.quotation.withdraw, on: purchasing.quotation/Q2, as: buyer, expect: {state: withdrawn}}
+  - {read: purchasing.quotation/Q1, as: buyer, expect: {state: recorded, total: 30}}

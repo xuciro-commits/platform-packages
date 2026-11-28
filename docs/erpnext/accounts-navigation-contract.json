@@ -37,12 +37,12 @@
       "kind": "page",
       "sourceType": "DocType",
       "sourceTarget": "Account",
-      "target": "accounting.chart_of_accounts",
+      "target": "accounting.account",
       "group": "Overview",
-      "implementation": "pending",
-      "status": "placeholder",
+      "implementation": "partial",
+      "status": "partial",
       "browserVerified": false,
-      "note": "Business implementation pending; no operations."
+      "note": "Draft account or journal model only; no legal entity, actual posting or browser acceptance."
     },
     {
       "reference": "Sales Invoice",
@@ -85,12 +85,12 @@
       "kind": "page",
       "sourceType": "DocType",
       "sourceTarget": "Journal Entry",
-      "target": "accounting.journal_entry",
+      "target": "accounting.journal",
       "group": "Overview",
-      "implementation": "pending",
-      "status": "placeholder",
+      "implementation": "partial",
+      "status": "partial",
       "browserVerified": false,
-      "note": "Business implementation pending; no operations."
+      "note": "Draft account or journal model only; no legal entity, actual posting or browser acceptance."
     },
     {
       "reference": "Reports",
@@ -517,18 +517,22 @@
       "note": "Business implementation pending; no operations."
     }
   ],
-  "additional": [],
+  "additional": [
+    "accounting.book",
+    "accounting.journalline",
+    "accounting.period"
+  ],
   "groups": [
     {
       "title": "Overview",
       "pages": [
         "accounting.home",
         "accounting.dashboard",
-        "accounting.chart_of_accounts",
+        "accounting.account",
         "accounting.sales_invoice",
         "accounting.purchase_invoice",
         "accounting.payment_entry",
-        "accounting.journal_entry"
+        "accounting.journal"
       ]
     },
     {
@@ -590,7 +594,11 @@
     },
     {
       "title": "Additional operations",
-      "pages": []
+      "pages": [
+        "accounting.book",
+        "accounting.journalline",
+        "accounting.period"
+      ]
     }
   ],
   "limitations": [

@@ -2,33 +2,13 @@
   "version": 1,
   "tasks": [
     {
-      "id": "W1-003",
-      "title": "库存边界与授权探针",
-      "intent": "在现有库存候选包上通过冻结的边界探针，修复真实拒绝错误；不绕过授权。若已通过，研究原因并记录结果即可。",
-      "probe": "docs/erpnext/probes/inventory-boundary.yaml",
-      "packages": [
-        "uom",
-        "item-master",
-        "inventory"
-      ]
-    },
-    {
-      "id": "W1-004",
-      "title": "库存预留与释放（顺序语义）",
-      "intent": "实现 inventory.reservation 对象：title、position（引用 inventory.position）、quantity（decimal），草稿→reserved→released；reserve 检查可用余额，release 仅从 reserved。position.available 派生实存减有效预留；issue/transfer 必须以 available 为门禁。保留原有库存探针，不假定并发安全。以固定探针和组合 pkg check 验收；如平台能力不足，登记后停止。",
-      "probe": "docs/erpnext/probes/inventory-reservation.yaml",
-      "packages": [
-        "uom",
-        "item-master",
-        "inventory"
-      ]
-    },
-    {
       "id": "S-W1-001",
       "kind": "study",
       "title": "库存工作区、报表与打印深度学习",
       "intent": "逐一读取固定源码中的工作区侧栏、库存余额/台账报表、打印格式及 Frappe 报表/打印运行框架；按每个 feature 写 evidence.json，记录真实用户意图、观察、独立设计、反例、未知项及原始源码行区间。不要实现替代功能或自称验收；未知平台缺口保留。",
       "packages": [
+        "stock-contract",
+        "gl-contract",
         "inventory"
       ],
       "probe": null,
@@ -48,34 +28,14 @@
       ]
     },
     {
-      "id": "W1-005",
-      "title": "冲正与顺序库存一致性",
-      "intent": "对已过账收货、发料、调拨执行一次可追溯冲正，保留原数量及位置；拒绝草稿、重复、越权和侵占预留的冲正。顺序语义，不声称并发安全。",
-      "probe": "docs/erpnext/probes/inventory-reversal.yaml",
-      "packages": [
-        "uom",
-        "item-master",
-        "inventory"
-      ]
-    },
-    {
-      "id": "W1-008",
-      "title": "仓库名录、物料需求与工作台候选",
-      "intent": "仅验收包声明、名录编码唯一性、物料需求提交取消、权限及不改变库存；浏览器与完整单据另验收。",
-      "packages": [
-        "uom",
-        "item-master",
-        "inventory"
-      ],
-      "probe": "docs/erpnext/probes/inventory-demand.yaml"
-    },
-    {
       "id": "S-W1-002",
       "kind": "study",
       "title": "物料分类、品牌、属性与仓库学习",
       "intent": "固定源证据与未知项，结构验证不等于产品验收。",
       "packages": [
         "item-master",
+        "stock-contract",
+        "gl-contract",
         "inventory"
       ],
       "probe": null,
@@ -95,32 +55,10 @@
         "uom",
         "item-master"
       ],
-      "probe": "docs/erpnext/probes/item-classification.yaml"
-    },
-    {
-      "id": "W1-010",
-      "title": "仓库层级与实体仓库限定",
-      "intent": "独立验证多级父子、分组不可存货及历史兼容；不包含真实树形页面或升级验收。",
-      "packages": [
-        "uom",
-        "item-master",
-        "inventory"
-      ],
-      "probe": "docs/erpnext/probes/inventory-warehouse-hierarchy.yaml"
-    },
-    {
-      "id": "W1-006",
-      "title": "超过集合边界的完整库存聚合",
-      "intent": "独立验证超过500条流水与预留、拒绝超额扣减；不通过增大固定上限掩盖问题。",
-      "probe": "docs/erpnext/probes/inventory-scale.yaml",
-      "packages": [
-        "uom",
-        "item-master",
-        "inventory"
-      ],
+      "probe": "docs/erpnext/probes/item-classification.yaml",
       "defer": {
-        "reason": "501笔独立探针真实失败；等待受控聚合或事务投影能力评审。保留原失败门禁。",
-        "feedback": "IB-ERP-0006"
+        "reason": "自引用层级可在标准编辑中成环（分类 C1→C2→C1 被接受）；等平台在引用约束里拒绝成环。保留原门禁。",
+        "feedback": "IB-ERP-0009"
       }
     },
     {
@@ -131,6 +69,8 @@
       "packages": [
         "uom",
         "item-master",
+        "stock-contract",
+        "gl-contract",
         "inventory"
       ],
       "defer": {
@@ -144,6 +84,8 @@
       "title": "批次、序列号、盘点源证据",
       "intent": "证据和未知项与完整库存调整分开。",
       "packages": [
+        "stock-contract",
+        "gl-contract",
         "inventory"
       ],
       "probe": null,
@@ -154,17 +96,6 @@
       ]
     },
     {
-      "id": "W1-011",
-      "title": "盘点复核及批次序列档案",
-      "intent": "独立验收盘点差异快照、批次日期和唯一性、序列号同物料绑定及权限；不声称库存调整或完整追溯。",
-      "packages": [
-        "uom",
-        "item-master",
-        "inventory"
-      ],
-      "probe": "docs/erpnext/probes/inventory-count-registers.yaml"
-    },
-    {
       "id": "W2-002",
       "title": "采购主线字段写入读取与权限",
       "intent": "六类记录新增18字段、读回及金额、占位写入拒绝；不包含完整订单审批、来源语义等价和浏览器。",
@@ -173,6 +104,9 @@
         "party",
         "uom",
         "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
         "purchasing"
       ],
       "probe": "docs/erpnext/probes/purchasing-field-roundtrip.yaml"
@@ -183,6 +117,9 @@
       "title": "供应商与分类逐项学习",
       "intent": "固定源码证据，字段权限与操作逐项处置；非功能完备",
       "packages": [
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
         "purchasing"
       ],
       "probe": null,
@@ -200,6 +137,9 @@
         "party",
         "uom",
         "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
         "purchasing"
       ],
       "probe": "docs/erpnext/probes/purchasing-supplier-master.yaml"
@@ -213,23 +153,29 @@
         "party",
         "uom",
         "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
         "purchasing"
       ],
       "probe": "docs/erpnext/probes/purchasing-sourcing.yaml",
       "defer": {
-        "reason": "订单多跳派生失效状态实测异常，审批正确性未确认；等平台评审或等价契约验证，保留原41步门禁。",
+        "reason": "原多跳派生invalidlines刷新仍异常；实时事务守卫替代路径已通过W2-019/020，保留原41步完整门禁等待底层派生修复。",
         "feedback": "IB-ERP-0007"
       }
     },
     {
       "id": "W2-004",
       "title": "B2采购需求多行草稿及退回",
-      "intent": "26步验证单项兼容、多行草稿、基本单位、日期、明细修订作废、提交及退回；多行正式审批保守拒绝，不计完整需求交付。",
+      "intent": "26步验证单项兼容、多行草稿、基本单位、日期、明细修订作废、提交及退回；普通采购员审批拒绝，不计完整需求交付。",
       "packages": [
         "geo",
         "party",
         "uom",
         "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
         "purchasing"
       ],
       "probe": "docs/erpnext/probes/purchasing-requisition-lines.yaml"
@@ -237,12 +183,15 @@
     {
       "id": "W2-005",
       "title": "B2需求单位换算与快照",
-      "intent": "32步：录入量、单位、换算系数和库存基本量；同维度正数校验、草稿限制、旧单项兼容。非物料特定换算、舍入及正式多行审批。",
+      "intent": "32步：录入量、单位、换算系数和库存基本量；同维度正数校验、草稿限制、旧单项兼容。非物料特定换算、舍入及正式多行审批（另见W2-021）。",
       "packages": [
         "geo",
         "party",
         "uom",
         "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
         "purchasing"
       ],
       "probe": "docs/erpnext/probes/purchasing-requisition-conversion.yaml"
@@ -256,9 +205,276 @@
         "party",
         "uom",
         "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
         "purchasing"
       ],
       "probe": "docs/erpnext/probes/purchasing-requisition-unit-step.yaml"
+    },
+    {
+      "id": "W2-007",
+      "title": "B3 单项询价与报价生命周期",
+      "intent": "37步正反例：不同供应商独立邀请、重复与日期拒绝、草稿受控修订、取消、有效报价、物料和供应商实时状态、关闭及历史保留；不含多明细、集中邀请、邮件发送或报价转订单。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-invitation-lifecycle.yaml"
+    },
+    {
+      "id": "W2-008",
+      "title": "B3多行询价与报价草稿",
+      "intent": "44步多行草稿，来源需求、供应商独立邀请、数量上限、逐行引用、修订作废及汇总、关闭后禁止修改；多行正式提交仍拒绝。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-multiline-sourcing-draft.yaml"
+    },
+    {
+      "id": "W2-009",
+      "title": "B3多行报价商务条款与折扣",
+      "intent": "55步多行草稿、逐行折扣、条款、交期、净额与作废；税与汇率未实现。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-multiline-commercial.yaml"
+    },
+    {
+      "id": "W2-010",
+      "title": "B3单项报价商务及兼容性",
+      "intent": "41步单项草稿折扣、条款、正式登记与历史不可直接修改。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-single-commercial.yaml"
+    },
+    {
+      "id": "W2-011",
+      "title": "B3同条件报价比价快照",
+      "intent": "38步两份已登记单项报价同需求、数量、币种比较；事务覆盖伪造金额、普通角色修改拒绝、历史快照保留；非全量动态比价报表。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-quote-comparison.yaml"
+    },
+    {
+      "id": "W2-012",
+      "title": "B4报价来源采购订单草稿",
+      "intent": "39步真实来源记录与供应商币种物料净价校验、单报价单订单、手工多行兼容、取消保留、普通采购员审批拒绝。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-sourced-order-draft.yaml"
+    },
+    {
+      "id": "W2-013",
+      "title": "B4订单与订单明细受控修订",
+      "intent": "54步扩展原转单测试，日期、商务条款、数量净价受控修订、金额重算、暂停供应商及取消后拒绝；仅草稿。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-order-revision.yaml"
+    },
+    {
+      "id": "W2-014",
+      "title": "B4 报价事务式生成订单草稿",
+      "intent": "30步：记录态报价受控生成订单头和单项明细，回填生成引用；来源、日期、数量、折后价及重复拒绝，取消不释放；普通采购员审批拒绝。故障注入与并发另验。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-atomic-order.yaml"
+    },
+    {
+      "id": "W2-015",
+      "title": "B4 同需求跨报价累计占用",
+      "intent": "51步累计占用与余量、直接及事务转单、数量修订、手工隔离、取消保留；另外同内存租户双角色并发专项与31步故障回滚。多实例PG与迁移待验。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-cumulative-allocation.yaml"
+    },
+    {
+      "id": "W2-019",
+      "title": "B4 采购订单实时审批",
+      "intent": "41步手工多行正式审批：空单、权限、停用物料、暂停供应商拒绝，合法主管批准后锁定明细；原派生字段失效W2-001保留。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-live-order-approval.yaml",
+      "probeRefusals": [
+        {
+          "step": 20,
+          "action": "purchasing.order.approve",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Order requires active items, qualified supplier and a valid source."
+        },
+        {
+          "step": 26,
+          "action": "purchasing.order.approve",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Order requires active items, qualified supplier and a valid source."
+        },
+        {
+          "step": 30,
+          "action": "purchasing.order.approve",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Order requires active items, qualified supplier and a valid source."
+        },
+        {
+          "step": 24,
+          "action": "purchasing.order.approve",
+          "code": "ERROR_CODE_POLICY_DENIED",
+          "message": "Authorization denied at verb: No role or policy grants this operation"
+        }
+      ]
+    },
+    {
+      "id": "W2-020",
+      "title": "B4 报价来源订单正式审批",
+      "intent": "38步生成及正式批准报价订单；暂停供应商、停用物料及买方权限拒绝，累计占用保留。非迁移、并发、正式收货。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-sourced-order-approval.yaml",
+      "probeRefusals": [
+        {
+          "step": 29,
+          "action": "purchasing.order.approve",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Order requires active items, qualified supplier and a valid source."
+        },
+        {
+          "step": 32,
+          "action": "purchasing.order.approve",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Order requires active items, qualified supplier and a valid source."
+        },
+        {
+          "step": 27,
+          "action": "purchasing.order.approve",
+          "code": "ERROR_CODE_POLICY_DENIED",
+          "message": "Authorization denied at verb: No role or policy grants this operation"
+        }
+      ]
+    },
+    {
+      "id": "W2-021",
+      "title": "B2 多行采购需求实时提交与审批",
+      "intent": "36步：活动行完整集合、停用物料提交与审批拒绝、作废行忽略、合法多行及单项批准；审批后锁定。旧三份探针的主管恒拒绝改为采购员权限拒绝。",
+      "packages": [
+        "geo",
+        "party",
+        "uom",
+        "item-master",
+        "stock-contract",
+        "gl-contract",
+        "plan-contract",
+        "purchasing"
+      ],
+      "probe": "docs/erpnext/probes/purchasing-live-requisition-approval.yaml",
+      "probeRefusals": [
+        {
+          "step": 7,
+          "action": "purchasing.requisition.submit",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Requisition requires at least one active line and all active items."
+        },
+        {
+          "step": 16,
+          "action": "purchasing.requisition.submit",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Requisition requires at least one active line and all active items."
+        },
+        {
+          "step": 19,
+          "action": "purchasing.requisition.approve",
+          "code": "ERROR_CODE_POLICY_DENIED",
+          "message": "Authorization denied at verb: No role or policy grants this operation"
+        },
+        {
+          "step": 21,
+          "action": "purchasing.requisition.approve",
+          "code": "ERROR_CODE_INVALID_ARGUMENT",
+          "message": "Requisition requires at least one active line and all active items."
+        }
+      ]
     }
   ]
 }

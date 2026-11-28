@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "cycle": "W2-006",
+  "cycle": "W2-021",
   "stage": "check",
   "status": "candidate_checked",
   "sourceCommit": "8e10a348daaa93853de8c36dc55ec789a440c219",
@@ -200,6 +200,115 @@
         "purchasing-requisition-unit-step-second.log",
         "purchasing-requisition-unit-step-third.log"
       ]
+    },
+    {
+      "id": "EV-W2-009-RFQ",
+      "confidence": "observed",
+      "result": "New pinned pkg 464a50142967072b9076545dc2329d8f0491fdbc 37/37 invitation lifecycle. 101 B2 source field declarations, 63 direct operation candidates and 8 permission rows dispositioned; source parity not complete. Existing sourcing failed again at step 29 (invalidlines=0 expected 1), IB-ERP-0007 retained.",
+      "logs": [
+        "purchasing-invitation-lifecycle.log",
+        "purchasing-sourcing-new-pin.log"
+      ]
+    },
+    {
+      "id": "EV-W2-010-MULTI-DRAFT",
+      "confidence": "observed",
+      "result": "Clean pinned pkg 464a50142967072b9076545dc2329d8f0491fdbc 44/44 multiline sourcing draft, 37/37 single lifecycle regression. Two new objects, five controlled line actions, mode-constrained quote header; B3 source audit 5 documents 262 declarations 53 operation candidates 13 permissions. Runtime tests are standalone, not complete Loop check; browser, migration and multi formal states remain open. First run restore collision IB-ERP-0008, package renamed reinstate; second failed header price required fixed.",
+      "logs": [
+        "purchasing-multiline-sourcing-draft.log",
+        "purchasing-multiline-sourcing-draft-second.log",
+        "purchasing-multiline-sourcing-draft-third.log",
+        "purchasing-invitation-lifecycle-after-multi.log"
+      ]
+    },
+    {
+      "id": "EV-W2-011-COMMERCIAL",
+      "confidence": "observed",
+      "result": "Clean pinned pkg 464a50142967072b9076545dc2329d8f0491fdbc standalone probes 55/55 multiline terms/discount, 41/41 single commercial, 38/38 recorded quote comparison. Source matrix 53 partial,6 shared,124 unmapped,79 layout. Initial comparison failed on missing pre-transaction amount formula; fixed coalesce; subsequent negative cases guard/policy refusals. No product parity or full Loop receipt asserted.",
+      "logs": [
+        "purchasing-multiline-commercial.log",
+        "purchasing-single-commercial.log",
+        "purchasing-quote-comparison.log",
+        "purchasing-quote-comparison-second.log"
+      ]
+    },
+    {
+      "id": "EV-W2-013-ORDER-DRAFT",
+      "confidence": "observed",
+      "result": "Pinned 464a50142967072b9076545dc2329d8f0491fdbc source order 39/39 and extended revision 54/54 (overlapping scenarios). B4 266 declarations,52 direct operation candidates,4 permission rows dispositioned. All formal order approval intentionally fail-closed due IB-ERP-0007; old W2-001 probe preserved. No cross-quote allocation or complete Loop receipt.",
+      "logs": [
+        "purchasing-sourced-order-draft.log",
+        "purchasing-order-revision.log"
+      ]
+    },
+    {
+      "id": "EV-W2-014-ATOMIC-DRAFT",
+      "confidence": "observed",
+      "result": "Pinned 464a50142967072b9076545dc2329d8f0491fdbc normal-path 30/30: generated order, orderline and quote references share transaction change; no concurrency or mid-step failure proof yet. B5 12 documents,897 fields/layout,224 direct operation candidates,29 permission rows indexed, source audit passed, semantic review pending. Isolated fault injection 31/31; step22 unique sourceidentity refusal, step23 successful retry, one header/line. No concurrency proof.",
+      "logs": [
+        "purchasing-atomic-order.log",
+        "purchasing-atomic-order-rollback.log"
+      ]
+    },
+    {
+      "id": "EV-W2-015-ALLOC",
+      "confidence": "observed",
+      "result": "Pinned 464a50142967072b9076545dc2329d8f0491fdbc 51/51 cumulative, original 54/54 revision, 31/31 atomic fault rerun. Same in-memory tenant two-principal simultaneous 6+6 submissions: exactly one accepted, rejected quote links empty; 6 retry refused, 4 retry accepted total 10. Not PG multi-instance or complete Loop.",
+      "logs": [
+        "purchasing-cumulative-allocation.log",
+        "purchasing-cumulative-allocation-second.log",
+        "purchasing-order-revision-after-allocation.log",
+        "purchasing-atomic-fault-after-allocation.log",
+        "purchasing-allocation-concurrent.log"
+      ]
+    },
+    {
+      "id": "EV-W2-016-ACCOUNT-DRAFT",
+      "confidence": "observed",
+      "result": "44/44 accounting chart and journal draft in clean pinned pkg; 4 objects, 5 controlled actions; account/journal navigation partial; 30 critical receiving fields annotated. No GL, payable or legal entity binding, no receipt implementation.",
+      "logs": [
+        "accounting-journal-draft.log",
+        "accounting-journal-draft-second.log"
+      ]
+    },
+    {
+      "id": "EV-W2-017-018-DRAFTS",
+      "confidence": "observed",
+      "result": "Pinned 464a50142967072b9076545dc2329d8f0491fdbc monthly period 32/32, original journal 44/44, receipt intake 35/35. 11 receiving declarations partially mapped. Isolated direct aggregate item.material.state rejected at compile; order approval fail-closed retained. Contract request/answer and call source reviewed, no actual ERP binding verified.",
+      "logs": [
+        "accounting-monthly-period-final2.log",
+        "accounting-journal-draft-after-period2.log",
+        "inventory-receipt-intake.log",
+        "purchasing-live-reference-formula.log"
+      ]
+    },
+    {
+      "id": "EV-W2-019-020-APPROVE",
+      "confidence": "observed",
+      "result": "Pinned 464a50142967072b9076545dc2329d8f0491fdbc 41/41 manual and 38/38 sourced live order approval. Direct raw transaction aggregate works; original derived field still stale; isolated no-op iteration denied by edit permission. Four draft probes adjusted obsolete manager-disabled expectation to buyer denial, 39+54+30+51 pass. Exact business refusal assertions added in Loop; original W2-001 unchanged.",
+      "logs": [
+        "purchasing-live-raw-aggregate.log",
+        "purchasing-live-iteration-second.log",
+        "purchasing-live-guard.log",
+        "purchasing-live-order-approval.log",
+        "purchasing-sourced-order-approval.log",
+        "purchasing-sourced-order-draft-after-approval-final.log",
+        "purchasing-order-revision-after-approval-final.log",
+        "purchasing-atomic-order-after-approval-final.log",
+        "purchasing-cumulative-allocation-after-approval-final.log"
+      ]
+    },
+    {
+      "id": "EV-W2-021-REQUISITION",
+      "confidence": "observed",
+      "result": "Pinned 464a50142967072b9076545dc2329d8f0491fdbc 36/36 multi-line live requisition approval; 26/32/46 legacy draft, conversion and UOM probes plus 41 live PO approval pass. Four exact refusal assertions matched. Native object.protocols binding path identified in pinned Platform source (separate from connector-only build.implementation); actual ERP receipt binding and stock posting not yet validated.",
+      "logs": [
+        "purchasing-live-requisition-approval-w21.log",
+        "purchasing-requisition-lines-w21.log",
+        "purchasing-requisition-conversion-w21.log",
+        "purchasing-requisition-unit-step-w21.log",
+        "purchasing-live-order-approval-w21.log"
+      ]
     }
   ],
   "unknowns": [
@@ -250,5 +359,5 @@
     "stock reversal",
     "real concurrency and >500 movement or reservation aggregates"
   ],
-  "next": "B2 remaining direct operations and item-specific UOM, source fulfillment and live approval; B3 independent RFQ/quotation slices; do not release."
+  "next": "B5 native object.protocols receipt source authorization: independent contract install, binding, approved order identity, idempotent quantity consumption, actual stock posting; B3 multi-line formal sourcing. Do not use unverified receipt refs to create stock facts."
 }

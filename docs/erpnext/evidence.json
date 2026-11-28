@@ -927,6 +927,400 @@
           "status": "open"
         }
       ]
+    },
+    {
+      "feature": "report:buying:supplier_quotation_comparison",
+      "intent": "在相同物料与可比计量、币种范围内比较供应商报价",
+      "observation": "来源按权限、公司、日期、状态、物料及供应商过滤报价行；计算基本单位及公司币种单位价格，标记最低价并生成图表。",
+      "design": "先实现同需求、同数量、同币种、不同合格供应商的已登记单项报价比价快照。金额由创建事务从真实报价读取并固定，普通采购角色不可编辑。原动态报表保持待实现。",
+      "counterexample": "不同数量或币种的净额不可直接判低价；草稿、暂停供应商以及停用物料不得生成新的有效比价。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/report/supplier_quotation_comparison/supplier_quotation_comparison.json",
+          "start": 12,
+          "end": 31,
+          "symbol": "\"report_type\": \"Script Report\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/report/supplier_quotation_comparison/supplier_quotation_comparison.py",
+          "start": 37,
+          "end": 102,
+          "symbol": "get_data"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/report/supplier_quotation_comparison/supplier_quotation_comparison.py",
+          "start": 105,
+          "end": 174,
+          "symbol": "prepare_data"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/report/supplier_quotation_comparison/supplier_quotation_comparison.py",
+          "start": 177,
+          "end": 188,
+          "symbol": "get_price_per_stock_unit"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "跨币种实际汇率、基本单位转换、集团权限、动态报表、管理员直接修改、并发及迁移",
+          "probe": "保留比价报告占位，逐项建立独立门禁；当前38步仅验证同条件快照。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:buying:purchase_order",
+      "intent": "保留来源报价并受控创建及修订采购订单",
+      "observation": "源订单包含供应商、币种、明细、来源报价；提交和状态变化涉及预算、上游状态和实际履约。",
+      "design": "草稿订单绑定唯一已登记单项报价，校验供应商币种有效日期；普通采购角色仅用动作修订，不替换身份；正式批准失败关闭。",
+      "counterexample": "同一报价被重复订购或报价供应商币种不一致时不应创建订单；实时物料状态不可由过期派生批准。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/purchase_order/purchase_order.json",
+          "start": 190,
+          "end": 197,
+          "symbol": "\"fieldname\": \"supplier\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/purchase_order/purchase_order.json",
+          "start": 918,
+          "end": 925,
+          "symbol": "\"fieldname\": \"ref_sq\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/purchase_order/purchase_order.py",
+          "start": 268,
+          "end": 307,
+          "symbol": "validate_with_previous_doc"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/purchase_order/purchase_order.py",
+          "start": 550,
+          "end": 575,
+          "symbol": "on_submit"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "正式审批、源累计分配、取消恢复、财务/库存及并发",
+          "probe": "保留W2-001负例，IB-ERP-0007未解决，W2-012/013仅草稿。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:buying:purchase_order_item",
+      "intent": "订单明细准确追踪来源，校验基本数量、物料与折后价格",
+      "observation": "来源明细有独立报价项与需求项关联；报价转单依赖尚未订购数量与基本单位转换。",
+      "design": "当前以单项报价为唯一来源，明细数量不超过报价和需求，净价固定，草稿修订重算；未实现多行已登记报价与原子分配。",
+      "counterexample": "重复关联同一报价、换物料、超数量、篡改净价均拒绝。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/purchase_order_item/purchase_order_item.json",
+          "start": 527,
+          "end": 541,
+          "symbol": "\"fieldname\": \"supplier_quotation_item\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/buying/doctype/supplier_quotation/supplier_quotation.py",
+          "start": 272,
+          "end": 331,
+          "symbol": "make_purchase_order"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "多行来源及跨报价累计数量分配、取消释放、真实履约、单位及货币精度",
+          "probe": "独立来源分配和实际安装/迁移并发验证，不能以当前54步替代。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:purchase_receipt",
+      "intent": "收货必须基于可追溯订单行及真实库存过账",
+      "observation": "前序一致性、质检、日期和单位校验；提交和取消更新前序及库存/财务事实。",
+      "design": "库存收货事实由 inventory 权威维护，采购仅保存真实关联并按契约核对；不生成伪造入库。",
+      "counterexample": "未批准订单不得作为正式收货来源，取消不能仅切换状态。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/purchase_receipt/purchase_receipt.json",
+          "start": 1,
+          "end": 30,
+          "symbol": "\"doctype\": \"DocType\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/purchase_receipt/purchase_receipt.py",
+          "start": 338,
+          "end": 361,
+          "symbol": "validate_with_previous_doc"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/purchase_receipt/purchase_receipt.py",
+          "start": 394,
+          "end": 418,
+          "symbol": "on_submit"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/purchase_receipt/purchase_receipt.py",
+          "start": 470,
+          "end": 492,
+          "symbol": "on_cancel"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "来源订单正式审批、累计收货、跨包契约、批次质检与补偿",
+          "probe": "B5独立事实与组合安装回归；当前无正式收货。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:accounts:purchase_invoice",
+      "intent": "采购发票与应付、总账及前序单据核对",
+      "observation": "发票验证前序及财务参数；提交生成会计事实并更新前序；取消反向分录。",
+      "design": "accounting 是财务权威，先实现账户凭证及实际过账，不在采购包构造应付款假数据。",
+      "counterexample": "重复发票、错误来源、未绑定会计能力或不平衡凭证不得标记已过账。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/purchase_invoice/purchase_invoice.json",
+          "start": 1,
+          "end": 30,
+          "symbol": "\"doctype\": \"DocType\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/purchase_invoice/purchase_invoice.py",
+          "start": 540,
+          "end": 563,
+          "symbol": "validate_with_previous_doc"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/purchase_invoice/purchase_invoice.py",
+          "start": 924,
+          "end": 967,
+          "symbol": "on_submit"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/purchase_invoice/purchase_invoice.py",
+          "start": 991,
+          "end": 1010,
+          "symbol": "make_gl_entries"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "真实财务账户/分录、重复开票、税汇率、来源匹配及付款取消",
+          "probe": "会计基本模型和B5端到端专项；当前仅索引。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:accounts:account",
+      "intent": "按账簿隔离科目层级、编码与分类",
+      "observation": "Account 来源按公司约束科目编码、父级分组、根类别与科目币种；科目冻结、默认账户和历史凭证影响修改。",
+      "design": "先实现单币种准备账簿和只允许同账簿同类别的分组父级、唯一科目编码；明细科目启停由主管控制；不建立法人主数据或总账。",
+      "counterexample": "跨账簿、跨类别、以明细科目为父级、自己作为父级或重复编码均拒绝。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/account/account.json",
+          "start": 45,
+          "end": 118,
+          "symbol": "\"fieldname\": \"parent_account\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/account/account.py",
+          "start": 143,
+          "end": 176,
+          "symbol": "validate_parent"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/account/account.py",
+          "start": 382,
+          "end": 411,
+          "symbol": "validate_account_number"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "法人绑定、科目树完整UI、默认科目、科目币种与财务历史约束",
+          "probe": "accounting-journal-draft.yaml仅准备范围；法人和正式会计事实待独立验收。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:accounts:journal_entry",
+      "intent": "从实际凭证明细汇总借贷并明确草稿与正式过账边界",
+      "observation": "Journal Entry 有公司、过账日期、明细、借贷合计与差额；提交生成总账，取消需要反向会计事实。",
+      "design": "草稿凭证按同账簿明细汇总借贷差额；允许未平衡草稿，不提供提交/过账动作；取消锁定草稿。",
+      "counterexample": "借贷差额为0仍不能冒充正式记账，作废明细应退出草稿合计。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/journal_entry/journal_entry.json",
+          "start": 218,
+          "end": 245,
+          "symbol": "\"fieldname\": \"total_debit\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/journal_entry/journal_entry.py",
+          "start": 965,
+          "end": 993,
+          "symbol": "validate_total_debit_and_credit"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/journal_entry/journal_entry.py",
+          "start": 216,
+          "end": 224,
+          "symbol": "make_gl_entries"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "实际总账、会计期间、审批、过账和冲销、付款与应付",
+          "probe": "未实现任何正式过账；后续独立财务验收。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:accounts:journal_entry_account",
+      "intent": "凭证明细必须使用同一账簿启用明细科目及有效单边金额",
+      "observation": "来源独立凭证明细有科目、借方贷方、科目币种、兑换率及来源单据关联；借贷金额互斥与账户公司检查。",
+      "design": "当前明确限制CNY/USD/EUR单币种、正数单边金额两位小数，草稿修订作废受控；币种转换和往来明细待实现。",
+      "counterexample": "借贷同时为正、零额、负额、三位小数、跨账簿或停用科目均拒绝。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/journal_entry_account/journal_entry_account.json",
+          "start": 145,
+          "end": 175,
+          "symbol": "\"fieldname\": \"credit\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/journal_entry/journal_entry.py",
+          "start": 170,
+          "end": 176,
+          "symbol": "validate_account_company"
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/journal_entry/journal_entry.py",
+          "start": 965,
+          "end": 993,
+          "symbol": "set_total_debit_credit"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "科目币种、汇率、法定精度、往来、成本中心及发票来源",
+          "probe": "本轮44步只覆盖单币种草稿；不代表完整凭证明细。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:accounts:fiscal_year",
+      "intent": "控制凭证日期所在会计期间及关闭后修改",
+      "observation": "源 Fiscal Year 有开始结束日期、禁用与公司适用范围；校验日期及重叠。",
+      "design": "暂以账簿和自然年月为唯一键，关联草稿时验证同账簿同月且开放；主管关闭后禁止已关联凭证及明细修改。保留财年导航占位，未绑定法人、未实现任意财年或总账结账。",
+      "counterexample": "跨账簿、错月及重复期间拒绝；关闭后的已关联凭证不能被修改。无期间旧草稿仍可存在，不代表财务结账。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/fiscal_year/fiscal_year.json",
+          "start": 23,
+          "end": 65,
+          "symbol": "\"fieldname\": \"year_start_date\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/accounts/doctype/fiscal_year/fiscal_year.py",
+          "start": 48,
+          "end": 63,
+          "symbol": "validate_dates"
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "公司、财年自定义起止日、正式结账、跨期重开审批、历史草稿迁移",
+          "probe": "accounting-monthly-period.yaml 仅自然月与草稿控制；正式过账无实现。",
+          "severity": "high",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "feature": "object:stock:purchase_receipt_item",
+      "intent": "到货准备中的来源行、接收拒收数量与目标位置",
+      "observation": "源收货明细分别保存received_qty、qty、rejected_qty、仓库和采购订单行身份；提交另写库存及财务事实。",
+      "design": "inventory.receiptline 记录未核验订单行标识、基本单位拟接收/拒收、匹配物料的独立位置；仅草稿，不产生库存移动或真实收货事实。",
+      "counterexample": "同一草稿重复来源行、错误物料位置、接收拒收共用位置或取消后修改均拒绝。",
+      "anchors": [
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/purchase_receipt_item/purchase_receipt_item.json",
+          "start": 222,
+          "end": 253,
+          "symbol": "\"fieldname\": \"received_qty\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/purchase_receipt_item/purchase_receipt_item.json",
+          "start": 505,
+          "end": 523,
+          "symbol": "\"fieldname\": \"rejected_warehouse\""
+        },
+        {
+          "repo": "erpnext",
+          "path": "erpnext/stock/doctype/purchase_receipt_item/purchase_receipt_item.json",
+          "start": 611,
+          "end": 623,
+          "symbol": "\"fieldname\": \"purchase_order_item\""
+        }
+      ],
+      "unknowns": [
+        {
+          "question": "已批准订单行授权契约、累计收货、实际质检及拒收库隔离、过账、退回、批次序列号与估值",
+          "probe": "inventory-receipt-intake.yaml 35步仅草稿，库存余额不变；正式事实待验。",
+          "severity": "critical",
+          "status": "open"
+        }
+      ]
     }
   ]
 }
