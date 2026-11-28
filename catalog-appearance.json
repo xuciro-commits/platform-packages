@@ -1113,6 +1113,47 @@
     },
     {
       "id": "purchasing",
+      "version": "0.2.5",
+      "title": "Purchasing",
+      "description": "Supplier qualification, sourcing, purchase orders and receipts optionally connected to stock, general ledger, and MRP.",
+      "url": "https://github.com/xuciro-commits/platform-packages/releases/download/purchasing/v0.2.5/purchasing.json",
+      "sha256": "sha256:e09f104b0d46b22a664e75a20cde23fd48d55d9c7f10c88677db2ecf3205fb83",
+      "listing": {
+        "icon": "briefcase",
+        "industries": [
+          "general",
+          "manufacturing",
+          "distribution"
+        ],
+        "domains": [
+          "purchasing"
+        ],
+        "keywords": [
+          "supplier",
+          "sourcing",
+          "quotation",
+          "purchase-order",
+          "receipt"
+        ],
+        "stage": "test",
+        "source": {
+          "ecosystem": "frappe",
+          "app": "erpnext",
+          "version": "v16",
+          "license": "GPL-3.0",
+          "relation": "redesign"
+        }
+      },
+      "kind": "application",
+      "locales": {
+        "zh-CN": {
+          "title": "采购管理",
+          "description": "供应商准入、寻源比价、采购订单与收货过账，可选接入库存、总账与物料需求计划。"
+        }
+      }
+    },
+    {
+      "id": "purchasing",
       "version": "0.2.4",
       "title": "Purchasing",
       "description": "Supplier qualification, sourcing, purchase orders and receipts optionally connected to stock, general ledger, and MRP.",

@@ -1,5 +1,5 @@
 id: purchasing
-version: 0.2.4
+version: 0.2.5
 title: Purchasing
 namespace: purchasing
 description: Supplier qualification, sourcing, purchase orders and receipts optionally connected to stock, general ledger, and MRP.

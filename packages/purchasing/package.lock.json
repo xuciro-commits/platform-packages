@@ -1,7 +1,7 @@
 {
   "format": 2,
   "package": "purchasing",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "requires": [
     "party@^0.2.2",
     "item-master@^0.1.2",
@@ -10,7 +10,7 @@
     "gl-contract@^0.1.0",
     "plan-contract@^0.1.0"
   ],
-  "artifact": "sha256:e22c1c96042cf629438e91d7fe92bd9e19dccfb4be128fc799ab1d1d6428b9ba",
+  "artifact": "sha256:e09f104b0d46b22a664e75a20cde23fd48d55d9c7f10c88677db2ecf3205fb83",
   "assets": {
     "app/purchasing": {
       "digest": "sha256:83a8c61ea74f8ab1fc5604a917b0c159128077aebf8460a8e319cc834eaa0264",
@@ -29,24 +29,32 @@
       ]
     },
     "object/purchasing.order": {
-      "digest": "sha256:62999d0f614187ba9c0d6fc76a1df01b094c1922fb129bffb6bd3d8bcc256499",
+      "digest": "sha256:22df4dfe25ab76d964b15f53edef5caaf5ed33677052ff34e03e4d5a8f1c381c",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.d9a4610c1f3278e46f487738e53cf709f712de7677649a480d86bdd2a9d605e6",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.a6afc8812751e5f172e55cd66621758d737f911fec391a0f12355759db7f133b",
+          "family": 2
         }
       ]
     },
     "object/purchasing.orderline": {
-      "digest": "sha256:34ce04dc3e436ace58062c75a4b5e249f2b49c095b7c195c794015ffefcd1a5d",
+      "digest": "sha256:481115c0e3d376dad52a89c700263cd1b3da2f12a46d4f0b3ff797b80e6dd5e7",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
         {
           "version": "schema.sha256.3eaf7ebb290fee06f6408e43ebf20d33a2f84a4d7ad3accb541e6a2ab58a0d4d",
           "family": 1
+        },
+        {
+          "version": "schema.sha256.20afe0c313bf3cf47dc6693f9933a8273a5c7cc2c1b2636f28b6c42e1830c124",
+          "family": 2
         }
       ]
     },

@@ -40,8 +40,8 @@ createTransaction:
       set: {sourcekind: sourcekind}
 access:
   - {role: reader, read: all}
-  - {role: buyer, read: all, create: true, edit: true}
-  - {role: manager, read: all, create: true, edit: true}
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
 view:
   version: 1
   layout: table

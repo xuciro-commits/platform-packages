@@ -44,6 +44,6 @@ createTransaction:
       set: {quantity: quantity, sourcerequest: sourcequote.rfq.request}
 access:
   - {role: reader, read: all}
-  - {role: buyer, read: all, create: true, edit: true}
-  - {role: manager, read: all, create: true, edit: true}
+  - {role: buyer, read: all, create: true}
+  - {role: manager, read: all, create: true}
 view: {version: 1, layout: table, columns: [order, sourcequote, sourcerequest, material, unit, quantity, receivedqty, openqty, unitprice, amount], sort: [], group: none, lanes: "", filters: [], search: ""}

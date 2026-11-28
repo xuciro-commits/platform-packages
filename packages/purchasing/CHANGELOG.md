@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 0.2.5
+
+- Purchase orders and order lines no longer grant the standard edit: lines change only through `revise`, which keeps the source, allocation and draft guards; approved orders stay locked.
+
 ## 0.2.4
 
 - Provided `supply.order/1#orders` on `purchasing.orderline` (tracking open unreceived approved quantities) and `supply.requisition/1#submit` on `purchasing.requisition` with source provenance.
