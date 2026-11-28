@@ -1,0 +1,96 @@
+roles: {accounting: manager, sales: manager, purchasing: manager, inventory: keeper, party: user, item: steward, uom: user, geo: user}
+at: 2026-11-26T09:00:00Z
+members:
+  mgr: {roles: {accounting: manager, sales: manager, purchasing: manager, inventory: keeper, party: user, item: user, uom: user, geo: user}}
+  rep1: {roles: {sales: rep, inventory: keeper, accounting: clerk, party: user, item: user, uom: user, geo: user}}
+  buyer: {roles: {purchasing: buyer, inventory: keeper, accounting: clerk, party: user, item: user, uom: user, geo: user}}
+  keeper1: {roles: {inventory: keeper, accounting: clerk, item: user, uom: user}}
+  reader: {roles: {accounting: reader, sales: reader, purchasing: reader, inventory: reader, party: user, item: user, uom: user, geo: user}}
+steps:
+  - {do: platform.protocol.bind, on: platform.protocol/stock.post/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/stock.reserve/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/stock.close/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/stock.balance/1, with: {provider: build}}
+  - {do: platform.protocol.bind, on: platform.protocol/gl.post/1, with: {provider: build}}
+
+  # Master data
+  - {do: party.organization.create, on: party.organization/ORG-SUP, with: {name: Shenzhen Precision Parts}}
+  - {do: purchasing.supplier.create, on: purchasing.supplier/SUP1, as: mgr, with: {base: ORG-SUP, supplierkind: company}}
+  - {do: purchasing.supplier.qualify, on: purchasing.supplier/SUP1, as: mgr, expect: {state: qualified}}
+
+  - {do: party.organization.create, on: party.organization/ORG-CUST, with: {name: Horizon Robotics}}
+  - {do: sales.customergroup.create, on: sales.customergroup/CG-ENT, as: mgr, with: {title: Enterprise accounts, code: ENT}}
+  - {do: sales.territory.create, on: sales.territory/TER-CN, as: mgr, with: {title: East China, code: CN-EAST}}
+  - {do: sales.customer.create, on: sales.customer/C1, as: rep1, with: {base: ORG-CUST, customerkind: company, group: CG-ENT, territory: TER-CN, creditlimit: 500000}}
+  - {do: sales.customer.activate, on: sales.customer/C1, as: rep1, expect: {state: active}}
+
+  - {do: item.category.create, on: item.category/CAT-MA, with: {title: Moving average goods, code: CAT-MA, valuation: moving_average}}
+  - {do: item.master.create, on: item.master/IMA, with: {title: Copper rod, code: ROD-MA, kind: goods, unit: pcs, category: CAT-MA}}
+  - {do: inventory.warehouse.create, on: inventory.warehouse/MAIN, as: keeper1, with: {title: Main warehouse, code: MAIN}}
+
+  # 1. Purchase Receipt (10 @ 50 = 500) -> Stock + GL PURCHASE_RECEIPT
+  - {do: purchasing.receipt.create, on: purchasing.receipt/RCV-101, as: buyer, with: {title: RCV-101, supplier: SUP1, warehouse: MAIN, receivedon: "2026-10-10"}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-101, as: buyer, with: {receipt: RCV-101, material: IMA, warehouse: MAIN, quantity: 10, unitprice: 50}}
+  - {do: purchasing.receipt.post, on: purchasing.receipt/RCV-101, as: buyer, expect: {state: posted, total: 500}}
+  - {read: inventory.movement/RL-101, as: reader, expect: {quantity: 10, amount: 500, sourcetype: purchasing.receipt, sourceid: RCV-101}}
+  - {read: accounting.journal/GL-RCV-RCV-101, as: reader, expect: {state: posted, rule: PURCHASE_RECEIPT, posteddebit: 500, postedcredit: 500, sourcetype: purchasing.receipt, sourceid: RCV-101}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {subledgervalue: 500, glinventorybalance: 500, reconciliationdiff: 0, inflightcount: 0, trialbalancediff: 0}}
+
+  # 2. Sales Order + Delivery (6 units -> COGS = 300) + Sales Invoice (540 + 70.2 tax = 610.2)
+  - {do: sales.order.create, on: sales.order/SO-101, as: rep1, with: {title: SO-101, customer: C1, orderedon: "2026-10-14", deliverydate: "2026-10-18", currency: CNY, warehouse: MAIN}}
+  - {do: sales.orderline.create, on: sales.orderline/SOL-101, as: rep1, with: {order: SO-101, material: IMA, quantity: 6, unitprice: 90}}
+  - {do: sales.order.confirm, on: sales.order/SO-101, as: rep1, expect: {state: confirmed}}
+  - {do: sales.delivery.create, on: sales.delivery/DN-101, as: rep1, with: {title: DN-101, order: SO-101, customer: C1, warehouse: MAIN, postedon: "2026-10-15", currency: CNY}}
+  - {do: sales.deliveryline.create, on: sales.deliveryline/DNL-101, as: rep1, with: {delivery: DN-101, orderline: SOL-101, material: IMA, quantity: 6, unitprice: 90}}
+  - {do: sales.delivery.post, on: sales.delivery/DN-101, as: rep1, expect: {state: posted, totalcost: 300}}
+  - {do: sales.delivery.queuegl, on: sales.delivery/DN-101, as: rep1, expect: {glqueued: true}}
+  - {read: accounting.journal/GL-DN-DN-101, as: reader, expect: {state: posted, rule: SALES_COGS, posteddebit: 300, postedcredit: 300, sourcetype: sales.delivery, sourceid: DN-101}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {subledgervalue: 200, glinventorybalance: 200, reconciliationdiff: 0, inflightcount: 0, trialbalancediff: 0}}
+
+  - {do: sales.invoice.create, on: sales.invoice/SINV-101, as: rep1, with: {title: SINV-101, order: SO-101, delivery: DN-101, customer: C1, postedon: "2026-10-16", duedate: "2026-11-16", currency: CNY}}
+  - {do: sales.invoiceline.create, on: sales.invoiceline/SIL-101, as: rep1, with: {invoice: SINV-101, orderline: SOL-101, deliveryline: DNL-101, material: IMA, quantity: 6, unitprice: 90, taxrate: 13}}
+  - {do: sales.invoice.post, on: sales.invoice/SINV-101, as: rep1, expect: {state: posted, revenueamount: 540, taxamount: 70.2, receivableamount: 610.2}}
+  - {read: accounting.journal/GL-SINV-SINV-101, as: reader, expect: {state: posted, rule: SALES_REVENUE, posteddebit: 610.2, postedcredit: 610.2, sourcetype: sales.invoice, sourceid: SINV-101}}
+
+  # 3. Non-atomic delivery: pause gl.post/1 -> post receipt RCV-102 (4 @ 50 = 200) -> inspect reconciliation diff & itemized undelivered row -> close refused -> resume -> diff = 0
+  - {do: platform.protocol.bind, on: platform.protocol/gl.post/1, with: {provider: build, paused: true}}
+  - {do: purchasing.receipt.create, on: purchasing.receipt/RCV-102, as: buyer, with: {title: RCV-102, supplier: SUP1, warehouse: MAIN, receivedon: "2026-10-20"}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-102, as: buyer, with: {receipt: RCV-102, material: IMA, warehouse: MAIN, quantity: 4, unitprice: 50}}
+  - {do: purchasing.receipt.post, on: purchasing.receipt/RCV-102, as: buyer, expect: {state: posted, total: 200}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {subledgervalue: 400, glinventorybalance: 200, reconciliationdiff: 200, inflightdelta: 200, inflightcount: 1}}
+  - {read: accounting.journal.inflight/chg-3783-gl.post-1#post-GL-RCV-RCV-102, as: reader, expect: {state: held, rule: PURCHASE_RECEIPT, amount: 200, inventorydelta: 200, sourcetype: purchasing.receipt, sourceid: RCV-102}}
+  - {do: accounting.period.closeperiod, on: accounting.period/2026-10, as: mgr, refused: true, reason: "Cannot close period 2026-10: Subledger inventory reconciliation difference or undelivered vouchers remain (drafts=0, reconciliation=200, inflight=1, trial_balance=0)."}
+  - {do: platform.protocol.bind, on: platform.protocol/gl.post/1, with: {provider: build, paused: false}}
+  - {read: accounting.journal/GL-RCV-RCV-102, as: reader, expect: {state: posted, posteddebit: 200, postedcredit: 200}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {subledgervalue: 400, glinventorybalance: 400, reconciliationdiff: 0, inflightdelta: 0, inflightcount: 0, trialbalancediff: 0}}
+
+  # 4. Period 2026-10 Trial Balance verification + Close Period + Prior-period backdated receipt refusal
+  - period:
+      object: accounting.journalline.accountbalance
+      groups: [account]
+      measures: ["sum:net"]
+      from: "2026-10-01"
+      to: "2026-10-31"
+      expectRows:
+        - {account: ACC-1405, "opening:net": 0, "debit:net": 700, "credit:net": 300, "closing:net": 400}
+        - {account: ACC-2202, "opening:net": 0, "debit:net": 0, "credit:net": 700, "closing:net": -700}
+        - {account: ACC-6401, "opening:net": 0, "debit:net": 300, "credit:net": 0, "closing:net": 300}
+        - {account: ACC-1122, "opening:net": 0, "debit:net": 610.2, "credit:net": 0, "closing:net": 610.2}
+        - {account: ACC-6001, "opening:net": 0, "debit:net": 0, "credit:net": 540, "closing:net": -540}
+        - {account: ACC-2221, "opening:net": 0, "debit:net": 0, "credit:net": 70.2, "closing:net": -70.2}
+
+  - {do: accounting.period.closeperiod, on: accounting.period/2026-10, as: mgr, expect: {state: closed}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {closedbefore: "2026-11-01"}}
+  - {read: inventory.stockbook/DEFAULT, as: reader, expect: {closedbefore: "2026-11-01"}}
+
+  # Backdated receipt in closed 2026-10 -> rejected by ledger close watermark and reverted to draft with postingerror
+  - {do: purchasing.receipt.create, on: purchasing.receipt/RCV-BACK, as: buyer, with: {title: RCV-BACK, supplier: SUP1, warehouse: MAIN, receivedon: "2026-10-28"}}
+  - {do: purchasing.receiptline.create, on: purchasing.receiptline/RL-BACK, as: buyer, with: {receipt: RCV-BACK, material: IMA, warehouse: MAIN, quantity: 2, unitprice: 50}}
+  - {do: purchasing.receipt.post, on: purchasing.receipt/RCV-BACK, as: buyer}
+  - {read: purchasing.receipt/RCV-BACK, as: buyer, expect: {state: rejected, postingerror: "ledger is closed before 2026-11-01"}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {subledgervalue: 400, glinventorybalance: 400, reconciliationdiff: 0, trialbalancediff: 0}}
+
+  # Reversal in open period 2026-11 succeeds while preserving 2026-10 facts
+  - {do: purchasing.receipt.void, on: purchasing.receipt/RCV-102, as: mgr, with: {on: "2026-11-05"}, expect: {state: reversed}}
+  - {read: accounting.journal/GL-RCV-RCV-102, as: reader, expect: {state: reversed}}
+  - {read: accounting.book/DEFAULT, as: reader, expect: {subledgervalue: 200, glinventorybalance: 200, reconciliationdiff: 0, trialbalancediff: 0}}

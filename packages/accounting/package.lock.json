@@ -1,14 +1,72 @@
 {
   "format": 2,
   "package": "accounting",
-  "version": "0.1.0",
-  "requires": [],
-  "artifact": "sha256:2b0f4197d2107ee03e3bcaa4f7bdbe84d279316b45b99791b217202240b6593c",
+  "version": "0.2.0",
+  "requires": [
+    "stock-contract@^0.1.3",
+    "gl-contract@^0.1.0"
+  ],
+  "artifact": "sha256:974b05e34344f92f14d6261317c2f8f6bdc62b1fd6de66679b18d3466da3497e",
   "assets": {
     "app/accounting": {
-      "digest": "sha256:3d3cba22e0e090810a0ba664bdbe20611557678e6f760ef0eef20c9f65940373",
+      "digest": "sha256:25c06cf68ee16098455dd0c56247cc3b3d819c6018d660ce973d177696cb0998",
       "contractVersion": 1,
       "sourceVersion": "1"
+    },
+    "object/accounting.account": {
+      "digest": "sha256:9ca91c08df2b938559cf3f88c5911b277dbb7550ebc155bb0e611088243e92df",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.f57c8f3910dc99e463667ecb5af95bebd1b7226f7a9d06ef27291de25bc54bac",
+          "family": 1
+        }
+      ]
+    },
+    "object/accounting.book": {
+      "digest": "sha256:a3bf8017637b2f61493f371449796bccfa835c72e5a9c4a2821cc0c118983a5c",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.235432e7ff531c0a263e0736a0e2f1f5c1507c59856fd37725bcd4f5a10f544f",
+          "family": 1
+        }
+      ]
+    },
+    "object/accounting.entryline": {
+      "digest": "sha256:05a8329dbd940586bfee891579943a80949fe977ef637cb7988ac5ba0a16894e",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.2e9322f721205221ee2535a5c6af73416f109c26e248cb8f3ebb676f9dc23fd3",
+          "family": 1
+        }
+      ]
+    },
+    "object/accounting.journal": {
+      "digest": "sha256:34a3707a81c05e4094d29749a075fb201b15eb73ce760b3e6252c9b8ff5c7fee",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.e4328aa71307e6f5f8f7331533d9eef845ad4a9a164d5f1d9efdef4b4f2915cd",
+          "family": 1
+        }
+      ]
+    },
+    "object/accounting.journalline": {
+      "digest": "sha256:1e7d668f2cb0c114d19489431e441467d3f6e5a4ef07aa7c2468a1edd93e1206",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.4f2af638a73b5e506559c1b48cc655b2bb0db607fe1e91826eb3552498f66c75",
+          "family": 1
+        }
+      ]
     },
     "object/accounting.navpending": {
       "digest": "sha256:c2e4b8ce1f0c7c079dd6523b1ba57fc5ed2266f9e8476bf776c2dd7e0e603559",
@@ -20,6 +78,33 @@
           "family": 1
         }
       ]
+    },
+    "object/accounting.period": {
+      "digest": "sha256:a567fb54ecc6325350c0369d8d1ae6f937a6e90392c8fe1a68371342ea372ecb",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.780204aef7cd02dc19850f0ce0e0634e35f27572036aa366548dea0e06dd8f9e",
+          "family": 1
+        }
+      ]
+    },
+    "object/accounting.postingrule": {
+      "digest": "sha256:d0059b53491eac8561c775057f0132a8ab44d6cf8ad1c6e83be68ad59fa6ca81",
+      "contractVersion": 1,
+      "sourceVersion": "1",
+      "schemaVersions": [
+        {
+          "version": "schema.sha256.ae2e49de248f34500d8ba4b62067cb04a5fd4d9c4557d38c8aafdf370fff6a0e",
+          "family": 1
+        }
+      ]
+    },
+    "page/accounting.account": {
+      "digest": "sha256:db8dc3d8b119160d877e16df21fc873999ecd824657385dd42793fb67c0f6eb5",
+      "contractVersion": 1,
+      "sourceVersion": "1"
     },
     "page/accounting.account_category": {
       "digest": "sha256:ed705d537e57a5ac1d2f1c74efb38a03c785d6a936ec42611ff766f213e46163",
@@ -61,6 +146,11 @@
       "contractVersion": 1,
       "sourceVersion": "1"
     },
+    "page/accounting.book": {
+      "digest": "sha256:34402195e0c5b5f9e52fab40542747737ad2a9960757e0425f1ee06ce249be9b",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
     "page/accounting.budget": {
       "digest": "sha256:1841e227067327fe15c4e82822d3b4e2188d595af063aefd8bfd20641d4d295e",
       "contractVersion": 1,
@@ -73,11 +163,6 @@
     },
     "page/accounting.cash_flow": {
       "digest": "sha256:bdbac6821078749729763ec787d97d4a170b26efd05a09f621a3dfc116ef53e4",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/accounting.chart_of_accounts": {
-      "digest": "sha256:c8d252cbcd1b93f42901d2b5c63e7577ca42f390db8dee5d7efd604d13da7abf",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -111,6 +196,11 @@
       "contractVersion": 1,
       "sourceVersion": "1"
     },
+    "page/accounting.entryline": {
+      "digest": "sha256:182c0dbb59305e3a8e03a24fe3baf1302b514a6325dabbc45044f45e7dbcd376",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
     "page/accounting.financial_report_template": {
       "digest": "sha256:790597bc8e1b0cb466cc5cd5aa3788bb7ee3034f02d4dc7a7b3af99e9b60ef04",
       "contractVersion": 1,
@@ -118,11 +208,6 @@
     },
     "page/accounting.fiscal_year": {
       "digest": "sha256:49011a42527c4c2baf9012e422b542bef0224228388e4b11656f909a4145fa9b",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/accounting.general_ledger": {
-      "digest": "sha256:4a8d00e2a81ed433244eeb916773260d60285598b6144bb332eb0f133bc9c6ef",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -136,8 +221,13 @@
       "contractVersion": 1,
       "sourceVersion": "1"
     },
-    "page/accounting.journal_entry": {
-      "digest": "sha256:4c81bfdcf7d4619cf19d9effbe2a25ddee52018bf794e4b8b391fba273514dee",
+    "page/accounting.journal": {
+      "digest": "sha256:af18e9a57dfc84769b2ce141f15585634ff92c47ebca0967074c812d16fcded0",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.journalline": {
+      "digest": "sha256:192c32be82551a93c2af3dd3cc390b28b077225f3b5eed07e5fb03516b29fa57",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -158,6 +248,16 @@
     },
     "page/accounting.payment_terms_template": {
       "digest": "sha256:20eec0c6e2fe747949eb3d213c9474419b4eefbad26f42791a018445893c90b2",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.period": {
+      "digest": "sha256:cfb5ab8cbe033d3e9c3000894be59a5db33f9995440e02a97dffd6726536b133",
+      "contractVersion": 1,
+      "sourceVersion": "1"
+    },
+    "page/accounting.postingrule": {
+      "digest": "sha256:146a38797b74a74780f1c6a2d3d61e4add0935ec0105e3082be08b0e1796eb95",
       "contractVersion": 1,
       "sourceVersion": "1"
     },
@@ -203,11 +303,6 @@
     },
     "page/accounting.tax_withholding_category": {
       "digest": "sha256:e87f5c87f05678981fc042898cb5c20764864661b5d69a97bb3ddcc0294e1ac9",
-      "contractVersion": 1,
-      "sourceVersion": "1"
-    },
-    "page/accounting.trial_balance": {
-      "digest": "sha256:769ec4352995db5f57d5259faf2655c809807b82827241eb92a14c025144ebb7",
       "contractVersion": 1,
       "sourceVersion": "1"
     },

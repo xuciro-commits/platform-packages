@@ -1,14 +1,21 @@
-id: "accounting"
-version: "0.1.0"
-title: "Accounting"
-namespace: "accounting"
-description: "Navigation candidate only; no business posting or settings operations."
+id: accounting
+version: 0.2.0
+title: Accounting
+namespace: accounting
+description: General ledger facts, customer-editable posting rules, subledger inventory reconciliation with undelivered voucher drilldown, period close guards, and trial balance summaries.
 listing:
-  industries: ["general"]
-  domains: ["accounting"]
-  keywords: ["erp","navigation"]
-  stage: "test"
-  source: {"ecosystem":"frappe","app":"erpnext","version":"v16","license":"GPL-3.0","relation":"redesign"}
+  industries: [general, manufacturing, distribution]
+  domains: [accounting]
+  keywords: [erp, accounting, general-ledger, trial-balance, reconciliation, period-close]
+  stage: test
+  source: {ecosystem: frappe, app: erpnext, version: v16, license: GPL-3.0, relation: redesign}
 roots:
-  - {"app":"build","kind":"app","name":"accounting"}
-artifact: "accounting.json"
+  - {app: build, kind: app, name: accounting}
+artifact: accounting.json
+requires:
+  - stock-contract@^0.1.3
+  - gl-contract@^0.1.0
+contracts:
+  optional:
+    - stock.balance/1
+    - stock.close/1

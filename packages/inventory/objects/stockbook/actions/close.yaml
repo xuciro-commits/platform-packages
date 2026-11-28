@@ -1,0 +1,10 @@
+title: Close stock period
+from: [active]
+roles: [keeper]
+inputs:
+  - {name: closedbefore, title: Closed before date, type: date, required: true}
+transaction:
+  steps:
+    - when: "input.closedbefore > closedbefore"
+      target: $subject
+      set: {closedbefore: input.closedbefore}

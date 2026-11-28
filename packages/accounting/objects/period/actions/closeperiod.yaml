@@ -1,0 +1,23 @@
+ask: Closing an accounting period permanently blocks postings dated on or before the period end; corrections must reverse in an open period.
+title: Close period
+description: Verify zero draft journals, zero inventory reconciliation difference, and balanced trial balance, then advance the closed-before date watermark.
+from: [open]
+roles: [manager]
+uses: [stock.close/1#close]
+transaction:
+  guard: "draftcount = 0 and reconciliationdiff = 0 and inflightcount = 0 and trialbalancediff = 0"
+  message: "Cannot close period {title}: {closeblocker} (drafts={draftcount}, reconciliation={reconciliationdiff}, inflight={inflightcount}, trial_balance={trialbalancediff})."
+  steps:
+    - target: $subject
+      set: {state: "'closed'"}
+    - name: closebook
+      when: "nextperiodstart > book.closedbefore"
+      target: $subject.book
+      set: {closedbefore: nextperiodstart}
+    - name: closestock
+      request: stock.close/1#close
+      deferred: true
+      optional: true
+      key: "'DEFAULT'"
+      with:
+        closedbefore: nextperiodstart

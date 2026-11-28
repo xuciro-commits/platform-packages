@@ -1,11 +1,15 @@
+ask: Reversing a posted receipt reverses its stock movements and general ledger voucher.
 title: Reverse receipt
-description: Reverse a posted receipt and reverse its stock movements when inventory is connected.
+description: Reverse a posted receipt and reverse its stock movements and general ledger voucher when connected.
 from: [posted]
 roles: [manager]
-uses: [stock.post/1#reverse]
+uses: [stock.post/1#reverse, gl.post/1#reverse]
 inputs:
   - {name: on, title: Reversal date, type: date}
 transaction:
+  reads:
+    collections:
+      lines: {app: build, object: purchasing.receiptline, policy: complete, query: "", set: lines, version: 0}
   steps:
     - target: $subject
       set: {state: "'reversed'"}
@@ -20,3 +24,11 @@ transaction:
             key: row.id
             with:
               on: coalesce(input.on, today())
+    - name: voidgl
+      when: "total > 0"
+      request: gl.post/1#reverse
+      deferred: true
+      optional: true
+      key: "concat('GL-RCV-', id)"
+      with:
+        on: coalesce(input.on, today())

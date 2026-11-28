@@ -5,6 +5,7 @@ plural: Stock movements
 icon: arrow-trending-up
 display: title
 ledger: true
+closedBeforeRecord: {type: inventory.stockbook, id: DEFAULT, field: closedbefore}
 ask:
   reverse: Reversing a posted stock movement writes opposite quantity and cost facts.
 sets:
@@ -39,6 +40,10 @@ balances:
     measures: [quantity, amount]
     fields:
       - {name: unitcost, title: Unit cost, type: decimal, live: "if(quantity > 0, round(amount / quantity, 4), 0)"}
+    protocols:
+      - name: stock.balance
+        version: 1
+        reads: [balances]
     access:
       - {role: reader, read: all}
       - {role: keeper, read: all}

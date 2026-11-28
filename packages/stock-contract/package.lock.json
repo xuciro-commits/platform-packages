@@ -1,17 +1,27 @@
 {
   "format": 2,
   "package": "stock-contract",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "requires": [],
-  "artifact": "sha256:15f2d249b5b678e69f426909df2777e365aac491043029b0de82accb32caa45e",
+  "artifact": "sha256:0703bc5db9be17c7bc4c952400357aabea5e2e23749fd122f002d085224f21ce",
   "assets": {
+    "contract/stock.balance": {
+      "digest": "sha256:848ee849debc04eea569b3badea5b4798355f01209a227c0c7f5a23943eeb169",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    },
+    "contract/stock.close": {
+      "digest": "sha256:fd8dead150df3770d3c8d15b1fdb7c5bfe30622ac4239d9294e2089b251b131f",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    },
     "contract/stock.post": {
-      "digest": "sha256:d091dc25b22483bb77a3cbc8b414bbe5596072dac02e5520152112a0dd03bfc4",
+      "digest": "sha256:06b3c7aec767ed61a3a42146bdde0a66eccd5eab9e2390c4312ec5aa28900686",
       "contractVersion": 1,
       "sourceVersion": "1.contract-1"
     },
     "contract/stock.reserve": {
-      "digest": "sha256:fb5298efdfa636d40387709ba3d99ada7ba8a0d2ac71947e415a892f99a9eb4b",
+      "digest": "sha256:c91ab561f01cc322838122133a0189b0d04d77b93c05576138c426f018e4b1e5",
       "contractVersion": 1,
       "sourceVersion": "1.contract-1"
     }

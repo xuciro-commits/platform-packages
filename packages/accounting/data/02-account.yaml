@@ -1,0 +1,16 @@
+type: accounting.account
+records:
+  - {id: GRP-ASSET, book: DEFAULT, code: "1000", title: Assets, rootkind: asset, nodekind: group, inventorycontrol: false}
+  - {id: GRP-LIAB, book: DEFAULT, code: "2000", title: Liabilities, rootkind: liability, nodekind: group, inventorycontrol: false}
+  - {id: GRP-EQUITY, book: DEFAULT, code: "3000", title: Equity, rootkind: equity, nodekind: group, inventorycontrol: false}
+  - {id: GRP-EXP, book: DEFAULT, code: "5000", title: Expenses, rootkind: expense, nodekind: group, inventorycontrol: false}
+  - {id: GRP-INC, book: DEFAULT, code: "6000", title: Income, rootkind: income, nodekind: group, inventorycontrol: false}
+  - {id: ACC-1122, book: DEFAULT, code: "1122", title: Accounts Receivable, rootkind: asset, nodekind: ledger, parent: GRP-ASSET, inventorycontrol: false}
+  - {id: ACC-1405, book: DEFAULT, code: "1405", title: Inventory, rootkind: asset, nodekind: ledger, parent: GRP-ASSET, inventorycontrol: true}
+  - {id: ACC-1406, book: DEFAULT, code: "1406", title: Work in Process, rootkind: asset, nodekind: ledger, parent: GRP-ASSET, inventorycontrol: false}
+  - {id: ACC-2202, book: DEFAULT, code: "2202", title: Goods Received Not Invoiced, rootkind: liability, nodekind: ledger, parent: GRP-LIAB, inventorycontrol: false}
+  - {id: ACC-2221, book: DEFAULT, code: "2221", title: Output Tax Payable, rootkind: liability, nodekind: ledger, parent: GRP-LIAB, inventorycontrol: false}
+  - {id: ACC-6001, book: DEFAULT, code: "6001", title: Sales Revenue, rootkind: income, nodekind: ledger, parent: GRP-INC, inventorycontrol: false}
+  - {id: ACC-6301, book: DEFAULT, code: "6301", title: Inventory Adjustment Gain, rootkind: income, nodekind: ledger, parent: GRP-INC, inventorycontrol: false}
+  - {id: ACC-6401, book: DEFAULT, code: "6401", title: Cost of Goods Sold, rootkind: expense, nodekind: ledger, parent: GRP-EXP, inventorycontrol: false}
+  - {id: ACC-6601, book: DEFAULT, code: "6601", title: Inventory Variance Expense, rootkind: expense, nodekind: ledger, parent: GRP-EXP, inventorycontrol: false}

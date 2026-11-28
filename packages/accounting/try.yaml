@@ -1,0 +1,48 @@
+roles: {accounting: manager}
+at: 2026-11-26T09:00:00Z
+members:
+  mgr: {roles: {accounting: manager}}
+  clerk1: {roles: {accounting: clerk}}
+  reader1: {roles: {accounting: reader}}
+steps:
+  - {do: platform.protocol.bind, on: platform.protocol/gl.post/1, with: {provider: build}}
+
+  # 1. Manual draft journal: unbalanced refused, balanced posts ledger facts
+  - {do: accounting.journal.create, on: accounting.journal/JV-101, as: clerk1, with: {book: DEFAULT, title: JV-101, on: "2026-10-12", remarks: Initial capital injection}}
+  - {do: accounting.account.create, on: accounting.account/ACC-1002, as: mgr, with: {book: DEFAULT, code: "1002", title: Bank Deposit, rootkind: asset, nodekind: ledger, parent: GRP-ASSET}}
+  - {do: accounting.account.create, on: accounting.account/ACC-3001, as: mgr, with: {book: DEFAULT, code: "3001", title: Paid-in Capital, rootkind: equity, nodekind: ledger, parent: GRP-EQUITY}}
+  - {do: accounting.entryline.create, on: accounting.entryline/JEL-1, as: clerk1, with: {journal: JV-101, account: ACC-1002, debit: 1000, credit: 0}}
+  - {do: accounting.entryline.create, on: accounting.entryline/JEL-2, as: clerk1, with: {journal: JV-101, account: ACC-3001, debit: 0, credit: 600}}
+  - {do: accounting.journal.post, on: accounting.journal/JV-101, as: clerk1, refused: true, reason: "Journal voucher is out of balance: debit 1000, credit 600, difference 400."}
+  - {do: accounting.entryline.edit, on: accounting.entryline/JEL-2, as: clerk1, with: {credit: 1000}}
+  - {do: accounting.journal.post, on: accounting.journal/JV-101, as: clerk1, expect: {state: posted, posteddebit: 1000, postedcredit: 1000}}
+  - {read: accounting.book/DEFAULT, as: reader1, expect: {trialbalancediff: 0, reconciliationdiff: 0}}
+
+  # 2. Customer edits postingrule and posts automated voucher
+  - {do: accounting.postingrule.edit, on: accounting.postingrule/INVENTORY_GAIN, as: mgr, with: {creditaccount: ACC-3001}}
+  - {do: accounting.journal.create, on: accounting.journal/JV-AUTO-1, as: mgr, with: {book: DEFAULT, title: JV-AUTO-1, on: "2026-10-15", rule: INVENTORY_GAIN, amount: 250, taxamount: 0, inventorydelta: 0, sourcetype: accounting.journal, sourceid: JV-AUTO-1}, expect: {state: posted, posteddebit: 250, postedcredit: 250}}
+  - {do: accounting.postingrule.edit, on: accounting.postingrule/INVENTORY_GAIN, as: mgr, with: {creditaccount: ACC-6301}}
+  # Reverse JV-AUTO-1 so GL inventory returns to 0 before closing without stock subledger
+  - {do: accounting.journal.voidvoucher, on: accounting.journal/JV-AUTO-1, as: mgr, with: {on: "2026-10-16"}, expect: {state: reversed}}
+  - {read: accounting.book/DEFAULT, as: reader1, expect: {glinventorybalance: 0, reconciliationdiff: 0, trialbalancediff: 0}}
+
+  # 3. Close guard: draft journal blocks close, cancelling unblocks close
+  - {do: accounting.journal.create, on: accounting.journal/JV-DRAFT, as: clerk1, with: {book: DEFAULT, title: JV-DRAFT, on: "2026-10-20"}}
+  - {do: accounting.period.closeperiod, on: accounting.period/2026-10, as: mgr, refused: true, reason: "Cannot close period 2026-10: Period still has draft journal vouchers (drafts=1, reconciliation=0, inflight=0, trial_balance=0)."}
+  - {do: accounting.journal.cancel, on: accounting.journal/JV-DRAFT, as: clerk1, expect: {state: cancelled}}
+  - {do: accounting.period.closeperiod, on: accounting.period/2026-10, as: mgr, expect: {state: closed}}
+  - {read: accounting.book/DEFAULT, as: reader1, expect: {closedbefore: "2026-11-01"}}
+
+  # 4. Posting or reversing in closed period refused; reversing in open period succeeds
+  - {do: accounting.journal.create, on: accounting.journal/JV-CLOSED, as: mgr, with: {book: DEFAULT, title: JV-CLOSED, on: "2026-10-25", rule: INVENTORY_GAIN, amount: 100}, refused: true}
+  - {do: accounting.journal.voidvoucher, on: accounting.journal/JV-101, as: mgr, with: {on: "2026-10-28"}, refused: true}
+  - {do: accounting.journal.voidvoucher, on: accounting.journal/JV-101, as: mgr, with: {on: "2026-11-05"}, expect: {state: reversed}}
+  - period:
+      object: accounting.journalline.accountbalance
+      groups: [account]
+      measures: ["sum:net"]
+      from: "2026-11-01"
+      to: "2026-11-30"
+      expectRows:
+        - {account: ACC-1002, "opening:net": 1000, "debit:net": 0, "credit:net": 1000, "closing:net": 0}
+        - {account: ACC-3001, "opening:net": -1000, "debit:net": 1000, "credit:net": 0, "closing:net": 0}

@@ -1,0 +1,5 @@
+type: accounting.period
+records:
+  - {id: 2026-10, book: DEFAULT, title: "2026-10", year: 2026, month: 10, startdate: "2026-10-01", enddate: "2026-10-31", nextperiodstart: "2026-11-01"}
+  - {id: 2026-11, book: DEFAULT, title: "2026-11", year: 2026, month: 11, startdate: "2026-11-01", enddate: "2026-11-30", nextperiodstart: "2026-12-01"}
+  - {id: 2026-12, book: DEFAULT, title: "2026-12", year: 2026, month: 12, startdate: "2026-12-01", enddate: "2026-12-31", nextperiodstart: "2027-01-01"}

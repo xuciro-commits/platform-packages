@@ -1,13 +1,13 @@
 name: inventory
 title: Inventory
 icon: archive-box
-pages: [inventory.home, inventory.item, inventory.warehouse, inventory.movement, inventory.reservation, inventory.request, inventory.count, inventory.delivery_note, inventory.stock_projected_qty, inventory.stock_ageing, inventory.stock_analytics, inventory.pick_list, inventory.landed_cost, inventory.quality_inspection, inventory.packing_slip, inventory.serial, inventory.batch, inventory.serial_batch_bundle, inventory.item_group, inventory.item_attribute, inventory.brand, inventory.uom, inventory.inventory_dimension, inventory.stock_settings, inventory.variant_settings, inventory.delivery_settings, inventory.stock_reposting_settings]
+pages: [inventory.home, inventory.item, inventory.warehouse, inventory.movement, inventory.reservation, inventory.request, inventory.count, inventory.delivery_note, inventory.stock_projected_qty, inventory.stock_ageing, inventory.stock_analytics, inventory.pick_list, inventory.landed_cost, inventory.quality_inspection, inventory.packing_slip, inventory.serial, inventory.batch, inventory.serial_batch_bundle, inventory.item_group, inventory.item_attribute, inventory.brand, inventory.uom, inventory.inventory_dimension, inventory.stock_settings, inventory.variant_settings, inventory.delivery_settings, inventory.stock_reposting_settings, inventory.stockbook]
 groups:
   - {title: "Overview", pages: [inventory.home, inventory.item, inventory.warehouse, inventory.movement, inventory.reservation, inventory.request, inventory.count, inventory.delivery_note]}
   - {title: "Reports", pages: [inventory.stock_projected_qty, inventory.stock_ageing, inventory.stock_analytics]}
   - {title: "Tools", pages: [inventory.pick_list, inventory.landed_cost, inventory.quality_inspection, inventory.packing_slip]}
   - {title: "Serial & Batch", pages: [inventory.serial, inventory.batch, inventory.serial_batch_bundle]}
-  - {title: "Setup", pages: [inventory.item_group, inventory.item_attribute, inventory.brand, inventory.uom, inventory.inventory_dimension, inventory.stock_settings, inventory.variant_settings, inventory.delivery_settings, inventory.stock_reposting_settings]}
+  - {title: "Setup", pages: [inventory.item_group, inventory.item_attribute, inventory.brand, inventory.uom, inventory.inventory_dimension, inventory.stock_settings, inventory.variant_settings, inventory.delivery_settings, inventory.stock_reposting_settings, inventory.stockbook]}
 dashboard:
   - {title: Posted movements, kind: metric, object: inventory.movement}
   - {title: Active reservations, kind: metric, object: inventory.reservation, domain: [[state, "=", reserved]]}

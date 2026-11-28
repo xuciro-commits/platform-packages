@@ -1,9 +1,9 @@
-ask: Reversing a posted delivery note reverses its outbound stock movements.
+ask: Reversing a posted delivery note reverses its outbound stock movements and COGS voucher.
 title: Reverse delivery
-description: Reverse a posted delivery note and reverse its outbound stock movements when inventory is connected.
+description: Reverse a posted delivery note and reverse its outbound stock movements and COGS voucher when connected.
 from: [posted]
 roles: [manager]
-uses: [stock.post/1#reverse]
+uses: [stock.post/1#reverse, gl.post/1#reverse]
 inputs:
   - {name: on, title: Reversal date, type: date}
 transaction:
@@ -27,3 +27,11 @@ transaction:
             key: "concat('DN-', row.id)"
             with:
               on: "coalesce(input.on, today())"
+    - name: voidgl
+      when: "coalesce(glqueued, false)"
+      request: gl.post/1#reverse
+      deferred: true
+      optional: true
+      key: "concat('GL-DN-', id)"
+      with:
+        on: "coalesce(input.on, today())"

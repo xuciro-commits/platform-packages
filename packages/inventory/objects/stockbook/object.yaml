@@ -1,0 +1,22 @@
+name: stockbook
+namespace: inventory
+title: Stock ledger control
+plural: Stock ledger controls
+icon: book-open
+display: title
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: closedbefore, title: Closed before date, type: date, required: true, default: "1970-01-01"}
+states:
+  - {name: active, title: Active, tone: success}
+actions: [close]
+protocols:
+  - name: stock.close
+    version: 1
+    actions: {close: close}
+access:
+  - {role: reader, read: all}
+  - {role: keeper, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [title, closedbefore, state], sort: [], group: none, lanes: "", filters: [], search: ""}
+records:
+  - {id: DEFAULT, title: Default stock ledger, closedbefore: "1970-01-01"}

@@ -1,0 +1,15 @@
+name: stock.close
+major: 1
+title: Inventory
+description: Advance the closed date watermark on the stock ledger across package authorities.
+actions:
+  - name: close
+    title: Close stock period
+    description: Advance the stock ledger closed-before date watermark.
+    payload:
+      - {name: closedbefore, label: Closed before date, type: date, required: true}
+tests:
+  - name: closes
+    title: Advances stock closed-before date
+    action: close
+    payload: {closedbefore: "2026-11-01"}

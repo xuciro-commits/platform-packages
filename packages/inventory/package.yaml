@@ -1,5 +1,5 @@
 id: inventory
-version: 0.3.1
+version: 0.3.2
 title: Inventory
 namespace: inventory
 description: Track stock ledger movements, moving-average and FIFO valuation layers, period summaries and balances by item and warehouse.
@@ -15,5 +15,8 @@ artifact: inventory.json
 requires:
   - item-master@^0.1.2
   - uom@^0.1.3
-  - stock-contract@^0.1.2
-contracts: {}
+  - stock-contract@^0.1.3
+  - gl-contract@^0.1.0
+contracts:
+  optional:
+    - gl.post/1

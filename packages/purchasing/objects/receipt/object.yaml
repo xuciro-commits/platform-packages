@@ -18,11 +18,13 @@ fields:
   - {name: linecount, title: Line count, type: integer, formula: count(lines), group: Totals}
   - {name: totalquantity, title: Total quantity, type: decimal, formula: sum(lines.quantity), group: Totals}
   - {name: total, title: Net amount, type: decimal, formula: sum(lines.amount), group: Totals}
+  - {name: postingerror, title: Ledger refusal reason, type: text, readOnly: true, group: Totals}
 states:
   - {name: draft, title: Draft, tone: neutral}
   - {name: posted, title: Posted, tone: success}
   - {name: reversed, title: Reversed, tone: neutral}
-actions: [post, void]
+  - {name: rejected, title: Rejected, tone: danger}
+actions: [post, postreply, void]
 access:
   - {role: buyer, read: all, create: true, edit: true}
   - {role: manager, read: all, create: true, edit: true}

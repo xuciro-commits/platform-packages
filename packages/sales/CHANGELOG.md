@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Connected `sales.delivery` (`SALES_COGS`) and `sales.invoice` (`SALES_REVENUE`) optionally to `gl.post/1`.
+
 ## 0.2.0
 
 - Implement `customer` (extending `party.organization`), `customergroup`, `territory`, `order` + `orderline`, `delivery` + `deliveryline`, `costentry`, and `invoice` + `invoiceline` with line paste, validation, and A4 print layouts.

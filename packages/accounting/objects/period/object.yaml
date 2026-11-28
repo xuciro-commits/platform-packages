@@ -1,0 +1,37 @@
+name: period
+namespace: accounting
+title: Accounting period
+plural: Accounting periods
+icon: calendar-days
+display: title
+description: Monthly accounting period governing general ledger close watermark, reconciliation check and trial balance certification.
+collections:
+  bookjournals: {of: book, set: journals, object: accounting.journal}
+  bookbalances: {of: book, set: bookbalances, object: accounting.journalline.bookbalance}
+  inflight: {of: book, set: inflight, object: accounting.journal.inflight}
+  subledger: {protocol: stock.balance/1#balances}
+fields:
+  - {name: book, title: Accounting book, type: reference, ref: accounting.book, required: true, default: DEFAULT}
+  - {name: title, title: Period code, type: text, required: true, search: true}
+  - {name: year, title: Calendar year, type: integer, required: true}
+  - {name: month, title: Calendar month, type: integer, required: true}
+  - {name: startdate, title: Period start, type: date, required: true}
+  - {name: enddate, title: Period end, type: date, required: true}
+  - {name: nextperiodstart, title: Next period start, type: date, required: true}
+  - {name: draftcount, title: Draft journals in period, type: integer, live: "sum(bookjournals, if(item.state = 'draft' and item.on >= startdate and item.on <= enddate, 1, 0))"}
+  - {name: reconciliationdiff, title: Reconciliation difference, type: decimal, live: "round(sum(subledger, coalesce(item.amount, 0)) - sum(bookbalances, if(item.account.inventorycontrol, coalesce(item.net, 0), 0)), 2)"}
+  - {name: inflightcount, title: Undelivered vouchers, type: integer, live: "count(inflight)"}
+  - {name: trialbalancediff, title: Trial balance difference, type: decimal, live: "round(sum(bookbalances, coalesce(item.net, 0)), 2)"}
+  - {name: closeblocker, title: Close readiness, type: text, live: "if(draftcount > 0, 'Period still has draft journal vouchers', if(reconciliationdiff != 0 or inflightcount > 0, 'Subledger inventory reconciliation difference or undelivered vouchers remain', if(trialbalancediff != 0, 'Trial balance debit and credit totals are out of balance', 'Ready to close')))"}
+states:
+  - {name: open, title: Open, tone: success}
+  - {name: closed, title: Closed, tone: neutral}
+actions: [closeperiod]
+constraints:
+  - {name: periodidentity, kind: unique, fields: [book, year, month], message: A monthly period already exists for this book.}
+  - {name: calendarbounds, kind: expression, fields: [year, month, startdate, enddate, nextperiodstart], expr: "year >= 1900 and year <= 9999 and month >= 1 and month <= 12 and startdate <= enddate and enddate < nextperiodstart", message: Enter valid period dates and next period start.}
+access:
+  - {role: reader, read: all}
+  - {role: clerk, read: all}
+  - {role: manager, read: all, create: true}
+view: {version: 1, layout: table, columns: [book, title, year, month, startdate, enddate, draftcount, reconciliationdiff, inflightcount, trialbalancediff, closeblocker, state], sort: [{sortKey: startdate, direction: ascending}], group: state, lanes: "", filters: [], search: ""}

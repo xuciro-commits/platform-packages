@@ -5,13 +5,11 @@
   "pages": [
     "accounting.home",
     "accounting.dashboard",
-    "accounting.chart_of_accounts",
+    "accounting.account",
     "accounting.sales_invoice",
     "accounting.purchase_invoice",
     "accounting.payment_entry",
-    "accounting.journal_entry",
-    "accounting.general_ledger",
-    "accounting.trial_balance",
+    "accounting.journal",
     "accounting.trial_balance_for_party",
     "accounting.profit_and_loss",
     "accounting.balance_sheet",
@@ -41,7 +39,12 @@
     "accounting.mode_of_payment",
     "accounting.payment_terms_template",
     "accounting.currency_exchange",
-    "accounting.settings"
+    "accounting.settings",
+    "accounting.book",
+    "accounting.journalline",
+    "accounting.period",
+    "accounting.postingrule",
+    "accounting.entryline"
   ],
   "groups": [
     {
@@ -49,18 +52,18 @@
       "pages": [
         "accounting.home",
         "accounting.dashboard",
-        "accounting.chart_of_accounts",
+        "accounting.account",
         "accounting.sales_invoice",
         "accounting.purchase_invoice",
         "accounting.payment_entry",
-        "accounting.journal_entry"
+        "accounting.journal"
       ]
     },
     {
       "title": "Reports",
       "pages": [
-        "accounting.general_ledger",
-        "accounting.trial_balance",
+        "accounting.journalline",
+        "accounting.book",
         "accounting.trial_balance_for_party",
         "accounting.profit_and_loss",
         "accounting.balance_sheet",
@@ -101,6 +104,8 @@
     {
       "title": "Setup",
       "pages": [
+        "accounting.postingrule",
+        "accounting.period",
         "accounting.company",
         "accounting.fiscal_year",
         "accounting.chart_of_cost_centers",
@@ -115,7 +120,53 @@
     },
     {
       "title": "Additional operations",
-      "pages": []
+      "pages": [
+        "accounting.entryline"
+      ]
+    }
+  ],
+  "dashboard": [
+    {
+      "title": "Draft journals",
+      "kind": "metric",
+      "object": "accounting.journal",
+      "domain": [
+        [
+          "state",
+          "=",
+          "draft"
+        ]
+      ]
+    },
+    {
+      "title": "Posted journals",
+      "kind": "metric",
+      "object": "accounting.journal",
+      "domain": [
+        [
+          "state",
+          "=",
+          "posted"
+        ]
+      ]
+    },
+    {
+      "title": "Open periods",
+      "kind": "metric",
+      "object": "accounting.period",
+      "domain": [
+        [
+          "state",
+          "=",
+          "open"
+        ]
+      ]
+    },
+    {
+      "title": "Journals by state",
+      "kind": "bar",
+      "object": "accounting.journal",
+      "group": "state"
     }
   ]
 }

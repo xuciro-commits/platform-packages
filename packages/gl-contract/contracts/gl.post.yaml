@@ -1,0 +1,29 @@
+name: gl.post
+major: 1
+title: General ledger
+description: Post and reverse balanced business vouchers in the general ledger across package authorities.
+actions:
+  - name: post
+    title: Post voucher
+    description: Post a business voucher using a configured accounting posting rule.
+    payload:
+      - {name: book, label: Accounting book, type: text}
+      - {name: title, label: Reference, type: text, required: true}
+      - {name: on, label: Posting date, type: date}
+      - {name: rule, label: Posting rule, type: text}
+      - {name: amount, label: Net amount, type: decimal}
+      - {name: taxamount, label: Tax amount, type: decimal}
+      - {name: inventorydelta, label: Inventory valuation delta, type: decimal}
+      - {name: sourcetype, label: Source document type, type: text}
+      - {name: sourceid, label: Source document, type: text, refType: sourcetype}
+      - {name: remarks, label: Remarks, type: text}
+  - name: reverse
+    title: Reverse voucher
+    description: Reverse a posted business voucher in an open period without editing original facts.
+    payload:
+      - {name: on, label: Reversal date, type: date}
+tests:
+  - name: posts
+    title: Posts a purchase receipt voucher
+    action: post
+    payload: {book: DEFAULT, title: GL-RCV-001, rule: PURCHASE_RECEIPT, amount: 100, taxamount: 0, inventorydelta: 100, on: "2026-11-10", sourcetype: purchasing.receipt, sourceid: RCV-001}

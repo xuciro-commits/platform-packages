@@ -1,0 +1,25 @@
+name: postingrule
+namespace: accounting
+title: Posting rule
+plural: Posting rules
+icon: adjustments-horizontal
+display: title
+description: Customer-editable mapping from business events to debit, credit and tax general ledger accounts.
+fields:
+  - {name: book, title: Accounting book, type: reference, ref: accounting.book, required: true, default: DEFAULT}
+  - {name: code, title: Rule code, type: text, required: true, search: true}
+  - {name: title, title: Rule name, type: text, required: true, search: true}
+  - {name: debitaccount, title: Debit account, type: reference, ref: accounting.account, required: true}
+  - {name: creditaccount, title: Credit account, type: reference, ref: accounting.account, required: true}
+  - {name: taxaccount, title: Tax credit account, type: reference, ref: accounting.account}
+states:
+  - {name: active, title: Active, tone: success}
+  - {name: inactive, title: Inactive, tone: neutral}
+constraints:
+  - {name: rulecode, kind: unique, fields: [book, code], message: Posting rule code must be unique per book.}
+  - {name: validaccounts, kind: expression, fields: [debitaccount, creditaccount], expr: "debitaccount != creditaccount and debitaccount.nodekind = 'ledger' and creditaccount.nodekind = 'ledger' and debitaccount.state = 'active' and creditaccount.state = 'active'", message: Select two distinct active posting accounts.}
+access:
+  - {role: reader, read: all}
+  - {role: clerk, read: all}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: settings, columns: [code, title, debitaccount, creditaccount, taxaccount, state], sort: [{sortKey: code, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

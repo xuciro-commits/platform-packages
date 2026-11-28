@@ -1,0 +1,12 @@
+name: stock.balance
+major: 1
+title: Inventory
+description: Read live subledger stock quantities and valuation amounts across package authorities.
+reads:
+  - balances
+readSchemas:
+  balances:
+    - {name: material, description: Item, type: string, ref: item.master, required: true}
+    - {name: warehouse, description: Warehouse, type: string, required: true}
+    - {name: quantity, description: Quantity on hand, type: number, required: true}
+    - {name: amount, description: Valuation amount, type: number, required: true}

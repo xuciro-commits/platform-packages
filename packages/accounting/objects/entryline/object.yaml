@@ -1,0 +1,28 @@
+name: entryline
+namespace: accounting
+title: Journal entry line
+plural: Journal entry lines
+icon: list-bullet
+display: account
+naming: JEL-{n:6}
+description: Editable preparation line on a manual draft journal voucher prior to ledger posting.
+fields:
+  - {name: journal, title: Journal voucher, type: reference, ref: accounting.journal, inverse: entrylines, required: true}
+  - {name: account, title: Account, type: reference, ref: accounting.account, required: true}
+  - {name: debit, title: Debit, type: decimal, required: true, default: "0"}
+  - {name: credit, title: Credit, type: decimal, required: true, default: "0"}
+  - {name: remarks, title: Remarks, type: longtext}
+  - {name: postedline, title: Posted ledger fact, type: reference, ref: accounting.journalline}
+constraints:
+  - {name: sided, kind: expression, fields: [debit, credit], expr: "((debit > 0 and credit = 0) or (credit > 0 and debit = 0)) and round(debit, 2) = debit and round(credit, 2) = credit", message: Enter one positive debit or credit with at most two decimal places.}
+createTransaction:
+  guard: "journal.state = 'draft' and account.book = journal.book and account.nodekind = 'ledger' and account.state = 'active'"
+  message: Entry lines require a draft journal and an active posting account in the same book.
+  steps:
+    - target: $subject
+      set: {debit: debit, credit: credit}
+access:
+  - {role: reader, read: all}
+  - {role: clerk, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [journal, account, debit, credit, remarks, postedline], sort: [], group: none, lanes: "", filters: [], search: ""}

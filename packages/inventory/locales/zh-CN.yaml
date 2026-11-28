@@ -211,3 +211,12 @@ keeper: 库管员
 
 "Shortage quantity": "缺口数量"
 "Insufficient available stock: requested {quantity}, available {available}, short by {shortage}.": "可用库存不足：申请 {quantity}，可用 {available}，缺 {shortage}。"
+"Close stock period": "关闭库存期间"
+"Closed before date": "关账截止日"
+"Default stock ledger": "默认库存账本"
+"Post adjustment": "过账盘点差异"
+"Post the count variance to stock and optionally to the general ledger.": "将盘点差异过账至库存并在已接入时发送总账调整凭证。"
+"Posting a stock count adjustment writes stock movement and general ledger adjustment facts.": "过账盘点调整将写入库存流水及总账调整事实。"
+"Stock count adjustment requires a non-zero count difference and positive unit cost.": "盘点差异过账需要非零盘点差异及正数单位成本。"
+"Stock ledger control": "库存账本控制"
+"Stock ledger controls": "库存账本控制"

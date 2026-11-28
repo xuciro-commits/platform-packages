@@ -22,11 +22,12 @@ fields:
   - {name: totalquantity, title: Total quantity, type: decimal, formula: sum(lines.quantity), group: Totals}
   - {name: total, title: Sales amount, type: decimal, formula: sum(lines.amount), group: Totals}
   - {name: totalcost, title: Cost of goods sold, type: decimal, formula: sum(costs.amount), group: Totals}
+  - {name: glqueued, title: COGS voucher queued, type: boolean, default: "false", group: Totals}
 states:
   - {name: draft, title: Draft, tone: neutral}
   - {name: posted, title: Posted, tone: success}
   - {name: reversed, title: Reversed, tone: neutral}
-actions: [post, postreply, void]
+actions: [post, postreply, queuegl, void]
 access:
   - {role: reader, read: all}
   - {role: rep, read: all, create: true, edit: true}

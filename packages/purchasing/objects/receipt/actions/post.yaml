@@ -1,8 +1,8 @@
 title: Post receipt
-description: Record the purchase receipt and post inbound stock movements when inventory is connected.
+description: Record the purchase receipt and post inbound stock movements and general ledger vouchers when connected.
 from: [draft]
 roles: [buyer, manager]
-uses: [stock.post/1#post]
+uses: [stock.post/1#post, gl.post/1#post]
 transaction:
   reads:
     collections:
@@ -11,7 +11,7 @@ transaction:
   message: Receipt requires a qualified supplier and at least one active item line.
   steps:
     - target: $subject
-      set: {state: "'posted'"}
+      set: {state: "'posted'", postingerror: "''"}
     - name: postlines
       forEach:
         set: lines
@@ -21,6 +21,7 @@ transaction:
             deferred: true
             optional: true
             key: row.id
+            reply: postreply
             with:
               title: title
               material: row.material
@@ -30,3 +31,20 @@ transaction:
               on: receivedon
               sourcetype: "'purchasing.receipt'"
               sourceid: row.receipt
+    - name: postgl
+      when: "sum(lines.amount) > 0"
+      request: gl.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('GL-RCV-', id)"
+      reply: postreply
+      with:
+        book: "'DEFAULT'"
+        title: title
+        rule: "'PURCHASE_RECEIPT'"
+        amount: "sum(lines.amount)"
+        taxamount: 0
+        inventorydelta: "sum(lines.amount)"
+        on: receivedon
+        sourcetype: "'purchasing.receipt'"
+        sourceid: id

@@ -208,5 +208,15 @@
   "Not delivered": "未交货",
   "Partly delivered": "部分交货",
   "Fully delivered": "全部交货",
-  "Reservation key": "预留键"
+  "Reservation key": "预留键",
+  "COGS voucher queued": "已排队成本凭证",
+  "Delivery COGS voucher requires positive cost of goods sold and must not already be queued.": "发货销售成本凭证需要正数销售成本且尚未排队。",
+  "Manage customers, sales orders with stock reservation, delivery notes with outbound costing, and sales invoices optionally connected to general ledger.": "管理客户、带库存预留的销售订单、带出库成本核算的发货单，以及可选接入总账的销售发票。",
+  "Post COGS voucher": "生成成本凭证",
+  "Post the sales invoice to record customer receivable and sales revenue facts and emit a general ledger voucher when connected.": "过账销售发票以记录应收与收入事实，并在已接入时发送总账凭证。",
+  "Queue delivery COGS voucher": "排队发货成本凭证",
+  "Reverse a posted delivery note and reverse its outbound stock movements and COGS voucher when connected.": "冲正已过账发货单，并在已接入时冲正出库流水与销售成本凭证。",
+  "Reversing a posted delivery note reverses its outbound stock movements and COGS voucher.": "冲正已过账发货单将同时冲正出库流水与销售成本凭证。",
+  "Send the delivery cost of goods sold voucher to the general ledger when connected.": "在已接入总账时发送发货单销售成本凭证。",
+  "Voiding a posted sales invoice cancels its receivable and revenue facts and reverses its general ledger voucher.": "作废已过账销售发票将取消应收与收入事实并冲正总账凭证。"
 }

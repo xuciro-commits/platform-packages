@@ -1,0 +1,26 @@
+title: Post COGS voucher
+description: Send the delivery cost of goods sold voucher to the general ledger when connected.
+from: [posted]
+roles: [rep, manager]
+uses: [gl.post/1#post]
+transaction:
+  guard: "totalcost > 0 and not coalesce(glqueued, false)"
+  message: Delivery COGS voucher requires positive cost of goods sold and must not already be queued.
+  steps:
+    - target: $subject
+      set: {glqueued: true}
+    - name: postcogs
+      request: gl.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('GL-DN-', id)"
+      with:
+        book: "'DEFAULT'"
+        title: title
+        rule: "'SALES_COGS'"
+        amount: totalcost
+        taxamount: 0
+        inventorydelta: "0 - totalcost"
+        on: postedon
+        sourcetype: "'sales.delivery'"
+        sourceid: id

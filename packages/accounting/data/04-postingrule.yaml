@@ -1,0 +1,9 @@
+type: accounting.postingrule
+records:
+  - {id: PURCHASE_RECEIPT, book: DEFAULT, code: PURCHASE_RECEIPT, title: Purchase receipt inventory posting, debitaccount: ACC-1405, creditaccount: ACC-2202}
+  - {id: SALES_COGS, book: DEFAULT, code: SALES_COGS, title: Sales delivery COGS posting, debitaccount: ACC-6401, creditaccount: ACC-1405}
+  - {id: SALES_REVENUE, book: DEFAULT, code: SALES_REVENUE, title: Sales invoice revenue posting, debitaccount: ACC-1122, creditaccount: ACC-6001, taxaccount: ACC-2221}
+  - {id: INVENTORY_GAIN, book: DEFAULT, code: INVENTORY_GAIN, title: Stock count gain adjustment, debitaccount: ACC-1405, creditaccount: ACC-6301}
+  - {id: INVENTORY_LOSS, book: DEFAULT, code: INVENTORY_LOSS, title: Stock count loss adjustment, debitaccount: ACC-6601, creditaccount: ACC-1405}
+  - {id: PRODUCTION_ISSUE, book: DEFAULT, code: PRODUCTION_ISSUE, title: Production material issue to WIP, debitaccount: ACC-1406, creditaccount: ACC-1405}
+  - {id: PRODUCTION_RECEIPT, book: DEFAULT, code: PRODUCTION_RECEIPT, title: Production finished goods receipt, debitaccount: ACC-1405, creditaccount: ACC-1406}

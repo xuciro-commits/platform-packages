@@ -1,0 +1,14 @@
+{
+  "format": 2,
+  "package": "gl-contract",
+  "version": "0.1.0",
+  "requires": [],
+  "artifact": "sha256:d703188a09791fd0fb78985d13d704beadd6a7038a942b9d3f2dc98d8aaa96e5",
+  "assets": {
+    "contract/gl.post": {
+      "digest": "sha256:4cdf2fd50686e756a1a0447440270dafeff7b38d78d300ba98afcf7af39bb534",
+      "contractVersion": 1,
+      "sourceVersion": "1.contract-1"
+    }
+  }
+}

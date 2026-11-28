@@ -1,0 +1,44 @@
+ask: Posting a stock count adjustment writes stock movement and general ledger adjustment facts.
+title: Post adjustment
+description: Post the count variance to stock and optionally to the general ledger.
+from: [reviewed]
+roles: [keeper]
+uses: [stock.post/1#post, gl.post/1#post]
+inputs:
+  - {name: unitcost, title: Unit cost, type: decimal, required: true}
+transaction:
+  guard: "coalesce(difference, 0) != 0 and input.unitcost > 0"
+  message: Stock count adjustment requires a non-zero count difference and positive unit cost.
+  steps:
+    - target: $subject
+      set: {state: "'posted'"}
+    - name: stockadj
+      request: stock.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('CNT-', id)"
+      with:
+        book: "'DEFAULT'"
+        title: title
+        material: material
+        warehouse: warehouse
+        quantity: difference
+        amount: "round(difference * input.unitcost, 2)"
+        on: countedon
+        sourcetype: "'inventory.count'"
+        sourceid: id
+    - name: gladj
+      request: gl.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('GL-CNT-', id)"
+      with:
+        book: "'DEFAULT'"
+        title: title
+        rule: "if(difference > 0, 'INVENTORY_GAIN', 'INVENTORY_LOSS')"
+        amount: "abs(round(difference * input.unitcost, 2))"
+        taxamount: 0
+        inventorydelta: "round(difference * input.unitcost, 2)"
+        on: countedon
+        sourcetype: "'inventory.count'"
+        sourceid: id

@@ -1,0 +1,33 @@
+name: book
+namespace: accounting
+title: Accounting book
+plural: Accounting books
+icon: book-open
+display: title
+description: General ledger book holding currency, period close watermark, and live subledger-to-GL inventory reconciliation.
+sets:
+  journals: {object: accounting.journal, limit: 500}
+  bookbalances: {object: accounting.journalline.bookbalance, limit: 500}
+  inflight: {object: accounting.journal.inflight, limit: 200}
+collections:
+  subledger: {protocol: stock.balance/1#balances}
+fields:
+  - {name: title, title: Book name, type: text, required: true, search: true}
+  - {name: code, title: Book code, type: text, required: true, search: true}
+  - {name: currency, title: Book currency, type: choice, required: true, choices: "CNY:CNY,USD:USD,EUR:EUR"}
+  - {name: closedbefore, title: Closed before date, type: date, required: true, default: "1970-01-01"}
+  - {name: subledgervalue, title: Subledger stock value, type: decimal, live: "round(sum(subledger, coalesce(item.amount, 0)), 2)"}
+  - {name: glinventorybalance, title: GL inventory balance, type: decimal, live: "round(sum(bookbalances, if(item.account.inventorycontrol, coalesce(item.net, 0), 0)), 2)"}
+  - {name: reconciliationdiff, title: Reconciliation difference, type: decimal, live: "round(subledgervalue - glinventorybalance, 2)"}
+  - {name: inflightdelta, title: Undelivered voucher delta, type: decimal, live: "round(sum(inflight, coalesce(item.inventorydelta, 0)), 2)"}
+  - {name: inflightcount, title: Undelivered vouchers, type: integer, live: "count(inflight)"}
+  - {name: trialbalancediff, title: Trial balance difference, type: decimal, live: "round(sum(bookbalances, coalesce(item.net, 0)), 2)"}
+states:
+  - {name: active, title: Active, tone: success}
+constraints:
+  - {name: bookcode, kind: unique, fields: [code], message: Book code must be unique.}
+access:
+  - {role: reader, read: all}
+  - {role: clerk, read: all}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [code, title, currency, closedbefore, subledgervalue, glinventorybalance, reconciliationdiff, inflightdelta, inflightcount, trialbalancediff], sort: [{sortKey: code, direction: ascending}], group: none, lanes: "", filters: [], search: ""}

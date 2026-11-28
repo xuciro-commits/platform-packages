@@ -1,0 +1,9 @@
+title: Disable posting account
+from: [active]
+roles: [manager]
+transaction:
+  guard: "nodekind = 'ledger'"
+  message: Only leaf posting accounts can be disabled in this draft chart.
+  steps:
+    - target: $subject
+      set: {state: "'inactive'"}

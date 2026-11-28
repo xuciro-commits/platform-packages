@@ -1,0 +1,111 @@
+name: journal
+namespace: accounting
+title: Journal voucher
+plural: Journal vouchers
+icon: clipboard-document-list
+display: title
+naming: JV-{year}-{n:5}
+description: Balanced general ledger voucher created manually from entry lines or automatically via gl.post/1 posting rules.
+sets:
+  entrylines: {object: accounting.entryline, limit: 200}
+  journalbalances: {object: accounting.journalline.journalbalance, limit: 10}
+fields:
+  - {name: book, title: Accounting book, type: reference, ref: accounting.book, inverse: journals, required: true, default: DEFAULT}
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: on, title: Posting date, type: date, required: true, default: today}
+  - {name: currency, title: Currency, type: choice, choices: "CNY:CNY,USD:USD,EUR:EUR", readOnly: true, from: book.currency}
+  - {name: rule, title: Posting rule, type: reference, ref: accounting.postingrule}
+  - {name: amount, title: Net amount, type: decimal, default: "0"}
+  - {name: taxamount, title: Tax amount, type: decimal, default: "0"}
+  - {name: inventorydelta, title: Inventory valuation delta, type: decimal, default: "0"}
+  - {name: sourcetype, title: Source document type, type: text}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true}
+  - {name: remarks, title: Remarks, type: longtext}
+  - {name: debitline, title: Debit ledger entry, type: reference, ref: accounting.journalline, readOnly: true}
+  - {name: creditline, title: Credit ledger entry, type: reference, ref: accounting.journalline, readOnly: true}
+  - {name: taxline, title: Tax ledger entry, type: reference, ref: accounting.journalline, readOnly: true}
+  - {name: draftdebit, title: Draft debit, type: decimal, formula: "round(sum(entrylines, coalesce(item.debit, 0)), 2)"}
+  - {name: draftcredit, title: Draft credit, type: decimal, formula: "round(sum(entrylines, coalesce(item.credit, 0)), 2)"}
+  - {name: draftdiff, title: Draft difference, type: decimal, formula: "round(draftdebit - draftcredit, 2)"}
+  - {name: posteddebit, title: Posted debit, type: decimal, live: "round(sum(journalbalances, coalesce(item.debit, 0)), 2)"}
+  - {name: postedcredit, title: Posted credit, type: decimal, live: "round(sum(journalbalances, coalesce(item.credit, 0)), 2)"}
+states:
+  - {name: draft, title: Draft, tone: warning}
+  - {name: posted, title: Posted, tone: success}
+  - {name: reversed, title: Reversed, tone: neutral}
+  - {name: cancelled, title: Cancelled, tone: neutral}
+actions: [post, voidvoucher, cancel]
+protocols:
+  - name: gl.post
+    version: 1
+    inFlight: {by: book, ref: accounting.book, inverse: inflight}
+    actions: {post: create, reverse: voidvoucher}
+createTransaction:
+  guard: "coalesce(rule.code, '') = '' or (rule.state = 'active' and rule.book = book and coalesce(amount, 0) > 0 and coalesce(taxamount, 0) >= 0 and (coalesce(taxamount, 0) = 0 or coalesce(rule.taxaccount.code, '') != ''))"
+  message: Automated voucher posting requires an active posting rule, positive amount, and configured tax account when tax is present.
+  steps:
+    - name: drline
+      when: "coalesce(rule.code, '') != ''"
+      target: accounting.journalline
+      set:
+        title: title
+        book: book
+        journal: $subject
+        account: rule.debitaccount
+        debit: "round(coalesce(amount, 0) + coalesce(taxamount, 0), 2)"
+        credit: 0
+        net: "round(coalesce(amount, 0) + coalesce(taxamount, 0), 2)"
+        on: on
+        sourcetype: "coalesce(sourcetype, 'accounting.journal')"
+        sourceid: "coalesce(sourceid, id)"
+    - name: crline
+      when: "coalesce(rule.code, '') != ''"
+      target: accounting.journalline
+      set:
+        title: title
+        book: book
+        journal: $subject
+        account: rule.creditaccount
+        debit: 0
+        credit: "round(coalesce(amount, 0), 2)"
+        net: "0 - round(coalesce(amount, 0), 2)"
+        on: on
+        sourcetype: "coalesce(sourcetype, 'accounting.journal')"
+        sourceid: "coalesce(sourceid, id)"
+    - name: txline
+      when: "coalesce(rule.code, '') != '' and coalesce(taxamount, 0) > 0"
+      target: accounting.journalline
+      set:
+        title: title
+        book: book
+        journal: $subject
+        account: rule.taxaccount
+        debit: 0
+        credit: "round(coalesce(taxamount, 0), 2)"
+        net: "0 - round(coalesce(taxamount, 0), 2)"
+        on: on
+        sourcetype: "coalesce(sourcetype, 'accounting.journal')"
+        sourceid: "coalesce(sourceid, id)"
+    - when: "coalesce(rule.code, '') != ''"
+      target: $subject
+      set:
+        state: "'posted'"
+        debitline: step.drline
+        creditline: step.crline
+        taxline: step.txline
+access:
+  - {role: reader, read: all}
+  - {role: clerk, read: all, create: true, edit: true}
+  - {role: manager, read: all, create: true, edit: true}
+view:
+  version: 1
+  layout: table
+  columns: [on, title, book, rule, draftdebit, draftcredit, posteddebit, postedcredit, sourcetype, sourceid, state]
+  sort: [{sortKey: on, direction: descending}]
+  group: state
+  lanes: ""
+  filters: []
+  search: ""
+  lines:
+    field: entrylines
+    columns: [account, debit, credit, remarks]

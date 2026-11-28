@@ -1,7 +1,8 @@
 title: Post invoice
-description: Post the sales invoice to record customer receivable and sales revenue facts.
+description: Post the sales invoice to record customer receivable and sales revenue facts and emit a general ledger voucher when connected.
 from: [draft]
 roles: [rep, manager]
+uses: [gl.post/1#post]
 transaction:
   reads:
     collections:
@@ -11,3 +12,19 @@ transaction:
   steps:
     - target: $subject
       set: {state: "'posted'"}
+    - name: postgl
+      when: "sum(lines.amount) > 0"
+      request: gl.post/1#post
+      deferred: true
+      optional: true
+      key: "concat('GL-SINV-', id)"
+      with:
+        book: "'DEFAULT'"
+        title: title
+        rule: "'SALES_REVENUE'"
+        amount: "sum(lines.amount)"
+        taxamount: "sum(lines.taxamount)"
+        inventorydelta: 0
+        on: postedon
+        sourcetype: "'sales.invoice'"
+        sourceid: id

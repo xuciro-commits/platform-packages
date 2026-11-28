@@ -1,0 +1,41 @@
+ask: Reversing a posted journal voucher writes opposite general ledger entries in an open period.
+title: Reverse journal
+description: Reverse all general ledger entries of this voucher in an open period without editing original facts.
+from: [posted]
+roles: [clerk, manager]
+inputs:
+  - {name: on, title: Reversal date, type: date}
+transaction:
+  collections:
+    entrylines: {object: accounting.entryline, set: entrylines}
+  steps:
+    - name: revdr
+      when: "coalesce(debitline.title, '') != ''"
+      kind: reverse
+      target: $subject.debitline
+      set:
+        on: "coalesce(input.on, today())"
+    - name: revcr
+      when: "coalesce(creditline.title, '') != ''"
+      kind: reverse
+      target: $subject.creditline
+      set:
+        on: "coalesce(input.on, today())"
+    - name: revtx
+      when: "coalesce(taxline.title, '') != ''"
+      kind: reverse
+      target: $subject.taxline
+      set:
+        on: "coalesce(input.on, today())"
+    - name: reventries
+      forEach:
+        set: entrylines
+        steps:
+          - name: reventry
+            when: "coalesce(row.postedline.title, '') != ''"
+            kind: reverse
+            target: row.postedline
+            set:
+              on: "coalesce(input.on, today())"
+    - target: $subject
+      set: {state: "'reversed'"}

@@ -1,0 +1,7 @@
+title: Enable posting account
+from: [inactive]
+roles: [manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'active'"}

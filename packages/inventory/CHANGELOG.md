@@ -1,3 +1,7 @@
+## 0.3.2
+
+- Added `inventory.stockbook` (`stock.close/1`) with `closedBeforeRecord` on `inventory.movement` and optional `gl.post/1` voucher emission on stock count adjustments.
+
 ## 0.3.1
 
 - Implement `stock.reserve/1` on `inventory.reservation` with `onhand - reserved` availability guard and exact shortage messaging.

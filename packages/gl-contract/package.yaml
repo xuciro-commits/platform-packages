@@ -1,0 +1,27 @@
+id: gl-contract
+version: 0.1.0
+title: General ledger contract
+namespace: glcontract
+description: General ledger voucher posting and reversal capability contract gl.post/1.
+listing:
+  industries:
+  - general
+  - manufacturing
+  - distribution
+  domains:
+  - accounting
+  keywords:
+  - gl
+  - ledger
+  - voucher
+  - contract
+  stage: preview
+  source:
+    ecosystem: platform
+    app: gl
+    relation: original
+roots:
+- app: build
+  kind: contract
+  name: gl.post
+artifact: gl-contract.json

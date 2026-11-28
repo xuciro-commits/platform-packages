@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Connected `purchasing.receipt` optionally to `gl.post/1` (`PURCHASE_RECEIPT`) with closed-period refusal feedback.
+
 ## 0.2.2
 
 - Align `stock-contract` dependency to `^0.1.2`.

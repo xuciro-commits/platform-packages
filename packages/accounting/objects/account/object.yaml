@@ -1,0 +1,38 @@
+name: account
+namespace: accounting
+title: Account
+plural: Chart of accounts
+icon: rectangle-group
+display: title
+description: Hierarchical general ledger account with book, account class, posting flag and inventory control indicator.
+sets:
+  accountbalances: {object: accounting.journalline.accountbalance, limit: 10}
+fields:
+  - {name: book, title: Accounting book, type: reference, ref: accounting.book, required: true, default: DEFAULT}
+  - {name: title, title: Account name, type: text, required: true, search: true}
+  - {name: code, title: Account code, type: text, required: true, search: true}
+  - {name: rootkind, title: Account class, type: choice, required: true, choices: "asset:Asset,liability:Liability,equity:Equity,income:Income,expense:Expense"}
+  - {name: nodekind, title: Account kind, type: choice, required: true, choices: "group:Account group,ledger:Posting account"}
+  - {name: parent, title: Parent account, type: reference, ref: accounting.account}
+  - {name: currency, title: Book currency, type: choice, choices: "CNY:CNY,USD:USD,EUR:EUR", readOnly: true, from: book.currency}
+  - {name: inventorycontrol, title: Inventory control account, type: boolean, default: "false"}
+  - {name: debitbalance, title: Total debit, type: decimal, live: "round(sum(accountbalances, coalesce(item.debit, 0)), 2)"}
+  - {name: creditbalance, title: Total credit, type: decimal, live: "round(sum(accountbalances, coalesce(item.credit, 0)), 2)"}
+  - {name: netbalance, title: Net balance, type: decimal, live: "round(sum(accountbalances, coalesce(item.net, 0)), 2)"}
+states:
+  - {name: active, title: Active, tone: success}
+  - {name: inactive, title: Inactive, tone: neutral}
+actions: [disableaccount, enableaccount]
+constraints:
+  - {name: accountcode, kind: unique, fields: [book, code], message: Account code must be unique within its book.}
+createTransaction:
+  guard: "(empty(parent) and nodekind = 'group') or (not empty(parent) and parent.code != code and parent.nodekind = 'group' and parent.book = book and parent.rootkind = rootkind and parent.state = 'active')"
+  message: Root accounts must be groups and children must share their active parent group book and class.
+  steps:
+    - target: $subject
+      set: {title: title}
+access:
+  - {role: reader, read: all}
+  - {role: clerk, read: all}
+  - {role: manager, read: all, create: true, edit: true}
+view: {version: 1, layout: table, columns: [code, title, rootkind, nodekind, parent, inventorycontrol, debitbalance, creditbalance, netbalance, state], sort: [{sortKey: code, direction: ascending}], group: rootkind, lanes: "", filters: [], search: ""}

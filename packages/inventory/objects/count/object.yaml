@@ -17,8 +17,9 @@ fields:
 states:
   - {name: draft, title: Draft, tone: neutral}
   - {name: reviewed, title: Reviewed, tone: info}
+  - {name: posted, title: Posted, tone: success}
   - {name: cancelled, title: Cancelled, tone: neutral}
-actions: [review, cancel]
+actions: [review, postadjustment, cancel]
 constraints:
   - {name: nonnegative, kind: expression, fields: [counted], expr: "counted >= 0", message: Counted quantity cannot be negative.}
 access:

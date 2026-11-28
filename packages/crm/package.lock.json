@@ -6,7 +6,7 @@
     "party@^0.2.0",
     "call@^0.1.0"
   ],
-  "artifact": "sha256:d759f27e69cd34cc2ecb30f8b7b3080da776e190a567ce56f7e31da9c169791b",
+  "artifact": "sha256:1544706cfd7ca226b73ebbf9e2e717e06be6c7e9798727fa27eeae9bf3cac90a",
   "assets": {
     "app/crm": {
       "digest": "sha256:0fd061890b4bf99697e448c4bc6f5614b51583c8ae757804b83ae4356aa660a9",
@@ -102,7 +102,7 @@
       ]
     },
     "object/crm.deal": {
-      "digest": "sha256:b1cac5172497a71ae2115c002e2a3e23b44477376f8266c82b40b8ca11b52545",
+      "digest": "sha256:d56560ea9d6ed0f69f5815cef479a39000593c5fe1e117a4e6fe753b1edc6fdf",
       "contractVersion": 1,
       "sourceVersion": "1",
       "schemaVersions": [
@@ -111,7 +111,7 @@
           "family": 1
         },
         {
-          "version": "schema.sha256.0ef58911c6354e985f4ea97b3c40ac8bd77c6e3cc7354f0dd5e366d3d3cf883b",
+          "version": "schema.sha256.49f288080d9867c97db9d2c2157a7b05b4ae339c04022c44dc0439deeb7e6021",
           "family": 2
         }
       ]

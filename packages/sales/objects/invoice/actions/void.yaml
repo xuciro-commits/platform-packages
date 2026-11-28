@@ -1,8 +1,19 @@
-ask: Voiding a posted sales invoice cancels its receivable and revenue facts.
+ask: Voiding a posted sales invoice cancels its receivable and revenue facts and reverses its general ledger voucher.
 title: Void invoice
 from: [draft, posted]
 roles: [manager]
+uses: [gl.post/1#reverse]
+inputs:
+  - {name: on, title: Reversal date, type: date}
 transaction:
   steps:
     - target: $subject
       set: {state: "'cancelled'"}
+    - name: voidgl
+      when: "state = 'posted' and revenueamount > 0"
+      request: gl.post/1#reverse
+      deferred: true
+      optional: true
+      key: "concat('GL-SINV-', id)"
+      with:
+        on: "coalesce(input.on, today())"

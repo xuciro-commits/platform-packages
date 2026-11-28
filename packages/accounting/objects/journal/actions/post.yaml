@@ -1,0 +1,33 @@
+title: Post journal
+description: Validate balanced debits and credits and post immutable general ledger entries.
+from: [draft]
+roles: [clerk, manager]
+transaction:
+  collections:
+    entrylines: {object: accounting.entryline, set: entrylines}
+  guard: "count(entrylines) >= 2 and draftdebit > 0 and draftdiff = 0"
+  message: "Journal voucher is out of balance: debit {draftdebit}, credit {draftcredit}, difference {draftdiff}."
+  steps:
+    - name: postentries
+      forEach:
+        set: entrylines
+        steps:
+          - name: glline
+            target: accounting.journalline
+            set:
+              title: title
+              book: book
+              journal: $subject
+              account: row.account
+              debit: "coalesce(row.debit, 0)"
+              credit: "coalesce(row.credit, 0)"
+              net: "round(coalesce(row.debit, 0) - coalesce(row.credit, 0), 2)"
+              on: on
+              sourcetype: "'accounting.journal'"
+              sourceid: id
+          - name: linkline
+            target: $item
+            set:
+              postedline: step.glline
+    - target: $subject
+      set: {state: "'posted'"}

@@ -1,0 +1,14 @@
+title: Receipt posting reply
+confirmationOnly: true
+from: [posted, rejected]
+roles: [buyer, manager]
+inputs:
+  - {name: outcome, title: Outcome, type: text, required: true}
+  - {name: reason, title: Reason, type: text}
+transaction:
+  steps:
+    - when: "input.outcome != 'accepted'"
+      target: $subject
+      set:
+        state: "'rejected'"
+        postingerror: "coalesce(input.reason, 'Ledger posting refused')"

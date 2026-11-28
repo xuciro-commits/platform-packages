@@ -1,0 +1,7 @@
+title: Cancel draft
+from: [draft]
+roles: [clerk, manager]
+transaction:
+  steps:
+    - target: $subject
+      set: {state: "'cancelled'"}

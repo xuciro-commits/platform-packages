@@ -1,0 +1,77 @@
+name: journalline
+namespace: accounting
+title: General ledger entry
+plural: General ledger entries
+icon: queue-list
+display: title
+naming: GLE-{n:6}
+ledger: true
+closedBeforeRecord: {type: accounting.book, id: DEFAULT, field: closedbefore}
+fields:
+  - {name: title, title: Reference, type: text, required: true, search: true}
+  - {name: book, title: Accounting book, type: reference, ref: accounting.book, inverse: bookbalances, required: true, default: DEFAULT}
+  - {name: journal, title: Journal voucher, type: reference, ref: accounting.journal, inverse: journalbalances, required: true}
+  - {name: account, title: Account, type: reference, ref: accounting.account, inverse: accountbalances, required: true}
+  - {name: fiscalyear, title: Fiscal year, type: integer, required: true, from: "date_part(on, 'year')"}
+  - {name: fiscalmonth, title: Fiscal month, type: integer, required: true, from: "date_part(on, 'month')"}
+  - {name: debit, title: Debit, type: decimal, required: true, default: "0"}
+  - {name: credit, title: Credit, type: decimal, required: true, default: "0"}
+  - {name: net, title: Signed amount, type: decimal, required: true, from: "round(debit - credit, 2)"}
+  - {name: on, title: Posting date, type: date, required: true, default: today}
+  - {name: sourcetype, title: Source document type, type: text}
+  - {name: sourceid, title: Source document, type: text, refType: sourcetype, search: true}
+  - {name: reverses, title: Reverses, type: reference, ref: accounting.journalline, readOnly: true}
+  - {name: reversed, title: Reversed, type: boolean, readOnly: true}
+balances:
+  - name: accountbalance
+    title: Account balance
+    keys: [account]
+    measures: [debit, credit, net]
+    access:
+      - {role: reader, read: all}
+      - {role: clerk, read: all}
+      - {role: manager, read: all}
+  - name: periodbalance
+    title: Account period balance
+    keys: [account, fiscalyear, fiscalmonth]
+    measures: [debit, credit, net]
+    access:
+      - {role: reader, read: all}
+      - {role: clerk, read: all}
+      - {role: manager, read: all}
+  - name: journalbalance
+    title: Journal balance
+    keys: [journal]
+    measures: [debit, credit, net]
+    access:
+      - {role: reader, read: all}
+      - {role: clerk, read: all}
+      - {role: manager, read: all}
+  - name: bookbalance
+    title: Book account balance
+    keys: [book, account]
+    measures: [debit, credit, net]
+    access:
+      - {role: reader, read: all}
+      - {role: clerk, read: all}
+      - {role: manager, read: all}
+constraints:
+  - {name: activepostingaccount, kind: expression, fields: [account, book], expr: "account.book = book and account.nodekind = 'ledger' and account.state = 'active'", message: General ledger entry requires an active posting account in the same book.}
+  - {name: balancednet, kind: expression, fields: [debit, credit, net], expr: "((debit != 0 and credit = 0) or (credit != 0 and debit = 0)) and round(debit - credit, 2) = net", message: General ledger entry requires one non-zero debit or credit matching its signed net amount.}
+access:
+  - {role: reader, read: all}
+  - {role: clerk, read: all, create: true}
+  - {role: manager, read: all, create: true}
+view:
+  version: 1
+  layout: table
+  columns: [on, fiscalyear, fiscalmonth, title, account, debit, credit, net, journal, sourcetype, sourceid, reversed, reverses]
+  sort: [{sortKey: on, direction: descending}]
+  group: account
+  lanes: ""
+  filters: []
+  search: ""
+  dates: on
+  reports:
+    - {name: trial_balance, title: Trial balance, group: account, measure: "sum:net", dates: on}
+    - {name: account_summary, title: Account period summary, group: account, subGroup: fiscalmonth, measure: "sum:net", dates: on}
